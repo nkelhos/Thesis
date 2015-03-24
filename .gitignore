@@ -1,0 +1,14 @@
+
+# intermediate files
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.ilg
+*.lof
+*.log
+*.lot
+*.mtc
+*.out
+*.ps
+*.toc
