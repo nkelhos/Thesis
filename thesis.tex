@@ -1,0 +1,117 @@
+%
+% Main LaTeX file [referred to as the $(MAINFILE).tex in the Makefile] 
+% to be used as template for writing MS thesis / PhD dissertation 
+% at Michigan Technological University, Houghton, MI
+%
+%
+
+
+% Document type
+% Uncomment the line below for single sided printing 
+% \documentclass[letterpaper,12pt,fleqn]{report}
+\documentclass[letterpaper,twoside,12pt,fleqn]{report}
+
+% Necessary packages
+% MichiganTech_MSPhD.sty 
+% This will in turn load all other required packages and (re)define
+% several aspects to make the document compliant with Michigan Tech
+% Graduate School requirements
+%\usepackage{MichiganTech_MSPhD}
+\usepackage{mtu.sty}
+
+
+% Information required for Title & Signature pages
+%% University
+\university{HUMBOLDT UNIVERSITY}
+%% Thesis/Dissertation title
+\thesistitle{NEEDS IMPROVEMENT: Search for extended gamma-ray emission from the Galactic Centre with VERITAS and CTA}
+%% Thesis/Dissertation author
+\thesisauthor{Nathan C. Kelley-Hoskins}
+%% Thesis/Dissertation year
+\thesisyear{2015}
+%% Department or School
+\deptschool{Physics}
+%% Program (optional)
+\program{Physics}
+%% Chair of the primary/home department
+%% \deptchair{} must be empty, if \schooldean is not empty
+\deptchair{???}
+%% Dean of the School - applies if you entered a school for \dept{}
+%% \schooldean{} must be empty, if \deptchair is not empty
+\schooldean{}
+%% Primary advisor
+\primaryadvisor{Dr. Gernot Maier}
+%% Co-Advisor (optional)
+\coadvisor{}
+%% Advisory committee member #1 (optional)
+\advcommone{???}
+%% Advisory committee member #2 (optional)
+\advcommtwo{???}
+%% Advisory committee member #3 (optional)
+\advcommthree{???}
+%% Advisory committee member #4 (optional)
+\advcommfour{Dr. Advisory Committee \#4}
+
+
+% Document begins
+\begin{document}
+
+% Allow very (though not arbitrarily) bad line spacing
+% Ignore lines overfull by less than half a point (less than 2/10th of a mm)
+% Add an extra 3 em of stretchability to each line
+\sloppy
+
+% Begin roman page numbering and empty page style
+\pagenumbering{roman}
+\pagestyle{empty}
+
+% Title and Signature pages
+%% For MS: replace \phdtitlepage with \mstitlepage
+%%         replace \phdsignaturepage with \mssignaturepage
+%\phdtitlepage
+\mstitlepage
+\cleartooddpage[\thispagestyle{empty}]
+%\phdsignaturepage
+\mssignaturepage
+
+% Modular segments
+\setstretch{2.0}
+\pagestyle{plain} 
+
+%% Dedication (optional)
+%\include{Dedication}
+
+%% Table of Contents (ToC), List of Figures (LoF) and List  of Tables (LoT) 
+\include{tableofcontents}
+
+%% Preface (optional)
+% \include{Preface}
+
+%% Acknowledgments
+%\include{Acknowledgments}
+
+%% Abstract
+\include{abstract}
+
+%% Begin arabic page numbering
+\pagenumbering{arabic}
+
+%% Chapters
+\include{chapter-intro}
+\include{chapter-gammarays}
+\include{chapter-darkmatter}
+\include{chapter-veritas}
+\include{chapter-reconstruction}
+\include{chapter-galacticcenter}
+\include{chapter-analysis}
+\include{chapter-conclusion}
+
+
+%% Bibliography
+%% This will also have the 'style' with which the references are listed
+\include{bibliography}
+
+\include{appendix}
+
+% Document Ends
+\end{document}
