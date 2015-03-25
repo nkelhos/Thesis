@@ -1,21 +1,38 @@
 \cleartooddpage[\thispagestyle{empty}]
-\chapter{Reconstruction}
-
-\section{Event Triggering}
+\chapter{Gamma Ray Reconstruction}
 
 \section{Sky Direction}
+image cleaning
+hillas fitting
+image intersection
 
 \section{Energy Reconstruction}
+table lookup via shower size and distance
 
 \section{Effective Area}
 
+simulate events
+spawn events in area
+measure number that fall within the area
+
+\section{Acceptance}
+radial acceptance, fill gamma-like events to histogram
+
 \section{Background}
+fill gamma-like events to 2d histogram
 
 \section{Point Spread Function}
+spawn events at a single point, look at reconstructed distribution
 
 \section{Energy Dispersion}
+spawn events at single energy, look at reconstructed distribution
+
+\section{FROGS Method}
+template method for fitting showers, improves energy resolution
 
 \section{DISP Method}
+tweaks how image intersections are weighted, improved psf at low elevations.
 
 \section{BDT Method}
+supervised learning algorithm for sorting gammas and protons, good for extended sources
 
