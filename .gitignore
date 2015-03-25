@@ -12,3 +12,6 @@
 *.out
 *.ps
 *.toc
+
+# final pdf
+*.pdf
