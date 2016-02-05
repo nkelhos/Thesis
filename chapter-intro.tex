@@ -14,7 +14,9 @@ As this matter prefers to only interact gravitationally, without interacting wit
 
 \section{Dark Matter}
 
-Dark matter is measured with several methods, described here in order of the volume of space measured.
+As Dark Matter is predicted to be ?? \% of the mass of the universe and \% of the energy of the universe, it is very pervasive.
+However, only interacting gravitationally means it is difficult to detect.
+There are several that have been developed that can measure the amount of dark matter in a region of space.
 
 At the smallest scale, satellite galaxies consist of several thousand, individually-resolvable stars.
 Telescopes can measure the spectra of these stars, allowing for their velocity to be calculated.
@@ -40,28 +42,31 @@ At the largest scale, the cosmic microwave background (CMB) has been used to mea
 By looking at the structure of the CMB, earlier times in the universe can be studied.
 Closer to the big bang, there was a point in time referred to as the 'freezout'.
 Before that time, the universe was a sea of quark plasma and other particles, and the temperature was too hot to allow baryons exist for any long period of time.
-After that freezout time, the universe had expanded enough, and the temperature had dropped to the point where more baryons were created than destroyed, much like cooling steam condensing to liquid water.
+After that freezout time, the temperature had dropped to the point where more baryons were created than destroyed, much like cooling steam condensing to liquid water.
 This freezout left an imprint of its structure, more CMB photons in some places, less in others.
 By looking at this CMB structure, the total number of baryons in the universe can be measured.
 ??Volume measured??
 
 
-
-
 \section{Galactic Center}
 
-At the center of every galaxy there is a supermassive black hole, with a mass of millions of suns.
-The Milky Way's own supermassive black hole is measured to be about $4*10^6$ solar masses.
+At the center of every galaxy there is believed to be a supermassive black hole, with a mass of millions of suns.
+The Milky Way's own supermassive black hole is measured to be $~4*10^6$ solar masses.
+As Dark Matter and Baryonic matter coincide most places in the universe (??), it is expected that there is a dark matter halo around the galactic center.
+Studying this halo is difficult, however, as the black hole's graviational well has accreted a large amount of material, as well as there being a large number of stars nearby.
+
+?? Picture of GC in radio
+
+In the galactic center, there is the the black hole itself, whose gamma-ray emission is not fully understood.
+There is also a disk of dust, stretching in a line across Earth's field of view.
+There are several supernova remnants, slowly-expanding shells of energetic particles, shocking into the ambient dust, as well as many other dust clouds whose origin is not well understood.
+
 
 \section{Gamma-Ray Astronomy}
 Humans have been attempting to detect gamma rays for several decades now, and they're starting to get the hang of it.
-Usually this is done by chosing a volume of solid, liquid, or gas matter, setting up sensitive particle detectors, waiting for gamma rays to strike the mass, and observing the particles that are emitted by the strike.
+Usually this is done by chosing a volume of solid, liquid, or gas matter, setting up sensitive particle detectors, waiting for gamma rays to strike the volume, and observing the particles that are emitted by the strike.
 As even the the massive emitted particles are still travelling at a large fraction of light-speed, very high-speed electronics are needed to record the signals.
 
-\section{Science Objectives}
-The goal of this thesis is to demonstrate that, by analyzing gamma-rays from the galactic center, a search for a Dark Matter Halo can be conducted.
-If a halo is discovered, it would be a huge discovery.
-If a halo is not discovered, this allows for upper limits to be placed on the halo's flux.
 
 \section{Gamma-Ray Showers}
 Gamma rays are very high energy photons.
@@ -85,27 +90,15 @@ By combining multiple synchronized cameras spaced at roughly ~100m apart, multip
 As the showers are highly directional along the original gamma-ray's trajectory, the images then point backwards to the original gamma-ray's point-of-origin in the sky.
 By running a large amount of simulations, a database of shower sizes and positions can be built, allowing for the energy of each gamma ray to be reconstructed.
 
+\section{Likelihood Analysis}
 
-\section{old}
-Veritas
+A likelihood ratio test fits two separate functions to datapoints, and then calculates the probability that one function is the more likely fit (called the Likelihood Ratio).
+Using Wilk's theorem??, the Likelihood Ratio can then be converted to a significance.
+The first function is called the Null Hypothesis, and the second function is the Alternative Hypothesis.
+In the context of astrophysical searches, each hypothesis predicts how many gamma rays will be at each point in the space/energy/time dataspace.
 
-Veritas is a gamma-ray observatory.
-This observatory consists of 4 telescopes, spread out over an area of 50 meters.
-Each telescope consists of a 12m dish of 498 mirrors, with a customized 498 pixel single-photon timing camera at the end of a 7 meter boom.
-
-Gamma rays are reconstructed and observed through a multi-stage process.
-First, gamma rays are emitted from an astrophysical source, outside the solar system.
-Then, these gamma rays travel to Earth and interact with molecules of Earth's atmosphere.
-When they interact, they pair-produce into an electron-positron pair, where each has an energy of half the parent gamma ray.
-The positron will then annihilate with an atmospheric electron, producing 2 more gamma rays, while the electron will shed some energy through ionization and by emitting chernekov photons.
-
-This process will repeat over and over, creating a particle shower, until the electrons have ~80MeV of kinetic energy, at which point ionization will dominate the energy loss, and the shower will stop producing cherenkov light.
-
-Veritas telescopes are designed to detect the cherenkov photons emitted from these particle showers, timing their arrival in each pixel to within 1 nanosecond.
-The shower images produces by multiple telescopes can then be used to triangulate the original gamma ray's point of orgiin, whereas the size of the shower can be used to determine the gamma ray's energy.
-
-
-Effective Area
-For the calculation of the flux, the detection area must be found.
-This depends primarily on each gamma ray's energy, as well as its detected position in the camera.
+\section{Science Objectives}
+This thesis will demonstrate that, by analyzing gamma-rays from the galactic center, a search for a Dark Matter Halo can be conducted.
+If Dark Matter annihliation is able to produce a detectable flux, the density profile of the Dark Matter halo can be measured.
+If the flux is below the limits of our telescope, then an upper limit can be placed on the mass and cross-section of the Dark Matter Particle.
 
