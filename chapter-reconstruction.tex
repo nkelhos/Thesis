@@ -1,10 +1,29 @@
 \cleartooddpage[\thispagestyle{empty}]
 \chapter{Gamma Ray Reconstruction}
 
+VERITAS is a particle physics observatory.
+Since it detects gamma rays by imaging their air shower, software is needed to reconstruct the shower.
+This reconstruction recovers the point-of-origin of the gamma ray, as well as its energy, and the effective area with which it was detected.
+This reconstruction process goes through several stages.
+First, the images are identified, and the intersection point of the axes' images can be used to identify the original sky direction of the gamma ray.
+Then, simulations are consulted to lookup which energy and effective area best fit each particular gamma ray.
+
+
+\section{Pixel Selection}
+Raw data from the telescope is saved to a file.
+This data consists of the number of DC counts from each PMT at roughly nanosecond intervals.
+When the telescope triggers on a gamma ray, however, it saves several nanoseconds forwards and backwards from the time of the trigger.
+
+\section{Image Selection}
+
+
 \section{Sky Direction}
 image cleaning
 hillas fitting
 image intersection
+
+\subsection{DISP Technique}
+
 
 \section{Energy Reconstruction}
 table lookup via shower size and distance
@@ -26,12 +45,6 @@ spawn events at a single point, look at reconstructed distribution
 
 \section{Energy Dispersion}
 spawn events at single energy, look at reconstructed distribution
-
-\section{FROGS Method}
-template method for fitting showers, improves energy resolution
-
-\section{DISP Method}
-tweaks how image intersections are weighted, improved psf at low elevations.
 
 \section{BDT Method}
 supervised learning algorithm for sorting gammas and protons, good for extended sources
