@@ -10,101 +10,10 @@
 \appendix
 
 
-\chapter{Software}
+% \chapter{Software}
 
-\begin{description*}
-  \item[Socket]   \hfill \\
-	A means for one program to send simple messages to another program.
-  \item[Thread]   \hfill \\
-	A means for a program to run several lists of commands at the same time
-  \item[Blocking] \hfill \\
-	When a function deliberately waits, either due to waiting for a hardware response, or due to a time.sleep() used in the code.
-  \item [Port]    \hfill \\
-	A number assigned to a socket, which the computer uses to determine where socket traffic is routed to.
-	(Web page calls use port 80, ssh uses port 22, CalDaemon ports are located in \$CAL/Settings/SocketSettings ).
-\end{description*}
-
-\begin{description*}
-  \item[Task]     \hfill \\
-	A specially formatted python script, which CalDaemon can execute via the launch command.  All tasks are located in \$CAL/Tasks .
-  \item[ExpCon] \hfill \\
-	Short for Experiment Control, the main computer that controls the HAWC exiperiment.
-	CalDaemon takes orders from this ``boss'' computer and reports to it.
-\end{description*}
-
-\chapter{Calibration Hardware}\label{C1}
-
-\section{Laser}
-The laser is a PowerChip laser (\url{http://www.teemphotonics.com/}), capable of producing laser pulses with an average energy of 45$\,$uJ per pulse, at a rate of up to 500$\,$Hz.  This allows for each calibration run to only last several seconds, but gather several thousand measurements.  The laser is ideally triggered on the positive edge of a squarewave voltage pulse, with a width 55$\,\mu$s and a height of 4.5$\,$V above ground.
-
-\section{Laser Power Supply}
-The laser power supply is an Acopian model A24H850M power supply.
-It provides DC power to the laser at 24$\,$V, up to a maximum of 8$\,$Amps.
-Its voltage is measured by the LabJack U3 DAQ board, through a small voltage divider.
-
-\section{Filter Wheel}
-There are three filter wheels used in the setup.
-They are model AB301-T filter wheels from www.spectralproducts.com .  
-Each filter wheel has slots for six 25$\,$mm diameter filters.
-Each slot is filled with either a NE\_(optical density)\_B filter from Thorlabs.com (see table \ref{tab:fwfilters}), or a thick piece of cardboard for an opaque slot, or left empty as an open slot.
-Each filter wheel communicates with the calibration control computer via a USB-serial cable and the PySerial python module.
-The list of filters and their optical depths is as follows:
-
-\begin{table}[h]
-\begin{center}
-\begin{tabular}{ c | c | c | c }    
-  Pos & FW1 & FW2 & FW3 \\ \hline
-  1 & Opaque & Open & Opaque \\
-  2 & Open & 0.2 & Open \\
-  3 & 1.0 & 0.4 & 0.3 \\
-  4 & 2.0 & 0.6 & 1.0 \\
-  5 & 3.0 & 0.8 & 1.3 \\
-  6 & 4.0 & 1.0 & 2.0 \\
-\end{tabular}
-\caption{Optical Depth of Filter Wheel Filters}
-\label{tab:fwfilters}
-\end{center}
-\end{table}
+% \chapter{Calibration Hardware}
 
 
 
-\section{Pulser}
-The pulser is a Berkeley Nucleonics Model 575 Pulse/Delay Generator.
-Used to trigger the laser, by sending square-wave pulses (between 10 and 500/second) with a width of 55$\,\mu$s and a amplitude of 4.5$\,$V above ground.
-The device communicates with the calibration control computer via a USB-serial cable and the pyserial python module.
-The pulser also creates a signal for the TDC’s.  Any time light is sent into the tanks, an accompanying signal from the pulser is sent to the TDCs, indicating that light may be in the tanks.
-As light can be routed from 2 to 20 tanks at a time, a calibration run also requires notifying which tanks are having light routed to them.
-
-\section{Timing Counter}\label{timingcounter}
-The timing counter is a Berkeley Nucleonics BN1105 timing counter.
-It cannot report a timing measurement at 500$\,$Hz.
-Initial tests point to it working as fast as 10$\,$Hz, so a separate thread will be needed to measure the timing fibers.
-
-\section{Fiber Optic Switch}
-To route the light to each tank, several fiber optic switches are used.
-The Dicon company's model GP700 and GP750 are the two switches used.
-Each GP750 switch (SW1 and SW2) have a bank of switch modules.
-SW1 will have 5x switch modules, and SW2 has 5x switch modules.
-Each switch module has 1 input, and 16 outputs, and a 17th output that serves to block the light.
-Based on this design of the PMT Fiber Optic Network, we can route light to 2, 4, 6, 8, 10, 12, 14, 16, 18, or 20 tanks at a time.
-
-\section{Milagro Fiber Optic Switch}
-A Dicon GP700 fiber optic switch, with 1 input, 64 outputs, and 1 off position.
-It is found that the switch's efficiency with the green laser is around 3\%, most likely due to the reflective coatings inside the switch that were originally for red wavelengths.
-
-\section{Radiometer}\label{app:radiometers}
-The radiometers are three model RM3700 radiometers each using an RjP-465 Energy Probe (both from www.laserprobe.com).
-The device can measure energy pulses from the laser.
-The device communicates with the calibration control computer via a usb-serial cable and the PySerial python module.  
-
-This device has two modes for communicating energy measurements, an Analog Data mode (AD mode)and a Fast Data mode (FD Mode).  The AD mode is unable to report energy measurements at 500Hz due to the limitations of the onboard chip, while in FD mode, each energy measurement is packed into two bytes, and then sent to the calibration control computer, which then decodes them with the DecodeFDDataPack() function the RM3700.py driver.
-
-Through the normal remote operation of the RM3700, the front display constantly goes blank.
-
-The effective range may be one order of magnitude below the manufacturer’s specifications.
-
-\section{LabJack DAQ Board}
-A small DAQ board that plugs into the calibration control computer via USB.
-It has a small thermometer inside, and the temperature measurement only has a resolution of about 0.1${}^\circ$.
-It is also hooked up to a small voltage divider that can be used to monitor the laser voltage.
 
