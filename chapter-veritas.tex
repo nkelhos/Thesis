@@ -1,30 +1,45 @@
 \cleartooddpage[\thispagestyle{empty}]
 \chapter{Veritas}
 
-\section{Observatory}
-
-VERITAS is a Atmospheric Cherenkov Telescope.
-It consists of 4 telescopes, spaced roughly 50m apart from each other.
-Each telescope consists of an array of 499 mirrors, and a 499 Photomultiplier Tube camera out on a boom.
+VERITAS is an Imaging Atmospheric Cherenkov Telescope.
+It consists of 4 telescopes, spaced roughly 50m apart.
+Each telescope posesses an array of 499 mirrors, and a 499-Photomultiplier-Tube camera out on a boom.
 Each mirror focuses gathered photons onto a separate pixel in the camera.
+In Section \ref{sec:hardware}, the different hardware components are discussed.
+In Section \ref{sec:trig}, the different trigger levels are discussed.
+The methods for image reconstruction are discussed in Section \ref{sec:imgrecon}.
+In Section \ref{sec:recon}, the reconstruction used in different parts of the analysis are discussed, including the per-telescope image reconstruction in Subsection \ref{subsec:imgrecon}, the direction reconstruction in Subsection \ref{subsec:posrecon}, and the energy reconstruction in Subsection \ref{subsec:enrecon}.
 
 
-\section{Hardware}
+\section{Hardware}\label{sec:hardware}
+When a gamma-ray produces an air shower in the atmosphere, the shower emits numerous Cherenkov photons, across nanoseconds in time.
+This means that, when the image of the shower reaches the telescopes, only a handful of Cherenkov photons remain, and these photons are spread out over several nanoseconds.
+Detection of these limited number of photons over such a tiny span of time are what drive the majority of the design of the VERITAS observatory.
+
+To detect these individual Cherenkov photons, Photomultiplier tubes are used to amplify the signal from single photons.
+This produces an analog voltage pulse that then must be digitized.
+As the voltage pulses widths are kept to ~ns, to prevent them from overlapping the pulses from photons of other showers, the digization hardware measures each voltage pulse in 1-nanosecond-wide time bins.
+Though faint showers may only posess a few photons, brighter showers can still shine several thousand photons onto individual pixels.
+This means that the digization hardware must be able to handle a large dynamic range, over several orders of magnitude.
+To accomplish this, two amplification levels are used in the digization circuit, High Gain for voltage pulses of a few photons, and Low Gain for voltage pulses of several thousand photons.
+
 
 4 telescopes
 499 pmt's per pixel
 ~1000V
 
-\section{Triggers}
+\section{Triggers}\label{sec:trig}
 L1 for pixel
 L2 for telescope image
 L3 for multi-telescope event : ~300Hz
 
-\section{Image Reconstruction}
+\section{Event Reconstruction}\label{sec:recon}
 
-\section{Position Reconstruction}
+\subsection{Image Reconstruction}\label{subsec:imgrecon}
 
-\section{Energy Reconstruction}
+\subsection{Position Reconstruction}\label{subsec:posrecon}
+
+\subsection{Energy Reconstruction}\label{subsec:enrecon}
 
 \section{Sensitivity}
 % plot vs energy
