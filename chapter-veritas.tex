@@ -29,7 +29,16 @@ To accomplish this, two amplification levels are used in the digization circuit,
 ~1000V
 
 \section{Triggers}\label{sec:trig}
-L1 for pixel
+
+The operation of VERITAS means digitizing voltage pulses once per nanosecond, per photomultiplier tube.
+This means that, for 255 voltage levels, 1 second of raw data voltage data requires 2 Terabytes of space.
+As this is unfeasable with today's computers, only subsets of the raw pixel voltages can be saved.
+Instead, VERITAS has a system where the raw data is only saved when certain triggers are met.
+
+The L1 trigger is met when multiple time-binned voltage measurements in a single pixel combine to cross a specified threshold voltage.
+At the single pixel level, the signals that are preferred are from multiple photons, close in time.
+The background signals that are rejected by this trigger include voltage pulses from ambient photons from the night sky background (NSB) and from human-rpodcued background photons (cars, streetlights, illuminated clouds, etc.).
+
 L2 for telescope image
 L3 for multi-telescope event : ~300Hz
 
