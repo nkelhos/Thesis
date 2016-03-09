@@ -31,16 +31,20 @@ To accomplish this, two amplification levels are used in the digization circuit,
 \section{Triggers}\label{sec:trig}
 
 The operation of VERITAS means digitizing voltage pulses once per nanosecond, per photomultiplier tube.
-This means that, for 255 voltage levels, 1 second of raw data voltage data requires 2 Terabytes of space.
-As this is unfeasable with today's computers, only subsets of the raw pixel voltages can be saved.
-Instead, VERITAS has a system where the raw data is only saved when certain triggers are met.
+This means that, with 255 voltage levels, 1 second of raw data voltage data would require 2 Terabytes of space.
+As this is unfeasable with today's computing systems, only subsets of the raw pixel voltages can be saved.
+Thus, VERITAS has a system where the raw data is only saved when certain triggers are met.
 
 The L1 trigger is met when multiple time-binned voltage measurements in a single pixel combine to cross a specified threshold voltage.
 At the single pixel level, the signals that are preferred are from multiple photons, close in time.
-The background signals that are rejected by this trigger include voltage pulses from ambient photons from the night sky background (NSB) and from human-rpodcued background photons (cars, streetlights, illuminated clouds, etc.).
+The background signals that are rejected by this trigger include voltage pulses from ambient photons from the night sky background (NSB) and from human-reproduced background photons (cars, streetlights, illuminated clouds, etc.).
+When a pixel's L1 trigger is met, this signal is sent to the L2 trigger system.
 
-L2 for telescope image
-L3 for multi-telescope event : ~300Hz
+The L2 trigger is invoked when several adjacent pixels produce an L1 trigger within a span of several of nanoseconds.
+This image trigger, when met, is then sent to the L3 trigger system.
+
+The L3 trigger is invoked when two or more L2 triggers occur within a span of tens of nanoseconds.
+This selects for images that are within several telescope fields of view, as well as reducing background images in the form of single muon rings imaging individual telescopes.
 
 \section{Event Reconstruction}\label{sec:recon}
 
