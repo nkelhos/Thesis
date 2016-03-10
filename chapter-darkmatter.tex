@@ -127,6 +127,30 @@ Much of the evidence for dark matter, as detailed in section ??, comes from indi
 \section{Mass and Cross-section}
 
 
+\section{Halo Structure}
+Numerical simulations have been performed to simulate the structure of dark matter halos.
+On galactic scales, these halos can be modeled with several different density profiles.
+Three of the primary profiles are the Burkert, the Einasto, and the Zhao profile.
+Each profile describes the mass/volume density of dark matter at a distance r from the halo center.
+
+A Burkert profile (\cite{burkertprofile}) has the form
+
+$ \rho_{DM} \left( r \right) = \frac{ \rho_o r_o3}{ \left( r + r_o \right) \left( r^2 + r_o^2 \right)} $ \label{eqn:burkert}
+
+where $r_o$ is the scale radius of the halo, and $\rho_o$ is the scale density, the density at the scale radius.
+
+The Einasto profile (\cite{einastoprofile1},\cite{einastoprofile2}) has the form
+
+$ \rho_{DM} \left( r \right) = Exp \left( - \frac{2}{\alpha} \left( {\left( \frac{r}{r_o} \right)}^{\alpha} - 1 \right) \right)$ \label{eqn:einasto}
+
+The Zhao profile (\cite{zhaoprofile}) has the form
+
+$ \rho_{DM} \left( r \right) = \frac{\rho_o}{ {\left( \frac{r}{r_o} \right)}^{\gamma} {\left( 1 + {\left( \frac{r}{r_o} \right)}^{\alpha} \right)}^{ \left(\beta - \gamma \right) / \alpha} } $ \label{eqn:zhao}
+
+where $\gamma$ is the slope of the density profile when $r << r_o$, $\beta$ is the slope when $r >> r_o$, and $\alpha$ determines how large the transition region is between $\gamma$ and $\beta$.
+A larger $\alpha$ means a smaller transition region.
+
+
 \section{Old}
 
 Dark matter was named as a solution to an inconsitancy in galactic rotation curves.
