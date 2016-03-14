@@ -20,7 +20,6 @@ TEXFILES = tableofcontents.tex        \
            abstract.tex               \
            chapter-intro.tex          \
            chapter-veritas.tex        \
-           chapter-galacticcenter.tex \
            chapter-darkmatter.tex     \
            chapter-reconstruction.tex \
            chapter-analysis.tex       \
