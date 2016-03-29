@@ -28,7 +28,7 @@ To accomplish this, two amplification levels are used in the digization circuit,
 ~1000V
 
 \section{Epochs}\label{sec:epochs}
-VERITAS has evolved over several years, making alterations over several years to improve its sensitivity.
+VERITAS has evolved over several years, making alterations to improve its sensitivity.
 In August of 2006??, the fourth telescope was finished, and this is considered the fourth epoch.
 Telescope 1 was placed at (-37.6, -23.7), telescope 2 at (44.1, -47.7), telescope 3 at (29.4,60.1), and telescope 4 at (-35.9,11.3), where the coordinate system's origin is at 31.675N, 110.962W??, the X axis points East, and the Y axis points North, and both axes are in meters(??).
 
@@ -43,8 +43,8 @@ As these different epochs have different telescope configurations, the instrumen
 
 \section{Triggers}\label{sec:trig}
 
-The operation of VERITAS means digitizing voltage pulses once per nanosecond, per photomultiplier tube.
-This means that, with 255 voltage levels, 1 second of raw data voltage data would require 2 Terabytes of space.
+The operation of VERITAS requires digitizing voltage pulses once per nanosecond, per photomultiplier tube.
+This means that, with 255 voltage levels, 1 second of raw voltage data would require 2 Terabytes of space.
 As this is unfeasable with today's computing systems, only subsets of the raw pixel voltages can be saved.
 Thus, VERITAS has a system where the raw data is only saved when certain triggers are met.
 
@@ -100,14 +100,14 @@ Typically, simulations are run across a number of energies, and an 2D matrix is 
 \section{Point Spread Function}\label{sec:psf}
 % plot of psf
 In addition to the energy being slightly mis-reconstructed, the source position of the gamma ray can also be misreconstructed.
-For a gamma ray telescope, a simple measure is to simulate at a single point in the sky, and look at how the reconstructed positions are distributed around that point.
+For a gamma ray telescope, a simple measure of this misreconstruction is to simulate many gamma rays at a single point in the sky, and look at how their reconstructed positions are distributed around that point.
 This distribution is referred to as the Point Spread Function.
 To first order, most current-generation point spread functions are gaussian distributions.
 
 \section{Energy Dispersion}
 Much like the point spread function in section \ref{sec:psf}, the energy reconstruction process is also imperfect.
-This means that a shower with a reconstructed energy could come from a distribution of true energies.
-Another way to phrase this is that a group of gamma-rays with the same initial energy will have a distribution of reconstructed energies.
+This means that a gamma ray with a reconstructed energy could come from a distribution of true energies.
+This can also be phrased that a group of gamma-rays with the same initial energy will have a distribution of reconstructed energies.
 These distributions primarily are due to inherent randomness in the showers themselves.
 
 \section{Energy Sensitivity and Zenith Angle}
