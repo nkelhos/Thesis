@@ -16,7 +16,14 @@ Shows Cresecent pattern at lowest energies, doughnut at slightly higher energies
 
 \subsection{Diffuse Gamma Rays}
 
-Diffuse sims were run, show similar structure in background.
+Sets gamma rays were simulated, with corsika, at different energies.
+These gamma rays were diffused in a circular disk of radius ?? degrees around ?? elevation/azimuth.
+The gamma rays were then processed through the VERITAS simulation chain.
+This simulation chain takes the cherenkov photons from each gamma ray shower, and calculates which ones hit telescope mirrors.
+Then, it calculates which cherenkov photons hit which pixels, and at what time.
+Once cherenkov photons are measured hitting a pixel, a hardware simulation program takes over to simulate the voltage pulse created by the photons.
+This voltage pulse is then propagated through a software simulation of the VERITAS triggering system.
+Once the list of triggered gamma-ray showers is save to a file, reconstruction of the event can be done by the same software that reconstructs observed events.
 
 \subsection{Elevation Effects}
 
