@@ -28,8 +28,15 @@ Once the list of triggered gamma-ray showers is save to a file, reconstruction o
 \subsection{Elevation Effects}
 
 Diffuse sims with direct-camera pointing show just the elevation effects, no camera effects.
+To study the effect of elevation, special diffuse sims were made.
+These were produced such that, after creating diffuse gamma rays in corsika, the simulated telescopes were pointed directly at each event.
+This means that while the events were at a variety of azimuths and elevations, they all hit in the center of the camera.
 
-Elevation applies a different gradient depending on energy.
+From these plots, one can see that different gamma-ray energies have different horizon elevations, below which a particular energy gamma ray cannot be detected.
+
+By looking at the number of gamma rays detected at each energy and elevation (and ignoring azimuth), the slope of the elevation effect can be seen.
+It is important to note, that each energy has a different slope due to elevation.
+
 
 \subsection{Gamma Verses Protons}
 
