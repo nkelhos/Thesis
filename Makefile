@@ -12,7 +12,8 @@ DVIPS    = dvips
 DVIPDF   = dvipdf
 PS2PDF   = ps2pdf
 MAINFILE = thesis
-STYFILE  = mtustyle.sty
+#STYFILE  = mtustyle.sty
+STYFILE  = citelist.sty
 
 #
 # List of files
