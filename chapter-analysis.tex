@@ -21,18 +21,29 @@ This implies a key idea, that to study the effect of stars, one should study the
 To examine the effects of disable pixels, a study was performed where 13.5 hours of Crab observations were analyzed twice, once normally, and once with a single pixel disabled in all four telescopes.
 This mimics the effect of having a star in the field of view that is bright enough to disable a pixel.
 Once the events are reconstructed, and passed through gamma-hadron cuts, they can then be compared.
-When synchronizing the event lists, it can be done in $O\left(n\right)$ time, as both event lists are already time-ordered.
+When synchronizing the event lists, it can be done in $O\left(n\right)$ time (rather than $O\left(n^2\right)$ time), as both event lists are already time-ordered.
 After the event lists with the pixel enabled and disabled are synchronized, they can be compared.
 One can then look for events that disappeared when the pixel was disabled, as well looking for new events that appeared.
 Events that are still present in both event lists can then be tested to see how far their reconstructed camera position moved.
 
+In figure \ref{fig:dpix_rel_camera}, the relative event rate in the camera is plotted when pixel 115 is disabled in all four telescopes.
+This is calculated by taking, for each bin, the number of reconstructed gamma-like events is divided by the pixel-enabled number of reconstructed events.
+It can be seen that there is a loss of events near the disabled pixel (the black circle), with a rate closer to 100\% the further away one goes from the disabled pixel.
 
 \begin{figure}[h]\label{fig:dpix_rel_camera}
   \begin{center}
     \includegraphics[width=0.8\textwidth]{images/disabled_pixel/relativerate_camera}
-    \caption[Relative Event Rate]{Event rate in the camera with pixel 115 disabled in all four telescopes, relative to having all pixels enabled.  Camera coordinate axes are parallel to azimuth and elevation.}
+    \caption[Relative Event Rate]{Event rate in the camera with pixel 115 disabled (denoted by the black circle) in all four telescopes, relative to having all pixels enabled.  Camera coordinate axes are parallel to azimuth and elevation.}
   \end{center}
 \end{figure}
+
+In figure \ref{fig:dpix_rel_radial}, the bin values from figure \ref{fig:dpix_rel_camera} are divided into radial bins centered around the disabled pixel.
+The average relative event rate is then calculated for each bin, along with a 1-sigma distribution width for the error bars.
+It can be seen that there are three distinct phases to the plot.
+In the first phase, from radius 0 to 0.3 degrees, the relative event rate starts extremely low, and rises rapidly.
+In the second phase, from radius 0.3 to 1.6 degrees, the relative event rate is still rising, but much more slowly.
+In the third phase outside 1.6 degrees, there is almost no effect.
+
 
 \begin{figure}[h]\label{fig:dpix_rel_radial}
   \begin{center}
@@ -41,6 +52,10 @@ Events that are still present in both event lists can then be tested to see how 
   \end{center}
 \end{figure}
 
+In figure \ref{fig:dpix_disappear}, the positions of events that disappeared are shown.
+The white area indicates many events are lost in the area of the disabled pixel, which makes sense.
+Events with small images would be much more susceptable to being cut due to the loss of a pixel.
+
 \begin{figure}[h]\label{fig:dpix_disappear}
   \begin{center}
     \includegraphics[width=0.8\textwidth]{images/disabled_pixel/disappearing_events}
@@ -48,10 +63,20 @@ Events that are still present in both event lists can then be tested to see how 
   \end{center}
 \end{figure}
 
+In figure \ref{fig:dpix_appear}, the positions of events that newly appeared are shown.
+It should be noted that these are not events that these are events 'created' by disabling a pixel.
+Rather, they are events that, with the pixel enabled, did not pass cuts.
+Now that the pixel is disabled, they do pass cuts.
+
+What is also interesting is that the highest concentration of lost events was in the pixel's area, whereas the highest rate for appearing events is actually in a ring with a radius of \nicetilde1.5 pixels around the disabled pixel.
+This is probably due to the fact that disabling a pixel can make some images look thinner or wider, depending on where the disabled pixel is in the image.
+A thinner image will look more gamma-like, making it more likely to pass cuts, appearing like 'new' events.
+On the other hand, a wider image looks more hadron-like, and is less likely to pass cuts, causing some events to disappear.
+
 \begin{figure}[h]\label{fig:dpix_appear}
   \begin{center}
     \includegraphics[width=0.8\textwidth]{images/disabled_pixel/appearing_events}
-    \caption[Newly Appearing Events]{Positions of new events that appeared when pixel 115 was disabled in all four telescopes.  Positions are from their pixel-disabled reconstructed position.  It should be noted that these are not completely new events.  They are only new events in that, due to the pixel being disabled, they now pass cuts that they previously failed.}
+    \caption[Newly Appearing Events]{Positions of new events that appeared when pixel 115 was disabled in all four telescopes.  Positions are from their pixel-disabled reconstructed position.}
   \end{center}
 \end{figure}
 
