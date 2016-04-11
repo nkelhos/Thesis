@@ -68,7 +68,7 @@ It should be noted that these are not events that these are events 'created' by 
 Rather, they are events that, with the pixel enabled, did not pass cuts.
 Now that the pixel is disabled, they do pass cuts.
 
-What is also interesting is that the highest concentration of lost events was in the pixel's area, whereas the highest rate for appearing events is actually in a ring with a radius of \nicetilde1.5 pixels around the disabled pixel.
+What is also noticeable is that the highest concentration of lost events was in the pixel's area, whereas the highest rate for appearing events is actually in a ring with a radius of \nicetilde1.5 pixels around the disabled pixel.
 This is probably due to the fact that disabling a pixel can make some images look thinner or wider, depending on where the disabled pixel is in the image.
 A thinner image will look more gamma-like, making it more likely to pass cuts, appearing like 'new' events.
 On the other hand, a wider image looks more hadron-like, and is less likely to pass cuts, causing some events to disappear.
@@ -79,6 +79,10 @@ On the other hand, a wider image looks more hadron-like, and is less likely to p
     \caption[Newly Appearing Events]{Positions of new events that appeared when pixel 115 was disabled in all four telescopes.  Positions are from their pixel-disabled reconstructed position.}
   \end{center}
 \end{figure}
+
+In figure \ref{fig:dpix_move}, the movment of gamma-like events is shown, when pixel 115 was disabled in all four telescopes.
+Only events which moved more than $0.1*PSF$ are shown.
+It should be noted that relatively few (how few??) events move, and the events that do move are mostly ones with strange image shapes that are cut in half when the pixels are disabled.
 
 \begin{figure}[h]\label{fig:dpix_move}
   \begin{center}
