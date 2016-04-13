@@ -87,7 +87,7 @@ It should be noted that relatively few (how few??) events move, and the events t
 \begin{figure}[h]\label{fig:dpix_move}
   \begin{center}
     \includegraphics[width=0.8\textwidth]{images/disabled_pixel/moving_events}
-    \caption[Event Movement]{Positions of events that moved when pixel 115 (denoted by the red circle) was disabled in all four telescopes.  Arrow points from the pixel-enabled position to the pixel-disabled position.  Only events that moved more that 0.1*PSF are shown.}
+    \caption[Event Movement]{Positions of events that moved when pixel 115 (denoted by the red circle) was disabled in all four telescopes.  Arrows point from the pixel-enabled position to the pixel-disabled position.}
   \end{center}
 \end{figure}
 
@@ -98,9 +98,19 @@ As part of the observing strategy for the galactic center, off data is also take
 This means that, for most nights when the galactic center is observed (called On runs, at RA/Dec 260.91/-29.01), one run is also taken with the observatory pointing a few degrees away from the galactic center, an Off run at RA/Dec 266.41/-29.01 .
 This is done because the galactic center is a highly active area, meaning there are few regions within the On data that can be used as a background region in the Li and Ma significance equation ??.
 
-Data in two different elevation brackets.
+Most of VERITAS's Galactic Center observations are taken with a telescope elevation of 28 and 30 degrees, because at VERITAS's latitude, the Galactic Center only rises to a pieak elevation of \nicetilde30 degrees.
+Most VERITAS observation sources are at elevations higher than 60 degrees, so the effects of low elevation have not been studied much.
+To check for any elevation effects, several studies were performed.
 
-Shows Crescent pattern at lowest energies, doughnut at slightly higher energies, then at higher energies is concentrated at the lower part of the camera.
+First, two samples of Galactic Center Off observations were studied, as they had no significant gamma ray sources, and are at very similar elevations to the Galactic Center On observations.
+Events from each sample were first divided up into equal-statistics energy bins, to ensure there were enough events in later steps.
+Then, for each energy bin, the gamma-like events were binned by their reconstructed position in camera X and Y coordinates.
+The Camera X and Y system is in angle, with X and Y axes parallel to Azimuth and Elevation respectivly, with the origin centered on the telescope pointing target.
+
+In both samples of observations, it can be seen that for the lowest energies, a crescent shape appears, while at the higher energies, the average position of all events is below the center of the camera.
+
+
+
 
 \subsection{Diffuse Gamma Rays}
 
