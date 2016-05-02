@@ -1,9 +1,15 @@
 \cleartooddpage[\thispagestyle{empty}]
 \chapter{Veritas}
 
-VERITAS is an Imaging Atmospheric Cherenkov Telescope.
-It consists of 4 telescopes, spaced roughly 50m apart.
-Each telescope posesses an array of 499 mirrors, and a 499-Photomultiplier-Tube camera out on a boom.
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.95\textwidth]{images/veritas_array_v6}
+    \caption[VERITAS Array]{The VERITAS observatory.}\label{fig:veritasarray}
+  \end{center}
+\end{figure}
+
+VERITAS is an arrary of four Imaging Atmospheric Cherenkov Telescopes, each spaced $\nicetilde50m$ apart.
+Each telescope possesses an array of 345 mirrors, and a 499-Photomultiplier-Tube camera out on a boom.
 Each mirror focuses gathered photons onto a separate pixel in the camera.
 In Section \ref{sec:hardware}, the different hardware components are discussed.
 In Section \ref{sec:trig}, the different trigger levels are discussed.
@@ -12,36 +18,63 @@ In Section \ref{sec:recon}, the reconstruction used in different parts of the an
 
 
 \section{Hardware}\label{sec:hardware}
-When a gamma-ray produces an air shower in the atmosphere, the shower emits numerous Cherenkov photons, across nanoseconds in time.
-This means that, when the image of the shower reaches the telescopes, only a handful of Cherenkov photons remain, and these photons are spread out over several nanoseconds.
+When a gamma-ray produces an air shower in the atmosphere, the shower emits numerous Cherenkov photons, over a time period of nanoseconds.
+This means that when the image of the shower reaches the telescopes, only a handful of Cherenkov photons remain, and these photons are spread out over several nanoseconds.
 Detection of these limited number of photons over such a tiny span of time are what drive the majority of the design of the VERITAS observatory.
 
 To detect these individual Cherenkov photons, Photomultiplier tubes are used to amplify the signal from single photons.
 This produces an analog voltage pulse that then must be digitized.
 As the voltage pulses widths are kept to ~ns, to prevent them from overlapping the pulses from photons of other showers, the digization hardware measures each voltage pulse in 1-nanosecond-wide time bins.
 Though faint showers may only posess a few photons, brighter showers can still shine several thousand photons onto individual pixels.
-This means that the digization hardware must be able to handle a large dynamic range, over several orders of magnitude.
+This means that the digization hardware must be able to handle a large dynamic range of inputs, over several orders of magnitude.
 To accomplish this, two amplification levels are used in the digization circuit, High Gain for voltage pulses of a few photons, and Low Gain for voltage pulses of several thousand photons.
 
-4 telescopes
-499 pmt's per pixel
-~1000V
 
-\section{Epochs}\label{sec:epochs}
-VERITAS has evolved over several years, making alterations to improve its sensitivity.
-In August of 2006??, the fourth telescope was finished, and this is considered the fourth epoch.
-Telescope 1 was placed at (-37.6, -23.7), telescope 2 at (44.1, -47.7), telescope 3 at (29.4,60.1), and telescope 4 at (-35.9,11.3), where the coordinate system's origin is at 31.675N, 110.962W??, the X axis points East, and the Y axis points North, and both axes are in meters(??).
+\subsection{Mirrors}
 
-In September 2009, telescope 1 was moved to a new position (135.4,-8.61), after it was demonstrated that there would be an improvement in sensitivity.
-This is the fifth epoch.
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.95\textwidth]{images/single_telescope}
+    \caption[Single Telescope]{View of the 345 mirrors, the support structure, and the PMT Camera housing at the end of the four supporting arms.}\label{fig:davcottel}
+  \end{center}
+\end{figure}
 
-In August 2012, the PMTs in all cameras were replaced with improved PMTs (??) that had a higher quantum efficiency, improving the telescopes ability to resolve images.
-Data taken after this time is considered part of the sixth epoch.
+When cherenkov light first interacts with the telescope array, it is by being reflected by one of 345 mirrors
+These mirrors face towards the incoming cherenkov light, with the PMTs positioned in a camera box, facing the mirrors, shown in figure \ref{fig:davcottel}.
+This configuration is referred to as a Davies-Cotton telescope \cite{daviescotton}.
+Each mirror has an area of 0.322$m^2$, and a curvature radius of 24m.
+The mirrors are each mounted along the support structure so that the total diameter of the telescope mirror area is 12m, with a focal length of 12m, and a total mirror area of 111$m^2$ \cite{Veritas_Detector}.
+The mirrors' reflectivity as a function of wavelength is shown in figure \ref{fig:mirreflect}.
 
-As these different epochs have different telescope configurations, the instrument response functions are different, effectivly meaning the three epochs are distinct observatories.
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.75\textwidth]{images/mirror_reflect}
+    \caption[Mirror Reflectivity]{Mirror reflectivity as a function of wavelength for each telescope, from \cite{mirrorfacets}.  The VERITAS specifications state that the mirror reflectivity must be $\geq 85\%$ between 280nm and 450nm.}\label{fig:mirreflect}
+  \end{center}
+\end{figure}
 
+As the mirrors are exposed to the elements, they are cleaned and recoated at regular (yearly??) intervals.
+Each mirror is attached to the support structure via three adjustable mounting points, meaning the mirror orientation can be adjusted to point directly on the camera, detailed in \cite{mirroralign}.
+This alignment is measured and adjusted at regular intervals, using background stars as a calibration source??.
 
-\section{Triggers}\label{sec:trig}
+\subsection{PMTs}
+
+Each telescope has a PMT Camera on the end of four supporting arms, inside a protective housing.
+This camera consists of 499 Photo Multiplier Tubes, each with a Winston cone to increase the light collection area for each PMT.
+These winston cones can be seen attached to the PMTs in figure \ref{fig:winstcones}.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.75\textwidth]{images/winston_cones_t2}
+    \caption[Winston Cones]{Hexagonal Winston cones over the circular PMTs, inside the camera housing.}\label{fig:winstcones}
+  \end{center}
+\end{figure}
+
+To operate, the PMTs are connected to high voltage lines, so that
+
+~1000V??
+
+\subsection{Triggers}\label{sec:trig}
 
 The operation of VERITAS requires digitizing voltage pulses once per nanosecond, per photomultiplier tube.
 This means that, with 255 voltage levels, 1 second of raw voltage data would require 2 Terabytes of space.
@@ -58,6 +91,21 @@ This image trigger, when met, is then sent to the L3 trigger system.
 
 The L3 trigger is invoked when two or more L2 triggers occur within a span of tens of nanoseconds.
 This selects for images that are within several telescope fields of view, as well as reducing background images in the form of single muon rings imaging individual telescopes.
+
+\section{Epochs}\label{sec:epochs}
+VERITAS has evolved over several years, making alterations to improve its sensitivity.
+In August of 2006??, the fourth telescope was finished, and this is considered the fourth epoch.
+Telescope 1 was placed at (-37.6, -23.7), telescope 2 at (44.1, -47.7), telescope 3 at (29.4,60.1), and telescope 4 at (-35.9,11.3), where the coordinate system's origin is at 31.675N, 110.962W??, the X axis points East, and the Y axis points North, and both axes are in meters(??).
+
+In September 2009, telescope 1 was moved to a new position (135.4,-8.61), after it was demonstrated that there would be an improvement in sensitivity.
+This is the fifth epoch.
+
+In August 2012, the PMTs in all cameras were replaced with improved PMTs (??) that had a higher quantum efficiency, improving the telescopes ability to resolve images.
+Data taken after this time is considered part of the sixth epoch.
+
+As these different epochs have different telescope configurations, the instrument response functions are different, effectivly meaning the three epochs are distinct observatories.
+
+
 
 \section{Event Reconstruction}\label{sec:recon}
 

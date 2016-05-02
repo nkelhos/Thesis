@@ -30,25 +30,25 @@ In figure \ref{fig:dpix_rel_camera}, the relative event rate in the camera is pl
 This is calculated by taking, for each bin, the number of reconstructed gamma-like events is divided by the pixel-enabled number of reconstructed events.
 It can be seen that there is a loss of events near the disabled pixel (the black circle), with a rate closer to 100\% the further away one goes from the disabled pixel.
 
-\begin{figure}[h]\label{fig:dpix_rel_camera}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[width=0.8\textwidth]{images/disabled_pixel/relativerate_camera}
-    \caption[Relative Event Rate]{Event rate in the camera with pixel 115 disabled (denoted by the black circle) in all four telescopes, relative to having all pixels enabled.  Camera coordinate axes are parallel to azimuth and elevation.}
+    \caption[Relative Event Rate]{Event rate in the camera with pixel 115 disabled (denoted by the black circle) in all four telescopes, relative to having all pixels enabled.  Camera coordinate axes are parallel to azimuth and elevation.}\label{fig:dpix_rel_camera}
   \end{center}
 \end{figure}
 
 In figure \ref{fig:dpix_rel_radial}, the bin values from figure \ref{fig:dpix_rel_camera} are divided into radial bins centered around the disabled pixel.
 The average relative event rate is then calculated for each bin, along with a 1-sigma distribution width for the error bars.
 It can be seen that there are three distinct phases to the plot.
-In the first phase, from radius 0 to 0.3 degrees, the relative event rate starts extremely low, and rises rapidly.
-In the second phase, from radius 0.3 to 1.6 degrees, the relative event rate is still rising, but much more slowly.
-In the third phase outside 1.6 degrees, there is almost no effect.
+In the first phase, from radius 0\degree to 0.3\degree, the relative event rate starts extremely low, and rises rapidly.
+In the second phase, from radius 0.3\degree to 1.6\degree, the relative event rate is still rising, but much more slowly.
+In the third phase outside 1.6\degree, there is almost no effect.
 
 
-\begin{figure}[h]\label{fig:dpix_rel_radial}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[width=\textwidth]{images/disabled_pixel/relativerate_radial}
-    \caption[Radial Relative Event Rate]{Same relative event rate as in figure \ref{fig:dpix_rel_camera}, but averaged into radial bins, centered on the disabled pixel 115. }
+    \caption[Radial Relative Event Rate]{Same relative event rate as in figure \ref{fig:dpix_rel_camera}, but averaged into radial bins, centered on the disabled pixel 115. }\label{fig:dpix_rel_radial}
   \end{center}
 \end{figure}
 
@@ -56,10 +56,10 @@ In figure \ref{fig:dpix_disappear}, the positions of events that disappeared are
 The white area indicates many events are lost in the area of the disabled pixel, which makes sense.
 Events with small images would be much more susceptable to being cut due to the loss of a pixel.
 
-\begin{figure}[h]\label{fig:dpix_disappear}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[width=0.8\textwidth]{images/disabled_pixel/disappearing_events}
-    \caption[Disappering Events]{Positions of events that disappeared when pixel 115 was disabled in all four telescopes.  Positions are from their pixel-enabled reconstructed position.}
+    \caption[Disappering Events]{Positions of events that disappeared when pixel 115 was disabled in all four telescopes.  Positions are from their pixel-enabled reconstructed position.}\label{fig:dpix_disappear}
   \end{center}
 \end{figure}
 
@@ -73,10 +73,10 @@ This is probably due to the fact that disabling a pixel can make some images loo
 A thinner image will look more gamma-like, making it more likely to pass cuts, appearing like 'new' events.
 On the other hand, a wider image looks more hadron-like, and is less likely to pass cuts, causing some events to disappear.
 
-\begin{figure}[h]\label{fig:dpix_appear}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[width=0.8\textwidth]{images/disabled_pixel/appearing_events}
-    \caption[Newly Appearing Events]{Positions of new events that appeared when pixel 115 was disabled in all four telescopes.  Positions are from their pixel-disabled reconstructed position.}
+    \caption[Newly Appearing Events]{Positions of new events that appeared when pixel 115 was disabled in all four telescopes.  Positions are from their pixel-disabled reconstructed position.}\label{fig:dpix_appear}
   \end{center}
 \end{figure}
 
@@ -84,10 +84,10 @@ In figure \ref{fig:dpix_move}, the movment of gamma-like events is shown, when p
 Only events which moved more than $0.1*PSF$ are shown.
 It should be noted that relatively few (how few??) events move, and the events that do move are mostly ones with strange image shapes that are cut in half when the pixels are disabled.
 
-\begin{figure}[h]\label{fig:dpix_move}
+\begin{figure}[h]
   \begin{center}
     \includegraphics[width=0.8\textwidth]{images/disabled_pixel/moving_events}
-    \caption[Event Movement]{Positions of events that moved when pixel 115 (denoted by the red circle) was disabled in all four telescopes.  Arrows point from the pixel-enabled position to the pixel-disabled position.}
+    \caption[Event Movement]{Positions of events that moved when pixel 115 (denoted by the red circle) was disabled in all four telescopes.  Arrows point from the pixel-enabled position to the pixel-disabled position.}\label{fig:dpix_move}
   \end{center}
 \end{figure}
 
@@ -95,7 +95,7 @@ As the acceptance for a particular event and the event's effective area are stro
 This can have effects on the energy reconstruction.
 
 For CTA, the pixels are ?? set up so that ?? only one pixel will be shut off at a time due to a bright star.
-While this will limit the effect of very bright stars, CTA's planned 7 degree field of view will mean there are many more stars in view, meaning many more holes to account for.
+While this will limit the effect of very bright stars, CTA's planned 7\degree field of view will mean there are many more stars in view, meaning many more holes to account for.
 
 Future studies could also compare how events move in energy or time when a pixel is disabled.
 Another study might investigate how the reconstructed shower-telescope distance changes, since a shower with fewer pixels will look further away, and may be reconstructed differently.
@@ -103,13 +103,13 @@ In general, as a pixel is disabled, it is expected that lower energy events and 
 
 
 \subsection{Low Elevations}
-For VERITAS, the galactic center is at a low elevation, usually around 29 degrees.
+For VERITAS, the galactic center is at a low elevation, usually around 29\degree.
 As part of the observing strategy for the galactic center, off data is also taken near the galactic center.
 This means that, for most nights when the galactic center is observed (called On runs, at RA/Dec 260.91/-29.01), one run is also taken with the observatory pointing a few degrees away from the galactic center, an Off run at RA/Dec 266.41/-29.01 .
 This is done because the galactic center is a highly active area, meaning there are few regions within the On data that can be used as a background region in the Li and Ma significance equation ??.
 
-Most of VERITAS's Galactic Center observations are taken with a telescope elevation of 28 and 30 degrees, because at VERITAS's latitude, the Galactic Center only rises to a pieak elevation of \nicetilde30 degrees.
-Most VERITAS observation sources are at elevations higher than 60 degrees, so the effects of low elevation have not been studied much.
+Most of VERITAS's Galactic Center observations are taken with a telescope elevation of 28\degree and 30\degree, because at VERITAS's latitude, the Galactic Center only rises to a pieak elevation of \nicetilde30\degree.
+Most VERITAS observation sources are at elevations higher than 60\degree, so the effects of low elevation have not been studied much.
 To check for any elevation effects, several studies were performed.
 
 First, two samples of Galactic Center Off observations were studied, as they had no significant gamma ray sources, and are at very similar elevations to the Galactic Center On observations.
@@ -168,38 +168,16 @@ The ratio of the two likelihoods then follows a gaussian (with certain assumptio
 
 Backgrounds were from data.
 
-\section{Test Sources}
+\section{Test Crab Analysis}
 
-  \subsection{Crab}
-    Only studied runs with elevations between 70 and 75 degrees.
-    Used Segue 1 data at the same elevations as a background.
+Only studied runs with elevations between 70\degree and 75\degree.
+Used Segue 1 data at the same elevations as a background.
 
-    \subsubsection{Event Display}
-    \subsubsection{CTOOLs}
-
-  \subsection{HESS J0632 +057}
-    Only studied data with pointing elevations between 59 and 65 degrees.
-    Used Draco data at the same elevations as the background.
-
-    \subsubsection{Event Display}
-    \subsubsection{CTOOLs}
-
-  \subsection{1ES 0414+009}
-    Only studied data with pointing elevations between 53 and 60 degrees.
-    Used Ursa Major II data at the same elevations as the background.
-
-    \subsubsection{Event Display}
-    \subsubsection{CTOOLs}
-
-  \subsection{1ES1959+650}
-    Only studied data with pointing elevations between 50 and 55 degrees.
-    Used Ursa Minor data at the same elevations as the background.
-
-    \subsubsection{Event Display}
-    \subsubsection{CTOOLs}
+\subsection{Event Display}
+\subsection{CTOOLs}
 
 \section{Sgr A* Data Analysis}
-Broke data into two elevation regimes, 25-28.5 degrees, and 28.5 to 30.25 degrees.
+Broke data into two elevation regimes, 25-28.5\degree, and 28.5-30.25\degree.
 Separate off runs were taken to use as a background.
 
   \subsubsection{Event Display}
