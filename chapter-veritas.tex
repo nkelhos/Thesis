@@ -29,6 +29,7 @@ Though faint showers may only posess a few photons, brighter showers can still s
 This means that the digization hardware must be able to handle a large dynamic range of inputs, over several orders of magnitude.
 To accomplish this, two amplification levels are used in the digization circuit, High Gain for voltage pulses of a few photons, and Low Gain for voltage pulses of several thousand photons.
 
+\subsection{Telescope Pointing}
 
 \subsection{Mirrors}
 
@@ -42,7 +43,7 @@ To accomplish this, two amplification levels are used in the digization circuit,
 When cherenkov light first interacts with the telescope array, it is by being reflected by one of 345 mirrors
 These mirrors face towards the incoming cherenkov light, with the PMTs positioned in a camera box, facing the mirrors, shown in figure \ref{fig:davcottel}.
 This configuration is referred to as a Davies-Cotton telescope \cite{daviescotton}.
-Each mirror has an area of 0.322$m^2$, and a curvature radius of 24m.
+Each mirror has an area of 0.322$m^2$, and a spherical curvature radius of 24m.
 The mirrors are each mounted along the support structure so that the total diameter of the telescope mirror area is 12m, with a focal length of 12m, and a total mirror area of 111$m^2$ \cite{Veritas_Detector}.
 The mirrors' reflectivity as a function of wavelength is shown in figure \ref{fig:mirreflect}.
 
@@ -53,11 +54,15 @@ The mirrors' reflectivity as a function of wavelength is shown in figure \ref{fi
   \end{center}
 \end{figure}
 
-As the mirrors are exposed to the elements, they are cleaned and recoated at regular (yearly??) intervals.
+As the mirrors are exposed to the elements, they slowly accumulate dust and scratches.
+To combat this, they are cleaned and recoated at regular (yearly??) intervals.
 Each mirror is attached to the support structure via three adjustable mounting points, meaning the mirror orientation can be adjusted to point directly on the camera, detailed in \cite{mirroralign}.
 This alignment is measured and adjusted at regular intervals, using background stars as a calibration source??.
 
-\subsection{PMTs}
+
+\subsubsection{Mirror Alignment}
+
+\subsection{PMTs}\label{sec:pmts}
 
 Each telescope has a PMT Camera on the end of four supporting arms, inside a protective housing.
 This camera consists of 499 Photo Multiplier Tubes, each with a Winston cone to increase the light collection area for each PMT.
@@ -70,9 +75,29 @@ These winston cones can be seen attached to the PMTs in figure \ref{fig:winstcon
   \end{center}
 \end{figure}
 
-To operate, the PMTs are connected to high voltage lines, so that
+To operate, the PMTs are connected to high voltage.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.75\textwidth]{images/pmt_models}
+    \caption[PMT Models]{The two PMT models used in the VERITAS cameras. \cite{pmtmodels}}\label{fig:pmtmodels}
+  \end{center}
+\end{figure}
+
+The PMTs' output signals are first sent through an amplifier, before travelling down a \nicetilde45m cable to electronics stationed near the telescope.
+The electronics then digitize the signal.
 
 ~1000V??
+
+
+\subsubsection{PMT Gain Flatfielding}
+
+The VERITAS PMTs are all the same model, manufactured by the same company, but there are still differences from PMT to PMT.
+These differences cause the same number of input photons to create different output signal voltage pulse shapes.
+To account for this, the high voltage of individual(??) PMTs can be varied, so that their pulse shapes are as similar as possible.
+Doing this is called Gain Flatfielding.
+
+
 
 \subsection{Triggers}\label{sec:trig}
 
@@ -92,7 +117,20 @@ This image trigger, when met, is then sent to the L3 trigger system.
 The L3 trigger is invoked when two or more L2 triggers occur within a span of tens of nanoseconds.
 This selects for images that are within several telescope fields of view, as well as reducing background images in the form of single muon rings imaging individual telescopes.
 
-\section{Epochs}\label{sec:epochs}
+Once an L3 trigger is invoked, all pixels have their voltages read out, which have been buffered backwards in time by ?? nanoseconds.
+
+
+\subsubsection{Deadtime}
+When the L3 trigger is invoked and the buffers are being read out, the electronics are unable to store new voltages in the buffers, reducing the amount of time the observatory spends observing gamma rays.
+As the deadtime is a fixed time loss per event, the deadtime percent rises with the number of readouts.
+This means that at an L3 trigger rate of \nicetilde300Hz, about \nicetilde12\% of the time is lost due to buffer readouts.
+
+\subsubsection{Time Pedestal Calibration}
+As all PMTs and signal cables are not identical, there can be differences in how long it takes the signal from a photon striking a PMT to actually be digitized.
+This is usually measured by looking at the average arrival time of many events over all camera pixels.
+By looking at the average arrival time, this can be subtracted from late pixels.
+
+\subsection{Epochs}\label{sec:epochs}
 VERITAS has evolved over several years, making alterations to improve its sensitivity.
 In August of 2006??, the fourth telescope was finished, and this is considered the fourth epoch.
 Telescope 1 was placed at (-37.6, -23.7), telescope 2 at (44.1, -47.7), telescope 3 at (29.4,60.1), and telescope 4 at (-35.9,11.3), where the coordinate system's origin is at 31.675N, 110.962W??, the X axis points East, and the Y axis points North, and both axes are in meters(??).
@@ -104,7 +142,6 @@ In August 2012, the PMTs in all cameras were replaced with improved PMTs (??) th
 Data taken after this time is considered part of the sixth epoch.
 
 As these different epochs have different telescope configurations, the instrument response functions are different, effectivly meaning the three epochs are distinct observatories.
-
 
 
 \section{Event Reconstruction}\label{sec:recon}
