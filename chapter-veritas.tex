@@ -31,8 +31,6 @@ To accomplish this, two amplification levels are used in the digization circuit,
 
 \subsection{Telescope Pointing}
 
-\subsection{Mirrors}
-
 \begin{figure}[h]
   \begin{center}
     \includegraphics[width=0.95\textwidth]{images/single_telescope}
@@ -40,7 +38,32 @@ To accomplish this, two amplification levels are used in the digization circuit,
   \end{center}
 \end{figure}
 
-When cherenkov light first interacts with the telescope array, it is by being reflected by one of 345 mirrors
+Like most telescopes, each VERITAS telescope has an immobile base fixed to the ground, and a pointable dish for collecting light.
+This dish can rotate in azimuth and in elevation, with enough range in both axes to point at any direction above the horizon.
+At their fastest, the telescopes can slew at a rate of 1\degree per second.
+However, as the dishes are large metal structures, they bend and flex at different elevations and azimuths.
+To track where the telescopes are pointing, the motors that drive the azimuth and elevation movement have encoders that digitize the pointing direction of the dish.
+These encoder values are then given to a structural model (??), which accounts for the dish structure bending at different azimuths and elevations.
+After applying this model, the encoder values can measure the telescope pointing with an accuracy of 0.013\degree to 0.027\degree \cite{Veritas_Detector}.
+
+As an improvement to the encoder measurement, a Virtual Pointing Monitor (VPM) system is also in place.
+The VPM consists of two CCD cameras fixed to each telescope, pointing parallel to the telescope pointing, and a set of LED lights attached to the camera, next to the Winston cones (see section \ref{sec:pmts}).
+The first CCD camera is attached below the bottom mirrors, and images the stars in the field of view.
+The second CCD camera is attached to the support struts, halfway between the mirrors and the camera, and images the focal plane of the telescope.
+Both cameras are visible in figure \ref{fig:davcottel}
+During regular observations, these cameras take images of the background stars and the focal plane every two seconds, and (??), resulting in an improved pointing accuracy of \nicetilde 0.0069\degree (originally in griffen thesis 2016, pg45, but is there a better citation??).
+
+As the VERITAS telescopes are based on old designs for a military solar concentrator that sets targets on fire\cite{daviescotton}, the VERITAS telescopes have similar abilities.
+This mostly means that care must be taken during the day to point the telescopes away from the sun during maintanance and storage.
+% 100m^2 * 1000w/m^2 = 100,000W
+If any direct sunlight falls onto the telscope mirrors, the \nicetilde100,000 Watts of light will be concentrated either onto the camera, or a point within a few meters of the camera, which could potentially cause signficant damage to the telescope hardware or nearby plants, animals, and people.
+VERITAS telescopes are stored during the day by pointing them at \nicetilde0\degree elevation, North.
+
+
+\subsection{Mirrors}
+
+
+When cherenkov light first interacts with the telescope array, it is by being reflected by one of 345 mirrors.
 These mirrors face towards the incoming cherenkov light, with the PMTs positioned in a camera box, facing the mirrors, shown in figure \ref{fig:davcottel}.
 This configuration is referred to as a Davies-Cotton telescope \cite{daviescotton}.
 Each mirror has an area of 0.322$m^2$, and a spherical curvature radius of 24m.
@@ -62,6 +85,9 @@ This alignment is measured and adjusted at regular intervals, using background s
 
 \subsubsection{Mirror Alignment}
 
+\subsubsection{Star Point Spread Function}
+
+
 \subsection{PMTs}\label{sec:pmts}
 
 Each telescope has a PMT Camera on the end of four supporting arms, inside a protective housing.
@@ -75,7 +101,7 @@ These winston cones can be seen attached to the PMTs in figure \ref{fig:winstcon
   \end{center}
 \end{figure}
 
-To operate, the PMTs are connected to high voltage.
+To operate, the PMTs are connected to high voltage, which is typically around several hundred Volts.
 
 \begin{figure}[h]
   \begin{center}
@@ -84,11 +110,32 @@ To operate, the PMTs are connected to high voltage.
   \end{center}
 \end{figure}
 
-The PMTs' output signals are first sent through an amplifier, before travelling down a \nicetilde45m cable to electronics stationed near the telescope.
+The PMTs' output signals are first sent through an amplifier, before travelling down a \nicetilde45m (cite??) cable to electronics stationed near the telescope.
 The electronics then digitize the signal.
 
-~1000V??
+The first circuit that the signal passes through is a Constant Fraction Descriminator (CFD) circuit.
+This circuit duplicates the signal voltage pulse from the PMTs, inverts and delays the duplicate pulse, and adds it back to the original pulse.
+This combined pulse then crosses the zero-volts threshold (called a Zero Threshold Descriminator) at the same time (how 'same'?? within 1 ns??) as the original pulse reaches its peak, acting as a maximum-voltage detection circuit.
+When a maximum voltage is detected by the circuit, it emits a 10ns trigger pulse to other electronics.
+The use of this circuit has two main benefits.
+The first use is that the CFD circuit will trigger at the same time regardless of the pulse size (??).
+If a simple threshold trigger is used to detect a signal pulse, the time of the trigger will be earlier for larger pulses, and later for smaller pulses.
+The CFD's zero threshold trigger time is around the time when the signal voltage pulse is at 75\% of its maximum value. (cite??)
+The second use is that when the CFD circuit detects a voltage pulse larger than a given maximum threshold, it can emit an extra logic trigger, called a low-gain trigger.
+This extra low-gain trigger can then be used by later electronics to determine the rough size of the original signal voltage pulse.
 
+CFD behavior cite??
+
+CFD model??
+
+FADC model??
+
+After the CFD emits a trigger pulse, the signal voltage pulse is passed to another circuit for digization, a Flash Analog-to-Digital Circuit, or FADC.
+This FADC circuit then, for each nanosecond time bin, measures how large the voltage pulse is with a series of 255 (??) constant-voltage thresholds.
+The highest threshold that is crossed in a single time bin then determines the digital voltage value that is saved to the FADC buffer for that time bin.
+If the low-gain trigger pulse was also recieved by the FADC, then the signal voltage pulse is de-amplified before being digitized, since (by design), the CFD low-gain threshold is set to lower than the FADC maximum digitizable voltage.
+If this low-gain triggering did not take place, then the FADC would become saturated, which effectivly hides how large the voltage pulse actually is.
+Once the voltage pulse is digitized, it is saved to a rolling buffer (how long is the buffer??) in the FADC, waiting for other future triggers to occur.
 
 \subsubsection{PMT Gain Flatfielding}
 
@@ -97,14 +144,15 @@ These differences cause the same number of input photons to create different out
 To account for this, the high voltage of individual(??) PMTs can be varied, so that their pulse shapes are as similar as possible.
 Doing this is called Gain Flatfielding.
 
-
-
 \subsection{Triggers}\label{sec:trig}
 
 The operation of VERITAS requires digitizing voltage pulses once per nanosecond, per photomultiplier tube.
 This means that, with 255 voltage levels, 1 second of raw voltage data would require 2 Terabytes of space.
 As this is unfeasable with today's computing systems, only subsets of the raw pixel voltages can be saved.
 Thus, VERITAS has a system where the raw data is only saved when certain triggers are met.
+
+Initially, all voltage pulses are binned in time, and each time bin is copied to a buffer on a fast electronics board ??.
+The board then goes through several trigger layers.
 
 The L1 trigger is met when multiple time-binned voltage measurements in a single pixel combine to cross a specified threshold voltage.
 At the single pixel level, the signals that are preferred are from multiple photons, close in time.
@@ -125,10 +173,14 @@ When the L3 trigger is invoked and the buffers are being read out, the electroni
 As the deadtime is a fixed time loss per event, the deadtime percent rises with the number of readouts.
 This means that at an L3 trigger rate of \nicetilde300Hz, about \nicetilde12\% of the time is lost due to buffer readouts.
 
+Since the L3 rate varies over the course of a run, this means that the deadtime also varies.
+This is accounted for in the flux calculation in section ??.
+
 \subsubsection{Time Pedestal Calibration}
-As all PMTs and signal cables are not identical, there can be differences in how long it takes the signal from a photon striking a PMT to actually be digitized.
+As all PMTs and signal cables are not identical, there are differences in how long a voltage pulse takes to travel.
+More specifically, the time between a) when the photon strikes the PMT cathode ?? and b) when the voltage pulse causes its first trigger, can vary from pixel to pixel.
 This is usually measured by looking at the average arrival time of many events over all camera pixels.
-By looking at the average arrival time, this can be subtracted from late pixels.
+By looking at the average arrival time, pixels that are consistanly early or late can be accounted for, which improves image identification.
 
 \subsection{Epochs}\label{sec:epochs}
 VERITAS has evolved over several years, making alterations to improve its sensitivity.
@@ -147,10 +199,12 @@ As these different epochs have different telescope configurations, the instrumen
 \section{Event Reconstruction}\label{sec:recon}
 
 \subsection{Image Reconstruction}\label{subsec:imgrecon}
+
 Pixels have their peak charge found.
 Images are cleaned of extraneous pixels.
 The time gradient is fit to each image.
 Pixels participating in the image are identified.
+From the time gradient, the dc (??) counts are integrated in a time window that moves with the time gradient of the shower.
 Images are identified.
 
 \subsection{Position Reconstruction}\label{subsec:posrecon}
@@ -158,14 +212,22 @@ Images have their disp calculated.
 The major axis of mulitiple images are traced.
 The intersection of the axes, weighted by their disps the angles between axes, can then determine their original position.
 
+\subsubsection{Angular Reconstruction Neural Network (DISP)}
+The 'disp' parameter describes the distance from the shower center (center or max??) and the gamma ray point-of-origin in the sky.
+At low elevations, the showers
+By training a neural network on thousands of diffuse showers, an algorithm can be found that can calculate the disp more accurately.
+This trained disp parameter can then be used to more accurately reconstruct the position of the gamma ray.
+
 \subsection{Energy Reconstruction}\label{subsec:enrecon}
 A library of different showers is built, from a variety of elevations, energies, and distances from the camera.
 This library can then be used to look up a real shower, find the most similar in elevation, shape, etc, and then reading that shower's library energy.
+
 
 \section{Sensitivity}
 % plot vs energy
 Sensitivity is a measure of how difficult it is to get a signifiant detection.
 It is often quantified by using simulations to predict the amount of observation time required to detect a simulated source at a given significance level.
+
 
 \section{Effective Area}
 % plot of effective area vs energy
@@ -173,6 +235,7 @@ Effective area is the measure of how many gamma rays a telescope can detect.
 It is referred to as 'Effective' because the detection efficiency is not 100\% at all energies or all parts of the camera.
 Instead it is 'effectivly' how large a detection area a telescope has, if it had perfect detection efficiency.
 Different telescopes can use this number to compare roughly how many gamma rays can be detected in a given span of time.
+
 
 \section{Energy Resolution}
 % plot of energy resolution
@@ -182,6 +245,7 @@ This means that when a gamma ray is reconstructed, it has a chance to be reconst
 The consequence of this is that gamma rays of a given reconstructed energy can come from a distribution of true simulated energies.
 Typically, simulations are run across a number of energies, and an 2D matrix is assembled, where one axis is the true simulated energy, and the other axis is bins of reconstructed energy.
 
+
 \section{Point Spread Function}\label{sec:psf}
 % plot of psf
 In addition to the energy being slightly mis-reconstructed, the source position of the gamma ray can also be misreconstructed.
@@ -189,17 +253,20 @@ For a gamma ray telescope, a simple measure of this misreconstruction is to simu
 This distribution is referred to as the Point Spread Function.
 To first order, most current-generation point spread functions are gaussian distributions.
 
+
 \section{Energy Dispersion}
 Much like the point spread function in section \ref{sec:psf}, the energy reconstruction process is also imperfect.
 This means that a gamma ray with a reconstructed energy could come from a distribution of true energies.
 This can also be phrased that a group of gamma-rays with the same initial energy will have a distribution of reconstructed energies.
 These distributions primarily are due to inherent randomness in the showers themselves.
 
+
 \section{Energy Sensitivity and Zenith Angle}
 % plot of energy sensitivity at 20zen and 65zen
 
 As the telescope points at a lower elevation, the atmospheric volume that can be used to detect air showers greatly increases, leading to an increase in the telescope's effective areafor high energy showers.
 The downside is that fewer low-energy gamma rays reach the volume of atmosphere being observed, 
+
 
 \section{Comparison with Other Observatories}
 
