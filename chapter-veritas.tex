@@ -9,8 +9,8 @@
 \end{figure}
 
 VERITAS is an arrary of four Imaging Atmospheric Cherenkov Telescopes, each spaced $\nicetilde50m$ apart.
-Each telescope possesses an array of 345 mirrors, and a 499-Photomultiplier-Tube camera out on a boom.
-Each mirror focuses gathered photons onto a separate pixel in the camera.
+Each telescope possesses an array of 345 mirrors, and a 499-Photomultiplier-Tube camera out on a set of four struts, called quads.
+Each mirror focuses photons onto the camera.
 In Section \ref{sec:hardware}, the different hardware components are discussed.
 In Section \ref{sec:trig}, the different trigger levels are discussed.
 The methods for image reconstruction are discussed in Section \ref{sec:imgrecon}.
@@ -19,12 +19,11 @@ In Section \ref{sec:recon}, the reconstruction used in different parts of the an
 
 \section{Hardware}\label{sec:hardware}
 When a gamma-ray produces an air shower in the atmosphere, the shower emits numerous Cherenkov photons, over a time period of nanoseconds.
-This means that when the image of the shower reaches the telescopes, only a handful of Cherenkov photons remain, and these photons are spread out over several nanoseconds.
-Detection of these limited number of photons over such a tiny span of time are what drive the majority of the design of the VERITAS observatory.
+When the light from the shower reaches the telescopes, only a handful of Cherenkov photons remain, and these photons are spread out over several nanoseconds.
 
 To detect these individual Cherenkov photons, Photomultiplier tubes are used to amplify the signal from single photons.
 This produces an analog voltage pulse that then must be digitized.
-As the voltage pulses widths are kept to ~ns, to prevent them from overlapping the pulses from photons of other showers, the digization hardware measures each voltage pulse in 1-nanosecond-wide time bins.
+As the voltage pulses widths must be \nicetilde{}ns to prevent overlapping with other showers, the digization hardware measures each voltage pulse in 1-nanosecond-wide(??) time bins.
 Though faint showers may only posess a few photons, brighter showers can still shine several thousand photons onto individual pixels.
 This means that the digization hardware must be able to handle a large dynamic range of inputs, over several orders of magnitude.
 To accomplish this, two amplification levels are used in the digization circuit, High Gain for voltage pulses of a few photons, and Low Gain for voltage pulses of several thousand photons.
@@ -41,15 +40,15 @@ To accomplish this, two amplification levels are used in the digization circuit,
 Like most telescopes, each VERITAS telescope has an immobile base fixed to the ground, and a pointable dish for collecting light.
 This dish can rotate in azimuth and in elevation, with enough range in both axes to point at any direction above the horizon.
 At their fastest, the telescopes can slew at a rate of 1\degree per second.
+To track where the telescopes are pointing, the motors that drive the azimuth and elevation movement have encoders that digitize the pointing direction of the dishes.
 However, as the dishes are large metal structures, they bend and flex at different elevations and azimuths.
-To track where the telescopes are pointing, the motors that drive the azimuth and elevation movement have encoders that digitize the pointing direction of the dish.
-These encoder values are then given to a structural model (??), which accounts for the dish structure bending at different azimuths and elevations.
-After applying this model, the encoder values can measure the telescope pointing with an accuracy of 0.013\degree to 0.027\degree \cite{Veritas_Detector}.
+To account for this flexing, the encoder values are then given to a structural model (??), which accounts for the dish structure bending at different azimuths and elevations.
+After applying this model, the telescope pointing can be tracked with an accuracy of 0.013\degree to 0.027\degree \cite{Veritas_Detector}.
 
 As an improvement to the encoder measurement, a Virtual Pointing Monitor (VPM) system is also in place.
 The VPM consists of two CCD cameras fixed to each telescope, pointing parallel to the telescope pointing, and a set of LED lights attached to the camera, next to the Winston cones (see section \ref{sec:pmts}).
 The first CCD camera is attached below the bottom mirrors, and images the stars in the field of view.
-The second CCD camera is attached to the support struts, halfway between the mirrors and the camera, and images the focal plane of the telescope.
+The second CCD camera is attached to the support struts, roughly halfway between the mirrors and the camera, and images the focal plane of the telescope.
 Both cameras are visible in figure \ref{fig:davcottel}
 During regular observations, these cameras take images of the background stars and the focal plane every two seconds, and (??), resulting in an improved pointing accuracy of \nicetilde 0.0069\degree (originally in griffen thesis 2016, pg45, but is there a better citation??).
 
@@ -61,7 +60,6 @@ VERITAS telescopes are stored during the day by pointing them at \nicetilde0\deg
 
 
 \subsection{Mirrors}
-
 
 When cherenkov light first interacts with the telescope array, it is by being reflected by one of 345 mirrors.
 These mirrors face towards the incoming cherenkov light, with the PMTs positioned in a camera box, facing the mirrors, shown in figure \ref{fig:davcottel}.
@@ -91,7 +89,8 @@ This alignment is measured and adjusted at regular intervals, using background s
 \subsection{PMTs}\label{sec:pmts}
 
 Each telescope has a PMT Camera on the end of four supporting arms, inside a protective housing.
-This camera consists of 499 Photo Multiplier Tubes, each with a Winston cone to increase the light collection area for each PMT.
+This camera consists of 499 Photo Multiplier Tubes (PMTs), each with a Winston cone to increase the light collection area for each PMT.
+The PMTs are Hamamatsu's model R10560-100-20 MOD \cite{pmtmodels}.
 These winston cones can be seen attached to the PMTs in figure \ref{fig:winstcones}.
 
 \begin{figure}[h]
@@ -117,10 +116,12 @@ The first circuit that the signal passes through is a Constant Fraction Descrimi
 This circuit duplicates the signal voltage pulse from the PMTs, inverts and delays the duplicate pulse, and adds it back to the original pulse.
 This combined pulse then crosses the zero-volts threshold (called a Zero Threshold Descriminator) at the same time (how 'same'?? within 1 ns??) as the original pulse reaches its peak, acting as a maximum-voltage detection circuit.
 When a maximum voltage is detected by the circuit, it emits a 10ns trigger pulse to other electronics.
+
 The use of this circuit has two main benefits.
 The first use is that the CFD circuit will trigger at the same time regardless of the pulse size (??).
 If a simple threshold trigger is used to detect a signal pulse, the time of the trigger will be earlier for larger pulses, and later for smaller pulses.
 The CFD's zero threshold trigger time is around the time when the signal voltage pulse is at 75\% of its maximum value. (cite??)
+
 The second use is that when the CFD circuit detects a voltage pulse larger than a given maximum threshold, it can emit an extra logic trigger, called a low-gain trigger.
 This extra low-gain trigger can then be used by later electronics to determine the rough size of the original signal voltage pulse.
 
@@ -133,16 +134,29 @@ FADC model??
 After the CFD emits a trigger pulse, the signal voltage pulse is passed to another circuit for digization, a Flash Analog-to-Digital Circuit, or FADC.
 This FADC circuit then, for each nanosecond time bin, measures how large the voltage pulse is with a series of 255 (??) constant-voltage thresholds.
 The highest threshold that is crossed in a single time bin then determines the digital voltage value that is saved to the FADC buffer for that time bin.
-If the low-gain trigger pulse was also recieved by the FADC, then the signal voltage pulse is de-amplified before being digitized, since (by design), the CFD low-gain threshold is set to lower than the FADC maximum digitizable voltage.
+
+If the low-gain trigger pulse was also recieved by the FADC, then the signal voltage pulse is de-amplified before being digitized, since the CFD low-gain threshold is set to lower than the FADC maximum digitizable voltage.
 If this low-gain triggering did not take place, then the FADC would become saturated, which effectivly hides how large the voltage pulse actually is.
 Once the voltage pulse is digitized, it is saved to a rolling buffer (how long is the buffer??) in the FADC, waiting for other future triggers to occur.
 
+\subsubsection{PMT Upgrade}
+In summer of 2012, all PMTs in the telescopes were replaced with improved PMTs.
+Specifically, the original Photonis XP2970 models were replaced with the Hamamatsu R10560-100-20 MOD.
+This was done because that R10560 has a considerably higher quantum efficiency (\nicetilde$90\%$), compared to the XP2970 (\nicetilde$75\%$).
+This higher quantum efficiency means more photons from a shower are detected by the PMT, which means VERITAS is more sensitive to lower energy gamma rays\cite{pmtmodels}.
+
+The data used in this thesis was taken both before and the upgrade, which means the telescope performance is different for these two time periods.
+This is accounted for by separate simulations for each PMT type, mostly resulting in different effective areas at the lower energies.(check!??)
+
+
 \subsubsection{PMT Gain Flatfielding}
 
-The VERITAS PMTs are all the same model, manufactured by the same company, but there are still differences from PMT to PMT.
-These differences cause the same number of input photons to create different output signal voltage pulse shapes.
+The VERITAS PMTs are all the same model, but there are still differences from PMT to PMT.
+These differences cause the same number of input photons to create differently-shaped output signal voltage pulses.
 To account for this, the high voltage of individual(??) PMTs can be varied, so that their pulse shapes are as similar as possible.
 Doing this is called Gain Flatfielding.
+
+This is performed by (??)
 
 \subsection{Triggers}\label{sec:trig}
 
@@ -212,11 +226,25 @@ Images have their disp calculated.
 The major axis of mulitiple images are traced.
 The intersection of the axes, weighted by their disps the angles between axes, can then determine their original position.
 
-\subsubsection{Angular Reconstruction Neural Network (DISP)}
-The 'disp' parameter describes the distance from the shower center (center or max??) and the gamma ray point-of-origin in the sky.
-At low elevations, the showers
-By training a neural network on thousands of diffuse showers, an algorithm can be found that can calculate the disp more accurately.
-This trained disp parameter can then be used to more accurately reconstruct the position of the gamma ray.
+\subsubsection{Angular Reconstruction Neural Network}
+At high elevations, shower images are often at large intesection angles, while at lower elevations the intersections the images are more parallel.
+This means that when the reconstruction position is found by intersecting image axes, small changes in the image orientation can result in large movements in the reconstructed position.
+
+To better handle these near-parallel image axes at low elevations, the reconstructed position can be determined from more parameters than just the weighted image axes intersection points.
+From simulations, the distance between the center of the hillas shower image and the reconstructed position can be calculated, where the angular distance between the two is the 'disp' parameter\cite{Senturk:2011}, shown in figure \ref{fig:dispdiagram}.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.75\textwidth]{images/thesis.dispdiagram.eps}
+    \caption[Angular Reconstruction Disp]{The disp parameter is the angular distance between the center (red dot) of a hillas image (blue oval) and the reconstructed sky position (green dot).  Generally, longer showers have a larger disp length, while shorter showers have a shorter disp length.}\label{fig:dispdiagram}
+  \end{center}
+\end{figure}
+
+% https://veritas.sao.arizona.edu/wiki/index.php/BDT_Angular_reconstruction
+The disp and other parameters for thousands of simulated showers can then be used to train a neural network that calculates the most probable disp for a given shower.
+This most probable disp can then be used with the image axes intersection points to more accurately reconstruct the original gamma-ray point of origin.
+
+Improved angular resolution plot??
 
 \subsection{Energy Reconstruction}\label{subsec:enrecon}
 A library of different showers is built, from a variety of elevations, energies, and distances from the camera.
