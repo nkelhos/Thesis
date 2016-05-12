@@ -30,7 +30,8 @@ TEXFILES = tableofcontents.tex        \
            citelist.bib
 
 IMAGES = images/thesis.imageintersections.eps \
-				 images/thesis.iactarray.eps
+				 images/thesis.iactarray.eps \
+				 images/mirror_polaris.eps
 
 #Dedication.tex       \
 #Acknowledgments.tex  \
@@ -44,6 +45,9 @@ images/thesis.imageintersections.eps : images/thesis.imageintersections.png
 	convert $< $@
 
 images/thesis.iactarray.eps : images/thesis.iactarray.png
+	convert $< $@
+
+images/mirror_polaris.eps : images/mirror_polaris.png
 	convert $< $@
 
 $(MAINFILE): $(MAINFILE).dvi

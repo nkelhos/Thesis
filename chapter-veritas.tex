@@ -55,7 +55,7 @@ During regular observations, these cameras take images of the background stars a
 As the VERITAS telescopes are based on old designs for a military solar concentrator that sets targets on fire\cite{daviescotton}, the VERITAS telescopes have similar abilities.
 This mostly means that care must be taken during the day to point the telescopes away from the sun during maintanance and storage.
 % 100m^2 * 1000w/m^2 = 100,000W
-If any direct sunlight falls onto the telscope mirrors, the \nicetilde100,000 Watts of light will be concentrated either onto the camera, or a point within a few meters of the camera, which could potentially cause signficant damage to the telescope hardware or nearby plants, animals, and people.
+If any direct sunlight falls onto the telscope mirrors, the \nicetilde100,000 Watts of light will be concentrated either onto the camera, or a point within a few meters of the camera, which could potentially cause signficant damage to telescope hardware or nearby plants, animals, and people.
 VERITAS telescopes are stored during the day by pointing them at \nicetilde0\degree elevation, North.
 
 
@@ -81,9 +81,28 @@ Each mirror is attached to the support structure via three adjustable mounting p
 This alignment is measured and adjusted at regular intervals, using background stars as a calibration source??.
 
 
-\subsubsection{Mirror Alignment}
-
 \subsubsection{Star Point Spread Function}
+
+By pointing a telescope at Polaris and placing a CCD at the focal plane, the mirror PSF can be measured.
+This was done with the first VERITAS telescope was built, where the image is shown in figure \ref{fig:mirrorpolaris}.
+The mirror psf is 0.06\degree full width half maximum\cite{Veritas_Detector}.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.75\textwidth]{images/mirror_polaris.eps}
+    \caption[Polaris PSF]{Image of Polaris after reflecting off the mirrors, demonstrating the mirror Point Spread Function, from \cite{Veritas_Detector}.  The circle indicates the radius of a PMT.}\label{fig:mirrorpolaris}
+  \end{center}
+\end{figure}
+
+\subsubsection{Mirror Alignment}
+% https://veritas.sao.arizona.edu/wiki/index.php/Mirror_Alignment
+The mirrors are each mounted to the dish on three adjustable mounting points.
+By adjusting the mounting points, the mirrors can be individually aligned.
+The alignment procedure is performed by placing a CCD camera at the focal plane, facing towards the mirrors.
+The telescope is then pointed towards a magnitude 2 star at \nicetilde70\degree elevation.
+The pointing is known as a 'raster' scan of the star, where each mirror's field of view is in turn centered on the star.
+By using the CCD to examine the position of the star in each mirror, the mirror's alignment can be calculated and corrected.
+
 
 
 \subsection{PMTs}\label{sec:pmts}
@@ -146,7 +165,7 @@ This was done because that R10560 has a considerably higher quantum efficiency (
 This higher quantum efficiency means more photons from a shower are detected by the PMT, which means VERITAS is more sensitive to lower energy gamma rays\cite{pmtmodels}.
 
 The data used in this thesis was taken both before and the upgrade, which means the telescope performance is different for these two time periods.
-This is accounted for by separate simulations for each PMT type, mostly resulting in different effective areas at the lower energies.(check!??)
+This is accounted for by separate simulations for each PMT model, mostly resulting in different effective areas at the lower energies.(check!??)
 
 
 \subsubsection{PMT Gain Flatfielding}
@@ -207,7 +226,7 @@ This is the fifth epoch.
 In August 2012, the PMTs in all cameras were replaced with improved PMTs (??) that had a higher quantum efficiency, improving the telescopes ability to resolve images.
 Data taken after this time is considered part of the sixth epoch.
 
-As these different epochs have different telescope configurations, the instrument response functions are different, effectivly meaning the three epochs are distinct observatories.
+As these different epochs have different telescope configurations, the instrument response functions are different, effectivly meaning each epoch is a measurably distinct observatory.
 
 
 \section{Event Reconstruction}\label{sec:recon}
