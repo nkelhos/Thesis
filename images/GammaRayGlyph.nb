@@ -1,0 +1,89 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2501,         79]
+NotebookOptionsPosition[      2097,         60]
+NotebookOutlinePosition[      2455,         76]
+CellTagsIndexPosition[      2412,         73]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.672053085839649*^9, 3.672053093366579*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"NotebookDirectory", "::", "nosv"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"The notebook \
+\[NoBreak]\\!\\(\\*TemplateBox[List[FrontEndObject[LinkObject[\\\"fk4_shm\\\",\
+ 3, 1]], 20, \\\"FrontEndObject[LinkObject[\\\\\\\"fk4_shm\\\\\\\", 3, \
+1]]\\\", \\\"20\\\", \\\"\\\\\\\"Untitled-1\\\\\\\"\\\"], \
+\\\"NotebookObjectUnsaved\\\"]\\)\[NoBreak] is not saved. \\!\\(\\*ButtonBox[\
+\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/NotebookDirectory\\\", ButtonNote -> \
+\\\"NotebookDirectory::nosv\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.672053094815033*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"SetDirectory", "::", "fstr"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"File specification \[NoBreak]\\!\\($Failed\\)\[NoBreak] is \
+not a string of one or more characters. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/fstr\\\", ButtonNote -> \
+\\\"SetDirectory::fstr\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.672053094853178*^9}],
+
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", "$Failed", "]"}]], "Output",
+ CellChangeTimes->{3.672053094855686*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 751},
+WindowMargins->{{Automatic, 210}, {-34, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 207, 4, 46, "Input"],
+Cell[789, 28, 682, 13, 34, "Message"],
+Cell[1474, 43, 490, 10, 24, "Message"],
+Cell[1967, 55, 114, 2, 62, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -29,6 +29,9 @@ TEXFILES = tableofcontents.tex        \
            bibliography.tex           \
            citelist.bib
 
+IMAGES = images/thesis.imageintersections.eps \
+				 images/thesis.iactarray.eps
+
 #Dedication.tex       \
 #Acknowledgments.tex  \
 
@@ -37,12 +40,18 @@ TEXFILES = tableofcontents.tex        \
 # Default target
 all: $(MAINFILE).pdf clean
 
+images/thesis.imageintersections.eps : images/thesis.imageintersections.png
+	convert $< $@
+
+images/thesis.iactarray.eps : images/thesis.iactarray.png
+	convert $< $@
+
 $(MAINFILE): $(MAINFILE).dvi
 
 $(MAINFILE).aux:
 	-if [ ! -f $(MAINFILE).aux ]; then touch $(MAINFILE).aux; fi
 
-$(MAINFILE).dvi: $(MAINFILE).tex $(STYFILE) $(TEXFILES)
+$(MAINFILE).dvi: $(MAINFILE).tex $(STYFILE) $(TEXFILES) $(IMAGES)
 	@echo
 	@echo "  Making DVI document"
 	-$(LATEX) $(MAINFILE)
