@@ -168,7 +168,7 @@ In addition, the voltage pulse due to a single photoelectron is thinner with the
 \begin{figure}[h]
   \begin{center}
     \includegraphics[width=0.75\textwidth]{images/pmt_models_pulsewidths.eps}
-    \caption[Winston Cones]{Pulse widths of the old XP2970 (red circles) and the new R10560 (blue triangles), from \cite{pmt_models}.  Plots are the average of many afterpulses, normalized to the maximum amplitude.  Pulses shown include dispersion due to a \nicetilde55m coaxial cable between the PMTs and the digitizer boards.}\label{fig:pmt_pulse_widths}
+    \caption[Pulse Widths]{Pulse widths of the old XP2970 (red circles) and the new R10560 (blue triangles), taken from \cite{pmtmodels}.  Plots are the average of many afterpulses, normalized to the maximum amplitude.  Pulses shown include dispersion due to a \nicetilde55m coaxial cable between the PMTs and the digitizer boards.}\label{fig:pmt_pulse_widths}
   \end{center}
 \end{figure}
 
@@ -187,46 +187,56 @@ This is performed by (??)
 
 \subsection{Triggers}\label{sec:trig}
 
-The operation of VERITAS requires digitizing voltage pulses once per nanosecond, per photomultiplier tube.
+The operation of VERITAS requires digitizing voltage pulses roughly once per nanosecond, per photomultiplier tube.
 This means that, with 255 voltage levels, 1 second of raw voltage data would require 2 Terabytes of space.
-As this is unfeasable with today's computing systems, only subsets of the raw pixel voltages can be saved.
-Thus, VERITAS has a system where the raw data is only saved when certain triggers are met.
+As this is unfeasable with today's computing systems, only subsets of the raw pixel voltages are saved when certain triggers are met.
+To complicate matters, photons from atmospheric muons and the night sky background can also cause voltage pulses similar to a gamma ray shower.
+Thus, VERITAS has a system of triggers that reduces the amount of raw data that is saved, while also partially filtering out non-gamma-ray events.
 
-Initially, all voltage pulses are binned in time, and each time bin is copied to a buffer on a fast electronics board ??.
-The board then goes through several trigger layers.
+The L1 is the first and lowest level trigger.
+An L1 trigger (sometimes called a pixel trigger) is emitted when a PMT's CFD circuit detects a signal voltage above a given threshold, typically in the 10s of mV.
+This threshold voltage is varied throughout datataking by a rate-feedback system (elaborate more??).
+The L1 trigger is emitted at the point in time when the voltage pulse is approximatly 75\% of its maximum (??).
+Once emitted, the L1 trigger is sent to a per-telescope FPGA(??) circuit board for the next level trigger.
 
-The L1 trigger is met when multiple time-binned voltage measurements in a single pixel combine to cross a specified threshold voltage.
-At the single pixel level, the signals that are preferred are from multiple photons, close in time.
-The background signals that are rejected by this trigger include voltage pulses from ambient photons from the night sky background (NSB) and from human-reproduced background photons (cars, streetlights, illuminated clouds, etc.).
-When a pixel's L1 trigger is met, this signal is sent to the L2 trigger system.
+The FPGA's L2 trigger, or image trigger, is emitted by the FPGA when a group of L1 triggers meet certain conditions.
+These conditions include that multiple L1 triggers fall within a certain time window, and that multiple L1 triggers come from one of several predefined shapes, or templates.
+The coincident time window varies. (elaborate??)
+There are several patterns. (elaborate??)
+The pattern requirements help reduce the number of triggers from non-gamma-ray sources.
+Night sky background photons are only able to trigger individual pixels, and muons tend to create ring-shaped images.
+Once one of these patterns occurs in a time window, the FPGA emits an L2 trigger, which is sent to the array trigger system.
 
-The L2 trigger is invoked when several adjacent pixels produce an L1 trigger within a span of several of nanoseconds.
-This image trigger, when met, is then sent to the L3 trigger system.
+The array trigger system, or L3, is a computer (box?? circuit??), which looks for coincident L2 triggers that fall within a \nicetilde50ns time window.
+Why 50ns??
+This window is also varied for each telescope based on the azimuth and elevation of the pointing, as these can introduce nanosecond delays between images.
+During a typical observation period, the L3 trigger rate is around 200-300Hz.
 
-The L3 trigger is invoked when two or more L2 triggers occur within a span of tens of nanoseconds.
-This selects for images that are within several telescope fields of view, as well as reducing background images in the form of single muon rings imaging individual telescopes.
+Once an L3 trigger is invoked, a signal is sent to all telescopes (all or just L2-triggered telescopes??) that the digitized voltages for all pixels in the cameras should be read out from their buffers, and saved to memory.
+These pixel voltages are then processed by the analysis software to reconstruct the gamma ray events.
 
-Once an L3 trigger is invoked, all pixels have their voltages read out, which have been buffered backwards in time by ?? nanoseconds.
 
 
 \subsubsection{Deadtime}
-When the L3 trigger is invoked and the buffers are being read out, the electronics are unable to store new voltages in the buffers, reducing the amount of time the observatory spends observing gamma rays.
-As the deadtime is a fixed time loss per event, the deadtime percent rises with the number of readouts.
-This means that at an L3 trigger rate of \nicetilde300Hz, about \nicetilde12\% of the time is lost due to buffer readouts.
+When the L3 trigger is invoked and the buffers are being read out, the electronics are unable to store new PMT voltages in the buffers.
+Being unable to store new PMT voltages effectivly reduces the amount of time spent observing gamma rays.
+This lost time is usually referred to as deadtime.
+As the deadtime is a fixed (is it fixed??) time loss per event, the percent of time lost due to event readout rises with the a higher frequency of readouts.
+This means that at an L3 trigger rate of \nicetilde300Hz, approximately \nicetilde12\% of the time is lost due to buffer readouts.
 
 Since the L3 rate varies over the course of a run, this means that the deadtime also varies.
 This is accounted for in the flux calculation in section ??.
 
 \subsubsection{Time Pedestal Calibration}
 As all PMTs and signal cables are not identical, there are differences in how long a voltage pulse takes to travel.
-More specifically, the time between a) when the photon strikes the PMT cathode ?? and b) when the voltage pulse causes its first trigger, can vary from pixel to pixel.
+More specifically, the time between a) when the photon strikes the PMT cathode ?? and b) when the voltage pulse sets off its L1 trigger, can vary from pixel to pixel.
 This is usually measured by looking at the average arrival time of many events over all camera pixels.
 By looking at the average arrival time, pixels that are consistanly early or late can be accounted for, which improves image identification.
 
 \subsection{Epochs}\label{sec:epochs}
 After being built, VERITAS has evolved over several years, with collaboration members upgrading it to improve performance.
 However, these major differences need to be taken into account in the analysis chain.
-To organize these differences, they are referred to as data epochs 1, 2, 3, 4, 5, and 6.
+To organize these differences, in the data they are referred to as epochs 1, 2, 3, 4, 5, and 6 (usually denoted as V1, V2, V3, V4, V5, and V6).
 
 As the first three telescopes were constructed and brought online, data taken after each is the first, second, and third epochs.
 Telescope 1 was placed at (-37.6, -23.7), telescope 2 at (44.1, -47.7), and telescope 3 at (29.4,60.1), where the coordinate system's origin is at 31.675N, 110.962W??, the X axis points East, and the Y axis points North, and both axes are in meters(??).
@@ -242,94 +252,3 @@ As these different epochs have different telescope configurations, the instrumen
 For the Dark Matter analysis described in this thesis, only data from the fifth and sixth epochs are used.
 
 
-\section{Event Reconstruction}\label{sec:recon}
-
-\subsection{Image Reconstruction}\label{subsec:imgrecon}
-
-Pixels have their peak charge found.
-Images are cleaned of extraneous pixels.
-The time gradient is fit to each image.
-Pixels participating in the image are identified.
-From the time gradient, the dc (??) counts are integrated in a time window that moves with the time gradient of the shower.
-Images are identified.
-
-\subsection{Position Reconstruction}\label{subsec:posrecon}
-Images have their disp calculated.
-The major axis of mulitiple images are traced.
-The intersection of the axes, weighted by their disps the angles between axes, can then determine their original position.
-
-\subsubsection{Angular Reconstruction Neural Network}
-At high elevations, shower images are often at large intesection angles, while at lower elevations the intersections the images are more parallel.
-This means that when the reconstruction position is found by intersecting image axes, small changes in the image orientation can result in large movements in the reconstructed position.
-
-To better handle these near-parallel image axes at low elevations, the reconstructed position can be determined from more parameters than just the weighted image axes intersection points.
-From simulations, the distance between the center of the hillas shower image and the reconstructed position can be calculated, where the angular distance between the two is the 'disp' parameter\cite{Senturk:2011}, shown in figure \ref{fig:dispdiagram}.
-
-\begin{figure}[h]
-  \begin{center}
-    \includegraphics[width=0.5\textwidth]{images/thesis.dispdiagram.eps}
-    \caption[Angular Reconstruction Disp]{The disp parameter is the angular distance between the center (red dot) of a hillas image (blue oval) and the reconstructed sky position (green dot).  Generally, longer shower images have a larger disp angle.}\label{fig:dispdiagram}
-  \end{center}
-\end{figure}
-
-% https://veritas.sao.arizona.edu/wiki/index.php/BDT_Angular_reconstruction
-The disp and other parameters for thousands of simulated showers can then be used to train a neural network that calculates the most probable disp for a given shower.
-This most probable disp can then be used with the image axes intersection points to more accurately reconstruct the original gamma-ray point of origin.
-
-Improved angular resolution plot??
-
-\subsection{Energy Reconstruction}\label{subsec:enrecon}
-A library of different showers is built, from a variety of elevations, energies, and distances from the camera.
-This library can then be used to look up a real shower, find the most similar in elevation, shape, etc, and then reading that shower's library energy.
-
-
-\section{Sensitivity}
-% plot vs energy
-Sensitivity is a measure of how difficult it is to get a signifiant detection.
-It is often quantified by using simulations to predict the amount of observation time required to detect a simulated source at a given significance level.
-
-
-\section{Effective Area}
-% plot of effective area vs energy
-Effective area is the measure of how many gamma rays a telescope can detect.
-It is referred to as 'Effective' because the detection efficiency is not 100\% at all energies or all parts of the camera.
-Instead it is 'effectivly' how large a detection area a telescope has, if it had perfect detection efficiency.
-Different telescopes can use this number to compare roughly how many gamma rays can be detected in a given span of time.
-
-
-\section{Energy Resolution}
-% plot of energy resolution
-Gamma rays and protons of different energies can produce similar-looking air showers.
-Due to this, the reconstruction software cannot perfectly reconstruct gamma rays, which introduces errors into the different qualities of the gamma rays.
-This means that when a gamma ray is reconstructed, it has a chance to be reconstructed at a lower or higher energy.
-The consequence of this is that gamma rays of a given reconstructed energy can come from a distribution of true simulated energies.
-Typically, simulations are run across a number of energies, and an 2D matrix is assembled, where one axis is the true simulated energy, and the other axis is bins of reconstructed energy.
-
-
-\section{Point Spread Function}\label{sec:psf}
-% plot of psf
-In addition to the energy being slightly mis-reconstructed, the source position of the gamma ray can also be misreconstructed.
-For a gamma ray telescope, a simple measure of this misreconstruction is to simulate many gamma rays at a single point in the sky, and look at how their reconstructed positions are distributed around that point.
-This distribution is referred to as the Point Spread Function.
-To first order, most current-generation point spread functions are gaussian distributions.
-
-
-\section{Energy Dispersion}
-Much like the point spread function in section \ref{sec:psf}, the energy reconstruction process is also imperfect.
-This means that a gamma ray with a reconstructed energy could come from a distribution of true energies.
-This can also be phrased that a group of gamma-rays with the same initial energy will have a distribution of reconstructed energies.
-These distributions primarily are due to inherent randomness in the showers themselves.
-
-
-\section{Energy Sensitivity and Zenith Angle}
-% plot of energy sensitivity at 20zen and 65zen
-
-As the telescope points at a lower elevation, the atmospheric volume that can be used to detect air showers greatly increases, leading to an increase in the telescope's effective areafor high energy showers.
-The downside is that fewer low-energy gamma rays reach the volume of atmosphere being observed, 
-
-
-\section{Comparison with Other Observatories}
-
-% sensitivity comparison plots
-
-CTA, HESS, Magic, HAWC, Fermi
