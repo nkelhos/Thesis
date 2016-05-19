@@ -163,9 +163,17 @@ In summer of 2012, all PMTs in the telescopes were replaced with improved PMTs.
 Specifically, the original Photonis XP2970 models were replaced with the Hamamatsu R10560-100-20 MOD.
 This was done because that R10560 has a considerably higher quantum efficiency (\nicetilde$90\%$), compared to the XP2970 (\nicetilde$75\%$).
 This higher quantum efficiency means more photons from a shower are detected by the PMT, which means VERITAS is more sensitive to lower energy gamma rays\cite{pmtmodels}.
+In addition, the voltage pulse due to a single photoelectron is thinner with the R10560 compared to the XP2970, as shown in figure \ref{fig:pmt_pulse_widths}.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.75\textwidth]{images/pmt_models_pulsewidths.eps}
+    \caption[Winston Cones]{Pulse widths of the old XP2970 (red circles) and the new R10560 (blue triangles), from \cite{pmt_models}.  Plots are the average of many afterpulses, normalized to the maximum amplitude.  Pulses shown include dispersion due to a \nicetilde55m coaxial cable between the PMTs and the digitizer boards.}\label{fig:pmt_pulse_widths}
+  \end{center}
+\end{figure}
 
 The data used in this thesis was taken both before and the upgrade, which means the telescope performance is different for these two time periods.
-This is accounted for by separate simulations for each PMT model, mostly resulting in different effective areas at the lower energies.(check!??)
+This is accounted for by separate simulations for each PMT model, mostly resulting in different effective areas at the lower energies.
 
 
 \subsubsection{PMT Gain Flatfielding}
@@ -216,17 +224,22 @@ This is usually measured by looking at the average arrival time of many events o
 By looking at the average arrival time, pixels that are consistanly early or late can be accounted for, which improves image identification.
 
 \subsection{Epochs}\label{sec:epochs}
-VERITAS has evolved over several years, making alterations to improve its sensitivity.
-In August of 2006??, the fourth telescope was finished, and this is considered the fourth epoch.
-Telescope 1 was placed at (-37.6, -23.7), telescope 2 at (44.1, -47.7), telescope 3 at (29.4,60.1), and telescope 4 at (-35.9,11.3), where the coordinate system's origin is at 31.675N, 110.962W??, the X axis points East, and the Y axis points North, and both axes are in meters(??).
+After being built, VERITAS has evolved over several years, with collaboration members upgrading it to improve performance.
+However, these major differences need to be taken into account in the analysis chain.
+To organize these differences, they are referred to as data epochs 1, 2, 3, 4, 5, and 6.
 
-In September 2009, telescope 1 was moved to a new position (135.4,-8.61), after it was demonstrated that there would be an improvement in sensitivity.
-This is the fifth epoch.
+As the first three telescopes were constructed and brought online, data taken after each is the first, second, and third epochs.
+Telescope 1 was placed at (-37.6, -23.7), telescope 2 at (44.1, -47.7), and telescope 3 at (29.4,60.1), where the coordinate system's origin is at 31.675N, 110.962W??, the X axis points East, and the Y axis points North, and both axes are in meters(??).
+In 2007, the fourth telescope was finished at (-35.9,11.3), and data taken between this point in time and the next major upgrade is considered the fourth epoch.
 
-In August 2012, the PMTs in all cameras were replaced with improved PMTs (??) that had a higher quantum efficiency, improving the telescopes ability to resolve images.
-Data taken after this time is considered part of the sixth epoch.
+In September 2009, telescope 1 was moved to a new position (135.4,-8.61), after it was demonstrated with simulations that it would grant a \nicetilde30\% improvement in sensitivity \cite{veritas_t1_move}.
+Data taken after this relocation is referred to as the fifth epoch.
 
-As these different epochs have different telescope configurations, the instrument response functions are different, effectivly meaning each epoch is a measurably distinct observatory.
+In August 2012, the PMTs in all cameras were replaced with improved PMTs that had a higher quantum efficiency, improving the telescopes ability to resolve images\cite{pmtmodels}.
+Data taken after this upgrade is considered part of the sixth epoch.
+
+As these different epochs have different telescope configurations, the instrument response functions are different, meaning each epoch behaves in a quantifiably distinct manner.
+For the Dark Matter analysis described in this thesis, only data from the fifth and sixth epochs are used.
 
 
 \section{Event Reconstruction}\label{sec:recon}
@@ -255,7 +268,7 @@ From simulations, the distance between the center of the hillas shower image and
 \begin{figure}[h]
   \begin{center}
     \includegraphics[width=0.5\textwidth]{images/thesis.dispdiagram.eps}
-    \caption[Angular Reconstruction Disp]{The disp parameter is the angular distance between the center (red dot) of a hillas image (blue oval) and the reconstructed sky position (green dot).  Generally, longer showers have a larger disp angle, while shorter showers have a shorter disp angle.}\label{fig:dispdiagram}
+    \caption[Angular Reconstruction Disp]{The disp parameter is the angular distance between the center (red dot) of a hillas image (blue oval) and the reconstructed sky position (green dot).  Generally, longer shower images have a larger disp angle.}\label{fig:dispdiagram}
   \end{center}
 \end{figure}
 

@@ -31,7 +31,8 @@ TEXFILES = tableofcontents.tex        \
 
 IMAGES = images/thesis.imageintersections.eps \
 				 images/thesis.iactarray.eps \
-				 images/mirror_polaris.eps
+				 images/mirror_polaris.eps \
+				 images/pmt_models_pulsewidths.eps
 
 #Dedication.tex       \
 #Acknowledgments.tex  \
@@ -48,6 +49,9 @@ images/thesis.iactarray.eps : images/thesis.iactarray.png
 	convert $< $@
 
 images/mirror_polaris.eps : images/mirror_polaris.png
+	convert $< $@
+
+images/pmt_models_pulsewidths.eps :images/pmt_models_pulsewidths.png
 	convert $< $@
 
 $(MAINFILE): $(MAINFILE).dvi
