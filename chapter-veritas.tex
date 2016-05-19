@@ -197,7 +197,7 @@ The L1 is the first and lowest level trigger.
 An L1 trigger (sometimes called a pixel trigger) is emitted when a PMT's CFD circuit detects a signal voltage above a given threshold, typically in the 10s of mV.
 This threshold voltage is varied throughout datataking by a rate-feedback system (elaborate more??).
 The L1 trigger is emitted at the point in time when the voltage pulse is approximatly 75\% of its maximum (??).
-Once emitted, the L1 trigger is sent to a per-telescope FPGA(??) circuit board for the next level trigger.
+Once emitted, the L1 trigger is sent to a per-telescope FPGA (see https://arxiv.org/pdf/1307.8360v1.pdf ??) circuit board for the next level trigger.
 
 The FPGA's L2 trigger, or image trigger, is emitted by the FPGA when a group of L1 triggers meet certain conditions.
 These conditions include that multiple L1 triggers fall within a certain time window, and that multiple L1 triggers come from one of several predefined shapes, or templates.
