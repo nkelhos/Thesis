@@ -166,7 +166,14 @@ The ratio of the two likelihoods then follows a gaussian (with certain assumptio
 
 \section{Backgrounds}
 
-Backgrounds were from data.
+Backgrounds estimate the amount background events in the camera.
+For the past several years, the backgrounds used in Event Display only depended on the distance between each event's reconstructed position and the center of the camera.
+From the studies in section ?? it was found that at low elevations, there is also dependence on the event's position around the camera center (camera $\phi$ angle), as well as the events energy.
+As a consequence of the $\phi$-angle dependence, this also means the background is time-dependent as well, on the order of minutes.
+Accounting for this in Event Display code would have taken much longer than the available time, so for this analysis, the simple $\phi$-symmetric backgrounds were used.
+
+Backgrounds were made from several hours of Galactic Center Off runs.
+These runs were pointing ?? degrees from the camera center, to avoid effects of the disk, and to help account for the higher noise and any elevation effects.
 
 \section{Test Crab Analysis}
 
