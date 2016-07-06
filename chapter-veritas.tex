@@ -176,14 +176,28 @@ The data used in this thesis was taken both before and the upgrade, which means 
 This is accounted for by separate simulations for each PMT model, mostly resulting in different effective areas at the lower energies.
 
 
-\subsubsection{PMT Gain Flatfielding}
+\subsubsection{PMT Calibration}
 
-The VERITAS PMTs are all the same model, but there are still differences from PMT to PMT.
-These differences cause the same number of input photons to create differently-shaped output signal voltage pulses.
-To account for this, the high voltage of individual(??) PMTs can be varied, so that their pulse shapes are as similar as possible.
-Doing this is called Gain Flatfielding.
+While the VERITAS PMTs are all the same model, there are still differences from PMT to PMT that can impact any data taken, and.
+Primarily, these differences can cause the same number of incident photons to create differently-shaped output voltage pulses in each PMT.
+To account for these differences, there are several calibration procedures that are applied nightly or semi-nightly.
+These are performed with a set of flashing LEDs, placed on the camera such that their light bounches off the mirrors and back onto the PMTs.
 
-This is performed by (??)
+In the first procedure, the LEDs are flashed at ~10hz at the beginning of each night.
+While the LEDs are flashing, the average pulse width from each PMT is monitored.
+Then, the High Voltage is adjusted for each group of PMTs to make their pulse widths as similar as possible (there are several PMTs connected to each high voltage crate).
+This must be done nightly, because just like each PMT is unique, each PMT's temperature dependence is also unique.
+
+In the second procedure, once every several nights the single-photoelectron curves for each PMT are measured.
+This is done by placing an opaque (~mm-thick metal) plate over the PMTs, with a single 3.1mm hole drilled over the location of each PMT.
+The LEDs are then flashed repeatedly.
+As the opaque plate has holes for each PMT, each PMT gets on average 0-5 photons per flash.
+Large numbers of flashes can then be used to build statistics on each PMTs' distribution of pulse widths.
+By examining a histogram of these pulse widths, one can see poison-statistics peaks (from the PMT's quantum efficience) that are formed for the 1, 2, 3, and further integer numbers of photons.
+And then ?? is done with this information?
+
+These calibration techniques are further detailed in \cite{calib_techniques}.
+
 
 \subsection{Triggers}\label{sec:trig}
 
