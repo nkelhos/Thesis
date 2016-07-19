@@ -14,72 +14,59 @@ As this matter prefers to only interact gravitationally and seemingly ignores th
 \section{Motivation}
 This thesis will demonstrate that, by analyzing gamma-rays from the galactic center, a search for a Dark Matter Halo can be conducted.
 If Dark Matter annihliation is able to produce a detectable flux, the density profile of the Dark Matter halo can be measured.
-If the flux is below the limits of our telescope, then an upper limit can be placed on the mass and cross-section of the Dark Matter Particle.
+If instead the flux is below the limits of our telescope, then an upper limit can be placed on the cross-section of the Dark Matter Particle.
 
 \section{Dark Matter}
 
 % WMAP: 4.6% energy from baryonic matter, 24% energy from cold dark matter
-From measuring the cosmic microwave background, it has been found that Dark Matter makes up 24\% of the energy of the universe\cite{pdg_2012}, thus understanding its nature is fundamental to building a complete picture of our universe.
-It is currently believed that Dark Matter is new particle, unknown to modern particle physics.
-It is believed to interact primarily through Weak interactions(??), thus it is referred to as a Weakly Interacting Massive Particle, or WIMP.
+From measuring the cosmic microwave background, WMAP satellite found that Dark Matter makes up 24\% of the energy of the universe\cite{pdg_2012}, thus understanding the nature of Dark Matter is fundamental to understanding our universe.
+It is currently believed that Dark Matter is new particle, unknown to the standard model of particle physics.
+This particle is predicted to interact primarily through Weak interactions(??), thus it is referred to as a Weakly Interacting Massive Particle, or WIMP.
 From both cosmology and particle physics, the WIMP is predicted to have a mass in the range of GeV to TeV, and a cross-section around ?? $gcm^{-2}$.
 From Weak interactions, WIMPs may directly annihilate or decay into gamma rays, or they may first produce quarks or leptons, which would then produce gamma rays.
 Many of these gamma rays would then have energies similar to the original WIMP mass, around 1 TeV.
 This potential for WIMP Dark Matter to produce TeV gamma rays makes it an attractive science target for gamma-ray observatories like VERITAS.
 
 Then, the question becomes, where should we point our gamma-ray observatories?
-From gravitational and optical measurements, it is well documented (cite??) that halos of Dark Matter augment almost all dwarf galaxy, galaxy, and galaxy cluster gravity wells.
-Dwarf galaxies tend to have fewer background gamma-ray sources, but also have lower quantities of Dark Matter, making them weaker emitters of gamma rays.
+From gravitational and optical measurements, it is well documented (cite??) that halos of Dark Matter augment almost all dwarf galaxy, galaxy, and galaxy cluster gravitational wells.
+Dwarf galaxies tend to have fewer background gamma-ray sources, but also have lower quantities of Dark Matter, making them weaker sources of dark matter gamma rays.
 Galaxy Clusters, while more massive (and thus more emissive), have a non-negligable redshift, introducing more model parameters and complicating any analysis (??).
-The galactic center, on the other hand, posesses more Dark Matter mass than any dwarf galaxy, while also being closer than most(??) dwarf galaxies, making it an excellent target for gamma-ray Dark Matter searches.
+The galactic center, on the other hand, possesses more Dark Matter mass at higher densities than any dwarf galaxy, while also being closer than any dwarf galaxy(??), making it an excellent target for gamma-ray Dark Matter searches.
 
 
-\section{Galactic Center}
+\section{Galactic Center and Gamma Rays}
 
-At the center of every galaxy there is believed to be a supermassive black hole, with a mass on the scale of millions of solar masses.
-From observing the orbits of its closest stars, the Milky Way's own supermassive black hole is measured to be $~4*10^6$ solar masses (cite??).
-As Dark Matter and Baryonic matter coincide most places in the universe (??), it is expected that there is a dark matter halo around the galactic center.
-Studying this halo is difficult, however, as the black hole's graviational well has accreted a large amount of material, as well as there being a large number of stars nearby.
+At the center of our galaxy there is believed to be a supermassive black hole, with a mass of around $~4*10^6m_{\odot}$(cite??).
+As Dark Matter appears to accompany most Baryonic gravitational wells(??), it is expected that there is a halo of dark matter particles the galactic center.
+Studying this halo is difficult, however, as our galaxy's large graviational well has accreted a large amount of dust, as well as there being a large number of stars and supernova remntants nearby.
 
-?? Picture of GC in radio
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.85\textwidth]{images/multiwavelength_galaxy.eps}
+    \caption[Multiwavelength Milky Way]{The plane of our galaxy, viewed in different wavelengths.  The analysis described in this thesis examines the central \nicetilde5\degree\cite{milky_way}}
+  \end{center}
+\end{figure}
 
-In the galactic center, there is the the black hole itself, whose gamma-ray emission is not fully understood.
-There is also a disk of dust, stretching in a line across Earth's field of view.
-There are several supernova remnants, slowly-expanding shells of energetic particles, shocking into the ambient dust, as well as many other dust clouds whose origin is not well understood.
+The dust, supernova remnants, and the galactic center itself all emit gamma rays, making detection of a dark matter halo difficult.
+The dust provides a collision target for high-energy protons from other galaxies, which produce $\pi_0$'s, which then decay into gamma rays.
+These dust-induced gamma rays are collectivly referred to as Diffuse Emission, and appear as a disk of gamma rays along the galactic plane.
+The supernova remnants accelerate electrons and protons outwards, which then shock into the surrounding dust and gas, producing gamma rays.
+The black hole at the galactic center also produces gamma rays in a sharp point (relative to the other sources), though the mechanism by which it does this is not well understood(??).
 
+These effects all obscure the target of this analysis, the gamma ray emission from a dark matter halo.
+This spherically-symmetric halo of gamma rays would surround the galactic center, decreasing in intensity the further from the center.
+The halo's spectrum would also be different from the surrounding diffuse emission.
 
-\section{Gamma-Ray Astronomy}
-Humans have been attempting to detect gamma rays for several decades now, and they're starting to get the hang of it.
-Usually this is done by chosing a volume of solid, liquid, or gas matter, setting up sensitive particle detectors, waiting for gamma rays to strike the volume, and observing the particles that are emitted by the strike.
-As even the the massive emitted particles are still travelling at a large fraction of light-speed, very high-speed electronics are needed to record the signals.
-
-
-\section{Gamma-Ray Showers}
-Gamma rays are very high energy photons.
-When these photons strike the Earth, the majority spallate off of atoms in the atmosphere.
-This spallation consumes the photo to produce an electron-positron pair, which then each strike other particles in the atmosphere.
-The electrons tend to strike other atomic electrons, knocking them free, while the positrons will annihilate with other atomic electrons, producing a pair of photons.
-These particles continue to strike and divide, cascading in an oval-shaped shower of energetic particles along the original direction of the primary gamma ray.
-Eventually, as the number of particles in each successive generation is more numerous than the previous, the average energy of each particle goes down.
-Once the electrons fall to around 80 MeV ??, then they lose energy rapidly to ionization of atmospheric atoms, and are no longer able to create new generations of particles.
-Throughout this shower, the charged electrons and positrons are passing through the atmosphere at a speed very close to $c_{vaccume}$.
-As the speed of light in the atmosphere is less than the relativistic speeds of the particles, the charged particles will travel through the atmosphere, outracing the effects of their charge on nearby atmospheric molecules.
-This outracing creates a wave of polarziation in the atmospheric molecules, resulting in the emission of lower-energy (visible and ultraviolet) photons known as Cherenkov photons, at a small angle relative to the charged particles' direction of travel.
-
-\section{Gamma Ray Observatories}
-Modern gamma-ray observatories usually function by detecting the particles created by the gamma ray as it strikes some known interaction mass.
-The interaction mass can be as small as 1 $m^3$ or as large as the atmosphere on earth.
-Veritas functions by watching for gamma-ray showers, by using Earth's atmosphere as the interaction mass.
-Gamma-ray showers produce Cherenkov photons in a very short amount of time, typically on the order of ~10s of nanoseconds.
-By constructing a specialized camera that counts the Cherenkov photons from the sky at ~1ns intervals, the gamma ray's shower can be imaged.
-By combining multiple synchronized cameras spaced at roughly ~100m apart, multiple images can be taken of the same showers.
-As the showers are highly directional along the original gamma-ray's trajectory, the images then point backwards to the original gamma-ray's point-of-origin in the sky.
-By running a large amount of simulations, a database of shower sizes and positions can be built, allowing for the energy of each gamma ray to be reconstructed.
+Once these gamma rays have been emitted, they would travel to Earth, where humans can detect them.
+This is done by using a telescope to observe the particle shower that occurs when each gamma ray hits the Earth's atmosphere.
+For this analysis, the VERITAS telescope has been observing gamma rays from the galactic center for several years.
 
 \section{Likelihood Analysis}
+Once a set of gamma rays are detected, a likelihood analysis can be used to model each distict component of the gamma ray emission.
+This analysis is performed by calculating the likelihood of two different scenarios (usually referred to as hypotheses).
+The first scenario is that there is a dark matter halo alongside the galactic center's point emisssion and the diffuse emission.
+The second scenario describes the gamma-ray emission from just the galactic center's point emission and the diffuse emission, with no dark matter.
+By calculating the ratio of the likelihoods of these two scenarios, the question 'Does a dark matter halo exist around the galactic center?' can be answered.
+If the answer is no, then an upper limit can be calculated for the cross-section of the dark matter particle, which may eliminate some of the dark matter theory parameter space.
 
-A likelihood ratio test fits two separate functions to datapoints, and then calculates the probability that one function is the more likely fit (called the Likelihood Ratio).
-Using Wilk's theorem??, the Likelihood Ratio can then be converted to a significance.
-The first function is called the Null Hypothesis, and the second function is the Alternative Hypothesis.
-In the context of astrophysical searches, each hypothesis predicts how many gamma rays will be at each point in the space/energy/time dataspace.
 
