@@ -8,13 +8,13 @@ The observable universe?
 
 These questions have been asked repeatedly since the 1930s, but different measurements produce conflicting answers.
 Observing cosmological and gravitational features results in a larger mass, while observing the quantity of light produced results in a smaller mass.
-This implies that there is missing mass, missing matter, unaccounted for by the existing model of physics and our universe.
+This implies that there is missing mass, missing \textit{stuff}, unaccounted for by the existing model of physics and our universe.
 As this matter prefers to only interact gravitationally and seemingly ignores the electromagnetic spectrum, it has earned the (in)conspicuous title of Dark Matter.
 
 \section{Motivation}
 This thesis will demonstrate that, by analyzing gamma-rays from the galactic center, a search for a Dark Matter Halo can be conducted.
-If Dark Matter annihliation is able to produce a detectable flux, the density profile of the Dark Matter halo can be measured.
-If instead the flux is below the limits of our telescope, then an upper limit can be placed on the cross-section of the Dark Matter Particle.
+If Dark Matter annihliation is able to produce a detectable quantity of gamma rays, the density profile of the Dark Matter halo can be measured.
+If instead the gamma-ray flux is below detection limits, then knowledge of our gamma-ray telescope can place an upper limit on the cross-section of the dark matter particle.
 
 \section{Dark Matter}
 
@@ -22,9 +22,9 @@ If instead the flux is below the limits of our telescope, then an upper limit ca
 From measuring the cosmic microwave background, WMAP satellite found that Dark Matter makes up 24\% of the energy of the universe\cite{pdg_2012}, thus understanding the nature of Dark Matter is fundamental to understanding our universe.
 It is currently believed that Dark Matter is new particle, unknown to the standard model of particle physics.
 This particle is predicted to interact primarily through Weak interactions(??), thus it is referred to as a Weakly Interacting Massive Particle, or WIMP.
-From both cosmology and particle physics, the WIMP is predicted to have a mass in the range of GeV to TeV, and a cross-section around ?? $gcm^{-2}$.
-From Weak interactions, WIMPs may directly annihilate or decay into gamma rays, or they may first produce quarks or leptons, which would then produce gamma rays.
-Many of these gamma rays would then have energies similar to the original WIMP mass, around 1 TeV.
+From both cosmology and particle physics, the WIMP is predicted to have a mass in the range of GeV to TeV, and a cross-section around $~3*10^{-26} cm^{3}s^{-1}$.
+From Weak interactions, WIMPs may directly annihilate or decay into gamma rays, or they may first produce quarks or leptons, which would then produce gamma rays through secondary interactions.
+These gamma rays would then have energies similar to the original WIMP mass, around the TeV scale.
 This potential for WIMP Dark Matter to produce TeV gamma rays makes it an attractive science target for gamma-ray observatories like VERITAS.
 
 Then, the question becomes, where should we point our gamma-ray observatories?
@@ -44,7 +44,7 @@ Studying this halo is difficult, however, as our galaxy's large graviational wel
 \begin{figure}[h]
   \begin{center}
     \includegraphics[width=0.95\textwidth]{images/GalacticCenterInRadio.eps}
-    \caption[Galactic Center in Radio]{The plane of our galaxy, viewed at a wavelength of $\lambda=90cm$.  Supernova remnants and dust are visible in the view.  The VERITAS field of view, the VERITAS point source spread (68\% containment), and the moon are shown for angular scale.  Radio flux image is from \cite{galactic_center_in_radio}.}
+    \caption[Galactic Center in Radio]{The center of our galaxy, viewed at a radio wavelength of $\lambda=90cm$.  Supernova remnants and dust are visible in the view.  The VERITAS field of view, the VERITAS point source spread (68\% containment), and the moon are shown for angular scale.  Radio flux image is from \cite{galactic_center_in_radio}.}
   \end{center}
 \end{figure}
 
@@ -52,7 +52,7 @@ The dust, supernova remnants, and the galactic center itself all emit gamma rays
 The dust functions as a collision target for high-energy protons from other galaxies, which produce $\pi_0$ particles, which then decay into gamma rays.
 These dust-induced gamma rays are collectivly referred to as Diffuse Emission, and appear as a disk of gamma rays along the galactic plane.
 The supernova remnants accelerate electrons and protons outwards, which then shock into the surrounding dust and gas, producing gamma rays.
-The black hole at the galactic center also produces gamma rays in a sharp point (relative to the other sources), though the mechanism by which it does this is not well understood(??).
+The black hole at the galactic center also produces gamma rays in a sharp point (relative to the other sources), though the mechanism by which it does this is not well understood\cite{gal_cent_still_undetermined}.
 
 These effects all obscure the target of this analysis, the gamma ray emission from a dark matter halo.
 This spherically-symmetric halo of gamma rays would surround the galactic center, decreasing in intensity the further from the center.
@@ -62,12 +62,12 @@ Once these gamma rays have been emitted, they would travel to Earth, where human
 This is done by using a telescope to observe the particle shower that occurs when each gamma ray hits the Earth's atmosphere.
 For this analysis, the VERITAS telescope has been observing gamma rays from the galactic center for several years.
 
-\section{Likelihood Analysis}
-Once a set of gamma rays are detected, a likelihood analysis can be used to model each distict component of the gamma ray emission.
-This analysis is performed by calculating the likelihood of two different scenarios (usually referred to as hypotheses).
-The first scenario is that there is a dark matter halo alongside the galactic center's point emisssion and the diffuse emission.
-The second scenario describes the gamma-ray emission from just the galactic center's point emission and the diffuse emission, with no dark matter.
-By calculating the ratio of the likelihoods of these two scenarios, the question 'Does a dark matter halo exist around the galactic center?' can be answered.
-If the answer is no, then an upper limit can be calculated for the cross-section of the dark matter particle, which may eliminate some of the dark matter theory parameter space.
+\section{Halo Analysis}
+After several years of observation, VERITAS has accumulated ~80(??) hours of galactic center data.
+To analyze these observations, the CTOOLS software package is used.
+With CTOOLS, the galactic center region can be modeled with different dark matter halos, and the likelihood of each halo (and no dark matter halo) can be calculated.
+These likelihoods can then be used to answer the question "Is there a dark matter halo emitting gamma rays around the galactic center?".
+If the answer is no, then an upper limit on the dark matter crosssection can be calculated for each dark matter mass.
+This upper limit can then be used to exclude part of the parameter space for dark matter searches.
 
 
