@@ -35,6 +35,18 @@ From simulations, the distance between the center of the hillas shower image and
 The disp and other parameters for thousands of simulated showers can then be used to train a neural network that calculates the most probable disp for a given shower.
 This most probable disp can then be used with the image axes intersection points to more accurately reconstruct the original gamma-ray point of origin.
 
+Once the training is complete, it is tested on a separate set of 17,000 simulated events, which are plotted in figure \ref{fig:disptraining}.
+The x axis describes the true disp value for each event, while the y axis describes the disp value predicted by the Boosted Decision Tree network, with a black line for the x=y line.
+As the majority of the events fall on the line, we can conclude that the BDTs are able to predict the correct disp value for most images.
+
+% made from screenshot of last slide in Dropbox/Presentations/20160719_Group_Meeting.key
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.85\textwidth]{images/disp_training.eps}
+    \caption[Disp BDT Training]{The true disp vs the BDT-predicted disp, for \nicetilde17,000 gamma-ray event images in T1, from 500GeV to 200TeV.}\label{fig:disptraining}
+  \end{center}
+\end{figure}
+
 Improved angular resolution plot??
 
 \section{Energy Reconstruction}\label{subsec:enrecon}
