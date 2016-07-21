@@ -6,10 +6,10 @@
 Peering out into space, there are affects attributed to dark matter on several different length scales.
 As dark matter, by definition, does not directly interact with electromagetic light, most of the evidence for dark matter relies on a combination of gravtiational effects pulling on electromagnetic emitters, and mass distorting the spacetime paths taken by passing light.
 
-On the smallest scales, groups of several thousand stars can be seen revolving around a center of mass, at a larger distribution of speeds than one would expect from the existing visible amount of matter.
+On the smallest scales, groups of several thousand stars can be seen revolving around their center of mass, at a larger distribution of speeds than one would expect from the existing visible amount of matter.
 At larger scales the optical light from galaxies, as well as hydrogen lines, can be used to measure the amount of mass and its rotational velocity around the center of galaxies.
 At even larger scales, galaxy velocities can be measured and compared, x-ray telescopes can monitor the amount of hot gas, and mass-heavy areas of space will gravitationally lens background galaxies.
-At the the largest scales, the measurement of oscillations in the dipole spectrum of the cosmic microwave background can be used to determine the amount of dark and baryonic matter.
+At the the largest scales, the measurement of oscillations in the cosmic microwave background can be used to determine the amount of dark and baryonic matter.
 
 
 \subsection{Dwarf Galaxy Scale}
@@ -20,17 +20,18 @@ At the the largest scales, the measurement of oscillations in the dipole spectru
 %    140kpc * Tan(15') = 0.6kpc = 1.8*10^19m ~ 10^19m
 At scales of $\nicetilde 10^{19}$m, groups of thousands stars, called satellite galaxies or dwarf galaxies, lie at the edge of the Milky Way galaxy.
 Telescopes can measure the individual spectra of these stars, allowing for their velocity to be calculated.
-Often, these observations focus on the Red Giant stars within these dwarf galaxies.
-By looking at how fast each star is moving around the satellite galaxy's center of mass, and how widely these rotational velocities differ, the amount of enclosed mass can be inferred.
+Often, these observations focus on the Red Giant stars within these dwarf galaxies\cite{dwarf_gal_red_giant}.
+By looking at the distribution of these velocities, the total mass of the dwarf galaxy can be inferred.
+
 
 \subsection{Galaxy Scale}
 %
 % galaxy rotation curve wiki page, M33 has curve measurements out to 50,000ly
 %   50,000ly = 4.7*10^20m ~ 10^20m
 At scales of $\nicetilde 10^{20}$m, the effects of Dark Matter on galaxies are observable.
-In one method, the total amount of light produced by an area of a galaxy is measured with telescopes.
+In one method, the total amount of light produced by a quadrant of a galaxy is measured with telescopes.
 Known mass-to-light ratios can then be used to calculate the total amount of mass within that quadrant.
-This was the earliest method of measuring the mass of a galaxy, producing a low calculation for the amount of mass.
+This was the earliest method of measuring the mass of a galaxy, producing a low value for the amount of mass.
 
 In a second method, a galaxy's emission spectrum is observed at many positions around its disk (center, outer edges, etc).
 By comparing the orientation of the disk with the doppler-shifted position of common spectral lines, one can calculate the average velocity that each chunk is travelling at around the center of the galaxy.
@@ -46,6 +47,21 @@ In the first method, galaxy clusters are be massive enough to bend the images of
 The type and amount of bending can be used to determine the mass of the intermediate galaxy.
 
 X-Ray observations of galaxy clusters can measure the amount of hot baryonic mass.
+This has been shown distinctly in the Bullet Cluster\cite{bullet}.
+In this cluster, the total (baryonic+dark) mass was traced using gravitational lensing of background light.
+The baryonic mass was then traced with x-rays, which are emitted by ionized gas in the region.
+Figure \ref{fig:bullet} then shows these two masses overlayed.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.95\textwidth]{images/bulletcluster.eps}
+    \caption[The Bullet Cluster]{The bullet cluster\cite{bullet_cluster_combined_image}.  The blue clouds indicate the graviational lensing mass\cite{bullet_cluster}, the red represents two clouds of ionized baryons emitting x-rays\cite{bullet_cluster_chandramap}.  The remaining stars and galaxies are imaged in the optical spectrum\cite{bullet_cluster_composite}.}\label{fig:bullet}
+  \end{center}
+\end{figure}
+
+Followup studies have also been done of other galaxy clusters.
+more??
+
 
 In the second method, the velocity of different galaxies in a cluster can be measured.
 By comparing the velocities of different galxies in a cluster, the contained mass within the cluster can be measured.
@@ -77,10 +93,12 @@ So, by looking at this CMB structure, the total number of baryons in the univers
 
 \section{Dark Matter and the Standard Model}
 
-The Standard Model, usually referred to as $\Lambda$CDM, describes human's current knowledge of particle physics and cosmology.
-This model describes the masses and crosssections of quarks and leptons, as well as how bosons mediate interactions between these particles.
-$\Lambda$CDM also describes how the universe started and evolved from the big bang.
-However, either through wrong mass, wrong quantity, wrong cross section, or wrong velocity, none of the currently known particles in $\Lambda$CDM can account for dark matter.
+The current paradigm of particle physics is called the Standard Model.
+It describes the masses and crosssections of quarks and leptons, as well as how bosons mediate interactions between these particles.
+In cosmology, the equivalent of the standard model is $\Lambda$CDM (Lambda Cold Dark Matter). 
+$\Lambda$CDM describes how the universe evolved from the big bang, including the contributions of dark matter and dark energy.
+It also describes how a non-relativistic (cold) dark matter particle is necessary for the current evolution of the universe.
+However, either through wrong mass, wrong quantity, wrong cross section, or wrong velocity, no Standard Model particles can be cold dark matter.
 This fuels suspicion than there are new, as of yet unknown particles that can fufill this role.
 The two currently favored candidates are WIMPs (the subject of this thesis), and Axions.
 
@@ -137,9 +155,9 @@ Indirect Detection experiments attempt to look for secondary products of dark ma
 Collider searches attempt to produce a dark matter particle through controlled collisions of standard model particles.
 
 % direct
-Direct searches consist of an interaction mass, surrounded by light, heat, and acoustic sensors, buried deep in mineshafts.
+Direct searches consist of an interaction mass, surrounded by light, heat, and acoustic sensors, usually buried deep underground.
 These sensors attempt to detect a signal from when a particle strikes the enclosed interaction mass, and discern how much mass and energy the incident particle had.
-Most of these detectors are either solid blocks of ??, or liquified gasses like ??.
+Most of these detectors are either solid blocks of ??, or liquified gasses like Xenon.
 
 % collider
 Collider searches involve accelerating particles in particle accelerators, smashing them together, and searching the resulting explosion of particles for evidence of dark matter particles.
