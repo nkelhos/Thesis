@@ -105,5 +105,99 @@ The downside is that fewer low-energy gamma rays reach the volume of atmosphere 
 
 CTA, HESS, Magic, HAWC, Fermi
 
+\section{FITS Conversion for Gammalib and CTOOLs}
+
+Once gamma rays have been reconstructed with event display, they must be converted to a FITS file format compatible with gammalib.
+This format consists of a FITS file with an event list table, containing each gamma ray, its energy, position, and time.
+This also includes meta information about the event list like the telescope's pointing target and the start and end times of the event list.
+This FITS file can then be read into Gammalib and CTOOLS (cite??).
+
+In addition to the event list, the instrument response functions (IRFs) must also be imported into Gammalib and Ctools.
+These include effective areas, point spread funciton, energy dispersion, and background shapes for several dimensions in the IRF parameter space (energy, offset from camera center, telescope elevation/azimuth, noise, etc).
+By default, all IRFs are stored in a single database, and each event list contains a reference to which part of the parameter space should be used with it.
+
+However, the galactic center is at an elevation of 30\degree, much lower than most VERITAS observation targets.
+At this elevation, with its field of view of 3.5\degree, the air mass column density ($g/cm^{2}$) is 20\% higher at the bottom of the camera than at the top.
+Add to this that during a single 30 minute observation, the elevation of the Galactic Center can change by several degrees, means the airmass in view of the camera may change rapidly, meaning the IRFs may become time dependent.
+
+To allow for this time dependence in the analysis, an alternate way of storing the IRFs was chosen, diagrammed in figure \ref{fig:fits_scheme}.
+First, one observation (typically 20-30 minutes long) is broken up into ~3 minute chunks.
+Each chunk is then converted to an event list, and saved to a FITS file.
+In addition, the needed Effective Area, PSF, and background tables are also written to the same FITS file.
+As each event list covers a small region in time, the IRF tables only need to contain the dimensions of the parameter space that can change during one chunk, such as event energy and distance from camera center.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.75\textwidth]{images/FITS_diagrams.alternate_scheme.eps}
+    \caption[FITS File Event Storage Schemes]{}\label{fig:fits_scheme}
+  \end{center}
+\end{figure}
+
+The end result is that a 30 minute observation can be broken into ~10 FITS files (called chunks), where each file is independent of any outside references, contains all IRF needed information, and only takes up ~100s KB.
+This makes it ideal for a program to automatically download any needed data over an internet connection, as each chunk has a small filesize and has no outside dependencies.
+As gammalib and CTOOLS expect the default FITS file scheme, a python function was written to automatically load all event and irf tables from a single fits file, and import this information into gammalib's GObservation class.
+
+There were minor issues with converting the IRFs that should be noted.
+
+\subsection{PSF Fitting}
+
+For the PSF, converting from Event Display to Gammalib has some issues.
+Specifically, Gammalib tables store the PSF as the fit parameters of a King function (cite??).
+A king function tends to fit gamma ray telescope PSF's better, due to its long tail (compared to a gaussian).
+As the PSF in event display is stored as a histogram, with the number of events at each radial distance, it becomes necessary to fit a king function.
+For roughly half of the parameter space, the king function fitter was unable to get a good fit (??).
+When this happens, a default value of 0\degree is used as the PSF.
+
+
+\subsection{Background Shapes}
+
+To produce a background, events are binned in camera coordinates and energy, and each bin is divided by the size of the bin's exposure in time, energy, and solid angle.
+This allows for the likelihood engine to model the expected camera background of cosmic-ray events that pass all gamma-like cuts.
+As the likelihood engine will apply a scale value to the background as part of its fitting, the background's absolute values matter much less than its relative values.
+
+During the production of the initial low elevation background, some new effects were noted.
+First a series of gamma-like events were taken from observations with no known gamma-ray sources.
+These events are then divided into equal-statistics bins.
+For each equal-statistic energy bin, all the contained events are binned in camera X and Y.
+
+For a set of high-elevation observations, these backgrounds are shown in figure \ref{fig:back_highelev}.
+It can be seen that all events are divided up into 3 equal-statistics energy bins in figure \ref{fig:back_highelev}.A.
+Each energy bin is then binned in camera X and Y in figure \ref{fig:back_highelev}.B, .C, and .D.
+It can be seen that at these high elevations, each energy bin is radially symmetric about the camera center.
+This happens because gamma ray's point of origin and its shower image in the camera are usually several tenths of a degree away from each other.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.75\textwidth]{images/FITS_diagrams.alternate_scheme.eps}
+    \caption[FITS Background at High Elevations]{}\label{fig:back_highelev}
+  \end{center}
+\end{figure}
+
+
+In figure \ref{fig:back_lowelev}, the same plots are constructed for a set of low-elevation (~28\degree) observations, using Galactic Center Off observations.
+These are again divided in to equal-statistic energy bins, and then each energy bin is binned in camera coordinates.
+It can be seen that in different energy bins, the background possesses different shapes.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.75\textwidth]{images/FITS_diagrams.alternate_scheme.eps}
+    \caption[FITS Background at Low Elevations]{}\label{fig:back_lowelev}
+  \end{center}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
