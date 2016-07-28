@@ -121,7 +121,7 @@ At this elevation, with its field of view of 3.5\degree, the air mass column den
 Add to this that during a single 30 minute observation, the elevation of the Galactic Center can change by several degrees, means the airmass in view of the camera may change rapidly, meaning the IRFs may become time dependent.
 
 To allow for this time dependence in the analysis, an alternate way of storing the IRFs was chosen, diagrammed in figure \ref{fig:fits_scheme}.
-First, one observation (typically 20-30 minutes long) is broken up into ~3 minute chunks.
+First, one observation (typically 20-30 minutes long) is broken up into \nicetilde3 minute chunks.
 Each chunk is then converted to an event list, and saved to a FITS file.
 In addition, the needed Effective Area, PSF, and background tables are also written to the same FITS file.
 As each event list covers a small region in time, the IRF tables only need to contain the dimensions of the parameter space that can change during one chunk, such as event energy and distance from camera center.
@@ -133,11 +133,11 @@ As each event list covers a small region in time, the IRF tables only need to co
   \end{center}
 \end{figure}
 
-The end result is that a 30 minute observation can be broken into ~10 FITS files (called chunks), where each file is independent of any outside references, contains all IRF needed information, and only takes up ~100s KB.
-This makes it ideal for a program to automatically download any needed data over an internet connection, as each chunk has a small filesize and has no outside dependencies.
+The end result is that a 30 minute observation can be broken into \nicetilde10 FITS files (called chunks), where each chunk file is independent of any outside references, contains all IRF needed information, and only takes up \nicetilde100s KB.
+This makes it ideal for an analysis program to automatically download any needed data over an internet connection, as each chunk is tiny and has no outside dependencies.
 As gammalib and CTOOLS expect the default FITS file scheme, a python function was written to automatically load all event and irf tables from a single fits file, and import this information into gammalib's GObservation class.
 
-There were minor issues with converting the IRFs that should be noted.
+There were minor issues with converting the IRFs that are noted in the following sections.
 
 \subsection{PSF Fitting}
 
@@ -149,7 +149,7 @@ For roughly half of the parameter space, the king function fitter was unable to 
 When this happens, a default value of 0\degree is used as the PSF.
 
 
-\subsection{Background Shapes}
+\subsection{Background Templates}
 
 To produce a background, events are binned in camera coordinates and energy, and each bin is divided by the size of the bin's exposure in time, energy, and solid angle.
 This allows for the likelihood engine to model the expected camera background of cosmic-ray events that pass all gamma-like cuts.
@@ -168,8 +168,8 @@ This happens because gamma ray's point of origin and its shower image in the cam
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[width=0.75\textwidth]{images/FITS_diagrams.alternate_scheme.eps}
-    \caption[FITS Background at High Elevations]{}\label{fig:back_highelev}
+    \includegraphics[width=\textwidth]{images/ctools/backgrounds.highelev.eps}
+    \caption[FITS Background at High Elevations]{Gamma-like Events from 52 observations(livetime??) of M82 (in what elevation range??).  Events in Figure A are divided into 3 equal-statistics energy bins, and binned in Camera Coordinates in Figures B, C, and D.}\label{fig:back_highelev}
   \end{center}
 \end{figure}
 
@@ -180,11 +180,17 @@ It can be seen that in different energy bins, the background possesses different
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[width=0.75\textwidth]{images/FITS_diagrams.alternate_scheme.eps}
-    \caption[FITS Background at Low Elevations]{}\label{fig:back_lowelev}
+    \includegraphics[width=\textwidth]{images/ctools/backgrounds.lowelev29.eps}
+    \caption[CTOOLS Background at \nicetilde29\degree Elevation]{15(livetime??) Sagittarius A* Off runs, between elevations 27.5\degree and 30\degree.  Events are divided into 6 equal-statistics energy bins, of which four are binned in Camera Coordinates in figures B, C, D, and E.}\label{fig:back_lowelev29}
   \end{center}
 \end{figure}
 
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/ctools/backgrounds.lowelev26.eps}
+    \caption[CTOOLS Background at \nicetilde26\degree Elevation]{10(livetime??) Sagittarius A* Off runs, between elevations 24\degree and 27.5\degree.}\label{fig:back_lowelev29}
+  \end{center}
+\end{figure}
 
 
 
