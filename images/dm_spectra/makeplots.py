@@ -3,13 +3,13 @@ import matplotlib.pyplot as plt
 plt.rc( 'text', usetex=True )
 
 plots = {}
-plots['10 TeV'  ] = 'dnde_CIRELLI11_EW_GAMMA_m10000.txt'
-plots['1 TeV'   ] = 'dnde_CIRELLI11_EW_GAMMA_m1000.txt'
-plots['100 GeV' ] = 'dnde_CIRELLI11_EW_GAMMA_m100.txt'
-plots['10 GeV'  ] = 'dnde_CIRELLI11_EW_GAMMA_m10.txt'
-#plots['100TeV' ] = 'dnde_CIRELLI11_EW_GAMMA_m100000.txt'
+plots['100 TeV' ] = 'dnde_CIRELLI11_EW_GAMMA_m100000_bbbar.txt'
+plots['10 TeV'  ] = 'dnde_CIRELLI11_EW_GAMMA_m10000_bbbar.txt'
+plots['1 TeV'   ] = 'dnde_CIRELLI11_EW_GAMMA_m1000_bbbar.txt'
+plots['100 GeV' ] = 'dnde_CIRELLI11_EW_GAMMA_m100_bbbar.txt'
+plots['10 GeV'  ] = 'dnde_CIRELLI11_EW_GAMMA_m10_bbbar.txt'
 
-order = [ '10 TeV', '1 TeV', '100 GeV', '10 GeV' ]
+order = [ '100 TeV', '10 TeV', '1 TeV', '100 GeV', '10 GeV' ]
 
 leg = []
 for mass in order :
@@ -29,8 +29,11 @@ for mass in order :
         xstr = vec[0]
         ystr = vec[1]
         #print('xstr, ystr: %s %s' % ( repr(xstr) , repr(ystr) ) )
-        x += [ float(xstr) / 1e3 ] # switch from GeV to TeV
-        y += [ float(ystr) ]
+        yval = float(ystr)
+        xval = float(xstr) / 1e3 # switch from GeV to TeV
+        if yval > 0.0 :
+          x += [ xval ]
+          y += [ yval ]
 
   plt.plot(x,y)
       
@@ -50,15 +53,17 @@ plots['Z'    ] = 'dnde_CIRELLI11_EW_GAMMA_m1000_ZZ.txt'
 plots['W'    ] = 'dnde_CIRELLI11_EW_GAMMA_m1000_W+W-.txt'
 plots['h'    ] = 'dnde_CIRELLI11_EW_GAMMA_m1000_hh.txt'
 plots['tau'  ] = 'dnde_CIRELLI11_EW_GAMMA_m1000_tautau.txt'
+plots['b'    ] = 'dnde_CIRELLI11_EW_GAMMA_m1000_bbbar.txt'
 
 channelnames = {}
 channelnames['gamma'] = r'\gamma\gamma'
-channelnames['Z'    ] = r'Z'
-channelnames['W'    ] = r'W^{+}W^{-}'
-channelnames['h'    ] = r'hh'
-channelnames['tau'  ] = r'\tau\bar{\tau}'
+channelnames['Z'    ] = r'ZZ \rightarrow \gamma\gamma'
+channelnames['W'    ] = r'W^{+}W^{-} \rightarrow \gamma\gamma'
+channelnames['h'    ] = r'hh \rightarrow \gamma\gamma'
+channelnames['tau'  ] = r'\tau\bar{\tau} \rightarrow \gamma\gamma'
+channelnames['b'    ] = r'b\bar{b} \rightarrow \gamma\gamma'
 
-order = [ 'gamma', 'Z', 'W', 'h', 'tau' ]
+order = [ 'gamma', 'Z', 'W', 'h', 'tau', 'b' ]
 leg = []
 for channel in order :
   fname = plots[channel]
@@ -77,11 +82,14 @@ for channel in order :
         xstr = vec[0]
         ystr = vec[1]
         #print('xstr, ystr: %s %s' % ( repr(xstr) , repr(ystr) ) )
-        x += [ float(xstr) / 1e3 ] # switch from GeV to TeV
-        y += [ float(ystr) ]
+        yval = float(ystr)
+        xval = float(xstr) / 1e3 # switch from GeV to TeV
+        if yval > 0.0 :
+          x += [ xval ]
+          y += [ yval ]
 
   plt.plot(x,y)
-  leg += [ r'$\chi\chi \rightarrow %s$' % channelname ]
+  leg += [ r'$\chi\chi \rightarrow %s $' % channelname ]
 
 plt.xscale('log')
 plt.yscale('log')

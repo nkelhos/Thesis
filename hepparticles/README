@@ -1,0 +1,37 @@
+hepparticles --- for typesetting high energy particle names
+by Andy Buckley <andy@insectnation.org>
+-----------------------------------------------------------
+
+hepparticles is a set of macros for typesetting high energy particle names. It
+provides a robust and consistent structure within which to typeset the names and
+along the way solves many problems with alignment and text styles which
+otherwise make themselves known.
+
+Chief amongst the problems solved by hepparticles is that the boldness of
+particle names typeset in math mode when used in section titles, headers and
+tables of contents disappears. hepparticles ensures that particle names remain
+bold, italic, or in sans-serif font to match the surrounding font context. The
+typesetting convention by default uses upright names for "concrete" particles
+and italic type for generic particle labels but the convention can be specified
+at package-include time, making this package suitable for use with journals
+which require alternative styles.
+
+hepparticles also applies small but significant horizontal shifts to sub- and
+super-scripts and overlines and tildes for antiparticles and supersymmetric
+particles respectively (as well as the extremely rarely used SUSY
+antiparticles!) and makes use of the subdepth package to ensure that all particle
+name sub- and super-scripts are typeset at the same heights.
+
+Fuller documentation for this package can be found in the files
+hepparticles.{ps,pdf}, distributed with the package and some examples (used for
+debugging) are in testhepparticles.{ps,pdf}, with source code in
+testhepparticles.tex.
+
+You may also be interested in the hepnames package, which uses this one to
+define a large set of standard particle names.
+
+This material is subject to the LaTeX Project Public License.  See
+http://www.ctan.org/tex-archive/help/Catalogue/licenses.lppl.html for the
+details of that license.
+
+Author: Andy Buckley <andy@insectnation.org>
