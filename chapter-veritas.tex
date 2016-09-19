@@ -1,5 +1,5 @@
 \cleartooddpage[\thispagestyle{empty}]
-\chapter{Veritas}
+\chapter{VERITAS}
 
 \begin{figure}[h]
   \begin{center}
@@ -8,27 +8,27 @@
   \end{center}
 \end{figure}
 
-VERITAS is an arrary of four Imaging Atmospheric Cherenkov Telescopes, each spaced $\nicetilde50m$ apart.
-Each telescope possesses an array of 345 mirrors, and a 499-Photomultiplier-Tube camera out on a set of four struts, called quads.
-Each mirror focuses photons onto the camera.
-In Section \ref{sec:hardware}, the different hardware components are discussed.
-In Section \ref{sec:trig}, the different trigger levels are discussed.
-The methods for image reconstruction are discussed in Section \ref{subsec:imgrecon}.
-In Section \ref{sec:recon}, the reconstruction used in different parts of the analysis are discussed, including the per-telescope image reconstruction in Subsection \ref{subsec:imgrecon}, the direction reconstruction in Subsection \ref{subsec:posrecon}, and the energy reconstruction in Subsection \ref{subsec:enrecon}.
+VERITAS is a gamma ray observatory operating in Arizona, USA, capable of detecting $\nicetilde$TeV-energy gamma rays.
+This detection is performed by an array of four Imaging Atmospheric Cherenkov Telescopes, each spaced $\nicetilde$50m apart.
+Each telescope possesses an array of 345 mirrors, and a Photomultiplier Tube (PMT) camera (containing 499 PMTs) on a set of struts.
+When a gamma-ray produces an air shower in the atmosphere, the shower emits blue-UV Cherenkov photons over a timespan of nanoseconds.
+By focusing these photons onto the PMT camera with the mirrors, images of the shower can be taken, where each pixel of the image consists of analog voltage pulses from each PMT, with more photons causing larger pulses.
 
 
-\section{Hardware}\label{sec:hardware}
-When a gamma-ray produces an air shower in the atmosphere, the shower emits numerous Cherenkov photons, over a time period of nanoseconds.
-When the light from the shower reaches the telescopes, only a handful of Cherenkov photons remain, and these photons are spread out over several nanoseconds.
+%As the width of voltage pulses must be \nicetilde{}ns to prevent overlapping with the pulses from other showers, the digization hardware measures the time-dependent voltage of each pulse in 1-nanosecond-wide(??) time bins.
+%Though faint showers may only posess a few photons per PMT, brighter showers can still shine several thousand photons onto individual pixels.
+%This means that the digization hardware must be able to handle a large dynamic range of inputs, over several orders of magnitude in voltage.
+%To accomplish this, two amplification levels are used in the digization circuit, High Gain for voltage pulses of a few photons, and Low Gain for voltage pulses of several thousand photons.
 
-To detect these individual Cherenkov photons, Photomultiplier tubes are used to amplify the signal from single photons.
-This produces an analog voltage pulse that then must be digitized.
-As the voltage pulses widths must be \nicetilde{}ns to prevent overlapping with other showers, the digization hardware measures each voltage pulse in 1-nanosecond-wide(??) time bins.
-Though faint showers may only posess a few photons, brighter showers can still shine several thousand photons onto individual pixels.
-This means that the digization hardware must be able to handle a large dynamic range of inputs, over several orders of magnitude.
-To accomplish this, two amplification levels are used in the digization circuit, High Gain for voltage pulses of a few photons, and Low Gain for voltage pulses of several thousand photons.
+In the following sections, the different hardware components are examined, in order of signal propagation.
+In section \ref{sec:telpoint}, the Telescope Pointing is discussed, including its monitoring and calibration.
+The Mirrors are discussed in section \ref{sec:mirrors}, including their properties and alignment.
+In section \ref{sec:pmts}, the PMTs are discussed, including their performance and calibration.
+The trigger system is discussed in section \ref{sec:trig}, relating how candidate signal voltages are saved while discarding those sourced from noise.
+In section \ref{sec:epochs}, the different observatory epochs are discussed, as over time changes and modifications have changed the observatory's performance.
 
-\subsection{Telescope Pointing}
+
+\section{Telescope Pointing}\label{sec:telpoint}
 
 \begin{figure}[h]
   \begin{center}
@@ -37,9 +37,9 @@ To accomplish this, two amplification levels are used in the digization circuit,
   \end{center}
 \end{figure}
 
-Like most telescopes, each VERITAS telescope has an immobile base fixed to the ground, and a pointable dish for collecting light.
+Like most telescopes, each VERITAS telescope has an immobile base, and a pointable dish for collecting light.
 This dish can rotate in azimuth and in elevation, with enough range in both axes to point at any direction above the horizon.
-At their fastest, the telescopes can slew at a rate of 1\degree per second.
+At their fastest, the telescopes can slew at a rate of $\nicetilde$1\degree per second.
 To track where the telescopes are pointing, the motors that drive the azimuth and elevation movement have encoders that digitize the pointing direction of the dishes.
 However, as the dishes are large metal structures, they bend and flex at different elevations and azimuths.
 To account for this flexing, the encoder values are then given to a structural model (??), which accounts for the dish structure bending at different azimuths and elevations.
@@ -59,7 +59,7 @@ If any direct sunlight falls onto the telscope mirrors, the \nicetilde100,000 Wa
 VERITAS telescopes are stored during the day by pointing them at \nicetilde0\degree elevation, North.
 
 
-\subsection{Mirrors}
+\section{Mirrors}\label{sec:mirrors}
 
 When cherenkov light first interacts with the telescope array, it is by being reflected by one of 345 mirrors.
 These mirrors face towards the incoming cherenkov light, with the PMTs positioned in a camera box, facing the mirrors, shown in figure \ref{fig:davcottel}.
@@ -81,7 +81,7 @@ Each mirror is attached to the support structure via three adjustable mounting p
 This alignment is measured and adjusted at regular intervals, using background stars as a calibration source??.
 
 
-\subsubsection{Star Point Spread Function}
+\subsection{Star Point Spread Function}
 
 By pointing a telescope at Polaris and placing a CCD at the focal plane, the mirror PSF can be measured.
 This was done with the first VERITAS telescope was built, where the image is shown in figure \ref{fig:mirrorpolaris}.
@@ -94,7 +94,7 @@ The mirror psf is 0.06\degree full width half maximum\cite{Veritas_Detector}.
   \end{center}
 \end{figure}
 
-\subsubsection{Mirror Alignment}
+\subsection{Mirror Alignment}
 % https://veritas.sao.arizona.edu/wiki/index.php/Mirror_Alignment
 The mirrors are each mounted to the dish on three adjustable mounting points.
 By adjusting the mounting points, the mirrors can be individually aligned.
@@ -105,7 +105,7 @@ By using the CCD to examine the position of the star in each mirror, the mirror'
 
 
 
-\subsection{PMTs}\label{sec:pmts}
+\section{PMTs}\label{sec:pmts}
 
 Each telescope has a PMT Camera on the end of four supporting arms, inside a protective housing.
 This camera consists of 499 Photo Multiplier Tubes (PMTs), each with a Winston cone to increase the light collection area for each PMT.
@@ -158,7 +158,7 @@ If the low-gain trigger pulse was also recieved by the FADC, then the signal vol
 If this low-gain triggering did not take place, then the FADC would become saturated, which effectivly hides how large the voltage pulse actually is.
 Once the voltage pulse is digitized, it is saved to a rolling buffer (how long is the buffer??) in the FADC, waiting for other future triggers to occur.
 
-\subsubsection{PMT Upgrade}
+\subsection{PMT Upgrade}
 In summer of 2012, all PMTs in the telescopes were replaced with improved PMTs.
 Specifically, the original Photonis XP2970 models were replaced with the Hamamatsu R10560-100-20 MOD.
 This was done because that R10560 has a considerably higher quantum efficiency (\nicetilde$90\%$), compared to the XP2970 (\nicetilde$75\%$).
@@ -176,7 +176,7 @@ The data used in this thesis was taken both before and the upgrade, which means 
 This is accounted for by separate simulations for each PMT model, mostly resulting in different effective areas at the lower energies.
 
 
-\subsubsection{PMT Calibration}
+\subsection{PMT Calibration}
 
 While the VERITAS PMTs are all the same model, there are still differences from PMT to PMT that can impact any data taken, and.
 Primarily, these differences can cause the same number of incident photons to create differently-shaped output voltage pulses in each PMT.
@@ -199,7 +199,7 @@ And then ?? is done with this information?
 These calibration techniques are further detailed in \cite{calib_techniques}.
 
 
-\subsection{Triggers}\label{sec:trig}
+\section{Trigger System}\label{sec:trig}
 
 The operation of VERITAS requires digitizing voltage pulses roughly once per nanosecond, per photomultiplier tube.
 This means that, with 255 voltage levels, 1 second of raw voltage data would require 2 Terabytes of space.
@@ -231,7 +231,7 @@ These pixel voltages are then processed by the analysis software to reconstruct 
 
 
 
-\subsubsection{Deadtime}
+\subsection{Deadtime}
 When the L3 trigger is invoked and the buffers are being read out, the electronics are unable to store new PMT voltages in the buffers.
 Being unable to store new PMT voltages effectivly reduces the amount of time spent observing gamma rays.
 This lost time is usually referred to as deadtime.
@@ -241,13 +241,13 @@ This means that at an L3 trigger rate of \nicetilde300Hz, approximately \nicetil
 Since the L3 rate varies over the course of a run, this means that the deadtime also varies.
 This is accounted for in the flux calculation in section ??.
 
-\subsubsection{Time Pedestal Calibration}
+\subsection{Time Pedestal Calibration}
 As all PMTs and signal cables are not identical, there are differences in how long a voltage pulse takes to travel.
 More specifically, the time between a) when the photon strikes the PMT cathode ?? and b) when the voltage pulse sets off its L1 trigger, can vary from pixel to pixel.
 This is usually measured by looking at the average arrival time of many events over all camera pixels.
 By looking at the average arrival time, pixels that are consistanly early or late can be accounted for, which improves image identification.
 
-\subsection{Epochs}\label{sec:epochs}
+\section{Epochs}\label{sec:epochs}
 After being built, VERITAS has evolved over several years, with collaboration members upgrading it to improve performance.
 However, these major differences need to be taken into account in the analysis chain.
 To organize these differences, in the data they are referred to as epochs 1, 2, 3, 4, 5, and 6 (usually denoted as V1, V2, V3, V4, V5, and V6).

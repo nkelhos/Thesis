@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import sys
 import matplotlib.pyplot as plt
 plt.rc( 'text', usetex=True )
 
@@ -31,7 +32,7 @@ for mass in order :
         #print('xstr, ystr: %s %s' % ( repr(xstr) , repr(ystr) ) )
         yval = float(ystr)
         xval = float(xstr) / 1e3 # switch from GeV to TeV
-        if yval > 0.0 :
+        if yval > 0.0 and xval > 0.5 and xval < 500.0 :
           x += [ xval ]
           y += [ yval ]
 
@@ -44,6 +45,8 @@ plt.ylabel(r'$\frac{dN}{dE}$')
 plt.legend( leg, loc='upper right' )
 plt.title( r'$\chi\chi \rightarrow b\bar{b} \rightarrow \gamma\gamma$ Spectrum from Different Mass $\chi$' )
 plt.savefig('bbbar_spectrum.png')
+
+#sys.exit()
 
 plt.clf()
 
@@ -84,7 +87,9 @@ for channel in order :
         #print('xstr, ystr: %s %s' % ( repr(xstr) , repr(ystr) ) )
         yval = float(ystr)
         xval = float(xstr) / 1e3 # switch from GeV to TeV
-        if yval > 0.0 :
+        #print('%s : %.3e' % ( xstr, xval ) )
+        if yval > 0.0 and xval > 0.5 and xval < 500.0 :
+          print('%.2e %.2e' % ( xval, yval ) )
           x += [ xval ]
           y += [ yval ]
 
