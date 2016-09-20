@@ -8,8 +8,8 @@
   \end{center}
 \end{figure}
 
-VERITAS is a gamma ray observatory operating in Arizona, USA, capable of detecting $\nicetilde$TeV-energy gamma rays.
-This detection is performed by an array of four Imaging Atmospheric Cherenkov Telescopes, each spaced $\nicetilde$50m apart.
+VERITAS is a gamma ray observatory operating in Arizona, USA, and is capable of detecting $\nicetilde$TeV-energy gamma rays.
+The observatory consists of an array of four Imaging Atmospheric Cherenkov Telescopes, each spaced $\nicetilde$50m apart.
 Each telescope possesses an array of 345 mirrors, and a Photomultiplier Tube (PMT) camera (containing 499 PMTs) on a set of struts.
 When a gamma-ray produces an air shower in the atmosphere, the shower emits blue-UV Cherenkov photons over a timespan of nanoseconds.
 By focusing these photons onto the PMT camera with the mirrors, images of the shower can be taken, where each pixel of the image consists of analog voltage pulses from each PMT, with more photons causing larger pulses.
@@ -45,12 +45,12 @@ However, as the dishes are large metal structures, they bend and flex at differe
 To account for this flexing, the encoder values are then given to a structural model (??), which accounts for the dish structure bending at different azimuths and elevations.
 After applying this model, the telescope pointing can be tracked with an accuracy of 0.013\degree to 0.027\degree \cite{Veritas_Detector}.
 
-As an improvement to the encoder measurement, a Virtual Pointing Monitor (VPM) system is also in place.
+As an improvement to the encoder measurements, a Virtual Pointing Monitor (VPM) system is also in place.
 The VPM consists of two CCD cameras fixed to each telescope, pointing parallel to the telescope pointing, and a set of LED lights attached to the camera, next to the Winston cones (see section \ref{sec:pmts}).
 The first CCD camera is attached below the bottom mirrors, and images the stars in the field of view.
 The second CCD camera is attached to the support struts, roughly halfway between the mirrors and the camera, and images the focal plane of the telescope.
-Both cameras are visible in figure \ref{fig:davcottel}
-During regular observations, these cameras take images of the background stars and the focal plane every two seconds, and (??), resulting in an improved pointing accuracy of \nicetilde 0.0069\degree (originally in griffen thesis 2016, pg45, but is there a better citation??).
+Both cameras are visible in figure \ref{fig:davcottel}.
+During regular observations, these cameras take images of background stars and the focal plane LEDs every two seconds, and (??), resulting in an improved pointing accuracy of \nicetilde 0.0069\degree (originally in griffen thesis 2016, pg45, but is there a better citation??).
 
 As the VERITAS telescopes are based on old designs for a military solar concentrator that sets targets on fire\cite{daviescotton}, the VERITAS telescopes have similar abilities.
 This mostly means that care must be taken during the day to point the telescopes away from the sun during maintanance and storage.
@@ -61,11 +61,11 @@ VERITAS telescopes are stored during the day by pointing them at \nicetilde0\deg
 
 \section{Mirrors}\label{sec:mirrors}
 
-When cherenkov light first interacts with the telescope array, it is by being reflected by one of 345 mirrors.
-These mirrors face towards the incoming cherenkov light, with the PMTs positioned in a camera box, facing the mirrors, shown in figure \ref{fig:davcottel}.
+When a gamma-ray shower's cherenkov light first interacts with the telescope array, it is by being reflected by one of 345 mirrors.
+These mirrors face towards the incoming cherenkov light, with the PMT camera facing the mirrors, as shown in figure \ref{fig:davcottel}.
 This configuration is referred to as a Davies-Cotton telescope \cite{daviescotton}.
 Each mirror has an area of 0.322$m^2$, and a spherical curvature radius of 24m.
-The mirrors are each mounted along the support structure so that the total diameter of the telescope mirror area is 12m, with a focal length of 12m, and a total mirror area of 111$m^2$ \cite{Veritas_Detector}.
+The mirrors are each mounted along the support structure so that the total diameter of the telescope's mirror area is 12m, with a total area of 111$m^2$ and a focal length of 12m \cite{Veritas_Detector}.
 The mirrors' reflectivity as a function of wavelength is shown in figure \ref{fig:mirreflect}.
 
 \begin{figure}[h]
@@ -77,15 +77,17 @@ The mirrors' reflectivity as a function of wavelength is shown in figure \ref{fi
 
 As the mirrors are exposed to the elements, they slowly accumulate dust and scratches.
 To combat this, they are cleaned and recoated at regular (yearly??) intervals.
-Each mirror is attached to the support structure via three adjustable mounting points, meaning the mirror orientation can be adjusted to point directly on the camera, detailed in \cite{mirroralign}.
-This alignment is measured and adjusted at regular intervals, using background stars as a calibration source??.
+Each mirror is attached to the support structure via three adjustable mounting points, allowing for adjustment of the mirror orientation to point directly at the camera, as detailed in \cite{mirroralign}.
+This alignment is measured and adjusted at regular intervals, using background stars as a calibration source (??).
 
 
 \subsection{Star Point Spread Function}
 
+Due to dust, minor imperfections in the surface of the mirrors, and small mirror misalignments, the photons that bounce off the mirrors are not reflected perfectly.
+Instead, a single point-like light source appears smeared out on the focal plane, called the point spread function (PSF).
 By pointing a telescope at Polaris and placing a CCD at the focal plane, the mirror PSF can be measured.
 This was done with the first VERITAS telescope was built, where the image is shown in figure \ref{fig:mirrorpolaris}.
-The mirror psf is 0.06\degree full width half maximum\cite{Veritas_Detector}.
+The mirror psf roughly gaussian-shaped, with a 0.06\degree full width half maximum\cite{Veritas_Detector}.
 
 \begin{figure}[h]
   \begin{center}
@@ -128,8 +130,7 @@ To operate, the PMTs are connected to high voltage, which is typically around se
   \end{center}
 \end{figure}
 
-The PMTs' output signals are first sent through an amplifier, before travelling down a \nicetilde45m (cite??) cable to electronics stationed near the telescope.
-The electronics then digitize the signal.
+The PMTs' output signals are first sent through an amplifier, before travelling down a \nicetilde45m (cite??) cable to electronics stationed near the telescope, which digitize the signal.
 
 The first circuit that the signal passes through is a Constant Fraction Descriminator (CFD) circuit.
 This circuit duplicates the signal voltage pulse from the PMTs, inverts and delays the duplicate pulse, and adds it back to the original pulse.
@@ -144,11 +145,11 @@ The CFD's zero threshold trigger time is around the time when the signal voltage
 The second use is that when the CFD circuit detects a voltage pulse larger than a given maximum threshold, it can emit an extra logic trigger, called a low-gain trigger.
 This extra low-gain trigger can then be used by later electronics to determine the rough size of the original signal voltage pulse.
 
-CFD behavior cite??
+%CFD behavior cite??
 
-CFD model??
+%CFD model??
 
-FADC model??
+%FADC model??
 
 After the CFD emits a trigger pulse, the signal voltage pulse is passed to another circuit for digization, a Flash Analog-to-Digital Circuit, or FADC.
 This FADC circuit then, for each nanosecond time bin, measures how large the voltage pulse is with a series of 255 (??) constant-voltage thresholds.
