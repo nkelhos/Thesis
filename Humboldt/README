@@ -1,0 +1,7 @@
+
+To compile a pdf, do:
+  $ make thesis.pdf
+
+which will be output to tmp/thesis.pdf.
+
+

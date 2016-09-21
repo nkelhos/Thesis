@@ -1,0 +1,73 @@
+\makeatletter
+\begin{titlepage}
+\begin{spacing}{1}
+% settings .....................
+\newlength{\parindentbak}
+  \setlength{\parindentbak}{\parindent}
+\newlength{\parskipbak}
+  \setlength{\parskipbak}{\parskip}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+
+\thispagestyle{empty}
+
+\expandafter \Large\sffamily \expandafter
+
+% content ......................
+\begin{center}
+\begin{spacing}{1.2}
+\begingroup
+\fontsize{18pt}{10pt}\selectfont
+{\textbf{\mytitle}}
+\endgroup
+\end{spacing}
+
+%\vspace{\baselineskip}
+\vfill
+
+\so{Dissertation}
+
+zur Erlangung des akademischen Grades
+
+\so{doctor rerum naturalium}
+
+(Dr. rer. nat.)
+
+im Fach Physik
+
+eingereicht an der \\ \myfaculty \\ der \myuni 
+
+von\\
+
+\textbf{Dipl. Phys. \myname} \\
+
+\vfill
+\vfill
+
+Pr\"asidentin/Pr\"asident der \myuni: \\
+\vspace{0.2\baselineskip}
+...  \\
+\vspace{\baselineskip}
+
+Dekanin/Dekan der \myfaculty: \\
+\vspace{0.2\baselineskip}
+...  \\
+\vspace{1.5\baselineskip}
+
+\end{center}
+\noindent
+\begin{tabular}{ll}
+Gutachter/innen: 
+& 1. ... \\
+& 2. ... \\
+& 3. ... \\
+\end{tabular}
+
+~Tag der m\"undlichen Pr\"ufung: ...
+
+\setlength{\parindent}{\parindentbak}
+\setlength{\parskip}{\parskipbak}
+\end{spacing}
+\end{titlepage}
+\makeatother

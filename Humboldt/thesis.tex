@@ -1,0 +1,117 @@
+%%% This is one way to your success in fullfilling all HU requirements
+%%% 
+%%% author:     Heike Prokoph 
+%%%        (with the help of google)
+
+\documentclass[%
+  open=right,% 
+  headsepline,%
+  cleardoublepage=empty,%
+  listof=totoc,%
+  bibliography=totoc,%
+  appendixprefix,%
+]{scrbook}
+
+%%% heads and foots and spacings ... 
+\usepackage{scrpage2} 
+\pagestyle{scrheadings}
+\clearscrplain
+\renewcommand*{\headfont}{\normalfont\scshape}
+\usepackage{setspace} % should be called before hyperref!
+\onehalfspacing
+
+\input{adjustment.tex}
+
+%%% load pdfa format 
+%%% (includes hyperref itself - don't load hyperref somewhere else!)
+\usepackage[a-1b]{pdfx} 
+
+%%% general stuff for PDF/A format
+\usepackage{xmpincl}
+%\includexmp{pdfa-1a}
+\pdfinfo{%
+    /Title    (\Title)
+    /Author   (\Author)
+    /Subject  (\Subject)
+    /Keywords (\Keywords)
+    /ModDate  (\pdfcreationdate)
+    /Trapped  /False
+}
+\expandafter\ifx\csname pdfgeninterwordspace\endcsname\relax
+\message{\string\pdfgeninterwordspace\space not supported by this version of pdftex}
+\else
+\pdfmapline{+dummy-space <dummy-space.pfb}
+\pdfgeninterwordspace=1
+\fi
+
+
+
+\hypersetup{
+  pdflang=en, %%% HU important
+  pdfpagemode=UseOutlines, %%% HU important
+  pdfpagelayout=OneColumn, %%% HU important (single page continous) 
+  pdfstartview=Fit,
+  plainpages=false, 
+  bookmarksnumbered=true,
+  linktocpage=true,
+  colorlinks,
+  linkcolor=black, %red,
+  filecolor=black,                
+  urlcolor=black,                    
+  citecolor=black %green       
+}
+
+\usepackage{citelist}
+
+%%% some usual stuff (some might not be needed ...)
+\usepackage[left=25mm, right=25mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[english,ngerman]{babel} 
+\usepackage{soul}
+\usepackage[round]{natbib}
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[titletoc]{appendix}
+
+
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{nicefrac}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{amssymb,amsmath}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\frontmatter
+\maketitle
+
+\mainmatter
+\selectlanguage{english}
+
+\include{acknowledgements}
+\include{tableofcontents}
+\include{abstract}
+
+\include{chapter-intro}
+\include{chapter-darkmatter}
+\include{chapter-gammarays}
+\include{chapter-veritas}
+\include{chapter-reconstruction}
+\include{chapter-analysis}
+\include{chapter-conclusion}
+
+\include{bibliography}
+\include{appendix}
+
+\end{document}
