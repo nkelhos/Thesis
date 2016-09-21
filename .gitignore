@@ -13,5 +13,15 @@
 *.ps
 *.toc
 
+# extra files/dirs
+Humboldt-template/
+References/
+ResearchTree.key
+pdfa.xmpi
+taupnotes.txt
+tmp/
+
+
+
 # final pdf
 *.pdf
