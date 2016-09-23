@@ -5,6 +5,8 @@
 
 \section{Image Reconstruction}\label{subsec:imgrecon}
 
+The trigger and digization systems save all pixel voltages ?? seconds to either side of the L3 trigger.
+
 Pixels have their peak charge found.
 Images are cleaned of extraneous pixels.
 The time gradient is fit to each image.
@@ -52,6 +54,10 @@ Improved angular resolution plot??
 \section{Energy Reconstruction}\label{subsec:enrecon}
 A library of different showers is built, from a variety of elevations, energies, and distances from the camera.
 This library can then be used to look up a real shower, find the most similar in elevation, shape, etc, and then reading that shower's library energy.
+
+\subsection{Image Mean Scaled Width and Length}
+The strongest parameters for determining the energy of a gamma ray are the width and length (in angle) of its shower image.
+This width and length depend on the angle between the shower direction and the telescope pointing, as well as the distance from the observatory to the shower.
 
 
 \section{Sensitivity}
@@ -184,8 +190,6 @@ It can be seen that in different energy bins, the background possesses different
     \caption[CTOOLS Background at \nicetilde29\degree Elevation]{15(livetime??) Sagittarius A* Off runs, between elevations 27.5\degree and 30\degree.  Events are divided into 6 equal-statistics energy bins, of which four are binned in Camera Coordinates in figures B, C, D, and E.}\label{fig:back_lowelev29}
   \end{center}
 \end{figure}
-
-
 
 \begin{figure}[ht]
   \begin{center}
