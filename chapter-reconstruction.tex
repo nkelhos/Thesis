@@ -1,7 +1,15 @@
 \cleartooddpage[\thispagestyle{empty}]
 \chapter{Gamma Ray Reconstruction}
 
+From chapter \ref{chapter:veritas}, it has been explained how the trigger system preserves PMT voltage traces of potential events.
+To reconstruct gamma rays, the voltage traces caused by cherenkov light must be identified, cleaned, and combined into images of the original cherenkov shower.
+Then shower images from multiple telescopes can be used to wholly reconstruct the original gamma ray's properties.
 
+\section{Voltage Traces Integration}
+Find pedestal voltage.
+Find pedestal voltage variation.
+Identify image pixels.
+Identify image pixel boarders.
 
 \section{Image Reconstruction}\label{subsec:imgrecon}
 
@@ -68,10 +76,15 @@ It is often quantified by using simulations to predict the amount of observation
 
 \section{Effective Area}
 % plot of effective area vs energy
-Effective area is the measure of how many gamma rays a telescope can detect.
-It is referred to as 'Effective' because the detection efficiency is not 100\% at all energies or all parts of the camera.
-Instead it is 'effectivly' how large a detection area a telescope has, if it had perfect detection efficiency.
-Different telescopes can use this number to compare roughly how many gamma rays can be detected in a given span of time.
+Effective area is the measure of how large an observatory's collection area is, determining how many gamma rays can be detected per unit time, per units source.
+
+For each point in the parameter space, the effective areas are calculated with many Monte Carlo gamma ray simulations.
+This is done in the shower plane, the plane perpendicular to the line drawn between an observing source, and the center of the observatory.
+The effective area is then calculated via:
+$A=\pi R^2 \frac{N_{survived}}{N_{simulated}}$
+where R is the radius of the area within which simulated showers are directed to fall, $N_{simulated}$ is the number of showers that were initially simulated into the area, and $N_{survived}$ is the number of simulated showers that pass all cuts.
+This 'Effective' area is thus a measure of how much detection area the observatory would have if it had a 100\% detection efficiency, which can then be used in calculating a source's flux.
+
 
 
 \section{Energy Resolution}
