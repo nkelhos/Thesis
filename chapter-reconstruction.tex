@@ -1,5 +1,5 @@
 \cleartooddpage[\thispagestyle{empty}]
-\chapter{Gamma Ray Reconstruction}
+\chapter{Gamma Ray Reconstruction}\label{ch:grrecon}
 
 From chapter \ref{chapter:veritas}, it has been explained how the trigger system preserves PMT voltage traces of potential events.
 To reconstruct gamma rays, the voltage traces caused by cherenkov light must be identified, cleaned, and combined into images of the original cherenkov shower.
@@ -135,8 +135,8 @@ In addition to the event list, the instrument response functions (IRFs) must als
 These include effective areas, point spread funciton, energy dispersion, and background shapes for several dimensions in the IRF parameter space (energy, offset from camera center, telescope elevation/azimuth, noise, etc).
 By default, all IRFs are stored in a single database, and each event list contains a reference to which part of the parameter space should be used with it.
 
-However, the galactic center is at an elevation of 30\degree, much lower than most VERITAS observation targets.
-At this elevation, with its field of view of 3.5\degree, the air mass column density ($g/cm^{2}$) is 20\% higher at the bottom of the camera than at the top.
+However, the galactic center is at an elevation of $\ang{30}$, much lower than most VERITAS observation targets.
+At this elevation, with its field of view of $\ang{3.5}$, the air mass column density ($g/cm^{2}$) is 20\% higher at the bottom of the camera than at the top.
 Add to this that during a single 30 minute observation, the elevation of the Galactic Center can change by several degrees, means the airmass in view of the camera may change rapidly, meaning the IRFs may become time dependent.
 
 To allow for this time dependence in the analysis, an alternate way of storing the IRFs was chosen, diagrammed in figure \ref{fig:fits_scheme}.
@@ -165,7 +165,7 @@ Specifically, Gammalib tables store the PSF as the fit parameters of a King func
 A king function tends to fit gamma ray telescope PSF's better, due to its long tail (compared to a gaussian).
 As the PSF in event display is stored as a histogram, with the number of events at each radial distance, it becomes necessary to fit a king function.
 For roughly half of the parameter space, the king function fitter was unable to get a good fit (??).
-When this happens, a default value of 0\degree is used as the PSF.
+When this happens, a default value of $\ang{0}$ is used as the PSF.
 
 
 \subsection{Background Templates}
@@ -193,21 +193,21 @@ This happens because gamma ray's point of origin and its shower image in the cam
 \end{figure}
 
 
-In figure \ref{fig:back_lowelev29} and figure \ref{fig:back_lowelev26}, the same plots are constructed for a set of low-elevation (\nicetilde29\degree and \nicetilde26\degree respectivly)) observations, using Galactic Center Off observations.
+In figure \ref{fig:back_lowelev29} and figure \ref{fig:back_lowelev26}, the same plots are constructed for a set of low-elevation ($ \nicetilde \ang{29} $ and $ \nicetilde \ang{26} $ respectivly)) observations, using Galactic Center Off observations.
 These are again divided in to equal-statistic energy bins, and then each energy bin is binned in camera coordinates.
 It can be seen that in different energy bins, the background possesses different shapes.
 
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=\textwidth]{images/ctools/backgrounds_lowelev29.eps}
-    \caption[CTOOLS Background at \nicetilde29\degree Elevation]{15(livetime??) Sagittarius A* Off runs, between elevations 27.5\degree and 30\degree.  Events are divided into 6 equal-statistics energy bins, of which four are binned in Camera Coordinates in figures B, C, D, and E.}\label{fig:back_lowelev29}
+    \caption[CTOOLS Background at 29 degrees Elevation]{15(livetime??) Sagittarius A* Off runs, between elevations $ \ang{27.5} $ and $ \ang{30} $.  Events are divided into 6 equal-statistics energy bins, of which four are binned in Camera Coordinates in figures B, C, D, and E.}\label{fig:back_lowelev29}
   \end{center}
 \end{figure}
 
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=\textwidth]{images/ctools/backgrounds_lowelev26.eps}
-    \caption[CTOOLS Background at \nicetilde26\degree Elevation]{10(livetime??) Sagittarius A* Off runs, between elevations 24\degree and 27.5\degree.}\label{fig:back_lowelev26}
+    \caption[CTOOLS Background at 26 degrees Elevation]{10(livetime??) Sagittarius A* Off runs, between elevations $ \ang{24} $ and $ \ang{27.5} $. }\label{fig:back_lowelev26}
   \end{center}
 \end{figure}
 

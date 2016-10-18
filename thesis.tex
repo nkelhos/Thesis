@@ -17,6 +17,7 @@
 \pagestyle{scrheadings}
 \clearscrplain
 \renewcommand*{\headfont}{\normalfont\scshape}
+\usepackage{siunitx}
 \usepackage{setspace} % should be called before hyperref!
 \onehalfspacing
 
@@ -74,7 +75,8 @@
 \usepackage{lmodern}
 \usepackage[english,ngerman]{babel} 
 \usepackage{soul}
-\usepackage[round]{natbib}
+\usepackage[round]{natbib} % references use parenthesis (12)
+\setcitestyle{square}
 \usepackage{rotating}
 \usepackage{pdflscape}
 \usepackage{enumitem}
