@@ -9,7 +9,7 @@
 \end{figure}
 
 VERITAS (Very Energetic Radiation Imaging Telescope Array System, pictured in figure \ref{fig:veritasarray}) is a gamma ray observatory operating in Arizona, USA, and is capable of detecting $\nicetilde$TeV-energy gamma rays.
-The observatory consists of an array of four Imaging Atmospheric Cherenkov Telescopes (IACTs), each spaced $\nicetilde$50m apart.
+The observatory consists of an array of four Imaging Atmospheric Cherenkov Telescopes (IACTs), each spaced $\nicetilde$90m apart.
 Each telescope possesses an array of 345 mirrors, and a Photomultiplier Tube (PMT) camera (containing 499 PMTs) on a set of struts.
 When a gamma ray produces an air shower in the atmosphere, the shower emits blue-UV Cherenkov photons over a timespan of nanoseconds.
 By focusing these photons onto the PMT camera with the mirrors, images of the shower can be taken, where each pixel of the image consists of analog voltage pulses from each PMT, with more photons causing larger pulses.
@@ -42,16 +42,16 @@ This dish can rotate in azimuth and in elevation, with enough range in both axes
 At their fastest, the telescopes can slew at a rate of $ \nicetilde \ang{1} $ per second.
 To track where the telescopes are pointing, the motors that drive the azimuth and elevation movement have encoders that digitize the pointing direction of the dishes.
 However, as the dishes are large metal structures, they bend and flex at different elevations and azimuths.
-To account for this flexing, the encoder values are then given to a structural model, which accounts for the dish structure bending at different azimuths and elevations.
-After applying this model, the telescope pointing can be tracked with an accuracy of $\ang{0.013}$ to $\ang{0.027}$ \cite{Veritas_Detector}.
+To account for this flexing, the encoder values are then given to a structural model called T-Point, which corrects for the dish structure bending at different azimuths and elevations.
+After applying this model, the telescope pointing can be tracked with an accuracy of $\ang{0.013}$ to $\ang{0.027}$ (That is a range within a factor of two. Why?? -Gernot) \cite{Veritas_Detector}.
 
-As an improvement to the encoder measurements, a Virtual Pointing Monitor (VPM) system is also in place.
+As an improvement to the encoder measurements, a VERITAS Pointing Monitor (VPM) system is also in place.
 The VPM consists of two CCD cameras fixed to each telescope, pointing parallel to the telescope pointing, and a set of LED lights attached to the PMT camera, next to the Winston cones (see section \ref{sec:pmts}).
 The first CCD camera is attached below the bottom mirrors, and images the stars in the field of view.
 The second CCD camera is attached to the support struts, roughly halfway between the mirrors and the camera, and images the focal plane of the telescope.
-Both cameras are visible in figure \ref{fig:davcottel}.
-During regular observations, these cameras take images of background stars and the focal plane LEDs every two seconds and matching the star positions, an improved pointing accuracy of $ \ang{0.0069} $ can be achieved.
-%originally in griffen thesis 2016, pg45, but is there a better citation??
+Both cameras are marked by red dashed-line circles in figure \ref{fig:davcottel}.
+During regular observations, these cameras take images of background stars and the focal plane LEDs every two seconds and matching the star positions, an improved pointing accuracy of $ \ang{0.0069} $ (And you are sure it ..69, and not ....70?? -Gernot) can be achieved.
+%originally in griffin thesis 2016, pg45, but is there a better citation??
 
 As the VERITAS telescopes are based on old designs for a military solar concentrator that sets targets on fire \cite{daviescotton}, the VERITAS telescopes have similar abilities.
 This mostly means that care must be taken during the day to point the telescopes away from the sun during maintanance and storage.
@@ -59,12 +59,13 @@ This mostly means that care must be taken during the day to point the telescopes
 If any direct sunlight falls onto the telscope mirrors, the \nicetilde100,000 Watts of light will be concentrated either onto the camera, or a point within a few meters of the camera, which could potentially cause signficant damage to telescope hardware or nearby plants, animals, and people.
 VERITAS telescopes are stored during the day by pointing them North at $ \nicetilde \ang{0} $ elevation.
 
+( Missing here is the relevance for your thesis. Does the VPM work with the same accuracy at 30 deg? What about the encoders? What is the minimum elevation possible?? -Gernot)
 
 \section{Mirrors}\label{sec:mirrors}
 
-When the cherenkov light from a gamma-ray shower first interacts with the telescope array, it is by being reflected by some of the 345 mirrors.
-These mirrors face towards the incoming cherenkov light, with the PMT camera facing the mirrors, as shown in figure \ref{fig:davcottel}.
-This configuration is referred to as a Davies-Cotton telescope \cite{daviescotton}.
+When the Cherenkov light from a gamma-ray shower first interacts with the telescope array, it is by being reflected by some of the 345 mirrors.
+These mirrors face towards the incoming Cherenkov light, with the PMT camera facing the mirrors, as shown in figure \ref{fig:davcottel}.
+When its spherical mirrors, spherical dish, and focal length ratio of $ \nicetilde 2 $ are considered, this configuration is referred to as a Davies-Cotton telescope \cite{daviescotton}.
 Each mirror has an area of 0.322$m^2$, and a spherical curvature radius of 24m.
 The mirrors are each mounted along the support structure so that the total diameter of the telescope's mirror area is 12m, with a total area of 111$m^2$ and a focal length of 12m \cite{Veritas_Detector}.
 The mirrors' reflectivity as a function of wavelength is shown in figure \ref{fig:mirreflect}.
@@ -73,24 +74,26 @@ The VERITAS specifications state that the mirror reflectivity must be $\geq 85\%
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.75\textwidth]{images/mirror_reflect}
-    \caption[Mirror Reflectivity]{Mirror reflectivity as a function of wavelength for each telescope, from Ref \cite{mirrorfacets}.}\label{fig:mirreflect}
+    \caption[Mirror Reflectivity]{Mirror reflectivity as a function of wavelength for each telescope, from Ref \cite{mirrorfacets}. (Really?? All points are exactly on top of each other -Gernot)}\label{fig:mirreflect}
   \end{center}
 \end{figure}
 
 As the mirrors are exposed to the elements, they slowly accumulate dust and scratches.
-To combat this, they are cleaned and recoated at regular (yearly??) intervals.
+To combat this, they are cleaned and recoated every two years.
 Each mirror is attached to the support structure via three adjustable mounting points, allowing for adjustment of the mirror orientation to point directly at the camera, as detailed in \cite{mirroralign}.
-This alignment is measured and adjusted at regular intervals, using background stars as a calibration source (??).
+This alignment is measured and adjusted at regular intervals, using background stars as a calibration source.
+
+(Why is the PSF so important for your thesis?? -Gernot)
 
 
 \subsection{Star Point Spread Function}
 
 Due to dust, minor imperfections in the surface of the mirrors, and small mirror misalignments, the photons that bounce off the mirrors are not reflected perfectly.
 Instead, a single point-like light source appears smeared out on the focal plane.
-This smearing is then quantified by a fitted gaussian function, usually called the optical Point Spread Function\footnote{Please note that this is different from the PSF described in Chapter \ref{ch:grrecon}, which quantifies the spread in the reconstructed gamma-ray positions.  The optical PSF instead describes the spread of cherenkov photons.} (PSF).
-By pointing a telescope at Polaris and placing a CCD at the focal plane, the mirror PSF can be measured.
-This was done when the first VERITAS telescope was built, whith the resulting image shown in figure \ref{fig:mirrorpolaris}.
-The mirror psf roughly gaussian-shaped, with a $ \ang{0.06} $ full width half maximum \cite{Veritas_Detector}.
+This smearing is then quantified by a fitted gaussian function, usually called the optical Point Spread Function\footnote{Please note that this is different from the PSF described in Chapter \ref{ch:grrecon}, which quantifies the spread in the reconstructed gamma-ray positions.  The optical PSF instead describes the spread of UV-Optical photons.} (PSF).
+By pointing a telescope at different stars and placing a CCD at the focal plane, the mirror PSF is measured monthly.
+The first VERITAS telescope's first calibration image shown in figure \ref{fig:mirrorpolaris}.
+The mirror psf roughly gaussian-shaped but with longer tails, with a $ \ang{0.06} $ full width half maximum \cite{Veritas_Detector}.
 
 \begin{figure}[ht]
   \begin{center}
@@ -101,9 +104,7 @@ The mirror psf roughly gaussian-shaped, with a $ \ang{0.06} $ full width half ma
 
 \subsection{Mirror Alignment}
 % https://veritas.sao.arizona.edu/wiki/index.php/Mirror_Alignment
-The mirrors are each mounted to the dish on three adjustable mounting points.
-By adjusting the mounting points, the mirrors can be individually aligned.
-The alignment procedure is performed by placing a CCD camera at the focal plane, facing towards the mirrors.
+The mirror alignment procedure is performed by placing a CCD camera at the focal plane, facing towards the mirrors.
 The telescope is then pointed towards a magnitude 2 star at $ \nicetilde \ang{70} $ elevation.
 The pointing is known as a `raster' scan of the star, where each mirror's field of view is in turn centered on the star.
 By using the CCD to examine the position of the star in each mirror, the mirror's alignment can be calculated and corrected.
@@ -133,7 +134,8 @@ These winston cones can be seen attached to the PMTs in figure \ref{fig:winstcon
 \end{figure}
 
 To operate, the PMTs are connected to high voltage, typically around several hundred Volts.
-The PMTs' output signals are first sent through an amplifier, before travelling down a \nicetilde45m (cite??) cable to trigger and digitization electronics stationed near the telescope, which digitize the signal.
+(?? Be exact here, you know the voltage much better -Gernot)
+The PMTs' output signals are first sent through an amplifier, before travelling down a \nicetilde45m cable to trigger and digitization electronics stationed near the telescope, which digitize the signal.
 
 The first circuit that the signal passes through is a Constant Fraction Descriminator (CFD) circuit.
 This circuit duplicates the signal voltage pulse from the PMTs, inverts and delays the duplicate pulse, and adds it back to the original pulse.
@@ -148,7 +150,7 @@ If a simple threshold trigger is used to detect a signal pulse, the time of the 
 The CFD's zero threshold trigger is invoked when the signal voltage pulse is at 75\% of its maximum value. (cite??)
 
 The second use is that when the CFD circuit detects a voltage pulse larger than a given maximum threshold, it can emit an extra logic trigger, called a low-gain trigger.
-This extra low-gain trigger can then be used by later electronics to determine the rough size of the original signal voltage pulse.
+This extra low-gain trigger is then used by the FADC to switch between high-gain and low-gain mode when digitizing voltage pulses.
 
 %CFD behavior cite??
 
@@ -160,6 +162,7 @@ After the CFD emits a trigger pulse, the signal voltage pulse is passed to anoth
 This FADC circuit then, for each nanosecond time bin, measures how large the voltage pulse is with a series of 255 (??) constant-voltage thresholds.
 The highest threshold that is crossed in a single time bin then determines the digital voltage value that is saved to the FADC buffer for that time bin.
 
+(?? Please read the T1 paper again, this paragraph is not entirely correct -Gernot)
 If the low-gain trigger pulse was also recieved by the FADC, then the signal voltage pulse is de-amplified(means attenuated, or reverse the effect of the previous amplification??) before being digitized, since the CFD low-gain threshold is set to lower than the FADC maximum digitizable voltage.
 If this low-gain triggering did not take place, then the FADC would become saturated.
 Once the voltage pulse is digitized, it is saved to a rolling buffer (how long is the buffer??) in the FADC, waiting for higher level triggers, signaling the FADC to readout its buffers into a datafile.
@@ -167,17 +170,18 @@ Once the voltage pulse is digitized, it is saved to a rolling buffer (how long i
 \subsection{PMT Upgrade}
 In summer of 2012, all PMTs in the telescopes were replaced with improved PMTs.
 Specifically, the original Photonis XP2970 models were replaced with the Hamamatsu R10560-100-20 MOD.
-This was done because that R10560 has a considerably higher quantum efficiency (\nicetilde$90\%$), compared to the XP2970 (\nicetilde$75\%$).
+This was done because that R10560 has a considerably higher quantum efficiency (\nicetilde$90\%$ (??this is not the right value??)), compared to the XP2970 (\nicetilde$75\%$(??this is not the right value??)).
 This higher quantum efficiency means more photons from a shower are detected by the PMT, which means VERITAS is more sensitive to lower energy gamma rays \cite{pmtmodels}.
-In addition, the voltage pulse due to a single photoelectron is thinner with the R10560 compared to the XP2970, as shown in figure \ref{fig:pmt_pulse_widths}.
+In addition, the voltage pulse due to a single photoelectron is shorter with the R10560 compared to the XP2970, as shown in figure \ref{fig:pmt_pulse_widths}.
 
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.75\textwidth]{images/pmt_models_pulsewidths.eps}
-    \caption[Pulse Widths]{Pulse widths of the old XP2970 PMTs (red circles) and the new R10560 PMTs (blue triangles), taken from \cite{pmtmodels}.  Plots are the average of many afterpulses, normalized to the maximum amplitude.  Pulses shown include dispersion due to a \nicetilde55m coaxial cable between the PMTs and the digitizer boards.}\label{fig:pmt_pulse_widths}
+    \caption[Pulse Shapes]{Pulse shapes of the old XP2970 PMTs (red circles) and the new R10560 PMTs (blue triangles), taken from \cite{pmtmodels}.  Plots are the average of many afterpulses, normalized to the maximum amplitude.  Pulses shown include dispersion due to a \nicetilde55m coaxial cable between the PMTs and the digitizer boards.}\label{fig:pmt_pulse_widths}
   \end{center}
 \end{figure}
 
+(if I don't use V4/V5 data at all, I should discuss them less (??))
 The data used in this thesis was taken after the upgrade, which means the telescope performance is different for these two time periods.
 This is accounted for by separate simulations for each PMT model, mostly resulting in different effective areas at the lower energies.
 
@@ -187,9 +191,10 @@ This is accounted for by separate simulations for each PMT model, mostly resulti
 While the VERITAS PMTs are all the same model, there are still differences from PMT to PMT that can impact any data taken.
 Primarily, these differences can cause the same number of incident photons to create differently-shaped output voltage pulses in each PMT.
 To account for these differences, there are several calibration procedures that are applied nightly or semi-nightly.
-These are performed with a set of flashing LEDs, placed on the camera such that their light bounches off the mirrors and back onto the PMTs.
+These are performed with a set of flashing LEDs, placed next to the mirrors such that they illuminate the PMTs.
 
-In the first procedure, the LEDs are flashed at \nicetilde10Hz at the beginning of each night.
+((??) No. that paragraph is completely wrong. We never look at the pulse width. We do not adjust the HV nightly -Gernot)
+In the first procedure, the LEDs are flashed at \nicetilde10Hz (100 or 300?? -Gernot) at the beginning of each night.
 While the LEDs are flashing, the average pulse width from each PMT is monitored.
 Then, the High Voltage is adjusted for each group of PMTs to make their pulse widths as similar as possible (there are several PMTs connected to each high voltage crate).
 This must be done nightly, because just like each PMT is unique, each PMT's temperature dependence is also unique.
@@ -199,8 +204,8 @@ This is done by placing an opaque (several-mm-thick metal) plate over the PMTs, 
 The LEDs are then flashed repeatedly.
 As the opaque plate has holes for each PMT, each PMT gets on average 0-5 photons per flash.
 Large numbers of flashes can then be used to gather information on each PMTs' distribution of pulse widths.
-By examining a histogram of these pulse widths, one can see poisson-statistics peaks (from the PMT's quantum efficiency) that are formed for the 1, 2, 3, and further integer numbers of photons.
-These peaks can then be used to translate the voltage pulses from the PMTs into their originating photoelectrons.
+By examining a histogram of the pulses' integrated charges, one can see poisson-statistics peaks that are formed for the 1, 2, 3, and further integer numbers of photons.
+These peaks can then be used to translate the digital counts from the PMTs into their originating photoelectrons.
 These calibration techniques are further detailed in \cite{calib_techniques}.
 
 (Figure describing poissonian peaks??)
@@ -209,18 +214,17 @@ These calibration techniques are further detailed in \cite{calib_techniques}.
 
 \section{Trigger System}\label{sec:trig}
 
-The operation of VERITAS requires digitizing voltage pulses roughly once per nanosecond, per photomultiplier tube.
+The operation of VERITAS requires digitizing voltage pulses with voltage samples roughly once per nanosecond, per photomultiplier tube.
 This means that, with 255(??) voltage levels, 1 second of raw voltage data would require 2 Terabytes of space.
 As this is unfeasable with today's computing systems, only subsets of the raw pixel voltages are saved when certain trigger conditions are met.
-To complicate matters, photons from atmospheric muons and the night sky background can also cause voltage pulses similar to a gamma ray shower.
+To complicate matters, photons from atmospheric muons and the night sky background can also cause voltage pulses similar to a gamma ray shower's cherenkov photons.
 Thus, VERITAS has a system of triggers that reduces the amount of raw data that is saved, while also partially filtering out non-gamma-ray events.
 
 The L1 is the first and lowest level trigger.
 An L1 trigger (sometimes called a pixel trigger) is emitted when a PMT's CFD circuit detects a signal voltage above a given threshold, typically in the 10s of mV.
-This threshold voltage is varied throughout datataking by a rate-feedback system (elaborate more??).
-The L1 trigger is emitted at the point in time when the voltage pulse is approximatly 75\% of its maximum (??).
-Once emitted, the L1 trigger is sent to a per-telescope FPGA circuit board for the next level trigger \ref{fpga}.
+This threshold voltage is varied throughout datataking by a rate-feedback system, which adjusts the trigger threshold according to the night sky background level.
 
+((??) Again, this paragraph is far too detailed and not relevant -Gernot)
 The L2 (image) trigger is emitted by the FPGA when a group of L1 triggers meet certain requirements.
 These requirements include that multiple L1 triggers must fall within a certain time window, and that multiple L1 triggers form one of several predefined shapes, or templates.
 The coincident time window varies. (elaborate??)
@@ -247,12 +251,11 @@ This means that at an L3 trigger rate of \nicetilde300Hz, approximately \nicetil
 Since the L3 rate varies over the course of a single 30 minute run, this means that the deadtime also varies.
 This is accounted for in the flux calculation in section ??.
 
-\subsection{Time Pedestal Calibration}
+\subsection{Time Zero Calibration}
 As all PMTs and signal cables are not identical, there are differences in how long a voltage pulse takes to travel.
-More specifically, the time between a) when the photon strikes the PMT cathode ?? and b) when the voltage pulse sets off its L1 trigger, can vary from pixel to pixel.
+More specifically, the time between a) when the photon strikes the PMT's photocathode and b) when the voltage pulse sets off its L1 trigger, can vary from pixel to pixel.
 This is usually measured by looking at the average arrival time of many events over all camera pixels.
 By looking at the average arrival time, pixels that are consistanly early or late can be accounted for, which improves image identification.
-(How is this accounted for?? In the TZero stage??)
 
 \section{Epochs}\label{sec:epochs}
 After being built, VERITAS has evolved over several years, with collaboration members upgrading it to improve performance.
