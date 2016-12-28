@@ -152,7 +152,7 @@ By looking at the number of gamma rays detected at each energy and elevation (an
 It is important to note, that each energy has a different slope due to elevation.
 
 
-\subsection{Gamma Verses Protons}
+\subsection{Gamma Rays VS Protons}
 
 Doughnut shapes appear in the gamma-like protons.
 
@@ -181,7 +181,7 @@ These runs were pointing ?? degrees from the camera center, to avoid effects of 
 \section{Test Crab Analysis}
 
 Only studied runs with elevations between $\ang{70}$ and $\ang{75}$.
-Used Segue 1 data at the same elevations as a background.
+Used same low-elevation galactic center off runs as a background.
 
 \subsection{Event Display}
 \subsection{CTOOLs}
@@ -203,8 +203,31 @@ Dark Matter halos are modeled by a spherically-symmetric mass-per-volume density
 Two promising candidates for this profile are Einasto and Navarro-Frenk-White (NFW) profile.
 
 The Einasto profile takes the form:
-$ \rho\(r\) = \rho_{o} exp \{ - \frac{2}{\alpha} \[ \(\frac{r}{r_o}\)^{\alpha} - 1 \] \} $
+
+$ \rho \left( r \right) = \rho_{o} exp { - \frac{2}{\alpha} [ \left( \frac{r}{r_o} \right)^{\alpha} - 1 ] } $
+
 (This is from http://journals.aps.org/prd/pdf/10.1103/PhysRevD.83.023518 , check it against other source's definitions of the Einasto profile??)
+Where $\alpha = 0.17 $, from ??.
+
+
+The NFW profile takes the form
+
+$ \rho \left( r \right) = \rho_{o} \frac{1}{ \frac{r}{r_{s}} \( 1 + \frac{r}{r_s} \)^2 }$
+
+(equation from wikipedia, use better source??)
+
+Within Ctools, a Zhao profile (a more general form of an NFW profile) is programmed into a model.
+
+Equation for Zhao profile??
+
+A Zhao profile with $ \alpha_{z} = 1 , \beta_{z} = 3 , \gamma_{z} = 1 $, becomes an NFW profile (check??).
+
+
+As some simulations show baryons may put a limit on the maximum WIMP density inside a DM halo, this must be tested.
+This leads to a density profile that flattens out inside a core radius.
+
+Density profiles with a core can be formed by using the mass-per-volume density at the core radius for all radii smaller than the core radius, without any smoothing.
+Because this density is then integrated along the observer's line of sight, some smoothing is then imparted to the J-factor plot.
 
 (Plot of density profiles??)
 
