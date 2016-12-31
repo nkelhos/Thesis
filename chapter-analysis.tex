@@ -212,24 +212,32 @@ Where $\alpha = 0.17 $, from ??.
 
 The NFW profile takes the form
 
-$ \rho \left( r \right) = \rho_{o} \frac{1}{ \frac{r}{r_{s}} \( 1 + \frac{r}{r_s} \)^2 }$
+$$ \rho \left( r \right) = \rho_{o} \frac{1}{ \frac{r}{r_{s}} \( 1 + \frac{r}{r_s} \)^2 }$$
 
 (equation from wikipedia, use better source??)
 
-Within Ctools, a Zhao profile (a more general form of an NFW profile) is programmed into a model.
+Within Ctools, a Zhao profile (a more general form of an NFW profile) is programmed as a model.
 
 Equation for Zhao profile??
 
 A Zhao profile with $ \alpha_{z} = 1 , \beta_{z} = 3 , \gamma_{z} = 1 $, becomes an NFW profile (check??).
-
 
 As some simulations show baryons may put a limit on the maximum WIMP density inside a DM halo, this must be tested.
 This leads to a density profile that flattens out inside a core radius.
 
 Density profiles with a core can be formed by using the mass-per-volume density at the core radius for all radii smaller than the core radius, without any smoothing.
 Because this density is then integrated along the observer's line of sight, some smoothing is then imparted to the J-factor plot.
+For this analysis, four density profiles are tested: cuspy-NFW, cuspy-Einasto, cored-NFW, cored-Einasto.
 
 (Plot of density profiles??)
+
+
+Then, to convert these density profiles to a detectable quantity of gamma rays, each density profile's J-Factor must be calculated.
+
+% from http://www.pnas.org/content/112/40/12264.full.pdf
+
+$$ \frac{d \Phi_{\gamma}}{d E_{\gamma}} = \frac{1}{4\pi} \frac{ \langle \sigma_{\chi} v_{\chi} \rangle }{2 m^{2}_{\chi}} * \sum_{f} \frac{ d N_{\gamma}^{f} }{d E_{\gamma} } B_{f} * \int_{ \Delta \Omega } d \Omega' \int_{los} \rho^{2} d l( r, \theta' )  $$
+
 
 (Plot of J-factors??)
 
