@@ -10,14 +10,8 @@ Need an electron accelerator, and need photons of a necessary spectrum.
 Spinning pulsars, when their magnetic field lines break and reconnect, can accelerate electrons. (??)
 
 \subsection{Hadronic Processes}
-High energy protons collide with other protons, decay into pions, and neutral pions ($\pi_{0}$) decay into gamma-ray pairs.
-These protons can be 
-
-Electromagnetic showers are formed by high energy electrons or gamma-rays, and consist primarily of electrons, positrons, and photons.
-Through successive particle generations in the shower, photons will interact with ambient atmospheric atoms to convert into electron-positron pairs.
-Electrons and positrons will produce bremstrahlung photons as they suffer accelerations, and positrons interact with ambient electrons to annihilate into photon pairs.
-Eventually the photons don't posess enough energy to produce new $e^{+}e^{-}$ pairs, electrons quickly lose energy to mechanisms other than bremstrahlung, and the shower dies out.
-
+High energy protons collide with other protons, decay into pions, and the neutral pions ($\pi_{0}$) from that decay into gamma-ray pairs.
+These protons can be locally accelerated by a nearby mass of either stellar-scale (example??) or galaxy-scale(example??), or may be from other external galaxies.
 
 \subsection{Dark Matter Interactions}
 Indirect Detection: dark-dark => sm-sm
@@ -30,18 +24,33 @@ dark-dark => b-b => gamma-gamma
 
 
 \section{Atmospheric Shower}
+(this entire section needs more citations!??)
 
-Gamma rays strike atmospheric molecules, and produce an $e^\pm$ pair.
-The $e^+$ quickly annihilates into a $\gamma$ pair, which then repeate the process.
-the $e^-$ travels futher, collides with an existing particle, knocking more electrons free from atmospheric molecules.
-These electrons (still posessing a large amount of energy) then go on to knock more electrons free, repeating the cycle.
+When a gamma ray, proton, or other particle strikes an atom of Earth's atmosphere, it can set off a cascade of energetic particles called an air shower.
+When the primary particle is a gamma ray, an electron, or a positron, it creates an electromagnetic shower.
+When the primary is a proton or other baryon, it creates a hadronic shower.
+During either cascade of particles, any charged particles travelling at $v_{particle} > c_{atmosphere}$ will create Cherenkov photons, UV- and Visible-spectrum photons that are then imaged and recorded by the VERITAS observatory.
 
-As these electrons pass through the atmosphere, the are traveling at some velocity $c_{atmo}<v_e<c_{vac}$.
-This means they produce cherenkov light, at an angle proportional to their velocity and the local speed of light.
+(image of particle cascade diagram??)
+
+Electromagnetic air showers are started by a high energy (\nicetilde TeV) electron or gamma-ray, and produce a cascade of electrons, positrons, and photons, where initially each successive generation of particles tends to have more particles and less energy per particle than the last.
+The primary gamma ray will interact with an atmospheric atom, producing a $e^{-}e^{+}$ pair, each with roughly half the primary gamma ray's energy.
+The $e^{-}$ and $e^{+}$ will emit some photons through bremstrahlung radiation, until they only have a few MeV of kinetic energy, after which other energy loss mechanisms (compton, etc) dominate.
+The photons created during the shower go on to produce more $e^{-}e^{+}$ pairs, though as each newly created particle has less energy than its parent particle, eventually the photons in the shower don't have enough energy to produce additional $e^{-}e^{+}$ pairs, and the shower dies off.
+
+As most (\nicetilde 99\%??) of detected air showers are due to protons and not gamma rays, understanding the differences between hadronic showers and electromagnetic showers becomes useful in removing unwanted proton air showers and preserving gamma-ray air showers within the reconstruction software, sometimes referred to as gamma-hadron separation.
+Hadronic showers start with a primary \nicetilde TeV proton that interacts with an atmospheric atom.
+This proton then converts into a $\pi^{+}\pi^{-}\pi^{0}$, each with roughly \nicetilde 33\% (it varies though??) of the initial proton's energy.
+The $\pi^{+}$ and $\pi^{-}$ can travel far from the main axis of the primary particle, then produce $\mu\nu$ pairs.
+The $\pi^{0}$ quickly decays into $\gamma\gamma$, which then each start their own electromagnetic shower.
+The $\pi^{+}$ and $\pi^{-}$ can have a large transverse momentum (relative to the primary shower axis), and also have longer decay time (??), both of which contribute to creating sub-cascades of showers further away from the primary particle axis, which tends to cause hadronic showers (and their resulting Cherenkov images) to be wider than a purely electromagnetic shower of the same length. 
+
+(image of proton vs gamma shower??)
+
+(image of proton vs gamma shower cherenkov image??)
 
 
 \section{Galactic Center}
-
 The galactic center is a complex region of space, with many astrophysical sources of gamma rays.
 A disk of dust lies along the galactic plane, acting as an interaction medium for diffuse proton cosmic rays.
 Nearby supernova remnants also produce gamma-rays as their expanding shell interacts with ambient dust.
