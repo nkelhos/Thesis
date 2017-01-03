@@ -23,12 +23,19 @@ From the time gradient, the dc (??) counts are integrated in a time window that 
 Images are identified.
 
 \section{Position Reconstruction}\label{subsec:posrecon}
+Basic reconstruction of a shower's direction is done by geometry of the shower axes.
+As all four telescopes are pointed at the same direction, all four images can be overlayed in camera coordinates.
+In this coordinate system, the point of origin lies somewhere along the line of all shower image axes.
+Thus, by averaging and weighting all axes intersection points, the original direction of the gamma ray can be found.
+
+This can be improved through different algorithms, including the Disp method.
+
 Images have their disp calculated.
 The major axis of mulitiple images are traced.
 The intersection of the axes, weighted by their disps the angles between axes, can then determine their original position.
 
 \subsection{Angular Reconstruction Neural Network}
-At high elevations, shower images are often at large intesection angles, while at lower elevations the intersections the images are more parallel.
+At high elevations, shower images are often at large intesection angles, while at lower elevations the intersections the images are more parallel (show example figure!??).
 This means that when the reconstruction position is found by intersecting image axes, small changes in the image orientation can result in large movements in the reconstructed position.
 
 To better handle these near-parallel image axes at low elevations, the reconstructed position can be determined from more parameters than just the weighted image axes intersection points.
@@ -60,12 +67,10 @@ As the majority of the events fall on the line, we can conclude that the BDTs ar
 Improved angular resolution plot??
 
 \section{Energy Reconstruction}\label{subsec:enrecon}
-A library of different showers is built, from a variety of elevations, energies, and distances from the camera.
-This library can then be used to look up a real shower, find the most similar in elevation, shape, etc, and then reading that shower's library energy.
+To reconstruct the energy of each shower, a database of simulated showers is built.
+This database includes the width and length of the shower, how far away its core position is, how bright it was, as well as its reconstructed and true energy.
+By scanning through this database for showers that are similar to the one being constructed, the most similar-looking shower then indicates the true energy(??).
 
-\subsection{Image Mean Scaled Width and Length}
-The strongest parameters for determining the energy of a gamma ray are the width and length (in angle) of its shower image.
-This width and length depend on the angle between the shower direction and the telescope pointing, as well as the distance from the observatory to the shower.
 
 
 \section{Sensitivity}
