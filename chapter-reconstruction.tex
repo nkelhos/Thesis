@@ -165,12 +165,22 @@ There were minor issues with converting the IRFs that are noted in the following
 
 \subsection{PSF Fitting}
 
-For the PSF, converting from Event Display to Gammalib has some issues.
-Specifically, Gammalib tables store the PSF as the fit parameters of a King function (cite??).
-A king function tends to fit gamma ray telescope PSF's better, due to its long tail (compared to a gaussian).
-As the PSF in event display is stored as a histogram, with the number of events at each radial distance, it becomes necessary to fit a king function.
-For roughly half of the parameter space, the king function fitter was unable to get a good fit (??).
-When this happens, a default value of $\ang{0}$ is used as the PSF.
+The psf is calculated like a normal resolution, as the distribution of true event directions for a given reconstructed event direction, usually as a function of distance from the reconstructed event direction.
+In order to use Event Display's psf in ctools, some conversion is necessary.
+
+Event display natively stores its psf as a pair of 68\% and 80\% containment radii (referred to as r68 and r80, respectivly), each as a distance in degrees between the monte carlo event direction and the reconstructed direction.
+These radii contain 68\% and 80\% of all events in the distribution, and are used to fit a gaussian profile.
+For ctools, a king function is used instead of a gaussian.
+
+$$ psf_{king}(r) = \frac{1}{2 \pi \sigma^{2} } \left( 1 - \frac{1}{\gamma} \right) \left( 1 + \frac{ r^{2} }{ 2 \gamma \sigma^{2} } \right) $$
+
+A king function fitting algorithm was added, that fits for the $\gamma$ and $\sigma$ parameters, from the same distribution of events that the r68 and r80 radii are calculated from.
+This leads to good fits over almost all of the parameter space.
+
+(example fit image of distribution of events and fitted king function ??)
+
+A smaller psf is important for this analysis, as the presence of a dark matter halo relys on the pointing accuracy of the events around the galactic center.
+A worse gamma-ray psf (with a wider distribution of possible true positions) will smear out any dark matter halo around the galactic center, making its detection more difficult.
 
 
 \subsection{Background Templates}
