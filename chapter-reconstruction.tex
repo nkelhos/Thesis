@@ -1,24 +1,30 @@
 \cleartooddpage[\thispagestyle{empty}]
 \chapter{Gamma Ray Reconstruction}\label{ch:grrecon}
 
-From chapter \ref{chapter:veritas}, it has been explained how the trigger system preserves PMT voltage traces of potential events.
-To reconstruct gamma rays, the voltage traces caused by cherenkov light must be identified, cleaned, and combined into images of the original cherenkov shower.
-Then shower images from multiple telescopes can be used to wholly reconstruct the original gamma ray's properties.
+In chapter \ref{chapter:veritas}, it was explained how the trigger system preserves PMT voltage traces of potential events.
+To reconstruct gamma rays, the voltage traces caused by cherenkov light must be identified and combined into images of the original cherenkov shower.
+Then shower images from multiple telescopes can be used to reconstruct the original gamma ray's energy and direction.
 
-\section{Voltage Traces Integration}
-Find pedestal voltage.
-Find pedestal voltage variation.
-Identify image pixels.
-Identify image pixel boarders.
+\section{Pedestal Variation}
+Before reconstructing any events, the pedestal and pedestal variations must be calculated.
+These are done by triggering all pixels once per second during normal data-taking, in order to record events caused solely by noise.
+The average of the digital counts (dc) of all noise-events for each pixel is then the pedestal.
+From this pedestal, the pedvar is then calculated as the rms of the noise-events, which can be visualized as the distribution of dc around the mean dc.
+
+(also see \cite{Hanna2010NIM} about relative gains??)
+
+\section{Pixel Identification}
+The first step is to determine which pixels are part of a shower image or not.
+This is done by integrating the total dc in each voltage trace, and finding the time of the peak charge (peak charge or Tzero??) in each pixel.
+Around this peak charge time, the trace is integrated a second time with a smaller time window, to reduce accumulating charge from sources of noise (NSB and electronics)
+This two-pass algorithm is usually referred to as the double-pass method (cite??).
+If a pixel's second-pass total charge is higher than 5 times the pedvar, then it is considered an image pixel.
+If it is between 2.5 and 5 times the pedvar, it is considered a border pixel.
 
 \section{Image Reconstruction}\label{subsec:imgrecon}
 
-The trigger and digization systems save all pixel voltages ?? seconds to either side of the L3 trigger.
-
-Pixels have their peak charge found.
 Images are cleaned of extraneous pixels.
 The time gradient is fit to each image.
-Pixels participating in the image are identified.
 From the time gradient, the dc (??) counts are integrated in a time window that moves with the time gradient of the shower.
 Images are identified.
 
@@ -26,7 +32,7 @@ Images are identified.
 Basic reconstruction of a shower's direction is done by geometry of the shower axes.
 As all four telescopes are pointed at the same direction, all four images can be overlayed in camera coordinates.
 In this coordinate system, the point of origin lies somewhere along the line of all shower image axes.
-Thus, by averaging and weighting all axes intersection points, the original direction of the gamma ray can be found.
+Thus, by weighting and averaging all axes intersection points, the original direction of the gamma ray can be found.
 
 This can be improved through different algorithms, including the Disp method.
 
@@ -40,6 +46,8 @@ This means that when the reconstruction position is found by intersecting image 
 
 To better handle these near-parallel image axes at low elevations, the reconstructed position can be determined from more parameters than just the weighted image axes intersection points.
 From simulations, the distance between the center of the hillas shower image and the reconstructed position can be calculated, where the angular distance between the two is the 'disp' parameter\cite{Senturk:2011}, shown in figure \ref{fig:dispdiagram}.
+
+Disp was first mentioned in \cite{Beilicke2012NIM}.
 
 \begin{figure}[ht]
   \begin{center}
@@ -165,7 +173,7 @@ There were minor issues with converting the IRFs that are noted in the following
 
 \subsection{PSF Fitting}
 
-The psf is calculated like a normal resolution, as the distribution of true event directions for a given reconstructed event direction, usually as a function of distance from the reconstructed event direction.
+The psf is the distribution of true event directions for a given reconstructed event direction, as a function of distance from the reconstructed event direction.
 In order to use Event Display's psf in ctools, some conversion is necessary.
 
 Event display natively stores its psf as a pair of 68\% and 80\% containment radii (referred to as r68 and r80, respectivly), each as a distance in degrees between the monte carlo event direction and the reconstructed direction.
