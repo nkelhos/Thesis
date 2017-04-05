@@ -2,14 +2,14 @@
 \chapter{Gamma Ray Reconstruction}\label{ch:grrecon}
 
 In chapter \ref{chapter:veritas}, it was explained how the trigger system preserves PMT voltage traces of potential events.
-To reconstruct gamma rays, the voltage traces caused by cherenkov light must be identified and combined into images of the original cherenkov shower.
-Then shower images from multiple telescopes can be used to reconstruct the original gamma ray's energy and direction.
+To reconstruct gamma rays, the voltage traces caused by cherenkov photons must be identified and combined to form an image of the original cherenkov shower.
+Then the shower images from multiple telescopes can be used to reconstruct the original gamma ray's energy and direction.
 
 \section{Pedestal Variation}
 Before reconstructing any events, the pedestal and pedestal variations must be calculated.
-These are done by triggering all pixels once per second during normal data-taking, in order to record events caused solely by noise.
+These are done by artificially triggering all pixels once per second during normal data-taking, in order to record events that solely contain noise.
 The average of the digital counts (dc) of all noise-events for each pixel is then the pedestal.
-From this pedestal, the pedvar is then calculated as the rms of the noise-events, which can be visualized as the distribution of dc around the mean dc.
+From this pedestal, the pedvar is then calculated as the rms of the all the dc counts in all noise-events, which can be visualized as the distribution of dc around the mean dc.
 
 (also see \cite{Hanna2010NIM} about relative gains??)
 
@@ -18,7 +18,7 @@ The first step is to determine which pixels are part of a shower image or not.
 This is done by subtracting the digital counts pedestal from the entire trace, and then integrating the total dc in each voltage trace.
 In addition, the time when the voltage trace is at half of its maximum value, called $T_{0}$.
 
-Around time $T_{0}$, the trace is integrated a second time with a smaller time window (usually either 14 or 24 ns wide), to reduce the inclusion of dc from sources of noise (NSB and electronics).
+Around time $T_{0}$, the trace is integrated a second time with a smaller time window (usually either 14 or 24 ns wide, 30\% of the window before $T_0$), to reduce the inclusion of dc from sources of noise (NSB and electronics).
 This two-pass algorithm is usually referred to as the double-pass method (cite??).
 If a pixel's second-pass total dc is higher than 5 times the pedvar, then it is considered an image pixel.
 If it is between 2.5 and 5 times the pedvar, it is considered a border pixel.
@@ -33,11 +33,10 @@ The center of charge is the charge-weighted average of all image and border pixe
 The angle of the shower determines how the image's major axis is oriented in the camera.
 The shower length and width are determined by the rms of the shower image along its major and minor axes, respectively.
 
-In addition, the position of the pixel with the highest integrated charge is also located, which is used in the Displacement Method described in subsection \ref{subsec:disp}.
 
 \section{Position Reconstruction}\label{subsec:posrecon}
 By examining the images from multiple telescopes, the initial position of the event can be determined.
-This is done by placing all telescope images in a single camera coordinate system, and drawing lines along each image's major axis backwards in time along the time gradient.
+This is done by overlapping all telescope images in a single camera coordinate system, and projecting each image's major axis backwards in time.
 These drawn lines should intersect very close together, and a weighted average of the intersection points determines the event's initial direction.
 
 In averaging the intersection points, weighting for each intersection can be applied based on the angle between the two lines.
@@ -53,7 +52,7 @@ Additionally, the disp method can be utilized to offer improvements in the lower
 
 \subsection{Angular Reconstruction Neural Network}\label{subsec:disp}
 At high elevations, shower images are often at large intesection angles, because the telescopes are spread out in two dimensions, relative to the shower in the atmosphere.
-At low elevations near the galactic center, however, the telescope array flattens into one dimension, which makes the shower's impact parameter (how far the telescope is from the shower core) very small for two of the telescopes.
+At low elevations near the galactic center, however, the telescope array flattens into one dimension, which makes the shower's impact parameter (the shortest distance between the telescope and the shower core axis) smaller for two of the telescopes.
 These two closer telescopes then have very short, almost circular images, which increases the sensitivity of those two image axes to noisy pixels or shower fluctuations, as shown in figure \ref{fig:showerhighlowelev}.
 This also causes the remaining telescope images to have large intersection angles, which also reduces the accuracy of the position reconstruction.
 
@@ -78,12 +77,12 @@ This algorithm's disp-predicted positions can then be weighted and included in t
 \end{figure}
 
 % https://veritas.sao.arizona.edu/wiki/index.php/BDT_Angular_reconstruction
-The disp and other parameters for thousands of simulated showers can then be used to train a neural network that calculates the most probable disp for a given shower.
+The disp and other parameters for thousands of simulated showers can then be used to train a boosted decision tree forest (BDT) that estimates the most probable disp for a given shower.
 This most probable disp can then be used with the image axes intersection points to more accurately reconstruct the original gamma-ray point of origin.
 
 Once the training is complete, it is tested on a separate set of 17,000 simulated events, which are plotted in figure \ref{fig:disptraining}.
-The x axis describes the true disp value for each event, while the y axis describes the disp value predicted by the Boosted Decision Tree network, with a black line for the x=y line.
-As the majority of the events fall on the line, we can conclude that the BDTs are able to predict the correct disp value for most images.
+The x axis describes the true disp value for each event, while the y axis describes the disp value estimated by the BDT, with a black line for the x=y line, which represents a perfect disp reconstruction.
+As the majority of the events fall on the line, it can be concluded that the BDTs are able to predict the correct disp value for most images.
 
 % made from screenshot of last slide in Dropbox/Presentations/20160719_Group_Meeting.key
 \begin{figure}[ht]
@@ -103,6 +102,7 @@ With the Geometric (red) events, more are concentrated further from the point so
   \end{center}
 \end{figure}
 
+
 \section{Energy Reconstruction}\label{subsec:enrecon}
 To reconstruct the energy of each shower, a database of simulated showers is built.
 This database includes the width and length of the shower, how far away its core position is, how bright it was, as well as its reconstructed and true energy.
@@ -110,16 +110,15 @@ By scanning through this database for showers that are similar to the one being 
 
 
 
-
 \section{FITS Conversion for Gammalib and CTOOLs}
 
-Once gamma rays have been reconstructed with event display, they must be converted to a FITS file format compatible with gammalib.
-This format consists of a FITS file with an event list table, containing each gamma ray, its energy, position, and time.
+Once gamma rays have been reconstructed with event display, they must be converted to a FITS file format compatible with Gammalib and Ctools.
+This format consists of a FITS file with an event list table, containing each gamma ray, its energy, sky direction, and time.
 This also includes meta information about the event list like the telescope's pointing target and the start and end times of the event list.
-This FITS file can then be read into Gammalib and CTOOLS (cite??).
+This FITS file can then be read into Gammalib and CTOOLS \cite{gammalibctools}.
 
 In addition to the event list, the instrument response functions (IRFs) must also be imported into Gammalib and Ctools.
-These include effective areas, point spread funciton, energy dispersion, and background shapes for several dimensions in the IRF parameter space (energy, offset from camera center, telescope elevation/azimuth, noise, etc).
+These include effective areas, point spread functions, energy dispersion, and background models for several dimensions in the IRF parameter space (energy, offset from camera center, telescope elevation/azimuth, NSB noise, etc).
 By default, all IRFs are stored in a single database, and each event list contains a reference to which part of the parameter space should be used with it.
 
 However, the galactic center is at an elevation of $\ang{30}$, much lower than most VERITAS observation targets.
@@ -127,9 +126,9 @@ At this elevation, with its field of view of $\ang{3.5}$, the air mass column de
 Add to this that during a single 30 minute observation, the elevation of the Galactic Center can change by several degrees, means the airmass in view of the camera may change rapidly, meaning the IRFs may become time dependent.
 
 To allow for the inclusion of this time dependence in the analysis, an alternate way of storing the IRFs was chosen, diagrammed in figure \ref{fig:fits_scheme}.
-First, one observation (typically 20-30 minutes long) is broken up into \nicetilde3 minute chunks.
+First, one observation (typically 20-30 minutes long) is broken up into \nicetilde8 minute chunks.
 Each chunk is then converted to an event list, and saved to a FITS file.
-In addition, the needed Effective Area, PSF, and background tables are also written to the same FITS file.
+In addition, the needed Effective Area, PSF, and background models are also written to the same FITS file.
 As each event list covers a small region in time, the IRF tables only need to contain the dimensions of the parameter space that can change during one chunk, such as event energy and distance from camera center.
 
 \begin{figure}[ht]
@@ -147,7 +146,7 @@ There were minor issues with converting the IRFs that are noted in the following
 
 \subsection{Effective Area}\label{sec:effarea}
 % plot of effective area vs energy
-Effective area is the measure of how large an observatory's collection area is, determining how many gamma rays can be detected per unit time, solid angle, and energy.
+Effective area is the measure of how large an observatory's collection area is, determining how many gamma rays are be detected per unit time, solid angle, and energy.
 
 For each point in the parameter space, the effective areas are calculated with many Monte Carlo gamma ray simulations.
 This is done in the shower plane, the plane perpendicular to the line drawn between an observing source, and the center of the observatory.
@@ -163,12 +162,12 @@ This 'Effective' area is thus a measure of how much detection area the observato
   \end{center}
 \end{figure}
 
-
+For the test analyses of the Crab and the Galactic Center Point Source, the effective areas of all events are shown in figure \ref{fig:effarea_usage}.
 
 \begin{figure}[ht]
   \begin{center}
-    \includegraphics[width=0.75\textwidth]{images/effarea_plots/effarea_gc_events_histogram.eps}
-    \caption[Effective Area Parameter Space]{}\label{fig:effarea_paramspace}
+    \includegraphics[width=\textwidth]{images/effarea_plots/effarea_usage.eps}
+    \caption[Effective Area Parameter Space]{Effective Areas used by events in each analysis.}\label{fig:effarea_usage}
   \end{center}
 \end{figure}
 
