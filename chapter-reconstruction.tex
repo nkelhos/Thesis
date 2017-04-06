@@ -225,13 +225,50 @@ For the Galactic Center analysis, the 68\% containment radius for all events was
 
 \subsection{Background Templates}
 
-To produce a background, events are binned in camera coordinates and energy, and each bin is divided by the size of the bin's exposure in time, energy, and solid angle.
-This allows for the likelihood engine to model the expected camera background of cosmic-ray events that pass all gamma-like cuts.
-As the likelihood engine will apply a scale value to the background as part of its fitting, the background's absolute values matter much less than its relative values.
+To produce a background, events are binned in camera coordinates and energy.
+The energy bins are determined by expanding outwards (in $log_{10}(TeV)$ space) from the median energy of all events, until each energy bin has at least 100 events per degree$^2$, expanding to include any energy ranges that have less than that.
+In these energy bins, events are then binned radially, which is then used to fit an interpolation function (see figure \ref{fig:background_radial}), which is then normalized to one when integrated around the entire camera, which is the pdf of one event.
+These energy-bin pdfs can then be interpolated linearly in $log_{10}(TeV)$ space, to get the radial distribution of events at various energies.
 
-During the production of the initial low elevation background, some new effects were noted.
-First a series of gamma-like events were taken from observations with no known gamma-ray sources.
-These events are then divided into equal-statistics bins.
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/ctools_background/radial_profiles.eps}
+    \caption[CTOOLS Radial Background Profiles]{Radial bin profiles for the V5 background's two large-scale energy bins.  (These plots need axes labels, and the blue error bars are not accounting for the bin area properly!??).  The blue points are the counts per bin area, while the purple line is the interpolation with a spline interpolator of order 3 (see scipy.interpolate.interp1d())}\label{fig:background_radial}
+  \end{center}
+\end{figure}
+
+
+Then, all events are divided up into \nicetilde30 finer energy bins as shown in figure \ref{fig:background_profile}, and each bin's counts are multiplied by the interpolated radial pdf at that energy, which is then written to a two-dimensional array of camera x/y bins.
+2D bin values are then divided by the solid angle of the bin (in sr), the energy width of the bin (in Mev), and the total obseration time (in seconds).
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{images/ctools_background/background_construction.eps}
+    \caption[CTOOLS Background Fine Energy Bins]{The V5 Background's fine-energy bins.  The left plot shows the number of events in each fine-energy bin.  The right plot shows the ctools background values.  The black lines show the fits background value and energy bin width saved to the background file, while the blue line shows the background value after ctools loads and interpolates those fits background values.  Note the y-axis in the left plot is linear, while in the right plot, it is $log_{10}$. (These plots should be cleaned up a little??)}\label{fig:background_profile}
+  \end{center}
+\end{figure}
+
+Additionally, three extra 'zero' background maps (with an extremely low value of $10^-13 \frac{counts}{Mev s sr}$ are added above and below the fine energy bins, so that the ctools background interpolation will properly predict the correct lack of events above and below the energy range.
+
+The background is used in the likelihood analysis as a model with one free parameter, a simple multiplicative normalization factor.
+This lets the likelihood engine scale each run's background model up or down to best fit the events, so the background's absolute value is less important than the relative values in different parts of the camera.
+Indeed, it was noticed that during background fitting, the normalization factor was usually around $\frac{1}{150}$, so future backgrounds were created with this value multiplied in already, which reduced the likelihood runtime from around 7-9 hours to 2 hours for the galactic center point source analysis.
+The background normalization factors after the $\frac{1}{150}$ adjustment were shown to be centered around 1.0, varying from from 0.5 to 1.5.
+
+
+\subsection{Energy Dispersion}
+As events are reconstructed imperfectly, it can be important to understand what the distribution of true energies are for a given reconstructed energy.
+In an analysis with ctools, this is quantified by an energy dispersion matrix, that indicates the number of simulated events at each $(E_{reconstructed},E_{true})$ point in a matrix.
+As the likelihood engine in ctools did not at the time of this analyis have energy dispersion fully incorporated, it was not used in this analyis.
+This is accounted for by adding ??\% to the total systematic error.
+
+
+
+\section{New Background Behavior}
+
+During the production of the initial low elevation backgrounds, some new effects were noted.
+First, a series of gamma-like events were taken from observations with no known gamma-ray sources.
+These events were then divided into equal-statistics energy bins.
 For each equal-statistic energy bin, all the contained events are binned in camera X and Y.
 
 For a set of high-elevation observations, these backgrounds are shown in figure \ref{fig:back_highelev}.
@@ -243,7 +280,7 @@ This happens because gamma ray's point of origin and its shower image in the cam
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=\textwidth]{images/ctools/backgrounds_highelev.eps}
-    \caption[FITS Background at High Elevations]{Gamma-like Events from 52 observations(livetime??) of M82 (in what elevation range??).  Events in Figure A are divided into 3 equal-statistics energy bins, and binned in Camera Coordinates in Figures B, C, and D.}\label{fig:back_highelev}
+    \caption[FITS Background at 50\degree Elevation]{Gamma-like Events from 52 observations (approximately \nicetilde20 hours) of M82, between 50\degree  and 52\degree  elevations.  Events in Figure A are divided into 3 equal-statistics energy bins, and binned in Camera Coordinates in Figures B, C, and D.}\label{fig:back_highelev}
   \end{center}
 \end{figure}
 
@@ -254,33 +291,40 @@ It can be seen that in different energy bins, the background possesses different
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=\textwidth]{images/ctools/backgrounds_lowelev29.eps}
-    \caption[CTOOLS Background at 29 degrees Elevation]{15(livetime??) Sagittarius A* Off runs, between elevations $ \ang{27.5} $ and $ \ang{30} $.  Events are divided into 6 equal-statistics energy bins, of which four are binned in Camera Coordinates in figures B, C, D, and E.}\label{fig:back_lowelev29}
+    \caption[CTOOLS Background at 29\degree Elevation]{15 Sagittarius A* Off runs (\nicetilde7.5 observation hours), between elevations $ \ang{27.5} $ and $ \ang{30} $.  Events are divided into 6 equal-statistics energy bins, of which four are binned in Camera Coordinates in figures B, C, D, and E.}\label{fig:back_lowelev29}
   \end{center}
 \end{figure}
 
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=\textwidth]{images/ctools/backgrounds_lowelev26.eps}
-    \caption[CTOOLS Background at 26 degrees Elevation]{10(livetime??) Sagittarius A* Off runs, between elevations $ \ang{24} $ and $ \ang{27.5} $. }\label{fig:back_lowelev26}
+    \caption[CTOOLS Background at 26\degree Elevation]{10 Sagittarius A* Off runs (\nicetilde5 observation hours), between elevations $ \ang{24} $ and $ \ang{27.5} $. }\label{fig:back_lowelev26}
   \end{center}
 \end{figure}
 
 
-\section{Energy Resolution}
-% plot of energy resolution
-Gamma rays and protons of different energies can produce similar-looking air showers.
-Due to this, the reconstruction software cannot perfectly reconstruct gamma rays, which introduces errors into the different qualities of the gamma rays.
-This means that when a gamma ray is reconstructed, it has a chance to be reconstructed at a lower or higher energy.
-The consequence of this is that gamma rays of a given reconstructed energy can come from a distribution of true simulated energies.
-Typically, simulations are run across a number of energies, and an 2D matrix is assembled, where one axis is the true simulated energy, and the other axis is bins of reconstructed energy.
+\subsection{Diffuse Simulations}
 
+To rule out any software causes, diffuse simulations were performed at similar energies and elevations.
+These consisted of 50,000 gamma rays at each of 1.4, 1.6, 2, and 5 TeV.
+The telescopes were fixed to an azimuth/elevation of (193\degree,28\degree).
+The events themselves were distributed in a diffuse disk of radius 2.5\degree.
+After having their energy reconstructed, any events falling outside a simple mean-scaled-width cut of -2.0 to 0.5 were removed, which removes many of the proton-induced showers, approximating a gamma-hadron cut.
+These are then binned in camera coordinates in figure \ref{fig:back_simdiffuse}.
 
-\section{Energy Dispersion}
-Much like the point spread function in section \ref{sec:psf}, the energy reconstruction process is also imperfect.
-This means that a gamma ray with a reconstructed energy could come from a distribution of true energies.
-This can also be phrased that a group of gamma-rays with the same initial energy will have a distribution of reconstructed energies.
-These distributions primarily are due to inherent randomness in the showers themselves.
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/backgrounds_diffuse_vs_data/diffuse_sims.eps}
+    \caption[Diffuse Simulated Backgrounds]{Diffuse simulated gamma-like events in the camera coordinate system at a 28\degree elevation, at 4 different energies.}\label{fig:back_simdiffuse}
+  \end{center}
+\end{figure}
 
+One can see that the ring and crescent structures persist in these diffuse simulations, implying these are physical effects of the atmosphere and camera, rather than a reconstruction problem.
+
+This striking effect can be seen in Galactic Center data between certain energy ranges.
+As the plots are in galactic (l,b) coordinates, and there is a time rotation due to the Earth spinning on its axis, the crescent shapes are still present, albiet smeared around the 4 wobble targets.
+
+plot of galactic center (all energies, ~2TeV energies) !??
 
 
 
