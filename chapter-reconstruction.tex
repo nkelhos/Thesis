@@ -173,35 +173,28 @@ For the test analyses of the Crab and the Galactic Center Point Source, the effe
 
 \subsection{Point Spread Function}\label{sec:psf}
 
-In addition to the energy being slightly mis-reconstructed, the source position of the gamma ray can also be misreconstructed.
-For VERITAS, this misreconstructions are measured by simulating many gamma rays in the camera, and looking at the distribution of true positions for a given reconstructed position, which is called the point spread function (PSF).
-To first order, most current-generation point spread functions are gaussian distributions.
-For Event Display, the PSF has been roughly measured to be gaussian-shaped.
-For CTOOLS instead, a King function (Eqn \ref{eqn:king}) was fitted to the distribution of events, as Fermi and HESS have found (cite??) gamma ray PSFs tend to have longer tails than a Gaussian, which the king function better handles.
+When reconstructing the source position of the gamma ray, it is necessary to know the error on the position.
+Primarily, errors in the position come from the randomness of shower images.
+The same gamma ray may develop a different shower, or different shower cherenkov photons may be absorbed by the atmosphere, or reflected by the mirrors, or converted into a PMT photoelectrons.
+In the image and position reconstruction, this means that an initial gamma ray from some initial position can develop into a distributino of camera images, and visa versa, that a single shower image can come from a distribution of gamma ray positions.
 
-The psf is the distribution of true event directions for a given reconstructed event direction.
-Within an analysis, the event PSF strongly depends on the event energy, as well as its distance from the camera center.
+This distribution of reconstructed positions, called the Point Spread Function (PSF), primarily affects the shape of gamma-ray emission structures in the sky.
+A singular point source, nominally shaped by a dirac function, is instead distributed out according to the PSF.
+When searching for an extended source, like a dark matter halo, understanding the distribution of reconstructed positions is important.
+A large PSF on all events, for instance, will artificially expand a dark matter halo, while a smaller PSF will contract it.
 
-In order to use Event Display's psf in ctools, some conversion is necessary.
-Event display natively stores its psf as a pair of 68\% and 80\% containment radii (referred to as $r_68$ and $r_80$, respectivly), each as a distance in degrees between the monte carlo event direction and the reconstructed direction.
-These radii contain 68\% and 80\% of all events in the distribution, and are used to fit a gaussian profile.
-For ctools, a king function is used instead of a gaussian.
+For VERITAS, the PSF is measured by simulating many gamma rays, then measuring the distribution of true positions for each reconstructed position.
+With VERITAS and Event Display, the PSF has been roughly measured to be gaussian-shaped.
+For CTOOLS however, the distribution of events are instead fitted with a King function (Eqn \ref{eqn:king}), as Fermi and HESS have found (cite??) gamma ray PSFs tend to have longer tails than a Gaussian, which the king function better handles.
+The radially-normalized king function is:
 
 \begin{equation} \label{eqn:king}
 $$ psf_{king}(r) = \frac{1}{2 \pi \sigma^{2} } \left( 1 - \frac{1}{\gamma} \right) \left( 1 + \frac{ r^{2} }{ 2 \gamma \sigma^{2} } \right)^{-\gamma} $$
 \end{equation}
 
 where $r$ is the angular distance from the reconstructed position, $\sigma$ is similar to the width of a gaussian , and the $\gamma$ parameter affects how long the tails are.
-The function is integrates to 1 in polar coordinates with $r$ in radians.
-
-A king function fitting algorithm was added, that fits for the $\gamma$ and $\sigma$ parameters, from the same distribution of events that the r68 and r80 radii are calculated from.
+A king function fitting algorithm was added to Event Display, that fits the $\gamma$ and $\sigma$ parameters to a set of simulated gamma rays.
 This leads to good fits over almost all of the parameter space.
-
-(example fit image of distribution of events and fitted king function ??)
-
-A smaller psf is important for this analysis, as the presence of a dark matter halo relys on the pointing accuracy of the events around the galactic center.
-A worse gamma-ray psf (with a wider distribution of possible true positions) will smear out any dark matter halo around the galactic center, making its detection more difficult.
-
 In figure \ref{fig:psf_paramspace}, the psf is shown for one Galactic Center run.
 In it, one can see how the psf containment radius changes vs reconstructed energy and offset from the camera's center.
 Other runs, which have different elevations, azimuths and NSB noise levels will have different values at each point in the energy/offset parameter space.
