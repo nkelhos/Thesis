@@ -2,22 +2,22 @@
 \chapter{Analysis}
 
 \section{Studies}
-Backgrounds were simplified into radially-symmetric ones.
-You can see in these plots ?? how the background changes shape with energy.
+As part of exploring the behavior of the camera and reconstruction process, some studies were carried out.
+These included examining how shower reconstructed is affected by the presence of stars in the field of view.
 
 
 \subsection{Effect of Stars}
 To examine the effect of stars on the camera, several studies were undertaken.
 It had been noted in the past that for a dim star (magnitude > 5??), the given pixel would have a higher average current.
-This translated into a higher pedvar??, which can contribute to images, under certain conditions??.
+This translates into a higher pedvar in the affected pixels, which can decrease how often the pixel participates in shower images.
 
-In addition, if a bright star (magnitude <= 5??) was in the field of view, it would cause such a high current in the pixel that it would have to be shut off (voltage set to 0??) to prevent it from being damaged.
-For particularly bright stars (magnitude <= 3), often several pixels would be disabled at a given time.
+In addition, if a bright star (magnitude <= 5??) was in the field of view, it would cause high enough current in the pixel that it would be shut off (voltage set to 0??) to prevent it from being damaged.
+For particularly bright stars (magnitude <= 3), several pixels are often disabled at a given time.
 
-A third effect is that, since the telescope camera is fixed to the ground, from the camera's point of view the sky rotates around the camera center.
+A third effect is that, since the telescope camera is fixed to the ground, from the camera coordinate system, the sky rotates around the camera center.
 This means that over a single 30min observation, any stars rotate around the camera center, disabling several camera pixels as it passes over them.
 
-This implies a key idea, that to study the effect of stars, one should study the effect of high-current or disabled camera pixels, and use this information to construct the effect of stars.
+This implies that to study the effect of stars, one must study the effect of high-current or disabled camera pixels, and use this information to construct the effect of stars.
 
 % see calculations/disabledpixel_obstime , those 250 crab runs turned into about 13.5 observation hours
 To examine the effects of disable pixels, a study was performed where 13.5 hours of Crab observations were analyzed twice, once normally, and once with a single pixel disabled in all four telescopes.
@@ -26,7 +26,7 @@ Once the events are reconstructed, and passed through gamma-hadron cuts, they ca
 When synchronizing the event lists, it can be done in $O\left(n\right)$ time (rather than $O\left(n^2\right)$ time), as both event lists are already time-ordered.
 After the event lists with the pixel enabled and disabled are synchronized, they can be compared.
 One can then look for events that disappeared when the pixel was disabled, as well looking for new events that appeared.
-Events that are still present in both event lists can then be tested to see how far their reconstructed camera position moved.
+Events that are still present in both event lists can then be tested to see how far their reconstructed position moved in the camera.
 
 In figure \ref{fig:dpix_rel_camera}, the relative event rate in the camera is plotted when pixel 115 is disabled in all four telescopes.
 This is calculated by taking, for each bin, the number of reconstructed gamma-like events is divided by the pixel-enabled number of reconstructed events.
@@ -182,6 +182,9 @@ These runs were pointing ?? degrees from the camera center, to avoid effects of 
 
 Only studied runs with elevations between $\ang{70}$ and $\ang{75}$.
 Used same low-elevation galactic center off runs as a background.
+
+\section{Test Galactic Center Analysis}
+
 
 \subsection{Event Display}
 \subsection{CTOOLs}
