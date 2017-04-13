@@ -216,7 +216,7 @@ For the Galactic Center analysis, the 68\% containment radius for all events was
   \end{center}
 \end{figure}
 
-\subsection{Background Templates}
+\subsection{Background Models}\label{background_production}
 
 To produce a background, events are binned in camera coordinates and energy.
 The energy bins are determined by expanding outwards (in $log_{10}(TeV)$ space) from the median energy of all events, until each energy bin has at least 100 events per degree$^2$, expanding to include any energy ranges that have less than that.
@@ -245,6 +245,7 @@ Additionally, three extra 'zero' background maps (with an extremely low value of
 
 The background is used in the likelihood analysis as a model with one free parameter, a simple multiplicative normalization factor.
 This lets the likelihood engine scale each run's background model up or down to best fit the events, so the background's absolute value is less important than the relative values in different parts of the camera.
+
 Indeed, it was noticed that during background fitting, the normalization factor was usually around $\frac{1}{150}$, so future backgrounds were created with this value multiplied in already, which reduced the likelihood runtime from around 7-9 hours to 2 hours for the galactic center point source analysis.
 The background normalization factors after the $\frac{1}{150}$ adjustment were shown to be centered around 1.0, varying from from 0.5 to 1.5.
 
@@ -255,9 +256,11 @@ In an analysis with ctools, this is quantified by an energy dispersion matrix, t
 As the likelihood engine in ctools did not at the time of this analyis have energy dispersion fully incorporated, it was not used in this analyis.
 This is accounted for by adding ??\% to the total systematic error.
 
+\section{Camera Studies}
+The objective of this thesis is to put upper limits on the existance of an extended, faint gamma-ray emission region.
+In order to better understand the effects that impact the VERITAS camera behavior in reconstruction software, several studies were performed.
 
-
-\section{New Background Behavior}
+\subsection{New Background Behavior}
 
 During the production of the initial low elevation backgrounds, some new effects were noted.
 First, a series of gamma-like events were taken from observations with no known gamma-ray sources.
@@ -296,7 +299,7 @@ It can be seen that in different energy bins, the background possesses different
 \end{figure}
 
 
-\subsection{Diffuse Simulations}
+\subsubsection{Diffuse Simulations}
 
 To rule out any software causes, diffuse simulations were performed at similar energies and elevations.
 These consisted of 50,000 gamma rays at each of 1.4, 1.6, 2, and 5 TeV.
@@ -317,8 +320,105 @@ One can see that the ring and crescent structures persist in these diffuse simul
 This striking effect can be seen in Galactic Center data between certain energy ranges.
 As the plots are in galactic (l,b) coordinates, and there is a time rotation due to the Earth spinning on its axis, the crescent shapes are still present, albiet smeared around the 4 wobble targets.
 
-plot of galactic center (all energies, ~2TeV energies) !??
+plot of galactic center (all energies vs @2TeV ) !??
+
+\subsection{Effect of Stars}
+As understanding the camera's background is important for extended source studies, i.e. dark matter halos, understanding the spatial effects of stars in the camera is also relevant.
+It had been noted in the past that for a dim star (magnitude > 5??), the given pixel would have a higher average current.
+This translates into a higher pedvar in the affected pixels, which can decrease how often the pixel participates in shower images.
+In addition, if a bright star (magnitude <= 5??) was in the field of view, it would cause high enough current in the pixel that it would be shut off (voltage set to 0??) to prevent it from being damaged.
+For particularly bright stars (magnitude <= 3), often several pixels are disabled at a given time.
+
+A third effect is that, since the telescope camera is fixed to the ground, from the camera coordinate system, the sky rotates around the camera center.
+This means that over a single 30min observation, any stars rotate around the camera center, disabling several camera pixels as it passes over them.
+The camera checks for these disabled pixels roughly once per minute by turning them back on and monitoring the current.
+
+These effects imply that to study the effect of stars, one must study the effect of high-current and disabled camera pixels, and use this information to construct the effect of stars.
+For this section, the effects of disabled camera pixels are studied.
+
+% see calculations/disabledpixel_obstime , those 250 crab runs turned into about 13.5 observation hours
+To examine the effects of disable pixels, \nicetidle13 hours of Crab observations were analyzed twice with Event Display.
+The first time was with the regular analysis chain, and the second time with a single pixel disabled in all four telescopes.
+This mimics the effect of having a star in the field of view that is bright enough to disable a pixel.
+
+After both sets of events are passed through gamma-hadron cuts, they are then compared.
+When synchronizing the both sets of events, it can be done in $O\left(n\right)$ time (rather than $O\left(n^2\right)$ time), as both event lists are already time-ordered.
+These two sets of events were examined for events that disappeared when the pixel was disabled, as well as for new events that appeared.
+Events that are still present in both event lists can then be tested to see how far their reconstructed position moved in the camera.
+
+In figure \ref{fig:dpix_rel_camera}, the relative event rate in the camera is plotted when pixel 115 is disabled in all four telescopes.
+This relative event rate is calculated by taking, for each bin, the number of reconstructed gamma-like events is divided by the pixel-enabled number of reconstructed events.
+It can be seen that there is a loss of events near the disabled pixel (the black circle), with a rate closer to 100\% the further away one goes from the disabled pixel.
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{images/disabled_pixel/relativerate_camera}
+    \caption[Relative Event Rate]{Event rate in the camera with pixel 115 disabled (denoted by the black circle) in all four telescopes, relative to having all pixels enabled.  Camera coordinate axes are parallel to azimuth and elevation.}\label{fig:dpix_rel_camera}
+  \end{center}
+\end{figure}
+
+In figure \ref{fig:dpix_rel_radial}, the bin values from figure \ref{fig:dpix_rel_camera} are divided into radial bins centered around the disabled pixel.
+The average relative event rate is then calculated for each bin, along with a 1-sigma distribution width for the error bars.
+It can be seen that there are three distinct regions to the plot.
+In the first region, from radius $\ang{0}$ to $\ang{0.3}$, the relative event rate starts extremely low, and rises rapidly.
+In the second region, from radius $\ang{0.3}$ to $\ang{1.6}$, the relative event rate is still rising, but much more slowly.
+In the third region outside $\ang{1.6}$, there is almost no effect.
 
 
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/disabled_pixel/relativerate_radial}
+    \caption[Radial Relative Event Rate]{Same relative event rate as in figure \ref{fig:dpix_rel_camera}, but averaged into radial bins, centered on the disabled pixel 115. }\label{fig:dpix_rel_radial}
+  \end{center}
+\end{figure}
+
+In figure \ref{fig:dpix_disappear}, the positions of events that disappeared are shown.
+The white area indicates many events are lost in the area of the disabled pixel.
+These events would have smaller images, and would be much more susceptable to being cut.
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{images/disabled_pixel/disappearing_events}
+    \caption[Disappering Events]{Positions of events that disappeared when pixel 115 was disabled in all four telescopes.  Positions are from their pixel-enabled reconstructed position.}\label{fig:dpix_disappear}
+  \end{center}
+\end{figure}
+
+In figure \ref{fig:dpix_appear}, the positions of events that newly appeared are shown.
+It should be noted that these are not events that these are events 'created' by disabling a pixel.
+Rather, they are events that, with the pixel enabled, did not pass cuts.
+Now that the pixel is disabled, they do pass cuts.
+
+What is also noticeable is that the highest concentration of lost events was in the pixel's area, whereas the highest rate for appearing events is actually in a ring with a radius of \nicetilde1.5 pixels around the disabled pixel.
+This is probably due to the fact that disabling a pixel can make some images look thinner or wider, depending on where the disabled pixel is in the image.
+A thinner image will look more gamma-like, making it more likely to pass cuts, appearing like 'new' events.
+On the other hand, a wider image looks more hadron-like, and is less likely to pass cuts, causing some events to disappear.
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{images/disabled_pixel/appearing_events}
+    \caption[Newly Appearing Events]{Positions of new events that appeared when pixel 115 was disabled in all four telescopes.  Positions are from their pixel-disabled reconstructed position.}\label{fig:dpix_appear}
+  \end{center}
+\end{figure}
+
+In figure \ref{fig:dpix_move}, the movment of gamma-like events is shown, when pixel 115 was disabled in all four telescopes.
+Only events which moved more than $0.1*PSF$ are shown.
+It should be noted that relatively few (how few??) events move, and the events that do move are mostly ones with strange image shapes that are cut in half when the pixels are disabled.
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{images/disabled_pixel/moving_events}
+    \caption[Event Movement]{Positions of events that moved when pixel 115 (denoted by the red circle) was disabled in all four telescopes.  Arrows point from the pixel-enabled position to the pixel-disabled position.}\label{fig:dpix_move}
+  \end{center}
+\end{figure}
+
+As the acceptance for a particular event and the event's effective area are strongly related, the loss of acceptance also means a loss of effective area in the area of this pixel.
+This can have effects on the energy reconstruction.
+
+For CTA, the pixels are ?? set up so that ?? only one pixel will be shut off at a time due to a bright star.
+While this will limit the effect of very bright stars, CTA's planned $\ang{7}$ field of view will mean there are many more stars in view, meaning many more holes to account for.
+
+Future studies could also compare how events move in energy or time when a pixel is disabled.
+Another study might investigate how the reconstructed shower-telescope distance changes, since a shower with fewer pixels will look further away, and may be reconstructed differently.
+In general, as a pixel is disabled, it is expected that lower energy events and showers further away will be more vulnerable, and will show stronger differences than higher energy events or closer showers.
 
 
