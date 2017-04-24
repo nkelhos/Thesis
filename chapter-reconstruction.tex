@@ -6,28 +6,26 @@ To reconstruct gamma rays, the voltage traces caused by cherenkov photons must b
 Then the shower images from multiple telescopes can be used to reconstruct the original gamma ray's energy and direction.
 
 \section{Pedestal Variation}
-Before reconstructing any events, the pedestal and pedestal variations must be calculated.
+Before reconstructing any events, the pedestal and pedestal variations (pedvars) must be calculated.
 These are done by artificially triggering all pixels once per second during normal data-taking, in order to record events that solely contain noise.
 The average of the digital counts (dc) of all noise-events for each pixel is then the pedestal.
-From this pedestal, the pedvar is then calculated as the rms of the all the dc counts in all noise-events, which can be visualized as the distribution of dc around the mean dc.
-
-(also see \cite{Hanna2010NIM} about relative gains??)
+From this pedestal, the pedvars are then calculated as the rms of the all the dc counts in all noise-events, which can be visualized as the distribution of dc around the mean dc.
 
 \section{Pixel Identification}
-The first step is to determine which pixels are part of a shower image or not.
+The first step is to determine which pixels are part of a shower image.
 This is done by subtracting the digital counts pedestal from the entire trace, and then integrating the total dc in each voltage trace.
-In addition, the time when the voltage trace is at half of its maximum value, called $T_{0}$.
 
-Around time $T_{0}$, the trace is integrated a second time with a smaller time window (usually either 14 or 24 ns wide, 30\% of the window before $T_0$), to reduce the inclusion of dc from sources of noise (NSB and electronics).
+The start of a potential voltage pulse is the time when the voltage trace is at half of its maximum value, called $T_{0}$.
+Around time $T_{0}$, the trace is integrated a second time with a smaller time window (usually either 14 or 24 ns wide, at $T_0$ - 30\% of the window size), to reduce the inclusion of dc from sources of noise (NSB and electronics).
 This two-pass algorithm is usually referred to as the double-pass method (cite??).
 If a pixel's second-pass total dc is higher than 5 times the pedvar, then it is considered an image pixel.
 If it is between 2.5 and 5 times the pedvar, it is considered a border pixel.
 
-Once all pixels have been classified, isolated border pixels that have no neighboring image pixel are also removed, as they are more likely to be due to noise than cherenkov photons.
-Then, the time gradient from the image and border pixels can be found by examining a linear fit of the $T_{0}$ times.
-This gradient can then be used to place a third integration integration window with 30\% of the window before each pixel's $T_{0}$, to more accurately measure the charge due to cherenkov photons in the pixel.
+Once all pixels have been classified, isolated border pixels that have no neighboring image pixel are removed from the image, as they are more likely to be due to noise than cherenkov photons.
+Then, the time gradient from the image and border pixels can be found by performing a linear fit of the $T_{0}$ times.
+This time gradient can then be used to place a (more accurate) third integration window with 30\% of the window before each pixel's $T_{0}$, to more accurately measure the charge due to cherenkov photons in the pixel.
 
-From the image pixels, border pixels, and time gradient, the shower's Hillas parameters can be calculated.
+From the image pixels, border pixels, and time gradient, the shower's Hillas parameters \ref{hillas_params} can be calculated.
 These include the size of the shower in photoelectrons (or equivalent units), the shower center of charge, angle, length and width.
 The center of charge is the charge-weighted average of all image and border pixel positions.
 The angle of the shower determines how the image's major axis is oriented in the camera.
@@ -37,21 +35,21 @@ The shower length and width are determined by the rms of the shower image along 
 \section{Position Reconstruction}\label{subsec:posrecon}
 By examining the images from multiple telescopes, the initial position of the event can be determined.
 This is done by overlapping all telescope images in a single camera coordinate system, and projecting each image's major axis backwards in time.
-These drawn lines should intersect very close together, and a weighted average of the intersection points determines the event's initial direction.
+These drawn lines should intersect very close together, and the average of the intersection points determines the event's initial direction.
 
 In averaging the intersection points, weighting for each intersection can be applied based on the angle between the two lines.
 This improves the reconstruction, because the intersection point from two images at 90\degree angles will be less sensitive to image fluctuations than two images at 160\degree, as shown in figure \ref{fig:largeintersectangle}.
-Additionally, the disp method can be utilized to offer improvements in the lower elevations.
+Additionally, the disp method described in section \ref{subsec:disp} can be utilized to offer improvements in the lower elevations.
 
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.95\textwidth]{images/large_angle_image_intersection_error_cropped.eps}
-    \caption[Large Image Intersection Angles]{In diagram (a), when a noisy pixel is added to an image, the reconstructed position is only moved a small distance (the purple arrow).  In diagram (b), due to the large angle between images, the reconstructed position is much larger.}\label{fig:largeintersectangle}
+    \caption[Large Image Intersection Angles]{In diagram (a), when a noisy pixel is added to an image, the reconstructed position is only moved a small distance (the purple arrow).  In diagram (b), due to the large angle between images, the error in the reconstructed position is much larger.}\label{fig:largeintersectangle}
   \end{center}
 \end{figure}
 
 \subsection{Angular Reconstruction Neural Network}\label{subsec:disp}
-At high elevations, shower images are often at large intesection angles, because the telescopes are spread out in two dimensions, relative to the shower in the atmosphere.
+At high elevations, shower images are often at small intesection angles, because the telescopes are spread out in two dimensions, relative to the shower in the atmosphere.
 At low elevations near the galactic center, however, the telescope array flattens into one dimension, which makes the shower's impact parameter (the shortest distance between the telescope and the shower core axis) smaller for two of the telescopes.
 These two closer telescopes then have very short, almost circular images, which increases the sensitivity of those two image axes to noisy pixels or shower fluctuations, as shown in figure \ref{fig:showerhighlowelev}.
 This also causes the remaining telescope images to have large intersection angles, which also reduces the accuracy of the position reconstruction.
@@ -65,8 +63,9 @@ This also causes the remaining telescope images to have large intersection angle
 
 
 To better handle these near-parallel image axes at low elevations, the reconstructed position can be determined from more parameters than just the weighted image axes intersection points.
-From simulations, the distance between the center of the hillas shower image and the reconstructed position can be calculated, where the angular distance between the two is the 'disp' parameter\cite{Senturk:2011}, shown in figure \ref{fig:dispdiagram}.
-Then, a machine learning algorithm \cite{Beilicke2012NIM} can be trained on these simulations at various energies and positions in the camera(??).
+From simulations, the distance between the center of the Hillas shower image and the true position can be calculated, where the angular distance between the two is the 'disp' parameter\cite{Senturk:2011}, shown in figure \ref{fig:dispdiagram}.
+Then, a machine learning algorithm \cite{Beilicke2012NIM} can be trained on these simulated shower image parameters (width, length, wol, size, tgra_x^2, cross, asym, loss??). % see $EVNDISPSYS/src/trainTMVAforAngularReconstruction.cpp for more info??
+(You do not mention what is the input to the machine learning algorithm. The Hillas parameters?? -Orel)
 This algorithm's disp-predicted positions can then be weighted and included in the intersection averaging.
 
 \begin{figure}[ht]
