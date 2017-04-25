@@ -64,7 +64,7 @@ This also causes the remaining telescope images to have large intersection angle
 
 To better handle these near-parallel image axes at low elevations, the reconstructed position can be determined from more parameters than just the weighted image axes intersection points.
 From simulations, the distance between the center of the Hillas shower image and the true position can be calculated, where the angular distance between the two is the 'disp' parameter\cite{Senturk:2011}, shown in figure \ref{fig:dispdiagram}.
-Then, a machine learning algorithm \cite{Beilicke2012NIM} can be trained on these simulated shower image parameters (width, length, wol, size, tgra_x^2, cross, asym, loss??). % see $EVNDISPSYS/src/trainTMVAforAngularReconstruction.cpp for more info??
+Then, a machine learning algorithm \cite{Beilicke2012NIM} can be trained on these simulated shower image parameters (width, length, wol, size, tgrad_x^2, cross, asym, loss??). % see $EVNDISPSYS/src/trainTMVAforAngularReconstruction.cpp for more info??
 (You do not mention what is the input to the machine learning algorithm. The Hillas parameters?? -Orel)
 This algorithm's disp-predicted positions can then be weighted and included in the intersection averaging.
 
@@ -80,8 +80,8 @@ The disp and other parameters for thousands of simulated showers can then be use
 This most probable disp can then be used with the image axes intersection points to more accurately reconstruct the original gamma-ray point of origin.
 
 Once the training is complete, it is tested on a separate set of 17,000 simulated events, which are plotted in figure \ref{fig:disptraining}.
-The x axis describes the true disp value for each event, while the y axis describes the disp value estimated by the BDT, with a black line for the x=y line, which represents a perfect disp reconstruction.
-As the majority of the events fall on the line, it can be concluded that the BDTs are able to predict the correct disp value for most images.
+The x axis describes the true disp value for each event, while the y axis describes the disp value estimated by the BDT, with a black $x=y$ line marked, which represents a perfect disp reconstruction.
+As events fall on the $x=y$ line, it can be concluded that the BDTs are able to predict the correct disp value for most images.
 
 % made from screenshot of last slide in Dropbox/Presentations/20160719_Group_Meeting.key
 \begin{figure}[ht]
@@ -97,7 +97,10 @@ With the Geometric (red) events, more are concentrated further from the point so
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=\textwidth]{images/disp_event_offset_hists/disp_event_offset_hist.eps}
-    \caption[DISP Offset Improvement]{The number of events at different angular offsets from the Crab and the Galactic Center, with both Geometric and Disp reconstruction methods.}\label{fig:disp_event_offset}
+    \caption[DISP Offset Improvement]{The number of events at different angular offsets from the Crab and the Galactic Center, with both Geometric and Disp reconstruction methods.(Is it the number of events (like the caption) or the number of events per degree squared (like the y-axis title)? 
+The labels and legend in the plots should be bigger (rule of thumb is the same size as the general text of the document). 
+Would be great to put the mean and RMS on the plots, so you can quantify the differences.
+In the caption, point to left and right plot (or use sub-figures)?? -Orel)}\label{fig:disp_event_offset}
   \end{center}
 \end{figure}
 
@@ -105,8 +108,7 @@ With the Geometric (red) events, more are concentrated further from the point so
 \section{Energy Reconstruction}\label{subsec:enrecon}
 To reconstruct the energy of each shower, a database of simulated showers is built.
 This database includes the width and length of the shower, how far away its core position is, how bright it was, as well as its reconstructed and true energy.
-By scanning through this database for showers that are similar to the one being constructed, the most similar-looking shower then indicates the true energy(??).
-
+By scanning through this database for showers that are similar to the one being constructed, the most similar-looking shower then indicates the true energy(is there any interpolation?? -Orel, ask gernot).
 
 
 \section{FITS Conversion for Gammalib and CTOOLs}
@@ -117,8 +119,14 @@ This also includes meta information about the event list like the telescope's po
 This FITS file can then be read into Gammalib and CTOOLS \cite{gammalibctools}.
 
 In addition to the event list, the instrument response functions (IRFs) must also be imported into Gammalib and Ctools.
-These include effective areas, point spread functions, energy dispersion, and background models for several dimensions in the IRF parameter space (energy, offset from camera center, telescope elevation/azimuth, NSB noise, etc).
-By default, all IRFs are stored in a single database, and each event list contains a reference to which part of the parameter space should be used with it.
+These IRFs consist of the Effective Areas, the Point Spread Functions, the background models, and the energy dispersion.
+The Effective Area quantifies the total gamma-ray collection area of the observatory, needed for spectral measurements, and is described in subsection \ref{subsec:effarea}.
+The Point Spread Function quantifies the distribution of true positions for a reconstructed position, needed for identifying point sources and extended spatial structures, and is described in subsection \ref{subsec:psf}.
+The background models measure the relative number of observed events in different parts of the camera, and their construction is described in subsection \ref{background_production}.
+The energy dispersion quantifies the distribution of true energies for a given reconstructed energy, and is discussed in subsection \ref{subsec:edisp}.
+
+Each of these IRFs vary in a parameter space with several dimensions, including event Energy, reconstructed distance from the camera center, telescope elevation and azimuth, night sky background noise, and the atmospheric density.
+In ctools' default configuration, all IRFs are stored in a single directory of files, and each event list contains a filepath reference to indicate which volume of the parameter space it uses.
 
 However, the galactic center is at an elevation of $\ang{30}$, much lower than most VERITAS observation targets.
 At this elevation, with its field of view of $\ang{3.5}$, the air mass column density ($g/cm^{2}$) is 20\% higher at the bottom of the camera than at the top.
@@ -143,7 +151,7 @@ As gammalib and CTOOLS expect the default FITS file scheme, a python function wa
 
 There were minor issues with converting the IRFs that are noted in the following sections.
 
-\subsection{Effective Area}\label{sec:effarea}
+\subsection{Effective Area}\label{subsec:effarea}
 % plot of effective area vs energy
 Effective area is the measure of how large an observatory's collection area is, determining how many gamma rays are be detected per unit time, solid angle, and energy.
 
@@ -170,7 +178,7 @@ For the test analyses of the Crab and the Galactic Center Point Source, the effe
   \end{center}
 \end{figure}
 
-\subsection{Point Spread Function}\label{sec:psf}
+\subsection{Point Spread Function}\label{subsec:psf}
 
 When reconstructing the source position of the gamma ray, it is necessary to know the error on the position.
 Primarily, errors in the position come from the randomness of shower images.
@@ -249,7 +257,7 @@ Indeed, it was noticed that during background fitting, the normalization factor 
 The background normalization factors after the $\frac{1}{150}$ adjustment were shown to be centered around 1.0, varying from from 0.5 to 1.5.
 
 
-\subsection{Energy Dispersion}
+\subsection{Energy Dispersion}\label{subsec:edisp}
 As events are reconstructed imperfectly, it can be important to understand what the distribution of true energies are for a given reconstructed energy.
 In an analysis with ctools, this is quantified by an energy dispersion matrix, that indicates the number of simulated events at each $(E_{reconstructed},E_{true})$ point in a matrix.
 As the likelihood engine in ctools did not at the time of this analyis have energy dispersion fully incorporated, it was not used in this analyis.
