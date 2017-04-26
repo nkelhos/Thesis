@@ -87,7 +87,7 @@ As events fall on the $x=y$ line, it can be concluded that the BDTs are able to 
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.85\textwidth]{images/disp_training.eps}
-    \caption[Disp BDT Training]{The true disp vs the BDT-predicted disp, for \nicetilde17,000 gamma-ray event images in T1, from 500GeV to 200TeV.}\label{fig:disptraining}
+    \caption[Disp BDT Training]{The true disp vs the BDT-predicted disp, for \nicetilde17,000 gamma-ray event images in T1, from 500\GeV to 200\TeV.}\label{fig:disptraining}
   \end{center}
 \end{figure}
 
@@ -119,14 +119,15 @@ This also includes meta information about the event list like the telescope's po
 This FITS file can then be read into Gammalib and CTOOLS \cite{gammalibctools}.
 
 In addition to the event list, the instrument response functions (IRFs) must also be imported into Gammalib and Ctools.
-These IRFs consist of the Effective Areas, the Point Spread Functions, the background models, and the energy dispersion.
-The Effective Area quantifies the total gamma-ray collection area of the observatory, needed for spectral measurements, and is described in subsection \ref{subsec:effarea}.
-The Point Spread Function quantifies the distribution of true positions for a reconstructed position, needed for identifying point sources and extended spatial structures, and is described in subsection \ref{subsec:psf}.
+These IRFs consist of the effective areas, the point spread functions, the background models, and the energy dispersion.
+The effective area quantifies the total gamma-ray collection area of the observatory, needed for spectral measurements, and is described in subsection \ref{subsec:effarea}.
+The point spread function quantifies the distribution of true positions for a reconstructed position, needed for identifying point sources and extended spatial structures, and is described in subsection \ref{subsec:psf}.
 The background models measure the relative number of observed events in different parts of the camera, and their construction is described in subsection \ref{background_production}.
 The energy dispersion quantifies the distribution of true energies for a given reconstructed energy, and is discussed in subsection \ref{subsec:edisp}.
 
 Each of these IRFs vary in a parameter space with several dimensions, including event Energy, reconstructed distance from the camera center, telescope elevation and azimuth, night sky background noise, and the atmospheric density.
 In ctools' default configuration, all IRFs are stored in a single directory of files, and each event list contains a filepath reference to indicate which volume of the parameter space it uses.
+Once each volume is loaded, individual events can then interpolate their specific effective area, psf, and energy dispersion (the backgrounds are utilized differently, as discussed in ??).
 
 However, the galactic center is at an elevation of $\ang{30}$, much lower than most VERITAS observation targets.
 At this elevation, with its field of view of $\ang{3.5}$, the air mass column density ($g/cm^{2}$) is 20\% higher at the bottom of the camera than at the top.
@@ -135,7 +136,7 @@ Add to this that during a single 30 minute observation, the elevation of the Gal
 To allow for the inclusion of this time dependence in the analysis, an alternate way of storing the IRFs was chosen, diagrammed in figure \ref{fig:fits_scheme}.
 First, one observation (typically 20-30 minutes long) is broken up into \nicetilde8 minute chunks.
 Each chunk is then converted to an event list, and saved to a FITS file.
-In addition, the needed Effective Area, PSF, and background models are also written to the same FITS file.
+In addition, the needed effective areas, psfs, and background models are also written to the same FITS file.
 As each event list covers a small region in time, the IRF tables only need to contain the dimensions of the parameter space that can change during one chunk, such as event energy and distance from camera center.
 
 \begin{figure}[ht]
@@ -147,20 +148,23 @@ As each event list covers a small region in time, the IRF tables only need to co
 
 The end result is that a 30 minute observation can be broken into several FITS files (called chunks), where each chunk file is independent of any outside references, contains all needed IRF information, and only takes up \nicetilde100s KB on disk.
 This makes it ideal for an analysis program to automatically download any needed data over an internet connection, as each chunk is tiny and has no outside dependencies.
-As gammalib and CTOOLS expect the default FITS file scheme, a python function was written to automatically load all event and irf tables from a single fits file, and import this information into gammalib's GObservation class.
+As gammalib and CTOOLS expect the default FITS file scheme, a python function was written to automatically load all event and IRF tables from a single fits file, and import this information into gammalib's GObservation class.
 
 There were minor issues with converting the IRFs that are noted in the following sections.
 
+
 \subsection{Effective Area}\label{subsec:effarea}
+% use effective area as a casual noun!
 % plot of effective area vs energy
-Effective area is the measure of how large an observatory's collection area is, determining how many gamma rays are be detected per unit time, solid angle, and energy.
+Effective area is the measure of how large an observatory's collection area is, determining how many gamma rays can be detected per unit time, solid angle, and energy.
 
 For each point in the parameter space, the effective areas are calculated with many Monte Carlo gamma ray simulations.
 This is done in the shower plane, the plane perpendicular to the line drawn between an observing source, and the center of the observatory.
 The effective area is then calculated via:
-$A=\pi R^2 \frac{N_{survived}}{N_{simulated}}$
-where R is the radius of the area within which simulated showers are directed to fall, $N_{simulated}$ is the number of showers that were initially simulated into the area, and $N_{survived}$ is the number of simulated showers that pass all cuts.
-This 'Effective' area is thus a measure of how much detection area the observatory would have if it had a 100\% detection efficiency, which can then be used in calculating a source's flux.
+$A=\pi R^2 \frac{N_{\text{survived}}}{N_{\text{simulated}}}$
+where R is the radius of the area within which simulated showers are directed to fall, $N_{\text{simulated}}$ is the number of showers that were initially simulated into the area, and $N_{\text{survived}}$ is the number of simulated showers that pass all cuts.
+This effective area is thus a measure of how much detection area the observatory would have if it had a 100\% detection efficiency, which can then be used in calculating a source's flux.
+In figure \ref{fig:effarea_paramspace}, it can be seen how the effective area peaks to \nicetilde$3*10^5 m^2$ for 3\TeV events at the camera center.
 
 \begin{figure}[ht]
   \begin{center}
@@ -174,30 +178,32 @@ For the test analyses of the Crab and the Galactic Center Point Source, the effe
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=\textwidth]{images/effarea_plots/effarea_usage.eps}
-    \caption[Effective Area Parameter Space]{Effective Areas used by events in each analysis.}\label{fig:effarea_usage}
+    \caption[Effective Area Parameter Space]{Effective areas used by events in each analysis.}\label{fig:effarea_usage}
   \end{center}
 \end{figure}
 
+(Please make these plots bigger??, its too hard to read the text labels -Orel)
+
 \subsection{Point Spread Function}\label{subsec:psf}
 
-When reconstructing the source position of the gamma ray, it is necessary to know the error on the position.
+When reconstructing the source position of the gamma ray, it is necessary to know the uncertainty of the position.
 Primarily, errors in the position come from the randomness of shower images.
-The same gamma ray may develop a different shower, or different shower cherenkov photons may be absorbed by the atmosphere, or reflected by the mirrors, or converted into a PMT photoelectrons.
-In the image and position reconstruction, this means that an initial gamma ray from some initial position can develop into a distributino of camera images, and visa versa, that a single shower image can come from a distribution of gamma ray positions.
+The same gamma ray may develop into a different shower (with different particles early in the shower gaining different amounts of energy or scattering at different angles), or different shower cherenkov photons may be absorbed by the atmosphere, or reflected by the mirrors, or converted into PMT photoelectrons.
+In the image and position reconstruction, this means that an initial gamma ray from some initial position can develop into a distribution of camera images, and vice versa, that a single shower image can come from a distribution of gamma ray positions.
 
-This distribution of reconstructed positions, called the Point Spread Function (PSF), primarily affects the shape of gamma-ray emission structures in the sky.
-A singular point source, nominally shaped by a dirac function, is instead distributed out according to the PSF.
+This distribution of reconstructed positions, called the point spread function (psf), primarily affects the shape of gamma-ray emission structures in the sky.
+A singular point source, nominally shaped by a dirac function, is instead distributed out according to the psf.
 When searching for an extended source, like a dark matter halo, understanding the distribution of reconstructed positions is important.
-A large PSF on all events, for instance, will artificially expand a dark matter halo, while a smaller PSF will contract it.
+A large psf on all events, for instance, will artificially expand a dark matter halo.
 
-For VERITAS, the PSF is measured by simulating many gamma rays, then measuring the distribution of true positions for each reconstructed position.
-With VERITAS and Event Display, the PSF has been roughly measured to be gaussian-shaped.
-For CTOOLS however, the distribution of events are instead fitted with a King function (Eqn \ref{eqn:king}), as Fermi and HESS have found (cite??) gamma ray PSFs tend to have longer tails than a Gaussian, which the king function better handles.
-The radially-normalized king function is:
+For VERITAS, the psf is estimated by simulating many gamma rays, then measuring the distribution of true positions for each reconstructed position.
+With VERITAS and Event Display, a gaussian was chosen to fit the psf distribution.
+For CTOOLS however, the distribution of events are instead fitted with a King function (see eqn \ref{eqn:king}), as Fermi and HESS have found (cite??) gamma ray psfs tend to have longer tails than a Gaussian, which the king function better handles.
+The radially-normalized king function is defined as
 
 \begin{equation} \label{eqn:king}
-$$ psf_{king}(r) = \frac{1}{2 \pi \sigma^{2} } \left( 1 - \frac{1}{\gamma} \right) \left( 1 + \frac{ r^{2} }{ 2 \gamma \sigma^{2} } \right)^{-\gamma} $$
-\end{equation}
+$$ \text{psf}_{king}(r) = \frac{1}{2 \pi \sigma^{2} } \left( 1 - \frac{1}{\gamma} \right) \left( 1 + \frac{ r^{2} }{ 2 \gamma \sigma^{2} } \right)^{-\gamma} $$
+\end{equation},
 
 where $r$ is the angular distance from the reconstructed position, $\sigma$ is similar to the width of a gaussian , and the $\gamma$ parameter affects how long the tails are.
 A king function fitting algorithm was added to Event Display, that fits the $\gamma$ and $\sigma$ parameters to a set of simulated gamma rays.
@@ -210,25 +216,42 @@ Other runs, which have different elevations, azimuths and NSB noise levels will 
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.75\textwidth]{images/psf_king_plots/psf_parameter_space.eps}
-    \caption[PSF Parameter Space]{The 68\% containment radius for the Energy/Offset parameter space for Galactic Center run 78128.}\label{fig:psf_paramspace}
+    \caption[PSF Parameter Space]{The 68\% containment radius for the Energy/Offset parameter space for Galactic Center run 78128. (make these plots bigger!?? -Orel)}\label{fig:psf_paramspace}
   \end{center}
 \end{figure}
 
-For the Galactic Center analysis, the 68\% containment radius for all events was histogrammed into figure \ref{fig:gc_psf_hist}.
+For the Galactic Center and the Crab analyses, the distribution of 68\% containment radii for all events is shown in figure \ref{fig:gc_psf_hist}.
 
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=\textwidth]{images/psf_gc_eventhist/eventpsfhist.eps}
-    \caption[Crab and Galactic Center Event PSFs]{The 68\% containment radius for all Galactic Center and Crab events used in this analysis.}\label{fig:psf_paramspace}
+    \caption[Crab and Galactic Center Event PSFs]{The 68\% containment radius for all Galactic Center and Crab events used in this analysis.  The events with a zero containment radius are caused by low statistics in the simulations at the edges of the parameter space(check this??).}\label{fig:gc_psf_hist}
   \end{center}
 \end{figure}
 
 \subsection{Background Models}\label{background_production}
 
-To produce a background, events are binned in camera coordinates and energy.
-The energy bins are determined by expanding outwards (in $log_{10}(TeV)$ space) from the median energy of all events, until each energy bin has at least 100 events per degree$^2$, expanding to include any energy ranges that have less than that.
-In these energy bins, events are then binned radially, which is then used to fit an interpolation function (see figure \ref{fig:background_radial}), which is then normalized to one when integrated around the entire camera, which is the pdf of one event.
-These energy-bin pdfs can then be interpolated linearly in $log_{10}(TeV)$ space, to get the radial distribution of events at various energies.
+A background model is a 3 dimensional function in camera X (in angle, parallel to azimuth), camera Y (in angle, parallel to elevation), and energy.
+The function predicts the number of observed events in the camera, per unit solid angle, unit time, and unit energy.
+This is used to quantify how many counts are expected when observing a gamma-ray-dark sky position, which estimates how many background proton events are being detected at different energies and in different parts of the camera.
+Understanding the background shape of the camera is crucial for properly studying extended sources, like dark matter halos, which may extend several degrees from the galactic center.
+An improperly estimated background model can create fake structures in an astrophysical target.
+Background models with more than 3 dimensions are also possible, but require many more simulations, and are beyond the scope of this thesis.
+
+To produce a background model, gamma-like events from 'dark' obsevations (areas of the sky with no gamma-ray sources) are binned in camera coordinates and energy.
+The details of the selected dark observations are detailed further in ??.
+The energy bins are determined by expanding outwards (in $log_{10}(\TeV )$ space) from the median energy of all events, until each energy bin has at least 100 events per degree$^2$.
+Any energy bins at the upper or lower edges that have less than 100 events per degree$^2$ are absorbed into the neighboring energy bin.
+In these energy bins, events are then binned radially, which is then used to fit an interpolation function (see figure \ref{fig:background_radial}).
+This interpolated function is normalized to a volume of one by integrated around the entire camera.
+
+(Fix this integral!??)
+\begin{equation} \label{eqn:background_integral}
+$$ P(r) = \int{a}{b} $$
+\end{equation},
+
+This , which is the pdf of one event.
+These energy-bin pdfs can then be interpolated linearly in $log_{10}(\TeV )$ space, to get the radial distribution of events at various energies.
 
 \begin{figure}[ht]
   \begin{center}
@@ -309,7 +332,7 @@ It can be seen that in different energy bins, the background possesses different
 \subsubsection{Diffuse Simulations}
 
 To rule out any software causes, diffuse simulations were performed at similar energies and elevations.
-These consisted of 50,000 gamma rays at each of 1.4, 1.6, 2, and 5 TeV.
+These consisted of 50,000 gamma rays at each of 1.4, 1.6, 2, and 5 \TeV.
 The telescopes were fixed to an azimuth/elevation of (193\degree,28\degree).
 The events themselves were distributed in a diffuse disk of radius 2.5\degree.
 After having their energy reconstructed, any events falling outside a simple mean-scaled-width cut of -2.0 to 0.5 were removed, which removes many of the proton-induced showers, approximating a gamma-hadron cut.
@@ -327,7 +350,7 @@ One can see that the ring and crescent structures persist in these diffuse simul
 This striking effect can be seen in Galactic Center data between certain energy ranges.
 As the plots are in galactic (l,b) coordinates, and there is a time rotation due to the Earth spinning on its axis, the crescent shapes are still present, albiet smeared around the 4 wobble targets.
 
-plot of galactic center (all energies vs @2TeV ) !??
+plot of galactic center (all energies vs @2 \TeV ) !??
 
 \subsection{Effect of Stars}
 As understanding the camera's background is important for extended source studies, i.e. dark matter halos, understanding the spatial effects of stars in the camera is also relevant.
@@ -408,7 +431,7 @@ On the other hand, a wider image looks more hadron-like, and is less likely to p
 \end{figure}
 
 In figure \ref{fig:dpix_move}, the movment of gamma-like events is shown, when pixel 115 was disabled in all four telescopes.
-Only events which moved more than $0.1*PSF$ are shown.
+Only events which moved more than $0.1*psf$ are shown.
 It should be noted that relatively few (how few??) events move, and the events that do move are mostly ones with strange image shapes that are cut in half when the pixels are disabled.
 
 \begin{figure}[ht]
