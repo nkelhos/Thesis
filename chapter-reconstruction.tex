@@ -216,7 +216,7 @@ Other runs, which have different elevations, azimuths and NSB noise levels will 
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.75\textwidth]{images/psf_king_plots/psf_parameter_space.eps}
-    \caption[PSF Parameter Space]{The 68\% containment radius for the Energy/Offset parameter space for Galactic Center run 78128. (make these plots bigger!?? -Orel)}\label{fig:psf_paramspace}
+    \caption[PSF Parameter Space]{The 68\% containment radius for the Energy/Offset parameter space for Galactic Center run 78128. (make these plots bigger!?? -Orel) (and shorten the x dimension of the plot!??)}\label{fig:psf_paramspace}
   \end{center}
 \end{figure}
 
@@ -242,6 +242,7 @@ To produce a background model, gamma-like events from 'dark' obsevations (areas 
 The details of the selected dark observations are detailed further in ??.
 The energy bins are determined by expanding outwards (in $log_{10}(\TeV )$ space) from the median energy of all events, until each energy bin has at least 100 events per degree$^2$.
 Any energy bins at the upper or lower edges that have less than 100 events per degree$^2$ are absorbed into the neighboring energy bin.
+This 100 events per degree$^2$ was chosen because in test plots, this theshold provided enough events for a smooth Camera X/Y 2D histograms at a useful resolution (\nicetilde60 bins across one dimension of the field of view) which form the background models.
 In these energy bins, events are then binned radially, which is then used to fit an interpolation function (see figure \ref{fig:background_radial}).
 This interpolated function is normalized to a volume of one by integrated around the entire camera.
 
@@ -264,20 +265,21 @@ These energy-bin pdfs can then be interpolated linearly in $log_{10}(\TeV )$ spa
 Then, all events are divided up into \nicetilde30 finer energy bins as shown in figure \ref{fig:background_profile}, and each bin's counts are multiplied by the interpolated radial pdf at that energy, which is then written to a two-dimensional array of camera x/y bins.
 2D bin values are then divided by the solid angle of the bin (in sr), the energy width of the bin (in Mev), and the total obseration time (in seconds).
 
+(For the above 2-3 paragraphs: I really have trouble following what is done exactly and I think there is no need to go into these details. This looks like a description of the code instead of the physics/analysis. --Orel??)
+
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=0.9\textwidth]{images/ctools_background/background_construction.eps}
-    \caption[CTOOLS Background Fine Energy Bins]{The V5 Background's fine-energy bins.  The left plot shows the number of events in each fine-energy bin.  The right plot shows the ctools background values.  The black lines show the fits background value and energy bin width saved to the background file, while the blue line shows the background value after ctools loads and interpolates those fits background values.  Note the y-axis in the left plot is linear, while in the right plot, it is $log_{10}$. (These plots should be cleaned up a little??)}\label{fig:background_profile}
+    \caption[CTOOLS Background Fine Energy Bins]{The V5 Background's fine-energy bins.  The left plot shows the number of events in each fine-energy bin.  The right plot shows the ctools background values.  The black lines show the fits background value and energy bin width saved to the background file, while the blue line shows the background value after ctools loads and interpolates those fits background values.  Note the y-axis in the left plot is linear, while in the right plot, it is $log_{10}$. (These plots should be cleaned up a little??  A lot… Make the labels and points bigger, align the two plots, etc… --Orel??)}\label{fig:background_profile}
   \end{center}
 \end{figure}
 
-Additionally, three extra 'zero' background maps (with an extremely low value of $10^-13 \frac{counts}{Mev s sr}$ are added above and below the fine energy bins, so that the ctools background interpolation will properly predict the correct lack of events above and below the energy range.
+Additionally, three extra 'zero' background maps (with an extremely low value of $10^{-13} \frac{\text{counts}}{\text{sr}*\text{s}*\MeV}$ are added above and below the fine energy bins, so that the ctools background interpolation will properly predict the correct lack of events above and below the energy range.
+(I am not sure this detail about ctools (in capital?) is really important to note here. --Orel??)
 
 The background is used in the likelihood analysis as a model with one free parameter, a simple multiplicative normalization factor.
 This lets the likelihood engine scale each run's background model up or down to best fit the events, so the background's absolute value is less important than the relative values in different parts of the camera.
 
-Indeed, it was noticed that during background fitting, the normalization factor was usually around $\frac{1}{150}$, so future backgrounds were created with this value multiplied in already, which reduced the likelihood runtime from around 7-9 hours to 2 hours for the galactic center point source analysis.
-The background normalization factors after the $\frac{1}{150}$ adjustment were shown to be centered around 1.0, varying from from 0.5 to 1.5.
 
 
 \subsection{Energy Dispersion}\label{subsec:edisp}
@@ -300,17 +302,18 @@ For each equal-statistic energy bin, all the contained events are binned in came
 For a set of high-elevation observations, these backgrounds are shown in figure \ref{fig:back_highelev}.
 It can be seen that all events are divided up into 3 equal-statistics energy bins in figure \ref{fig:back_highelev}.A.
 Each energy bin is then binned in camera X and Y in figure \ref{fig:back_highelev}.B, .C, and .D.
-It can be seen that at these high elevations, each energy bin is radially symmetric about the camera center.
+At these high elevations, the distribution of events in each energy bin is radially symmetric about the camera center.
 This happens because gamma ray's point of origin and its shower image in the camera are usually several tenths of a degree away from each other.
+The reason for the difference in these shapes is explored in the next section, \ref{subsubsec:diffusesims}.
 
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[width=\textwidth]{images/ctools/backgrounds_highelev.eps}
-    \caption[FITS Background at 50\degree Elevation]{Gamma-like Events from 52 observations (approximately \nicetilde20 hours) of M82, between 50\degree  and 52\degree  elevations.  Events in Figure A are divided into 3 equal-statistics energy bins, and binned in Camera Coordinates in Figures B, C, and D.}\label{fig:back_highelev}
+    \caption[FITS Background at 50\degree Elevation]{Gamma-like Events from 52 observations (approximately \nicetilde20 hours) of M82, between 50\degree  and 52\degree  elevations.  Events in Figure A are divided into 3 equal-statistics energy bins, and binned in Camera Coordinates in Figures B, C, and D. (change axes labels to only use Camera X and Y to be consistant with paragraph text --Orel??)}\label{fig:back_highelev}
   \end{center}
 \end{figure}
 
-In figure \ref{fig:back_lowelev29} and figure \ref{fig:back_lowelev26}, the same plots are constructed for a set of low-elevation ($ \nicetilde \ang{29} $ and $ \nicetilde \ang{26} $ respectivly)) observations, using Galactic Center Off observations.
+In figure \ref{fig:back_lowelev29} and figure \ref{fig:back_lowelev26}, the same plots are constructed for a set of low-elevation ($ \nicetilde \ang{29} $ and $ \nicetilde \ang{26} $ respectivly) observations, using Galactic Center Off observations (reference these off observations to the apropriate section elsewhere??).
 These are again divided in to equal-statistic energy bins, and then each energy bin is binned in camera coordinates.
 It can be seen that in different energy bins, the background possesses different shapes.
 
@@ -329,13 +332,13 @@ It can be seen that in different energy bins, the background possesses different
 \end{figure}
 
 
-\subsubsection{Diffuse Simulations}
+\subsubsection{Diffuse Simulations}\label{subsubsec:diffusesims}
 
 To rule out any software causes, diffuse simulations were performed at similar energies and elevations.
 These consisted of 50,000 gamma rays at each of 1.4, 1.6, 2, and 5 \TeV.
 The telescopes were fixed to an azimuth/elevation of (193\degree,28\degree).
 The events themselves were distributed in a diffuse disk of radius 2.5\degree.
-After having their energy reconstructed, any events falling outside a simple mean-scaled-width cut of -2.0 to 0.5 were removed, which removes many of the proton-induced showers, approximating a gamma-hadron cut.
+After having their energy reconstructed, any events falling outside a simple mean-scaled-width cut of -2.0 to 0.5 were removed, which removes many of the showers that appear proton-like, approximating a gamma-hadron cut.
 These are then binned in camera coordinates in figure \ref{fig:back_simdiffuse}.
 
 \begin{figure}[ht]
@@ -346,6 +349,7 @@ These are then binned in camera coordinates in figure \ref{fig:back_simdiffuse}.
 \end{figure}
 
 One can see that the ring and crescent structures persist in these diffuse simulations, implying these are physical effects of the atmosphere and camera, rather than a reconstruction problem.
+(But what is the effect? I remember Gernot mentioning something about an edge effect? You should explain it here. --Orel??)
 
 This striking effect can be seen in Galactic Center data between certain energy ranges.
 As the plots are in galactic (l,b) coordinates, and there is a time rotation due to the Earth spinning on its axis, the crescent shapes are still present, albiet smeared around the 4 wobble targets.
@@ -353,31 +357,30 @@ As the plots are in galactic (l,b) coordinates, and there is a time rotation due
 plot of galactic center (all energies vs @2 \TeV ) !??
 
 \subsection{Effect of Stars}
-As understanding the camera's background is important for extended source studies, i.e. dark matter halos, understanding the spatial effects of stars in the camera is also relevant.
-It had been noted in the past that for a dim star (magnitude > 5??), the given pixel would have a higher average current.
+As understanding the camera's background is important for extended source studies, i.e. dark matter halos, studies were performed examining the spatial effects of stars in the camera.
+It had been noted in the past that for a dim star (magnitude > 5??), the camera pixel it illuminated would have a higher average current.
 This translates into a higher pedvar in the affected pixels, which can decrease how often the pixel participates in shower images.
 In addition, if a bright star (magnitude <= 5??) was in the field of view, it would cause high enough current in the pixel that it would be shut off (voltage set to 0??) to prevent it from being damaged.
 For particularly bright stars (magnitude <= 3), often several pixels are disabled at a given time.
 
 A third effect is that, since the telescope camera is fixed to the ground, from the camera coordinate system, the sky rotates around the camera center.
-This means that over a single 30min observation, any stars rotate around the camera center, disabling several camera pixels as it passes over them.
+This means that over a single 30 min observation, any stars rotate around the camera center, disabling several camera pixels as it passes over them.
 The camera checks for these disabled pixels roughly once per minute by turning them back on and monitoring the current.
 
 These effects imply that to study the effect of stars, one must study the effect of high-current and disabled camera pixels, and use this information to construct the effect of stars.
-For this section, the effects of disabled camera pixels are studied.
+In this section, the effects of disabled camera pixels are studied.
 
 % see calculations/disabledpixel_obstime , those 250 crab runs turned into about 13.5 observation hours
-To examine the effects of disable pixels, \nicetidle13 hours of Crab observations were analyzed twice with Event Display.
+To examine the effects of disabled pixels, \nicetidle13 hours of Crab observations were analyzed twice with Event Display.
 The first time was with the regular analysis chain, and the second time with a single pixel disabled in all four telescopes.
 This mimics the effect of having a star in the field of view that is bright enough to disable a pixel.
 
-After both sets of events are passed through gamma-hadron cuts, they are then compared.
-When synchronizing the both sets of events, it can be done in $O\left(n\right)$ time (rather than $O\left(n^2\right)$ time), as both event lists are already time-ordered.
+After both sets of events are passed through gamma-hadron cuts, they are compared.
 These two sets of events were examined for events that disappeared when the pixel was disabled, as well as for new events that appeared.
 Events that are still present in both event lists can then be tested to see how far their reconstructed position moved in the camera.
 
 In figure \ref{fig:dpix_rel_camera}, the relative event rate in the camera is plotted when pixel 115 is disabled in all four telescopes.
-This relative event rate is calculated by taking, for each bin, the number of reconstructed gamma-like events is divided by the pixel-enabled number of reconstructed events.
+This relative event rate is calculated by taking, for each bin, the number of reconstructed gamma-like events, divided by the pixel-enabled number of reconstructed events.
 It can be seen that there is a loss of events near the disabled pixel (the black circle), with a rate closer to 100\% the further away one goes from the disabled pixel.
 
 \begin{figure}[ht]
@@ -390,9 +393,17 @@ It can be seen that there is a loss of events near the disabled pixel (the black
 In figure \ref{fig:dpix_rel_radial}, the bin values from figure \ref{fig:dpix_rel_camera} are divided into radial bins centered around the disabled pixel.
 The average relative event rate is then calculated for each bin, along with a 1-sigma distribution width for the error bars.
 It can be seen that there are three distinct regions to the plot.
+(How do you actually calculate the uncertainties here? If you take a ratio between numbers of events, you need to calculate the uncertainty explicitly since there are many events which are common to both bins and they shouldn’t be counted twice in the uncertainty.  This is important as it affects the conclusion you reach below. --Orel??)
 In the first region, from radius $\ang{0}$ to $\ang{0.3}$, the relative event rate starts extremely low, and rises rapidly.
 In the second region, from radius $\ang{0.3}$ to $\ang{1.6}$, the relative event rate is still rising, but much more slowly.
 In the third region outside $\ang{1.6}$, there is almost no effect.
+
+??This discussion of three regions is not really correct and not entirely relevant.
+It does not give a conclusion on what you do with this information.
+The simplest idea would be to apply a correction to events with disabled pixels based on this plot. Do you that? If not, why not? If yes, it should be mentioned here.
+There are really only two “regions” in this plot, one where you lose events and need to correct for that and one where the ratio is 100% within uncertainties.
+Here is where the correct calculation of uncertainties of the ratio becomes important.
+I think as it is, you might be overestimating the uncertainties, which would result in a larger systematic uncertainties from this correction, if you apply it. --Orel??
 
 
 \begin{figure}[ht]
@@ -402,7 +413,7 @@ In the third region outside $\ang{1.6}$, there is almost no effect.
   \end{center}
 \end{figure}
 
-In figure \ref{fig:dpix_disappear}, the positions of events that disappeared are shown.
+In figure \ref{fig:dpix_disappear}, the positions of events that were rejected by cuts are shown.
 The white area indicates many events are lost in the area of the disabled pixel.
 These events would have smaller images, and would be much more susceptable to being cut.
 
@@ -413,7 +424,7 @@ These events would have smaller images, and would be much more susceptable to be
   \end{center}
 \end{figure}
 
-In figure \ref{fig:dpix_appear}, the positions of events that newly appeared are shown.
+In figure \ref{fig:dpix_appear}, the positions of events that are now able to pass cuts are shown.
 It should be noted that these are not events that these are events 'created' by disabling a pixel.
 Rather, they are events that, with the pixel enabled, did not pass cuts.
 Now that the pixel is disabled, they do pass cuts.
@@ -432,7 +443,11 @@ On the other hand, a wider image looks more hadron-like, and is less likely to p
 
 In figure \ref{fig:dpix_move}, the movment of gamma-like events is shown, when pixel 115 was disabled in all four telescopes.
 Only events which moved more than $0.1*psf$ are shown.
-It should be noted that relatively few (how few??) events move, and the events that do move are mostly ones with strange image shapes that are cut in half when the pixels are disabled.
+It should be noted that relatively few (how few??) events move, and the events that do move are mostly ones with non-compact image shapes that are cut in half when a pixel is disabled.
+
+What can be learned from this is that while only a small number of events' positions depend on a given pixel, pixels can have an impact on the reconstructed position from halfway across the camera.
+This may imply that the event PSF is, to second order, dependent on the number of disabled pixels, though no studies were done to confirm this.(is it ok to guess this??)
+
 
 \begin{figure}[ht]
   \begin{center}
