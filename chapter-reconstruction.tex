@@ -215,8 +215,8 @@ Other runs, which have different elevations, azimuths and NSB noise levels will 
 % plot of psfs from chunkplot
 \begin{figure}[ht]
   \begin{center}
-    \includegraphics[width=0.75\textwidth]{images/psf_king_plots/psf_parameter_space.eps}
-    \caption[PSF Parameter Space]{The 68\% containment radius for the Energy/Offset parameter space for Galactic Center run 78128. (make these plots bigger!?? -Orel) (and shorten the x dimension of the plot!??)}\label{fig:psf_paramspace}
+    \includegraphics[width=\textwidth]{images/psf_king_plots/psf_parameter_space.eps}
+    \caption[PSF Parameter Space]{The 68\% containment radius for the Energy/Offset parameter space for Galactic Center run 78128. The black points show a subset of the event positions from that run in the parameter space.}\label{fig:psf_paramspace}
   \end{center}
 \end{figure}
 
@@ -283,10 +283,29 @@ This lets the likelihood engine scale each run's background model up or down to 
 
 
 \subsection{Energy Dispersion}\label{subsec:edisp}
-As events are reconstructed imperfectly, it can be important to understand what the distribution of true energies are for a given reconstructed energy.
-In an analysis with ctools, this is quantified by an energy dispersion matrix, that indicates the number of simulated events at each $(E_{reconstructed},E_{true})$ point in a matrix.
-As the likelihood engine in ctools did not at the time of this analyis have energy dispersion fully incorporated, it was not used in this analyis.
-This is accounted for by adding ??\% to the total systematic error.
+As events are reconstructed imperfectly, it is important to understand what the distribution of true energies are for a given reconstructed energy.
+In an analysis with ctools, this is quantified by an energy migration matrix $E_{i,j}$, where $i$ denotes the $i^{th}$ reconstructed energy bin, and $j$ denotes the $j^{th}$ true energy bin.
+For true energy $j$, the distribution of reconstructed energies $f_{\text{reco}}$ is,
+
+\begin{equation} \label{eqn:edispreco}
+$ f_{\text{reco}}(j)=\frac{E_{i,j}}{ \sum_{i}E_{i,j} } $
+\end{equation}
+
+for reconstructed energy $i$, the distribution of true energies $f_{\text{true}}$ is,
+
+\begin{equation} \label{eqn:edisptrue}
+$ f_{\text{true}}(i)=\frac{E_{i,j}}{ \sum_{j}E_{i,j} } $
+\end{equation}
+
+By folding these distributions into the reconstructed energies, two primary analysis effects are accounted for.
+The first is that the reconstruction software introduces biases in the event energy, meaning on average, a given true energy is reconstructed at a higher or lower energy.
+This can be due to ??.
+The second effect that is accounted for is the dispersion in the reconstructed energies.
+Multiple simulations of the same energy event will result in a distribution of reconstructed energies.
+This has the effect of smearing out events in each energy bin of a spectra.
+In astrophysical spectra, which typically follow an exponential curve, lower energy bins tend to have more events than the next highest energy bin, so smearing out the lower-energy bin contributes more to the higher-energy bin than the higher-energy bin contributes to the lower-energy bin.
+This has the effect that, when not accounted for, energy dispersion will harden observed astrophysical source spectra.
+
 
 \section{Camera Studies}
 The objective of this thesis is to put upper limits on the existance of an extended, faint gamma-ray emission region.
