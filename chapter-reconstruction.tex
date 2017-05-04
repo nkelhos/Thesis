@@ -297,8 +297,8 @@ for reconstructed energy $i$, the distribution of true energies $f_{\text{true}}
 $ f_{\text{true}}(i)=\frac{E_{i,j}}{ \sum_{j}E_{i,j} } $
 \end{equation}
 
-By folding these distributions into the reconstructed energies, two primary analysis effects are accounted for.
-The first is that the reconstruction software introduces biases in the event energy, meaning on average, a given true energy is reconstructed at a higher or lower energy.
+By unfolding these distributions from the reconstructed energies, two primary analysis effects are accounted for.
+The first is that the reconstruction software introduces biases in the event energy, meaning on average, an event at a given true energy is reconstructed at a higher or lower energy.
 This can be due to ??.
 The second effect that is accounted for is the dispersion in the reconstructed energies.
 Multiple simulations of the same energy event will result in a distribution of reconstructed energies.
@@ -306,6 +306,14 @@ This has the effect of smearing out events in each energy bin of a spectra.
 In astrophysical spectra, which typically follow an exponential curve, lower energy bins tend to have more events than the next highest energy bin, so smearing out the lower-energy bin contributes more to the higher-energy bin than the higher-energy bin contributes to the lower-energy bin.
 This has the effect that, when not accounted for, energy dispersion will harden observed astrophysical source spectra.
 
+In figure \ref{fig:migmatrix}, a migration matrix is shown.
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/edisp_plots/edisp.eps}
+    \caption[Energy Migration Matrix]{An energy migration matrix used with Galactic Center run 82288.  The reconstructed energy is on the x axis, and the true energy is on the y axis.  The z (color) axis (why does the z axis have units of 1/s??) denotes the number of simulated events that passed all cuts. (remove probe point at <1TeV??)}\label{fig:migmatrix}
+  \end{center}
+\end{figure}
 
 \section{Camera Studies}
 The objective of this thesis is to put upper limits on the existance of an extended, faint gamma-ray emission region.
