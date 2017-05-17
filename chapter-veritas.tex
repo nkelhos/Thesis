@@ -15,11 +15,6 @@ When a gamma ray produces an air shower in the atmosphere, the shower emits blue
 By focusing these photons onto the PMT camera with the mirrors, images of the shower can be taken, where each pixel of the image consists of analog voltage pulses from each PMT, with more photons causing larger pulses.
 
 
-%As the width of voltage pulses must be \nicetilde{}ns to prevent overlapping with the pulses from other showers, the digization hardware measures the time-dependent voltage of each pulse in 1-nanosecond-wide(??) time bins.
-%Though faint showers may only posess a few photons per PMT, brighter showers can still shine several thousand photons onto individual pixels.
-%This means that the digization hardware must be able to handle a large dynamic range of inputs, over several orders of magnitude in voltage.
-%To accomplish this, two amplification levels are used in the digization circuit, High Gain for voltage pulses of a few photons, and Low Gain for voltage pulses of several thousand photons.
-
 In the following sections, the different hardware components are examined, in order of signal propagation.
 In section \ref{sec:telpoint}, the Telescope Pointing is discussed, including its monitoring and calibration.
 The Mirrors are discussed in section \ref{sec:mirrors}, including their properties and alignment.
