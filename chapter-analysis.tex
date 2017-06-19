@@ -4,6 +4,12 @@
 \section{Veritas Data}
 runs/sources/dates/times
 
+V5 and V6 runs
+different epochs
+low elevation
+DQM and weather quality
+IRFs depend on the run (noise level, elevation) and in-camera effects (event energy, offset)
+
 \section{Likelihood Ratio Test}
 The likelihood ratio test useful for comparing two hypotheses.
 They are referred to as the null and alternative hypotheses.
@@ -34,6 +40,23 @@ To confirm that these background models fit properly, a simple likelihood analys
 If the background models were assembled astutely, after the liklelihood normalization, the number of events observed and predicted by the models is shown in figure ??.
 
 (using just the background observations, show profile plots in galactic-b and energy??)
+
+\section{CTOOLS Iterative Fitting}
+Any general analysis with CTOOLS will posess many model parameters.
+For the two analyses discussed in the next several sections, more than 100 model parameters were fitted.
+While the simple optimizer class GOptimizerLM uses a Levenberg-Marquardt algorithm (cite??), it still requires care in picking the initial parameter values.
+
+First, only the background models are fitted in a simple manner.
+This is done by leaving off the any astrophysical models, and by fixing all but one of each background model's spectral parameters.
+As the backgrounds are fixed spatially, this means the only free parameters are the Power Law Prefactor and Spectral Index.
+The prefactors are freed and fitted, then the prefactors are fixed, and the indexes are freed and fitted.
+Next, all parameters are randomly varied by 20\% to prevent them from getting stuck in local minima.
+This is done multiple times, as it takes several cycles of this for values (especially the spectral index parameters) to reach their steady-state value.
+
+Next, the astrophysical source models are added.
+The fitting is still performed with only one spectral parameter free at a time, with random parameter variations between each cycle.
+This helps bring the model parameters close to their optimium values before we perform the actual fit.
+After several more cycles of this, then the actual fit can be performed, where all spectral parameters in all models are freed and fitted, producing the final fitted model parameters.
 
 
 \section{Test Point Sources}
