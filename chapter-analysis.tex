@@ -63,7 +63,6 @@ In addition, specific IRFs were calculated for additional data dimensions, inclu
 
   (using just the background observations, show profile plots in galactic-b and energy??)
 
-
 \section{Test Point Sources}
   To verify that the CTOOLs likelihood analysis is working properly, two point sources were analyzed first, before any dark matter analysis was performed.
   The first was on the well-studied Crab nebula, and the second was on the source at the center of our galaxy.
@@ -89,15 +88,21 @@ In addition, specific IRFs were calculated for additional data dimensions, inclu
     As the crab (alternative) hypothesis has 110 free parameters, and the no-crab (null) hypothesis has 108 free parameters, the Test Statistic has $ 110 - 108 = 2 $ degrees of freedom.
     This is equivalent to a significance of ??.
     
+    
 
   \subsection{Test Galactic Center Analysis}
 
-    Cutoff Power law spectrum.
-    Signifiance.
+    The galactic center is a gamma-ray emitter, albiet weaker than the Crab.
+    In order to see if this is modeled properly, a test point source is placed at the Galactic Center, with a Cut-Off power law spectrum, as this is the spectrum most favored in previous literature (cite??)
+    This power law follows the form:
 
-\section{Sgr A* Data Analysis}
-  Broke data into two elevation regimes, $ \ang{25}-\ang{28.5} $, and $ \ang{28.5}-\ang{30.25} $.
-  Separate off runs were taken to use as a background.
+    \begin{equation} \label{eqn:powerlaw}
+    $$  ?? $$
+    \end{equation}
+      
+    After fitting the Galactic Center point source and its background models, the best fit values were ??.
+    The point source was found to have a Test Statistic of ??, with ??-??=?? degrees of freedom, equivalent to a ?? sigma detection.
+    
 
 \section{Dark Matter Likelihood Analysis}
   \subsection{Non-Dark-Matter Models}
@@ -169,3 +174,4 @@ In addition, specific IRFs were calculated for additional data dimensions, inclu
   %The fitting is still performed with only one spectral parameter free at a time, with random parameter variations between each cycle.
   %This helps bring the model parameters close to their optimium values before we perform the actual fit.
   %After several more cycles of this, then the actual fit can be performed, where all spectral parameters in all models are freed and fitted, producing the final fitted model parameters.
+
