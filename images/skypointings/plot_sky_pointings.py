@@ -31,10 +31,10 @@ for src in sources :
 
   if src == 'Sgr A*' :
     co = 'green'
-    la = 'Data (On) Observations'
+    la = 'Sgr A* Observations'
   elif src == 'Sgr A* Off' :
     co = 'blue'
-    la = 'Background (Off) Observations'
+    la = 'Sgr A* Off (Background) Observations'
   patch = mpatches.Patch(color=co, label=la)
   patches += [ patch ]
   fig.show_circles( gall, galb, radii, facecolor=co, zorder=1, edgecolor=None )
@@ -59,3 +59,5 @@ fig.set_tick_labels_xformat('ddd')
 fig.set_tick_labels_yformat('ddd')
 
 fig.savefig('plot.png')
+
+os.system('convert plot.png plot.eps')
