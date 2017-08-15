@@ -190,7 +190,17 @@
 
 \section{Upper Limit}
   An upper limit on the flux of a source can be calculated by scaling the flux of a model until the log-likelihood is at the 0.95 confidence level.
+  This is done by using the ctulimit tool in ctools.
+  
+  Then from the dark matter flux equation ??, an upper limit on the observed gamma-ray flux can be used to calculate an upper limit on the velocity-averaged crosssection.
+  
+  \begin{equation}
+  $$ \frac{d\phi}{dE d\omega} = \frac{ \sigma v (fixme!??)}{8\pi m_{\chi}^{2}} \frac{dN_{\gamma}}{dE} \int \rho^{2} dl $$
+  \end{equation}
+  
+  Since, when all other variables are fixed, a larger gamma ray flux results from a larger velocity-averaged crosssection, they can both be replaced with their upper limits (??).
 
+  % upper limit plot
 
   %\section{CTOOLS Iterative Fitting}
   %Any general analysis with CTOOLS will posess many model parameters.
