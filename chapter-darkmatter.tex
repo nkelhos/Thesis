@@ -153,19 +153,25 @@
     Or, they may produce $\HepParticle{b}{}{}\HepAntiParticle{b}{}{}$, or $\HepParticle{\gamma}{}{}\HepParticle{\gamma}{}{}$.
 
     These different annihilations will produce different spectra of final gamma rays.
+  
   \subsection{Dark Matter Halo Structure}
     From observations, most galactic dark matter halos can be modeled by several similar density profiles (explain??).
     The currently favored profiles are the Einasto, the Burkert, and the NFW profiles.(cite these profiles??)
-    Each profile describes the mass/volume density of dark matter at a distance r from the halo center.
+    Each profile describes the mass/volume density of dark matter at a distance r from the halo center, $$\rho(r)$$.
     In this initial analysis, only the Einasto profile is used.
+
+    Most simulations show that density profiles should terminate in a sharp peak at $$r=0$$, but observations of dwarf galaxies instead favor a flat core within a given radius \ref{CoreVsCusp}.
+    For simplicity in this initial analysis, no core radius is applied.
 
     The Einasto profile (\cite{einastoprofile1},\cite{einastoprofile2}) has the form
 
-    $ \rho_{DM} \left( r \right) = Exp \left( - \frac{2}{\alpha} \left( {\left( \frac{r}{r_o} \right)}^{\alpha} - 1 \right) \right)$ \label{eqn:einasto}
+    \begin{equation} \label{eqn:einasto}
+      \rho_{DM} \left( r \right) = \rho_{s} Exp \left( - \frac{2}{\alpha} \left( {\left( \frac{r}{r_s} \right)}^{\alpha} - 1 \right) \right)
+    \end{equation}
     
-    where $$\alpha$$ is taken to be 0.17, from \ref{PieriGalaxySims}.
+    where $\alpha$ is taken to be 0.17, from \ref{PieriGalaxySims}.
     
-    When using the distance to the galactic center of 8 kpc (cite??), the local estimated dark matter mass density of 0.4 $$ \frac{ \text{GeV} }{ \text{cm}^3 } $$ (cite??), and a scale radius $$r_s$$ of 15.4 kpc (cite??), the einasto density profile for the the galactic center halo looks like figure \ref{fig:gchalo_density}.
+    When using the distance to the galactic center of 8 kpc (cite??), the local estimated dark matter mass density of 0.4 $ \frac{ \text{GeV} }{ \text{cm}^3 } $ (cite??), and a scale radius $r_s$ of 15.4 kpc (cite??), the einasto density profile for the the galactic center halo is shown in Figure \ref{fig:gchalo_density}.
   
     \begin{figure}[ht]
       \begin{center}
@@ -176,10 +182,16 @@
     
     These profiles can then be used to calculate the spatial distribution of gamma-rays.
     For annihilating dark matter, $\rho\left(r\right)^2$ must be integrated along the line of sight.
-
-    $ \frac{d\Phi}{dE d\Omega}= \frac{ \left \langle \sigma v \right \rangle }{8 \pi m_\chi^2} \frac{dN}{dE} \int \rho^2 dl $ \label{eqn:dmflux}
-
-    ?? equation also depends on if particle is symmetric? 8 $\pi$ may change or something ??
+    To calculate the amount of gamma rays produced by these annihilations, the equation \ref{eqn:dmflux} can be used.
+    
+    \begin{equation}\label{eqn:dmflux}
+      \frac{ d\Phi }{ dE d \Omega } = \frac{ \left \langle \sigma v \right \rangle }{8 \pi m_\chi^2} \frac{dN_{\gamma}}{dE} \int \rho^2 dl
+    \end{equation}
+    
+    In this, the photon flux $\Phi$ is the number of gamma-ray photons detected per area and per time.
+    The $\left \langle \sigma v \right \rangle$ is the velocity averaged cross-section of the dark matter candidate.
+    The velocity-averaging is used because the cross-section may be velocity dependent, and the WIMP particles within the halo probably posesses a distribution of velocities.
+    The $\frac{dN_{\gamma}}{dE}$ is the spectrum of photons produced by a single $\chi\chi$ annihilation.
     
     \begin{figure}[ht]
       \begin{center}
@@ -188,9 +200,9 @@
       \end{center}
     \end{figure}
     
-    Additionally, some simulations of galaxy formation indicate that the presence of baryons diffuses (??) the central cusp of particles in a potential well (cite??).
+    Additionally, simulations of galaxy formation indicate that the presence of baryons diffuses (??) the central cusp of particles in a potential well (cite??).
     This create a central area of constant density in the profile called a core.
-    So far, no studies have been able to determine whether a cored or cuspy profile is favored in observations.
+    However, due to the low amount of mass contained in dark matter in this core region, celestial bodies near galactic center only have their orbital velocity altered a miniscule amount, making it difficult to measure the inner DM core behavior.
 
     Sommerfield enhancement (??)
     
