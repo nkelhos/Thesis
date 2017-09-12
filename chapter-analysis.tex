@@ -139,9 +139,25 @@
     The point source was found to have a Test Statistic of ??, with ??-??=?? degrees of freedom, equivalent to a ?? sigma detection.
 
 \section{Dark Matter Likelihood Analysis}
+
   \subsection{Non-Dark-Matter Models}
-  GC Point Source
-  Diffuse emission (why eliminated?)
+  For this analysis, a point source model was added at the position of Sgr A*.
+  This is because other analyses (cite??) have indicated that the bright gamma-ray source at Sgr A* is not best modeled by a dark matter halo.
+  % DM is unlikely to be the cause of the point source in the GC
+  % Updated cosmic-ray and radio constraints on light dark matter: Implications for the GeV gamma-ray excess at the Galactic Center
+  % Bringmann 2014
+  % https://journals.aps.org/prd/pdf/10.1103/PhysRevD.90.123001
+  Instead, a point source with a broken power law spectrum (Equation \ref{eqn:brokenplaw}) is added to the list of models, with the magnitude of its flux left free by the likelihood engine.
+  
+  \begin{equation}\label{eqn:brokenplaw}
+    \frac{dN}{dE} = N_{0} * { \left ( \frac{E}{E_{pivot}} \right ) }^{\alpha} {e}^{-\frac{E}{E_{cut}}}
+  \end{equation}
+  
+  From \cite{VeritasGCRidge2015}, the specific values used in this point source were $E_{pivot}=\SI{1}{TeV}$, $E_{cut}=\SI{12.8}{TeV}$, and $\alpha=-2.1$.
+  The normalization $N_{0}$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was left free in the likelihood optimization, while $E_{pivot}$, $E_{cut}$, and $\alpha$ were all fixed.
+  The normalization was left free to allow for the potential of some mixing between the point source events and any dark matter halo events, i.e. a stronger dark matter halo gamma-ray flux would result in a weaker point source flux.
+  
+  Diffuse emission, eliminated due to complexity?
 
   \subsection{Dark Matter Models}
   Dark Matter halos are modeled by a spherically-symmetric mass-per-volume density profile.
@@ -149,23 +165,12 @@
 
   The Einasto profile takes the form:
 
-  $ \rho \left( r \right) = \rho_{o} exp { - \frac{2}{\alpha} [ \left( \frac{r}{r_o} \right)^{\alpha} - 1 ] } $
+  \begin{equation}\label{eqn:einasto}
+    \rho \left( r \right) = \rho_{o} exp { - \frac{2}{\alpha} [ \left( \frac{r}{r_o} \right)^{\alpha} - 1 ] }
+  \end{equation}
 
   (This is from http://journals.aps.org/prd/pdf/10.1103/PhysRevD.83.023518 , check it against other source's definitions of the Einasto profile??)
   Where $\alpha = 0.17 $, from ??.
-
-
-  The NFW profile takes the form
-
-  $$ \rho \left( r \right) = \rho_{o} \frac{1}{ \frac{r}{r_{s}} \( 1 + \frac{r}{r_s} \)^2 }$$
-
-  (equation from wikipedia, use better source??)
-
-  Within Ctools, a Zhao profile (a more general form of an NFW profile) is programmed as a model.
-
-  Equation for Zhao profile??
-
-  A Zhao profile with $ \alpha_{z} = 1 , \beta_{z} = 3 , \gamma_{z} = 1 $, becomes an NFW profile (check??).
 
   As some simulations show baryons may put a limit on the maximum WIMP density inside a DM halo, this must be tested.
   This leads to a density profile that flattens out inside a core radius.
@@ -182,16 +187,55 @@
   % from http://www.pnas.org/content/112/40/12264.full.pdf
 
   \begin{equation} \label{eqn:jfactor}
-  \frac{d \Phi_{\gamma}}{d E_{\gamma}} = \frac{1}{4\pi} \frac{ \langle \sigma_{\chi} v_{\chi} \rangle }{2 m^{2}_{\chi}} * \sum_{f} \frac{ d N_{\gamma}^{f} }{d E_{\gamma} } B_{f} * \int_{ \Delta \Omega } d \Omega' \int_{los} \rho^{2} d l( r, \theta' )
+    \frac{d \Phi_{\gamma}}{d E_{\gamma}} = \frac{1}{4\pi} \frac{ \langle \sigma_{\chi} v_{\chi} \rangle }{2 m^{2}_{\chi}} * \sum_{f} \frac{ d N_{\gamma}^{f} }{d E_{\gamma} } B_{f} * \int_{ \Delta \Omega } d \Omega' \int_{los} \rho^{2} d l( r, \theta' )
   \end{equation}
 
 
   (Plot of J-factors??)
 
-  % DM is unlikely to be the cause of the point source in the GC
-  % Updated cosmic-ray and radio constraints on light dark matter: Implications for the GeV gamma-ray excess at the Galactic Center
-  % Bringmann 2014
-  % https://journals.aps.org/prd/pdf/10.1103/PhysRevD.90.123001
+  \subsection{Likelihood Results}
+  
+  
+  
+  
+  
+  \begin{figure}[ht]
+    \begin{center}
+      \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/counts_skymap.eps}
+      \caption[Galactic Center Counts Skymap]{Skymap of all event positions used in this analysis.  No adjustment for effective area, observation time, or background rate is done here.}\label{fig:gc_counts_skymap}
+    \end{center}
+  \end{figure}
+
+  \begin{figure}[ht]
+    \begin{center}
+      \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/counts_enhist.eps}
+      \caption[Galactic Center Counts Energy Histogram]{Histogram of all event positions used in this analysis.  No adjustment for effective area, observation time, or background rate is done here.}\label{fig:gc_counts_enhist}
+    \end{center}
+  \end{figure}
+
+  The analysis uses the $b\bar{b}$ annihilation channel, and are shown for just at $10\text{TeV}$.
+  
+  \begin{figure}[ht]
+    \begin{center}
+      \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_gal_l.eps}
+      \caption[Galactic Center Profile vs Galactic L]{Observed vs modeled counts in a slice of the sky parallel to the galactic L axis at $B=0$.  Modeled counts from camera-background-models are shown in purple, total modeled counts are shown in green.  The feature where the observed counts are shifted to the left of the models is likely due to unaccounted-for elevation effects in the camera background models.}\label{fig:gc_profile_gal_l}
+    \end{center}
+  \end{figure}
+
+  \begin{figure}[ht]
+    \begin{center}
+      \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_gal_b.eps}
+      \caption[Galactic Center Profile vs Galactic B]{Observed vs modeled counts in a slice of the sky parallel to the galactic B axis at $L=0$.  Modeled counts from camera-background-models are shown in purple, total modeled counts are shown in green.  The feature where the observed counts are shifted to the left of the models is likely due to unaccounted-for elevation effects in the camera background models.}\label{fig:gc_profile_gal_b}
+    \end{center}
+  \end{figure}
+
+  \begin{figure}[ht]
+    \begin{center}
+      \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_energy.eps}
+      \caption[Galactic Center Profile vs Energy]{Observed vs modeled counts in a ${0.2}^{\circ}\times{0.2}^{\circ}$ square bin centered on Sgr A*.  Modeled counts from camera-background-models are shown in purple, total modeled counts are shown in green.}\label{fig:gc_profile_energy}
+    \end{center}
+  \end{figure}
+  
   
 \section{Upper Limit}
   An upper limit on the flux of a source can be calculated by scaling the flux of a model until the log-likelihood is at the 0.95 confidence level.
