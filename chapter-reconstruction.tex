@@ -198,7 +198,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     The radially-normalized king function is defined as
 
     \begin{equation} \label{eqn:king}
-    $$ \text{psf}_{king}(r) = \frac{1}{2 \pi \sigma^{2} } \left( 1 - \frac{1}{\gamma} \right) \left( 1 + \frac{ r^{2} }{ 2 \gamma \sigma^{2} } \right)^{-\gamma} $$
+    \text{psf}_{king}(r) = \frac{1}{2 \pi \sigma^{2} } \left( 1 - \frac{1}{\gamma} \right) \left( 1 + \frac{ r^{2} }{ 2 \gamma \sigma^{2} } \right)^{-\gamma}
     \end{equation},
 
     where $r$ is the angular distance from the reconstructed position, $\sigma$ is similar to the width of a gaussian , and the $\gamma$ parameter affects how long the tails are.
@@ -243,7 +243,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
     (Fix this integral!??)
     \begin{equation} \label{eqn:background_integral}
-    $$ P(r) = \int{a}{b} $$
+    P(r) = \int{a}{b}
     \end{equation},
 
     This , which is the pdf of one event.
@@ -281,13 +281,13 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     For true energy $j$, the distribution of reconstructed energies $f_{\text{reco}}$ is,
 
     \begin{equation} \label{eqn:edispreco}
-    $ f_{\text{reco}}(j)=\frac{E_{i,j}}{ \sum_{i}E_{i,j} } $
+    f_{\text{reco}}(j)=\frac{E_{i,j}}{ \sum_{i}E_{i,j} }
     \end{equation}
 
     for reconstructed energy $i$, the distribution of true energies $f_{\text{true}}$ is,
 
     \begin{equation} \label{eqn:edisptrue}
-    $ f_{\text{true}}(i)=\frac{E_{i,j}}{ \sum_{j}E_{i,j} } $
+    f_{\text{true}}(i)=\frac{E_{i,j}}{ \sum_{j}E_{i,j} }
     \end{equation}
 
     By unfolding these distributions from the reconstructed energies, two primary analysis effects are accounted for.
@@ -383,6 +383,63 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     
     These structures, and their strong dependency on both the energy and elevation of the telescopes may be a large factor in why the low-energy threshold regime of gamma-ray telescopes is so poorly understood.
     Incorporating this effect into the instrument response functions would require modifying Event Display and CTOOLS, as well as creating another batch of diffuse simulations, with elevation increments of less than 5 degrees, all of which are manpower and computationally expensive.
+    
+    As an extra test, the following plots were made:
+    
+    
+  %\begin{figure}[ht]
+    %\begin{center}
+      %\includegraphics[width=0.95\textwidth]{images/background_vs_elevation/background_vs_elevation_srccrab_enhist.eps}
+      %\caption[Cap A]{Desc A}\label{fig:label_a}
+    %\end{center}
+  %\end{figure}
+    
+    
+      
+      \begin{figure}[h]
+        \includegraphics[width=\textwidth]{images/background_vs_elevation/background_vs_elevation_srccrab_enhist.eps}
+        \caption[Background vs Elevation Crab Energy Histogram]
+        {\small Number of events in each energy bin from a series of Crab observations.}
+        \label{fig:bkgvsel_crab_enhist}
+      \end{figure}
+      
+      \begin{figure}[h]
+        \includegraphics[width=\textwidth]{images/background_vs_elevation/background_vs_elevation_srcsgra_enhist.eps}
+        \caption[Background vs Elevation Sgr A* Energy Histogram]
+        {\small Number of events in each energy bin from a series of Sgr A* observations.}
+        \label{fig:bkgvsel_sgra_enhist}
+      \end{figure}
+
+      \begin{figure}[h]
+        \includegraphics[width=\textwidth]{images/background_vs_elevation/background_vs_elevation_srccrab_enlarge.eps}
+        \caption[Background vs Elevation Crab Event Skymap over Full Energy Range]
+        {\small Skymap of events with energies from \SI{1.5}{TeV} - \SI{70}{TeV}, from a series of Crab observations.}
+        \label{fig:bkgvsel_crab_enlarge}
+      \end{figure}
+
+      \begin{figure}[h]
+        \includegraphics[width=\textwidth]{images/background_vs_elevation/background_vs_elevation_srcsgra_enlarge.eps}
+        \caption[Background vs Elevation Sgr A* Event Skymap over Full Energy Range]
+        {\small Skymap of events with energies from \SI{1.5}{TeV} - \SI{70}{TeV}, from a series of Sgr A* observations.}
+        \label{fig:bkgvsel_sgra_enlarge}
+      \end{figure}
+
+      \begin{figure}[h]
+        \includegraphics[width=\textwidth]{images/background_vs_elevation/background_vs_elevation_srccrab_ensmall.eps}
+        \caption[Background vs Elevation Sgr A* Event Skymap over a Small Energy Range]
+        {\small Skymap of events with energies from \SI{1.5}{TeV} - \SI{3.25}{TeV}, from a series of Crab observations.}
+        \label{fig:bkgvsel_crab_ensmall}
+      \end{figure}
+
+      \begin{figure}[h]
+        \includegraphics[width=\textwidth]{images/background_vs_elevation/background_vs_elevation_srcsgra_ensmall.eps}
+        \caption[Background vs Elevation Sgr A* Event Skymap over a Small Energy Range]
+        {\small Skymap of events with energies from \SI{1.5}{TeV} - \SI{3.25}{TeV}, from a series of Sgr A* observations.}
+        \label{fig:bkgvsel_sgra_ensmall}
+      \end{figure}
+    
+      
+      
     
 
   \subsection{Effect of Stars}

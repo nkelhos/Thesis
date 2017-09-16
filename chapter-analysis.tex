@@ -94,7 +94,7 @@
     The Crab was modeled by a single point source with a simple power law spectrum:
 
     \begin{equation} \label{eqn:powerlaw}
-    $$  F\left( E \right) = I_{0} \left( \frac{E}{E_{0}} \right)^{-\gamma} $$
+    F\left( E \right) = I_{0} \left( \frac{E}{E_{0}} \right)^{-\gamma}
     \end{equation}
 
     Only events between 3 and 70 TeV are used in this test analysis.
@@ -123,20 +123,6 @@
     The difference between these two lines is then the counts from the Crab point source model.
     In figure \ref{??}, a similar plot is made, though integrated in a square of radius ?? around the crab at various energies.
     
-  
-
-  \subsection{Test Galactic Center Analysis}
-
-    The galactic center is a gamma-ray emitter, albiet weaker than the Crab.
-    In order to see if this is modeled properly, a test point source is placed at the Galactic Center, with a Cut-Off power law spectrum, as this is the spectrum most favored in previous literature (cite??)
-    This power law follows the form:
-
-    \begin{equation} \label{eqn:powerlaw}
-    $$  ?? $$
-    \end{equation}
-      
-    After fitting the Galactic Center point source and its background models, the best fit values were ??.
-    The point source was found to have a Test Statistic of ??, with ??-??=?? degrees of freedom, equivalent to a ?? sigma detection.
 
 \section{Dark Matter Likelihood Analysis}
 
@@ -161,43 +147,10 @@
 
   \subsection{Dark Matter Models}
   Dark Matter halos are modeled by a spherically-symmetric mass-per-volume density profile.
-  Two promising candidates for this profile are Einasto and Navarro-Frenk-White (NFW) profile.
-
-  The Einasto profile takes the form:
-
-  \begin{equation}\label{eqn:einasto}
-    \rho \left( r \right) = \rho_{o} exp { - \frac{2}{\alpha} [ \left( \frac{r}{r_o} \right)^{\alpha} - 1 ] }
-  \end{equation}
-
-  (This is from http://journals.aps.org/prd/pdf/10.1103/PhysRevD.83.023518 , check it against other source's definitions of the Einasto profile??)
-  Where $\alpha = 0.17 $, from ??.
-
-  As some simulations show baryons may put a limit on the maximum WIMP density inside a DM halo, this must be tested.
-  This leads to a density profile that flattens out inside a core radius.
-
-  Density profiles with a core can be formed by using the mass-per-volume density at the core radius for all radii smaller than the core radius, without any smoothing.
-  Because this density is then integrated along the observer's line of sight, some smoothing is then imparted to the J-factor plot.
-  For this analysis, four density profiles are tested: cuspy-NFW, cuspy-Einasto, cored-NFW, cored-Einasto.
-
-  (Plot of density profiles??)
-
-
-  Then, to convert these density profiles to a detectable quantity of gamma rays, each density profile's J-Factor must be calculated.
-
-  % from http://www.pnas.org/content/112/40/12264.full.pdf
-
-  \begin{equation} \label{eqn:jfactor}
-    \frac{d \Phi_{\gamma}}{d E_{\gamma}} = \frac{1}{4\pi} \frac{ \langle \sigma_{\chi} v_{\chi} \rangle }{2 m^{2}_{\chi}} * \sum_{f} \frac{ d N_{\gamma}^{f} }{d E_{\gamma} } B_{f} * \int_{ \Delta \Omega } d \Omega' \int_{los} \rho^{2} d l( r, \theta' )
-  \end{equation}
-
-
-  (Plot of J-factors??)
+  In this analysis, an Einasto density profile (discussed in section \ref{dm_spatial}) is used as the spatial component of the dark matter halo model.
+  For the spectral component, each dark matter mass tested has its own spectrum produced with clumpy, which is based on ?? (see section \ref{dm_spectral}).
 
   \subsection{Likelihood Results}
-  
-  
-  
-  
   
   \begin{figure}[ht]
     \begin{center}
@@ -249,8 +202,6 @@
   
   Since, when all other variables are fixed, a larger gamma ray flux results from a larger velocity-averaged crosssection, they can both be replaced with their upper limits (??).
 
-  % upper limit plot
-
   \begin{figure}[ht]
     \begin{center}
       \includegraphics[width=0.95\textwidth]{images/ulimit/final_upper_limit_plot.eps}
@@ -258,20 +209,4 @@
     \end{center}
   \end{figure}
   
-  %\section{CTOOLS Iterative Fitting}
-  %Any general analysis with CTOOLS will posess many model parameters.
-  %For the two analyses discussed in the next several sections, more than 100 model parameters were fitted.
-  %While the simple optimizer class GOptimizerLM uses a Levenberg-Marquardt algorithm (cite??), it still requires care in picking the initial parameter values.
-  %
-  %First, only the background models are fitted in a simple manner.
-  %This is done by leaving off the any astrophysical models, and by fixing all but one of each background model's spectral parameters.
-  %As the backgrounds are fixed spatially, this means the only free parameters are the Power Law Prefactor and Spectral Index.
-  %The prefactors are freed and fitted, then the prefactors are fixed, and the indexes are freed and fitted.
-  %Next, all parameters are randomly varied by 20\% to prevent them from getting stuck in local minima.
-  %This is done multiple times, as it takes several cycles of this for values (especially the spectral index parameters) to reach their steady-state value.
-  %
-  %Next, the astrophysical source models are added.
-  %The fitting is still performed with only one spectral parameter free at a time, with random parameter variations between each cycle.
-  %This helps bring the model parameters close to their optimium values before we perform the actual fit.
-  %After several more cycles of this, then the actual fit can be performed, where all spectral parameters in all models are freed and fitted, producing the final fitted model parameters.
-
+  
