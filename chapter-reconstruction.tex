@@ -354,7 +354,29 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
   
   After further studies, it was found that these structures depend on both the reconstructed energy and pointing elevation, and appears observations at distinct Right Ascension and Declinations.
   
-  plot of crab events map, events 1.6-2.8TeV, events 1.6-2.8TeV & 28.5-29.5deg
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[height=\textheight]{images/background_vs_elevation/background_vs_elevation_srccrab.eps}
+    \caption[Background Vs Elevation Crab]
+    {\small 
+      Plots of Crab observations.
+      Top: Skymap of all events.  Middle: Histogram of all events in energy.  Bottom: Skymap of events from 1.5-3.25 TeV.  
+      In the bottom plot, events from 1.5-3.25TeV are concentrated in the top half of the camera (before being rotated to galactic (l,b) coordinates), due to the air column density ($g/cm^2$) being \nicetilde20\% smaller at the top of the camera.
+    }
+    \label{fig:bkgvsel_crab}
+  \end{figure}
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[height=\textheight]{images/background_vs_elevation/background_vs_elevation_srcsgra.eps}
+    \caption[Background Vs Elevation Sgr A*]
+    {\small 
+      Plots of Sgr A* observations.
+      Top: Skymap of all events.  Middle: Histogram of all events in energy.  Bottom: Skymap of events from 1.5-3.25 TeV.  
+      In the bottom plot, events from 1.5-3.25TeV are concentrated in the top half of the camera (before being rotated to galactic (l,b) coordinates), due to the air column density ($g/cm^2$) being \nicetilde20\% smaller at the top of the camera.
+    }
+    \label{fig:bkgvsel_sgra}
+  \end{figure}
   
   
 
@@ -384,45 +406,6 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     These structures, and their strong dependency on both the energy and elevation of the telescopes may be a large factor in why the low-energy threshold regime of gamma-ray telescopes is so poorly understood.
     Incorporating this effect into the instrument response functions would require modifying Event Display and CTOOLS, as well as creating another batch of diffuse simulations, with elevation increments of less than 5 degrees, all of which are manpower and computationally expensive.
     
-    As an extra test, the following plots were made:
-    
-    
-  %\begin{figure}[ht]
-    %\begin{center}
-      %\includegraphics[width=0.95\textwidth]{images/background_vs_elevation/background_vs_elevation_srccrab_enhist.eps}
-      %\caption[Cap A]{Desc A}\label{fig:label_a}
-    %\end{center}
-  %\end{figure}
-    
-    
-  \begin{figure}[ht]
-    \centering
-    \includegraphics[height=\textheight]{images/background_vs_elevation/background_vs_elevation_srccrab.eps}
-    \caption[Background Vs Elevation Crab]
-    {\small 
-      Plots of Crab observations.
-      Top: Skymap of all events.  Middle: Histogram of all events in energy.  Bottom: Skymap of events from 1.5-3.25 TeV.  
-      In the bottom plot, events from 1.5-3.25TeV are concentrated in the top half of the camera (before being rotated to galactic (l,b) coordinates), due to the air column density ($g/cm^2$) being \nicetilde20\% smaller at the top of the camera.
-    }
-    \label{fig:bkgvsel_crab}
-  \end{figure}
-
-  \begin{figure}[ht]
-    \centering
-    \includegraphics[height=\textheight]{images/background_vs_elevation/background_vs_elevation_srcsgra.eps}
-    \caption[Background Vs Elevation Sgr A*]
-    {\small 
-      Plots of Sgr A* observations.
-      Top: Skymap of all events.  Middle: Histogram of all events in energy.  Bottom: Skymap of events from 1.5-3.25 TeV.  
-      In the bottom plot, events from 1.5-3.25TeV are concentrated in the top half of the camera (before being rotated to galactic (l,b) coordinates), due to the air column density ($g/cm^2$) being \nicetilde20\% smaller at the top of the camera.
-    }
-    \label{fig:bkgvsel_sgra}
-  \end{figure}
-      
-      
-    
-      
-      
     
 
   \subsection{Effect of Stars}

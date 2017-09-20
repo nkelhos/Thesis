@@ -36,12 +36,12 @@
     \end{center}
   \end{figure}
 
-  There is comparativly less Sgr A* Off observations, as there are no gamma-ray emitters at or near that position.
-  There is also even fewer Crab observations, as the majority of its observations are done at higher elevations.
-
-
-
-  DQM and weather quality checks ??
+  There are comparativly fewer Sgr A* Off observations, as there are no gamma-ray emitters at or near that position, and telescope time is valuable.
+  There is also even fewer Crab observations, as the majority of its observations are done at higher elevations, where the telescope is more sensitive to lower energies.
+  
+  For all of these observations, quality checks were applied.
+  This includes monitoring the telescope hardware and weather by a team of VERITAS collaboration members who take the observations.
+  After the data is taken, a separate collaboration member will go through each observation to check it again, and mark any bad observations or apply time cuts, which are then removed.
 
   As multiple studies in the past have shown that the different VERITAS epochs perform differently, each epoch has their own separate set of effective areas, point spread functions, energy migration matricies, and camera background models.
   In addition, specific IRFs were calculated for additional data dimensions, including the frequency of night sky background photons in the camera, the telescope elevation, the event energy, and each event's distance from the camera center.
@@ -89,8 +89,20 @@
     As the Crab nebula is the brightest gamma ray emitter in the sky, it has been observed extensively by VERITAS and other gamma ray telescopes.
     Since the Galactic Center only rises to around 30\degree elevation, elevation effects would also need to be searched for.
     After searching for low-elevation Crab observations, a total of 17.1 hours of livetime were found.
-    These consist of 7.3 hours of V5 epoch data, and 9.8 hours of V6 epoch data.
-
+    These consist of 7.3(doesn't match with plot??) hours of V5 epoch data, and 9.8(doesn't match with plot??) hours of V6 epoch data.
+    
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_skymap.eps}
+      \caption[Crab Counts Skymap]
+      {
+        Skymap of event positions.
+        No corrections are made for observing time or effective area.
+        Observation time is different??
+      }
+      \label{fig:crab_skymap}
+    \end{figure}
+    
     The Crab was modeled by a single point source with a simple power law spectrum:
 
     \begin{equation} \label{eqn:powerlaw}
@@ -100,23 +112,84 @@
     Only events between 3 and 70 TeV are used in this test analysis.
     At an elevation of 25\degree, the reconstruction software is able to reconstruct events as low as 1.5 TeV.
     But, in this 'threshold' energy region, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region are not accurate.
-    Part of this decrease is explored in section ??, but implementing fixes requires large changes to existing code, along with a larger set of simulations, neither of which were feasible during this work.
+    Part of this decrease is explored in section (see figures \ref{fig:bkgvsel_crab} and \ref{fig:bkgvsel_sgra}), but implementing corrections requires large changes to existing code, along with a larger set of simulations, neither of which were feasible during this work.
     Above 70 TeV, simulations become too computationally expensive to create when attempting to calculate IRFs.
     
-    After fitting all events from 3TeV to 70TeV, with a pivot energy $ E_{0}= 10\text{TeV} $, the $ I_{0} = \left(1.472\pm0.09\right)*10^{-19} \frac{ph}{cm^{2} s MeV} $, $ \gamma = 2.382 \pm 0.076 $, with a Test Statistic of 1929.01. (?? update values!).
+    After fitting all events from \SI{4}{TeV} to \SI{70}{TeV}, with a pivot energy $ E_{0}= \SI{10}{TeV} $, the $ I_{0} = \left(1.472\pm0.09\right)*10^{-19} \frac{ph}{cm^{2} s MeV} $, $ \gamma = 2.382 \pm 0.076 $, with a Test Statistic of 1929.01. (?? update values!).
     As the crab (alternative) hypothesis has 110 free parameters, and the no-crab (null) hypothesis has 108 free parameters, the Test Statistic has $ 110 - 108 = 2 $ degrees of freedom.
     This is equivalent to a significance of ??.
     
-    In figure ??, the fitted crab spectra is shown, along with literature results from earlier VERITAS, HESS, and MAGIC observations of the crab.
     
-    plot of crab spectra??
-    Add systematic 20\% error on energy to likelihood plot
-    remove error envelope from literature spectra
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall.eps}
+      \caption[Crab Test Spectrum]
+      {
+        Crab spectra from various analyses and observatories.
+        Red is the spectra from the CTOOLS analysis described in this chapter.
+        Blue is the standard VERITAS Event Display spectrum using the same set of observations.
+      }
+      \label{fig:crab_test_spectra}
+    \end{figure}
     
-    It can be seen in figure \ref{??} that the spectrum is constistant with several literature spectra of the Crab, which is a good indication that the analysis is working properly.
+    In figure \ref{fig:crab_test_spectra}, the fitted crab spectra is shown, along with literature results from earlier VERITAS, HESS, and MAGIC observations of the Crab.
     
-    The fitted models can also be viewed, as a more visual check that the likelihood engine is fitting the models to the data.
-    In figures \ref{??}, \ref{??}, \ref{??}, and \ref{??}, the number of observed counts is compared to the number of modeled counts in three slices.
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_spl.eps}
+      \caption[Crab Profile along Galactic L]
+      {
+        The number of counts along a 0.16\degree-wide-slice through the Crab along the Galactic L axis.
+        Blue is the number of observed counts.
+        Green is the number of counts predicted by the models.
+        Purple is the number of counts predicted by only the camera-background models.
+      }
+      \label{fig:crab_profile_l}
+    \end{figure}
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_spb.eps}
+      \caption[Crab Profile along Galactic B]
+      {
+        The number of counts along a 0.16\degree-wide-slice through the Crab along the Galact B axis.
+        Blue is the number of observed counts.
+        Green is the number of counts predicted by the models.
+        Purple is the number of counts predicted by only the camera-background models.
+      }
+      \label{fig:crab_profile_b}
+    \end{figure}
+    
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_splalt.eps}
+      \caption[Crab Profile along Galactic L Off Source]
+      {
+        The number of counts along a 0.16\degree-wide-slice along the Galactic L axis.
+        Blue is the number of observed counts.
+        Green is the number of counts predicted by the models.
+        Purple is the number of counts predicted by only the camera-background models.
+        This slice doesn't go through the Crab, but instead 1\degree higher in Galactic B.
+        As this doesn't include the Crab, this plot primarily demonstrates the camera background modelling.
+      }
+      \label{fig:crab_profile_l_off}
+    \end{figure}
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_ep.eps}
+      \caption[Crab Profile in Energy]
+      {
+        The number of counts in a 0.6\degree x 0.6\degree square centered on the Crab, vs energy.
+        Blue is the number of observed counts.
+        Green is the number of counts predicted by the models.
+        Purple is the number of counts predicted by only the camera-background models.
+      }
+      \label{fig:crab_profile_energy}
+    \end{figure}
+    
+    The fitted models can also be viewed, as a check that the likelihood engine is fitting the models to the data.
+    In figures \ref{fig:crab_profile_l}, \ref{fig:crab_profile_b}, \ref{??}, and \ref{??}, the number of observed counts is compared to the number of modeled counts in three slices.
     In figure \ref{??}, the position of all counts in galactic l and b is shown.
     In figures \ref{??} and \ref{??}, the counts in the observations and models were integrated along a slice of galactic l and b.
     The counts from only the camera background models is shown, along with the counts from all models.
