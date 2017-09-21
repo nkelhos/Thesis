@@ -3,7 +3,7 @@
 
 \section{Veritas Data}
   The analysis in this thesis relies on three sets of VERITAS data.
-  One set observes the Crab Nebula, another observed the Galactic Center, and a third set observes a dark region ~5 degrees NW of the Galactic Center.
+  One set observes the Crab Nebula, another observed the Galactic Center, and a third set observes a dark region \SI{5}{\degree} NW of the Galactic Center.
   This dark region is referred to as  Sgr A* Off, and is located at (l,b)=(357.3396\degree, 3.9984\degree, shown in Figure \ref{fig:gcfieldsofview}.
 
   \begin{figure}[ht]
@@ -16,24 +16,28 @@
   All three sets of data include observations from both the V5 epoch (after moving T4 but before the camera upgrade), and the V6 epoch (after the camera upgrade).
   All used data was taken from April 2010 to June 2016.
 
+  %
+  % times calculated with $VERIPY/thesis/plots/obs_times.py
+  %
   \begin{table}[]
-  \centering
-  \caption{Hours of observations taken at each source/epoch combination.}
-  \label{my-label}
-  \begin{tabular}{|l|l|l|l|}
-  \hline
-  \textbf{Epoch} & \textbf{Crab} & \textbf{Sgr A*} & \textbf{Sgr A* Off} \\ \hline
-  V5             & 7.9           & 49.2            & 13.8                \\ \hline
-  V6             & 10.7          & 67.3            & 5.5                 \\ \hline
-  \end{tabular}
+    \centering
+    \caption{Hours of observations taken at each source/epoch combination.}
+    \label{my-label}
+    \begin{tabular}{|l|l|l|l|}
+      \hline
+      \textbf{Epoch} & \textbf{Crab} & \textbf{Sgr A*} & \textbf{Sgr A* Off} \\ \hline
+      V5             & 3.3           & 39.8            & 8.0                 \\ \hline
+      V6             & 5.5           & 55.4            & 4.1                 \\ \hline
+    \end{tabular}
   \end{table}
 
 
   \begin{figure}[ht]
-    \begin{center}
-      \includegraphics[width=0.95\textwidth]{data_elevation_plots/plot.eps}
-      \caption[VERITAS Data Elevation Exposure]{Camera center elevation for the three sets of data.}\label{fig:datapointingelevations}
-    \end{center}
+    \centering
+    \includegraphics[width=0.95\textwidth]{data_elevation_plots/plot.eps}
+    \caption[VERITAS Data Elevation Exposure]
+    {Camera center elevation for the three sets of data. (Update this plot!!??)}
+    \label{fig:datapointingelevations}
   \end{figure}
 
   There are comparativly fewer Sgr A* Off observations, as there are no gamma-ray emitters at or near that position, and telescope time is valuable.
@@ -79,7 +83,7 @@
 \section{Test Point Sources}
   To verify that the CTOOLs likelihood analysis is working properly, two point sources were analyzed first, before any dark matter analysis was performed.
   The first was on the well-studied Crab nebula, and the second was on the source at the center of our galaxy.
-  To also uncover any low-elevation effects, the Crab observations were limited to ones with elevations < 35\degree.
+  To also uncover any low-elevation effects, the Crab observations were limited to ones with elevations < \SI{32.5}{\degree}.
 
   (plot of Crab, Sgr A*, Sgr A* Off sources elevations??)
 
@@ -109,7 +113,7 @@
     F\left( E \right) = I_{0} \left( \frac{E}{E_{0}} \right)^{-\gamma}
     \end{equation}
 
-    Only events between 3 and 70 TeV are used in this test analysis.
+    Only events between 4 and 70 TeV are used in this test analysis.
     At an elevation of 25\degree, the reconstruction software is able to reconstruct events as low as 1.5 TeV.
     But, in this 'threshold' energy region, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region are not accurate.
     Part of this decrease is explored in section (see figures \ref{fig:bkgvsel_crab} and \ref{fig:bkgvsel_sgra}), but implementing corrections requires large changes to existing code, along with a larger set of simulations, neither of which were feasible during this work.
@@ -189,13 +193,11 @@
     \end{figure}
     
     The fitted models can also be viewed, as a check that the likelihood engine is fitting the models to the data.
-    In figures \ref{fig:crab_profile_l}, \ref{fig:crab_profile_b}, \ref{??}, and \ref{??}, the number of observed counts is compared to the number of modeled counts in three slices.
-    In figure \ref{??}, the position of all counts in galactic l and b is shown.
-    In figures \ref{??} and \ref{??}, the counts in the observations and models were integrated along a slice of galactic l and b.
-    The counts from only the camera background models is shown, along with the counts from all models.
+    In figure \ref{crab_skymap}, the position of all counts is shown in galactic l and b.
+    In figures \ref{fig:crab_profile_l} and \ref{fig:crab_profile_b}, the counts in the observations and models were integrated along a slice of galactic l and b.
+    The counts from only the camera background models is shown, along with the counts from all camera backgrounds plus the point source.
     The difference between these two lines is then the counts from the Crab point source model.
-    In figure \ref{??}, a similar plot is made, though integrated in a square of radius ?? around the crab at various energies.
-    
+    In figure \ref{fig:crab_profile_energy}, a similar plot is made, though integrated in a \SI{0.6}{\degree}x\SI{0.6}{\degree} square around the crab at different energies.
 
 \section{Dark Matter Likelihood Analysis}
 
