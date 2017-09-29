@@ -4,7 +4,7 @@
 \section{Veritas Data}
   The analysis in this thesis relies on three sets of VERITAS data.
   One set observes the Crab Nebula, another observed the Galactic Center, and a third set observes a dark region \SI{5}{\degree} NW of the Galactic Center.
-  This dark region is referred to as  Sgr A* Off, and is located at (l,b)=(357.3396\degree, 3.9984\degree, shown in Figure \ref{fig:gcfieldsofview}.
+  This dark region is referred to as  Sgr A* Off, and is located at (l,b)=(\SI{357.3396}{\degree}, \SI{3.9984}{\degree}), shown in Figure \ref{fig:gcfieldsofview}.
 
   \begin{figure}[ht]
     \begin{center}
@@ -91,7 +91,7 @@
 
     In order to test that the converted data, irfs, and ctools likelihood engine all work properly, a test analysis on the Crab nebula was performed.
     As the Crab nebula is the brightest gamma ray emitter in the sky, it has been observed extensively by VERITAS and other gamma ray telescopes.
-    Since the Galactic Center only rises to around 30\degree elevation, elevation effects would also need to be searched for.
+    Since the Galactic Center only rises to around \SI{30}{\degree} elevation, elevation effects would also need to be searched for.
     After searching for low-elevation Crab observations, a total of 17.1 hours of livetime were found.
     These consist of 7.3(doesn't match with plot??) hours of V5 epoch data, and 9.8(doesn't match with plot??) hours of V6 epoch data.
     
@@ -143,10 +143,11 @@
       \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_spl.eps}
       \caption[Crab Profile along Galactic L]
       {
-        The number of counts along a 0.16\degree-wide-slice through the Crab along the Galactic L axis.
-        Blue is the number of observed counts.
-        Green is the number of counts predicted by the models.
-        Purple is the number of counts predicted by only the camera-background models.
+        The number of counts along a \SI{0.16}{\degree}-wide-slice through the Crab along the Galactic L axis.
+        Blue points are the number of observed counts, with poissonian error bars.
+        The green histogram bars are the number of counts predicted by all models.
+        Purple histogram bars are the number of counts predicted by only the camera-background models.
+        The dark green line is a high-resolution version of the green histogram.
       }
       \label{fig:crab_profile_l}
     \end{figure}
@@ -156,10 +157,11 @@
       \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_spb.eps}
       \caption[Crab Profile along Galactic B]
       {
-        The number of counts along a 0.16\degree-wide-slice through the Crab along the Galactic B axis.
-        Blue is the number of observed counts.
-        Green is the number of counts predicted by the models.
-        Purple is the number of counts predicted by only the camera-background models.
+        The number of counts along a \SI{0.16}{\degree}-wide-slice through the Crab along the Galactic B axis.
+        Blue points are the number of observed counts, with poissonian error bars.
+        The green histogram bars are the number of counts predicted by all models.
+        Purple histogram bars are the number of counts predicted by only the camera-background models.
+        The dark green line is a high-resolution version of the green histogram.
       }
       \label{fig:crab_profile_b}
     \end{figure}
@@ -169,12 +171,13 @@
       \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_splalt.eps}
       \caption[Crab Profile along Galactic L Off Source]
       {
-        The number of counts along a 0.16\degree-wide-slice along the Galactic L axis.
-        Blue is the number of observed counts.
-        Green is the number of counts predicted by the models.
-        Purple is the number of counts predicted by only the camera-background models.
-        This slice doesn't go through the Crab, but instead 1\degree higher in Galactic B.
+        The number of counts along a \SI{0.16}{\degree}-wide-slice along the Galactic L axis.
+        This slice doesn't go through the Crab, but instead \SI{1}{\degree} higher in Galactic B.
         As this doesn't include the Crab, this plot primarily demonstrates the camera background modelling.
+        Blue points are the number of observed counts, with poissonian error bars.
+        The green histogram bars are the number of counts predicted by all models (not visible as the astrophysical crab model doesn't contribute any amount of counts in this offset slice).
+        Purple histogram bars are the number of counts predicted by only the camera-background models.
+        The dark green line is a high-resolution version of the green histogram.
       }
       \label{fig:crab_profile_l_off}
     \end{figure}
@@ -184,10 +187,10 @@
       \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_ep.eps}
       \caption[Crab Profile in Energy]
       {
-        The number of counts in a 0.6\degree x 0.6\degree square centered on the Crab, vs energy.
-        Blue is the number of observed counts.
-        Green is the number of counts predicted by the models.
-        Purple is the number of counts predicted by only the camera-background models.
+        The number of counts in a \SI{0.6}{\degree} x \SI{0.6}{\degree} square centered on the Crab, vs energy.
+        Blue points are the number of observed counts, with poissonian error bars.
+        The green histogram bars are the number of counts predicted by all models.
+        Purple histogram bars are the number of counts predicted by only the camera-background models.
       }
       \label{fig:crab_profile_energy}
     \end{figure}
@@ -280,7 +283,12 @@
   \begin{figure}[ht]
     \begin{center}
       \includegraphics[width=0.95\textwidth]{images/ulimit/final_upper_limit_plot.eps}
-      \caption[Dark Matter Upper Limit Plot]{Dark Matter upper limits on velocity-averaged cross-sections.}\label{fig:ulim}
+      \caption[Dark Matter Upper Limit Plot]
+      {
+        Dark Matter upper limits on velocity-averaged cross-sections.
+        For reproduction, data values from this work are in table ??.
+      }
+      \label{fig:ulim}
     \end{center}
   \end{figure}
   
