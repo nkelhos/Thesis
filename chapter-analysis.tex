@@ -232,41 +232,121 @@
 
   \subsection{Likelihood Results}
   
-  \begin{figure}[ht]
-    \begin{center}
-      \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/counts_skymap.eps}
-      \caption[Galactic Center Counts Skymap]{Skymap of all event positions used in this analysis.  No adjustment for effective area, observation time, or background rate is done here.}\label{fig:gc_counts_skymap}
-    \end{center}
-  \end{figure}
-
-  \begin{figure}[ht]
-    \begin{center}
-      \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/counts_enhist.eps}
-      \caption[Galactic Center Counts Energy Histogram]{Histogram of all event positions used in this analysis.  No adjustment for effective area, observation time, or background rate is done here.}\label{fig:gc_counts_enhist}
-    \end{center}
-  \end{figure}
-
-  The analysis uses the $b\bar{b}$ annihilation channel, and are shown for just at $10\text{TeV}$.
+  A histogram of all observed events is shown in figure \ref{fig:gc_counts_skymap}.
   
   \begin{figure}[ht]
-    \begin{center}
-      \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_gal_l.eps}
-      \caption[Galactic Center Profile vs Galactic L]{Observed vs modeled counts in a slice of the sky parallel to the galactic L axis at $B=0$.  Modeled counts from camera-background-models are shown in purple, total modeled counts are shown in green.  The feature where the observed counts are shifted to the left of the models is likely due to unaccounted-for elevation effects in the camera background models.}\label{fig:gc_profile_gal_l}
-    \end{center}
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/counts_skymap.eps}
+    \caption[Galactic Center Counts Skymap]{
+      Skymap of all event positions used in this analysis.
+      No adjustment for effective area, observation time, or background rate is done here.
+    }
+    \label{fig:gc_counts_skymap}
   \end{figure}
 
+  An energy histogram of all events from \SI{4}{TeV}-\SI{70}{TeV} is shown in figure \ref{fig:gc_counts_enhist}.
+  
   \begin{figure}[ht]
-    \begin{center}
-      \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_gal_b.eps}
-      \caption[Galactic Center Profile vs Galactic B]{Observed vs modeled counts in a slice of the sky parallel to the galactic B axis at $L=0$.  Modeled counts from camera-background-models are shown in purple, total modeled counts are shown in green.  The feature where the observed counts are shifted to the left of the models is likely due to unaccounted-for elevation effects in the camera background models.}\label{fig:gc_profile_gal_b}
-    \end{center}
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/counts_enhist.eps}
+    \caption[Galactic Center Counts Energy Histogram]{
+      Histogram of all event positions used in this analysis.
+      No adjustment for effective area, observation time, or background rate is done here.
+    }
+    \label{fig:gc_counts_enhist}
   \end{figure}
 
+  The analysis uses the $b\bar{b}$ annihilation channel, and are shown for just at \SI{45}{TeV}.
+
+  In figure \ref{fig:gc_profile_gal_l}, the observed counts are shown compared to the final, likelihood-optimized modelled counts.
+  The histogram bins are along a 0.22\degree-wide slice along the galactic l axis, centered on Sgr A*'s galactic b coordinate.
+  The purple histogram bins are the modelled counts from only the camera background models.
+  The green histogram bins are the total modelled counts from the camera background models and the astrophysical models.
+  The blue points with error bars are the observed counts in each bin, with poissonian errors.
+  The lighter green line is a higher-resolution sampling of the total modelled counts.
+  The feature where the observed counts are shifted to the left of the models is likely due to unaccounted-for elevation effects in the camera background models.
+  
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_gal_l.eps}
+    \caption[Galactic Center Profile vs Galactic L]{
+      Observed vs modeled counts in a slice of the sky parallel to the galactic L axis at $B=0$.
+      Modeled counts from camera-background-models are shown in purple, total modeled counts are shown in green.
+      The faint green line shows the total modelled counts at a higher spatial resolution, scaled to the histogram bins.
+      Observed counts with poissonian errors are shown in blue.
+    }
+    \label{fig:gc_profile_gal_l}
+  \end{figure}
+
+  Figure \ref{fig:gc_profile_gal_b} is almost the same as figure \ref{fig:gc_profile_gal_l}, except it is a slice through Sgr A* along the galactic b axis,
+  The feature where the observed counts are shifted to the left of the models is also visible here.
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_gal_b.eps}
+    \caption[Galactic Center Profile vs Galactic B]{
+      Observed vs modeled counts in a slice of the sky parallel to the galactic B axis at $L=0$.
+      Modeled counts from camera-background-models are shown in purple, total modeled counts are shown in green.
+      Observed counts with poissonian errors are shown in blue.
+    }
+    \label{fig:gc_profile_gal_b}
+  \end{figure}
+
+  Figure \ref{fig:gc_profile_energy} shows the same profile, except instead integrated over a ${0.2}^{\circ}\times{0.2}^{\circ}$ galactic (l,b) square centered on Sgr A*.
+  Again, purple is modelled camera-background counts, green is total modelled counts, and blue is observed counts.
+  
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_energy.eps}
+    \caption[Galactic Center Profile vs Energy]{
+      Observed vs modeled counts in a ${0.2}^{\circ}\times{0.2}^{\circ}$ square bin centered on Sgr A*.
+      Modeled counts from camera-background-models are shown in purple, total modeled counts are shown in green.
+      Observed counts with poissonian errors are shown in blue.
+    }
+    \label{fig:gc_profile_energy}
+  \end{figure}
+  
+  To check for any poorly modelled areas of the sky, a residual skymap is shown in figure \ref{fig:gc_resmap}.
+  This calculates how significant the difference is between the observed and modelled number of counts.
+  Each bin's significance is 
+  
+  % see http://cta.irap.omp.eu/ctools/users/reference_manual/csresmap.html
+  \begin{equation}
+    \label{eqn:resmap_signif}
+    significance = sign(D-M) \sqrt{ 2 \left ( D * ln \left ( \frac{D}{M} \right ) + M - D \right ) }
+  \end{equation}
+  
+  where D is the number of observed counts, and M is the number of modelled counts.
+  Equation \ref{eqn:resmap_signif} is derived from the Li and Ma equation ??. 
+  In this plot, the deficiency of the radially-symmetric camera background models is apparent.
+  Lighter/darker areas indicate places where there were more/less observed counts than the models predicted.
+  
   \begin{figure}[ht]
-    \begin{center}
-      \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_energy.eps}
-      \caption[Galactic Center Profile vs Energy]{Observed vs modeled counts in a ${0.2}^{\circ}\times{0.2}^{\circ}$ square bin centered on Sgr A*.  Modeled counts from camera-background-models are shown in purple, total modeled counts are shown in green.}\label{fig:gc_profile_energy}
-    \end{center}
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_resmap_algosignificance.eps}
+    \caption[Galactic Center Residual Map]
+    {
+      Significance of each skymap bin's residual counts.
+      See equation \ref{eqn:resmap_signif} for details.
+      The dark upper-left and lighter lower-right areas are due to the the radiall-symmetric background, when a non-radially symmetric one would have been more ideal.
+    }
+    \label{fig:gc_resmap}
+  \end{figure}
+
+  Even if the source and background models were perfectly known, there would still be statistical fluctuations in the observed counts, and the residual significances would form a gaussian distribution, shown as the green line in figure \ref{fig:gc_resmap_sighist}.
+  However, the distribution of the pixel significances from figure \ref{fig:gc_resmap} is shown in figure \ref{fig:gc_resmap_sighist}, and qualitativly not gaussian shaped (??).
+  ?? How well does it fit, and quantitativly how bad does it fit??
+  As a large number of bins are clustered around +2 and -2 signifiance, this hints that the residuals in figure \ref{fig:gc_resmap} are potentially not due solely from statistical noise, and that the background modelling could be improved.
+  
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_resmap_phist_algosignificance.eps}
+    \caption[Galactic Center Residual Histogram]
+    {
+      Histogram of resmap bin significances from figure \ref{fig:gc_resmap}.
+      See equation \ref{eqn:resmap_signif} for details.
+    }
+    \label{fig:gc_resmap_sighist}
   \end{figure}
   
   
