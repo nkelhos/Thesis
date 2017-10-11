@@ -7,11 +7,18 @@
   This dark region is referred to as  Sgr A* Off, and is located at (l,b)=(\SI{357.3396}{\degree}, \SI{3.9984}{\degree}), shown in Figure \ref{fig:gcfieldsofview}.
 
   \begin{figure}[ht]
-    \begin{center}
-      \includegraphics[width=0.95\textwidth]{images/skypointings/plot.eps}
-      \caption[VERITAS Galactic Center Pointings]{Fields of view for Galactic Center observations.}\label{fig:gcfieldsofview}
-    \end{center}
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/skypointings/plot.eps}
+    \caption[VERITAS Galactic Center Pointings]{
+      Fields of view for Galactic Center observations.
+      Each circle marks the observing area of one observation.
+      Green are data observations, while blue are observations used to construct the camera-background templates.
+      To quantify the detector efficiency, observations are taken at \SI{0.5}{\degree} or \SI{0.7}{\degree} offsets from each observing target, in four different directions (wobbles) along Right Ascension/Declination axes.
+    }
+    \label{fig:gcfieldsofview}
   \end{figure}
+
+  %2 offsets $\times$ 4 wobble directions = 8 observing regions (circles).
 
   All three sets of data include observations from both the V5 epoch (after moving T4 but before the camera upgrade), and the V6 epoch (after the camera upgrade).
   All used data was taken from April 2010 to June 2016.
@@ -35,8 +42,11 @@
   \begin{figure}[ht]
     \centering
     \includegraphics[width=0.95\textwidth]{data_elevation_plots/plot.eps}
-    \caption[VERITAS Data Elevation Exposure]
-    {Camera center elevation for the three sets of data. (Update this plot!!??)}
+    \caption[VERITAS Data Elevation Exposure]{
+      Camera center elevation for the three sets of data.
+      The three peaks in the Sgr A* data are from the 4 wobble positions being at different elevations.
+      The North wobble observations peak at elevation \nicetilde29.75\degree, East and West wobbles observations at \nicetilde29.25\degree, and South wobble observations at \nicetilde28.75\degree.
+    }
     \label{fig:datapointingelevations}
   \end{figure}
 
@@ -134,6 +144,7 @@
         Crab spectra from various analyses and observatories.
         Red is the spectra from the CTOOLS analysis described in this chapter.
         Blue is the standard VERITAS Event Display spectrum using the same set of observations.
+        (Update hess/magic lines to have higher maximum energy points??)
       }
       \label{fig:crab_test_spectra}
     \end{figure}
@@ -198,7 +209,7 @@
     \end{figure}
     
     The fitted models can also be viewed, as a check that the likelihood engine is fitting the models to the data.
-    In figure \ref{crab_skymap}, the position of all counts is shown in galactic l and b.
+    In figure \ref{fig:crab_skymap}, the position of all counts is shown in galactic l and b.
     In figures \ref{fig:crab_profile_l} and \ref{fig:crab_profile_b}, the counts in the observations and models were integrated along a slice of galactic l and b.
     The counts from only the camera background models is shown, along with the counts from all camera backgrounds plus the point source.
     The difference between these two lines is then the counts from the Crab point source model.
@@ -299,7 +310,7 @@
     \centering
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_energy.eps}
     \caption[Galactic Center Profile vs Energy]{
-      Observed vs modeled counts in a ${0.2}^{\circ}\times{0.2}^{\circ}$ square bin centered on Sgr A*.
+      Observed vs modeled counts in a ${0.2}^{\circ}\times{0.2}^{\circ}$ square bin centered on Sgr A* at energies from \SI{4}{TeV} to \SI{70}{TeV}.
       Modeled counts from camera-background-models are shown in purple, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
     }
@@ -343,8 +354,9 @@
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_resmap_phist_algosignificance.eps}
     \caption[Galactic Center Residual Histogram]
     {
-      Histogram of resmap bin significances from figure \ref{fig:gc_resmap}.
+      Histogram of the residual skymap bin significances from figure \ref{fig:gc_resmap}.
       See equation \ref{eqn:resmap_signif} for details.
+      Only skymap bins within each observation's region of interest (the green circles in figure \ref{fig:gcfieldsofview}) are histogrammed.
     }
     \label{fig:gc_resmap_sighist}
   \end{figure}
@@ -357,7 +369,7 @@
   Then from the dark matter flux equation ??, an upper limit on the observed gamma-ray flux can be used to calculate an upper limit on the velocity-averaged crosssection.
   
   \begin{equation}\label{eqn:ulim}
-    \frac{d\phi}{dE d\omega} = \frac{ \sigma v (fixme!??)}{8\pi m_{\chi}^{2}} \frac{dN_{\gamma}}{dE} \int \rho^{2} dl
+    \frac{d\phi}{dE d\Omega} = \frac{ \left \langle \sigma v \right \rangle }{8\pi m_{\chi}^{2}} \frac{dN_{\gamma}}{dE} \int \rho^{2} dl
   \end{equation}
   
   Since, when all other variables are fixed, a larger gamma ray flux results from a larger velocity-averaged crosssection, they can both be replaced with their upper limits (??).

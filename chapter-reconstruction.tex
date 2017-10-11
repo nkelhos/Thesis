@@ -25,7 +25,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
   Then, the time gradient from the image and border pixels can be found by performing a linear fit of the $T_{0}$ times.
   This time gradient can then be used to place a (more accurate) third integration window with 30\% of the window before each pixel's $T_{0}$, to more accurately measure the charge due to cherenkov photons in the pixel.
 
-  From the image pixels, border pixels, and time gradient, the shower's Hillas parameters \ref{hillas_params} can be calculated.
+  From the image pixels, border pixels, and time gradient, the shower's Hillas parameters \cite{hillas_params} can be calculated.
   These include the size of the shower in photoelectrons (or equivalent units), the shower center of charge, angle, length and width.
   The center of charge is the charge-weighted average of all image and border pixel positions.
   The angle of the shower determines how the image's major axis is oriented in the camera.
@@ -136,10 +136,11 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
   As each event list covers a small region in time, the IRF tables only need to contain the dimensions of the parameter space that can change during one chunk, such as event energy and distance from camera center.
 
   \begin{figure}[ht]
-    \begin{center}
-      \includegraphics[width=0.75\textwidth]{images/FITS_diagrams_alternate_scheme.eps}
-      \caption[FITS File Event Storage Schemes]{}\label{fig:fits_scheme}
-    \end{center}
+    \centering
+    \includegraphics[width=0.75\textwidth]{images/FITS_diagrams_alternate_scheme.eps}
+    \caption[FITS File Event Storage Schemes]
+    {Fits file storage schema.}
+    \label{fig:fits_scheme}
   \end{figure}
 
   The end result is that a 30 minute observation can be broken into several FITS files (called chunks), where each chunk file is independent of any outside references, contains all needed IRF information, and only takes up \nicetilde100s KB on disk.
@@ -163,19 +164,21 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     In figure \ref{fig:effarea_paramspace}, it can be seen how the effective area peaks to \nicetilde$3*10^5 m^2$ for 3\TeV events at the camera center.
 
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=0.75\textwidth]{images/effarea_plots/effarea_parameter_space.eps}
-        \caption[Effective Area Parameter Space]{Effective areas at different points in the Energy and Camera Offset parameter space for run 78128.}\label{fig:effarea_paramspace}
-      \end{center}
+      \centering
+      \includegraphics[width=0.75\textwidth]{images/effarea_plots/effarea_parameter_space.eps}
+      \caption[Effective Area Parameter Space]
+      {Effective areas at different points in the Energy and Camera Offset parameter space for run 78128.}
+      \label{fig:effarea_paramspace}
     \end{figure}
 
     For the test analyses of the Crab and the Galactic Center Point Source, the effective areas of all events are shown in figure \ref{fig:effarea_usage}.
 
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=\textwidth]{images/effarea_plots/effarea_usage.eps}
-        \caption[Effective Area Parameter Space]{Effective areas used by events in each analysis.}\label{fig:effarea_usage}
-      \end{center}
+      \centering
+      \includegraphics[width=\textwidth]{images/effarea_plots/effarea_usage.eps}
+      \caption[Effective Area Parameter Space]
+      {Effective areas used by events in each analysis.}
+      \label{fig:effarea_usage}
     \end{figure}
 
     (Please make these plots bigger??, its too hard to read the text labels -Orel)
@@ -210,19 +213,25 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
     % plot of psfs from chunkplot
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=\textwidth]{images/psf_king_plots/psf_parameter_space.eps}
-        \caption[PSF Parameter Space]{The 68\% containment radius for the Energy/Offset parameter space for Galactic Center run 78128. The black points show a subset of the event positions from that run in the parameter space.}\label{fig:psf_paramspace}
-      \end{center}
+      \centering
+      \includegraphics[width=\textwidth]{images/psf_king_plots/psf_parameter_space.eps}
+      \caption[PSF Parameter Space]{
+        The 68\% containment radius for the Energy/Offset parameter space for Galactic Center run 78128. 
+        The black points show a subset of the event positions from that run in the parameter space.
+      }
+      \label{fig:psf_paramspace}
     \end{figure}
 
     For the Galactic Center and the Crab analyses, the distribution of 68\% containment radii for all events is shown in figure \ref{fig:gc_psf_hist}.
 
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=\textwidth]{images/psf_gc_eventhist/eventpsfhist.eps}
-        \caption[Crab and Galactic Center Event PSFs]{The 68\% containment radius for all Galactic Center and Crab events used in this analysis.  The events with a zero containment radius are caused by low statistics in the simulations at the edges of the parameter space(check this??).}\label{fig:gc_psf_hist}
-      \end{center}
+      \centering
+      \includegraphics[width=\textwidth]{images/psf_gc_eventhist/eventpsfhist.eps}
+      \caption[Crab and Galactic Center Event PSFs]{
+        The 68\% containment radius for all Galactic Center and Crab events used in this analysis.
+        The events with a zero containment radius are caused by low statistics in the simulations at the edges of the parameter space(check this??).
+      }
+      \label{fig:gc_psf_hist}
     \end{figure}
 
   \subsection{Background Models}\label{background_production}
@@ -242,18 +251,23 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     This interpolated function is normalized to a volume of one by integrated around the entire camera.
 
     (Fix this integral!??)
-    \begin{equation} \label{eqn:background_integral}
-    P(r) = \int{a}{b}
+    \begin{equation}
+      \label{eqn:background_integral}
+      P(r) = \int{a}{b}
     \end{equation},
 
     This , which is the pdf of one event.
     These energy-bin pdfs can then be interpolated linearly in $log_{10}(\TeV )$ space, to get the radial distribution of events at various energies.
 
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=\textwidth]{images/ctools_background/radial_profiles.eps}
-        \caption[CTOOLS Radial Background Profiles]{Radial bin profiles for the V5 background's two large-scale energy bins.  (These plots need axes labels, and the blue error bars are not accounting for the bin area properly!??).  The blue points are the counts per bin area, while the purple line is the interpolation with a spline interpolator of order 3 (see scipy.interpolate.interp1d())}\label{fig:background_radial}
-      \end{center}
+      \centering
+      \includegraphics[width=\textwidth]{images/ctools_background/radial_profiles.eps}
+      \caption[CTOOLS Radial Background Profiles]{
+        Radial bin profiles for the V5 background's two large-scale energy bins.
+        (These plots need axes labels, and the blue error bars are not accounting for the bin area properly!??).
+        The blue points are the counts per bin area, while the purple line is the interpolation with a spline interpolator of order 3 (see scipy.interpolate.interp1d())
+        }
+      \label{fig:background_radial}
     \end{figure}
 
 
@@ -263,10 +277,17 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     (For the above 2-3 paragraphs: I really have trouble following what is done exactly and I think there is no need to go into these details. This looks like a description of the code instead of the physics/analysis. --Orel??)
 
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=0.9\textwidth]{images/ctools_background/background_construction.eps}
-        \caption[CTOOLS Background Fine Energy Bins]{The V5 Background's fine-energy bins.  The left plot shows the number of events in each fine-energy bin.  The right plot shows the ctools background values.  The black lines show the fits background value and energy bin width saved to the background file, while the blue line shows the background value after ctools loads and interpolates those fits background values.  Note the y-axis in the left plot is linear, while in the right plot, it is $log_{10}$. (These plots should be cleaned up a little??  A lot… Make the labels and points bigger, align the two plots, etc… --Orel??)}\label{fig:background_profile}
-      \end{center}
+      \centering
+      \includegraphics[width=0.9\textwidth]{images/ctools_background/background_construction.eps}
+      \caption[CTOOLS Background Fine Energy Bins]{
+        The V5 Background's fine-energy bins.
+        The left plot shows the number of events in each fine-energy bin.
+        The right plot shows the ctools background values.
+        The black lines show the fits background value and energy bin width saved to the background file, while the blue line shows the background value after ctools loads and interpolates those fits background values.
+        Note the y-axis in the left plot is linear, while in the right plot, it is $log_{10}$.
+        (These plots should be cleaned up a little??  A lot… Make the labels and points bigger, align the two plots, etc… --Orel??)
+      }
+      \label{fig:background_profile}
     \end{figure}
 
     Additionally, three extra 'zero' background maps (with an extremely low value of $10^{-13} \frac{\text{counts}}{\text{sr}*\text{s}*\MeV}$ are added above and below the fine energy bins, so that the ctools background interpolation will properly predict the correct lack of events above and below the energy range.
@@ -280,14 +301,16 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     In an analysis with ctools, this is quantified by an energy migration matrix $E_{i,j}$, where $i$ denotes the $i^{th}$ reconstructed energy bin, and $j$ denotes the $j^{th}$ true energy bin.
     For true energy $j$, the distribution of reconstructed energies $f_{\text{reco}}$ is,
 
-    \begin{equation} \label{eqn:edispreco}
-    f_{\text{reco}}(j)=\frac{E_{i,j}}{ \sum_{i}E_{i,j} }
+    \begin{equation}
+      \label{eqn:edispreco}
+      f_{\text{reco}}(j)=\frac{E_{i,j}}{ \sum_{i}E_{i,j} }
     \end{equation}
 
     for reconstructed energy $i$, the distribution of true energies $f_{\text{true}}$ is,
 
-    \begin{equation} \label{eqn:edisptrue}
-    f_{\text{true}}(i)=\frac{E_{i,j}}{ \sum_{j}E_{i,j} }
+    \begin{equation}
+      \label{eqn:edisptrue}
+      f_{\text{true}}(i)=\frac{E_{i,j}}{ \sum_{j}E_{i,j} }
     \end{equation}
 
     By unfolding these distributions from the reconstructed energies, two primary analysis effects are accounted for.

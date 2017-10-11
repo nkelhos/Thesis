@@ -10,7 +10,7 @@
   It consists of groups of particles called quarks and leptons, as well as the bosons that mediate interactions between these particles.
   Quarks combine to form hadrons, like protons and neutrons, and mesons, while leptons consist of electrons, muons, and tauons.
   Since all Standard Model particles have been eliminated as Dark Matter candidates, theoretically predicted particles are now the focus of many searches.
-  At the forefront of these searches are particles predicted by Supersymmetry \cite{Jungman}, (specifically Minimal Supersymmetric Standard Model, or MSSM \cite{MSSM}), an extension to the Standard model.
+  At the forefront of these searches are particles predicted by Supersymmetry \cite{Jungman:1995df}, (specifically Minimal Supersymmetric Standard Model, or MSSM \cite{MSSM}), an extension to the Standard model.
   Much like many particles have an anti-particle, in supersymmetry, each Standard Model quark, lepton, or boson, has a supersymmetric partner particle.
   Quarks and leptons have squarks and sleptons as their supersymmetric partners, while bosons have partners like photinos, gluinos, and charginos.
   While no evidence of supersymmetry has been detected to date(cite??), it is still preferred due to its ability to predict physics across a large range energy scales, the holy grail of any Grand Unified Theory.
@@ -135,7 +135,7 @@
   \subsection{WIMP properties}
     % relic cross-section?
 
-    In the 1990s, it was pointed out that supersymmetry predicted the existance of a WIMP-like particle with a crosssection of around \nicetilde 3 *  m.
+    In the 1990s, it was pointed out that supersymmetry predicted the existance of a WIMP-like particle with a crosssection of around \nicetilde $3*{10}^{-26}\ {\textrm{cm}}^{2}$(cite??).
     What also made this WIMP particle a promising candidate is a WIMP-like particle also solves several problems in cosmology, and that such a WIMP-like particle would have a similar cross section.
     Thus, two separate fields of physics came together and noticed that they both were looking for a WIMP-like particle within a mass and crosssection range.
     In $\Delta$CDM cosmology, the relic density is all of the lefover dark matter particles after the universe became too cold to produce more dark matter particles.
@@ -143,14 +143,15 @@
     % see arxiv 1204.3622 steigman 2012
 
     There are other potential dark matter candidates, both as other particle types or as modifications to other areas of physics, but they are not explored in this thesis.
-    see https://arxiv.org/pdf/1006.2483v2.pdf for more info??
+    See \cite{dm_primer} for more a more detailed discussion.
+    
   \subsection{Dark Matter and Gamma Rays}
     WIMPs are predicted to decay and self-annihilate into standard model particles.
     Primarily, indirect searches focus on annihilating WIMPs, as the predicted WIMP decay lifetime produces a lower standard model flux than annihilation(discuss more??).
     WIMPs may annihilate into any standard model particle, but most studies examine a WIMP annihilating into a quark-antiquark pair, or a pair of gamma-ray photons.
 
-    For example, two annihilating WIMPs may produce a $\HepParticle{t}{}{}\HepAntiParticle{t}{}{}$ pair, which then decays into...??.
-    Or, they may produce $\HepParticle{b}{}{}\HepAntiParticle{b}{}{}$, or $\HepParticle{\gamma}{}{}\HepParticle{\gamma}{}{}$.
+    For example, two annihilating WIMPs may produce a $t\bar{t}$ pair, which then decays into...??.
+    Or, they may produce $b\bar{b}$, or $\gamma\gamma$.
 
     These different annihilations will produce different spectra of final gamma rays.
   
@@ -160,7 +161,7 @@
     Each profile describes the mass/volume density of dark matter at a distance r from the halo center, $\rho(r)$.
     In this initial analysis, only the Einasto profile is used.
 
-    Most simulations show that density profiles should terminate in a sharp peak at $r=0$, but observations of dwarf galaxies instead favor a flat core within a given radius \ref{CoreVsCusp}.
+    Most simulations show that density profiles should terminate in a sharp peak at $r=0$, but observations of dwarf galaxies instead favor a flat core within a given radius \cite{CoreVsCusp}.
     For simplicity in this initial analysis, no core radius is applied.
 
     The Einasto profile (\cite{einastoprofile1},\cite{einastoprofile2}) has the form
@@ -169,7 +170,7 @@
       \rho_{DM} \left( r \right) = \rho_{s} Exp \left( - \frac{2}{\alpha} \left( {\left( \frac{r}{r_s} \right)}^{\alpha} - 1 \right) \right)
     \end{equation}
     
-    where $\alpha$ is taken to be 0.17, from \ref{PieriGalaxySims}.
+    where $\alpha$ is taken to be 0.17, from \cite{PieriGalaxySims}.
     
     When using the distance to the galactic center of 8 kpc (cite??), the local estimated dark matter mass density of 0.4 $ \frac{ \text{GeV} }{ \text{cm}^3 } $ (cite??), and a scale radius $r_s$ of 15.4 kpc (cite??), the einasto density profile for the the galactic center halo is shown in Figure \ref{fig:gchalo_density}.
   
@@ -189,7 +190,7 @@
     \end{equation}
     
     In this, the photon flux $\Phi$ is the number of gamma-ray photons detected per area and per time.
-    The $\left \langle \sigma v \right \rangle$ is the velocity averaged cross-section of the dark matter candidate.
+    $\left \langle \sigma v \right \rangle$ is the velocity-averaged cross-section of the dark matter candidate.
     The velocity-averaging is used because the cross-section may be velocity dependent, and the WIMP particles within the halo probably posesses a distribution of velocities.
     The $\frac{dN_{\gamma}}{dE}$ is the spectrum of photons produced by a single $\chi\chi$ annihilation.
     
@@ -210,7 +211,7 @@
     
   \subsection{Spectrum of Gamma Rays from Dark Matter}\label{dm_spectral}
     In order to calculate the brightness of the dark matter halo in gamma rays, the produced spectrum from each WIMP annihilation must be known.
-    Each WIMP annihilation may directly produce two gamma rays, or may instead produce a $t\tbar$ or $b\bbar$ pair, which then decays into gamma rays (and other possible decay channels?? leptons??), called annihilation channels.
+    Each WIMP annihilation may directly produce two gamma rays, or may instead produce a $b\bar{b}$  or $t\bar{t}$ pair, which then decays into gamma rays (and other possible decay channels?? leptons??), called annihilation channels.
     In order to calculate the different produced gamma-ray spectra for each annihilation channel, the software package CLUMPY is used (cite??).
 
     For this thesis, only the simplest annihilation channels are considered, where WIMP annihilations only use one channel, instead of percent mixes of multiple channels.
