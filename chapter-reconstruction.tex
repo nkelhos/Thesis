@@ -272,7 +272,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
 
     Then, all events are divided up into \nicetilde30 finer energy bins as shown in figure \ref{fig:background_profile}, and each bin's counts are multiplied by the interpolated radial pdf at that energy, which is then written to a two-dimensional array of camera x/y bins.
-    2D bin values are then divided by the solid angle of the bin (in sr), the energy width of the bin (in Mev), and the total obseration time (in seconds).
+    2D bin values are then divided by the solid angle of the bin (in sr), the energy width of the bin (in MeV), and the total obseration time (in seconds).
 
     (For the above 2-3 paragraphs: I really have trouble following what is done exactly and I think there is no need to go into these details. This looks like a description of the code instead of the physics/analysis. --Orel??)
 
@@ -285,7 +285,8 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
         The right plot shows the ctools background values.
         The black lines show the fits background value and energy bin width saved to the background file, while the blue line shows the background value after ctools loads and interpolates those fits background values.
         Note the y-axis in the left plot is linear, while in the right plot, it is $log_{10}$.
-        (These plots should be cleaned up a little??  A lot… Make the labels and points bigger, align the two plots, etc… --Orel??)
+        (These plots should be cleaned up a little??  A lot... Make the labels and points bigger, align the two plots, etc... --Orel??)
+        (Plots are being remade, but gatech needs updated veripy before the .cbk file can be reproduced with updated plots --Nathan)
       }
       \label{fig:background_profile}
     \end{figure}
