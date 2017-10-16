@@ -7,7 +7,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
 \section{Pedestal Variation}
   Before reconstructing any events, the pedestal and pedestal variations (pedvars) must be calculated.
-  These are done by artificially triggering all pixels once per second during normal data-taking, in order to record events that solely contain noise.
+  These are done by artificially triggering all pixels once per second during observations, in order to record events that contain only noise.
   The average of the digital counts (dc) of all noise-events for each pixel is then the pedestal.
   From this pedestal, the pedvars are then calculated as the rms of the all the dc counts in all noise-events, which can be visualized as the distribution of dc around the mean dc.
 
@@ -17,7 +17,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
   The start of a potential voltage pulse is the time when the voltage trace is at half of its maximum value, called $T_{0}$.
   Around time $T_{0}$, the trace is integrated a second time with a smaller time window (usually either 14 or 24 ns wide, at $T_0$ - 30\% of the window size), to reduce the inclusion of dc from sources of noise (NSB and electronics).
-  This two-pass algorithm is usually referred to as the double-pass method (cite??).
+  This two-pass algorithm is usually referred to as the double-pass method\cite{doublepass}.
   If a pixel's second-pass total dc is higher than 5 times the pedvar, then it is considered an image pixel.
   If it is between 2.5 and 5 times the pedvar, it is considered a border pixel.
 
@@ -37,8 +37,8 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
   These drawn lines should intersect very close together, and the average of the intersection points determines the event's initial direction.
 
   In averaging the intersection points, weighting for each intersection can be applied based on the angle between the two lines.
-  This improves the reconstruction, because the intersection point from two images at 90\degree angles will be less sensitive to image fluctuations than two images at 160\degree, as shown in figure \ref{fig:largeintersectangle}.
-  Additionally, the disp method described in section \ref{subsec:disp} can be utilized to offer improvements in the lower elevations.
+  This improves the reconstruction, because the intersection point from two images at \SI{90}{\degree} angles will be less sensitive to image fluctuations than two images at 160\degree, as shown in Figure \ref{fig:largeintersectangle}.
+  Additionally, the disp method described in section \ref{subsec:disp} can be utilized to offer improvements at lower telescope elevations.
 
   \begin{figure}[ht]
     \begin{center}
@@ -48,55 +48,70 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
   \end{figure}
 
   \subsection{Angular Reconstruction Neural Network}\label{subsec:disp}
-    At high elevations, shower images are often at small intesection angles, because the telescopes are spread out in two dimensions, relative to the shower in the atmosphere.
+    At high elevations, shower images often form small intesection angles, because the telescopes are spread out in two dimensions, relative to the shower in the atmosphere.
     At low elevations near the galactic center, however, the telescope array flattens into one dimension, which makes the shower's impact parameter (the shortest distance between the telescope and the shower core axis) smaller for two of the telescopes.
-    These two closer telescopes then have very short, almost circular images, which increases the sensitivity of those two image axes to noisy pixels or shower fluctuations, as shown in figure \ref{fig:showerhighlowelev}.
+    These two closer telescopes then have very short, almost circular images, which increases the sensitivity of those two image axes to noisy pixels or shower fluctuations, as shown in Figure \ref{fig:showerhighlowelev}.
     This also causes the remaining telescope images to have large intersection angles, which also reduces the accuracy of the position reconstruction.
 
     \begin{figure}[ht]
       \begin{center}
         \includegraphics[width=0.75\textwidth]{images/high_elevation_vs_low_shower_images_cropped.eps}
-        \caption[Shower Images at High and Low Elevations]{In figure (a), high elevation showers produce long images in all four telescopes.  In figure (b), lower elevation showers produce shortened images in two telescopes, and the remaining images form large angle intersection.}\label{fig:showerhighlowelev}
+        \caption[Shower Images at High and Low Elevations]{In Figure (a), high elevation showers produce long images in all four telescopes.  In Figure (b), lower elevation showers produce shortened images in two telescopes, and the remaining images form large angle intersection.}\label{fig:showerhighlowelev}
       \end{center}
     \end{figure}
 
+  \newcommand{\disp}{\textit{disp}}
 
     To better handle these near-parallel image axes at low elevations, the reconstructed position can be determined from more parameters than just the weighted image axes intersection points.
-    From simulations, the distance between the center of the Hillas shower image and the true position can be calculated, where the angular distance between the two is the 'disp' parameter\cite{Senturk:2011}, shown in figure \ref{fig:dispdiagram}.
-    Then, a machine learning algorithm \cite{Beilicke2012NIM} can be trained on these simulated shower image parameters (width, length, wol, size, tgrad_x^2, cross, asym, loss??). % see $EVNDISPSYS/src/trainTMVAforAngularReconstruction.cpp for more info??
-    (You do not mention what is the input to the machine learning algorithm. The Hillas parameters?? -Orel)
-    This algorithm's disp-predicted positions can then be weighted and included in the intersection averaging.
+    From simulations, the distance between the center of the Hillas shower image and the true position can be calculated, where the angular distance between the two is the \disp{} parameter\cite{Senturk:2011}, shown in Figure \ref{fig:dispdiagram}.
+    Then, this \disp{} parameter can be provided to a machine learning algorithm \cite{Beilicke2012NIM}, along with other image parameters like:
+    \begin{description}
+      \item[\textit{width}:] image angular width
+      \item[\textit{length}:] image angular length
+      \item[\textit{wol}:] $\frac{\textrm{width}}{\textrm{length}}$
+      \item[\textit{size}:] total image dc
+      \item[\textit{ntubes}:] number of pixels in the image
+      \item[\textit{loss}:] fraction of image pixels at the edge of the camera
+      \item[\textit{asym}:] distance between image center-of-dc and the pixel with the highest dc
+      \item[\textit{tgrad}:] the slope of the linear time fit to the pixel arrival times
+      \item[\textit{cross}:] angular distance between the image center and the reconstructed gamma-ray position
+    \end{description}
+  % list of training parameters: grep "AddVariable" $EVNDISPSYS/src/trainTMVAforAngularReconstruction.cpp
+  % how variables are calculated: grep -P "fParGeo.+\=" $EVNDISPSYS/src/VImageParameterCalculation.cpp
+  % asym: http://inspirehep.net/record/1395717/files/RdelosReyes.pdf
+  % Once trained on these parameters, the machine learning algorithm can construct a boosted decision tree for determining any new image's \textit{disp}, which can then be used with the image axes intersections to improve the gamma-ray reconstructed positions.
+
 
     \begin{figure}[ht]
       \begin{center}
         \includegraphics[width=0.5\textwidth]{images/disp_parameter_cropped.eps}
-        \caption[Angular Reconstruction Disp]{The disp parameter is the angular distance between the center (red dot) of a hillas image (blue oval) and the true sky position (green dot).  Generally, longer shower images have a larger disp angle.}\label{fig:dispdiagram}
+        \caption[Angular Reconstruction Disp]{The \disp{} parameter is the angular distance between the center (red dot) of a hillas image (blue oval) and the true sky position (green dot).  Generally, longer shower images have a larger \disp{} angle.}\label{fig:dispdiagram}
       \end{center}
     \end{figure}
 
     % https://veritas.sao.arizona.edu/wiki/index.php/BDT_Angular_reconstruction
-    The disp and other parameters for thousands of simulated showers can then be used to train a boosted decision tree forest (BDT) that estimates the most probable disp for a given shower.
-    This most probable disp can then be used with the image axes intersection points to more accurately reconstruct the original gamma-ray point of origin.
-
-    Once the training is complete, it is tested on a separate set of 17,000 simulated events, which are plotted in figure \ref{fig:disptraining}.
-    The x axis describes the true disp value for each event, while the y axis describes the disp value estimated by the BDT, with a black $x=y$ line marked, which represents a perfect disp reconstruction.
-    As events fall on the $x=y$ line, it can be concluded that the BDTs are able to predict the correct disp value for most images.
+    These parameters for thousands of simulated showers can then be used to train a boosted decision tree forest (BDT) that estimates the most probable \disp{} for a new shower's images.
+    This most-probable \disp{} can then be used with the image axes intersection points to more accurately reconstruct the original gamma-ray point of origin.
+    
+    Once the training is complete, it is tested on a separate set of 17,000 simulated events, which are plotted in Figure \ref{fig:disptraining}.
+    The x axis describes the true \disp{} value for each event, while the y axis describes the \disp{} value estimated by the BDT, with a black $x=y$ line marked, which represents a perfect 1:1 \disp{} reconstruction.
+    As events fall on the $x=y$ line, it can be concluded that the BDTs are able to predict the correct \disp{} value for most images.
 
     % made from screenshot of last slide in Dropbox/Presentations/20160719_Group_Meeting.key
     \begin{figure}[ht]
       \begin{center}
         \includegraphics[width=0.85\textwidth]{images/disp_training.eps}
-        \caption[Disp BDT Training]{The true disp vs the BDT-predicted disp, for \nicetilde17,000 gamma-ray event images in T1, from 500\GeV to 200\TeV.}\label{fig:disptraining}
+        \caption[Disp BDT Training]{The true \disp{} vs the BDT-predicted \disp{}, for \nicetilde17,000 gamma-ray event images in T1, from 500\GeV to 200\TeV.}\label{fig:disptraining}
       \end{center}
     \end{figure}
 
-    The small improvement in the position reconstruction due to the disp method can be seen in figure \ref{fig:disp_event_offset}.
+    The small improvement in the position reconstruction due to the \disp{} method can be seen in Figure \ref{fig:disp_event_offset}.
     With the Geometric (red) events, more are concentrated further from the point source, while with the Disp method, somewhat more are concentrated at the source itself.
 
     \begin{figure}[ht]
       \begin{center}
         \includegraphics[width=\textwidth]{images/disp_event_offset_hists/disp_event_offset_hist.eps}
-        \caption[DISP Offset Improvement]{The number of events at different angular offsets from the Crab and the Galactic Center, with both Geometric and Disp reconstruction methods.(Is it the number of events (like the caption) or the number of events per degree squared (like the y-axis title)? 
+        \caption[DISP Offset Improvement]{The number of events per solid angle at different angular offsets from the Crab and the Galactic Center, with both Geometric and Disp reconstruction methods.
     The labels and legend in the plots should be bigger (rule of thumb is the same size as the general text of the document). 
     Would be great to put the mean and RMS on the plots, so you can quantify the differences.
     In the caption, point to left and right plot (or use sub-figures)?? -Orel)}\label{fig:disp_event_offset}
@@ -129,7 +144,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
   At this elevation, with its field of view of $\ang{3.5}$, the air mass column density ($g/cm^{2}$) is 20\% higher at the bottom of the camera than at the top.
   Add to this that during a single 30 minute observation, the elevation of the Galactic Center can change by several degrees, means the airmass in view of the camera may change rapidly, meaning the IRFs may become time dependent.
 
-  To allow for the inclusion of this time dependence in the analysis, an alternate way of storing the IRFs was chosen, diagrammed in figure \ref{fig:fits_scheme}.
+  To allow for the inclusion of this time dependence in the analysis, an alternate way of storing the IRFs was chosen, diagrammed in Figure \ref{fig:fits_scheme}.
   First, one observation (typically 20-30 minutes long) is broken up into \nicetilde8 minute chunks.
   Each chunk is then converted to an event list, and saved to a FITS file.
   In addition, the needed effective areas, psfs, and background models are also written to the same FITS file.
@@ -161,7 +176,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     $A=\pi R^2 \frac{N_{\text{survived}}}{N_{\text{simulated}}}$
     where R is the radius of the area within which simulated showers are directed to fall, $N_{\text{simulated}}$ is the number of showers that were initially simulated into the area, and $N_{\text{survived}}$ is the number of simulated showers that pass all cuts.
     This effective area is thus a measure of how much detection area the observatory would have if it had a 100\% detection efficiency, which can then be used in calculating a source's flux.
-    In figure \ref{fig:effarea_paramspace}, it can be seen how the effective area peaks to \nicetilde$3*10^5 m^2$ for 3\TeV events at the camera center.
+    In Figure \ref{fig:effarea_paramspace}, it can be seen how the effective area peaks to \nicetilde$3*10^5 m^2$ for 3\TeV events at the camera center.
 
     \begin{figure}[ht]
       \centering
@@ -171,7 +186,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \label{fig:effarea_paramspace}
     \end{figure}
 
-    For the test analyses of the Crab and the Galactic Center Point Source, the effective areas of all events are shown in figure \ref{fig:effarea_usage}.
+    For the test analyses of the Crab and the Galactic Center Point Source, the effective areas of all events are shown in Figure \ref{fig:effarea_usage}.
 
     \begin{figure}[ht]
       \centering
@@ -207,7 +222,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     where $r$ is the angular distance from the reconstructed position, $\sigma$ is similar to the width of a gaussian , and the $\gamma$ parameter affects how long the tails are.
     A king function fitting algorithm was added to Event Display, that fits the $\gamma$ and $\sigma$ parameters to a set of simulated gamma rays.
     This leads to good fits over almost all of the parameter space.
-    In figure \ref{fig:psf_paramspace}, the psf is shown for one Galactic Center run.
+    In Figure \ref{fig:psf_paramspace}, the psf is shown for one Galactic Center run.
     In it, one can see how the psf containment radius changes vs reconstructed energy and offset from the camera's center.
     Other runs, which have different elevations, azimuths and NSB noise levels will have different values at each point in the energy/offset parameter space.
 
@@ -247,7 +262,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     The energy bins are determined by expanding outwards (in $log_{10}(\TeV )$ space) from the median energy of all events, until each energy bin has at least 100 events per degree$^2$.
     Any energy bins at the upper or lower edges that have less than 100 events per degree$^2$ are absorbed into the neighboring energy bin.
     This 100 events per degree$^2$ was chosen because in test plots, this theshold provided enough events for a smooth Camera X/Y 2D histograms at a useful resolution (\nicetilde60 bins across one dimension of the field of view) which form the background models.
-    In these energy bins, events are then binned radially, which is then used to fit an interpolation function (see figure \ref{fig:background_radial}).
+    In these energy bins, events are then binned radially, which is then used to fit an interpolation function (see Figure \ref{fig:background_radial}).
     This interpolated function is normalized to a volume of one by integrated around the entire camera.
 
     (Fix this integral!??)
@@ -264,14 +279,13 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \includegraphics[width=\textwidth]{images/ctools_background/radial_profiles.eps}
       \caption[CTOOLS Radial Background Profiles]{
         Radial bin profiles for the V5 background's two large-scale energy bins.
-        (These plots need axes labels, and the blue error bars are not accounting for the bin area properly!??).
         The blue points are the counts per bin area, while the purple line is the interpolation with a spline interpolator of order 3 (see scipy.interpolate.interp1d())
         }
       \label{fig:background_radial}
     \end{figure}
 
 
-    Then, all events are divided up into \nicetilde30 finer energy bins as shown in figure \ref{fig:background_profile}, and each bin's counts are multiplied by the interpolated radial pdf at that energy, which is then written to a two-dimensional array of camera x/y bins.
+    Then, all events are divided up into \nicetilde30 finer energy bins as shown in Figure \ref{fig:background_profile}, and each bin's counts are multiplied by the interpolated radial pdf at that energy, which is then written to a two-dimensional array of camera x/y bins.
     2D bin values are then divided by the solid angle of the bin (in sr), the energy width of the bin (in MeV), and the total obseration time (in seconds).
 
     (For the above 2-3 paragraphs: I really have trouble following what is done exactly and I think there is no need to go into these details. This looks like a description of the code instead of the physics/analysis. --Orel??)
@@ -320,7 +334,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     In astrophysical spectra, which typically follow an exponential curve, lower energy bins tend to have more events than the next highest energy bin, so smearing out the lower-energy bin contributes more to the higher-energy bin than the higher-energy bin contributes to the lower-energy bin.
     This has the effect that, when not accounted for, energy dispersion will harden observed astrophysical source spectra.
 
-    In figure \ref{fig:migmatrix}, a migration matrix is shown.
+    In Figure \ref{fig:migmatrix}, a migration matrix is shown.
 
     \begin{figure}[ht]
       \begin{center}
@@ -339,9 +353,9 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     These events were then divided into equal-statistics energy bins.
     For each equal-statistic energy bin, all the contained events were binned in camera X and Y.
 
-    For a set of high-elevation observations, these backgrounds are shown in figure \ref{fig:back_highelev}.
-    It can be seen that all events are divided up into 3 equal-statistics energy bins in figure \ref{fig:back_highelev}.A.
-    Each energy bin is then binned in camera X and Y in figure \ref{fig:back_highelev} B, C, and D.
+    For a set of high-elevation observations, these backgrounds are shown in Figure \ref{fig:back_highelev}.
+    It can be seen that all events are divided up into 3 equal-statistics energy bins in Figure \ref{fig:back_highelev}.A.
+    Each energy bin is then binned in camera X and Y in Figure \ref{fig:back_highelev} B, C, and D.
     At these high elevations, the distribution of events in each energy bin is radially symmetric about the camera center.
     This happens because gamma ray's point of origin and its shower image in the camera are usually several tenths of a degree away from each other.
     In addition, the atmospheric mass-depth is similar in all parts of the camera.
@@ -355,14 +369,14 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \end{center}
     \end{figure}
 
-    In figure \ref{fig:back_lowelev29} and figure \ref{fig:back_lowelev26}, the same plots are constructed for a set of low-elevation ($ \nicetilde \ang{29} $ and $ \nicetilde \ang{26} $ respectivly) observations, using Galactic Center Off observations (reference these off observations to the apropriate section elsewhere??).
+    In Figure \ref{fig:back_lowelev29} and Figure \ref{fig:back_lowelev26}, the same plots are constructed for a set of low-elevation ($ \nicetilde \ang{29} $ and $ \nicetilde \ang{26} $ respectivly) observations, using Galactic Center Off observations (reference these off observations to the apropriate section elsewhere??).
     These are again divided in to equal-statistic energy bins, and then each energy bin is binned in camera coordinates.
     It can be seen that in different energy bins, the background possesses different shapes.
 
     \begin{figure}[ht]
       \begin{center}
         \includegraphics[width=\textwidth]{images/ctools/backgrounds_lowelev29.eps}
-        \caption[CTOOLS Background at 29\degree Elevation]{15 Sagittarius A* Off runs (\nicetilde7.5 observation hours), between elevations $ \ang{27.5} $ and $ \ang{30} $.  Events are divided into 6 equal-statistics energy bins, of which four are binned in Camera Coordinates in figures B, C, D, and E.}\label{fig:back_lowelev29}
+        \caption[CTOOLS Background at 29\degree Elevation]{15 Sagittarius A* Off runs (\nicetilde7.5 observation hours), between elevations $ \ang{27.5} $ and $ \ang{30} $.  Events are divided into 6 equal-statistics energy bins, of which four are binned in Camera Coordinates in Figures B, C, D, and E.}\label{fig:back_lowelev29}
       \end{center}
     \end{figure}
 
@@ -407,7 +421,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     The telescopes were fixed to an azimuth/elevation of (193\degree,28\degree).
     The events themselves were distributed in a diffuse disk of radius 2.5\degree.
     After having their energy reconstructed, any events falling outside a simple mean-scaled-width cut of -2.0 to 0.5 were removed, which removes many of the showers that appear proton-like, approximating a gamma-hadron cut.
-    These are then binned in camera coordinates in figure \ref{fig:back_simdiffuse}.
+    These are then binned in camera coordinates in Figure \ref{fig:back_simdiffuse}.
 
     \begin{figure}[ht]
       \begin{center}
@@ -452,7 +466,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     These two sets of events were examined for events that disappeared when the pixel was disabled, as well as for new events that appeared.
     Events that are still present in both event lists can then be tested to see how far their reconstructed position moved in the camera.
 
-    In figure \ref{fig:dpix_rel_camera}, the relative event rate in the camera is plotted when pixel 115 is disabled in all four telescopes.
+    In Figure \ref{fig:dpix_rel_camera}, the relative event rate in the camera is plotted when pixel 115 is disabled in all four telescopes.
     This relative event rate is calculated by taking, for each bin, the number of reconstructed gamma-like events, divided by the pixel-enabled number of reconstructed events.
     It can be seen that there is a loss of events near the disabled pixel (the black circle), with a rate closer to 100\% the further away one goes from the disabled pixel.
 
@@ -463,7 +477,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \end{center}
     \end{figure}
 
-    In figure \ref{fig:dpix_rel_radial}, the bin values from figure \ref{fig:dpix_rel_camera} are divided into radial bins centered around the disabled pixel.
+    In Figure \ref{fig:dpix_rel_radial}, the bin values from Figure \ref{fig:dpix_rel_camera} are divided into radial bins centered around the disabled pixel.
     The average relative event rate is then calculated for each bin, along with a 1-sigma distribution width for the error bars.
     It can be seen that there are three distinct regions to the plot.
     (How do you actually calculate the uncertainties here? If you take a ratio between numbers of events, you need to calculate the uncertainty explicitly since there are many events which are common to both bins and they shouldn’t be counted twice in the uncertainty.  This is important as it affects the conclusion you reach below. --Orel??)
@@ -482,11 +496,11 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     \begin{figure}[ht]
       \begin{center}
         \includegraphics[width=\textwidth]{images/disabled_pixel/relativerate_radial}
-        \caption[Radial Relative Event Rate]{Same relative event rate as in figure \ref{fig:dpix_rel_camera}, but averaged into radial bins, centered on the disabled pixel 115. }\label{fig:dpix_rel_radial}
+        \caption[Radial Relative Event Rate]{Same relative event rate as in Figure \ref{fig:dpix_rel_camera}, but averaged into radial bins, centered on the disabled pixel 115. }\label{fig:dpix_rel_radial}
       \end{center}
     \end{figure}
 
-    In figure \ref{fig:dpix_disappear}, the positions of events that were rejected by cuts are shown.
+    In Figure \ref{fig:dpix_disappear}, the positions of events that were rejected by cuts are shown.
     The white area indicates many events are lost in the area of the disabled pixel.
     These events would have smaller images, and would be much more susceptable to being cut.
 
@@ -497,7 +511,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \end{center}
     \end{figure}
 
-    In figure \ref{fig:dpix_appear}, the positions of events that are now able to pass cuts are shown.
+    In Figure \ref{fig:dpix_appear}, the positions of events that are now able to pass cuts are shown.
     It should be noted that these are not events that these are events 'created' by disabling a pixel.
     Rather, they are events that, with the pixel enabled, did not pass cuts.
     Now that the pixel is disabled, they do pass cuts.
@@ -514,7 +528,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \end{center}
     \end{figure}
 
-    In figure \ref{fig:dpix_move}, the movment of gamma-like events is shown, when pixel 115 was disabled in all four telescopes.
+    In Figure \ref{fig:dpix_move}, the movment of gamma-like events is shown, when pixel 115 was disabled in all four telescopes.
     Only events which moved more than $0.1*psf$ are shown.
     It should be noted that relatively few (how few??) events move, and the events that do move are mostly ones with non-compact image shapes that are cut in half when a pixel is disabled.
 
