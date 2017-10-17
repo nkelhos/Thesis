@@ -109,13 +109,15 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     With the Geometric (red) events, more are concentrated further from the point source, while with the Disp method, somewhat more are concentrated at the source itself.
 
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=\textwidth]{images/disp_event_offset_hists/disp_event_offset_hist.eps}
-        \caption[DISP Offset Improvement]{The number of events per solid angle at different angular offsets from the Crab and the Galactic Center, with both Geometric and Disp reconstruction methods.
-    The labels and legend in the plots should be bigger (rule of thumb is the same size as the general text of the document). 
-    Would be great to put the mean and RMS on the plots, so you can quantify the differences.
-    In the caption, point to left and right plot (or use sub-figures)?? -Orel)}\label{fig:disp_event_offset}
-      \end{center}
+      \centering
+      \includegraphics[width=\textwidth]{images/disp_event_offset_hists/disp_event_offset_hist.eps}
+      \caption[DISP Offset Improvement]{
+        The number of events per solid angle at different angular offsets from the Crab and the Galactic Center, with both Geometric and Disp reconstruction methods.
+        The labels and legend in the plots should be bigger (rule of thumb is the same size as the general text of the document). 
+        Would be great to put the mean and RMS on the plots, so you can quantify the differences.
+        In the caption, point to left and right plot (or use sub-figures)?? -Orel)
+      }
+      \label{fig:disp_event_offset}
     \end{figure}
 
 \section{Energy Reconstruction}\label{subsec:enrecon}
@@ -124,12 +126,12 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
   By scanning through this database for showers that are similar to the one being constructed, the most similar-looking shower then indicates the true energy(is there any interpolation?? -Orel, ask gernot).
 
 \section{FITS Conversion for Gammalib and CTOOLs}
-  Once gamma rays have been reconstructed with event display, they must be converted to a FITS file format compatible with Gammalib and Ctools.
+  Once gamma rays have been reconstructed with event display, they must be converted to a FITS file format compatible with Gammalib and CTOOLS.
   This format consists of a FITS file with an event list table, containing each gamma ray, its energy, sky direction, and time.
   This also includes meta information about the event list like the telescope's pointing target and the start and end times of the event list.
   This FITS file can then be read into Gammalib and CTOOLS \cite{gammalibctools}.
 
-  In addition to the event list, the instrument response functions (IRFs) must also be imported into Gammalib and Ctools.
+  In addition to the event list, the instrument response functions (IRFs) must also be imported into Gammalib and CTOOLS.
   These IRFs consist of the effective areas, the point spread functions, the background models, and the energy dispersion.
   The effective area quantifies the total gamma-ray collection area of the observatory, needed for spectral measurements, and is described in subsection \ref{subsec:effarea}.
   The point spread function quantifies the distribution of true positions for a reconstructed position, needed for identifying point sources and extended spatial structures, and is described in subsection \ref{subsec:psf}.
@@ -137,11 +139,11 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
   The energy dispersion quantifies the distribution of true energies for a given reconstructed energy, and is discussed in subsection \ref{subsec:edisp}.
 
   Each of these IRFs vary in a parameter space with several dimensions, including event Energy, reconstructed distance from the camera center, telescope elevation and azimuth, night sky background noise, and the atmospheric density.
-  In ctools' default configuration, all IRFs are stored in a single directory of files, and each event list contains a filepath reference to indicate which volume of the parameter space it uses.
-  Once each volume is loaded, individual events can then interpolate their specific effective area, psf, and energy dispersion (the backgrounds are utilized differently, as discussed in ??).
+  In CTOOLS' default configuration, all IRFs are stored in a single directory of files, and each event list contains a filepath reference to indicate which volume of the parameter space it uses.
+  Once each volume is loaded, individual events can then interpolate their specific effective area, psf, and energy dispersion (the backgrounds are utilized differently, as discussed in subsection \ref{background_production}).
 
   However, the galactic center is at an elevation of $\ang{30}$, much lower than most VERITAS observation targets.
-  At this elevation, with its field of view of $\ang{3.5}$, the air mass column density ($g/cm^{2}$) is 20\% higher at the bottom of the camera than at the top.
+  At this elevation, with its field of view of $\ang{3.5}$, the airmass column density ($g/cm^{2}$) is 20\% higher at the bottom of the camera than at the top.
   Add to this that during a single 30 minute observation, the elevation of the Galactic Center can change by several degrees, means the airmass in view of the camera may change rapidly, meaning the IRFs may become time dependent.
 
   To allow for the inclusion of this time dependence in the analysis, an alternate way of storing the IRFs was chosen, diagrammed in Figure \ref{fig:fits_scheme}.
@@ -158,7 +160,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     \label{fig:fits_scheme}
   \end{figure}
 
-  The end result is that a 30 minute observation can be broken into several FITS files (called chunks), where each chunk file is independent of any outside references, contains all needed IRF information, and only takes up \nicetilde100s KB on disk.
+  The end result is that a 30 minute observation can be broken into several FITS files (called chunks), where each chunk file is independent of any outside references, contains all needed IRF information, and only takes up \nicetilde\SI{5}{MB} on disk.
   This makes it ideal for an analysis program to automatically download any needed data over an internet connection, as each chunk is tiny and has no outside dependencies.
   As gammalib and CTOOLS expect the default FITS file scheme, a python function was written to automatically load all event and IRF tables from a single fits file, and import this information into gammalib's GObservation class.
 
@@ -176,13 +178,15 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     $A=\pi R^2 \frac{N_{\text{survived}}}{N_{\text{simulated}}}$
     where R is the radius of the area within which simulated showers are directed to fall, $N_{\text{simulated}}$ is the number of showers that were initially simulated into the area, and $N_{\text{survived}}$ is the number of simulated showers that pass all cuts.
     This effective area is thus a measure of how much detection area the observatory would have if it had a 100\% detection efficiency, which can then be used in calculating a source's flux.
-    In Figure \ref{fig:effarea_paramspace}, it can be seen how the effective area peaks to \nicetilde$3*10^5 m^2$ for 3\TeV events at the camera center.
+    In Figure \ref{fig:effarea_paramspace}, it can be seen how the effective area peaks to \nicetilde{}\SI{3e5}{m${}^2$} for \SI{3}{\TeV} events at the camera center.
 
     \begin{figure}[ht]
       \centering
-      \includegraphics[width=0.75\textwidth]{images/effarea_plots/effarea_parameter_space.eps}
-      \caption[Effective Area Parameter Space]
-      {Effective areas at different points in the Energy and Camera Offset parameter space for run 78128.}
+      \includegraphics[width=0.85\textwidth]{images/effarea_plots/effarea_space.eps}
+      \caption[Effective Area Parameter Space]{
+        Effective areas at different points in the Energy and Camera Offset parameter space for run 78128.
+        Some event positions within the parameter space are shown as black dots.
+      }
       \label{fig:effarea_paramspace}
     \end{figure}
 
@@ -190,13 +194,11 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
     \begin{figure}[ht]
       \centering
-      \includegraphics[width=\textwidth]{images/effarea_plots/effarea_usage.eps}
-      \caption[Effective Area Parameter Space]
+      \includegraphics[width=0.85\textwidth]{images/effarea_plots/effarea_events.eps}
+      \caption[Effective Areas Used]
       {Effective areas used by events in each analysis.}
       \label{fig:effarea_usage}
     \end{figure}
-
-    (Please make these plots bigger??, its too hard to read the text labels -Orel)
 
     \subsection{Point Spread Function}\label{subsec:psf}
 
@@ -296,21 +298,21 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \caption[CTOOLS Background Fine Energy Bins]{
         The V5 Background's fine-energy bins.
         The top plot shows the number of events in each fine-energy bin.
-        The bottom plot shows the ctools background values.
-        The black lines show the fits background value and energy bin width saved to the background file, while the blue line shows the background value after ctools loads and interpolates those fits background values.
+        The bottom plot shows the CTOOLS background values.
+        The black lines show the fits background value and energy bin width saved to the background file, while the blue line shows the background value after CTOOLS loads and interpolates those fits background values.
       }
       \label{fig:background_profile}
     \end{figure}
 
-    Additionally, three extra 'zero' background maps (with an extremely low value of $10^{-13} \frac{\text{counts}}{\text{sr}*\text{s}*\MeV}$ are added above and below the fine energy bins, so that the ctools background interpolation will properly predict the correct lack of events above and below the energy range.
-    (I am not sure this detail about ctools (in capital?) is really important to note here. --Orel??)
+    Additionally, three extra 'zero' background maps (with an extremely low value of $10^{-13} \frac{\text{counts}}{\text{sr}*\text{s}*\MeV}$ are added above and below the fine energy bins, so that the CTOOLS background interpolation will properly predict the correct lack of events above and below the energy range.
+    (I am not sure this detail about CTOOLS is really important to note here. --Orel??)
 
     The background is used in the likelihood analysis as a model with one free parameter, a simple multiplicative normalization factor.
     This lets the likelihood engine scale each run's background model up or down to best fit the events, so the background's absolute value is less important than the relative values in different parts of the camera.
 
   \subsection{Energy Dispersion}\label{subsec:edisp}
     As events are reconstructed imperfectly, it is important to understand what the distribution of true energies are for a given reconstructed energy.
-    In an analysis with ctools, this is quantified by an energy migration matrix $E_{i,j}$, where $i$ denotes the $i^{th}$ reconstructed energy bin, and $j$ denotes the $j^{th}$ true energy bin.
+    In an analysis with CTOOLS, this is quantified by an energy migration matrix $E_{i,j}$, where $i$ denotes the $i^{th}$ reconstructed energy bin, and $j$ denotes the $j^{th}$ true energy bin.
     For true energy $j$, the distribution of reconstructed energies $f_{\text{reco}}$ is,
 
     \begin{equation}
@@ -424,10 +426,12 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     These are then binned in camera coordinates in Figure \ref{fig:back_simdiffuse}.
 
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=\textwidth]{images/backgrounds_diffuse_vs_data/diffuse_sims.eps}
-        \caption[Diffuse Simulated Backgrounds]{Diffuse simulated gamma-like events in the camera coordinate system at a 28\degree elevation, at 4 different energies.}\label{fig:back_simdiffuse}
-      \end{center}
+      \centering
+      \includegraphics[width=\textwidth]{images/backgrounds_diffuse_vs_data/diffuse_sims.eps}
+      \caption[Diffuse Simulated Backgrounds]{
+        Diffuse simulated gamma-like events in the camera coordinate system at a 28\degree elevation, at 4 different energies.
+      }
+      \label{fig:back_simdiffuse}
     \end{figure}
 
     One can see that the ring and crescent structures persist in these diffuse simulations, implying these are physical effects of the atmosphere and camera, rather than a problem with the reconstruction software.
@@ -471,10 +475,13 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     It can be seen that there is a loss of events near the disabled pixel (the black circle), with a rate closer to 100\% the further away one goes from the disabled pixel.
 
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=0.8\textwidth]{images/disabled_pixel/relativerate_camera}
-        \caption[Relative Event Rate]{Event rate in the camera with pixel 115 disabled (denoted by the black circle) in all four telescopes, relative to having all pixels enabled.  Camera coordinate axes are parallel to azimuth and elevation.}\label{fig:dpix_rel_camera}
-      \end{center}
+      \centering
+      \includegraphics[width=0.8\textwidth]{images/disabled_pixel/relativerate_camera}
+      \caption[Relative Event Rate]{
+        Event rate in the camera with pixel 115 disabled (denoted by the black circle) in all four telescopes, relative to having all pixels enabled.
+        Camera coordinate axes are parallel to azimuth and elevation.
+      }
+      \label{fig:dpix_rel_camera}
     \end{figure}
 
     In Figure \ref{fig:dpix_rel_radial}, the bin values from Figure \ref{fig:dpix_rel_camera} are divided into radial bins centered around the disabled pixel.
@@ -494,10 +501,12 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
 
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=\textwidth]{images/disabled_pixel/relativerate_radial}
-        \caption[Radial Relative Event Rate]{Same relative event rate as in Figure \ref{fig:dpix_rel_camera}, but averaged into radial bins, centered on the disabled pixel 115. }\label{fig:dpix_rel_radial}
-      \end{center}
+      \centering
+      \includegraphics[width=\textwidth]{images/disabled_pixel/relativerate_radial}
+      \caption[Radial Relative Event Rate]{
+        Same relative event rate as in Figure \ref{fig:dpix_rel_camera}, but averaged into radial bins, centered on the disabled pixel 115.
+      }
+      \label{fig:dpix_rel_radial}
     \end{figure}
 
     In Figure \ref{fig:dpix_disappear}, the positions of events that were rejected by cuts are shown.
@@ -505,10 +514,13 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     These events would have smaller images, and would be much more susceptable to being cut.
 
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=0.8\textwidth]{images/disabled_pixel/disappearing_events}
-        \caption[Disappearing Events]{Positions of events that disappeared when pixel 115 was disabled in all four telescopes.  Positions are from their pixel-enabled reconstructed position.}\label{fig:dpix_disappear}
-      \end{center}
+      \centering
+      \includegraphics[width=0.8\textwidth]{images/disabled_pixel/disappearing_events}
+      \caption[Disappearing Events]{
+        Positions of events that disappeared when pixel 115 was disabled in all four telescopes.
+        Positions are from their pixel-enabled reconstructed position.
+      }
+      \label{fig:dpix_disappear}
     \end{figure}
 
     In Figure \ref{fig:dpix_appear}, the positions of events that are now able to pass cuts are shown.
@@ -522,10 +534,13 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     On the other hand, a wider image looks more hadron-like, and is less likely to pass cuts, causing some events to disappear.
 
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=0.8\textwidth]{images/disabled_pixel/appearing_events}
-        \caption[Newly Appearing Events]{Positions of new events that appeared when pixel 115 was disabled in all four telescopes.  Positions are from their pixel-disabled reconstructed position.}\label{fig:dpix_appear}
-      \end{center}
+      \centering
+      \includegraphics[width=0.8\textwidth]{images/disabled_pixel/appearing_events}
+      \caption[Newly Appearing Events]{
+        Positions of new events that appeared when pixel 115 was disabled in all four telescopes.
+        Positions are from their pixel-disabled reconstructed position.
+      }
+      \label{fig:dpix_appear}
     \end{figure}
 
     In Figure \ref{fig:dpix_move}, the movment of gamma-like events is shown, when pixel 115 was disabled in all four telescopes.
@@ -537,10 +552,13 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
 
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=0.8\textwidth]{images/disabled_pixel/moving_events}
-        \caption[Event Movement]{Positions of events that moved when pixel 115 (denoted by the red circle) was disabled in all four telescopes.  Arrows point from the pixel-enabled position to the pixel-disabled position.}\label{fig:dpix_move}
-      \end{center}
+      \centering
+      \includegraphics[width=0.8\textwidth]{images/disabled_pixel/moving_events}
+      \caption[Event Movement]{
+        Positions of events that moved when pixel 115 (denoted by the red circle) was disabled in all four telescopes.  
+        Arrows point from the pixel-enabled position to the pixel-disabled position.
+      }
+      \label{fig:dpix_move}
     \end{figure}
 
     As the acceptance for a particular event and the event's effective area are strongly related, the loss of acceptance also means a loss of effective area in the area of this pixel.
