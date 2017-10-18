@@ -37,7 +37,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
   These drawn lines should intersect very close together, and the average of the intersection points determines the event's initial direction.
 
   In averaging the intersection points, weighting for each intersection can be applied based on the angle between the two lines.
-  This improves the reconstruction, because the intersection point from two images at \SI{90}{\degree} angles will be less sensitive to image fluctuations than two images at 160\degree, as shown in Figure \ref{fig:largeintersectangle}.
+  This improves the reconstruction, because the intersection point from two images at \ang{90} angles will be less sensitive to image fluctuations than two images at \ang{160}, as shown in Figure \ref{fig:largeintersectangle}.
   Additionally, the disp method described in section \ref{subsec:disp} can be utilized to offer improvements at lower telescope elevations.
 
   \begin{figure}[ht]
@@ -140,8 +140,8 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
   In CTOOLS' default configuration, all IRFs are stored in a single directory of files, and each event list contains a filepath reference to indicate which volume of the parameter space it uses.
   Once each volume is loaded, individual events can then interpolate their specific effective area, psf, and energy dispersion (the backgrounds are utilized differently, as discussed in subsection \ref{background_production}).
 
-  However, the galactic center is at an elevation of $\ang{30}$, much lower than most VERITAS observation targets.
-  At this elevation, with its field of view of $\ang{3.5}$, the airmass column density ($g/cm^{2}$) is 20\% higher at the bottom of the camera than at the top.
+  However, the galactic center is at an elevation of \ang{30}, much lower than most VERITAS observation targets.
+  At this elevation, with its field of view of \ang{3.5}, the airmass column density ($g/cm^{2}$) is 20\% higher at the bottom of the camera than at the top.
   Add to this that during a single 30 minute observation, the elevation of the Galactic Center can change by several degrees, means the airmass in view of the camera may change rapidly, meaning the IRFs may become time dependent.
 
   To allow for the inclusion of this time dependence in the analysis, an alternate way of storing the IRFs was chosen, diagrammed in Figure \ref{fig:fits_scheme}.
@@ -329,7 +329,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \caption[Energy Migration Matrix]{
         An energy migration matrix used with Galactic Center run 82288.
         The reconstructed energy is on the x axis, and the true energy is on the y axis.
-        The z (color) axis (why does the z axis have units of 1/s*MeV??) denotes the number of simulated events that passed all cuts.
+        The z (color) axis (why does the z axis have units of 1/s*MeV?? GCTAEdisp2D::operator() returns these units, but why??) denotes the number of simulated events that passed all cuts.
       }
       \label{fig:migmatrix}
     \end{figure}
@@ -354,10 +354,14 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     The cause of these structures is explored in the next section, \ref{subsubsec:diffusesims}.
 
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=\textwidth]{images/ctools/backgrounds_highelev.eps}
-        \caption[FITS Background at 50\degree Elevation]{Gamma-like Events from 52 observations (approximately \nicetilde20 hours) of M82, between 50\degree  and 52\degree  elevations.  Events in Figure A are divided into 3 equal-statistics energy bins, and binned in Camera Coordinates in Figures B, C, and D. (change axes labels to only use Camera X and Y to be consistant with paragraph text --Orel??)}\label{fig:back_highelev}
-      \end{center}
+      \centering
+      \includegraphics[width=\textwidth]{images/ctools/backgrounds_highelev.eps}
+      \caption[FITS Background at \ang{50} Elevation]{
+        Gamma-like Events from 52 observations (approximately \nicetilde20 hours) of M82, between \ang{50} and \ang{52} elevations.
+        Events in Figure A are divided into 3 equal-statistics energy bins, and binned in Camera Coordinates in Figures B, C, and D.
+        (change axes labels to only use Camera X and Y to be consistant with paragraph text --Orel??)
+      }
+      \label{fig:back_highelev}
     \end{figure}
 
     In Figure \ref{fig:back_lowelev29} and Figure \ref{fig:back_lowelev26}, the same plots are constructed for a set of low-elevation ($ \nicetilde \ang{29} $ and $ \nicetilde \ang{26} $ respectivly) observations, using Galactic Center Off observations (reference these off observations to the apropriate section elsewhere??).
@@ -365,16 +369,19 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     It can be seen that in different energy bins, the background possesses different shapes.
 
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=\textwidth]{images/ctools/backgrounds_lowelev29.eps}
-        \caption[CTOOLS Background at 29\degree Elevation]{15 Sagittarius A* Off runs (\nicetilde7.5 observation hours), between elevations $ \ang{27.5} $ and $ \ang{30} $.  Events are divided into 6 equal-statistics energy bins, of which four are binned in Camera Coordinates in Figures B, C, D, and E.}\label{fig:back_lowelev29}
-      \end{center}
+      \centering
+      \includegraphics[width=\textwidth]{images/ctools/backgrounds_lowelev29.eps}
+      \caption[CTOOLS Background at \ang{29} Elevation]{
+        15 Sagittarius A* Off runs (\nicetilde7.5 observation hours), between elevations $ \ang{27.5} $ and $ \ang{30} $.
+        Events are divided into 6 equal-statistics energy bins, of which four are binned in Camera Coordinates in Figures B, C, D, and E.
+      }
+      \label{fig:back_lowelev29}
     \end{figure}
 
     \begin{figure}[ht]
       \begin{center}
         \includegraphics[width=\textwidth]{images/ctools/backgrounds_lowelev26.eps}
-        \caption[CTOOLS Background at 26\degree Elevation]{10 Sagittarius A* Off runs (\nicetilde5 observation hours), between elevations $ \ang{24} $ and $ \ang{27.5} $. }\label{fig:back_lowelev26}
+        \caption[CTOOLS Background at \ang{26} Elevation]{10 Sagittarius A* Off runs (\nicetilde5 observation hours), between elevations $ \ang{24} $ and $ \ang{27.5} $. }\label{fig:back_lowelev26}
       \end{center}
     \end{figure}
   
@@ -409,8 +416,8 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
   \subsubsection{Diffuse Simulations}\label{subsubsec:diffusesims}
     To rule out any software causes, diffuse simulations were performed at similar energies and elevations.
     These consisted of 50,000 gamma rays at each of 1.4, 1.6, 2, and \SI{5}{\TeV}.
-    The telescopes were fixed to an azimuth/elevation of (193\degree,28\degree).
-    The events themselves were distributed in a diffuse disk of radius 2.5\degree.
+    The telescopes were fixed to an azimuth/elevation of (\ang{193},\ang{28}).
+    The events themselves were distributed in a diffuse disk of radius \ang{2.5}.
     After having their energy reconstructed, any events falling outside a simple mean-scaled-width cut of -2.0 to 0.5 were removed, which removes many of the showers that appear proton-like, approximating a gamma-hadron cut.
     These are then binned in camera coordinates in Figure \ref{fig:back_simdiffuse}.
 
@@ -418,7 +425,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \centering
       \includegraphics[width=\textwidth]{images/backgrounds_diffuse_vs_data/diffuse_sims.eps}
       \caption[Diffuse Simulated Backgrounds]{
-        Diffuse simulated gamma-like events in the camera coordinate system at a 28\degree elevation, at 4 different energies.
+        Diffuse simulated gamma-like events in the camera coordinate system at a \ang{28} elevation, at 4 different energies.
       }
       \label{fig:back_simdiffuse}
     \end{figure}
@@ -432,7 +439,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     plot of events around galactic center (all energies vs @2 \TeV ) !??
     
     These structures, and their strong dependency on both the energy and elevation of the telescopes may be a large factor in why the low-energy threshold regime of gamma-ray telescopes is so poorly understood.
-    Incorporating this effect into the instrument response functions would require modifying Event Display and CTOOLS, as well as creating another batch of diffuse simulations, with elevation increments of less than 5 degrees, all of which are manpower and computationally expensive.
+    Incorporating this effect into the instrument response functions would require modifying Event Display and CTOOLS, as well as creating another batch of diffuse simulations, with elevation increments of less than \ang{5}, all of which are manpower and computationally expensive.
     
     
 
