@@ -2,11 +2,14 @@
 import veripy, tempfile, os, numpy, gammalib
 from math import log10
 from gammalib import GEnergy
+import mpl_toolkits
 import matplotlib.pyplot as plt
-import matplotlib, mpl_toolkits
+import matplotlib as mpl
+mpl.rcParams['text.usetex'] = True
+mpl.rcParams['text.latex.preamble'] = [r'\usepackage{amsmath}']
 
 fname = 'edisp.png'
-obs = veripy.load_obs_proper( ['VR82288.chunk1.fits'] )
+obs = veripy.load_obs_proper( ['VR78128.ReconMethodDisp.Cut-NTel2-ExtendedSource-Hard.chunk1.fits'] )
 run = obs[0]
 
 edisp  = run.response().edisp()
@@ -21,8 +24,8 @@ nemigr = table.axis_bins( aemigr )
 
 temp_dir = tempfile.mkdtemp()
 
-e_nbins = 400
-e_min   = GEnergy( 100, 'GeV' )
+e_nbins = 110
+e_min   = GEnergy( 300, 'GeV' )
 e_max   = GEnergy( 500, 'TeV' )
 e_logdelta = ( e_max.log10TeV() - e_min.log10TeV() ) / e_nbins
 
@@ -67,10 +70,10 @@ for itheta in [2] : # only 0.5 degree offset
   fig = plt.figure( figsize=[9,9] )
   ax  = fig.add_subplot( 1, 1, 1, adjustable='box', aspect=1.0 )
   im  = plt.pcolormesh( shaped_emigr, shaped_etrue, shaped_matrix, vmax=30 )
-  plt.title( 'Energy Migration Matrix for Galactic Center Run 82288 (Offset %.2fdeg)' % (theta*gammalib.rad2deg) )
+  plt.title( r'Energy Migration Matrix for Galactic Center Run 78128 (Offset %.1f${}^{\circ}$)' % (theta*gammalib.rad2deg), fontsize=15 )
   plt.plot( [emin,emax], [emin,emax], 'r--' )
-  plt.xlabel( 'E_Reco [TeV]' )
-  plt.ylabel( 'E_True [TeV]' )
+  plt.xlabel( r'E${}_{\text{Reco}}$ [TeV]', fontsize=15 )
+  plt.ylabel( r'E${}_{\text{True}}$ [TeV]', fontsize=15 )
   plt.xscale( 'log' )
   plt.yscale( 'log' )
   plt.gca().set_xlim( [ emin, emax ] )
@@ -78,8 +81,9 @@ for itheta in [2] : # only 0.5 degree offset
   divider = mpl_toolkits.axes_grid1.make_axes_locatable(ax)
   cax = divider.append_axes('right', size='5%', pad=0.05 )
   cb  = plt.colorbar( im, cax=cax)
-  cb.set_label('# of Events [1/s]')
+  cb.set_label(r"$\frac{\text{\# of Events}}{\text{s}}$", fontsize=15)
   image = os.path.join( temp_dir, 'migmatrix_itheta%d.png'%itheta )
+  plt.tick_params( axis='both', which='major', labelsize=15 )
   plt.savefig( image, bbox_inches='tight', dpi=100 )
   plt.close()
   print('writing %s' % image )

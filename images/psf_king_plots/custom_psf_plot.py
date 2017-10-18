@@ -11,11 +11,11 @@ show_events = True
 
 frac    = 0.68
 thmin   = 0.0
-thmax   = 2.75
-thnbins = 40 # 100
-enmin   = GEnergy(   2.0, 'TeV')
-enmax   = GEnergy( 220.0, 'TeV')
-ennbins = 40 # 100
+thmax   = 2.15
+thnbins = 70 # 100
+enmin   = GEnergy(   1.5, 'TeV')
+enmax   = GEnergy( 150.0, 'TeV')
+ennbins = 70 # 100
 
 thdelta = ( thmax - thmin ) / thnbins
 endelta = ( enmax.log10TeV() - enmin.log10TeV() ) / ennbins
@@ -26,7 +26,8 @@ for j in range(ennbins) :
   en = ( (j+0.5) * endelta ) + enmin.log10TeV()
   for i in range(thnbins) :
     th = ( ( (i+0.5) * thdelta ) + thmin ) * gammalib.deg2rad
-    contain_rad = veripy.containment_radius( run, en, th, contain=frac, npts=200 ) 
+    #contain_rad = veripy.containment_radius( run, en, th, contain=frac, npts=200 ) 
+    contain_rad = run.response().psf().containment_radius( frac, en, th )
     contain_rad *= gammalib.rad2deg 
     EN.append(  en                    )
     TH.append(  th * gammalib.rad2deg )
@@ -40,17 +41,16 @@ PSF = numpy.reshape( PSF, (thnbins, ennbins) )
 # construct our plot
 fig = plt.figure(figsize=(10,5))
 ax  = fig.add_subplot( 1,1,1, adjustable='box', aspect=1.0 )
-#im  = plt.pcolormesh( EN, TH, PSF, vmin=0.0, vmax=0.35)
-#im  = plt.pcolormesh( EN, TH, PSF, vmin=0.0, vmax=0.45, cmap=plt.get_cmap('hot'))
 im  = plt.pcolormesh( EN, TH, PSF, vmax=0.5, cmap=plt.get_cmap('afmhot'))
-ax.set_aspect(0.4)
+ax.set_aspect(0.6)
 cb  = fig.colorbar( im )
 
 # label things
-cb.set_label('%.0f%% containment radii (deg)' % (frac*100.0)    )
-plt.title(   'PSF %d%% Containment Radius for Galactic Center Run %d'    % ( int(frac*100.0), runnumber ) )
-plt.xlabel(  'Event Energy log10(TeV)' )
-plt.ylabel(  'Event Distance from Camera Center (deg)' )
+cb.set_label(r'%.0f%% Containment Radius (${}^{\circ}$)' % (frac*100.0)    )
+plt.title(   'PSF %d%% Containment Radius for Galactic Center Run %d' % ( int(frac*100.0), runnumber ), fontsize=15 )
+plt.xlabel(  r'Event Energy log${}_{10}$(TeV)', fontsize=15 )
+plt.ylabel(  r'Angle from Camera Center (${}^{\circ}$)', fontsize=15 )
+plt.tick_params(axis='both', which='major', labelsize=15 )
 
 # fix the x and y axes limits
 plt.gca().set_xlim([enmin.log10TeV(), enmax.log10TeV()])
@@ -74,7 +74,7 @@ if show_events :
     th  = center.dist( detdir ) * gammalib.rad2deg
     OF += [ th ]
     
-  plt.scatter( EN, OF, color='black', s=1 )
+  plt.scatter( EN, OF, color='green', s=1 )
   
 ifname = os.path.splitext(fname)[0]+'.png'
 plt.savefig( ifname , bbox_inches='tight', dpi=150 )
