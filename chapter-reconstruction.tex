@@ -41,10 +41,13 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
   Additionally, the disp method described in section \ref{subsec:disp} can be utilized to offer improvements at lower telescope elevations.
 
   \begin{figure}[ht]
-    \begin{center}
-      \includegraphics[width=0.95\textwidth]{images/large_angle_image_intersection_error_cropped.eps}
-      \caption[Large Image Intersection Angles]{In diagram (a), when a noisy pixel is added to an image, the reconstructed position is only moved a small distance (the purple arrow).  In diagram (b), due to the large angle between images, the error in the reconstructed position is much larger.}\label{fig:largeintersectangle}
-    \end{center}
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/large_angle_image_intersection_error_cropped.eps}
+    \caption[Large Image Intersection Angles]{
+      In diagram (a), when a noisy pixel is added to an image, the reconstructed position is only moved a small distance (the purple arrow).
+      In diagram (b), due to the large angle between images, the error in the reconstructed position is much larger.
+    }
+    \label{fig:largeintersectangle}
   \end{figure}
 
   \subsection{Angular Reconstruction Neural Network}\label{subsec:disp}
@@ -54,10 +57,13 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     This also causes the remaining telescope images to have large intersection angles, which also reduces the accuracy of the position reconstruction.
 
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=0.75\textwidth]{images/high_elevation_vs_low_shower_images_cropped.eps}
-        \caption[Shower Images at High and Low Elevations]{In Figure (a), high elevation showers produce long images in all four telescopes.  In Figure (b), lower elevation showers produce shortened images in two telescopes, and the remaining images form large angle intersection.}\label{fig:showerhighlowelev}
-      \end{center}
+      \centering
+      \includegraphics[width=0.75\textwidth]{images/high_elevation_vs_low_shower_images_cropped.eps}
+      \caption[Shower Images at High and Low Elevations]{
+        In Figure (a), high elevation showers produce long images in all four telescopes.
+        In Figure (b), lower elevation showers produce shortened images in two telescopes, and the remaining images form large angle intersection.
+      }
+      \label{fig:showerhighlowelev}
     \end{figure}
 
     To better handle these near-parallel image axes at low elevations, the reconstructed position can be determined from more parameters than just the weighted image axes intersection points.
@@ -81,10 +87,13 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
 
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=0.5\textwidth]{images/disp_parameter_cropped.eps}
-        \caption[Angular Reconstruction Disp]{The \disp{} parameter is the angular distance between the center (red dot) of a hillas image (blue oval) and the true sky position (green dot).  Generally, longer shower images have a larger \disp{} angle.}\label{fig:dispdiagram}
-      \end{center}
+      \centering
+      \includegraphics[width=0.5\textwidth]{images/disp_parameter_cropped.eps}
+      \caption[Angular Reconstruction Disp]{
+        The \disp{} parameter is the angular distance between the center (red dot) of a hillas image (blue oval) and the true sky position (green dot).
+        Generally, longer shower images have a larger \disp{} angle.
+      }
+      \label{fig:dispdiagram}
     \end{figure}
 
     % https://veritas.sao.arizona.edu/wiki/index.php/BDT_Angular_reconstruction
@@ -97,10 +106,12 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
     % made from screenshot of last slide in Dropbox/Presentations/20160719_Group_Meeting.key
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=0.85\textwidth]{images/disp_training.eps}
-        \caption[Disp BDT Training]{The true \disp{} vs the BDT-predicted \disp{}, for \nicetilde17,000 gamma-ray event images in T1, from 500\GeV to 200\TeV.}\label{fig:disptraining}
-      \end{center}
+      \centering
+      \includegraphics[width=0.85\textwidth]{images/disp_training.eps}
+      \caption[Disp BDT Training]{
+        The true \disp{} vs the BDT-predicted \disp{}, for \nicetilde17,000 gamma-ray event images in T1, from 500\GeV to 200\TeV.
+      }
+      \label{fig:disptraining}
     \end{figure}
 
     The small improvement in the position reconstruction due to the \disp{} method can be seen in Figure \ref{fig:disp_event_offset}.
@@ -335,11 +346,11 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     \end{figure}
 
 \section{Camera Studies}
-  The objective of this thesis is to put upper limits on the existance of an extended, faint gamma-ray emission region.
-  In order to better understand the effects that impact the VERITAS camera behavior in reconstruction software, several studies were performed.
+  The objective of this thesis is to put upper limits on the existance of a gamma-ray source that is both extended and faint.
+  In order to better understand the effects that may impact the VERITAS camera behavior in the reconstruction software, several studies were performed.
 
   \subsection{Background Structure at the Low Energy Threshold}
-    During the production of the initial low elevation backgrounds, some new effects were noted.
+    During the production of the initial background models, some new effects were noted.
     First, a series of gamma-like events were selected from observations with no known gamma-ray sources.
     These events were then divided into equal-statistics energy bins.
     For each equal-statistic energy bin, all the contained events were binned in camera X and Y.
@@ -359,12 +370,11 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \caption[FITS Background at \ang{50} Elevation]{
         Gamma-like Events from 52 observations (approximately \nicetilde20 hours) of M82, between \ang{50} and \ang{52} elevations.
         Events in Figure A are divided into 3 equal-statistics energy bins, and binned in Camera Coordinates in Figures B, C, and D.
-        (change axes labels to only use Camera X and Y to be consistant with paragraph text --Orel??)
       }
       \label{fig:back_highelev}
     \end{figure}
 
-    In Figure \ref{fig:back_lowelev29} and Figure \ref{fig:back_lowelev26}, the same plots are constructed for a set of low-elevation ($ \nicetilde \ang{29} $ and $ \nicetilde \ang{26} $ respectivly) observations, using Galactic Center Off observations (reference these off observations to the apropriate section elsewhere??).
+    In Figure \ref{fig:back_lowelev29} and Figure \ref{fig:back_lowelev26}, the same plots are constructed for a set of low-elevation (\nicetilde{}\ang{29} and \nicetilde{}\ang{26} respectivly) observations, using Galactic Center Off observations (reference these off observations to the apropriate section elsewhere??).
     These are again divided in to equal-statistic energy bins, and then each energy bin is binned in camera coordinates.
     It can be seen that in different energy bins, the background possesses different shapes.
 
@@ -379,10 +389,12 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     \end{figure}
 
     \begin{figure}[ht]
-      \begin{center}
-        \includegraphics[width=\textwidth]{images/ctools/backgrounds_lowelev26.eps}
-        \caption[CTOOLS Background at \ang{26} Elevation]{10 Sagittarius A* Off runs (\nicetilde5 observation hours), between elevations $ \ang{24} $ and $ \ang{27.5} $. }\label{fig:back_lowelev26}
-      \end{center}
+      \centering
+      \includegraphics[width=\textwidth]{images/ctools/backgrounds_lowelev26.eps}
+      \caption[CTOOLS Background at \ang{26} Elevation]{
+        10 Sagittarius A* Off runs (\nicetilde5 observation hours), between elevations \ang{24} and \ang{27.5}. 
+      }
+      \label{fig:back_lowelev26}
     \end{figure}
   
   After further studies, it was found that these structures depend on both the reconstructed energy and pointing elevation, and appears observations at distinct Right Ascension and Declinations.
