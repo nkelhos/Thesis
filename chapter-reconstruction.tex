@@ -397,7 +397,19 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \label{fig:back_lowelev26}
     \end{figure}
   
-  After further studies, it was found that these structures depend on both the reconstructed energy and pointing elevation, and appears observations at distinct Right Ascension and Declinations.
+  
+  These effects are also noticeable in the galactic (l,b) event maps.
+  In figure \ref{fig:bkgvsel_crab}, the top plot shows the positions of all events, the middle histogram shows the distribution of event energies, and the bottom plot shows the event positions of events in a limited energy range, \SI{1.5}{\TeV}-\SI{3.25}{\TeV}.
+  It it can be seen in the middle plot that this energy range is where more and more events are lost as energy decreases.
+  When events are plotted in this limited energy range, it can be seen that there is a faint deficit along the bottom of the plot.
+
+  When a similar series of plots are made for the galactic center in Figure \ref{fig:bkgvsel_sgra}, the effect is much stronger.
+  In the top plot, events are radially symmetric about the source (there are differences due to the four wobble positions, but these are faint and not visible without quantification).
+  But when only the events from \SI{1.5}{\TeV} to \SI{3.25}{\TeV} are plotted, a much clearer deficit is visible on the lower right part of the plot.
+  This area corresponds to the deficit at bottom of the camera in Figures \ref{fig:back_lowelev29}.B and \ref{fig:back_lowelev26}.B
+  It should be noted that there is a time-dependent rotation applied to go from the Camera X/Y (Earth Azimuth/Elevation) system to the Galactic (l,b) coordinates, which smears out the shape of the deficit.
+  
+  Why is this relevant??
   
   \begin{figure}[ht]
     \centering
@@ -407,6 +419,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       Plots of Crab observations.
       Top: Skymap of all events.  Middle: Histogram of all events in energy.  Bottom: Skymap of events from \SI{1.5}{\TeV}-\SI{3.25}{\TeV}.  
       In the bottom plot, events from \SI{1.5}{\TeV}-\SI{3.25}{\TeV} are concentrated in the top half of the camera (before being rotated to galactic (l,b) coordinates), due to the air column density ($g/cm^2$) being \nicetilde20\% smaller at the top of the camera.
+      (move some of this explaination to the regular text body??)
     }
     \label{fig:bkgvsel_crab}
   \end{figure}
@@ -419,6 +432,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       Plots of Sgr A* observations.
       Top: Skymap of all events.  Middle: Histogram of all events in energy.  Bottom: Skymap of events from \SI{1.5}{\TeV}-\SI{3.25}{\TeV}.  
       In the bottom plot, events from \SI{1.5}{\TeV}-\SI{3.25}{\TeV} are concentrated in the top half of the camera (before being rotated to galactic (l,b) coordinates), due to the air column density ($g/cm^2$) being \nicetilde20\% smaller at the top of the camera.
+      (move some of this explaination to the regular text body??)
     }
     \label{fig:bkgvsel_sgra}
   \end{figure}
@@ -430,8 +444,8 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     These consisted of 50,000 gamma rays at each of 1.4, 1.6, 2, and \SI{5}{\TeV}.
     The telescopes were fixed to an azimuth/elevation of (\ang{193},\ang{28}).
     The events themselves were distributed in a diffuse disk of radius \ang{2.5}.
-    After having their energy reconstructed, any events falling outside a simple mean-scaled-width cut of -2.0 to 0.5 were removed, which removes many of the showers that appear proton-like, approximating a gamma-hadron cut.
-    These are then binned in camera coordinates in Figure \ref{fig:back_simdiffuse}.
+    To approximate a simple gamma-hadron cut, any events with a mean-scaled-width falling outside the range of -2.0 to 0.5 were removed, which removes many of the showers that appear proton-like.
+    These remaining gamma-like events are then binned in camera coordinates in Figure \ref{fig:back_simdiffuse}.
 
 
     \begin{figure}[ht]
@@ -448,8 +462,6 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
     This striking effect can be seen in Galactic Center data between certain energy ranges.
     As the plots are in galactic (l,b) coordinates, and there is a time rotation due to the Earth spinning on its axis, the crescent shapes are still present, albiet smeared around the 4 wobble targets.
-
-    plot of events around galactic center (all energies vs @2 \TeV ) !??
     
     These structures, and their strong dependency on both the energy and elevation of the telescopes may be a large factor in why the low-energy threshold regime of gamma-ray telescopes is so poorly understood.
     Incorporating this effect into the instrument response functions would require modifying Event Display and CTOOLS, as well as creating another batch of diffuse simulations, with elevation increments of less than \ang{5}, all of which are manpower and computationally expensive.
