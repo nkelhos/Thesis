@@ -222,7 +222,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     A large psf on all events, for instance, will artificially expand a dark matter halo.
 
     For VERITAS, the psf is estimated by simulating many gamma rays, then measuring the distribution of true positions for each reconstructed position.
-    With VERITAS and Event Display, a gaussian was chosen to fit the psf distribution.
+    With VERITAS and Event Display, a gaussian function was chosen to fit the psf distribution.
     For CTOOLS however, the distribution of events are instead fitted with a King function \cite{king1962} (see eqn \ref{eqn:king}), as Fermi \cite{fermipsf} has found gamma ray psfs tend to have longer tails than a Gaussian, which the king function better handles.
     The radially-normalized king probability density function is defined as
 
@@ -443,8 +443,8 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     To rule out any software causes, diffuse simulations were performed at similar energies and elevations.
     These consisted of 50,000 gamma rays at each of 1.4, 1.6, 2, and \SI{5}{\TeV}.
     The telescopes were fixed to an azimuth/elevation of (\ang{193},\ang{28}).
-    The events themselves were distributed in a diffuse disk of radius \ang{2.5}.
-    To approximate a simple gamma-hadron cut, any events with a mean-scaled-width falling outside the range of -2.0 to 0.5 were removed, which removes many of the showers that appear proton-like.
+    The events themselves were distributed in a diffuse \ang{2.5}-radius disk.
+    To approximate a simple gamma-hadron cut, any events with a mean-scaled-width falling outside the range of -2.0 to 0.5 were removed, which eliminates many of the showers that appear proton-like.
     These remaining gamma-like events are then binned in camera coordinates in Figure \ref{fig:back_simdiffuse}.
 
 
@@ -461,30 +461,31 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     (But what is the effect? I remember Gernot mentioning something about an edge effect? You should explain it here. --Orel??)
 
     This striking effect can be seen in Galactic Center data between certain energy ranges.
-    As the plots are in galactic (l,b) coordinates, and there is a time rotation due to the Earth spinning on its axis, the crescent shapes are still present, albiet smeared around the 4 wobble targets.
+    As the plots are in galactic (l,b) coordinates, and there is a time rotation due to the Earth spinning on its axis, and observations are made at four wobble positions, the events clearly favor one half of the camera.
     
-    These structures, and their strong dependency on both the energy and elevation of the telescopes may be a large factor in why the low-energy threshold regime of gamma-ray telescopes is so poorly understood.
-    Incorporating this effect into the instrument response functions would require modifying Event Display and CTOOLS, as well as creating another batch of diffuse simulations, with elevation increments of less than \ang{5}, all of which are manpower and computationally expensive.
+    These structures, and their strong dependency on both the energy and elevation of the telescopes may be a large factor in why the low-energy threshold regime of gamma-ray telescopes is poorly understood.
+    Incorporating this effect into the instrument response functions would require modifying Event Display and CTOOLS, as well as creating another batch of diffuse simulations, with elevation increments of less than \ang{5}, all of which are computationally expensive.
     
     
 
   \subsection{Effect of Stars}
     As understanding the camera's background is important for extended source studies, i.e. dark matter halos, studies were performed examining the spatial effects of stars in the camera.
-    It had been noted in the past that for a dim star (magnitude > 5??), the camera pixel it illuminated would have a higher average current.
+    It had been noted in the past that for visiual magnitude \nicetilde{}6 stars, the camera pixels they illuminated would have a higher average current.
     This translates into a higher pedvar in the affected pixels, which can decrease how often the pixel participates in shower images.
-    In addition, if a bright star (magnitude <= 5??) was in the field of view, it would cause high enough current in the pixel that it would be shut off (voltage set to 0??) to prevent it from being damaged.
-    For particularly bright stars (magnitude <= 3), often several pixels are disabled at a given time.
+    In addition, if a star with magnitude brighter than 6 was in the field of view, it would cause high enough current in the pixel that it's voltage would be set to zero to prevent it from being damaged.
+    For particularly bright stars (magnitude $\leq{}3$), often several pixels are disabled at a given time.
+    (paragraph isn't consistant, needs checking??)
 
     A third effect is that, since the telescope camera is fixed to the ground, from the camera coordinate system, the sky rotates around the camera center.
     This means that over a single 30 min observation, any stars rotate around the camera center, disabling several camera pixels as it passes over them.
-    The camera checks for these disabled pixels roughly once per minute by turning them back on and monitoring the current.
+    The camera checks for these disabled pixels roughly once per minute by turning their voltage back on and monitoring the current, and setting it back to zero if the current is still above the threshold.
 
     These effects imply that to study the effect of stars, one must study the effect of high-current and disabled camera pixels, and use this information to construct the effect of stars.
     In this section, the effects of disabled camera pixels are studied.
 
     % see calculations/disabledpixel_obstime , those 250 crab runs turned into about 13.5 observation hours
     To examine the effects of disabled pixels, \nicetidle13 hours of Crab observations were analyzed twice with Event Display.
-    The first time was with the regular analysis chain, and the second time with a single pixel disabled in all four telescopes.
+    The first analysis was with the default analysis chain settings, and the second time with a single pixel disabled in all four telescopes.
     This mimics the effect of having a star in the field of view that is bright enough to disable a pixel.
 
     After both sets of events are passed through gamma-hadron cuts, they are compared.
@@ -508,7 +509,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     In Figure \ref{fig:dpix_rel_radial}, the bin values from Figure \ref{fig:dpix_rel_camera} are divided into radial bins centered around the disabled pixel.
     The average relative event rate is then calculated for each bin, along with a 1-sigma distribution width for the error bars.
     It can be seen that there are three distinct regions to the plot.
-    (How do you actually calculate the uncertainties here? If you take a ratio between numbers of events, you need to calculate the uncertainty explicitly since there are many events which are common to both bins and they shouldn’t be counted twice in the uncertainty.  This is important as it affects the conclusion you reach below. --Orel??)
+    (How do you actually calculate the uncertainties here? If you take a ratio between numbers of events, you need to calculate the uncertainty explicitly since there are many events which are common to both bins and they shouldn't be counted twice in the uncertainty.  This is important as it affects the conclusion you reach below. --Orel??)
     In the first region, from radius $\ang{0}$ to $\ang{0.3}$, the relative event rate starts extremely low, and rises rapidly.
     In the second region, from radius $\ang{0.3}$ to $\ang{1.6}$, the relative event rate is still rising, but much more slowly.
     In the third region outside $\ang{1.6}$, there is almost no effect.
@@ -566,10 +567,10 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
     In Figure \ref{fig:dpix_move}, the movment of gamma-like events is shown, when pixel 115 was disabled in all four telescopes.
     Only events which moved more than $0.1*psf$ are shown.
-    It should be noted that relatively few (how few??) events move, and the events that do move are mostly ones with non-compact image shapes that are cut in half when a pixel is disabled.
+    It should be noted that relatively few (\nicetilde{}100 in the 20-minute-long run 53703) events move more than this, and the events that do move are mostly ones with non-compact image shapes that are amputated when a pixel is disabled.
 
     What can be learned from this is that while only a small number of events' positions depend on a given pixel, pixels can have an impact on the reconstructed position from halfway across the camera.
-    This may imply that the event PSF is, to second order, dependent on the number of disabled pixels, though no studies were done to confirm this.(is it ok to guess this??)
+    This may imply that the event PSF is, to second order, dependent on the number of disabled pixels, though no studies were done to confirm this.
 
 
     \begin{figure}[ht]
@@ -584,11 +585,9 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
     As the acceptance for a particular event and the event's effective area are strongly related, the loss of acceptance also means a loss of effective area in the area of this pixel.
     This can have effects on the energy reconstruction.
+    Additionally, for CTA and its projected \ang{7}-diameter field of view, more stars will be in the field of view, implying there will be more camera pixels affected by their light.
 
-    For CTA, the pixels are ?? set up so that ?? only one pixel will be shut off at a time due to a bright star.
-    While this will limit the effect of very bright stars, CTA's planned $\ang{7}$ field of view will mean there are many more stars in view, meaning many more holes to account for.
-
-    Future studies could also compare how events move in energy or time when a pixel is disabled.
+    Future studies could also compare how events move in energy when a pixel is disabled.
     Another study might investigate how the reconstructed shower-telescope distance changes, since a shower with fewer pixels will look further away, and may be reconstructed differently.
     In general, as a pixel is disabled, it is expected that lower energy events and showers further away will be more vulnerable, and will show stronger differences than higher energy events or closer showers.
 
