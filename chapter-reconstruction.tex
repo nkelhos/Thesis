@@ -332,7 +332,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       f_{\text{true}}(i)=\frac{E_{i,j}}{ \sum_{j}E_{i,j} }
     \end{equation}
 
-    By unfolding these distributions from the reconstructed energies, two primary analysis effects are accounted for.
+    By unfolding these distributions from the reconstructed energies, two significant effects are accounted for.
     The first is that the reconstruction software introduces biases in the event energy, meaning on average, an event at a given true energy is reconstructed at a higher or lower energy.
     The second effect that is accounted for is the dispersion in the reconstructed energies.
     Multiple simulations of the same energy event will result in a distribution of reconstructed energies.
@@ -381,7 +381,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \label{fig:back_highelev}
     \end{figure}
 
-    In Figure \ref{fig:back_lowelev29} and Figure \ref{fig:back_lowelev26}, the same plots are constructed for a set of low-elevation (\nicetilde{}\ang{29} and \nicetilde{}\ang{26} respectivly) observations, using Galactic Center Off observations (reference these off observations to the apropriate section elsewhere??).
+    In Figure \ref{fig:back_lowelev29} and Figure \ref{fig:back_lowelev26}, the same plots are constructed for a set of low-elevation (\nicetilde{}\ang{29} and \nicetilde{}\ang{26} respectivly) observations, using Galactic Center Off observations.
     These are again divided in to equal-statistic energy bins, and then each energy bin is binned in camera coordinates.
     It can be seen that in different energy bins, the background possesses different shapes.
 
@@ -406,7 +406,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
   
   
   These effects are also noticeable in the galactic (l,b) event maps.
-  In figure \ref{fig:bkgvsel_crab}, the top plot shows the positions of all events, the middle histogram shows the distribution of event energies, and the bottom plot shows the event positions of events in a limited energy range, \SI{1.5}{\TeV}-\SI{3.25}{\TeV}.
+  In Figure \ref{fig:bkgvsel_crab}, the top plot shows the positions of all events, the middle histogram shows the distribution of event energies, and the bottom plot shows the event positions of events in a limited energy range, \SI{1.5}{\TeV}-\SI{3.25}{\TeV}.
   It it can be seen in the middle plot that this energy range is where more and more events are lost as energy decreases.
   When events are plotted in this limited energy range, it can be seen that there is a faint deficit along the bottom of the plot.
 
@@ -414,9 +414,11 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
   In the top plot, events are radially symmetric about the source (there are differences due to the four wobble positions, but these are faint and not visible without quantification).
   But when only the events from \SI{1.5}{\TeV} to \SI{3.25}{\TeV} are plotted, a much clearer deficit is visible on the lower right part of the plot.
   This area corresponds to the deficit at bottom of the camera in Figures \ref{fig:back_lowelev29}.B and \ref{fig:back_lowelev26}.B
-  It should be noted that there is a time-dependent rotation applied to go from the Camera X/Y (Earth Azimuth/Elevation) system to the Galactic (l,b) coordinates, which smears out the shape of the deficit.
+  It should be noted that there is a time-dependent rotation applied to go from the Camera X/Y (Earth Azimuth/Elevation) system to the Galactic (l,b) coordinates, which smears out the shape of the deficit, making it harder to notice in sky coordinates.
   
-  Why is this relevant??
+  This effect is important to this thesis because it implies that, at the lowest energies, the background rate is not radially symmetric.
+  Radial backgrounds (sometimes referred to as acceptances) are typically used in VERITAS as they require less data to construct, and no other Camera X/Y or energy dependence had been demonstrated until now.
+  As the analysis in this thesis only has a few hours of background observations (see table \ref{tab:observation_times}), only radially symmetric backgrounds templates/models could be constructed, which then required limiting the final analysis to $\geq\SI{4}{\TeV}$.
   
   \begin{figure}[ht]
     \centering
@@ -440,6 +442,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       Top: Skymap of all events.  Middle: Histogram of all events in energy.  Bottom: Skymap of events from \SI{1.5}{\TeV}-\SI{3.25}{\TeV}.  
       In the bottom plot, events from \SI{1.5}{\TeV}-\SI{3.25}{\TeV} are concentrated in the top half of the camera (before being rotated to galactic (l,b) coordinates), due to the air column density ($g/cm^2$) being \nicetilde20\% smaller at the top of the camera.
       (move some of this explaination to the regular text body??)
+      (make sure this isn't just an effect of the elevation cut preferentially selecting some wobbles over others??)
     }
     \label{fig:bkgvsel_sgra}
   \end{figure}
