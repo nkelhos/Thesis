@@ -261,37 +261,16 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
   \subsection{Background Models}\label{background_production}
     A background model is a 3 dimensional function in camera X (in angle, parallel to azimuth), camera Y (in angle, parallel to elevation), and energy.
-    The function predicts the number of observed events in the camera, per unit solid angle, unit time, and unit energy.
+    The function calculates the number of observed events in the camera, per unit solid angle, unit time, and unit energy.
     This is used to quantify how many counts are expected when observing a gamma-ray-dark sky position, which estimates how many background proton events are being detected at different energies and in different parts of the camera.
     Understanding the background shape of the camera is crucial for properly studying extended sources, like dark matter halos, which may extend several degrees from the galactic center.
-    Improperly estimating background models can create fake structures in an astrophysical target.
+    Improperly estimating background models can result fake structures appearing around an astrophysical target.
     Background models with more than three dimensions are also possible, but require many more simulations, and are beyond the scope of this thesis.
-
-    To produce a background model, gamma-like events from 'dark' obsevations (areas of the sky with no gamma-ray sources) are binned in camera coordinates and energy.
-    The details of the selected dark observations are detailed further in \ref{veritasdata}.
-    The energy bins are determined by expanding outwards (in log${}_{10}(\TeV{})$ space) from the median energy of all events, until each energy bin has at least 100 events per \degreesquared{}.
-    Any energy bins at the upper or lower edges that have less than 100 events per \degreesquared{} are absorbed into the neighboring energy bin.
-    This 100 events per \degreesquared{} was chosen because in test plots, this theshold provided enough events for a smooth Camera X/Y 2D histograms at a useful resolution (\nicetilde60 bins across one dimension of the field of view) which form the background models.
-    In these energy bins, events are then binned radially, which is then used to fit an interpolation function (see Figure \ref{fig:background_radial}).
-    This interpolated function is normalized so that its volume is equal to the initial number of events. 
-
-    These energy-bin pdfs can then be interpolated linearly in log${}_{10}(\TeV{})$ space, to get the radial distribution of events at various energies.
-
-    \begin{figure}[ht]
-      \centering
-      \includegraphics[width=0.7\textwidth]{images/ctools_background/radial_profiles.eps}
-      \caption[CTOOLS Radial Background Profiles]{
-        Radial bin profiles for the V5 background's two large-scale energy bins.
-        The blue points are the counts per bin area, while the purple line is the interpolation with a spline interpolator of order 3 (see scipy.interpolate.interp1d())
-        }
-      \label{fig:background_radial}
-    \end{figure}
-
-
-    Then, all events are divided up into \nicetilde30 finer energy bins as shown in Figure \ref{fig:background_profile}, and each bin's counts are multiplied by the interpolated radial pdf at that energy, which is then written to a two-dimensional array of camera x/y bins.
-    2D bin values are then divided by the solid angle of the bin (in sr), the energy width of the bin (in MeV), and the total obseration time (in seconds).
-
-    (For the above 2-3 paragraphs: I really have trouble following what is done exactly and I think there is no need to go into these details. This looks like a description of the code instead of the physics/analysis. --Orel??)
+    
+    The background models used in this analysis are made from two background templates, one for each of the V5/V6 epochs.
+    The templates are constructed from dark observations, detailed in \ref{veritasdata}.
+    Each template is made by histogramming all background events by their energy, dividing by the bin width in MeV, and interpolating between bins to produce a spectral function.
+    This spectral function can be seen in Figure \ref{fig:background_profile}.
 
     \begin{figure}[ht]
       \centering
@@ -305,8 +284,36 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \label{fig:background_profile}
     \end{figure}
 
-    The background is used in the likelihood analysis as a model with two free parameters, a simple multiplicative normalization factor, and a power law spectral index.
-    This lets the likelihood engine scale each run's background model up or down to best fit the events, so the background's absolute value is less important than the relative values in different parts of the camera.
+    Then, the events are divided into high and low energies, and the events' reconstructed camera positions are binned radially about the camera center, with each bin divided by its bin area, producing two spatial functions.
+    These high- and low-energy spatial functions are shown in Figure \ref{fig:background_radial}.
+    
+    \begin{figure}[ht]
+      \centering
+      \includegraphics[width=0.7\textwidth]{images/ctools_background/radial_profiles.eps}
+      \caption[CTOOLS Radial Background Profiles]{
+        Radial bin profiles for the V5 background's two large-scale energy bins.
+        The blue points are the counts per bin area, while the purple line is the interpolation with a spline interpolator of order 3 (see scipy.interpolate.interp1d())
+        }
+      \label{fig:background_radial}
+    \end{figure}
+    
+    Finally, the spatial and spectral functions are multiplied together, as in Equation \ref{eqn:bck_template}.
+    Interpolation is applied to keep the functions smooth between histogram bins, linearly in Camera X/Y, and linear-log${}_{10}$ in energy.
+    
+    \begin{equation}\label{eqn:bck_template}
+      f(e,x,y) = A \times \textrm{spectral}(e) \times \textrm{spatial}(e,x,y) 
+    \end{equation} 
+    
+    The function $f(e,x,a)$ has units of $\frac{\# Counts}{ \textrm{MeV} \times \textrm{s} \times \textrm{sr} }$
+    The multiplied functions are then scaled with a constant $A$ such that the total integral of the template (integrating across Camera X, Camera Y, and Energy) matches the original number of counts in the dark runs, as in Equation \ref{eqn:background_template_function}.
+    
+    \begin{equation}\label{eqn:background_template_function}
+      \textrm{\# Background Events} = A \times \int \textrm{spectral}(e) \times \textrm{spatial}(e,x,y) \times dx \: dy \: de
+    \end{equation}
+
+    This function $f(e,x,y)$ is the background template in Camera X/Y, which due to its radial symmetry can then immediatly be used as a CTOOLS background model in RA/Dec.
+    Each background template is used in the likelihood analysis as a model multiplied by two free parameters, a normalization factor, and a power law spectral index.
+    This lets the likelihood engine scale each run's background model up or down to best fit the events, so the background's absolute value is less important than the relative values in different parts of the camera or at different energies.
 
   \subsection{Energy Dispersion}\label{subsec:edisp}
     As events are reconstructed imperfectly, it is important to understand what the distribution of true energies are for a given reconstructed energy.
