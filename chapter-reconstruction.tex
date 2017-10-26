@@ -109,7 +109,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \centering
       \includegraphics[width=0.85\textwidth]{images/disp_training.eps}
       \caption[Disp BDT Training]{
-        The true \disp{} vs the BDT-predicted \disp{}, for \nicetilde17,000 gamma-ray event images in T1, from 500\GeV to 200\TeV.
+        The true \disp{} vs the BDT-predicted \disp{}, for \nicetilde17,000 gamma-ray event images in T1, from \SI{500}{\GeV} to \SI{200}{\TeV}.
       }
       \label{fig:disptraining}
     \end{figure}
@@ -122,7 +122,6 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \includegraphics[width=0.85\textwidth]{images/disp_event_offset_hists/dispgeom_comparision.eps}
       \caption[DISP Offset Improvement]{
         The number of events per solid angle at different angular offsets from the Crab and the Galactic Center, with both Geometric and Disp reconstruction methods.
-        (Would be great to put the mean and RMS on the plots, so you can quantify the differences. --Orel??)
         (still needs fixing??  Why does the crab see so little benefit??  why does the disp mean move left in the crab, but right in Sgr A*?)
       }
       \label{fig:disp_event_offset}
@@ -406,8 +405,10 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
   
   These effects are also noticeable in the galactic (l,b) event maps.
   In Figure \ref{fig:bkgvsel_crab}, the top plot shows the positions of all events, the middle histogram shows the distribution of event energies, and the bottom plot shows the event positions of events in a limited energy range, \SI{1.5}{\TeV}-\SI{3.25}{\TeV}.
-  It it can be seen in the middle plot that this energy range is where more and more events are lost as energy decreases.
+  It can be seen in the middle plot that this energy range is where more and more events are lost as energy decreases.
   When events are plotted in this limited energy range, it can be seen that there is a faint deficit along the bottom of the plot.
+  Due to the time-dependent rotation, this deficit occurs in the bottom of the camera, where the atmosphere column density ($g/cm^2$) is \nicetilde20\% higher than at the top of the camera.
+  This \nicetilde20\% higher airmass causes air showers to start further away from the telescopes, resulting in fewer events in the lower half of the camera have cherenkov photons actually reach the camera.
 
   When a similar series of plots are made for the galactic center in Figure \ref{fig:bkgvsel_sgra}, the effect is much stronger.
   In the top plot, events are radially symmetric about the source (there are differences due to the four wobble positions, but these are faint and not visible without quantification).
@@ -425,9 +426,9 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     \caption[Background Vs Elevation Crab]
     {\small 
       Plots of Crab observations.
-      Top: Skymap of all events.  Middle: Histogram of all events in energy.  Bottom: Skymap of events from \SI{1.5}{\TeV}-\SI{3.25}{\TeV}.  
-      In the bottom plot, events from \SI{1.5}{\TeV}-\SI{3.25}{\TeV} are concentrated in the top half of the camera (before being rotated to galactic (l,b) coordinates), due to the air column density ($g/cm^2$) being \nicetilde20\% smaller at the top of the camera.
-      (move some of this explaination to the regular text body??)
+      Top: Skymap of all events.
+      Middle: Histogram of all events in energy.
+      Bottom: Skymap of events from \SI{1.5}{\TeV}-\SI{3.25}{\TeV}.  
     }
     \label{fig:bkgvsel_crab}
   \end{figure}
@@ -438,9 +439,9 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     \caption[Background Vs Elevation Sgr A*]
     {\small 
       Plots of Sgr A* observations.
-      Top: Skymap of all events.  Middle: Histogram of all events in energy.  Bottom: Skymap of events from \SI{1.5}{\TeV}-\SI{3.25}{\TeV}.  
-      In the bottom plot, events from \SI{1.5}{\TeV}-\SI{3.25}{\TeV} are concentrated in the top half of the camera (before being rotated to galactic (l,b) coordinates), due to the air column density ($g/cm^2$) being \nicetilde20\% smaller at the top of the camera.
-      (move some of this explaination to the regular text body??)
+      Top: Skymap of all events.
+      Middle: Histogram of all events in energy.
+      Bottom: Skymap of events from \SI{1.5}{\TeV}-\SI{3.25}{\TeV}.  
     }
     \label{fig:bkgvsel_sgra}
   \end{figure}
@@ -467,6 +468,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
     One can see that the ring and crescent structures persist in these diffuse simulations, implying these are physical effects of the atmosphere and camera, rather than a problem with the reconstruction software.
     (But what is the effect? I remember Gernot mentioning something about an edge effect? You should explain it here. --Orel??)
+    (The top-of-camera vs bottom-of-camera differences are due to the atmosphere, but I'm not sure what causes the deficit in the middle at the lower energies... ??)
 
     This striking effect can be seen in Galactic Center data between certain energy ranges.
     As the plots are in galactic (l,b) coordinates, and there is a time rotation due to the Earth spinning on its axis, and observations are made at four wobble positions, the events clearly favor one half of the camera.
@@ -478,11 +480,10 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
   \subsection{Effect of Stars}
     As understanding the camera's background is important for extended source studies, i.e. dark matter halos, studies were performed examining the spatial effects of stars in the camera.
-    It had been noted in the past that for visiual magnitude \nicetilde{}6 stars, the camera pixels they illuminated would have a higher average current.
-    This translates into a higher pedvar in the affected pixels, which can decrease how often the pixel participates in shower images.
+    It had been noted in the past that for visiual magnitude \nicetilde{}6-8 stars, the camera pixels they illuminated would have a higher average current.
+    This translated into a higher pedvar in the affected pixels, which decreased how often the pixel participated in shower images.
     In addition, if a star with magnitude brighter than 6 was in the field of view, it would cause high enough current in the pixel that it's voltage would be set to zero to prevent it from being damaged.
     For particularly bright stars (magnitude $\leq{}3$), often several pixels are disabled at a given time.
-    (paragraph isn't consistant, needs checking??)
 
     A third effect is that, since the telescope camera is fixed to the ground, from the camera coordinate system, the sky rotates around the camera center.
     This means that over a single 30 min observation, any stars rotate around the camera center, disabling several camera pixels as it passes over them.
@@ -528,6 +529,9 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     There are really only two “regions” in this plot, one where you lose events and need to correct for that and one where the ratio is 100% within uncertainties.
     Here is where the correct calculation of uncertainties of the ratio becomes important.
     I think as it is, you might be overestimating the uncertainties, which would result in a larger systematic uncertainties from this correction, if you apply it. --Orel??
+    
+    While this single-pixel loss-of-events effect was notable, it was not incorporated into the main analysis of this thesis due to the small effect it would have, compared to the amount of work it would take to implement.
+    Future analyses may be able to account for these effects in their models of the background rates and effective areas.
 
 
     \begin{figure}[ht]
