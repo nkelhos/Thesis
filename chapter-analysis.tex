@@ -77,25 +77,25 @@
   Producing the backgrounds is performed by binning observation sources with weak or no gamma-ray emission.
   For this low-elevation analysis, special observation runs were taken several degrees away from the galactic center.
 
-  (skymap of GC and GC Off runs??)
+  {\color{red}(skymap of GC and GC Off runs??)}
 
   These background runs were then assembled into background models via the procedure in \ref{background_production}.
   To account for the difference between the V5 and V6 observatory configurations, the background observations are divided up based on their epoch, producing unqiue backgrounds for each epoch.
   Built into this procedure is that the background values vary as a function of distance from the camera center, and the event energy.
 
-  It should be noted that CTOOLS backgrounds are in RA/DEC detector coordinates, instead of Az/El detector coordinates. (??)
+  It should be noted that CTOOLS backgrounds are in RA/DEC detector coordinates, instead of Az/El detector coordinates. {\color{red}(??)}
 
   To confirm that these background models fit properly, a simple likelihood analysis was performed with the Off observations and their backgrounds.
-  If the background models were assembled astutely, after the liklelihood normalization, the number of events observed and predicted by the models is shown in figure ??.
+  If the background models were assembled astutely, after the liklelihood normalization, the number of events observed and predicted by the models is shown in {\color{red}figure ??}.
 
-  (using just the background observations, show profile plots in galactic-b and energy??)
+  {\color{red}(using just the background observations, show profile plots in galactic-b and energy??)}
 
 \section{Test Point Sources}
   To verify that the CTOOLs likelihood analysis is working properly, two point sources were analyzed first, before any dark matter analysis was performed.
   The first was on the well-studied Crab nebula, and the second was on the source at the center of our galaxy.
   To also uncover any low-elevation effects, the Crab observations were limited to ones with elevations < \SI{32.5}{\degree}.
 
-  (plot of Crab, Sgr A*, Sgr A* Off sources elevations??)
+  {\color{red}(plot of Crab, Sgr A*, Sgr A* Off sources elevations??)}
 
   \subsection{Test Crab Analysis}
 
@@ -103,7 +103,7 @@
     As the Crab nebula is the brightest gamma ray emitter in the sky, it has been observed extensively by VERITAS and other gamma ray telescopes.
     Since the Galactic Center only rises to around \SI{30}{\degree} elevation, elevation effects would also need to be searched for.
     After searching for low-elevation Crab observations, a total of 17.1 hours of livetime were found.
-    These consist of 7.3(doesn't match with plot??) hours of V5 epoch data, and 9.8(doesn't match with plot??) hours of V6 epoch data.
+    These consist of 7.3 {\color{red}(doesn't match with plot??)} hours of V5 epoch data, and 9.8 {\color{red}(doesn't match with plot??)} hours of V6 epoch data.
     
     \begin{figure}[h]
       \centering
@@ -112,7 +112,7 @@
       {
         Skymap of event positions.
         No corrections are made for observing time or effective area.
-        Observation time is different??
+        {\color{red}Observation time is different??}
       }
       \label{fig:crab_skymap}
     \end{figure}
@@ -129,9 +129,9 @@
     Part of this decrease is explored in section (see figures \ref{fig:bkgvsel_crab} and \ref{fig:bkgvsel_sgra}), but implementing corrections requires large changes to existing code, along with a larger set of simulations, neither of which were feasible during this work.
     Above 70 TeV, simulations become too computationally expensive to create when attempting to calculate IRFs.
     
-    After fitting all events from \SI{4}{TeV} to \SI{70}{TeV}, with a pivot energy $ E_{0}= \SI{10}{TeV} $, the $ I_{0} = \left(1.472\pm0.09\right)*10^{-19} \frac{ph}{cm^{2} s MeV} $, $ \gamma = 2.382 \pm 0.076 $, with a Test Statistic of 1929.01. (?? update values!).
+    After fitting all events from \SI{4}{TeV} to \SI{70}{TeV}, with a pivot energy $ E_{0}= \SI{10}{TeV} $, the $ I_{0} = \left(1.472\pm0.09\right)*10^{-19} \frac{ph}{cm^{2} s MeV} $, $ \gamma = 2.382 \pm 0.076 $, with a Test Statistic of 1929.01. {\color{red}(?? update values!)}.
     As the crab (alternative) hypothesis has 110 free parameters, and the no-crab (null) hypothesis has 108 free parameters, the Test Statistic has $ 110 - 108 = 2 $ degrees of freedom.
-    This is roughly equivalent to a significance of ??.
+    This is roughly equivalent to a {\color{red}significance of ??}.
     
     In the standard VERITAS Event Display analysis, the crab is found to have a point source significance of \SI{21.3}{$\sigma$}.
     
@@ -144,7 +144,7 @@
         Crab spectra from various analyses and observatories.
         Red is the spectra from the CTOOLS analysis described in this chapter.
         Blue is the standard VERITAS Event Display spectrum using the same set of observations.
-        (Update hess/magic lines to have higher maximum energy points??)
+        {\color{red}(Update hess/magic lines to have higher maximum energy points??)}
       }
       \label{fig:crab_test_spectra}
     \end{figure}
@@ -218,7 +218,7 @@
 \section{Dark Matter Likelihood Analysis}
   \subsection{Non-Dark-Matter Models}
   For this analysis, a point source model was added at the position of Sgr A*.
-  This is because other analyses (cite??) have indicated that the bright gamma-ray source at Sgr A* is not best modeled by a dark matter halo.
+  This is because other analyses {\color{red}(cite??)} have indicated that the bright gamma-ray source at Sgr A* is not best modeled by a dark matter halo.
   % DM is unlikely to be the cause of the point source in the GC
   % Updated cosmic-ray and radio constraints on light dark matter: Implications for the GeV gamma-ray excess at the Galactic Center
   % Bringmann 2014
@@ -238,7 +238,7 @@
   \subsection{Dark Matter Models}
   Dark Matter halos are modeled by a spherically-symmetric mass-per-volume density profile.
   In this analysis, an Einasto density profile (discussed in section \ref{dm_spatial}) is used as the spatial component of the dark matter halo model.
-  For the spectral component, each dark matter mass tested has its own spectrum produced with clumpy, which is based on ?? (see section \ref{dm_spectral}).
+  For the spectral component, each dark matter mass tested has its own spectrum produced with clumpy, which is {\color{red}based on ??} (see section \ref{dm_spectral}).
 
   \subsection{Likelihood Results}
   
@@ -327,7 +327,7 @@
   \end{equation}
   
   where D is the number of observed counts, and M is the number of modelled counts.
-  Equation \ref{eqn:resmap_signif} is derived from the Li and Ma equation ??. 
+  Equation \ref{eqn:resmap_signif} is derived from the Li and Ma {\color{red}equation ??}. 
   In this plot, the deficiency of the radially-symmetric camera background models is apparent.
   Lighter/darker areas indicate places where there were more/less observed counts than the models predicted.
   
@@ -344,8 +344,8 @@
   \end{figure}
 
   Even if the source and background models were perfectly known, there would still be statistical fluctuations in the observed counts, and the residual significances would form a gaussian distribution, shown as the green line in figure \ref{fig:gc_resmap_sighist}.
-  However, the distribution of the pixel significances from figure \ref{fig:gc_resmap} is shown in figure \ref{fig:gc_resmap_sighist}, and qualitativly not gaussian shaped (??).
-  ?? How well does it fit, and quantitativly how bad does it fit??
+  However, the distribution of the pixel significances from figure \ref{fig:gc_resmap} is shown in figure \ref{fig:gc_resmap_sighist}, and qualitativly not gaussian shaped {\color{red}(??)}.
+  {\color{red}?? How well does it fit, and quantitativly how bad does it fit??}
   As a large number of bins are clustered around +2 and -2 signifiance, this hints that the residuals in figure \ref{fig:gc_resmap} are potentially not due solely from statistical noise, and that the background modelling could be improved.
   
   \begin{figure}[ht]
@@ -364,24 +364,22 @@
   An upper limit on the flux of a source can be calculated by scaling the flux of a model until the log-likelihood is at the 0.95 confidence level.
   This is done by using the ctulimit tool in ctools.
   
-  Then from the dark matter flux equation ??, an upper limit on the observed gamma-ray flux can be used to calculate an upper limit on the velocity-averaged crosssection.
+  Then from the dark matter flux {\color{red}equation ??}, an upper limit on the observed gamma-ray flux can be used to calculate an upper limit on the velocity-averaged crosssection.
   
   \begin{equation}\label{eqn:ulim}
     \frac{d\phi}{dE d\Omega} = \frac{ \left \langle \sigma v \right \rangle }{8\pi m_{\chi}^{2}} \frac{dN_{\gamma}}{dE} \int \rho^{2} dl
   \end{equation}
   
-  Since, when all other variables are fixed, a larger gamma ray flux results from a larger velocity-averaged crosssection, they can both be replaced with their upper limits (??).
+  Since, when all other variables are fixed, a larger gamma ray flux results from a larger velocity-averaged crosssection, they can both be replaced with their upper limits {\color{red}(??)}.
 
   \begin{figure}[ht]
-    \begin{center}
-      \includegraphics[width=0.95\textwidth]{images/ulimit/final_upper_limit_plot.eps}
-      \caption[Dark Matter Upper Limit Plot]
-      {
-        Dark Matter upper limits on velocity-averaged cross-sections.
-        For reproduction, data values from this work are in table ??.
-      }
-      \label{fig:ulim}
-    \end{center}
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/ulimit/final_upper_limit_plot.eps}
+    \caption[Dark Matter Upper Limit Plot]{
+      Dark Matter upper limits on velocity-averaged cross-sections.
+      For reproduction, data values from this work {\color{red}are in table ??}.
+    }
+    \label{fig:ulim}
   \end{figure}
   
   

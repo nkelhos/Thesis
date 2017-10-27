@@ -122,7 +122,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \includegraphics[width=0.85\textwidth]{images/disp_event_offset_hists/dispgeom_comparision.eps}
       \caption[DISP Offset Improvement]{
         The number of events per solid angle at different angular offsets from the Crab and the Galactic Center, with both Geometric and Disp reconstruction methods.
-        (still needs fixing??  Why does the crab see so little benefit??  why does the disp mean move left in the crab, but right in Sgr A*?)
+        {\color{red} (still needs fixing??  Why does the crab see so little benefit??  why does the disp mean move left in the crab, but right in Sgr A*?) }
       }
       \label{fig:disp_event_offset}
     \end{figure}
@@ -130,7 +130,8 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 \section{Energy Reconstruction}\label{subsec:enrecon}
   To reconstruct the energy of each shower, a database of simulated showers is built.
   This database includes the width and length of the shower, how far away its core position is, how bright it was, as well as its reconstructed and true energy.
-  By scanning through this database for showers that are similar to the one being constructed, the most similar-looking shower then indicates the true energy(is there any interpolation?? -Orel, ask gernot).
+  By scanning through this database for showers that are similar to the one being constructed, the most similar-looking shower then indicates the true energy.
+  {\color{red} (is there any interpolation?? -Orel, ask gernot)}
 
 \section{FITS Conversion for Gammalib and CTOOLs}
   Once gamma rays have been reconstructed with event display, they must be converted to a FITS file format compatible with Gammalib and CTOOLS.
@@ -345,7 +346,8 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \caption[Energy Migration Matrix]{
         An energy migration matrix used with Galactic Center run 82288.
         The reconstructed energy is on the x axis, and the true energy is on the y axis.
-        The z (color) axis (why does the z axis have units of 1/s*MeV?? GCTAEdisp2D::operator() returns these units, but why??) denotes the number of simulated events that passed all cuts.
+        The z (color) axis denotes the number of simulated events that passed all cuts.
+        {\color{red} (why does the z axis have units of 1/s*MeV?? GCTAEdisp2D::operator() returns these units, but why??)} 
       }
       \label{fig:migmatrix}
     \end{figure}
@@ -467,8 +469,8 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     \end{figure}
 
     One can see that the ring and crescent structures persist in these diffuse simulations, implying these are physical effects of the atmosphere and camera, rather than a problem with the reconstruction software.
-    (But what is the effect? I remember Gernot mentioning something about an edge effect? You should explain it here. --Orel??)
-    (The top-of-camera vs bottom-of-camera differences are due to the atmosphere, but I'm not sure what causes the deficit in the middle at the lower energies... ??)
+    {\color{red}(But what is the effect? I remember Gernot mentioning something about an edge effect? You should explain it here. --Orel??)}
+    {\color{red}(The top-of-camera vs bottom-of-camera differences are due to the atmosphere, but I'm not sure what causes the deficit in the middle at the lower energies... ??)}
 
     This striking effect can be seen in Galactic Center data between certain energy ranges.
     As the plots are in galactic (l,b) coordinates, and there is a time rotation due to the Earth spinning on its axis, and observations are made at four wobble positions, the events clearly favor one half of the camera.
@@ -518,17 +520,19 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     In Figure \ref{fig:dpix_rel_radial}, the bin values from Figure \ref{fig:dpix_rel_camera} are divided into radial bins centered around the disabled pixel.
     The average relative event rate is then calculated for each bin, along with a 1-sigma distribution width for the error bars.
     It can be seen that there are three distinct regions to the plot.
-    (How do you actually calculate the uncertainties here? If you take a ratio between numbers of events, you need to calculate the uncertainty explicitly since there are many events which are common to both bins and they shouldn't be counted twice in the uncertainty.  This is important as it affects the conclusion you reach below. --Orel??)
+    {\color{red}(How do you actually calculate the uncertainties here? If you take a ratio between numbers of events, you need to calculate the uncertainty explicitly since there are many events which are common to both bins and they shouldn't be counted twice in the uncertainty.  This is important as it affects the conclusion you reach below. --Orel??)}
     In the first region, from radius $\ang{0}$ to $\ang{0.3}$, the relative event rate starts extremely low, and rises rapidly.
     In the second region, from radius $\ang{0.3}$ to $\ang{1.6}$, the relative event rate is still rising, but much more slowly.
     In the third region outside $\ang{1.6}$, there is almost no effect.
 
+    {\color{red}
     ??This discussion of three regions is not really correct and not entirely relevant.
     It does not give a conclusion on what you do with this information.
     The simplest idea would be to apply a correction to events with disabled pixels based on this plot. Do you that? If not, why not? If yes, it should be mentioned here.
     There are really only two “regions” in this plot, one where you lose events and need to correct for that and one where the ratio is 100% within uncertainties.
     Here is where the correct calculation of uncertainties of the ratio becomes important.
     I think as it is, you might be overestimating the uncertainties, which would result in a larger systematic uncertainties from this correction, if you apply it. --Orel??
+    }
     
     While this single-pixel loss-of-events effect was notable, it was not incorporated into the main analysis of this thesis due to the small effect it would have, compared to the amount of work it would take to implement.
     Future analyses may be able to account for these effects in their models of the background rates and effective areas.
