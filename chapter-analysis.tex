@@ -63,27 +63,26 @@
 \section{Likelihood Ratio Test}
   The likelihood ratio test useful for comparing two hypotheses.
   They are referred to as the null and alternative hypotheses.
-  Each hypothesis consists of a predicted number of events at each point in the energy/space/time parameter space.
+  Each hypothesis consists of a collection of models, where each model predicts the number of events at each point in the energy/space/time parameter space.
   Once each hypothesis is constructed, the likelihood for each can be computed.
+  
+  {\color{red}likelihood equation??}
+  
   The ratio of the two likelihoods then follows a gaussian (with certain assumptions), meaning the sigificance of the alternative hypothesis over the null can be calculated.
-
   As part of this likelihood ratio test, the signal and background models must be constructed.
   Background models can be camera background models (discussed in section \ref{sec:bkgmodels}), or astrophysical models of background gamma-ray emitters.
-  In this context, the null hypothesis consists of only background models, while the alternative hypothesis consists of all the background models plus one signal model.
+
+  {\color{red}test statistic equation??}
 
 \section{Background Models}\label{sec:bkgmodels}
   The background models predict the amount of background counts produced by a gamma-ray-empty sky.
   This is used to model the effect of the background (primarily proton) events, which are several orders of magnitude more populous than the gamma rays.
   Producing the backgrounds is performed by binning observation sources with weak or no gamma-ray emission.
-  For this low-elevation analysis, special observation runs were taken several degrees away from the galactic center.
+  For this low-elevation analysis, special observation runs were taken several degrees away from the galactic center (see Figure \ref{fig:gcfieldsofview}).
 
-  {\color{red}(skymap of GC and GC Off runs??)}
-
-  These background runs were then assembled into background models via the procedure in \ref{background_production}.
+  These background runs were then assembled into background models via the procedure in subsection \ref{background_production}.
   To account for the difference between the V5 and V6 observatory configurations, the background observations are divided up based on their epoch, producing unqiue backgrounds for each epoch.
-  Built into this procedure is that the background values vary as a function of distance from the camera center, and the event energy.
-
-  It should be noted that CTOOLS backgrounds are in RA/DEC detector coordinates, instead of Az/El detector coordinates. {\color{red}(??)}
+  These background templates vary with respect to the radial distance from the camera center, and the event energy.
 
   To confirm that these background models fit properly, a simple likelihood analysis was performed with the Off observations and their backgrounds.
   If the background models were assembled astutely, after the liklelihood normalization, the number of events observed and predicted by the models is shown in {\color{red}figure ??}.
@@ -93,7 +92,7 @@
 \section{Test Point Sources}
   To verify that the CTOOLs likelihood analysis is working properly, two point sources were analyzed first, before any dark matter analysis was performed.
   The first was on the well-studied Crab nebula, and the second was on the source at the center of our galaxy.
-  To also uncover any low-elevation effects, the Crab observations were limited to ones with elevations < \SI{32.5}{\degree}.
+  To also uncover any low-elevation effects, the Crab observations were limited to ones with elevations < \SI{32.5}{\degree} (see Figure \ref{fig:datapointingelevations}).
 
   {\color{red}(plot of Crab, Sgr A*, Sgr A* Off sources elevations??)}
 
