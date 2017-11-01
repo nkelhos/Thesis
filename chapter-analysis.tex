@@ -61,12 +61,70 @@
   In addition, specific IRFs were calculated for additional data dimensions, including the frequency of night sky background photons in the camera, the telescope elevation, the event energy, and each event's distance from the camera center.
 
 \section{Likelihood Ratio Test}
+
+  The likelihood ratio test is a method of comparing whether a function is a statistically preferable fit to some data, compared to another function.
+  This ratio test performed by calculating the test statistic (TS) for a set of data and two functions of that data ($M_{\text{null}}$ and $M_{\text{alt}}$), shown in Equation \ref{eqn:test_statistic}.
+  
+  % from https://arxiv.org/pdf/1606.00393.pdf, equation 50
+  \begin{equation}\label{eqn:test_statistic}
+    \text{TS} = 2 \, \text{ln} \, L \left(M_{\text{alt}} \right ) - 2 \, \text{ln} \, L \left( M_{\text{null}} \right )
+  \end{equation}
+  
+  The function $L$ is the likelihood of each model, calculated via summing the likelhiood of individual observations $L_i$ in Equation \ref{eqn:sum_likelihood}.
+  
+  % from https://arxiv.org/pdf/1606.00393.pdf, equation 6
+  \begin{equation}\label{eqn:sum_likelihood}
+    - \text{ln} \, L \left(M \right ) = - \sum_i \text{ln} \, L_i \left(M \right )
+  \end{equation}
+  
+  The two functions $M_{\text{null}}$ and $M_{alt}$ are sometimes referred to as hypotheses.
+  For the unbinned statistical comparison used in this analysis, the likelihood $L$ of each function $M$ is computed via Equation \ref{eqn:unbinned_likelihood}.
+  
+  % from https://arxiv.org/pdf/1606.00393.pdf, equation 1
+  \begin{equation}\label{eqn:unbinned_likelihood}
+    - \text{ln} \, L_i \left ( M \right ) = e_i \left ( M \right ) - \sum_k \text{ln} \, P_i \left ( p'_k, E'_k, t'_k \, | \, M \right )
+  \end{equation}
+  
+  Where $i$ is the $i^{\text{th}}$ observation, also referred to as a chunk in Section \ref{fitsconversion}.
+  $k$ is the $k^{\text{th}}$ event in the observation, $p'_k$ is the event point-of-origin, $E'_k$ is the event energy, and $t'_k$ is the event arrival time.
+  The function $P$ is the poissonian probability of getting an event with properties $p'$, $E'$, and $t'$, given the hypothesis $M$, shown in Equation \ref{eqn:probability_summation}.
+  
+  \begin{equation}\label{eqn:probability_summation}
+  P \left ( p, E, t | M \right ) = \sum_j P_i \left ( p, E, t | M_j \right )
+  \end{equation}
+
+  {\color{red} need to fix equation \ref{eqn:probability_summation}, uses two sets of p,E,t: detector and sky coordinate systems!}
+  Where $M_j$ is the $j^{\text{th}}$ model within the hypothesis $M$.
+  Each hypothesis contains one camera background model (Section \ref{background_production}) per chunk (Section \ref{fitsconversion}), plus any astrophysical models.
+  $P_i \left( p, E, t | M_j \right )$ is the probability of getting an event from a single model $M_j$, depicted in Equation \ref{eqn:single_probability}.
+  
+  % from https://arxiv.org/pdf/1606.00393.pdf, equation 8
+  \begin{equation}\label{eqn:single_probability}
+    P_i \left ( p, E, t | M \right ) = \int_{p,E,t} R_i \left( p,E,t|p,E,t \right ) \times M_j^S \left( p, E, t \right ) dp dE dt
+  \end{equation}
+  {\color{red} need to fix equation \ref{eqn:single_probability}, uses two sets of p,E,t: detector and sky coordinate systems!}
+
+  Equation \ref{eqn:single_probability} is formed by convolving the predicted number of counts from the model with the detector dispersion function $R$.
+  
+  In Equation \ref{eqn:unbinned_likelihood}, $e_i \left ( M \right )$ is the predicted number of events from hypothesis $M$, detailed in Equation \ref{eqn:model_integration}.
+
+  % from https://arxiv.org/pdf/1606.00393.pdf, equation 2
+  \begin{equation}\label{eqn:model_integration}
+    e_i \left(M \right ) = \int_{GTI} \int_{Ebounds} \int_{ROI} P_i \, \left( p', E', t' \, | \, M \right ) dp' \, dE' \, dt'
+  \end{equation}
+  
+  This is calculated via integrating over each observation's live time window (the Good Time Interval or $GTI$), the reconstructed energy range ($Ebounds$), and the spatial Region Of Interest ($ROI$).
+  
+  
+  
+  
   The likelihood ratio test useful for comparing two hypotheses.
   They are referred to as the null and alternative hypotheses.
   Each hypothesis consists of a collection of models, where each model predicts the number of events at each point in the energy/space/time parameter space.
   Once each hypothesis is constructed, the likelihood for each can be computed.
   
   {\color{red}likelihood equation??}
+  
   
   The ratio of the two likelihoods then follows a gaussian (with certain assumptions), meaning the sigificance of the alternative hypothesis over the null can be calculated.
   As part of this likelihood ratio test, the signal and background models must be constructed.
@@ -381,4 +439,8 @@
     \label{fig:ulim}
   \end{figure}
   
-  
+\section{Systematic Errors}  
+
+Stuff?
+
+
