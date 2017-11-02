@@ -1,5 +1,5 @@
 \cleartooddpage[\thispagestyle{empty}]
-\chapter{Analysis}
+\chapter{Analysis}\label{chapter:analysis}
 
 \section{Veritas Data}\label{veritasdata}
   The analysis in this thesis relies on three sets of VERITAS data.
@@ -61,7 +61,6 @@
   In addition, specific IRFs were calculated for additional data dimensions, including the frequency of night sky background photons in the camera, the telescope elevation, the event energy, and each event's distance from the camera center.
 
 \section{Likelihood Ratio Test}
-
   The likelihood ratio test is a method of comparing whether a function is a statistically preferable fit to some data, compared to another function.
   This ratio test performed by calculating the test statistic (TS) for a set of data and two functions of that data ($M_{\text{null}}$ and $M_{\text{alt}}$), shown in Equation \ref{eqn:test_statistic}.
   
@@ -154,7 +153,7 @@
 
   {\color{red}(plot of Crab, Sgr A*, Sgr A* Off sources elevations??)}
 
-  \subsection{Test Crab Analysis}
+  \subsection{Test Crab Analysis}\label{subsec:crab_analysis}
 
     In order to test that the converted data, irfs, and ctools likelihood engine all work properly, a test analysis on the Crab nebula was performed.
     As the Crab nebula is the brightest gamma ray emitter in the sky, it has been observed extensively by VERITAS and other gamma ray telescopes.
@@ -190,7 +189,7 @@
     As the crab (alternative) hypothesis has 110 free parameters, and the no-crab (null) hypothesis has 108 free parameters, the Test Statistic has $ 110 - 108 = 2 $ degrees of freedom.
     This is roughly equivalent to a {\color{red}significance of ??}.
     
-    In the standard VERITAS Event Display analysis, the crab is found to have a point source significance of \SI{21.3}{$\sigma$}.
+    In the standard VERITAS Eventdisplay analysis, the crab is found to have a point source significance of \SI{21.3}{$\sigma$}.
     
     
     \begin{figure}[h]
@@ -200,7 +199,7 @@
       {
         Crab spectra from various analyses and observatories.
         Red is the spectra from the CTOOLS analysis described in this chapter.
-        Blue is the standard VERITAS Event Display spectrum using the same set of observations.
+        Blue is the standard VERITAS Eventdisplay spectrum using the same set of observations.
         {\color{red}(Update hess/magic lines to have higher maximum energy points??)}
       }
       \label{fig:crab_test_spectra}
