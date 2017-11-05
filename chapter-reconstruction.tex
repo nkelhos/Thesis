@@ -145,19 +145,21 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
   In addition to the event list, the instrument response functions (IRFs) must also be imported into Gammalib and CTOOLS.
   These IRFs consist of the effective areas, the point spread functions, the background models, and the energy dispersion.
   The effective area quantifies the total gamma-ray collection area of the observatory, needed for spectral measurements, and is described in subsection \ref{subsec:effarea}.
-  The point spread function (sometimes referred to as psf) quantifies the distribution of true positions for a reconstructed position, needed for identifying point sources and extended spatial structures, and is described in subsection \ref{subsec:psf}.
+  The point spread function (sometimes referred to as psf) quantifies the distribution of true positions for a reconstructed position, which is needed for identifying point sources and extended spatial structures.
+  This is described further in Subsection \ref{subsec:psf}.
   The background models measure the relative number of observed events in different parts of the camera, and their construction is described in subsection \ref{background_production}.
   The energy dispersion quantifies the distribution of true energies for a given reconstructed energy, and is discussed in subsection \ref{subsec:edisp}.
 
-  Each of these IRFs vary in a parameter space with several dimensions, including event Energy, reconstructed distance from the camera center, telescope elevation and azimuth, night sky background noise, and the atmospheric density.
+  Each of these IRFs vary in a parameter space with several dimensions, including event Energy, reconstructed distance from the camera center, telescope elevation and azimuth, and night sky background noise.
   In CTOOLS' default configuration, all IRFs are stored in a single directory of files, and each event list contains a filepath reference to indicate which volume of the parameter space it uses.
   Once each volume is loaded, individual events can then interpolate their specific effective area, psf, and energy dispersion (the backgrounds are utilized differently, as discussed in subsection \ref{background_production}).
 
   However, the galactic center is at an elevation of \ang{30}, much lower than most VERITAS observation targets.
   At this elevation, with its field of view of \ang{3.5}, the airmass column density ($g/cm^{2}$) is 20\% higher at the bottom of the camera than at the top.
-  Add to this that during a single 30 minute observation, the elevation of the Galactic Center can change by several degrees, means the airmass in view of the camera may change rapidly, meaning the IRFs may become time dependent.
+  Add to this that during a single 30 minute observation, the elevation of the Galactic Center can change by several degrees.
+  This means the airmass in view of the camera may change rapidly, resulting in IRFs that are time dependent.
 
-  To allow for the inclusion of this time dependence in the analysis, an alternate way of storing the IRFs was chosen, diagrammed in Figure \ref{fig:fits_scheme}.
+  To allow for the inclusion of this time dependence in the analysis, an alternate method of storing the IRFs was chosen, diagrammed in Figure \ref{fig:fits_scheme}.
   First, one observation (typically 20-30 minutes long) is broken up into \nicetilde8 minute chunks.
   Each chunk is then converted to an event list, and saved to a FITS file.
   In addition, the needed effective areas, psfs, and background models are also written to the same FITS file.
@@ -456,7 +458,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     \label{fig:bkgvsel_sgra}
   \end{figure}
 
-  \subsubsection{Diffuse Simulations}\label{subsubsec:diffusesims}
+  \subsection{Diffuse Simulations}\label{subsubsec:diffusesims}
     To rule out any software causes, diffuse simulations were performed at similar energies and elevations.
     These consisted of 50,000 gamma rays at each of 1.4, 1.6, 2, and \SI{5}{\TeV}.
     The telescopes were fixed to an azimuth/elevation of (\ang{193},\ang{28}).
