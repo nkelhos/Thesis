@@ -81,40 +81,54 @@
   
   % from https://arxiv.org/pdf/1606.00393.pdf, equation 1
   \begin{equation}\label{eqn:unbinned_likelihood}
-    - \text{ln} \, L_i \left ( M \right ) = e_i \left ( M \right ) - \sum_k \text{ln} \, P_i \left ( p'_k, E'_k, t'_k \, | \, M \right )
+    - \text{ln} \, L_i \left ( M \right ) = e_i \left ( M \right ) - \sum_k \text{ln} \, P_i \left ( \boldsymbol{p}'_k, E'_k, t'_k \, | \, M \right )
   \end{equation}
   
   Where $i$ is the $i^{\text{th}}$ observation, also referred to as a chunk in Section \ref{fitsconversion}.
-  $k$ is the $k^{\text{th}}$ event in the observation, $p'_k$ is the event point-of-origin, $E'_k$ is the event energy, and $t'_k$ is the event arrival time.
-  The function $P$ is the poissonian probability of getting an event with properties $p'$, $E'$, and $t'$, given the hypothesis $M$, shown in Equation \ref{eqn:probability_summation}.
+  $k$ is the $k^{\text{th}}$ event in the observation, $\boldsymbol{p}'_k$ is the reconstructed event point-of-origin, $E'_k$ is the reconstructed event energy, and $t'_k$ is the event arrival time.
+  The primed $\boldsymbol{p}'$, $E'$, and $t'$ denote the reconstructed (detector) quantities, which are separate from the true (sky) $\boldsymbol{p}$, $E$, and $t$ quantities.
+  The function $P$ is the poissonian probability of getting an event with properties $\boldsymbol{p}'$, $E'$, and $t'$, given the hypothesis $M$, shown in Equation \ref{eqn:probability_summation}.
   
+  % from https://arxiv.org/pdf/1606.00393.pdf, equation 7
   \begin{equation}\label{eqn:probability_summation}
-  P \left ( p, E, t | M \right ) = \sum_j P_i \left ( p, E, t | M_j \right )
+  P_i \left ( \boldsymbol{p}', E', t' | M \right ) = \sum_j P_i \left ( \boldsymbol{p}', E', t' | M_j \right )
   \end{equation}
 
-  {\color{red} need to fix equation \ref{eqn:probability_summation}, uses two sets of p,E,t: detector and sky coordinate systems!}
-  Where $M_j$ is the $j^{\text{th}}$ model within the hypothesis $M$.
+  Where $M_j$ is the $j^{\text{th}}$ model within hypothesis $M$.
   Each hypothesis contains one camera background model (Section \ref{background_production}) per chunk (Section \ref{fitsconversion}), plus any astrophysical models.
-  $P_i \left( p, E, t | M_j \right )$ is the probability of getting an event from a single model $M_j$, depicted in Equation \ref{eqn:single_probability}.
+  $P_i \left( \boldsymbol{p}', E', t' | M_j \right )$ is the probability of getting an event from a single astrophysical model $M_j$, depicted in Equation \ref{eqn:single_probability}.
   
   % from https://arxiv.org/pdf/1606.00393.pdf, equation 8
   \begin{equation}\label{eqn:single_probability}
-    P_i \left ( p, E, t | M \right ) = \int_{p,E,t} R_i \left( p,E,t|p,E,t \right ) \times M_j^S \left( p, E, t \right ) dp dE dt
+    P_i \left ( \boldsymbol{p}', E', t' | M \right ) = \int_{ \boldsymbol{p},E,t} R_i \left( \boldsymbol{p}',E',t'| \boldsymbol{p},E,t \right ) \times M_j^S \left( \boldsymbol{p}, E, t \right ) d\boldsymbol{p} \, dE \, dt
   \end{equation}
-  {\color{red} need to fix equation \ref{eqn:single_probability}, uses two sets of p,E,t: detector and sky coordinate systems!}
+  
+  While for a detector model (like the background models), $P_i$ is calculated via:
+  
+  % from https://arxiv.org/pdf/1606.00393.pdf, equation 9
+  \begin{equation}
+    P_i \left ( \boldsymbol{p}', E', t' | M_j \right ) = M^D_{j,i} \left ( \boldsymbol{p}', E', t' \right )
+  \end{equation}
+  
+  Where:
 
+  % from https://arxiv.org/pdf/1606.00393.pdf, equation 10
+  \begin{equation}
+    M^S \left ( \boldsymbol{p}, E, t \right ) = M_S \left ( \boldsymbol{p}|E,t \right ) \times M_E \left ( E | t \right ) \times M_T \left ( t \right )
+  \end{equation}
+  
+  {\color{red} Explain better what these three equations are??  what is $R_i$??}
+  
   Equation \ref{eqn:single_probability} is formed by convolving the predicted number of counts from the model with the detector dispersion function $R$.
   
   In Equation \ref{eqn:unbinned_likelihood}, $e_i \left ( M \right )$ is the predicted number of events from hypothesis $M$, detailed in Equation \ref{eqn:model_integration}.
 
   % from https://arxiv.org/pdf/1606.00393.pdf, equation 2
   \begin{equation}\label{eqn:model_integration}
-    e_i \left(M \right ) = \int_{GTI} \int_{Ebounds} \int_{ROI} P_i \, \left( p', E', t' \, | \, M \right ) dp' \, dE' \, dt'
+    e_i \left(M \right ) = \int_{GTI} \int_{Ebounds} \int_{ROI} P_i \, \left( \boldsymbol{p}', E', t' \, | \, M \right ) d\boldsymbol{p}' \, dE' \, dt'
   \end{equation}
   
   This is calculated via integrating over each observation's live time window (the Good Time Interval or $GTI$), the reconstructed energy range ($Ebounds$), and the spatial Region Of Interest ($ROI$).
-  
-  
   
   
   The likelihood ratio test useful for comparing two hypotheses.
