@@ -287,11 +287,7 @@
 \section{Dark Matter Likelihood Analysis}
   \subsection{Non-Dark-Matter Models}
   For this analysis, a point source model was added at the position of Sgr A*.
-  This is because other analyses {\color{red}(cite??)} have indicated that the bright gamma-ray source at Sgr A* is not best modeled by a dark matter halo.
-  % DM is unlikely to be the cause of the point source in the GC
-  % Updated cosmic-ray and radio constraints on light dark matter: Implications for the GeV gamma-ray excess at the Galactic Center
-  % Bringmann 2014
-  % https://journals.aps.org/prd/pdf/10.1103/PhysRevD.90.123001
+  This is because other analyses (\cite{gc_pnt_is_not_dm1}, \cite{gc_pnt_is_not_dm2}, and \cite{gc_pnt_is_not_dm3} {\color{red}read these to double-check they lean away from a dm source??}) have indicated that the bright gamma-ray source at Sgr A* is not consistant with a dark matter halo.
   Instead, a point source with a broken power law spectrum (Equation \ref{eqn:brokenplaw}) is added to the list of models, with the magnitude of its flux left free by the likelihood engine.
   
   \begin{equation}\label{eqn:brokenplaw}
@@ -307,7 +303,7 @@
   \subsection{Dark Matter Models}
   Dark Matter halos are modeled by a spherically-symmetric mass-per-volume density profile.
   In this analysis, an Einasto density profile (discussed in section \ref{dm_spatial}) is used as the spatial component of the dark matter halo model.
-  For the spectral component, each dark matter mass tested has its own spectrum produced with clumpy, which is {\color{red}based on ??} (see section \ref{dm_spectral}).
+  For the spectral component, each dark matter mass tested has its own spectrum produced with CLUMPY (see section \ref{dm_spectral}).
 
   \subsection{Likelihood Results}
   
@@ -393,7 +389,7 @@
   % see http://cta.irap.omp.eu/ctools/users/reference_manual/csresmap.html
   \begin{equation}
     \label{eqn:resmap_signif}
-    significance = sign(D-M) \sqrt{ 2 \left ( D * ln \left ( \frac{D}{M} \right ) + M - D \right ) }
+    \text{Significance} = sign(D-M) \sqrt{ 2 \left ( D * ln \left ( \frac{D}{M} \right ) + M - D \right ) }
   \end{equation}
   
   where D is the number of observed counts, and M is the number of modelled counts.
@@ -409,7 +405,6 @@
       Significance of each skymap bin's residual counts.
       See equation \ref{eqn:resmap_signif} for details.
       The dark upper-left and lighter lower-right areas are due to the the radiall-symmetric background, when a non-radially symmetric one would have been more ideal.
-      {\color{red}Veritas->VERITAS}
     }
     \label{fig:gc_resmap}
   \end{figure}
