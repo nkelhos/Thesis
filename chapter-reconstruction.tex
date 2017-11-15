@@ -118,12 +118,16 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       }
       \label{fig:disptraining}
     \end{figure}
+    
+    {\color{red} profile plot of the true/BDT disp vs true disp, with 68\% containment errorbars, and talk about it in the text! is there a bias? at what disps? }
 
     The small improvement in the position reconstruction due to the \disp{} method can be seen in Figure \ref{fig:disp_event_offset}.
     With the Geometric (red) events, more are concentrated further from the point source, while with the Disp method, somewhat more are concentrated at the source itself.
     
     {\color{red}Again, you need to be more specific. First, it is important to note this is data, it’s always good to “brag” that your reconstruction method is tested on data.  Second, you need to discuss the actual resolution obtained with both methods and state the improvement achieved with DISP. I think the RMS might be a better test of this and anyway the mean would be too affected by the tail. In fact I think the quantiles are better?? -Orel}
     
+    {\color{red} Mention that from here on in the analysis, the disp method is used! ??}
+  
     {\color{red}I don't understand why the improvements are so small.  Different ot what I see. -Gernot?? }
 
     \begin{figure}[ht]
@@ -132,7 +136,10 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \caption[DISP Offset Improvement]{
         The number of events per solid angle at different angular offsets from the Crab and the Galactic Center, with both Geometric and Disp reconstruction methods.
         Data elevations are the same as in Figure \ref{fig:datapointingelevations}, while training events were simulated at only 28\degree{}.
+        {\color{red} (Normalize the Y axis to the total integral??)}
         {\color{red} (Why does the crab see so little benefit??  why does the mean disp move left in the crab, but right in Sgr A*?) }
+        {\color{red}(Why is the containment radius worse for disp??)}
+        {\color{red}(Redo disp training with 5x events! ??)}
       }
       \label{fig:disp_event_offset}
     \end{figure}
@@ -167,7 +174,8 @@ This database includes the width and length of the shower, how far away its core
   Add to this that during a single 30 minute observation, the elevation of the Galactic Center can change by several degrees.
   This means the airmass in view of the camera may change rapidly, resulting in IRFs that are time dependent.
 
-  To allow for the inclusion of this time dependence in the analysis, an alternate method of storing the IRFs was chosen, diagrammed in Figure \ref{fig:fits_scheme}.
+  To allow for the inclusion of this time dependence in the analysis, an alternate method of storing the IRFs was chosen, diagrammed in Figure \ref{fig:fits_scheme} {\color{red} (this physics justification is good, but all the other software discussion should be removed)}.
+  
   First, one observation (typically 20-30 minutes long) is broken up into \nicetilde8 minute chunks.
   Each chunk is then converted to an event list, and saved to a FITS file.
   In addition, the needed effective areas, psfs, and background models are also written to the same FITS file.
@@ -192,7 +200,7 @@ This database includes the width and length of the shower, how far away its core
     % plot of effective area vs energy
     Effective area is the measure of how large an observatory's collection area is, determining how many gamma rays can be detected per unit time, solid angle, and energy.
 
-    For each point in the parameter space, the effective areas are calculated with many {\color{red}(how many?? -Gernot)} Monte Carlo gamma ray simulations.
+    For each point in the parameter space, the effective areas are calculated with many {\color{red}(how many?? -Gernot (probably # corsika showers * number of core rescatters * # camera repositions))} Monte Carlo gamma ray simulations.
     This is done in the shower plane, {\color{red} the plane perpendicular to the line drawn between an observing source, and the center (shower plane depends only on the pointing direction, not on what source is observed -Gernot??)}of the observatory.
     The effective area is then calculated via:
     $A=\pi R^2 \frac{N_{\text{survived}}}{N_{\text{simulated}}}$
@@ -217,8 +225,9 @@ This database includes the width and length of the shower, how far away its core
       \centering
       \includegraphics[width=0.85\textwidth]{images/effarea_plots/effarea_events.eps}
       \caption[Effective Areas Used]{
-      Effective areas used by events in each analysis.
-      {\color{red}I don't get what we learn from these graphs?? -Gernot}
+      Illustration of the effective areas used by all events in each analysis.
+      From these plots, it is easy to check for events with anomalously high (>\SI{400000}{m${}^2$}) or low (\nicetilde\SI{0}{m${}^2$}) effective areas.
+      {\color{red}Crab Nebula??}
       }
       \label{fig:effarea_usage}
     \end{figure}
@@ -237,9 +246,7 @@ This database includes the width and length of the shower, how far away its core
     A large psf on all events, for instance, will artificially expand the observed dark matter halo.
 
     For VERITAS, the psf is estimated by simulating many gamma rays, then measuring the distribution of true positions for each reconstructed position.
-    With VERITAS and Eventdisplay, a gaussian function was chosen to fit the psf distribution.
-    For CTOOLS however, the distribution of events are instead fitted with a King function \cite{king1962} (see eqn \ref{eqn:king}), as the Fermi LAT team has found gamma ray psfs tend to have longer tails than a gaussian \cite{fermipsf}, which the King function better handles {\color{red}Why does Fermi matter for VERITAS?? -Gernot}.
-    {\color{red} Can you write this without the specifics of software constraints? If King function describes gamma-ray PSF better, it is a good enough reason to use it. You actually do not even have to mention what is usually done in VERITAS. (??) -Orel}
+    The distribution of event positions are fitted with a King function \cite{king1962} (see eqn \ref{eqn:king}), as the H.E.S.S. collaboration has noted that the King function better models the longer PSF tails at lower elevations (Section 5.2.2 in \cite{Mayer2015}).
     The radially-normalized King probability density function is defined as
 
     \begin{equation} \label{eqn:king}
@@ -259,9 +266,9 @@ This database includes the width and length of the shower, how far away its core
       \includegraphics[width=0.9\textwidth]{images/psf_king_plots/psf_parameter_space.eps}
       \caption[PSF Parameter Space]{
         The 68\% containment radius for the Energy/Offset parameter space for Sgr A* run 78128. 
-        The green points show a subset of the event positions from that run in the parameter space.
+        The green points are from data, showing a subset of the event locations from run 78128 in the parameter space.
+        The color axis is the containment radius, calculated from simulations.
         While events from all energies are shown, only events from \SI{4}{\TeV} - \SI{70}{\TeV} are used (see Section \ref{subsec:crab_analysis}).
-        {\color{red}If I understand correctly, the PSF shown is calculated from simulation, but the points are from data? Can you please clarify in the caption?? -Orel}
         {\color{red}Use a more visible point color, that green is too dark??}
       }
       \label{fig:psf_paramspace}
@@ -281,9 +288,12 @@ This database includes the width and length of the shower, how far away its core
       \label{fig:gc_psf_hist}
     \end{figure}
   \subsection{Background Models}\label{background_production}
-    A background model is a 3 dimensional function in camera X (in angle, parallel to azimuth), camera Y (in angle, parallel to elevation), and energy {\color{red}Any chance you write something like camera x-y coordinate system where x is […] and y is […]? Took me a second to understand what you meant (partly because x and y were capital.?? -Orel}.
-    The function calculates the number of observed events in the camera, per unit solid angle, unit time, and unit energy.
-    This is used to {\color{red}quantify how many counts are expected when observing a gamma-ray-dark sky position (Don’t you use data from gamma-ray-dark sky position to build the model? I don’t really understand this whole sentence.)}, which estimates how many background events are being detected at different energies and in different parts of the camera.
+    A background model is a 3 dimensional function in camera X (in angle, parallel to azimuth), camera Y (in angle, parallel to elevation), and energy.
+    {\color{red}(Each background model is constructed from one of two templates, and the templates are built from dark run observations??)}
+    {\color{red}Any chance you write something like camera x-y coordinate system where x is [...] and y is [...]? Took me a second to understand what you meant (partly because x and y were capital.?? -Orel}.
+    {\color{red}(use lowercase x and y for these camera coordinates! ??)}
+    These models calculate the number of expected events in the camera, per unit solid angle, unit time, and unit energy.
+    This is used to {\color{red}quantify how many counts are expected in different parts of the camera when observing any target.
     Understanding the background shape of the camera is crucial for properly studying extended sources, like dark matter halos, which may extend several degrees from the galactic center.
     Improperly estimating background models can result in fake structures appearing around an astrophysical target.
     Background models with more than three dimensions are also possible, but require many more simulations, and are beyond the scope of this thesis.
@@ -310,6 +320,7 @@ This database includes the width and length of the shower, how far away its core
 
     Then, the events are divided into high and low energies, and the events' reconstructed camera positions are binned radially about the camera center, with each bin divided by its bin area, producing two spatial functions.
     These high- and low-energy spatial functions are shown in Figure \ref{fig:background_radial}.
+    {\color{red}(tweak hyperref plugin to make links a different color??)}
     
     \begin{figure}[ht]
       \centering
@@ -341,27 +352,13 @@ This database includes the width and length of the shower, how far away its core
     Each background template is used in the likelihood analysis as a model multiplied by two free parameters, a normalization factor, and a the event energy exponentiated by the spectral index.
     This lets the likelihood fit scale each run's background model up or down to best fit the events, so the background's absolute value is less important than the relative values in different parts of the camera or at different energies.
   \subsection{Energy Dispersion}\label{subsec:edisp}
-    As events are reconstructed imperfectly, it is important to understand what the distribution of true energies are for a given reconstructed energy.{\color{red}Again, not sure, but perhaps the other way around?? -Orel}
+    As events are reconstructed imperfectly, it is important to understand what the distribution of true energies are for a given reconstructed energy.{\color{red}(Again, not sure, but perhaps the other way around?? -Orel)}{\color{red}(just remove all mentions of $f_{reco}$, its not necessary ??)}
     This \textit{dispersion in energy} is quantified by an energy migration matrix $E_{i,j}$, where $i$ denotes the $i^{\text{th}}$ reconstructed energy bin, and $j$ denotes the $j^{\text{th}}$ true energy bin.
-    For true energy $j$, the distribution of reconstructed energies $f_{\text{reco}}$ is,
-
-    \begin{equation}
-      \label{eqn:edispreco}
-      f_{\text{reco}}(j)=\frac{E_{i,j}}{ \sum_{i}E_{i,j} }
-    \end{equation}
-
-    {\color{red}(Would these give you a distribution as you write or the average value for each bin i or j as 5.4 and 5.5 suggest?? -orel).}
-    for reconstructed energy $i$, the distribution of true energies $f_{\text{true}}$ is,
-
-    \begin{equation}
-      \label{eqn:edisptrue}
-      f_{\text{true}}(i)=\frac{E_{i,j}}{ \sum_{j}E_{i,j} }
-    \end{equation}
-
-    By unfolding {\color{red}(This is not unfolding. In unfolding, you use the migration matrix to correct a  different distribution for the effects you describe later.)} these distributions from the reconstructed energies, two significant effects are accounted for.
+    {\color{red}(Proofread the following sentences!??)}
+    The energy migration matrix can be used to account for two significant effects.
     The first is that the reconstruction method introduces biases in the event energy, meaning on average, an event at a given true energy is reconstructed at a higher or lower energy.
     The second effect that is accounted for is the dispersion in the reconstructed energies.
-    Multiple {\color{red}simulations (Change to discussing real data (photons with the same energy will be measured with a distribution about that energy, etc.)?? -Orel)} of the same energy event will result in a distribution of reconstructed energies.
+    Multiple {\color{red}simulations (Change to discussing real data (photons with the same energy will be measured with a distribution about that energy, etc.  Otherwise it sounds like this randomization happens only in sims.)?? -Orel)} of the same energy event will result in a distribution of reconstructed energies.
     This has the effect of smearing out events in each energy bin of a spectra.
     In astrophysical spectra, which often follow a power law, lower energy bins tend to have more events than the next highest energy bin, so smearing out the lower-energy bin contributes more to the higher-energy bin than the higher-energy bin contributes to the lower-energy bin.
     This has the effect that, when not accounted for, energy dispersion will harden observed astrophysical source spectra.
@@ -388,13 +385,13 @@ This database includes the width and length of the shower, how far away its core
 
 \section{Camera Studies}
   The objective of this thesis is to put upper limits on the existance of a gamma-ray source that is both extended and faint.
-  {\color{red}(That is not the objective of the analysis though. The objective is to search for dark matter, not to admit defeat from the get go and aim at setting an upper limit.?? -Orel}
+  {\color{red}(That is not the objective of the analysis though. The objective is to search for dark matter, not to admit defeat from the get go and aim at setting an upper limit.?? -Orel) (This sounds like you've already admitted defeat before the analysis started, your object should be to find dark matter, win a nobel prize!??)}
   In order to better understand the effects that may impact the VERITAS camera behavior in the reconstruction method, several studies were performed.
   {\color{red} You should connect between these two sentences, “because it is extended and faint, the background has to be determined with high precisions, etc.” ?? -Orel}
 
   \subsection{Background Structure at the Low Energy Threshold}
-    During the production of the initial background models, some new effects were noted.
-    {\color{red}(Were these effects noted because of the binning you describe or did you bin the data in order to study these effects? You should clarify. ?? -Orel)}
+    To produce background models, events were binned in energy, elevation, camera x, and camera y.
+    As a result of this detailed binning, some new effects were noted.
     First, a series of gamma-like events were selected from observations with no known gamma-ray sources.
     These events were then divided into equal-statistics energy bins.
     For each bin, all the contained events were then binned in camera X and Y.
@@ -419,7 +416,7 @@ This database includes the width and length of the shower, how far away its core
       \label{fig:back_highelev}
     \end{figure}
 
-    In Figure \ref{fig:back_lowelev29} and Figure \ref{fig:back_lowelev26}, the same plots are constructed for a set of low-elevation (\nicetilde{}\ang{29} and \nicetilde{}\ang{26} respectivly) observations, using Galactic Center Off observations {\color{red}(Did you explain what this means?? -Orel)}.
+    In Figure \ref{fig:back_lowelev29} and Figure \ref{fig:back_lowelev26}, the same plots are constructed for a set of low-elevation (\nicetilde{}\ang{29} and \nicetilde{}\ang{26} respectivly) observations, using Galactic Center Off observations {\color{red}(Did you explain what this means?? -Orel) (should be switched to 'dark runs' or something}.
     It can be seen that in different energy bins, the background possesses different shapes.
 
     \begin{figure}[ht]
@@ -446,7 +443,7 @@ This database includes the width and length of the shower, how far away its core
   It can be seen in the middle plot that this energy range is where more and more events are lost as energy decreases.
   When events are plotted in this limited energy range, it can be seen that there is a faint deficit along the bottom of the camera.
   Due to the time-dependent rotation {\color{red}(Time dependent rotation of what?? -Orel)}, this deficit occurs in the bottom of the camera, where the atmosphere column density ($g/cm^2$) is \nicetilde20\% higher than at the top of the camera.
-  This \nicetilde20\% higher airmass causes air showers to start further away from the telescopes, resulting in fewer events in the lower half of the camera have Cherenkov photons actually reach the camera.
+  This \nicetilde20\% higher airmass causes air showers to start further away from the telescopes {\color{red}(also mention increased cherenkov photon absorption??)}, resulting in fewer events in the lower half of the camera have Cherenkov photons actually reach the camera.
 
   When a similar series of plots are made for the galactic center in Figure \ref{fig:bkgvsel_sgra}, the effect is much stronger.
   In the top plot, events are radially symmetric about the source (there are differences due to the four wobble positions, but these are faint and not visible without quantification).
@@ -455,7 +452,7 @@ This database includes the width and length of the shower, how far away its core
   It should be noted that there is a time-dependent rotation applied to go from the Camera X/Y (Earth Azimuth/Elevation) system to the Galactic (l,b) coordinates, which smears out the shape of the deficit, making it harder to notice in sky coordinates.
   
   This effect is important to this analysis because it implies that, at the lowest energies, the background rate is not radially symmetric.
-  Radial backgrounds (sometimes referred to as acceptances) are typically used in VERITAS as they require less data to construct, and no other Camera X/Y or energy dependence had been demonstrated until now.
+  Radial backgrounds (sometimes referred to as acceptances) are typically used in VERITAS as they require less data to construct {\color{red}(maybe even remove this 'less data' feature)}, and no other Camera X/Y or energy dependence had been demonstrated until now.
   {\color{red}Please reverse the order of these sentences, the lack of dependence is more important than the fact they require less data.}
   As the analysis in this thesis only has a few hours of background observations (see table \ref{tab:observation_times}), only radially symmetric backgrounds templates/models could be constructed, which then required limiting the final analysis to $\geq\SI{4}{\TeV}$.
   
@@ -502,6 +499,7 @@ This database includes the width and length of the shower, how far away its core
       \includegraphics[width=\textwidth]{images/backgrounds_diffuse_vs_data/backgrounds_sims/backgrounds_sims.eps}
       \caption[Diffuse Simulated Backgrounds]{
         Diffuse simulated gamma-like events in the camera coordinate system at a \ang{28} elevation, at 4 different initial energies.
+        {\color{red}What does the True camera position look like for these events??}
       }
       \label{fig:back_simdiffuse}
     \end{figure}
@@ -510,6 +508,7 @@ This database includes the width and length of the shower, how far away its core
     {\color{red}(But what is the effect? I remember Gernot mentioning something about an edge effect? You should explain it here. --Orel??)}
     {\color{red}(The top-of-camera vs bottom-of-camera differences are due to the atmosphere, but I'm not sure what causes the deficit in the middle at the lower energies... ??)}
     {\color{red}(I am not sure what is the reason for the deficit in the middle. Are simulations always with a wobble? Maybe the showers are very small and always at some distance from the centre of the camera?? -Orel)}
+    {\color{red}(Consider playing with the distribution of disps and the radial areas??)}
 
     This striking effect can be seen in Galactic Center data between certain energy ranges.
     As the plots are in galactic (l,b) coordinates, and there is a time rotation due to the Earth spinning on its axis, and observations are made at four wobble positions, the events clearly favor one half of the camera.
@@ -517,6 +516,7 @@ This database includes the width and length of the shower, how far away its core
     These structures, and their strong dependency on both the energy and elevation of the telescopes may be a large factor in why the low-energy threshold regime of gamma-ray telescopes is poorly understood.
     Incorporating this effect into the instrument response functions would require modifying Eventdisplay and CTOOLS, as well as creating another batch of diffuse simulations, with elevation increments of less than \ang{5}, all of which are computationally expensive.
     {\color{red}It is good to explain that this is a global issue and even suggest how it can be fixed generally for VERITAS, but do not mention the software packages or computationally expensive. Instead, write something like “background templates are needed for the different bins […]” and that it is beyond the scope of this analysis (or that it was not performed due to time constraints). ?? -Orel}
+    {\color{red}(Since there isn't enough background runs to make properly elevation and energy dependent background models (see significance skymap in chapter 6), This should be phrased as "More data is needed to properly populate the increased number of bins." ??)}
 
   \subsection{Effect of Stars}
     As understanding the camera's background is important for extended source studies, i.e. dark matter halos, studies were performed examining the spatial effects of stars in the camera.
@@ -544,8 +544,9 @@ This database includes the width and length of the shower, how far away its core
     Events that are still present in both event lists can then be tested to see how far their reconstructed position moved in the camera.
 
     In Figure \ref{fig:dpix_rel_camera}, the relative event rate in the camera is plotted when pixel 115 is disabled in all four telescopes.
-    This relative event rate is calculated by taking, {\color{red}for each bin (Bin of what? I guess what you do is reconstruct the position of the shower on the camera and divide those positions into bins? 
-This description could be a little clearer. ?? -Orel)}, the number of reconstructed gamma-like events, divided by the pixel-enabled number of reconstructed events.
+    This relative event rate is calculated by taking, {\color{red}for each bin in camera coordinates,  (Bin of what? I guess what you do is reconstruct the position of the shower on the camera and divide those positions into bins? 
+This description could be a little clearer. ?? -Orel)}, the number of pixel-disabled reconstructed gamma-like events, divided by the pixel-enabled number of reconstructed events.
+    {\color{red}(clean this previous sentence up, it can be much simpler! ??)}
     It can be seen that there is a loss of events near the disabled pixel (the black circle), with a rate closer to 100\% the further away one goes from the disabled pixel.
 
     \begin{figure}[ht]
@@ -592,6 +593,7 @@ I am sure that if you do this calculation you can estimate that the effect is mu
       \caption[Radial Relative Event Rate]{
         Same relative event rate as in Figure \ref{fig:dpix_rel_camera}, but averaged into radial bins, centered on the disabled pixel 115.
         {\color{red}How did you calculate the error bars?? Can they really go above 1?? -Gernot}
+        {\color{red}(Calculate these relative event rates based on only events that appeared both with and without the pixel, so that the max rate (and its errorbars) never go above 1. ??)}
       }
       \label{fig:dpix_rel_radial}
     \end{figure}
@@ -652,6 +654,9 @@ I am sure that if you do this calculation you can estimate that the effect is mu
     As the acceptance for a particular event and the event's effective area are strongly related, the loss of acceptance also means a loss of effective area in the area of this pixel.
     This can have effects on the energy reconstruction.
     Additionally, for CTA and its projected \ang{7}-diameter field of view, more stars will be in the field of view, implying there will be more camera pixels affected by their light.
+    
+    {\color{red}There aren't any bright stars or dead pixels in the galactic center data? Tie this back to why this dead pixel study is stil relevant.}
+    
     {\color{red}Again, if I understood correctly that this is negligible, then please preface these two paragraphs by saying that while for VERITAS this effect was found to be negligible, for future experiments like CTA it could be important and then suggest all the ways you think the study can be expanded. Maybe even make it a sub-section in itself.}
 
     Future studies could also compare how events move in energy when a pixel is disabled.
