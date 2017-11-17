@@ -11,8 +11,8 @@
     \includegraphics[width=0.95\textwidth]{images/skypointings/plot.eps}
     \caption[VERITAS Galactic Center Pointings]{
       Fields of view for Galactic Center observations.
-      Each circle marks the observing area of one observation.
-      Green are data observations, while blue are observations used to construct the camera-background templates.
+      Each circle marks the detection area of one observation.
+      Green circles are data observations, while blue circles are dark observations used to construct the camera-background templates.
       To quantify the detector efficiency, observations are taken at \SI{0.5}{\degree} or \SI{0.7}{\degree} offsets from each observing target, in four different directions (wobbles) along Right Ascension/Declination axes.
     }
     \label{fig:gcfieldsofview}
@@ -328,6 +328,7 @@
     \caption[Galactic Center Counts Energy Histogram]{
       Histogram of all event positions used in this analysis.
       No adjustment for effective area, observation time, or background rate is done here.
+      {\color{red}(Fix x axis range and tick labels (rerun halo.py!) ??)}
     }
     \label{fig:gc_counts_enhist}
   \end{figure}

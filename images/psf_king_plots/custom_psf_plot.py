@@ -41,7 +41,7 @@ PSF = numpy.reshape( PSF, (thnbins, ennbins) )
 # construct our plot
 fig = plt.figure(figsize=(10,5))
 ax  = fig.add_subplot( 1,1,1, adjustable='box', aspect=1.0 )
-im  = plt.pcolormesh( EN, TH, PSF, vmax=0.5, cmap=plt.get_cmap('afmhot'))
+im  = plt.pcolormesh( EN, TH, PSF, vmax=0.5, cmap=plt.get_cmap('jet')) #rainbow'))
 ax.set_aspect(0.6)
 cb  = fig.colorbar( im )
 
@@ -74,7 +74,7 @@ if show_events :
     th  = center.dist( detdir ) * gammalib.rad2deg
     OF += [ th ]
     
-  plt.scatter( EN, OF, color='green', s=1 )
+  plt.scatter( EN, OF, color='black', s=1 )
   
 ifname = os.path.splitext(fname)[0]+'.png'
 plt.savefig( ifname , bbox_inches='tight', dpi=150 )
