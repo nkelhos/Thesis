@@ -15,11 +15,10 @@ These discussions revolve around three main topics: astrophysical mechanisms for
   Inverse compton (\cite{compton_effect}) scattering can occur, where electrons and ambient photons collide, transferring energy to the photon.
   After multiple repetitions of this, a small fraction of the original photon population can achieve TeV-scale energies.
   Additionally, electrons spiralling through magnetic fields can produce synchrotron photons with X-Ray energies, meaning fewer inverse compton scatterings are needed to reach TeV energies \cite{self_compton}.
-  Other mechanisms can increase the number of TeV photons produced by a source, including stronger magnetic fields, breaking/reconnecting magnetic fields, as well as nearby ambient clouds of electrons.
 
   In hadronic processes, protons are first accelerated by fermi acceleraton, emitted as part of a jet (\cite{hadronic1},\cite{hadronic2}), or other mechanisms.
   Then, upon striking an ambient atom, the proton will decay into $\pi^{+}$, $\pi^{-}$, and $\pi^{0}$.
-  The $\pi^{0}$ then quickly (<1sec) decays into a $\gamma\gamma$ pair, with \nicetilde $\frac{1}{10}$th the original proton's energy.
+  The $\pi^{0}$ then quickly (<\SI{1}{s}) decays into a $\gamma\gamma$ pair, with \nicetilde $\frac{1}{10}^{\text{th}}$ the original proton's energy.
   Much of the diffuse gamma ray component of the galactic disk is due to extra-galactic high-energy protons colliding with the atoms of the dusty galactic plane \cite{GalacticDiffuseGammaRays}.
 
 
@@ -35,13 +34,13 @@ These discussions revolve around three main topics: astrophysical mechanisms for
       \label{fig:3_searches}
     \end{figure}
 
-    In Collider detection, $ss \rightarrow \chi\chi$, standar model particles ($ss$) are accelerated and collide in a detector, and the resulting particle fragments are measured by a slew of measuring equipment.
+    In Collider detection, $ss \rightarrow \chi\chi$, standard model particles ($ss$) are accelerated and collide in a detector, and the resulting particle fragments are measured by a slew of measuring equipment.
     A significant milestone was achieved when this technique was used to detect the Higgs boson (\cite{Higgs_ATLAS},\cite{Higgs_CMS}).
     Since the properties of the input particles are well-known, and output particles are well measured, the missing remainder may potentially be a dark matter particle.
 
     In Direct detection, $\chi s \rightarrow \chi s$, sensitive particle detectors are built deep underground, where a dark matter particle impacting against an electron or nuclei creates a detectable recoil.
     Depending on the detector, this recoil can cause a detectable charge, a heat spike, an acoustic vibration, or a visual reaction.
-    Often experiments make use of two of these signal, as well as the time difference between each of observable.
+    Often experiments make use of several of these signals, as well as the time difference between each of observable.
 
     In Indirect detection, $\chi\chi \rightarrow ss$, astrophysical observations are analyzed for excess standard model particles, unexplained by other astrophysics.
     In this thesis an excess of gamma rays is sought, as the center of our galaxy is believed to host a dark matter halo.
@@ -55,32 +54,31 @@ These discussions revolve around three main topics: astrophysical mechanisms for
 
 
 \section{Atmospheric Shower}
-  {\color{red}(this entire section needs more citations!??)}
 
-  When a gamma ray, proton, or other particle strikes an atom of Earth's atmosphere, it can set off a cascade of energetic particles called an air shower.
+  When a gamma ray, proton, or other particle strikes an atom of Earth's atmosphere, it can set off a cascade of energetic particles called an air shower (\cite{Bethe1934}, \cite{Klein1999}).
   When the primary particle is a gamma ray, an electron, or a positron, it creates an electromagnetic shower.
   When the primary is a proton or other baryon, it creates a hadronic shower.
-  During either cascade of particles, any charged particles travelling at $v_{particle} > c_{atmosphere}$ will create Cherenkov photons, UV- and Visible-spectrum photons that are then imaged and recorded by the VERITAS observatory.
+  During either cascade of particles, any charged particles travelling at $v_{particle} > c_{atmosphere}$ will create Cherenkov photons \cite{cherenkov}.
+  The UV- and Visible-spectrum Cherenkov photons are then imaged and recorded by the VERITAS observatory.
 
   \begin{figure}[ht]
     \centering
     \includegraphics[width=0.85\textwidth]{images/cascade_diagram/emcascade.eps}
     \caption[Electromagnetic Cascade]{
       Diagram of an electromagnetic cascade as it decends downwards through the atmosphere.
-      {\color{red}Add bremstrahlung??}
     }
     \label{fig:emcascade}
   \end{figure}
 
-  Electromagnetic air showers are started by a high energy (\nicetilde TeV) electron or gamma-ray, and produce a cascade of electrons, positrons, and photons, where initially each successive generation of particles tends to have more particles and less energy per particle than the last.
+  Electromagnetic air showers are started by a high energy (\nicetilde TeV) electron or gamma-ray, and produce a cascade of electrons, positrons, and photons, where initially each successive generation of particles tends to have more particles but less energy per particle than the last.
   The primary gamma ray will interact with an atmospheric atom, producing a $e^{-}e^{+}$ pair, each with roughly half the primary gamma ray's energy.
-  The $e^{-}$ and $e^{+}$ will emit some photons through bremstrahlung radiation, until they only have a few MeV of kinetic energy, after which other energy loss mechanisms (compton, etc) dominate.
-  The photons created during the shower go on to produce more $e^{-}e^{+}$ pairs, though as each newly created particle has less energy than its parent particle, eventually the photons in the shower don't have enough energy to produce additional $e^{-}e^{+}$ pairs, and the shower dies off.
+  The $e^{-}$ and $e^{+}$ will emit some photons through bremstrahlung radiation, until they have \nicetilde \SI{80}{MeV} of kinetic energy, after which energy losses due to ionization dominate, preventing new shower particles from being created \cite{pdg_2014}.
+  The photons created during the shower go on to produce more $e^{-}e^{+}$ pairs, though as each newly created particle has less energy than its parent particle, eventually the photons in the shower don't have enough energy to produce additional $e^{-}e^{+}$ pairs.
 
   As most (\nicetilde 99\%) of detected air showers are due to protons and not gamma rays, understanding the differences between hadronic showers and electromagnetic showers becomes useful in removing unwanted proton air showers and preserving gamma-ray air showers within the reconstruction software, sometimes referred to as gamma-hadron separation.
   Hadronic showers start with a primary \nicetilde TeV proton that interacts with an atmospheric atom.
-  This proton then converts into a $\pi^{+}\pi^{-}\pi^{0}$, each with roughly \nicetilde $\frac{1}{3}$ of the initial proton's energy.
-  The $\pi^{+}$ and $\pi^{-}$ can travel far from the main axis of the primary particle, then produce $\mu\nu$ pairs.
+  This proton then converts into $\pi^{+}$, $\pi^{-}$, and $\pi^{0}$, each with roughly \nicetilde $\frac{1}{3}$ of the initial proton's energy.
+  The $\pi^{+}$ and $\pi^{-}$ can travel far from the main axis of the primary particle, then produce $\mu^{+}\nu_{\mu}$ and $\mu^{-}\bar{\nu}_{\mu}$ pairs, respectivly.
   The $\pi^{0}$ quickly decays into $\gamma\gamma$, which then each start their own electromagnetic shower.
   The $\pi^{+}$ and $\pi^{-}$ can have a large transverse momentum (relative to the primary shower axis), and also have longer decay time ($\pi^{\pm}=\;$\SI{3e-8}{s} vs $\pi^{0}=\;$\SI{9e-17}{s} \cite{pdg_2014} ).
   Both of these effects contribute to sub-showers being created further away from the primary particle axis, which tends to cause hadronic showers (and their resulting Cherenkov images) to be wider than a purely electromagnetic shower of the same length. 
@@ -104,18 +102,14 @@ These discussions revolve around three main topics: astrophysical mechanisms for
   % black hole
   Through kinematic observations of nearby stars, the galactic center has a supermassive black hole, with a mass of \SI{4e6}{\Msol} \cite{sgra_massdist}.
   The Galactic Center also is a source of \TeV{} gamma rays, though the mechanism that produces them is still under debate.
-  % http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:1511.01159
-  One possibility is that the supermassive black hole emits particles, which convert into TeV gamma rays, while the second possibility suggests a nearby Pulsar Wind Nebula may be providing the gamma-ray-parent particles.
-  While the Galactic Center emits gamma rays, this emission is point-like to ground-based gamma ray telescopes. {\color{red}(rewrite this!??)}
-  This analysis instead focuses on the gamma ray flux outside this point-like inner angular region. {\color{red}(citation!??)}
+  One possibility is that the supermassive black hole accelerates protons to PeV energies, which convert into TeV gamma rays \cite{gc_pevatron}.
+  The second possibility suggests a nearby Pulsar Wind Nebula may be providing the gamma-ray-parent particles \cite{gc_pulsars}.
+  While the Galactic Center emits gamma rays, this emission is point-like to ground-based gamma ray telescopes. {\color{red}(rewrite this!?? citation??)}
+  This analysis instead focuses on the gamma ray flux outside this point-like inner angular region.
 
   The disk of gas present in the galactic plane acts as an interaction medium for passing cosmic rays, both from nearby galactic accelerators and from extragalactic sources.
-  These high-energy protons collide with the dust, shattering into $\pi^{\pm,0}$.
-  The $\pi^0$ then decays into two gamma rays {\color{red}??}, providing the diffuse emission.
-  The spectrum of this emission is {\color{red}??}.
+  {\color{red}(discuss diffuse emission??)}
 
-  % TeV gamma ray emission
-  % HESS
-  HESS sees excess around galactic center.
 
+  {\color{red}(somewhere in thesis cite something from each defense committee member!)}
 
