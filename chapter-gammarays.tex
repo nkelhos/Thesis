@@ -1,15 +1,14 @@
 \cleartooddpage[\thispagestyle{empty}]
 \chapter{Gamma Rays and Dark Matter}
 
-As this thesis searches for dark matter from the presence of gamma rays, a discussion on gamma rays and their properties is necessary.
-These discussions revolve around three main topics: astrophysical mechanisms for creating gamma rays, gamma-ray-induced air showers in the Earth's atmosphere, and the different features of the Galactic Center relevant to gamma rays and this thesis.
-
+As this analysis searches for dark matter from the presence of gamma rays, a discussion on gamma rays and their properties is necessary.
+This discussion revolves around three main topics: astrophysical mechanisms for creating gamma rays, the production of gamma rays from the dark matter halo around the Galactic Center, and gamma-ray-induced air showers in the Earth's atmosphere.
 
 \section{Methods of Creation}
 
-  There are three astrophysical mechanisms that produce gamma rays at TeV energies.
+  There are three astrophysical mechanisms for gamma ray production at TeV energies.
   The leptonic mechanism is when gamma rays' last energetic interaction is with electrons, while the hadronic mechanism is when gamma rays are created via proton interactions.
-  The third mechanism, one explored in this thesis, is when two WIMP dark matter particles annihilate either directly or indirectly into gamma rays.
+  The third mechanism, searched for in this analysis, is when two WIMP dark matter particles annihilate either directly or indirectly into gamma rays.
 
   In leptonic production, stars and galaxies have their own magnetic fields, and also emit electrons.
   Inverse compton (\cite{compton_effect}) scattering can occur, where electrons and ambient photons collide, transferring energy to the photon.
@@ -20,7 +19,6 @@ These discussions revolve around three main topics: astrophysical mechanisms for
   Then, upon striking an ambient atom, the proton will decay into $\pi^{+}$, $\pi^{-}$, and $\pi^{0}$.
   The $\pi^{0}$ then quickly (<\SI{1}{s}) decays into a $\gamma\gamma$ pair, with \nicetilde $\frac{1}{10}^{\text{th}}$ the original proton's energy.
   Much of the diffuse gamma ray component of the galactic disk is due to extra-galactic high-energy protons colliding with the atoms of the dusty galactic plane \cite{GalacticDiffuseGammaRays}.
-
 
   \subsection{Dark Matter Interactions}
     As discussed in various extensions of SUSY, dark matter may be detectable by three general detection schemes, illustrated in Figure \ref{fig:3_searches}.
@@ -43,7 +41,7 @@ These discussions revolve around three main topics: astrophysical mechanisms for
     Often experiments make use of several of these signals, as well as the time difference between each of observable.
 
     In Indirect detection, $\chi\chi \rightarrow ss$, astrophysical observations are analyzed for excess standard model particles, unexplained by other astrophysics.
-    In this thesis an excess of gamma rays is sought, as the center of our galaxy is believed to host a dark matter halo.
+    In this analysis an excess of gamma rays is sought, as the center of our galaxy is believed to host a dark matter halo.
     This spherical halo would allow for many $\chi\chi$ annihilations, producing gamma rays via: 
 
     $$\chi\bar{\chi} \rightarrow s\bar{s} \rightarrow \gamma\gamma$$
@@ -53,47 +51,8 @@ These discussions revolve around three main topics: astrophysical mechanisms for
     This is described further in Section \ref{dm_spectral}.
 
 
-\section{Atmospheric Shower}
-
-  When a gamma ray, proton, or other particle strikes an atom of Earth's atmosphere, it can set off a cascade of energetic particles called an air shower (\cite{Bethe1934}, \cite{Klein1999}).
-  When the primary particle is a gamma ray, an electron, or a positron, it creates an electromagnetic shower.
-  When the primary is a proton or other baryon, it creates a hadronic shower.
-  During either cascade of particles, any charged particles travelling at $v_{particle} > c_{atmosphere}$ will create Cherenkov photons \cite{cherenkov}.
-  The UV- and Visible-spectrum Cherenkov photons are then imaged and recorded by the VERITAS observatory.
-
-  \begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.85\textwidth]{images/cascade_diagram/emcascade.eps}
-    \caption[Electromagnetic Cascade]{
-      Diagram of an electromagnetic cascade as it decends downwards through the atmosphere.
-    }
-    \label{fig:emcascade}
-  \end{figure}
-
-  Electromagnetic air showers are started by a high energy (\nicetilde TeV) electron or gamma-ray, and produce a cascade of electrons, positrons, and photons, where initially each successive generation of particles tends to have more particles but less energy per particle than the last.
-  The primary gamma ray will interact with an atmospheric atom, producing a $e^{-}e^{+}$ pair, each with roughly half the primary gamma ray's energy.
-  The $e^{-}$ and $e^{+}$ will emit some photons through bremstrahlung radiation, until they have \nicetilde \SI{80}{MeV} of kinetic energy, after which energy losses due to ionization dominate, preventing new shower particles from being created \cite{pdg_2014}.
-  The photons created during the shower go on to produce more $e^{-}e^{+}$ pairs, though as each newly created particle has less energy than its parent particle, eventually the photons in the shower don't have enough energy to produce additional $e^{-}e^{+}$ pairs.
-
-  As most (\nicetilde 99\%) of detected air showers are due to protons and not gamma rays, understanding the differences between hadronic showers and electromagnetic showers becomes useful in removing unwanted proton air showers and preserving gamma-ray air showers within the reconstruction software, sometimes referred to as gamma-hadron separation.
-  Hadronic showers start with a primary \nicetilde TeV proton that interacts with an atmospheric atom.
-  This proton then converts into $\pi^{+}$, $\pi^{-}$, and $\pi^{0}$, each with roughly \nicetilde $\frac{1}{3}$ of the initial proton's energy.
-  The $\pi^{+}$ and $\pi^{-}$ can travel far from the main axis of the primary particle, then produce $\mu^{+}\nu_{\mu}$ and $\mu^{-}\bar{\nu}_{\mu}$ pairs, respectivly.
-  The $\pi^{0}$ quickly decays into $\gamma\gamma$, which then each start their own electromagnetic shower.
-  The $\pi^{+}$ and $\pi^{-}$ can have a large transverse momentum (relative to the primary shower axis), and also have longer decay time ($\pi^{\pm}=\;$\SI{3e-8}{s} vs $\pi^{0}=\;$\SI{9e-17}{s} \cite{pdg_2014} ).
-  Both of these effects contribute to sub-showers being created further away from the primary particle axis, which tends to cause hadronic showers (and their resulting Cherenkov images) to be wider than a purely electromagnetic shower of the same length. 
-
-  \begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.95\textwidth]{images/showers_gamma_proton}
-    \caption[Gamma Ray and Proton Showers]{
-      A gamma ray shower alongside a proton shower.\cite{Bernlohr2008149}
-    }
-    \label{fig:gamma_vs_proton_airshower}
-  \end{figure}
-
-
 \section{Galactic Center}
+
   The galactic center is a complex region of space, with many astrophysical sources of gamma rays.
   A disk of dust lies along the galactic plane, acting as an interaction medium for diffuse proton cosmic rays.
   Nearby supernova remnants also produce gamma-rays as their expanding shell interacts with ambient dust.
@@ -194,7 +153,7 @@ These discussions revolve around three main topics: astrophysical mechanisms for
     In order to calculate the different produced gamma-ray spectra for each annihilation channel, the software package CLUMPY \cite{CLUMPYcode} is used.
     The spectral models that CLUMPY uses are based on the tables in PPPC 4 \cite{pppc4_dm_spectra}.
 
-    For this thesis, only the simplest annihilation channels are considered, where WIMP annihilations only use one channel, instead of percent mixes of multiple channels.
+    For this analysis, only the simplest annihilation channels are considered, where WIMP annihilations only use one channel, instead of percent mixes of multiple channels.
 
     \begin{figure}[ht]
       \centering
@@ -208,3 +167,42 @@ These discussions revolve around three main topics: astrophysical mechanisms for
 
     
     
+\section{Atmospheric Shower}
+
+  When a gamma ray, proton, or other particle strikes an atom of Earth's atmosphere, it can set off a cascade of energetic particles called an air shower (\cite{Bethe1934}, \cite{Klein1999}).
+  When the primary particle is a gamma ray, an electron, or a positron, it creates an electromagnetic shower.
+  When the primary is a proton or other baryon, it creates a hadronic shower.
+  During either cascade of particles, any charged particles travelling at $v_{particle} > c_{atmosphere}$ will create Cherenkov photons \cite{cherenkov}.
+  The UV- and Visible-spectrum Cherenkov photons are then imaged and recorded by the VERITAS observatory.
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.85\textwidth]{images/cascade_diagram/emcascade.eps}
+    \caption[Electromagnetic Cascade]{
+      Diagram of an electromagnetic cascade as it decends downwards through the atmosphere.
+    }
+    \label{fig:emcascade}
+  \end{figure}
+
+  Electromagnetic air showers are started by a high energy (\nicetilde TeV) electron or gamma-ray, and produce a cascade of electrons, positrons, and photons, where initially each successive generation of particles tends to have more particles but less energy per particle than the last.
+  The primary gamma ray will interact with an atmospheric atom, producing a $e^{-}e^{+}$ pair, each with roughly half the primary gamma ray's energy.
+  The $e^{-}$ and $e^{+}$ will emit some photons through bremstrahlung radiation, until they have \nicetilde \SI{80}{MeV} of kinetic energy, after which energy losses due to ionization dominate, preventing new shower particles from being created \cite{pdg_2014}.
+  The photons created during the shower go on to produce more $e^{-}e^{+}$ pairs, though as each newly created particle has less energy than its parent particle, eventually the photons in the shower don't have enough energy to produce additional $e^{-}e^{+}$ pairs.
+
+  As most (\nicetilde 99\%) of detected air showers are due to protons and not gamma rays, understanding the differences between hadronic showers and electromagnetic showers becomes useful in removing unwanted proton air showers and preserving gamma-ray air showers within the reconstruction software, sometimes referred to as gamma-hadron separation.
+  Hadronic showers start with a primary \nicetilde TeV proton that interacts with an atmospheric atom.
+  This proton then converts into $\pi^{+}$, $\pi^{-}$, and $\pi^{0}$, each with roughly \nicetilde $\frac{1}{3}$ of the initial proton's energy.
+  The $\pi^{+}$ and $\pi^{-}$ can travel far from the main axis of the primary particle, then produce $\mu^{+}\nu_{\mu}$ and $\mu^{-}\bar{\nu}_{\mu}$ pairs, respectivly.
+  The $\pi^{0}$ quickly decays into $\gamma\gamma$, which then each start their own electromagnetic shower.
+  The $\pi^{+}$ and $\pi^{-}$ can have a large transverse momentum (relative to the primary shower axis), and also have longer decay time ($\pi^{\pm}=\;$\SI{3e-8}{s} vs $\pi^{0}=\;$\SI{9e-17}{s} \cite{pdg_2014} ).
+  Both of these effects contribute to sub-showers being created further away from the primary particle axis, which tends to cause hadronic showers (and their resulting Cherenkov images) to be wider than a purely electromagnetic shower of the same length. 
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/showers_gamma_proton}
+    \caption[Gamma Ray and Proton Showers]{
+      A gamma ray shower alongside a proton shower.\cite{Bernlohr2008149}
+    }
+    \label{fig:gamma_vs_proton_airshower}
+  \end{figure}
+
