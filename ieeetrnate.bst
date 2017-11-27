@@ -598,6 +598,8 @@ FUNCTION {article}
   if$
   new.block
   note output
+  new.block
+  format.url
   fin.entry
 }
 
@@ -627,6 +629,8 @@ FUNCTION {book}
   format.date "year" output.check
   new.block
   note output
+  new.block
+  format.url
   fin.entry
 }
 
@@ -682,6 +686,8 @@ FUNCTION {inbook}
   format.date "year" output.check
   new.block
   note output
+  new.block
+  format.url
   fin.entry
 }
 
@@ -705,6 +711,8 @@ FUNCTION {incollection}
   if$
   new.block
   note output
+  new.block
+  format.url
   fin.entry
 }
 
@@ -729,6 +737,8 @@ FUNCTION {inproceedings}
   if$
   new.block
   note output
+  new.block
+  format.url
   fin.entry
 }
 
@@ -778,6 +788,8 @@ FUNCTION {mastersthesis}
   format.date "year" output.check
   new.block
   note output
+  new.block
+  format.url
   fin.entry
 }
 
@@ -799,6 +811,8 @@ FUNCTION {misc}
   format.date output
   new.block
   note output
+  new.block
+  format.url
   fin.entry
   empty.misc.check
 }
@@ -814,6 +828,8 @@ FUNCTION {phdthesis}
   format.date "year" output.check
   new.block
   note output
+  new.block
+  format.url
   fin.entry
 }
 
