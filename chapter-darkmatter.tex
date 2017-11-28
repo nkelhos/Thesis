@@ -32,25 +32,35 @@
     %    140kpc away  
     %    140kpc * Tan(15') = 0.6kpc = 1.8*10^19m ~ 10^19m
     At scales of $\nicetilde 10^{19}$m, groups of thousands stars, called satellite galaxies or dwarf galaxies, lie at the edge of full size galaxies.
-    Telescopes can measure the individual spectra of these stars, allowing for their velocity to be calculated.
+    An example dwarf galaxy is in Figure \ref{fig:sculptor}, the Sculptor Dwarf Galaxy, imaged in the optical frequencies by the MPG/ESO Telescope.
+    Measuring the mass of these dwarf galaxies is done in two ways.
+    In the first, telescopes observed the individual spectra of these stars, allowing for their line-of-sight velocity to be calculated.
     Often, these observations focus on the Red Giant stars within these dwarf galaxies\cite{dwarf_gal_red_giant}.
     By looking at the distribution of these velocities (the width of this distribution is called the velocity dispersion), the total mass of the dwarf galaxy can be inferred\cite{dwarf_gal_vel_dispersion}, \cite{dwarf_gal_vel_dispersion2}.
-
     What makes this possible is that the velocity dispersion of a group of stars is proportional to the total mass of the graviational well.
     This can be seen by applying the virial theorem and maxwell-boltzmann statistics.
-
-    Dwarf galaxies have mass-to-light ratios of around 5-10 $\frac{M_\odot}{L_\odot}$ {\color{red}(cite??)}, but can be as high as \nicetilde 1000 \cite{Simon2007_dwarfgalaxykeck}.
+    As this measurement relies on doppler-shifted spectral lines, and not their absolute brightness, this mass estimate is fairly resistant to changes in absolute brightness, either due to atmospheric changes, or to the amount of light-absorbing dust in the line-of-sight.
     
+    The second way to measure galaxy masses is by measuring the total brightness of a galaxy, and divide by the luminosity of the sun $L_\odot$.
+    This then indicates the number of solar masses $M_\odot$ contained in the galaxy, a measure of its baryonic (i.e. 'bright', not dark) mass.
+    By comparing the total mass in the first way to the 'bright' mass in the second way, the mass-to-light ratio can be calculated, indicating the amount of dark matter present in the galaxy \cite{faber_ml}.
+    
+    Dwarf galaxies have mass-to-light ratios of around 5-100 $\frac{M_\odot}{L_\odot}$, but can be as high as \nicetilde 1000 \cite{Simon2007_dwarfgalaxykeck}.
     In addition, it has been shown that dwarf galaxies near the Perseus cluster show no evidence of tidal disruption, while their baryonic mass alone would not prevent such disruption \cite{Penny2009}.
-    
-    \begin{figure}
-      \includegraphics[width=0.95\textwidth]{images/sculptor/sculptor.eps}
+
+    \begin{figure}[ht]
+      \includegraphics[width=0.9\textwidth]{images/sculptor/sculptor.eps}
       \caption[Sculptor Dwarf Galaxy]{
-        The sculptor dwarf galaxy \cite{sculptor_image}, imaged with the MPG/ESO telescope \cite{sculptor_paper}.
-        {\color{red}mention this dwarf galaxy's mass/light ratio! ??}
+        The Sculptor Dwarf Galaxy \cite{sculptor_image}, imaged with the MPG/ESO telescope \cite{sculptor_paper}.
+        This dwarf galaxy has a $\frac{M_\odot}{L_\odot}$ ratio of 15.3 \cite{sculptor_ml}.
       }
       \label{fig:sculptor}
     \end{figure}
+    
+    {\color{red}table of m/l for dwarves??}
+    
+    \FloatBarrier
+    
 
   \subsection{$10^{20}\:\text{m}$ : Galaxy Scale}
     %
@@ -59,18 +69,37 @@
     At scales of $\nicetilde 10^{20}$m, the effects of Dark Matter on galaxies are observable.
     In one method, the total amount of light produced by a quadrant of a galaxy is measured with telescopes.
     Known mass-to-light ratios can then be used to calculate the total amount of mass within that quadrant.
-    For example, in a survey of 25 galaxies in \cite{galaxy_mass_light_ratio}, most possesed a mass-to-light ratio of 2 to 6 {\color{red}(??)}.
-
+    For example, in a survey of 25 galaxies in \cite{galaxy_mass_light_ratio}, most possesed a mass-to-light ratio of 1 to 6.
 
     In a second method, a galaxy's emission spectrum is observed at many positions around its disk (center, outer edges, etc).
-    By comparing the orientation of the disk with the doppler-shifted position of well-known spectral lines, one can calculate the average velocity that each chunk is travelling at around the center of the galaxy.
+    By comparing the orientation of the disk with the doppler-shifted position of well-known spectral lines, one can calculate the average velocity that each chunk is travelling at around the center of the galaxy, forming a rotation curve (\cite{rotation_curve_review}, \cite{spiral_galaxy_rot_curve}, \cite{milkyway_dm_evidence}).
     Newton's law of gravity can then be used to calculate the mass contained within a sphere of that same radius.
     This calculation ends up with a larger amount of mass.
+    
+    {\color{red}rotation curve plot??}
 
-    {\color{red}Mass to light ratios??}
-
-    Our own Milky Way galaxy is measured to have a mass to light ratio of 10 $\frac{M_{\odot}}{L_{\odot}}$.
-
+    From \cite{faber_ml}, a random sample of galaxies are shown alongside their mass-to-light ratios in Table \ref{tab:mlratios}.
+    
+    \begin{table}[]
+      \centering
+      \caption{$\frac{M_\odot}{L_\odot}$ ratios of various galactic-scale objects, taken from \cite{faber_ml}.}
+      \label{tab:mlratios}
+      \begin{tabular}{l r}
+        Object          & M/L${}_{B}$ \\
+        \hline
+        M31 (Andromeda) &  7.6  \\
+        M33             &  4.5  \\
+        M51             &  3.3  \\
+        M81             &  8.5  \\
+        NGC 801         &  2.4  \\
+        NGC 2403        &  5.5  \\
+        NGC 2841        & 10.6  \\
+        NGC 4324        &  5.5  \\
+        NGC 6822        &  0.58 \\
+      \end{tabular}
+    \end{table}
+      
+    Our own Milky Way galaxy is measured to have a mass to light ratio of 10 $\frac{M_{\odot}}{L_{\odot}}$ {\color{red}(cite??)}.
     Galaxy rotation curves can also be measured through weak gravitational lensing \cite{weak_lensing_2001}.
 
   \subsection{$10^{23}\:\text{m}$ : Galaxy Cluster Scale}
