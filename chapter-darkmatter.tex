@@ -67,18 +67,24 @@
     % galaxy rotation curve wiki page, M33 has curve measurements out to 50,000ly
     %   50,000ly = 4.7*10^20m ~ 10^20m
     At scales of $\nicetilde 10^{20}$m, the effects of Dark Matter on galaxies are observable.
-    In one method, the total amount of light produced by a quadrant of a galaxy is measured with telescopes.
+    With one technique, the total amount of light produced by a quadrant of a galaxy is measured with telescopes.
     Known mass-to-light ratios can then be used to calculate the total amount of mass within that quadrant.
-    For example, in a survey of 25 galaxies in \cite{galaxy_mass_light_ratio}, most possesed a mass-to-light ratio of 1 to 6.
+    For example, in a survey of 25 galaxies in \cite{galaxy_mass_light_ratio}, most possesed a mass-to-light ratio of 1 to 10.
 
     In a second method, a galaxy's emission spectrum is observed at many positions around its disk (center, outer edges, etc).
     By comparing the orientation of the disk with the doppler-shifted position of well-known spectral lines, one can calculate the average velocity that each chunk is travelling at around the center of the galaxy, forming a rotation curve (\cite{rotation_curve_review}, \cite{spiral_galaxy_rot_curve}, \cite{milkyway_dm_evidence}).
     Newton's law of gravity can then be used to calculate the mass contained within a sphere of that same radius.
     This calculation ends up with a larger amount of mass.
     
-    {\color{red}rotation curve plot??}
-
-    From \cite{faber_ml}, a random sample of galaxies are shown alongside their mass-to-light ratios in Table \ref{tab:mlratios}.
+    \begin{figure}[ht]
+      \includegraphics[width=0.9\textwidth]{images/m33rotcurve/m33rotcurve.eps}
+      \caption[M33 Rotation Curve]{
+        The rotation curve from M33, taken from \cite{m33rotcurve}.
+        The solid line is the best fitting model to the observed velocity measurments.
+        The short dashed line is the stellar disk, the gas contribution is the long dashed line, and the dashed-dotted line is the dark matter contribution.
+      }
+      \label{fig:m33rotcurve}
+    \end{figure}
     
     \begin{table}[]
       \centering
@@ -99,6 +105,7 @@
       \end{tabular}
     \end{table}
       
+    From \cite{faber_ml}, a random sample of galaxies are shown alongside their mass-to-light ratios in Table \ref{tab:mlratios}.
     Our own Milky Way galaxy is measured to have a mass to light ratio of 10 $\frac{M_{\odot}}{L_{\odot}}$ {\color{red}(cite??)}.
     Galaxy rotation curves can also be measured through weak gravitational lensing \cite{weak_lensing_2001}.
 
@@ -126,12 +133,11 @@
     \end{figure}
 
     Followup studies have also been done of other galaxy clusters.
-    {\color{red}Mass to light ratios??}
 
+    {\color{red}(Mass to light ratios?? there is this paper \url{http://iopscience.iop.org/article/10.1086/303805/pdf}, but its the M/L field ratio, not just M/L)}
 
     In the second method, the velocity of different galaxies in a cluster can be measured.
     By comparing the velocities of different galxies in a cluster, the contained mass within the cluster can be measured.
-    {\color{red}Mass to light ratios??}
 
   \subsection{$10^{26}\:\text{m}$ : Universe Scale}
     %\subsection{Inter-Cluster Scale}
@@ -155,7 +161,7 @@
     Most theories of dark matter being locked up in cold, dead stars (MACHOs) are limited by this baryon limitation {\color{red}(cite??)}.
 
     Another measurement that depends heavily on the presence of dark matter is the rate at which galaxies form clumps.
-    In the Sloan Digital Sky Survey, the positions of 1.6 million galaxies, quasars, and stars are mapped\cite{sdss_release}.
+    In the Sloan Digital Sky Survey, the positions of 1.6 million galaxies, quasars, and stars are mapped \cite{sdss_release}.
     By simulating the distribution of similar objects as the universe ages, only with a dark matter component does the universe form clumps that match SDSS observations.
   
     A much more detailed discussion on the evidence for dark matter can be read here \cite{DMPrimer}.
