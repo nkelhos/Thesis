@@ -1,5 +1,5 @@
 \cleartooddpage[\thispagestyle{empty}]
-\chapter{Dark Matter Physics}
+\chapter{The Dark Matter Paradigm}
 
   As dark matter makes up 24\% of the universe's energy and 84\% of its mass \cite{wmap9year}, it has had a significant impact on the development of the universe, shaping its present day distribution.
   % https://arxiv.org/pdf/1212.5226.pdf
@@ -26,7 +26,7 @@
 
   {\color{red}(weak lensing??)}
   
-  \subsection{$10^{19}\:\text{m}$ : Dwarf Galaxy Scale}
+  \subsection{$10^{19}\:\text{m}$ : Dwarf Galaxy Scale}\label{dm_dwarfscale}
     % 10^19m comes from: 
     % fornax dwarf spheroidal galaxy wiki page
     %    17' x 12.6' in solid angle, call it 15'
@@ -41,19 +41,6 @@
     This can be seen by applying the virial theorem and maxwell-boltzmann statistics.
     {\color{red}(You should actually explain what the virial theorem is and how maxwell-boltzmann statistics is applied... -Orel ??)}
     As this measurement relies on doppler-shifted spectral lines, and not their absolute brightness, this mass estimate is fairly resistant to changes in absolute brightness, either due to atmospheric variations during telescope observations, or to the amount of light-absorbing dust in the line-of-sight.
-    
-    The second way to measure galaxy masses is by measuring the total brightness of a galaxy, and divide by the luminosity of the Sun $L_\odot$, around .
-    This then indicates the number of solar masses $M_\odot$ contained in the galaxy, a measure of its baryonic (i.e. 'bright', not dark) mass.
-    By comparing the total mass in the first way to the 'bright' mass in the second way, the mass-to-light ratio can be calculated, indicating the amount of dark matter present in the galaxy~\cite{faber_ml}.
-    For these calculations, $M_\odot$ is taken as {\color{red}(??)} and $L_\odot$ is taken as {\color{red}(??)}.
-    
-    Dwarf galaxies have mass-to-light ratios of around 5-100 $\frac{M_\odot}{L_\odot}$, but can be as high as \nicetilde 1000~\cite{Simon2007_dwarfgalaxykeck}.
-    {\color{red}(Add here the ratio of M/L as well -Orel ??)}
-    {\color{red}(You should explain what L is (also M if it was not explained in the introduction).  Also, please expand the explanation. Say explicitly that the mass is measured in two different ways, one directly from the luminous material, the other from the rotation, etc. -Orel ??)}
-    
-    As an additional piece of evidence for Dark Matter, dwarf galaxies near the Perseus cluster were studied.
-    It was found that, with their baryonic mass alone, these dwarf galaxies would be ripped apart by the tidal disruption of the Perseus cluster.
-    Observations of these dwarf galaxies indicate they remain intact, leading to the conclusion that the presence of Dark Matter is providing extra gravitational force \cite{Penny2009}.
 
     \begin{figure}[ht]
       \includegraphics[width=0.9\textwidth]{images/sculptor/sculptor.eps}
@@ -64,23 +51,58 @@
       \label{fig:sculptor}
     \end{figure}
     
-    {\color{red}table of m/l for dwarves??}
+    The second way to measure galaxy masses is by measuring the total brightness of a galaxy, and divide by the luminosity of the Sun $L_\odot$, around .
+    This then indicates the number of solar masses $M_\odot$ contained in the galaxy, a measure of its baryonic (i.e. 'bright', not dark) mass.
+    By comparing the total mass in the first way to the 'bright' mass in the second way, the mass-to-light ratio can be calculated, indicating the amount of dark matter present in the galaxy~\cite{faber_ml}.
+    For these calculations, $M_\odot$ is taken as {\color{red}(??)} and $L_\odot$ is taken as {\color{red}(??)}.
+    
+    Dwarf galaxies have mass-to-light ratios of around 5-100 $\frac{M_\odot}{L_\odot}$, but can be as high as \nicetilde 1000~\cite{Simon2007_dwarfgalaxykeck}.
+    A random assortment of Local Group dwarf galaxies and their $\frac{M_\odot}{L_\odot}$ is shown in Table \ref{tab:mlratios:dwarfgals}.
+    {\color{red}(You should explain what L is (also M if it was not explained in the introduction).  Also, please expand the explanation. Say explicitly that the mass is measured in two different ways, one directly from the luminous material, the other from the rotation, etc. -Orel ??)}
+    
+    \begin{table}[]
+      \centering
+      \caption{$\frac{M_\odot}{L_\odot}$ ratios of various dwarf galaxy objects, taken from Ref. \cite{localdwarfs}.}
+      \label{tab:mlratios:dwarfgals}
+      \begin{tabular}{l r}
+        Object      &  M/L \\
+        \hline
+        IC 10       &  0.1 \\
+        NGC 147     &  7.1 \\
+        NGC 185     &  2.5 \\
+        NGC 205     & 12   \\
+        LGS 3       & 21   \\
+        IC 1613     &  1.4 \\
+        Carina      & 30   \\
+        Antlia      &  7.4 \\
+        Leo I       &  3.1 \\
+        Sextans     & 34   \\
+        Ursa Minor  & 60   \\
+        Draco       & 58   \\
+        Sagittarius & 22   \\
+      \end{tabular}
+    \end{table}
+    
+    As an additional piece of evidence for Dark Matter, dwarf galaxies near the Perseus cluster were studied.
+    It was found that, with their baryonic mass alone, these dwarf galaxies would be ripped apart by the tidal disruption of the Perseus cluster.
+    Observations of these dwarf galaxies indicate they remain intact, leading to the conclusion that the presence of Dark Matter is providing extra gravitational force \cite{Penny2009}.
     
     \FloatBarrier
-    
 
   \subsection{$10^{20}\:\text{m}$ : Galaxy Scale}
     %
     % galaxy rotation curve wiki page, M33 has curve measurements out to 50,000ly
     %   50,000ly = 4.7*10^20m ~ 10^20m
     At scales of $\nicetilde 10^{20}$m, the effects of Dark Matter on galaxies are observable.
-    With one method, the total amount of light produced by a quadrant of a galaxy is measured with telescopes.
-    {\color{red}(Are you discussing a method of observing here or the actual effect? I think you should first explain what is the effect observed at the galaxy scale, I really could not understand it from this explanation. -Orel ??)}
+    Within galaxies, the amount of light observed in a sector predicts a lower amount of mass, while observing the line-of-sight velocity predicts a higher amount of mass.
+    
+    In the first prediction technique, the total amount of light produced by a quadrant of a galaxy is measured with optical telescopes.
+    Then, like in Subsection \ref{dm_dwarfscale}, the amount of light produced can be compared with the Sun as a standard mass-to-light ratio, allowing for a prediction of the amount of mass contained in that sector.
     Known mass-to-light ratios can then be used to calculate the total amount of mass within that quadrant.
-    For example, in a survey of 25 galaxies in \cite{galaxy_mass_light_ratio}, most possesed a mass-to-light ratio of 1 to 10.
+    For example, in a survey of 25 galaxies in Ref. \cite{galaxy_mass_light_ratio}, most possesed a mass-to-light ratio of 1 to 10.
 
-    In a second method, a galaxy's emission spectrum is observed at many positions around its disk (center, outer edges, etc).
-    By comparing the orientation of the disk with the doppler-shifted position of well-known spectral lines, one can calculate the average velocity that each section is travelling at around the center of the galaxy, forming a rotation curve~\cite{rotation_curve_review,spiral_galaxy_rot_curve,milkyway_dm_evidence}.
+    In the second prediction technique, a galaxy's emission spectrum is observed at many positions around its disk (center, outer edges, etc).
+    By comparing the orientation of the disk with the doppler-shifted position of well-known spectral lines, one can calculate the average velocity that each section is travelling at around the center of its galaxy, forming a rotation curve~\cite{rotation_curve_review,spiral_galaxy_rot_curve,milkyway_dm_evidence}.
     Newton's law of gravity can then be used to calculate the mass contained within a sphere of that same radius.
     This calculation ends up with a larger amount of mass than the one found simply from the total amount of light observed.
     
@@ -88,7 +110,7 @@
     It can be seen that the observed velocity curve (the datapoints) keeps increasing at larger radii.
     If the galaxy was only made of stars, then the rotation curve would follow the short dashed line.
     If the galaxy was only made of gas, then the rotation curve would instead follow the long dashed line.
-    As these two major components do not combine to form the observed rotation curve, the presence of Dark Matter can account for the difference, shown as the dashed-dotted line \cite{m33rotcurve}.
+    As these two major components do not combine to form the observed rotation curve, the presence of Dark Matter can account for the difference, shown as the dashed-dotted line~\cite{m33rotcurve}.
     
     \begin{figure}[ht]
       \includegraphics[width=0.9\textwidth]{images/m33rotcurve/m33rotcurve.eps}
