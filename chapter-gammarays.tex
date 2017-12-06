@@ -36,11 +36,12 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
     A significant milestone was achieved when this technique was used to detect the Higgs boson~\cite{Higgs_ATLAS,Higgs_CMS}.
     Since the properties of the input particles are well-known, and output particles are well measured, the missing remainder may potentially be a dark matter particle.
 
-    In Direct detection, $\chi s \rightarrow \chi s$, sensitive particle detectors are built deep underground, where a dark matter particle impacting against an electron or nuclei creates a detectable recoil.
+    With Direct detection, $\chi s \rightarrow \chi s$, sensitive particle detectors are built deep underground, where a dark matter particle impacting against an electron or nuclei creates a detectable recoil.
     Depending on the detector, this recoil can cause a detectable charge, a heat spike, an acoustic vibration, or a visual reaction.
     Often experiments make use of several of these signals, as well as the time difference between each of observable.
+    Though to date, no substantial dark matter signal has been detected with these methods~\cite{direct_dm_detection}.
 
-    In Indirect detection, $\chi\chi \rightarrow ss$, astrophysical observations are analyzed for excess standard model particles, unexplained by other astrophysics.
+    With Indirect detection, $\chi\chi \rightarrow ss$, astrophysical observations are analyzed for excess standard model particles, unexplained by other astrophysics.
     In this analysis an excess of gamma rays is sought, as the center of our galaxy is believed to host a dark matter halo.
     This spherical halo would allow for many $\chi\chi$ annihilations, producing gamma rays via: 
 
@@ -73,7 +74,7 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
 
 \section{Indirect Dark Matter Detection}
   For this analysis, it is important to understand how a terrestrial telescope like VERITAS can detect the presence of dark matter.
-  This is done through indirect detection: observation of the standard model particles that are emitted when two dark matter particles annihilate.
+  This is done through indirect detection: observation of the gamma-rays that are emitted when two dark matter particles annihilate.
   As the rate of annihilation depends on the local dark matter number/volume density, the radially-changing structure of dark matter halos also affects the analysis.
 
   \subsection{Dark Matter and Gamma Rays}
@@ -88,13 +89,8 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
   
   \subsection{Dark Matter Halo Structure}\label{dm_spatial}
     From observations, most galactic dark matter halos can be modeled by several similar density profiles {\color{red}(explain??)}.
-    The currently favored profiles are the Einasto~\cite{einastoprofile1,einastoprofile2}, the Burkert, and the NFW profiles. {\color{red}(cite these profiles??)}
-    Each profile describes the mass/volume density of dark matter at a distance r from the halo center, $\rho(r)$.
-    In this initial analysis, only the Einasto profile is used.
-
-    Most simulations show that density profiles should terminate in a sharp peak at $r=0$, but observations of dwarf galaxies instead favor a flat core within a given radius~\cite{CoreVsCusp}.
-    For simplicity in this initial analysis, no core radius is applied.
-
+    A currently favored profile is the Einasto profile~\cite{einastoprofile1,einastoprofile2}.
+    This profile describes the mass/volume density of dark matter at a distance r from the halo center, $\rho(r)$.
     The Einasto profile has the form
 
     \begin{equation} \label{eqn:einasto}
@@ -102,8 +98,13 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
     \end{equation}
     
     where $\alpha$ is taken to be 0.17, from~\cite{PieriGalaxySims}.
+
+    Other profiles exist, but for this analysis only the Einasto profile is used.
+    Most simulations show that density profiles should terminate in a sharp peak at $r=0$, but observations of dwarf galaxies instead favor a flat core within a given radius~\cite{CoreVsCusp}.
+    For simplicity in this initial analysis, no core radius is applied.
     
-    When using the distance to the galactic center of 8 kpc {\color{red}(cite??)}, the local estimated dark matter mass density of 0.4 $ \frac{ \text{GeV} }{ \text{cm}^3 } $ {\color{red}(cite??)}, and a scale radius $r_s$ of 15.4 kpc {\color{red}(cite??)}, the einasto density profile for the the galactic center halo is shown in Figure \ref{fig:gchalo_density}.
+    The distance to the galactic center is fixed at \SI{8}{kpc}~\cite{gc_distance_1,gc_distance_2,gc_distance_3}, and the local estimated dark matter mass density is fixed at \SI{0.4}{\GeV\per\cm^3}~\cite{local_dm_density}, though this varies depending on the assumed Milky Way mass profile~\cite{direct_dm_astrophysical_uncertainties}.
+    A scale radius $r_s$ of \SI{15.4}{kpc} {\color{red}(cite??)} is also used, and the Einasto profile for the the galactic center halo is shown in Figure \ref{fig:gchalo_density}.
   
     \begin{figure}[ht]
       \centering
@@ -165,6 +166,7 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
 
     These spectra, then can be combined with the J-factor equation to calculate how many gamma rays are produced by the halo.
 
+    \FloatBarrier
     
     
 \section{Atmospheric Shower}
@@ -179,7 +181,7 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
     \centering
     \includegraphics[width=0.85\textwidth]{images/cascade_diagram/emcascade.eps}
     \caption[Electromagnetic Cascade]{
-      Diagram of an electromagnetic cascade as it decends downwards through the atmosphere.
+      Diagram of an electromagnetic cascade as it decends downwards through the atmosphere, layered by interaction generation.
     }
     \label{fig:emcascade}
   \end{figure}

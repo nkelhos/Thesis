@@ -1,12 +1,21 @@
 \cleartooddpage[\thispagestyle{empty}]
 \chapter{The Dark Matter Paradigm}
 
-  As dark matter makes up 24\% of the universe's energy and 84\% of its mass \cite{wmap9year}, it has had a significant impact on the development of the universe, shaping its present day distribution.
-  % https://arxiv.org/pdf/1212.5226.pdf
-  % table 3
-  % Nine-year WMAP+BAO+H0b column
-  % Omega_b = 0.0472 and Omega_c = 0.2408
-  {\color{red}(These are older WMAP results, switch to newer Planck results (2015??))}
+  As dark matter makes up 26.5\% of the universe's energy and 81.5\% of its mass \cite{planck2015}, it has had a significant impact on the development of the universe, shaping its present day distribution.
+
+  {\color{red}(Should I show the following calculation into this paragraph to justify the above percentages??)}
+  \begin{verbatim}
+  From: https://arxiv.org/abs/1502.01589 , Table 3, column [4] :
+    omega_b h^2 = 0.02225
+    omega_c h^2 = 0.1198
+    H_0         = 67.27 km / s / Mpc
+    h           = H_0 / ( 100 km / s / Mpc ) = 0.6727
+  thus:
+    omega_b = 0.02225 / h^2 = 0.0491 =  4.9% of universe's energy is in baryonic matter
+    omega_c = 0.1198  / h^2 = 0.2647 = 26.5% of universe's energy is in dark matter
+    ( 26.5 - 4.9 ) / 26.5 = 81.5% of universe's mass is stored in dark matter
+  \end{verbatim}
+
   In this chapter, the main features of dark matter physics are discussed.
   This includes the astrophysical evidence for the existance of dark matter, an outline of the current cosmological paradigm of $\Lambda$CDM and the Standard Model, as well as arguments for why dark matter may be in the form of a new, unknown particle.
 
@@ -65,7 +74,7 @@
       \caption{$\frac{M_\odot}{L_\odot}$ ratios of various dwarf galaxy objects, taken from Ref. \cite{localdwarfs}.}
       \label{tab:mlratios:dwarfgals}
       \begin{tabular}{l r}
-        Object      &  M/L \\
+        Object      &  Mass, units of $\frac{M_\odot}{L_\odot}$ \\
         \hline
         IC 10       &  0.1 \\
         NGC 147     &  7.1 \\
@@ -85,7 +94,7 @@
     
     As an additional piece of evidence for Dark Matter, dwarf galaxies near the Perseus cluster were studied.
     It was found that, with their baryonic mass alone, these dwarf galaxies would be ripped apart by the tidal disruption of the Perseus cluster.
-    Observations of these dwarf galaxies indicate they remain intact, leading to the conclusion that the presence of Dark Matter is providing extra gravitational force \cite{Penny2009}.
+    Observations of these dwarf galaxies indicate they remain intact, leading to the conclusion that the presence of Dark Matter is providing extra gravitational force~\cite{Penny2009}.
     
     \FloatBarrier
 
@@ -127,7 +136,7 @@
       \caption{$\frac{M_\odot}{L_\odot}$ ratios of various galactic-scale objects, taken from \cite{faber_ml}.}
       \label{tab:mlratios}
       \begin{tabular}{l r}
-        Object          & M/L${}_{B}$ \\
+        Object          & Mass, units of $\frac{M_\odot}{L_\odot}$ \\
         \hline
         M31 (Andromeda) &  7.6  \\
         M33             &  4.5  \\
@@ -141,7 +150,7 @@
       \end{tabular}
     \end{table}
       
-    From \cite{faber_ml}, a random sample of galaxies are shown alongside their mass-to-light ratios in Table \ref{tab:mlratios}.
+    From Ref. \cite{faber_ml}, a random sample of galaxies are shown alongside their mass-to-light ratios in Table \ref{tab:mlratios}.
     Our own Milky Way galaxy is measured to have a mass to light ratio of 10 $\frac{M_{\odot}}{L_{\odot}}$ {\color{red}(and?? cite??)}.
     Galaxy rotation curves can also be measured through weak gravitational lensing \cite{weak_lensing_2001} {\color{red}(expand??)}.
 
@@ -181,11 +190,38 @@
     %\subsection{Inter-Cluster Scale}
     % age of universe (13.82*10^9 years * speed of light) = 1.307*10^26m
     At the largest scale of the universe, $\nicetilde 10^{26}$m, the cosmic microwave background (CMB) has been used to measure the total amount of dark matter in the universe.
-    By looking at the structure of the CMB, earlier times in the universe can be studied.
-    {\color{red}(can 'earlier times in the universe can be studied' be made a little more precise?? -Orel)}
+    By looking at the structure of the CMB, the structure of the universe and its particle populations can be studied, including how they develop and change from the big bang to the present day.
     Closer to the big bang, there was a point in time referred to as the 'freezout'.
-    Before that time, the universe was a quark-gluon plasma and other particles, and the temperature was too hot to allow baryons exist for any long period of time.
-    {\color{red}(If you mention other particles, they should probably be named. -Orel ??)}
+    Before that time, the universe was a quark-gluon plasma {\color{red}and other particles (If you mention other particles, they should probably be named. -Orel ??)}, and the temperature was too hot to allow baryons exist for any long period of time.
+
+    \begin{table}[h]
+      \centering
+      \caption{
+        Key events during the development of the universe.
+        {\color{red}Idea from \url{http://www.th.physik.uni-bonn.de/drees/non\_ac/presentation\_Narimani.pdf} , slide 10, CREDIT THIS!!}
+        {\color{red}(Source remaining values??)}
+      }
+      \label{cosmo_events}
+      \begin{tabular}{lcc}
+        Event                                  & Time                    & Temperature               \\
+        \hline
+        Inflation                              & \SI{$10^{-34}$}{s}(?)   & ??                        \\
+        Baryogenesis                           & ??                      & ??                        \\
+        EW phase transition                    & \SI{20}{ps}             & \SI{100}{\GeV}            \\
+        Dark Matter Freeze-out                 & ??                      & ??                        \\
+        QCD phase transition                   & \SI{20}{\mu.s}          & \SI{150}{\MeV}            \\
+        Neutrino decoupling                    & \SI{1}{s}               & \SI{1}{\MeV}              \\
+        $\text{e}^+ - \text{e}^-$ annihilation & \SI{6}{s}               & \SI{500}{keV}             \\
+        Big Bang nucleosynthesis               & \SI{3}{min}             & \SI{100}{keV}             \\
+        Matter-radiation density               & \SI{60}{kyr}            & \SI{0.75}{eV}             \\
+        Recombination                          & \SIrange{260}{380}{kyr} & \SIrange{0.26}{0.33}{eV}  \\
+        Photon decoupling                      & \SI{380}{kyr}           & \SIrange{0.23}{0.38}{eV}  \\
+        Reionization                           & \SIrange{100}{400}{Myr} & \SIrange{2.6 }{7   }{meV} \\
+        Dark energy-matter equality            & \SI{9}{Gyr}             & \SI{0.33}{meV}            \\
+        Present                                & \SI{13.8}{Gyr}          & \SI{0.24}{meV}            \\
+      \end{tabular}
+    \end{table}
+    
     After that freezout time, the temperature low enough that baryons stopped being created and annihilated.
     Thus, the number of baryons that were in the universe at the freezout temperature determines how many baryons are in existance today, since there aren't any significant ways to destroy universe-scale quantities of baryons.
     This freezout left an imprint of its structure, where more baryons in some places created more CMB photons, and other places had less of each.
@@ -193,9 +229,10 @@
 Also, it does not really explain how dark matter plays a role (you mention it in the next paragraph, but it is not explained). -Orel ?? )}
 
     From fitting this structure, the composition of the universe can be fit.
-    In terms of energy, 69.1\% of the universe is composed of Dark Energy, which is causing almost all galaxies in sight to accellerate away from the Milky Way.
+    In terms of energy, 68.6\% of the universe is composed of Dark Energy, which is causing almost all galaxies in sight to accellerate away from the Milky Way.
+    % 100% - ( 26.5% + 4.9 ) = 73.5% (from beginning of chapter)
     Another 4.9\% of the universe's energy is stored in baryonic matter, like protons and neutrons.
-    The remaining 26\% of the universe's energy is contained in Dark Matter \cite{planck2015}.
+    The remaining 26.5\% of the universe's energy is contained in Dark Matter \cite{planck2015}.
 
     As another important piece of evidence is the abundance of Deuterium present in the universe.
     The amount of deuterium that was left over from the big bang depends on the amount of baryons in the universe.
