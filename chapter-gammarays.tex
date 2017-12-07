@@ -169,23 +169,11 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
     \FloatBarrier
     
     
-\section{Atmospheric Shower}
+\section{Atmospheric Showers}
 
-  When a gamma ray, proton, or other particle strikes an atom of Earth's atmosphere, it can set off a cascade of energetic particles called an air shower~\cite{Bethe1934,Klein1999}.
+  When a particle strikes an atom of Earth's atmosphere at relativistic velocities, it can set off a cascade of energetic particles called an air shower~\cite{Bethe1934,Klein1999}.
   When the primary particle is a gamma ray, an electron, or a positron, it creates an electromagnetic shower.
   When the primary is a proton or other baryon, it creates a hadronic shower.
-  During either cascade of particles, any charged particles travelling at $v_{particle} > c_{atmosphere}$ will create Cherenkov photons~\cite{cherenkov}.
-  The UV- and Visible-spectrum Cherenkov photons are then imaged and recorded by the VERITAS observatory.
-
-  \begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.85\textwidth]{images/cascade_diagram/emcascade.eps}
-    \caption[Electromagnetic Cascade]{
-      Diagram of an electromagnetic cascade as it decends downwards through the atmosphere, layered by interaction generation.
-    }
-    \label{fig:emcascade}
-  \end{figure}
-
   Electromagnetic air showers are started by a high energy (\nicetilde TeV) electron or gamma-ray, and produce a cascade of electrons, positrons, and photons, where initially each successive generation of particles tends to have more particles but less energy per particle than the last.
   The primary gamma ray will interact with an atmospheric atom, producing a $e^{-}e^{+}$ pair, each with roughly half the primary gamma ray's energy.
   The $e^{-}$ and $e^{+}$ will emit some photons through bremstrahlung radiation, until they have \nicetilde \SI{80}{MeV} of kinetic energy, after which energy losses due to ionization dominate, preventing new shower particles from being created \cite{pdg_2014}.
@@ -208,3 +196,39 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
     \label{fig:gamma_vs_proton_airshower}
   \end{figure}
 
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.85\textwidth]{images/cascade_diagram/emcascade.eps}
+    \caption[Electromagnetic Cascade]{
+      Diagram of an electromagnetic cascade as it decends downwards through the atmosphere, layered by interaction generation.
+    }
+    \label{fig:emcascade}
+  \end{figure}
+
+  \FloatBarrier
+
+  \subsection{Cherenkov Photons}
+
+  Within atmospheric showers, any charged particles travelling at velocity $v > c$ will create Cherenkov photons~\cite{cherenkov}, where $c$ is the speed of light in the atmosphere.
+  From a single charged particle of constant velocity, Cherenkov photons form a conical wavefront similar to a sonic boom shockwave or the wake produced when a boat travels faster than the speed of the waves.
+  {\color{red}However, in an atmospheric shower, due to the number of charged particles, the distribution of their velocities, and energy losses, the Cherenkov cones overlap to form a smeared pool of light. (Is this why??)}
+  Cherenkov photons are produced at an angle $\theta$ to the charged particle's path, determined by the index of refraction of the medium $n$, the speed of the charged particle $v$, and the speed of light in the medium $c$, as in Equation \ref{eqn:cherenkovangle}.
+
+  \begin{equation}\label{eqn:cherenkovangle}
+    \theta = ArcCos \left ( \frac{c}{n \; v} \right )
+  \end{equation}
+  
+  Cherenkov photons are produced with a spectrum following the Frank-Tamm formula~\cite{franktamm1,franktamm2} in Equation \ref{eqn:franktamm}.
+  
+  \begin{equation}\label{eqn:franktamm}
+    \frac{dE}{dx\,d\omega}=\frac{(ze)^2 \, \omega}{c^2} \left ( 1 - \frac{c^2}{v^2 \;\epsilon(\omega)} \right )
+  \end{equation}
+  
+  Where $E$ is the energy emitted as Cherenkov radiation, $x$ is the length of the charged particle path, $ze$ is the charge of the particle, $\omega$ is the emitted Cherenkov photon frequency, $c$ is the speed of light (phase velocity) in the medium, $v$ is the speed of the particle, and $\epsilon(\omega)$ is the frequency-dependent permittivity.
+  The UV- and Visible-spectrum Cherenkov photons are then imaged and recorded by the VERITAS observatory.
+  {\color{red}(Why just those frequencies?? does the cerenkov spectrum cutoff, or atmospheric absorption??)}
+  
+  {\color{red}(Cherenkov image from nuclear reactor??)}
+  
+  {\color{red}(image of cherenkov light pool on ground??)}
+  
