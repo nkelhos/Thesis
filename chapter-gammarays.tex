@@ -6,22 +6,27 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
 
 \section{Methods of Creation}
 
-  There are three astrophysical mechanisms for gamma ray production at TeV energies.
-  The leptonic mechanism is when gamma rays' last energetic interaction is with electrons, while the hadronic mechanism is when gamma rays are created via proton interactions.
-  The third mechanism, searched for in this analysis, is when two WIMP dark matter particles annihilate either directly or indirectly into gamma rays.
+  There are several mechanisms that can produce photons with TeV energies.
+  A gamma ray can start as a thermal photon, then get the majority of its energy from interactions with electrons, referred to as a leptonic production.
+  Alternately, a gamma ray can be created from a decaying high-energy proton, referred to as hadronic production.
+  Another mechanism searched for in this analysis, is when two WIMP dark matter particles annihilate either directly or indirectly into gamma rays, and is discussed in Section \ref{dmgammaproduction}.
 
-  In leptonic production, stars and galaxies have their own magnetic fields, and also emit electrons.
-  Inverse compton (\cite{compton_effect}) scattering can occur, where electrons and ambient photons collide, transferring energy to the photon.
-  After multiple repetitions of this, a small fraction of the original photon population can achieve TeV-scale energies.
-  Additionally, electrons spiralling through magnetic fields can produce synchrotron photons with X-Ray energies, meaning fewer inverse compton scatterings are needed to reach TeV energies \cite{self_compton}.
+  In leptonic production, electrons and low-energy photons collide, transferring energy to the photon.
+  This interaction is called upscattering or Inverse Compton scattering~\cite{compton_effect}.
+  After multiple upscatters, a small fraction of the original photon population {\color{red}can achieve TeV-scale energies (cite??)}.
+  In order to efficiently produce gamma rays via this method, a population of photons and high-energy electrons is needed.
+  Stars can provide thermal photons, but a source of non-thermal electrons is also needed.
+  Pulsars, with their breaking and reconnecting magnetic field lines, {\color{red}can accelerate electrons to higher energies (cite??)} than from thermal sources alone (i.e. solar wind).
+  Then, these fast electrons can upscatter ambient photons to TeV energies.
+  Additionally, electrons spiralling through magnetic fields can produce synchrotron photons with X-Ray energies, meaning fewer upscatters are needed to reach TeV energies \cite{self_compton}.
 
-  In hadronic processes, protons are first accelerated by fermi acceleraton, emitted as part of a jet~\cite{hadronic1,hadronic2}, or other mechanisms.
+  In hadronic processes, protons can be accelerated by fermi acceleraton or as part of a jet~\cite{hadronic1,hadronic2}.
   Then, upon striking an ambient atom, the proton will decay into $\pi^{+}$, $\pi^{-}$, and $\pi^{0}$.
   The $\pi^{0}$ then quickly (<\SI{1}{s}) decays into a $\gamma\gamma$ pair, with \nicetilde $\frac{1}{10}^{\text{th}}$ the original proton's energy.
   Much of the diffuse gamma ray component of the galactic disk is due to extra-galactic high-energy protons colliding with the atoms of the dusty galactic plane \cite{GalacticDiffuseGammaRays}.
 
-  \subsection{Dark Matter Interactions}
-    As discussed in various extensions of SUSY, dark matter may be detectable by three general detection schemes, illustrated in Figure \ref{fig:3_searches}.
+  \subsection{Dark Matter Interactions}\label{dmgammaproduction}
+    As discussed in various extensions of SUSY, dark matter may be detectable by three general search schemes, illustrated in Figure \ref{fig:3_searches}.
 
     % add popular figure for the three detection type
     \begin{figure}[ht]
@@ -32,16 +37,16 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
       \label{fig:3_searches}
     \end{figure}
 
-    In Collider detection, $ss \rightarrow \chi\chi$, standard model particles ($ss$) are accelerated and collide in a detector, and the resulting particle fragments are measured by a slew of measuring equipment.
+    In Collider searches, $ss \rightarrow \chi\chi$, standard model particles ($ss$) are accelerated and collide in a detector, and the resulting particle fragments are measured by a slew of measuring equipment.
     A significant milestone was achieved when this technique was used to detect the Higgs boson~\cite{Higgs_ATLAS,Higgs_CMS}.
     Since the properties of the input particles are well-known, and output particles are well measured, the missing remainder may potentially be a dark matter particle.
 
-    With Direct detection, $\chi s \rightarrow \chi s$, sensitive particle detectors are built deep underground, where a dark matter particle impacting against an electron or nuclei creates a detectable recoil.
+    With Direct searches, $\chi s \rightarrow \chi s$, sensitive particle detectors are built deep underground, where a dark matter particle impacting against an electron or nuclei creates a detectable recoil.
     Depending on the detector, this recoil can cause a detectable charge, a heat spike, an acoustic vibration, or a visual reaction.
     Often experiments make use of several of these signals, as well as the time difference between each of observable.
     Though to date, no substantial dark matter signal has been detected with these methods~\cite{direct_dm_detection}.
 
-    With Indirect detection, $\chi\chi \rightarrow ss$, astrophysical observations are analyzed for excess standard model particles, unexplained by other astrophysics.
+    With Indirect searches, $\chi\chi \rightarrow ss$, astrophysical observations are analyzed for excess standard model particles, unexplained by other astrophysics.
     In this analysis an excess of gamma rays is sought, as the center of our galaxy is believed to host a dark matter halo.
     This spherical halo would allow for many $\chi\chi$ annihilations, producing gamma rays via: 
 
@@ -72,10 +77,10 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
 
   {\color{red}(somewhere in thesis cite something from each defense committee member!)}
 
-\section{Indirect Dark Matter Detection}
+\section{Indirect Dark Matter Search}
   For this analysis, it is important to understand how a terrestrial telescope like VERITAS can detect the presence of dark matter.
-  This is done through indirect detection: observation of the gamma-rays that are emitted when two dark matter particles annihilate.
-  As the rate of annihilation depends on the local dark matter number/volume density, the radially-changing structure of dark matter halos also affects the analysis.
+  This is done indirectly: by searching for gamma-rays that are emitted when two dark matter particles annihilate.
+  As the rate of annihilation depends on the local dark matter number/volume density, the radially-dependent structure of dark matter halos also affects the analysis.
 
   \subsection{Dark Matter and Gamma Rays}
     WIMPs are predicted to decay and self-annihilate into standard model particles.
@@ -89,6 +94,7 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
   
   \subsection{Dark Matter Halo Structure}\label{dm_spatial}
     From observations, most galactic dark matter halos can be modeled by several similar density profiles.
+    {\color{red}(justify why its ok to assume the halo is spherical??).}
     A currently favored profile is the Einasto profile~\cite{einastoprofile1,einastoprofile2}.
     This profile describes the mass/volume density of dark matter at a distance r from the halo center, $\rho(r)$.
     The Einasto profile has the form
@@ -232,9 +238,9 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
   
   \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.35\textwidth]{images/CherenkovReactor/cherenkovreactor.eps}
+    \includegraphics[width=0.75\textwidth]{images/CherenkovReactor/cherenkovreactor.eps}
     \caption[Chernekov Light from a Reactor]{
-      Cherenkov light in the Advanced Test Rector core, at the Idaho National Laboratory \cite{cherenkovreactor,atrlab}.
+      Blue Cherenkov light in the Advanced Test Rector core, at the Idaho National Laboratory \cite{cherenkovreactor,atrlab}.
     }
     \label{fig:cherenkovreactor}
   \end{figure}
