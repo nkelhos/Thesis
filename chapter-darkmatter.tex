@@ -52,6 +52,7 @@
     As this measurement relies on doppler-shifted spectral lines, and not their absolute brightness, this mass estimate is fairly resistant to changes in absolute brightness, either due to atmospheric variations during telescope observations, or to the amount of light-absorbing dust in the line-of-sight.
 
     \begin{figure}[ht]
+      \centering
       \includegraphics[width=0.9\textwidth]{images/sculptor/sculptor.eps}
       \caption[Sculptor Dwarf Galaxy]{
         The Sculptor Dwarf Galaxy \cite{sculptor_image}, imaged with the MPG/ESO telescope \cite{sculptor_paper}.
@@ -71,7 +72,7 @@
     
     \begin{table}[]
       \centering
-      \caption{$\frac{M_\odot}{L_\odot}$ ratios of various dwarf galaxy objects, taken from Ref. \cite{localdwarfs}.}
+      \caption{$\frac{M_\odot}{L_\odot}$ ratios of various dwarf galaxy objects~\cite{localdwarfs}.}
       \label{tab:mlratios:dwarfgals}
       \begin{tabular}{l r}
         Object      &  Mass, units of $\frac{M_\odot}{L_\odot}$ \\
@@ -124,7 +125,7 @@
     \begin{figure}[ht]
       \includegraphics[width=0.9\textwidth]{images/m33rotcurve/m33rotcurve.eps}
       \caption[M33 Rotation Curve]{
-        The rotation curve from M33, taken from \cite{m33rotcurve}.
+        The rotation curve from M33~\cite{m33rotcurve}.
         The solid line is the best fitting model to the observed velocity measurments.
         The short dashed line is the stellar disk contribution, the gas contribution is the long dashed line, and the dashed-dotted line is the dark matter contribution.
       }
@@ -133,7 +134,7 @@
     
     \begin{table}[]
       \centering
-      \caption{$\frac{M_\odot}{L_\odot}$ ratios of various galactic-scale objects, taken from \cite{faber_ml}.}
+      \caption{$\frac{M_\odot}{L_\odot}$ ratios of various galactic-scale objects~\cite{faber_ml}.}
       \label{tab:mlratios}
       \begin{tabular}{l r}
         Object          & Mass, units of $\frac{M_\odot}{L_\odot}$ \\
@@ -218,28 +219,33 @@
       \centering
       \caption{
         Key events during the development of the universe.
+        Time is the age of the universe at that event.
+        Temperature is the universe's average temperature at that time.
+        Space is the diameter of the observable universe at that time.
         {\color{red}Idea from \url{http://www.th.physik.uni-bonn.de/drees/non\_ac/presentation\_Narimani.pdf} , slide 10, CREDIT THIS!!}
         {\color{red}(Source remaining values??)}
         {\color{red}(If a term is mentioned here, it needs to be explained!! ??)}
+        {\color{red}(Add Space column for size of universe?? (just c*time) )}
       }
+      % Space column is just Time column * 3e8 m/s
       \label{cosmo_events}
-      \begin{tabular}{lcc}
-        Event                                  & Time                    & Temperature               \\
+      \begin{tabular}{lccc}
+        Event                                  & Time                    & Temperature               & Space          \\
         \hline
-        Inflation                              & \SI{$10^{-34}$}{s}(?)   & ??                        \\
-        Baryogenesis                           & ??                      & ??                        \\
-        EW phase transition                    & \SI{20}{ps}             & \SI{100}{\GeV}            \\
-        Dark Matter Freeze-out                 & ??                      & ??                        \\
-        QCD phase transition                   & \SI{20}{\mu.s}          & \SI{150}{\MeV}            \\
-        Neutrino decoupling                    & \SI{1}{s}               & \SI{1}{\MeV}              \\
-        $\text{e}^+ - \text{e}^-$ annihilation & \SI{6}{s}               & \SI{500}{keV}             \\
-        Big Bang nucleosynthesis               & \SI{3}{min}             & \SI{100}{keV}             \\
-        Matter-radiation density               & \SI{60}{kyr}            & \SI{0.75}{eV}             \\
-        Recombination                          & \SIrange{260}{380}{kyr} & \SIrange{0.26}{0.33}{eV}  \\
-        Photon decoupling                      & \SI{380}{kyr}           & \SIrange{0.23}{0.38}{eV}  \\
-        Reionization                           & \SIrange{100}{400}{Myr} & \SIrange{2.6 }{7   }{meV} \\
-        Dark energy-matter equality            & \SI{9}{Gyr}             & \SI{0.33}{meV}            \\
-        Present                                & \SI{13.8}{Gyr}          & \SI{0.24}{meV}            \\
+        Inflation                              & \SI{1e-34}{s}(?)        & ??                        & \SI{1e-26}{m}  \\
+        Baryogenesis                           & ??                      & ??                        & ??             \\
+        EW phase transition                    & \SI{20}{ps}             & \SI{100}{\GeV}            & \SI{6}{mm}     \\
+        Dark Matter Freeze-out                 & ??                      & ??                        & ??             \\
+        QCD phase transition                   & \SI{20}{\mu.s}          & \SI{150}{\MeV}            & \SI{6}{km}     \\
+        Neutrino decoupling                    & \SI{1}{s}               & \SI{1}{\MeV}              & \SI{3e8}{m}    \\
+        $\text{e}^+ - \text{e}^-$ annihilation & \SI{6}{s}               & \SI{500}{keV}             & \SI{2e9}{m}    \\
+        Big Bang nucleosynthesis               & \SI{3}{min}             & \SI{100}{keV}             & \SI{5e10}{m}   \\
+        Matter-radiation density               & \SI{60}{kyr}            & \SI{0.75}{eV}             & \SI{6e20}{m}   \\
+        Recombination                          & \SIrange{260}{380}{kyr} & \SIrange{0.26}{0.33}{eV}  & \SI{3e21}{m}   \\
+        Photon decoupling                      & \SI{380}{kyr}           & \SIrange{0.23}{0.38}{eV}  & \SI{3.6e21}{m} \\
+        Reionization                           & \SIrange{100}{400}{Myr} & \SIrange{2.6 }{7   }{meV} & \SI{2e24}{m}   \\
+        Dark energy-matter equality            & \SI{9}{Gyr}             & \SI{0.33}{meV}            & \SI{9e25}{m}   \\
+        Present                                & \SI{13.8}{Gyr}          & \SI{0.24}{meV}            & \SI{1e26}{m}   \\
       \end{tabular}
     \end{table}
     
