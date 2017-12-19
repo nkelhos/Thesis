@@ -138,7 +138,7 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
       \includegraphics[width=0.95\textwidth]{images/halo/gc_einasto_jfactor.eps}
       \caption[Galactic Center Einasto Halo Jfactor]{
         J-factor profile as a function of angle from the galactic center.
-        J-factor values are calculated with an integration angle of ${0.01}^{\circ}$.
+        J-factor values are calculated with an integration angle of \ang{0.01}.
         {\color{red}Y axis label??}
       }
       \label{fig:gchalo_jfactor}
@@ -195,7 +195,7 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
     \includegraphics[width=0.85\textwidth]{images/cascade_diagram/emcascade.eps}
     \caption[Electromagnetic Cascade]{
       Diagram of an electromagnetic cascade as it decends downwards through the atmosphere, layered by interaction generation.
-      $\gamma{}o$ is the initial astrophysical gamma ray.
+      $\gamma{}o$ is the initial astrophysical gamma ray, and continues for many generations after these first four.
     }
     \label{fig:emcascade}
   \end{figure}
@@ -225,14 +225,28 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
 
   \subsection{Cherenkov Photons}\label{sec:cherenkov}
 
-  Within atmospheric showers, any charged particles travelling at velocity $v > c$ will create Cherenkov photons~\cite{cherenkov}, where $c$ is the speed of light in the atmosphere.
-  From a single charged particle of constant velocity, Cherenkov photons form a conical wavefront similar to a sonic boom shockwave or the wake produced when a boat travels faster than the speed of the waves.
-  {\color{red}However, in an atmospheric shower, due to the number of charged particles, the distribution of their velocities, and energy losses, the Cherenkov cones overlap to form a smeared pool of light. (Is this why??)}
+  Within atmospheric showers, any charged particles travelling at velocity $v > c_{atmosphere}$ will create Cherenkov photons~\cite{cherenkov}, where $c$ is the speed of light in the atmosphere.
+  From a single charged particle of constant velocity, Cherenkov photons form a conical wavefront shown in Figure \ref{fig:cherenkovangle}, similar to a sonic boom shockwave or the wake produced when a boat travels faster than the speed of the waves.
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.27\textwidth]{images/cherenkov_angle/cherenkovangle.eps}
+    \caption[Chernekov Emission Angle]{
+      Cherenkov light (blue arrows) is emitted at angle $\theta$, relative to its the charged particle z's path.
+    }
+    \label{fig:cherenkovangle}
+  \end{figure}
+
   Cherenkov photons are produced at an angle $\theta$ to the charged particle's path, determined by the index of refraction of the medium $n$, the speed of the charged particle $v$, and the speed of light in the medium $c$, as in Equation \ref{eqn:cherenkovangle}.
 
   \begin{equation}\label{eqn:cherenkovangle}
     \theta = ArcCos \left ( \frac{c}{n \; v} \right )
   \end{equation}
+  
+  For the gamma-ray showers used in this analysis, the cherenkov angle is \nicetilde\ang{1}.
+  % showers are 10km up, light pool on ground is 130m diameter, \theta = ArcSin(130/10000) * 180 / pi = 0.73deg ~ 1deg
+
+  However in an atmospheric shower, the number and distribution of charged particles and their velocities, as well as energy losses, tend to smear the theoretically-clean Cherenkov cones into a diffuse pool of light on the ground.
   
   Cherenkov photons are produced with a spectrum following the Frank-Tamm formula~\cite{franktamm1,franktamm2} in Equation \ref{eqn:franktamm}.
   
@@ -248,12 +262,13 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
     \centering
     \includegraphics[width=0.75\textwidth]{images/CherenkovReactor/cherenkovreactor.eps}
     \caption[Chernekov Light from a Reactor]{
-      Blue Cherenkov light in the Advanced Test Rector core, at the Idaho National Laboratory \cite{cherenkovreactor,atrlab}.
+      Blue Cherenkov light in the Advanced Test Rector core, at the Idaho National Laboratory~\cite{cherenkovreactor,atrlab}.
     }
     \label{fig:cherenkovreactor}
   \end{figure}
-  In Figure \ref{fig:cherenkovreactor}, an image of Cherenkov photons produced by the Advanced Test Reactor at the Idaho National Laboratory.
-  Neutrons emitted by the reactor collide with atoms in the water, imparting some electrons with enough kinetic energy to travel faster than the speed of light in water, creating the blue Cherenkov photons imaged here.
+  In Figure \ref{fig:cherenkovreactor}, a visible example of Cherenkov photons is shown, produced in the Advanced Test Reactor at the Idaho National Laboratory.
+  Neutrons emitted by the reactor collide with atoms in the water, freeing some electrons with enough kinetic energy to travel faster than the speed of light in water, which then create the blue Cherenkov photons imaged here.
   
   {\color{red}(image of cherenkov light pool on ground??)}
+  
   
