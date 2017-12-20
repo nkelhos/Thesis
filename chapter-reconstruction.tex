@@ -124,7 +124,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     The small improvement in the position reconstruction due to the \disp{} method can be seen in Figure \ref{fig:disp_event_offset}.
     With the Geometric (red) events, more are concentrated further from the point source, while with the Disp method, somewhat more are concentrated at the source itself.
     
-    {\color{red}Again, you need to be more specific. First, it is important to note this is data, it’s always good to “brag” that your reconstruction method is tested on data.  Second, you need to discuss the actual resolution obtained with both methods and state the improvement achieved with DISP. I think the RMS might be a better test of this and anyway the mean would be too affected by the tail. In fact I think the quantiles are better?? -Orel}
+    {\color{red}Again, you need to be more specific. First, it is important to note this is data, it's always good to ''brag`` that your reconstruction method is tested on data.  Second, you need to discuss the actual resolution obtained with both methods and state the improvement achieved with DISP. I think the RMS might be a better test of this and anyway the mean would be too affected by the tail. In fact I think the quantiles are better?? -Orel}
     
     {\color{red} Mention that from here on in the analysis, the disp method is used! ??}
   
@@ -135,7 +135,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \includegraphics[width=0.85\textwidth]{images/disp_event_offset_hists/dispgeom_comparison.eps}
       \caption[DISP Offset Improvement]{
         The fraction of events at different angular offsets from the Crab and the Galactic Center per solid angle, with Geometric (intersection only) and Disp reconstruction methods.
-        Data elevations are the same as in Figure \ref{fig:datapointingelevations}, while training events were simulated at only 28\degree{}.
+        Data elevations are the same as in Figure \ref{fig:datapointingelevations}, while training events were simulated at only \ang{28}.
         {\color{red}(Where is the disp improvement???)}
         {\color{red}(Why is the containment radius worse for disp??)}
         {\color{red}(Redo disp training with 5x events! ??)}
@@ -200,6 +200,7 @@ This database includes the width and length of the shower, how far away its core
         Effective areas at different points in the Energy and Camera Offset parameter space for run 78128.
         Data is shown as the black points, indicating the position of some events from that run in the parameter space.
         The color axis indicates the Effective Area, calculated from simulations, at different gamma-ray energies and distances from the camera center.
+        {\color{red}Switch x-axis units to TeV, not log10(TeV)??}
       }
       \label{fig:effarea_paramspace}
     \end{figure}
@@ -255,7 +256,8 @@ This database includes the width and length of the shower, how far away its core
         The 68\% containment radius for the Energy/Offset parameter space for Sgr A* run 78128. 
         The green points are from data, showing a subset of the event locations from run 78128 in the parameter space.
         The color axis is the containment radius, calculated from simulations.
-        While events from all energies are shown, only events from \SI{4}{\TeV} - \SI{70}{\TeV} are used (see Section \ref{subsec:crab_analysis}).
+        While events from all energies are shown, only events from \SIrange{4}{70}{\TeV} are used (see Section \ref{subsec:crab_analysis}).
+        {\color{red}Switch x-axis units to TeV, not log10(TeV)??}
       }
       \label{fig:psf_paramspace}
     \end{figure}
@@ -429,7 +431,7 @@ This database includes the width and length of the shower, how far away its core
     \end{figure}
   
   These effects are also noticeable in the galactic (l,b) event maps.
-  In Figure \ref{fig:bkgvsel_crab}, the top plot shows the positions of all events, the middle histogram shows the distribution of event energies, and the bottom plot shows the event positions of events in a limited energy range, \SI{1.5}{\TeV}-\SI{3.25}{\TeV}.
+  In Figure \ref{fig:bkgvsel_crab}, the top plot shows the positions of all events, the middle histogram shows the distribution of event energies, and the bottom plot shows the positions of events in a limited energy range, \SIrange{1.5}{3.25}{\TeV}.
   It can be seen in the middle plot that this energy range is where more and more events are lost as energy decreases.
   When events are plotted in this limited energy range, it can be seen that there is a faint deficit along the bottom of the camera.
   Due to the time-dependent rotation between camera x/y coordinates and sky (RA/Dec) coordinates, this deficit occurs in the bottom of the camera, where the atmosphere column density ($g/cm^2$) is \nicetilde20\% higher than at the top of the camera.
@@ -437,7 +439,7 @@ This database includes the width and length of the shower, how far away its core
 
   When a similar series of plots are made for the galactic center in Figure \ref{fig:bkgvsel_sgra}, the effect is much stronger.
   In the top plot, events are radially symmetric about the source (there are differences due to the four wobble positions, but these are faint and not visible without quantification).
-  But when only the events from \SI{1.5}{\TeV} to \SI{3.25}{\TeV} are plotted, a much clearer deficit is visible on the lower right part of the plot.
+  But when only the events from \SIrange{1.5}{3.25}{\TeV} are plotted, a much clearer deficit is visible on the lower right part of the plot.
   This area corresponds to the deficit at bottom of the camera in Figures \ref{fig:back_lowelev29}.B and \ref{fig:back_lowelev26}.B
   It should be noted that there is a time-dependent rotation applied to go from the camera x/y (Earth Azimuth/Elevation) system to the Galactic (l,b) coordinates, which smears out the shape of the deficit, making it harder to notice in sky coordinates.
   
@@ -453,7 +455,7 @@ This database includes the width and length of the shower, how far away its core
       Plots of Crab Nebula observations.
       Top: Skymap of all events.
       Middle: Histogram of all events in energy.
-      Bottom: Skymap of events from \SI{1.5}{\TeV}-\SI{3.25}{\TeV}.  
+      Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV}.  
       The blue circles, centered on the Crab Nebula, are to help highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
       {\color{red}Crab->Crab Nebula !??}
     }
@@ -468,8 +470,8 @@ This database includes the width and length of the shower, how far away its core
       Plots of Sgr A* observations.
       Top: Skymap of all events.
       Middle: Histogram of all events in energy.
-      Bottom: Skymap of events from \SI{1.5}{\TeV}-\SI{3.25}{\TeV}.  
-      The blue circles, centered on the Galact Center, are to help highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
+      Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV}.  
+      The blue circles, centered on the Galactic Center, are to help highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
     }
     \label{fig:bkgvsel_sgra}
   \end{figure}
@@ -479,7 +481,7 @@ This database includes the width and length of the shower, how far away its core
   \subsection{Diffuse Simulations}\label{subsubsec:diffusesims}
     Diffuse simulations were performed at similar energies and elevations to see if this effect was still present.
     These consisted of simulating 50,000 gamma rays with CORSIKA (\cite{corsika1998}) at each of 1.4, 1.6, 2, and \SI{5}{\TeV}.
-    The telescopes were fixed to an azimuth/elevation of (\ang{193}, \ang{28}).
+    The telescopes were fixed to an (azimuth,elevation) of (\ang{193}, \ang{28}).
     The events themselves were distributed in a diffuse \ang{2.5}-radius disk.
     To approximate a simple gamma-hadron cut, any events with a mean-scaled-width falling outside the range of -2.0 to 0.5 were removed, which eliminates many of the showers that appear proton-like.
     These remaining 'gamma-like' events are then binned in camera coordinates in Figure \ref{fig:back_simdiffuse}.
@@ -555,7 +557,7 @@ This description could be a little clearer. ?? -Orel)}, the number of pixel-disa
     Future analyses may be able to account for these effects in their models of the background rates and effective areas.
     
     {\color{red}You should be a bit more careful how you write paragraph. You can say that the effect was determined to be small for your particular analysis, but you need to back this up with numbers. 
-Try to estimate (back of the envelope calculation) what is the fraction of events you lose due to stars in your specific galactic centre observations. Consider that you lose about 5\% of the events in a circle of about 0.3 degrees around a star. So how many stars would you expect which would disable pixels, what is the fraction of events that would fall in that area, etc. 
+Try to estimate (back of the envelope calculation) what is the fraction of events you lose due to stars in your specific galactic centre observations. Consider that you lose about 5\% of the events in a circle of about \ang{0.3} around a star. So how many stars would you expect which would disable pixels, what is the fraction of events that would fall in that area, etc. 
 I am sure that if you do this calculation you can estimate that the effect is much smaller than the statistical/systematic uncertainties and then it is justified to neglect. ?? -Orel}
 
     In Figure \ref{fig:dpix_disappear}, the positions of events that were rejected by cuts are shown.

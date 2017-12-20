@@ -2,22 +2,21 @@
 \chapter{The Dark Matter Paradigm}
 
   As dark matter makes up 26.5\% of the universe's energy and 81.5\% of its mass \cite{planck2015}, it has had a significant impact on the development of the universe, shaping its present day distribution.
-
-  {\color{red}(Should I show the following calculation into this paragraph to justify the above percentages??)}
-  \begin{verbatim}
-  From: https://arxiv.org/abs/1502.01589 , Table 3, column [4] :
-    omega_b h^2 = 0.02225
-    omega_c h^2 = 0.1198
-    H_0         = 67.27 km / s / Mpc
-    h           = H_0 / ( 100 km / s / Mpc ) = 0.6727
-  thus:
-    omega_b = 0.02225 / h^2 = 0.0491 =  4.9% of universe's energy is in baryonic matter
-    omega_c = 0.1198  / h^2 = 0.2647 = 26.5% of universe's energy is in dark matter
-    ( 26.5 - 4.9 ) / 26.5 = 81.5% of universe's mass is stored in dark matter
-  \end{verbatim}
-
   In this chapter, the main features of dark matter physics are discussed.
   This includes the astrophysical evidence for the existance of dark matter, an outline of the current cosmological paradigm of $\Lambda$CDM and the Standard Model, as well as arguments for why dark matter may be in the form of a new, unknown particle.
+
+  %{\color{red}(Should I show the following calculation into this paragraph to justify the above percentages??)}
+  %\begin{verbatim}
+  %From: https://arxiv.org/abs/1502.01589 , Table 3, column [4] :
+  %  omega_b h^2 = 0.02225
+  %  omega_c h^2 = 0.1198
+  %  H_0         = 67.27 km / s / Mpc
+  %  h           = H_0 / ( 100 km / s / Mpc ) = 0.6727
+  %thus:
+  %  omega_b = 0.02225 / h^2 = 0.0491 =  4.9% of universe's energy is in baryonic matter
+  %  omega_c = 0.1198  / h^2 = 0.2647 = 26.5% of universe's energy is in dark matter
+  %  ( 26.5 - 4.9 ) / 26.5 = 81.5% of universe's mass is stored in dark matter
+  %\end{verbatim}
 
 \section{Astrophysical Evidence for Dark Matter}
   The current effects attributed to dark matter can be grouped into four different length scales.
@@ -43,14 +42,6 @@
     %    140kpc * Tan(15') = 0.6kpc = 1.8*10^19m ~ 10^19m
     At scales of $\nicetilde 10^{19}$m, groups of thousands stars, called satellite galaxies or dwarf galaxies, lie at the edge of full size galaxies.
     An example dwarf galaxy is in Figure \ref{fig:sculptor}, the Sculptor Dwarf Galaxy, imaged in the optical frequencies by the MPG/ESO Telescope.
-    Measuring the mass of these dwarf galaxies is done in two ways.
-    In the first, telescopes observed the individual spectra of these stars, allowing for their line-of-sight velocity to be calculated \cite{dwarf_gal_red_giant}.
-    By looking at the distribution of these velocities (the width of this distribution is called the velocity dispersion), the total mass of the dwarf galaxy can be inferred~\cite{dwarf_gal_vel_dispersion, dwarf_gal_vel_dispersion2}.
-    What makes this possible is that the velocity dispersion of a group of stars is proportional to the total mass of the graviational well.
-    This can be seen by applying the virial theorem and maxwell-boltzmann statistics.
-    {\color{red}(You should actually explain what the virial theorem is and how maxwell-boltzmann statistics is applied... -Orel ??)}
-    As this measurement relies on doppler-shifted spectral lines, and not their absolute brightness, this mass estimate is fairly resistant to changes in absolute brightness, either due to atmospheric variations during telescope observations, or to the amount of light-absorbing dust in the line-of-sight.
-
     \begin{figure}[ht]
       \centering
       \includegraphics[width=0.9\textwidth]{images/sculptor/sculptor.eps}
@@ -60,7 +51,41 @@
       }
       \label{fig:sculptor}
     \end{figure}
+
+    Measuring the mass of these dwarf galaxies is done in two ways.
+    In the first, telescopes observed the individual spectra of these stars, allowing for their line-of-sight velocity to be calculated \cite{dwarf_gal_red_giant}.
+    By looking at the distribution of these velocities (the width of this distribution is called the velocity dispersion), the total mass of the dwarf galaxy can be inferred~\cite{dwarf_gal_vel_dispersion, dwarf_gal_vel_dispersion2}.
+    What makes this possible is that the velocity dispersion of a group of stars is proportional to the total mass of the graviational well.
+    This can be seen by applying the virial theorem and maxwell-boltzmann statistics.
+    The virial theorem, Equation \ref{eqn:virial}, states an n-body system in equilibrium will always have the same ratio of kinetic energy (KE) to potential energy (PE).
+    \begin{equation}\label{eqn:virial}
+      2 \text{KE} = \text{PE}
+    \end{equation}
+    Thus, by measuring stellar velocities and calculating the total kinetic energy of a group of stars, the potential energy can be calculated, which indicates the amount of mass is present in the group.
+
+    % derivation from https://en.wikipedia.org/wiki/Maxwell%E2%80%93Boltzmann_distribution
+    Maxwell-boltzmann statistics can also be used to measure the amount of mass in a system.
+    From the Maxwell-Boltzmann distribution, the velocity probability density function is Equation \ref{eqn:mb_vel3d}:
+    \begin{equation}\label{eqn:mb_vel3d}
+      f_v(v_x,v_y,v_z)= \left ( \frac{m}{2\pi k T} \right ) ^ { \frac{3}{2} } \text{exp} \left [ - \frac{m \left ( v_x^2 + v_y^2 + v_z^2 \right )}{2 k T} \right ]
+    \end{equation}
+    where $m$ is the mass of the system, $k$ is the boltzmann constant, and $T$ is the equilibrium temperature of the system {\color{red}(??)}.
     
+    In one dimension, each velocity distribution is Equation \ref{eqn:mb_vel1d}, a normal distribution.
+    \begin{equation}\label{eqn:mb_vel1d}
+      f_v(v_i) = \sqrt{ \frac{m}{2\pi k T} } \text{exp} \left [ - \frac{m v_i^2}{2kT} \right ]
+    \end{equation}
+    with the mean velocity in each direction $\mu_{v_i} = 0$ and a standard distribution is $\sigma_{v_i} = \sqrt{\frac{kT}{m}}$
+    When these three dimensions are combined into a 3-dimensional normal distribution, the mean velocity vector is $\vec{\mu}_v = \vec{0}$, and its distribution has a width described by Equation \ref{eqn:mb_sigma}:
+    \begin{equation}\label{eqn:mb_sigma}
+      \sigma_v = \sqrt{\frac{3kT}{m}}
+    \end{equation}
+    And, with a Maxwell distribution, the most probable speed $\left \langle v \right \rangle = \frac{2}{\sqrt{\pi}} \sqrt{\frac{2kT}{m}}$, thus measuring the mean speed and distribution of speeds of a group of stars can yield the total mass of the system in Equation \ref{eqn:mb_total}:
+    {\color{red}(THIS MAXWELL STUFF IS WRONG, THE MASS $m$ CANCELS, NEEDS TO BE REDONE!??)}
+    
+    Thus, by measuring the distribution of star velocities and the average temperature of the system {\color{red}(what is temp T of the system??  does it come from $v_p$??  clean up this paragraph??)}, the total mass of system can be calculated: $$m = \frac{3kT}{\sigma^2}$$.
+    As stellar velocity measurements rely on doppler-shifted spectral lines, and not the star's absolute brightness, this mass estimate is fairly resistant to changes in observed brightness, either due to atmospheric variations during telescope observations, or to the amount of light-absorbing dust in the line-of-sight.
+
     The second way to measure galaxy masses is by measuring the total brightness of a galaxy, and divide by the luminosity of the Sun $L_\odot$, around .
     This then indicates the number of solar masses $M_\odot$ contained in the galaxy, a measure of its baryonic (i.e. 'bright', not dark) mass.
     By comparing the total mass in the first way to the 'bright' mass in the second way, the mass-to-light ratio can be calculated, indicating the amount of dark matter present in the galaxy~\cite{faber_ml}.
@@ -219,33 +244,37 @@
       \centering
       \caption{
         Key events during the development of the universe.
-        Time is the age of the universe at that event.
-        Temperature is the universe's average temperature at that time.
-        Space is the diameter of the observable universe at that time.
+        The Time column is the age of the universe at that event.
+        The Temperature column is the universe's average temperature at that time.
+        The Distance column is how far light could have traveled in that time, if it started at the beginning of the universe and travelled at present-day $c$.
         {\color{red}Idea from \url{http://www.th.physik.uni-bonn.de/drees/non\_ac/presentation\_Narimani.pdf} , slide 10, CREDIT THIS!!}
         {\color{red}(Source remaining values??)}
         {\color{red}(If a term is mentioned here, it needs to be explained!! ??)}
-        {\color{red}(Add Space column for size of universe?? (just c*time) )}
+        % see http://www.sciencedirect.com/science/article/pii/S0370157304003515 page 286 for more info
+        % see https://arxiv.org/pdf/hep-ph/0602002.pdf
+        % maybe check PDG?
+        % http://www.particleadventure.org/history-universe.html
       }
       % Space column is just Time column * 3e8 m/s
       \label{cosmo_events}
       \begin{tabular}{lccc}
-        Event                                  & Time                    & Temperature               & Space          \\
+        Event                                         & Time                    & Temperature               & Distance       \\
         \hline
-        Inflation                              & \SI{1e-34}{s}(?)        & ??                        & \SI{1e-26}{m}  \\
-        Baryogenesis                           & ??                      & ??                        & ??             \\
-        EW phase transition                    & \SI{20}{ps}             & \SI{100}{\GeV}            & \SI{6}{mm}     \\
-        Dark Matter Freeze-out                 & ??                      & ??                        & ??             \\
-        QCD phase transition                   & \SI{20}{\mu.s}          & \SI{150}{\MeV}            & \SI{6}{km}     \\
-        Neutrino decoupling                    & \SI{1}{s}               & \SI{1}{\MeV}              & \SI{3e8}{m}    \\
-        $\text{e}^+ - \text{e}^-$ annihilation & \SI{6}{s}               & \SI{500}{keV}             & \SI{2e9}{m}    \\
-        Big Bang nucleosynthesis               & \SI{3}{min}             & \SI{100}{keV}             & \SI{5e10}{m}   \\
-        Matter-radiation density               & \SI{60}{kyr}            & \SI{0.75}{eV}             & \SI{6e20}{m}   \\
-        Recombination                          & \SIrange{260}{380}{kyr} & \SIrange{0.26}{0.33}{eV}  & \SI{3e21}{m}   \\
-        Photon decoupling                      & \SI{380}{kyr}           & \SIrange{0.23}{0.38}{eV}  & \SI{3.6e21}{m} \\
-        Reionization                           & \SIrange{100}{400}{Myr} & \SIrange{2.6 }{7   }{meV} & \SI{2e24}{m}   \\
-        Dark energy-matter equality            & \SI{9}{Gyr}             & \SI{0.33}{meV}            & \SI{9e25}{m}   \\
-        Present                                & \SI{13.8}{Gyr}          & \SI{0.24}{meV}            & \SI{1e26}{m}   \\
+        Inflation                                     & \SI{1e-34}{s}(?)        & ??                        & \SI{1e-26}{m}  \\
+        Baryogenesis                                  & ??                      & ??                        & ??             \\
+        EW phase transition                           & \SI{20}{ps}             & \SI{100}{\GeV}            & \SI{6}{mm}     \\
+        Dark Matter Freeze-out                        & ??                      & ??                        & ??             \\
+        QCD phase transition                          & \SI{20}{\mu.s}          & \SI{150}{\MeV}            & \SI{6}{km}     \\
+        Neutrino decoupling                           & \SI{1}{s}               & \SI{1}{\MeV}              & \SI{3e8}{m}    \\
+        Neutron freezout                              & \SI{1}{s}               & \SI{1}{\MeV}              & \SI{3e8}{m}    \\
+        $\text{e}^+ - \text{e}^-$ annihilation        & \SI{6}{s}               & \SI{500}{keV}             & \SI{2e9}{m}    \\
+        Big Bang nucleosynthesis                      & \SI{3}{min}             & \SI{100}{keV}             & \SI{5e10}{m}   \\
+        Matter and radiation densities equal          & \SI{60}{kyr}            & \SI{0.75}{eV}             & \SI{6e20}{m}   \\
+        Recombination                                 & \SIrange{260}{380}{kyr} & \SIrange{0.26}{0.33}{eV}  & \SI{3e21}{m}   \\
+        Photon decoupling                             & \SI{380}{kyr}           & \SIrange{0.23}{0.38}{eV}  & \SI{3.6e21}{m} \\
+        Reionization                                  & \SIrange{100}{400}{Myr} & \SIrange{2.6 }{7   }{meV} & \SI{2e24}{m}   \\
+        Dark energy-matter equality                   & \SI{9}{Gyr}             & \SI{0.33}{meV}            & \SI{9e25}{m}   \\
+        Present                                       & \SI{13.8}{Gyr}          & \SI{0.24}{meV}            & \SI{1e26}{m}   \\
       \end{tabular}
     \end{table}
     
@@ -316,14 +345,21 @@ Also, it does not really explain how dark matter plays a role (you mention it in
 \section{Particle Dark Matter}
 
   Since all Standard Model particles have been eliminated as Dark Matter candidates {\color{red}(cite??)}, theoretically predicted particles are now the focus of many searches.
-  {\color{red}(Maybe explain why, in particular neutrinos are not a good candidate?? -Orel)}
 
+  One recently favored Standard Model Dark Matter candidate was the neutrino, due to its numerous nature and lack of interaction with the strong and electromagnetic forces.
+  This was generally referred to as Hot Dark Matter, as neutrinos travel at relativistic speeds.
+  However, it was eventually demonstrated that because of these relativistic speeds, neutrinos would be able to smear out any of their initial overdensities.
+  This would result in large super-cluster-scale gravitational wells forming first, then cluster-scale wells, then galaxy-scale wells {\color{red}(what is the term for this?? hierarchicial formation? structure formation?)}.
+  When observations are made of earlier times, its found to be the opposite: galaxy-scale gravitational wells form first, then cluster-scale wells, then super-cluster-scale wells in present times.
+  As this is the opposite of whats expected for relativistic dark matter, neutrinos were ruled out as a dark matter candidate {\color{red}(cite??)}.
+  % from this discussion: https://physics.stackexchange.com/questions/158319/why-are-neutrinos-ruled-out-as-a-major-or-even-sole-component-of-dark-matter
+  
   {\color{red}(why neutralino??)}
   
   While the currently favored dark matter candidate is the neutralino, the lightest supersymmetric particle, a more general term for dark matter candidate particles that meets the conditions required by cosmology and particle physics is a WIMP, or Weakly Interacting Massive Particle.
   One of the major predictions from particle physics and cosmology is referred to as the "WIMP Miracle".
   In it, particle physics and cosmology separately predict that if dark matter is WIMP, it should have a velocity-averaged cross section of around $3*10^{-27}\text{cm}^{3}\text{s}^{-1}$, though each field comes to this value by very separate math. {\color{red}(cite??)}
-  {\color{red}(It’s not exactly math, there is some physical constraints in it. Can you find a better way of explaining it?? -Orel)}
+  {\color{red}(It's not exactly math, there is some physical constraints in it. Can you find a better way of explaining it?? -Orel)}
 
   In the 1990s, supersymmetry predicted the existance of a WIMP-like particle with a crosssection of around \nicetilde \SI{3e-26}{cm$^2$} \cite{Jungman:1995df}.
   % $3*{10}^{-26}\ {\textrm{cm}}^{2}$

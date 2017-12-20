@@ -3,8 +3,8 @@
 
 \section{Veritas Data}\label{veritasdata}
   The analysis in this thesis relies on three sets of VERITAS data.
-  One set observes the Crab Nebula, another observed the Galactic Center, and a third set observes a dark region \SI{5}{\degree} NW of the Galactic Center.
-  This dark region is referred to as  Sgr A* Off, and is located at (l,b)=(\SI{357.3396}{\degree}, \SI{3.9984}{\degree}), shown in Figure \ref{fig:gcfieldsofview}.
+  One set observes the Crab Nebula, another observed the Galactic Center, and a third set observes a dark region \nicetilde\ang{5} NW of the Galactic Center.
+  This dark region is referred to as  Sgr A* Off, and is located at (l,b)=(\ang{357.3396}, \ang{3.9984}), shown in Figure \ref{fig:gcfieldsofview}.
 
   \begin{figure}[ht]
     \centering
@@ -13,7 +13,7 @@
       Fields of view for Galactic Center observations.
       Each circle marks the detection area of one observation.
       Green circles are data observations, while blue circles are dark observations used to construct the camera-background templates.
-      To quantify the detector efficiency, observations are taken at \SI{0.5}{\degree} or \SI{0.7}{\degree} offsets from each observing target, in four different directions (wobbles) along Right Ascension/Declination axes.
+      To quantify the detector efficiency, observations are taken at \ang{0.5} or \ang{0.7} offsets from each observing target, in four different directions (wobbles) along Right Ascension/Declination axes.
     }
     \label{fig:gcfieldsofview}
   \end{figure}
@@ -45,7 +45,7 @@
     \caption[VERITAS Data Elevation Exposure]{
       Camera center elevation for the three sets of data.
       The three peaks in the Sgr A* data are from the 4 wobble positions being at different elevations.
-      The North wobble observations peak at elevation \nicetilde29.75\degree, East and West wobbles observations at \nicetilde29.25\degree, and South wobble observations at \nicetilde28.75\degree.
+      The North wobble observations peak at elevation \nicetilde\ang{29.75}, East and West wobbles observations at \nicetilde\ang{29.25}, and South wobble observations at \nicetilde\ang{28.75}.
     }
     \label{fig:datapointingelevations}
   \end{figure}
@@ -163,7 +163,7 @@
 \section{Test Point Sources}
   To verify that the CTOOLs likelihood analysis is working properly, two point sources were analyzed first, before any dark matter analysis was performed.
   The first was on the well-studied Crab nebula, and the second was on the source at the center of our galaxy.
-  To also uncover any low-elevation effects, the Crab observations were limited to ones with elevations < \SI{32.5}{\degree} (see Figure \ref{fig:datapointingelevations}).
+  To also uncover any low-elevation effects, the Crab observations were limited to ones with elevations < \ang{32.5} (see Figure \ref{fig:datapointingelevations}).
 
   {\color{red}(plot of Crab, Sgr A*, Sgr A* Off sources elevations??)}
 
@@ -171,7 +171,7 @@
 
     In order to test that the converted data, irfs, and ctools likelihood engine all work properly, a test analysis on the Crab nebula was performed.
     As the Crab nebula is the brightest gamma ray emitter in the sky, it has been observed extensively by VERITAS and other gamma ray telescopes.
-    Since the Galactic Center only rises to around \SI{30}{\degree} elevation, elevation effects would also need to be searched for.
+    Since the Galactic Center only rises to around \ang{30} elevation, elevation effects would also need to be searched for.
     After searching for low-elevation Crab observations, a total of 17.1 hours of livetime were found.
     These consist of 7.3 {\color{red}(doesn't match with plot??)} hours of V5 epoch data, and 9.8 {\color{red}(doesn't match with plot??)} hours of V6 epoch data.
     
@@ -192,13 +192,13 @@
     F\left( E \right) = I_{0} \left( \frac{E}{E_{0}} \right)^{-\gamma}
     \end{equation}
 
-    Only events between 4 and 70 TeV are used in this test analysis.
-    At an elevation of 25\degree, the reconstruction software is able to reconstruct events as low as 1.5 TeV.
+    Only events between \SIrange{4}{70}{TeV} are used in this test analysis.
+    At an elevation of \ang{25}, the reconstruction software is able to reconstruct events as low as \SI{1.5}{TeV}.
     But, in this 'threshold' energy region, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region are not accurate.
     Part of this decrease is explored in section (see figures \ref{fig:bkgvsel_crab} and \ref{fig:bkgvsel_sgra}), but implementing corrections requires large changes to existing code, along with a larger set of simulations, neither of which were feasible during this work.
     Above 70 TeV, simulations become too computationally expensive to create when attempting to calculate IRFs.
     
-    After fitting all events from \SI{4}{TeV} to \SI{70}{TeV}, with a pivot energy $ E_{0}= \SI{10}{TeV} $, the $ I_{0} = \left(1.472\pm0.09\right)*10^{-19} \frac{ph}{cm^{2} s MeV} $, $ \gamma = 2.382 \pm 0.076 $, with a Test Statistic of 1929.01. {\color{red}(?? update values!)}.
+    After fitting all events from \SIrange{4}{70}{TeV}, with a pivot energy $ E_{0}= \SI{10}{TeV} $, the $ I_{0} = \left(1.472\pm0.09\right)*10^{-19} \frac{ph}{cm^{2} s MeV} $, $ \gamma = 2.382 \pm 0.076 $, with a Test Statistic of 1929.01. {\color{red}(?? update values!)}.
     As the crab (alternative) hypothesis has 110 free parameters, and the no-crab (null) hypothesis has 108 free parameters, the Test Statistic has $ 110 - 108 = 2 $ degrees of freedom.
     This is roughly equivalent to a {\color{red}significance of ??}.
     
@@ -225,7 +225,7 @@
       \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_spl.eps}
       \caption[Crab Profile along Galactic L]
       {
-        The number of counts along a \SI{0.16}{\degree}-wide-slice through the Crab along the Galactic L axis.
+        The number of counts along a \ang{0.16}-wide-slice through the Crab along the Galactic L axis.
         Blue points are the number of observed counts, with poissonian error bars.
         The green histogram bars are the number of counts predicted by all models.
         Purple histogram bars are the number of counts predicted by only the camera-background models.
@@ -239,7 +239,7 @@
       \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_spb.eps}
       \caption[Crab Profile along Galactic B]
       {
-        The number of counts along a \SI{0.16}{\degree}-wide-slice through the Crab along the Galactic B axis.
+        The number of counts along a \ang{0.16}-wide-slice through the Crab along the Galactic B axis.
         Blue points are the number of observed counts, with poissonian error bars.
         The green histogram bars are the number of counts predicted by all models.
         Purple histogram bars are the number of counts predicted by only the camera-background models.
@@ -253,8 +253,8 @@
       \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_splalt.eps}
       \caption[Crab Profile along Galactic L Off Source]
       {
-        The number of counts along a \SI{0.16}{\degree}-wide-slice along the Galactic L axis.
-        This slice doesn't go through the Crab, but instead \SI{1}{\degree} higher in Galactic B.
+        The number of counts along a \ang{0.16}-wide-slice along the Galactic L axis.
+        This slice doesn't go through the Crab, but instead \ang{1} higher in Galactic B.
         As this doesn't include the Crab, this plot primarily demonstrates the camera background modelling.
         Blue points are the number of observed counts, with poissonian error bars.
         The green histogram bars are the number of counts predicted by all models (not visible as the astrophysical crab model doesn't contribute any amount of counts in this offset slice).
@@ -269,7 +269,7 @@
       \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_ep.eps}
       \caption[Crab Profile in Energy]
       {
-        The number of counts in a \SI{0.6}{\degree} x \SI{0.6}{\degree} square centered on the Crab, vs energy.
+        The number of counts in a \ang{0.6} x \ang{0.6} square centered on the Crab, vs energy.
         Blue points are the number of observed counts, with poissonian error bars.
         The green histogram bars are the number of counts predicted by all models.
         Purple histogram bars are the number of counts predicted by only the camera-background models.
@@ -282,7 +282,7 @@
     In figures \ref{fig:crab_profile_l} and \ref{fig:crab_profile_b}, the counts in the observations and models were integrated along a slice of galactic l and b.
     The counts from only the camera background models is shown, along with the counts from all camera backgrounds plus the point source.
     The difference between these two lines is then the counts from the Crab point source model.
-    In figure \ref{fig:crab_profile_energy}, a similar plot is made, though integrated in a \SI{0.6}{\degree}x\SI{0.6}{\degree} square around the crab at different energies.
+    In figure \ref{fig:crab_profile_energy}, a similar plot is made, though integrated in a \ang{0.6}x\ang{0.6} square around the crab at different energies.
 
 \section{Dark Matter Likelihood Analysis}
   \subsection{Non-Dark-Matter Models}
@@ -320,7 +320,7 @@
     \label{fig:gc_counts_skymap}
   \end{figure}
 
-  An energy histogram of all events from \SI{4}{TeV}-\SI{70}{TeV} is shown in figure \ref{fig:gc_counts_enhist}.
+  An energy histogram of all events from \SIrange{4}{70}{TeV} is shown in figure \ref{fig:gc_counts_enhist}.
   
   \begin{figure}[ht]
     \centering
@@ -336,7 +336,7 @@
   The analysis uses the $b\bar{b}$ annihilation channel, and are shown for just at \SI{45}{TeV}.
 
   In figure \ref{fig:gc_profile_gal_l}, the observed counts are shown compared to the final, likelihood-optimized modelled counts.
-  The histogram bins are along a 0.22\degree-wide slice along the galactic l axis, centered on Sgr A*'s galactic b coordinate.
+  The histogram bins are along a \ang{0.22}-wide slice along the galactic l axis, centered on Sgr A*'s galactic b coordinate.
   The purple histogram bins are the modelled counts from only the camera background models.
   The green histogram bins are the total modelled counts from the camera background models and the astrophysical models.
   The blue points with error bars are the observed counts in each bin, with poissonian errors.
@@ -369,14 +369,14 @@
     \label{fig:gc_profile_gal_b}
   \end{figure}
 
-  Figure \ref{fig:gc_profile_energy} shows the same profile, except instead integrated over a ${0.2}^{\circ}\times{0.2}^{\circ}$ galactic (l,b) square centered on Sgr A*.
+  Figure \ref{fig:gc_profile_energy} shows the same profile, except instead integrated over a \ang{0.2}$\times$\ang{0.2} galactic (l,b) square centered on Sgr A*.
   Again, purple is modelled camera-background counts, green is total modelled counts, and blue is observed counts.
   
   \begin{figure}[h]
     \centering
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_energy.eps}
     \caption[Galactic Center Profile vs Energy]{
-      Observed vs modeled counts in a ${0.2}^{\circ}\times{0.2}^{\circ}$ square bin centered on Sgr A* at energies from \SI{4}{TeV} to \SI{70}{TeV}.
+      Observed vs modeled counts in a \ang{0.2}$\times$\ang{0.2} square bin centered on Sgr A* at energies from \SIrange{4}{70}{TeV}.
       Modeled counts from camera-background-models are shown in purple, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
     }
