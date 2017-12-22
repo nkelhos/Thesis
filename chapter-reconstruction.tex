@@ -443,21 +443,21 @@ This database includes the width and length of the shower, how far away its core
   In Figure \ref{fig:bkgvsel_crab}, the top plot shows the positions of all events.
   The middle histogram shows the distribution of event energies, and the bottom plot shows the positions of events in a limited energy range, \SIrange{1.5}{3.25}{\TeV}.
   The middle plot demonstrates that, as event energy decreases, fewer events are detected.
-  When events the events in this limited energy range are plotted in the bottom plot, a faint deficit appears along the bottom of the camera.
+  When events in this limited energy range are plotted in the bottom plot, a faint deficit appears along the bottom of the camera.
   This faint deficit is due to the \nicetilde20\% higher column density at the low-elevation parts of the camera.
-  This higher column density causes air showers to start further away from the telescopes, where more Cherenkov photons are absorbed, resulting in fewer events being detectable in the lower half of the camera.
+  This higher column density causes air showers to start farther away from the telescopes, where more Cherenkov photons are absorbed, resulting in fewer events being detectable in the lower half of the camera.
 
   When similar plots are made for the galactic center in Figure \ref{fig:bkgvsel_sgra}, the effect is much stronger, and rotated.
   In the top plot, events are radially symmetric around the source position.
   When only the events from \SIrange{1.5}{3.25}{\TeV} are plotted, a much clearer deficit is visible on the lower right part of the plot.
   This area corresponds to the deficit at the bottom of the camera in Figures \ref{fig:back_lowelev29}.B and \ref{fig:back_lowelev26}.B.
   This rotation occurs when converting between camera x/y coordinates (Earth Elevation/Azimuth) and Galactic coordinates (l,b).
-  This rotation is also changes throughout individual runs, which further blurs this effect.
-  For the Crab plots in Figure \ref{fig:bkgvsel_crab}, the rotation is only a few degrees, while for Sgr A* in Figure \ref{fig:bkgvsel_sgra}, is closer to \ang{70}.
+  The degree of rotation also changes throughout individual runs, which further blurs this effect.
+  For the Crab plots in Figure \ref{fig:bkgvsel_crab}, the rotation is only a few degrees, while for Sgr A* in Figure \ref{fig:bkgvsel_sgra}, it is closer to \ang{70}.
   
-  This effect is important to this analysis because it implies that, at the lowest energies, the background rate is not radially symmetric.
+  This effect is important to the analysis because it implies that, at the lowest energies, the background rate is not radially symmetric.
   Radial backgrounds (sometimes referred to as acceptances) are typically used in VERITAS, as no other camera x/y or energy dependence had been demonstrated until now.
-  As the analysis in this thesis only has a few hours of background observations (see Table \ref{tab:observation_times}), only radially symmetric background templates/models could be constructed, which then required limiting the final analysis to $\geq\SI{4}{\TeV}$.
+  As the analysis in this thesis only has a few hours of background observations (see Table \ref{tab:observation_times}), only radially symmetric background templates and models could be constructed, which then required limiting the final analysis to $\geq\SI{4}{\TeV}$.
   
   \begin{figure}[ht]
     \centering
@@ -468,7 +468,7 @@ This database includes the width and length of the shower, how far away its core
       Top: Skymap of all events.
       Middle: Histogram of all events in energy.
       Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV}.  
-      The blue circles are centered on the Crab Nebula, to highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
+      The blue circles centered on the Crab Nebula highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
     }
     \label{fig:bkgvsel_crab}
   \end{figure}
@@ -482,7 +482,7 @@ This database includes the width and length of the shower, how far away its core
       Top: Skymap of all events.
       Middle: Histogram of all event energies.
       Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV}.  
-      The blue circles, centered on the Galactic Center, highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
+      The blue circles centered on the Galactic Center highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
     }
     \label{fig:bkgvsel_sgra}
   \end{figure}
@@ -515,42 +515,42 @@ This database includes the width and length of the shower, how far away its core
 
     This striking effect can be seen in the Galactic Center data in Figure \ref{fig:bkgvsel_sgra}.
     These structures, and their strong dependency on both the energy and elevation of the telescopes may be a large factor in why the low-energy threshold regime of gamma-ray telescopes is poorly understood.
-    Incorporating this effect into the instrument response functions would require modifying Eventdisplay and CTOOLS, as well as creating another batch of diffuse simulations with elevation increments of less than \ang{5}, all of which are computationally expensive.
+    Incorporating this effect into the instrument response functions would require modifying Eventdisplay and CTOOLS, as well as creating another batch of diffuse simulations with elevation increments smaller than \ang{5}, all of which are computationally expensive.
     {\color{red}It is good to explain that this is a global issue and even suggest how it can be fixed generally for VERITAS, but do not mention the software packages or computationally expensive. Instead, write something like “background templates are needed for the different bins” and that it is beyond the scope of this analysis (or that it was not performed due to time constraints). ?? -Orel}
     {\color{red}(Since there isn't enough background runs to make properly elevation and energy dependent background models (see significance skymap in chapter 6), This should be phrased as "More data is needed to properly populate the increased number of bins." ??)}
   
   \FloatBarrier
 
   \subsection{Effect of Stars}
-    Since understanding the camera's background is important for extended source studies, i.e. dark matter halos, studies were performed examining the spatial effects of stars in the camera.
-    It had been noted in the past that for visual magnitude \nicetilde{}6-8 stars, the camera pixels they illuminated would have a higher average current.
-    This translated into a higher pedestal variation in the affected pixels, which decreased how often the pixel participated in shower images.
-    In addition, if a star with magnitude brighter than 6 was in the field of view, it would cause high enough current in the pixel that it's voltage would be set to zero to prevent it from being damaged.
-    For particularly bright stars (magnitude $\leq{}3$), often several pixels are disabled at a given time.
+    Understanding the camera's background is important for accurately modeling extended sources like dark matter halos.
+    The camera's background shape is due to the performance of many individual camera pixels working together.
+    VERITAS onsite operators had, in the past, noted that for apparent visible magnitude $m_V :$ 6-8 stars, the camera pixels they illuminated would have a higher average current.
+    This causes higher pedestal variations in the affected pixels, which decrease how often the pixel participated in shower images.
+    In addition, if a star with $m_V < 6$ was in the field of view, it would cause a high enough current in the pixel to trigger a safety system that lowers its voltage to zero, to prevent it from being damaged.
+    For particularly bright stars, such as $m_V \leq 3$, several pixels can be disabled at any given time.
 
-    A third effect is that, since the telescope camera is fixed to the ground, from the camera coordinate system, the sky rotates around the camera center.
-    This means that over a single 30 min observation, any stars rotate around the camera center, disabling several camera pixels as it passes over them.
-    The camera checks for these disabled pixels roughly once per minute by turning their voltage back on and monitoring the current, and setting it back to zero if the current is still above the threshold.
+    Compounding this effect is that, since the telescope camera is fixed to the ground, the sky rotates around the camera center.
+    This means that over a single 30 minute observation the field of view rotates around the camera center, and each star in view disables successive camera pixels as it passes over them.
+    The camera rechecks these disabled pixels roughly once per minute by turning their voltage back on and monitoring the current, and resetting it to zero if the current is still above the threshold.
 
     These effects imply that to study the effect of stars, one must study the effect of high-current and disabled camera pixels, and use this information to construct the effect of stars.
-    In this section, the effects of disabled camera pixels are studied.
+    In the following section, the effects of disabled camera pixels are studied.
     
-    {\color{red}Divide to sections here maybe? Not sure, maybe will help with the flow between introduction and analysis. ?? -Orel}
+  \subsection{Effects of Disabled Pixels}
 
     % see calculations/disabledpixel_obstime , those 250 crab runs turned into about 13.5 observation hours
     To examine the effects of disabled pixels, \nicetidle13 hours of Crab observations were reconstructed twice.
     The first analysis was with the default analysis chain settings, and the second time with a single pixel disabled in all four telescopes.
     This mimics the effect of having a star in the field of view that is bright enough to disable a pixel.
 
-    After both sets of events are passed through gamma-hadron cuts, they are compared.
-    These two sets of events were examined for events that disappeared when the pixel was disabled, as well as for {\color{red}new events that appeared (I know what you mean, but be a little more precise like events which failed the cuts in the first but passed in the second.. ?? -Orel)}
-    Events that are still present in both event lists can then be tested to see how far their reconstructed position moved in the camera.
+    After gamma-hadron cuts are applied to both sets of events, studies can be performed on events that only appeared in one set and not the other.
+    Some events may only pass gamma-hadron cuts with the pixel enabled ($P_e$), while others only pass when the pxiel is disabled ($P_d$).
+    Events that are present both when the pixel is disabled and enabled can also be tested to see how far their reconstructed position moved in the camera.
 
     In Figure \ref{fig:dpix_rel_camera}, the relative event rate in the camera is plotted when pixel 115 is disabled in all four telescopes.
-    This relative event rate is calculated by taking, {\color{red}for each bin in camera coordinates,  (Bin of what? I guess what you do is reconstruct the position of the shower on the camera and divide those positions into bins? 
-This description could be a little clearer. ?? -Orel)}, the number of pixel-disabled reconstructed gamma-like events, divided by the pixel-enabled number of reconstructed events.
-    {\color{red}(clean this previous sentence up, it can be much simpler! ??)}
-    It can be seen that there is a loss of events near the disabled pixel (the black circle), with a rate closer to 100\% the further away one goes from the disabled pixel.
+    This relative event rate is calculated by binning all $P_d$ and $P_e$ events by their reconstructed position in camera coordinates.
+    Then, for each camera coordinate bin, the ratio of the number of events $\frac{P_d}{P_e}$ is calculated.
+    It can be seen that there is a loss of events near the disabled pixel (the black circle), with a rate closer to 100\% the farther one goes from the disabled pixel.
 
     \begin{figure}[ht]
       \centering
@@ -590,7 +590,7 @@ I am sure that if you do this calculation you can estimate that the effect is mu
 
     What is also noticeable is that the highest concentration of lost events was in the pixel's area, whereas the highest rate for appearing events is actually in a ring with a radius of \nicetilde1.5 pixels around the disabled pixel.
     This is probably due to the fact that disabling a pixel can make some images look thinner or wider, depending on where the disabled pixel is in the image.
-    A thinner image will look more gamma-like, making it more likely to pass cuts, appearing like 'new' events.
+    A thinner image will look more gamma-like, making it more likely to pass cuts.
     On the other hand, a wider image looks more hadron-like, and is less likely to pass cuts, causing some events to disappear.
 
     \begin{figure}[ht]
@@ -624,9 +624,9 @@ I am sure that if you do this calculation you can estimate that the effect is mu
       \label{fig:dpix_move}
     \end{figure}
 
-    As the acceptance for a particular event and the event's effective area are strongly related, the loss of acceptance also means a loss of effective area in the area of this pixel.
+    As the acceptance for a particular event and the event's effective area are strongly related, the loss of acceptance also means a loss of effective area near the pixel.
     This can have effects on the energy reconstruction.
-    Additionally, for CTA and its projected \ang{7}-diameter field of view, more stars will be in the field of view, implying there will be more camera pixels affected by their light.
+    Additionally, for CTA and its projected \ang{7} diameter field of view, more stars will be in the field of view, implying there will be more camera pixels affected by their light.
     
     {\color{red}(There aren't any bright stars or dead pixels in the galactic center data? Tie this back to why this dead pixel study is stil relevant. ??)}
     
