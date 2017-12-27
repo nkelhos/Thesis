@@ -34,13 +34,15 @@ In section \ref{sec:epochs}, the different observatory epochs are discussed, as 
   \label{fig:davcottel}
 \end{figure}
 
-Like most telescopes, each VERITAS telescope has an immobile base, and a pointable dish for collecting light.
+Like most telescopes, each VERITAS telescope has a fixed base and a pointable dish for collecting light.
 This dish can rotate in azimuth and in elevation, with enough range in both axes to point at any direction above the horizon.
 At their fastest, the telescopes can slew at a rate of $ \nicetilde \ang{1} $ per second.
 To track where the telescopes are pointing, the motors that drive the azimuth and elevation movement have encoders that digitize the pointing direction of the dishes.
 However, as the dishes are large metal structures, they bend and flex at different elevations and azimuths.
 To account for this flexing, the encoder values are then given to a structural model called T-Point, which corrects for the dish structure bending at different azimuths and elevations.
 After applying this model, the telescope pointing can be tracked with an accuracy of $\ang{0.013}$ to $\ang{0.027}$ {\color{red}(That is a range within a factor of two. Why?? -Gernot)} \cite{Veritas_Detector}.
+% jeff grube memo http://veritash.sao.arizona.edu:8081/AnalysisAndCalibration/111221_033051/VPM_memo_Dec2011.pdf ?
+% or maybe just use https://arxiv.org/pdf/0810.0474.pdf ?
 
 As an improvement to the encoder measurements, a VERITAS Pointing Monitor (VPM) system is also in place.
 The VPM consists of two CCD cameras fixed to each telescope, pointing parallel to the telescope pointing, and a set of LED lights attached to the PMT camera, next to the Winston cones (see section \ref{sec:pmts}).
