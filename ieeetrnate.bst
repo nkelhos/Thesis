@@ -206,19 +206,30 @@ FUNCTION {format.names}
   s num.names$ 'numnames :=
   numnames 'namesleft :=
     { namesleft #0 > }
-    { s nameptr "{f.~}{vv~}{ll}{, jj}" format.name$ 't :=
+    %{ s nameptr "{f.~}{vv~}{ll}{, jj}" format.name$ 't :=
+    % lastname, firstinitial. 
+    %{ s nameptr "{vv~}{ll}{, f.}{, jj}" format.name$ 't :=
+    { s nameptr "{vv~}{ll}{, jj}" format.name$ 't :=
       nameptr #1 >
-	{ namesleft #1 >
+	{ 
+    nameptr #3
+    #1 + =
+    numnames #5
+    > and
+      { "others" 't :=
+        #1 'namesleft := }
+      'skip$
+      if$
+    namesleft #1 >
 	    { ", " * t * }
 	    { numnames #2 >
-		{ "," * }
-		'skip$
-	      if$
-	      t "others" =
-		{ " {\em et~al.}" * }
-		{ " and " * t * }
-	      if$
-	    }
+        { "," * }
+        'skip$
+            if$
+            t "others" =
+        { " {\em et~al.}" * }
+        { " and " * t * }
+      if$ }
 	  if$
 	}
 	't
@@ -580,6 +591,7 @@ FUNCTION {format.incoll.inproc.crossref}
 FUNCTION {article}
 { output.bibitem
   format.authors "author" output.check
+  format.date "year" output.check
   format.title "title" output.check
   blank.sep
   crossref missing$
@@ -590,7 +602,7 @@ FUNCTION {article}
 	'skip$
       if$
       format.pages output
-      format.date "year" output.check
+      %format.date "year" output.check
     }
     { format.article.crossref output.nonnull
       format.pages output
@@ -719,6 +731,7 @@ FUNCTION {incollection}
 FUNCTION {inproceedings}
 { output.bibitem
   format.authors "author" output.check
+  format.date "year" output.check
   format.title "title" output.check
   blank.sep
   crossref missing$
@@ -780,12 +793,12 @@ FUNCTION {manual}
 FUNCTION {mastersthesis}
 { output.bibitem
   format.authors "author" output.check
+  format.date "year" output.check
   format.title "title" output.check
   blank.sep
   "Master's thesis" format.thesis.type output.nonnull
   school "school" output.check
   address output
-  format.date "year" output.check
   new.block
   note output
   new.block
@@ -820,12 +833,12 @@ FUNCTION {misc}
 FUNCTION {phdthesis}
 { output.bibitem
   format.authors "author" output.check
+  format.date "year" output.check
   format.btitle "title" output.check
   new.block
   "PhD thesis" format.thesis.type output.nonnull
   school "school" output.check
   address output
-  format.date "year" output.check
   new.block
   note output
   new.block

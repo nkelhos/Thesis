@@ -9,7 +9,7 @@
   \label{fig:veritasarray}
 \end{figure}
 
-VERITAS (Very Energetic Radiation Imaging Telescope Array System, pictured in figure \ref{fig:veritasarray}) is a gamma ray observatory operating in Arizona, USA, and is capable of detecting $\nicetilde$TeV-energy gamma rays.
+VERITAS (Very Energetic Radiation Imaging Telescope Array System, pictured in Figure \ref{fig:veritasarray}) is a gamma ray observatory operating in Arizona, USA, and is capable of detecting $\nicetilde$TeV-energy gamma rays.
 The observatory consists of an array of four Imaging Atmospheric Cherenkov Telescopes (IACTs), each spaced $\nicetilde$90m apart.
 Each telescope possesses an array of 345 mirrors, and a Photomultiplier Tube (PMT) camera (containing 499 PMTs) on a set of struts.
 When a gamma ray produces an air shower in the atmosphere, the shower emits blue-UV Cherenkov photons over a timespan of nanoseconds.
@@ -17,11 +17,11 @@ By focusing these photons onto the PMT camera with the mirrors, images of the sh
 
 
 In the following sections, the different hardware components are examined, in order of signal propagation.
-In section \ref{sec:telpoint}, the Telescope Pointing is discussed, including its monitoring and calibration.
-The Mirrors are discussed in section \ref{sec:mirrors}, including their properties and alignment.
-In section \ref{sec:pmts}, the PMTs are discussed, including their performance and calibration.
-The trigger system is discussed in section \ref{sec:trig}, relating how candidate signal voltages are saved while discarding those sourced from noise.
-In section \ref{sec:epochs}, the different observatory epochs are discussed, as over time changes and modifications have changed the observatory's performance.
+In Section \ref{sec:telpoint}, the Telescope Pointing is discussed, including its monitoring and calibration.
+The Mirrors are discussed in Section \ref{sec:mirrors}, including their properties and alignment.
+In Section \ref{sec:pmts}, the PMTs are discussed, including their performance and calibration.
+The trigger system is discussed in Section \ref{sec:trig}, relating how candidate signal voltages are saved while discarding those sourced from noise.
+In Section \ref{sec:epochs}, the different observatory epochs are discussed, as over time changes and modifications have changed the observatory's performance.
 
 
 \section{Telescope Pointing}\label{sec:telpoint}
@@ -40,17 +40,19 @@ At their fastest, the telescopes can slew at a rate of $ \nicetilde \ang{1} $ pe
 To track where the telescopes are pointing, the motors that drive the azimuth and elevation movement have encoders that digitize the pointing direction of the dishes.
 However, as the dishes are large metal structures, they bend and flex at different elevations and azimuths.
 To account for this flexing, the encoder values are then given to a structural model called T-Point, which corrects for the dish structure bending at different azimuths and elevations.
-After applying this model, the telescope pointing can be tracked with an accuracy of $\ang{0.013}$ to $\ang{0.027}$ {\color{red}(That is a range within a factor of two. Why?? -Gernot)} \cite{Veritas_Detector}.
+After applying this model, the telescope pointing can be tracked with an accuracy of \nicetilde{}\ang{0.02}~\cite{holder2008status}.
+% $\ang{0.013}$ to $\ang{0.027}$ {\color{red}(That is a range within a factor of two. Why?? -Gernot)} \cite{Veritas_Detector}.
 % jeff grube memo http://veritash.sao.arizona.edu:8081/AnalysisAndCalibration/111221_033051/VPM_memo_Dec2011.pdf ?
 % or maybe just use https://arxiv.org/pdf/0810.0474.pdf ?
 
 As an improvement to the encoder measurements, a VERITAS Pointing Monitor (VPM) system is also in place.
-The VPM consists of two CCD cameras fixed to each telescope, pointing parallel to the telescope pointing, and a set of LED lights attached to the PMT camera, next to the Winston cones (see section \ref{sec:pmts}).
+The VPM consists of two CCD cameras fixed to each telescope, pointing parallel to the telescope pointing, and a set of LED lights attached to the PMT camera, next to the Winston cones (see Section \ref{sec:pmts}).
 The first CCD camera is attached below the bottom mirrors, and images the stars in the field of view.
 The second CCD camera is attached to the support struts, roughly halfway between the mirrors and the camera, and images the focal plane of the telescope.
-Both cameras are marked by red dashed-line circles in figure \ref{fig:davcottel}.
-During regular observations, these cameras take images of background stars and the focal plane LEDs every two seconds and matching the star positions, an improved pointing accuracy of $ \ang{0.0069} $ {\color{red}(And you are sure it ..69, and not ....70?? -Gernot)} can be achieved.
+Both cameras are marked by red dashed-line circles in Figure \ref{fig:davcottel}.
+During regular observations, these cameras take images of background stars and the focal plane LEDs every two seconds and matching the star positions, an improved pointing accuracy of \nicetilde{}\ang{0.007} can be achieved.
 %originally in griffin thesis 2016, pg45, but is there a better citation??
+% 25 arcseconds -> 25/3600 -> 0.006944 deg -> rounded t0 0.007 deg
 
 As the VERITAS telescopes are based on old designs for a military solar concentrator that sets targets on fire \cite{daviescotton}, the VERITAS telescopes have similar abilities.
 This mostly means that care must be taken during the day to point the telescopes away from the sun during maintanance and storage.
@@ -63,11 +65,11 @@ VERITAS telescopes are stored during the day by pointing them North at $ \niceti
 \section{Mirrors}\label{sec:mirrors}
 
 When the Cherenkov light from a gamma-ray shower first interacts with the telescope array, it is by being reflected by some of the 345 mirrors.
-These mirrors face towards the incoming Cherenkov light, with the PMT camera facing the mirrors, as shown in figure \ref{fig:davcottel}.
+These mirrors face towards the incoming Cherenkov light, with the PMT camera facing the mirrors, as shown in Figure \ref{fig:davcottel}.
 When its spherical mirrors, spherical dish, and focal length ratio of $ \nicetilde 2 $ are considered, this configuration is referred to as a Davies-Cotton telescope \cite{daviescotton}.
 Each mirror has an area of 0.322$m^2$, and a spherical curvature radius of 24m.
 The mirrors are each mounted along the support structure so that the total diameter of the telescope's mirror area is 12m, with a total area of 111$m^2$ and a focal length of 12m \cite{Veritas_Detector}.
-The mirrors' reflectivity as a function of wavelength is shown in figure \ref{fig:mirreflect}.
+The mirrors' reflectivity as a function of wavelength is shown in Figure \ref{fig:mirreflect}.
 The VERITAS specifications state that the mirror reflectivity must be $\geq 85\%$ between 280nm and 450nm.
 
 \begin{figure}[ht]
@@ -94,7 +96,7 @@ Due to dust, minor imperfections in the surface of the mirrors, and small mirror
 Instead, a single point-like light source appears smeared out on the focal plane.
 This smearing is then quantified by a fitted gaussian function, usually called the optical Point Spread Function\footnote{Please note that this is different from the PSF described in Chapter \ref{ch:grrecon}, which quantifies the spread in the reconstructed gamma-ray positions.  The optical PSF instead describes the spread of UV-Optical photons.} (PSF).
 By pointing a telescope at different stars and placing a CCD at the focal plane, the mirror PSF is measured monthly.
-The first VERITAS telescope's first calibration image shown in figure \ref{fig:mirrorpolaris}.
+The first VERITAS telescope's first calibration image shown in Figure \ref{fig:mirrorpolaris}.
 The mirror psf roughly gaussian-shaped but with longer tails, with a $ \ang{0.06} $ full width half maximum \cite{Veritas_Detector}.
 
 \begin{figure}[ht]
@@ -120,7 +122,7 @@ By using the CCD to examine the position of the star in each mirror, the mirror'
 Each telescope has a PMT Camera on the end of four supporting arms, inside a protective housing.
 This camera consists of 499 Photo Multiplier Tubes (PMTs), each with a Winston cone to increase the light collection area for each PMT.
 The PMTs are Hamamatsu's model R10560-100-20 MOD \cite{pmtmodels}.
-These winston cones can be seen attached to the PMTs in figure \ref{fig:winstcones}.
+These winston cones can be seen attached to the PMTs in Figure \ref{fig:winstcones}.
 
 \begin{figure}[ht]
   \centering
@@ -178,7 +180,7 @@ In summer of 2012, all PMTs in the telescopes were replaced with improved PMTs.
 Specifically, the original Photonis XP2970 models were replaced with the Hamamatsu R10560-100-20 MOD.
 This was done because that R10560 has a considerably higher quantum efficiency (\nicetilde$90\%$ {\color{red}(??this is not the right value??)}), compared to the XP2970 (\nicetilde$75\%${\color{red}(??this is not the right value??)}).
 This higher quantum efficiency means more photons from a shower are detected by the PMT, which means VERITAS is more sensitive to lower energy gamma rays \cite{pmtmodels}.
-In addition, the voltage pulse due to a single photoelectron is shorter with the R10560 compared to the XP2970, as shown in figure \ref{fig:pmt_pulse_widths}.
+In addition, the voltage pulse due to a single photoelectron is shorter with the R10560 compared to the XP2970, as shown in Figure \ref{fig:pmt_pulse_widths}.
 
 \begin{figure}[ht]
   \centering

@@ -141,7 +141,7 @@
   
   The ratio of the two likelihoods then follows a gaussian (with certain assumptions), meaning the sigificance of the alternative hypothesis over the null can be calculated.
   As part of this likelihood ratio test, the signal and background models must be constructed.
-  Background models can be camera background models (discussed in section \ref{sec:bkgmodels}), or astrophysical models of background gamma-ray emitters.
+  Background models can be camera background models (discussed in Section \ref{sec:bkgmodels}), or astrophysical models of background gamma-ray emitters.
 
   {\color{red}test statistic equation??}
 
@@ -156,7 +156,7 @@
   These background templates vary with respect to the radial distance from the camera center, and the event energy.
 
   To confirm that these background models fit properly, a simple likelihood analysis was performed with the Off observations and their backgrounds.
-  If the background models were assembled accurately, after the liklelihood normalization, the number of events observed and predicted by the models is shown in {\color{red}figure ??}.
+  If the background models were assembled accurately, after the liklelihood normalization, the number of events observed and predicted by the models is shown in {\color{red}Figure ??}.
 
   {\color{red}(using just the background observations, show profile plots in galactic-b and energy??)}
 
@@ -195,7 +195,7 @@
     Only events between \SIrange{4}{70}{TeV} are used in this test analysis.
     At an elevation of \ang{25}, the reconstruction software is able to reconstruct events as low as \SI{1.5}{TeV}.
     But, in this 'threshold' energy region, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region are not accurate.
-    Part of this decrease is explored in section (see figures \ref{fig:bkgvsel_crab} and \ref{fig:bkgvsel_sgra}), but implementing corrections requires large changes to existing code, along with a larger set of simulations, neither of which were feasible during this work.
+    Part of this decrease is explored in Section (see Figures \ref{fig:bkgvsel_crab} and \ref{fig:bkgvsel_sgra}), but implementing corrections requires large changes to existing code, along with a larger set of simulations, neither of which were feasible during this work.
     Above 70 TeV, simulations become too computationally expensive to create when attempting to calculate IRFs.
     
     After fitting all events from \SIrange{4}{70}{TeV}, with a pivot energy $ E_{0}= \SI{10}{TeV} $, the $ I_{0} = \left(1.472\pm0.09\right)*10^{-19} \frac{ph}{cm^{2} s MeV} $, $ \gamma = 2.382 \pm 0.076 $, with a Test Statistic of 1929.01. {\color{red}(?? update values!)}.
@@ -218,7 +218,7 @@
       \label{fig:crab_test_spectra}
     \end{figure}
     
-    In figure \ref{fig:crab_test_spectra}, the fitted crab spectra is shown, along with literature results from earlier VERITAS, HESS, and MAGIC observations of the Crab.
+    In Figure \ref{fig:crab_test_spectra}, the fitted crab spectra is shown, along with literature results from earlier VERITAS, HESS, and MAGIC observations of the Crab.
     
     \begin{figure}[h]
       \centering
@@ -278,11 +278,11 @@
     \end{figure}
     
     The fitted models can also be viewed, as a check that the likelihood engine is fitting the models to the data.
-    In figure \ref{fig:crab_skymap}, the position of all counts is shown in galactic l and b.
-    In figures \ref{fig:crab_profile_l} and \ref{fig:crab_profile_b}, the counts in the observations and models were integrated along a slice of galactic l and b.
+    In Figure \ref{fig:crab_skymap}, the position of all counts is shown in galactic l and b.
+    In Figures \ref{fig:crab_profile_l} and \ref{fig:crab_profile_b}, the counts in the observations and models were integrated along a slice of galactic l and b.
     The counts from only the camera background models is shown, along with the counts from all camera backgrounds plus the point source.
     The difference between these two lines is then the counts from the Crab point source model.
-    In figure \ref{fig:crab_profile_energy}, a similar plot is made, though integrated in a \ang{0.6}x\ang{0.6} square around the crab at different energies.
+    In Figure \ref{fig:crab_profile_energy}, a similar plot is made, though integrated in a \ang{0.6}x\ang{0.6} square around the crab at different energies.
 
 \section{Dark Matter Likelihood Analysis}
   
@@ -296,6 +296,7 @@
   \end{equation}
   
   From \cite{VeritasGCRidge2015}, the specific values used in this point source were $E_{pivot}=\SI{1}{TeV}$, $E_{cut}=\SI{12.8}{TeV}$, and $\alpha=-2.1$.
+  {\color{red}(Also look at 2016 paper: \url{http://iopscience.iop.org/article/10.3847/0004-637X/821/2/129/meta}! ??}
   The normalization $N_{0}$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was left free in the likelihood optimization, while $E_{pivot}$, $E_{cut}$, and $\alpha$ were all fixed.
   The normalization was left free to allow for the potential of some mixing between the point source events and any dark matter halo events, i.e. a stronger dark matter halo gamma-ray flux would result in a weaker point source flux.
   
@@ -303,12 +304,12 @@
 
   \subsection{Dark Matter Models}
   Dark Matter halos are modeled by a spherically-symmetric mass-per-volume density profile.
-  In this analysis, an Einasto density profile (discussed in section \ref{dm_spatial}) is used as the spatial component of the dark matter halo model.
-  For the spectral component, each dark matter mass tested has its own spectrum produced with CLUMPY (see section \ref{dm_spectral}).
+  In this analysis, an Einasto density profile (discussed in Section \ref{dm_spatial}) is used as the spatial component of the dark matter halo model.
+  For the spectral component, each dark matter mass tested has its own spectrum produced with CLUMPY (see Section \ref{dm_spectral}).
 
   \subsection{Likelihood Results}
   
-  A histogram of all observed events is shown in figure \ref{fig:gc_counts_skymap}.
+  A histogram of all observed events is shown in Figure \ref{fig:gc_counts_skymap}.
   
   \begin{figure}[ht]
     \centering
@@ -321,7 +322,7 @@
     \label{fig:gc_counts_skymap}
   \end{figure}
 
-  An energy histogram of all events from \SIrange{4}{70}{TeV} is shown in figure \ref{fig:gc_counts_enhist}.
+  An energy histogram of all events from \SIrange{4}{70}{TeV} is shown in Figure \ref{fig:gc_counts_enhist}.
   
   \begin{figure}[ht]
     \centering
@@ -336,7 +337,7 @@
 
   The analysis uses the $b\bar{b}$ annihilation channel, and are shown for just at \SI{45}{TeV}.
 
-  In figure \ref{fig:gc_profile_gal_l}, the observed counts are shown compared to the final, likelihood-optimized modelled counts.
+  In Figure \ref{fig:gc_profile_gal_l}, the observed counts are shown compared to the final, likelihood-optimized modelled counts.
   The histogram bins are along a \ang{0.22}-wide slice along the galactic l axis, centered on Sgr A*'s galactic b coordinate.
   The purple histogram bins are the modelled counts from only the camera background models.
   The green histogram bins are the total modelled counts from the camera background models and the astrophysical models.
@@ -356,7 +357,7 @@
     \label{fig:gc_profile_gal_l}
   \end{figure}
 
-  Figure \ref{fig:gc_profile_gal_b} is almost the same as figure \ref{fig:gc_profile_gal_l}, except it is a slice through Sgr A* along the galactic b axis,
+  Figure \ref{fig:gc_profile_gal_b} is almost the same as Figure \ref{fig:gc_profile_gal_l}, except it is a slice through Sgr A* along the galactic b axis,
   The feature where the observed counts are shifted to the left of the models is also visible here.
 
   \begin{figure}[h]
@@ -384,7 +385,7 @@
     \label{fig:gc_profile_energy}
   \end{figure}
   
-  To check for any poorly modelled areas of the sky, a residual skymap is shown in figure \ref{fig:gc_resmap}.
+  To check for any poorly modelled areas of the sky, a residual skymap is shown in Figure \ref{fig:gc_resmap}.
   This calculates how significant the difference is between the observed and modelled number of counts.
   Each bin's significance is 
   
@@ -411,19 +412,19 @@
     \label{fig:gc_resmap}
   \end{figure}
 
-  Even if the source and background models were perfectly known, there would still be statistical fluctuations in the observed counts, and the residual significances would form a gaussian distribution, shown as the green line in figure \ref{fig:gc_resmap_sighist}.
-  However, the distribution of the pixel significances from figure \ref{fig:gc_resmap} is shown in figure \ref{fig:gc_resmap_sighist}, and qualitativly not gaussian shaped {\color{red}(??)}.
+  Even if the source and background models were perfectly known, there would still be statistical fluctuations in the observed counts, and the residual significances would form a gaussian distribution, shown as the green line in Figure \ref{fig:gc_resmap_sighist}.
+  However, the distribution of the pixel significances from Figure \ref{fig:gc_resmap} is shown in Figure \ref{fig:gc_resmap_sighist}, and qualitativly not gaussian shaped {\color{red}(??)}.
   {\color{red}?? How well does it fit, and quantitativly how bad does it fit??}
-  As a large number of bins are clustered around +2 and -2 signifiance, this hints that the residuals in figure \ref{fig:gc_resmap} are potentially not due solely from statistical noise, and that the background modelling could be improved.
+  As a large number of bins are clustered around +2 and -2 signifiance, this hints that the residuals in Figure \ref{fig:gc_resmap} are potentially not due solely from statistical noise, and that the background modelling could be improved.
   
   \begin{figure}[ht]
     \centering
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_resmap_phist_algosignificance.eps}
     \caption[Galactic Center Residual Histogram]
     {
-      Histogram of the residual skymap bin significances from figure \ref{fig:gc_resmap}.
+      Histogram of the residual skymap bin significances from Figure \ref{fig:gc_resmap}.
       See equation \ref{eqn:resmap_signif} for details.
-      Only skymap bins within each observation's region of interest (the green circles in figure \ref{fig:gcfieldsofview}) are histogrammed.
+      Only skymap bins within each observation's region of interest (the green circles in Figure \ref{fig:gcfieldsofview}) are histogrammed.
     }
     \label{fig:gc_resmap_sighist}
   \end{figure}
