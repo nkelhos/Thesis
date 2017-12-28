@@ -206,9 +206,6 @@ FUNCTION {format.names}
   s num.names$ 'numnames :=
   numnames 'namesleft :=
     { namesleft #0 > }
-    %{ s nameptr "{f.~}{vv~}{ll}{, jj}" format.name$ 't :=
-    % lastname, firstinitial. 
-    %{ s nameptr "{vv~}{ll}{, f.}{, jj}" format.name$ 't :=
     { s nameptr "{vv~}{ll}{, jj}" format.name$ 't :=
       nameptr #1 >
 	{ 
@@ -251,6 +248,13 @@ FUNCTION {format.url}
 { url empty$
     { "" }
     { url }
+  if$
+}
+
+FUNCTION {format.note}
+{ note empty$
+  { "" }
+  { note }
   if$
 }
 
@@ -813,6 +817,9 @@ FUNCTION {misc}
     { howpublished new.sentence.checka }
     { howpublished empty$ not
       month empty$ year empty$ and
+    %{ s nameptr "{f.~}{vv~}{ll}{, jj}" format.name$ 't :=
+    % lastname, firstinitial. 
+    %{ s nameptr "{vv~}{ll}{, f.}{, jj}" format.name$ 't :=
       or
 	{ format.title.p output.nonnull }
 	{ format.title output.nonnull }
@@ -823,7 +830,7 @@ FUNCTION {misc}
   howpublished output
   format.date output
   new.block
-  note output
+  format.note
   new.block
   format.url
   fin.entry

@@ -35,10 +35,12 @@ In Section \ref{sec:epochs}, the different observatory epochs are discussed, as 
 \end{figure}
 
 Like most telescopes, each VERITAS telescope has a fixed base and a pointable dish for collecting light.
-This dish can rotate in azimuth and in elevation, with enough range in both axes to point at any direction above the horizon.
+This dish can rotate in azimuth and in elevation, with enough range in both axes to point at any direction above the horizon that is not blocked by local mountains.
 At their fastest, the telescopes can slew at a rate of $ \nicetilde \ang{1} $ per second.
 To track where the telescopes are pointing, the motors that drive the azimuth and elevation movement have encoders that digitize the pointing direction of the dishes.
+These encoders are attached to the axes of the motors, thus they are capable of tracking the azimuth and elevation over its entire range of motion.
 However, as the dishes are large metal structures, they bend and flex at different elevations and azimuths.
+This flexing also posesses a hysteresis effect, where the bending changes whether approching a pointing target from a higher or lower elevation.
 To account for this flexing, the encoder values are then given to a structural model called T-Point, which corrects for the dish structure bending at different azimuths and elevations.
 After applying this model, the telescope pointing can be tracked with an accuracy of \nicetilde{}\ang{0.02}~\cite{holder2008status}.
 % $\ang{0.013}$ to $\ang{0.027}$ {\color{red}(That is a range within a factor of two. Why?? -Gernot)} \cite{Veritas_Detector}.
@@ -50,17 +52,15 @@ The VPM consists of two CCD cameras fixed to each telescope, pointing parallel t
 The first CCD camera is attached below the bottom mirrors, and images the stars in the field of view.
 The second CCD camera is attached to the support struts, roughly halfway between the mirrors and the camera, and images the focal plane of the telescope.
 Both cameras are marked by red dashed-line circles in Figure \ref{fig:davcottel}.
-During regular observations, these cameras take images of background stars and the focal plane LEDs every two seconds and matching the star positions, an improved pointing accuracy of \nicetilde{}\ang{0.007} can be achieved.
-%originally in griffin thesis 2016, pg45, but is there a better citation??
-% 25 arcseconds -> 25/3600 -> 0.006944 deg -> rounded t0 0.007 deg
-
-As the VERITAS telescopes are based on old designs for a military solar concentrator that sets targets on fire \cite{daviescotton}, the VERITAS telescopes have similar abilities.
-This mostly means that care must be taken during the day to point the telescopes away from the sun during maintanance and storage.
-% 100m^2 * 1000w/m^2 = 100,000W
-If any direct sunlight falls onto the telscope mirrors, the \nicetilde100,000 Watts of light will be concentrated either onto the camera, or a point within a few meters of the camera, which could potentially cause signficant damage to telescope hardware or nearby plants, animals, and people.
-VERITAS telescopes are stored during the day by pointing them North at $ \nicetilde \ang{0} $ elevation.
-
-{\color{red}( Missing here is the relevance for your thesis. Does the VPM work with the same accuracy at 30 deg? What about the encoders? What is the minimum elevation possible?? -Gernot)}
+During regular observations, these cameras take images of background stars and the focal plane LEDs every two seconds.
+By extrapolating the LED positions from the star positions {\color{red}(is this how it works?? its unclear from the VPM memo...)}, an improved pointing accuracy of \nicetilde{}\ang{0.007} can be achieved~\cite{VPMmemo}.
+%  0.007 comes from Grube 2011 VPM Memo:
+%    20 arcseconds systematic error on VPN calibration (Section 3, last paragraph, and section 5 last paragraph)
+%    +5 arcseconds due to scatter of star database positions (Section 5 last paragraph)
+%    = 25 arcseconds total VPM systematic error
+%
+%    25 arcseconds -> 25/3600 -> 0.006944 deg -> rounded to 0.007 deg
+This improvement persists down to an elevation of \ang{30}, where this data analysis takes place.
 
 \section{Mirrors}\label{sec:mirrors}
 
@@ -77,7 +77,7 @@ The VERITAS specifications state that the mirror reflectivity must be $\geq 85\%
   \includegraphics[width=0.75\textwidth]{images/mirror_reflect}
   \caption[Mirror Reflectivity]{
     Mirror reflectivity as a function of wavelength for each telescope, from Ref \cite{mirrorfacets}. 
-    {\color{red}(Really?? All points are exactly on top of each other -Gernot)}
+    The lines are almost identical as each is an average over each telescope's 345 mirrors.
   }
   \label{fig:mirreflect}
 \end{figure}
