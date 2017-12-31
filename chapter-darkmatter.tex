@@ -1,9 +1,10 @@
 \cleartooddpage[\thispagestyle{empty}]
 \chapter{The Dark Matter Paradigm}
 
-  As dark matter makes up 26.5\% of the universe's energy and 81.5\% of its mass \cite{planck2015}, it has had a significant impact on the development of the universe, shaping its present day distribution.
-  In this chapter, the main features of dark matter physics are discussed.
-  This includes the astrophysical evidence for the existance of dark matter, an outline of the current cosmological paradigm of $\Lambda$CDM and the Standard Model, as well as arguments for why dark matter may be in the form of a new, unknown particle.
+  Dark matter makes up 26.5\% of the universe's energy and 81.5\% of its mass \cite{planck2015}.
+  It has had a significant impact on the development of the universe, shaping its present day distribution.
+  This chapter discusses the main features of Dark Matter physics.
+  These include the astrophysical evidence for the existance of Dark Matter, an outline of the current cosmological paradigm of $\Lambda$CDM and the Standard Model, as well as arguments for why Dark Matter may be in the form of a new, unknown particle.
 
   %{\color{red}(Should I show the following calculation into this paragraph to justify the above percentages??)}
   %\begin{verbatim}
@@ -19,12 +20,12 @@
   %\end{verbatim}
 
 \section{Astrophysical Evidence for Dark Matter}
-  The current effects attributed to dark matter can be grouped into four different length scales.
-  These effects also fall into one of three categories: gravity pulling on electromagnetic emitters, gravity bending background light, or by measuring the universe's total energy budget.
-  On the smallest scales, concentrations of several thousand stars can be seen revolving around their center of mass, at a larger distribution of speeds than one would expect from the existing visible amount of matter.
-  At larger scales the optical light from galaxies, as well as hydrogen lines, can be used to measure the amount of mass and its rotational velocity around the center of galaxies.
-  At even larger scales, galaxy velocities can be measured and compared, x-ray telescopes can monitor the amount of hot gas, and mass-heavy areas of space will gravitationally lens background galaxies.
-  At the the largest scale, the measurement of oscillations in the cosmic microwave background can be used to determine the amount of dark and baryonic matter.
+The current effects attributed to Dark Matter can be grouped into three observable physical effects, and four different length scales.
+These physical effects include observations of gravity pulling on electromagnetic emitters, gravity bending background light, and the universe's total energy budget.
+On the smallest length scales, concentrations of several thousand stars can be seen revolving around their center of mass, at a larger distribution of speeds than one would expect from the existing visible amount of matter.
+At larger scales the optical light from galaxies, as well as hydrogen lines, can be used to measure the amount of mass and its rotational velocity around the center of galaxies.
+At even larger scales, galaxy velocities can be measured and compared, x-ray telescopes can monitor the amount of hot gas, and mass-heavy areas of space will gravitationally lens background galaxies.
+At the the largest scale, the measurement of oscillations in the cosmic microwave background can be used to determine the amount of dark and baryonic matter.
   
   {\color{red}(supernovae??)}
 
@@ -40,8 +41,9 @@
     %    17' x 12.6' in solid angle, call it 15'
     %    140kpc away  
     %    140kpc * Tan(15') = 0.6kpc = 1.8*10^19m ~ 10^19m
-    At scales of $\nicetilde 10^{19}$m, groups of thousands stars, called satellite galaxies or dwarf galaxies, lie at the edge of full size galaxies.
-    An example dwarf galaxy is in Figure \ref{fig:sculptor}, the Sculptor Dwarf Galaxy, imaged in the optical frequencies by the MPG/ESO Telescope.
+    At scales of $\nicetilde 10^{19}$m, groups of thousands stars, called satellite galaxies or dwarf galaxies, lie at the edge of full size galaxies like our own.
+    {\color{red}Observations of their luminous matter indicate not enough is present to explain theirdwarf galaxies are not gravitationally bound by their luminous matter lone, to such a degree that the existance Dark Matter must be invoked to keep them intact. (rework this sentence to introduce how these are evidence for Dark Matter)}
+    An example of a dwarf galaxy is shown in Figure \ref{fig:sculptor}, the Sculptor Dwarf Galaxy, imaged in the optical frequencies by the MPG/ESO Telescope.
     \begin{figure}[ht]
       \centering
       \includegraphics[width=0.9\textwidth]{images/sculptor/sculptor.eps}
@@ -53,45 +55,49 @@
     \end{figure}
 
     Measuring the mass of these dwarf galaxies is done in two ways.
-    In the first, telescopes observed the individual spectra of these stars, allowing for their line-of-sight velocity to be calculated \cite{dwarf_gal_red_giant}.
-    By looking at the distribution of these velocities (the width of this distribution is called the velocity dispersion), the total mass of the dwarf galaxy can be inferred~\cite{dwarf_gal_vel_dispersion, dwarf_gal_vel_dispersion2}.
+    In the first, telescopes observed the individual spectra of these stars, allowing for their line-of-sight velocity to be calculated~\cite{dwarf_gal_red_giant}.
+    The width of the distribution of the velocities is called the velocity dispersion.
+    By looking at this velocity dispersion, the total mass of the dwarf galaxy can be inferred~\cite{dwarf_gal_vel_dispersion, dwarf_gal_vel_dispersion2}.
     What makes this possible is that the velocity dispersion of a group of stars is proportional to the total mass of the graviational well.
-    This can be seen by applying the virial theorem and maxwell-boltzmann statistics.
+    This can be seen by applying the virial theorem and Maxwell-Boltzmann statistics.
     The virial theorem, Equation \ref{eqn:virial}, states an n-body system in equilibrium will always have the same ratio of kinetic energy (KE) to potential energy (PE).
     \begin{equation}\label{eqn:virial}
       2 \text{KE} = \text{PE}
     \end{equation}
-    Thus, by measuring stellar velocities and calculating the total kinetic energy of a group of stars, the potential energy can be calculated, which indicates the amount of mass is present in the group.
+    Thus, by measuring stellar velocities and calculating the total kinetic energy of a group of stars, the potential energy can be calculated, which indicates the amount of mass present in the group.
 
     % derivation from https://en.wikipedia.org/wiki/Maxwell%E2%80%93Boltzmann_distribution
-    Maxwell-boltzmann statistics can also be used to measure the amount of mass in a system.
-    From the Maxwell-Boltzmann distribution, the velocity probability density function is Equation \ref{eqn:mb_vel3d}:
+    Maxwell-Boltzmann statistics can also be used to measure the amount of mass in a system.
+    Using the Maxwell-Boltzmann distribution, the velocity probability density function is then Equation \ref{eqn:mb_vel3d}:
     \begin{equation}\label{eqn:mb_vel3d}
       f_v(v_x,v_y,v_z)= \left ( \frac{m}{2\pi k T} \right ) ^ { \frac{3}{2} } \text{exp} \left [ - \frac{m \left ( v_x^2 + v_y^2 + v_z^2 \right )}{2 k T} \right ]
     \end{equation}
-    where $m$ is the mass of the system, $k$ is the boltzmann constant, and $T$ is the equilibrium temperature of the system {\color{red}(??)}.
+    where $m$ is the mass of the system, $k$ is the Boltzmann constant, and $T$ is the equilibrium temperature of the system {\color{red}(??)}.
     
-    In one dimension, each velocity distribution is Equation \ref{eqn:mb_vel1d}, a normal distribution.
+    In one dimension, each velocity distribution is a normal distribution, described by Equation \ref{eqn:mb_vel1d},
     \begin{equation}\label{eqn:mb_vel1d}
       f_v(v_i) = \sqrt{ \frac{m}{2\pi k T} } \text{exp} \left [ - \frac{m v_i^2}{2kT} \right ]
     \end{equation}
-    with the mean velocity in each direction $\mu_{v_i} = 0$ and a standard distribution is $\sigma_{v_i} = \sqrt{\frac{kT}{m}}$
+    where the mean velocity in each direction is $\mu_{v_i} = 0$ and the standard deviation is $\sigma_{v_i} = \sqrt{\frac{kT}{m}}$.
     When these three dimensions are combined into a 3-dimensional normal distribution, the mean velocity vector is $\vec{\mu}_v = \vec{0}$, and its distribution has a width described by Equation \ref{eqn:mb_sigma}:
     \begin{equation}\label{eqn:mb_sigma}
       \sigma_v = \sqrt{\frac{3kT}{m}}
     \end{equation}
-    And, with a Maxwell distribution, the most probable speed $\left \langle v \right \rangle = \frac{2}{\sqrt{\pi}} \sqrt{\frac{2kT}{m}}$, thus measuring the mean speed and distribution of speeds of a group of stars can yield the total mass of the system in Equation \ref{eqn:mb_total}:
+    A Maxwell-Boltzmann distribution's most probable speed is $\left \langle v \right \rangle = \frac{2}{\sqrt{\pi}} \sqrt{\frac{2kT}{m}}$.
+    Therefore, measuring the mean speed and distribution of speeds of a group of stars can yield the total mass of the system, described by Equation \ref{eqn:mb_total}.
     {\color{red}(THIS MAXWELL STUFF IS WRONG, THE MASS $m$ CANCELS, NEEDS TO BE REDONE!??)}
     
-    Thus, by measuring the distribution of star velocities and the average temperature of the system {\color{red}(what is temp T of the system??  does it come from $v_p$??  clean up this paragraph??)}, the total mass of system can be calculated: $$m = \frac{3kT}{\sigma^2}$$.
-    As stellar velocity measurements rely on doppler-shifted spectral lines, and not the star's absolute brightness, this mass estimate is fairly resistant to changes in observed brightness, either due to atmospheric variations during telescope observations, or to the amount of light-absorbing dust in the line-of-sight.
+    Thus, by measuring the distribution of star velocities and the average temperature of the system {\color{red}(what is temp T of the system??  does it come from $v_p$??  clean up this paragraph??)}, the total mass of a system can be calculated: $m = \frac{3kT}{\sigma^2}$.
+    As stellar velocity measurements rely on doppler-shifted spectral lines, and not the star's absolute brightness, any derived mass estimates are fairly resistant to changes in observed brightness.
+    These changes in brightness can be from atmospheric variations during telescope observations or changes in the amount of light-absorbing dust in the line-of-sight.
 
-    The second way to measure galaxy masses is by measuring the total brightness of a galaxy, and divide by the luminosity of the Sun $L_\odot$, around .
+    The second way to measure galaxy masses is by measuring the total brightness of a galaxy, and divide by the luminosity of the Sun $L_\odot$.
     This then indicates the number of solar masses $M_\odot$ contained in the galaxy, a measure of its baryonic (i.e. 'bright', not dark) mass.
-    By comparing the total mass in the first way to the 'bright' mass in the second way, the mass-to-light ratio can be calculated, indicating the amount of dark matter present in the galaxy~\cite{faber_ml}.
+    By comparing the 'total' mass derived from the velocity distributions to the 'bright' mass derived from the brightness observations, the mass-to-light ratio can be calculated, indicating the amount of Dark Matter present in the galaxy~\cite{faber_ml}.
     For these calculations, $M_\odot$ is taken as {\color{red}(??)} and $L_\odot$ is taken as {\color{red}(??)}.
     
-    Dwarf galaxies have mass-to-light ratios of around 5-100 $\frac{M_\odot}{L_\odot}$, but can be as high as \nicetilde 1000~\cite{Simon2007_dwarfgalaxykeck}.
+    Dwarf galaxies have mass-to-light ratios of around 5-100 $\frac{M_\odot}{L_\odot}$, but can reach up to \nicetilde 1000~\cite{Simon2007_dwarfgalaxykeck}.
+    These high values are considered strong evidence in favor of Dark Matter.
     A random assortment of Local Group dwarf galaxies and their $\frac{M_\odot}{L_\odot}$ is shown in Table \ref{tab:mlratios:dwarfgals}.
     {\color{red}(You should explain what L is (also M if it was not explained in the introduction).  Also, please expand the explanation. Say explicitly that the mass is measured in two different ways, one directly from the luminous material, the other from the rotation, etc. -Orel ??)}
     
@@ -119,8 +125,8 @@
     \end{table}
     
     As an additional piece of evidence for Dark Matter, dwarf galaxies near the Perseus cluster were studied.
-    It was found that, with their baryonic mass alone, these dwarf galaxies would be ripped apart by the tidal disruption of the Perseus cluster.
-    Observations of these dwarf galaxies indicate they remain intact, leading to the conclusion that the presence of Dark Matter is providing extra gravitational force~\cite{Penny2009}.
+    From the gravitational potential of their baryonic mass alone, these dwarf galaxies should be ripped apart by the tidal disruption of the Perseus cluster.
+    Instead, observations of these dwarf galaxies indicate they remain intact, leading to the conclusion that the presence of Dark Matter is providing extra gravitational force~\cite{Penny2009}.
     
     \FloatBarrier
 
@@ -132,17 +138,17 @@
     Within galaxies, the amount of light observed in a sector predicts a lower amount of mass, while observing the line-of-sight velocity predicts a higher amount of mass.
     
     In the first prediction technique, the total amount of light produced by a quadrant of a galaxy is measured with optical telescopes.
-    Then, like in Section \ref{dm_dwarfscale}, the amount of light produced can be compared with the Sun as a standard mass-to-light ratio, allowing for a prediction of the amount of mass contained in that sector.
+    Then, as in Section \ref{dm_dwarfscale}, the amount of light produced can be compared with the Sun as a standard mass-to-light ratio, allowing for a prediction of the amount of mass contained in that sector.
     Known mass-to-light ratios can then be used to calculate the total amount of mass within that quadrant.
     For example, in a survey of 25 galaxies in Ref. \cite{galaxy_mass_light_ratio}, most possesed a mass-to-light ratio of 1 to 10.
 
     In the second prediction technique, a galaxy's emission spectrum is observed at many positions around its disk (center, outer edges, etc).
-    By comparing the orientation of the disk with the doppler-shifted position of well-known spectral lines, one can calculate the average velocity that each section is travelling at around the center of its galaxy, forming a rotation curve~\cite{rotation_curve_review,spiral_galaxy_rot_curve,milkyway_dm_evidence}.
+    By comparing the orientation of the disk with the doppler-shifted position of well-known spectral lines, one can calculate the average velocity that each section is traveling at around the center of its galaxy, forming a rotation curve~\cite{rotation_curve_review,spiral_galaxy_rot_curve,milkyway_dm_evidence}.
     Newton's law of gravity can then be used to calculate the mass contained within a sphere of that same radius.
-    This calculation ends up with a larger amount of mass than the one found simply from the total amount of light observed.
+    This calculation results in a larger amount of mass than the one found simply from the total amount of light observed.
     
     In Figure \ref{fig:m33rotcurve}, a rotation curve from M33 observations is shown.
-    It can be seen that the observed velocity curve (the datapoints) keeps increasing at larger radii.
+    The observed velocity curve (the datapoints) continues to increase at larger radii.
     If the galaxy was only made of stars, then the rotation curve would follow the short dashed line.
     If the galaxy was only made of gas, then the rotation curve would instead follow the long dashed line.
     As these two major components do not combine to form the observed rotation curve, the presence of Dark Matter can account for the difference, shown as the dashed-dotted line~\cite{m33rotcurve}.
@@ -152,7 +158,7 @@
       \caption[M33 Rotation Curve]{
         The rotation curve from M33~\cite{m33rotcurve}.
         The solid line is the best fitting model to the observed velocity measurments.
-        The short dashed line is the stellar disk contribution, the gas contribution is the long dashed line, and the dashed-dotted line is the dark matter contribution.
+        The short dashed line is the stellar disk contribution, the gas contribution is the long dashed line, and the dashed-dotted line is the Dark Matter contribution.
       }
       \label{fig:m33rotcurve}
     \end{figure}
@@ -176,7 +182,7 @@
       \end{tabular}
     \end{table}
       
-    From Ref. \cite{faber_ml}, a random sample of galaxies are shown alongside their mass-to-light ratios in Table \ref{tab:mlratios}.
+    A random sample of galaxies from Ref. \cite{faber_ml} are shown alongside their mass-to-light ratios in Table \ref{tab:mlratios}.
     Our own Milky Way galaxy is measured to have a mass to light ratio of 10 $\frac{M_{\odot}}{L_{\odot}}$ {\color{red}(and?? cite??)}.
     Galaxy rotation curves can also be measured through weak gravitational lensing \cite{weak_lensing_2001} {\color{red}(expand??)}.
 
@@ -184,14 +190,14 @@
     %
     % galaxy cluster wiki page
     % 2-10 Mpc, call it 6Mpc = 1.85*10^23m ~ 10^23m
-    At scales of $\nicetilde 10^{23}$m, Dark Matter's effects on galactic clusters becomes observable by comparing three techniques.
+    At scales of $\nicetilde 10^{23}$m, Dark Matter's effects on galactic clusters become observable by comparing three techniques.
     In the first technique, galaxy clusters are massive enough to bend the images of background galaxies.
     The type and amount of bending can be used to determine the mass of the intermediate galaxy.
 
     X-Ray observations of galaxy clusters can measure the amount of hot baryonic mass.
     This has been shown distinctly in the Bullet Cluster\cite{bullet_cluster}.
     In this cluster, the total (baryonic+dark) mass is measured through gravitational lensing of background light.
-    Gravitational lensing is where the images of background galaxies are warped as their light passes through massive objects, like the cluster.
+    Gravitational lensing occurs when the images of background galaxies are warped as their light passes through massive objects, like a galaxy or galaxy cluster.
     Large amounts of lensing can be seen in Figure \ref{fig:abelllensing}.
     
     \begin{figure}[ht]
@@ -216,7 +222,7 @@
       \centering
       \includegraphics[width=0.95\textwidth]{images/bulletcluster.eps}
       \caption[The Bullet Cluster]{
-        The bullet cluster\cite{bullet_cluster_combined_image}.
+        The Bullet Cluster\cite{bullet_cluster_combined_image}.
         The blue clouds indicate the graviational lensing mass\cite{bullet_cluster}, the red represents two clouds of ionized baryons emitting x-rays\cite{bullet_cluster_chandramap}.
         The remaining stars and galaxies are imaged in the optical spectrum\cite{bullet_cluster_composite}.}
       \label{fig:bullet}
@@ -233,10 +239,10 @@
   \subsection{$10^{26}\:\text{m}$ : Universe Scale}
     %\subsection{Inter-Cluster Scale}
     % age of universe (13.82*10^9 years * speed of light) = 1.307*10^26m
-    At the largest scale of the universe, $\nicetilde 10^{26}$m, the cosmic microwave background (CMB) has been used to measure the total amount of dark matter in the universe.
-    By looking at the structure of the CMB, the structure of the universe and its particle populations can be studied, including how they develop and change from the big bang to the present day.
+    At the largest scale of the universe, $\nicetilde 10^{26}$m, the Cosmic Microwave Background (CMB) has been used to measure the total amount of Dark Matter in the universe.
+    By looking at the structure of the CMB, the structure of the universe and its particle populations can be studied, including how they developed and changed from the big bang to the present day.
     Closer to the big bang, there was a point in time referred to as the 'freezout'.
-    Before that time, the universe was a quark-gluon plasma {\color{red}and other particles (If you mention other particles, they should probably be named. -Orel ??)}, and the temperature was too hot to allow baryons exist for any long period of time.
+    Before that time, the universe was a quark-gluon plasma {\color{red}and other particles (If you mention other particles, they should probably be named. -Orel ??)}, and the temperature was too hot to allow baryons to exist for any long period of time.
 
     % borrow dark matter-related events from this chart?
     % https://en.wikipedia.org/wiki/Chronology_of_the_universe
@@ -278,29 +284,29 @@
       \end{tabular}
     \end{table}
     
-    After that freezout time, the temperature low enough that baryons stopped being created and annihilated.
-    Thus, the number of baryons that were in the universe at the freezout temperature determines how many baryons are in existance today, since there aren't any significant ways to destroy universe-scale quantities of baryons.
-    This freezout left an imprint of its structure, where more baryons in some places created more CMB photons, and other places had less of each.
+    After that freezout, the temperature was low enough that baryon creation and annihilation rates plummited.
+    Thus, the number of baryons that were in the universe at the freezout temperature determines how many baryons are in existance today, since there are no significant ways to destroy universe-scale quantities of baryons.
+    This freezout left an imprint of its structure, where higher and lower densities of remaining baryons led to higher and lower densities of CMB photons.
     {\color{red}(This is not entirely accurate (the fraction of baryons to anti-baryons is too high to be explained as a simple statistical fluctuation which froze).
-Also, it does not really explain how dark matter plays a role (you mention it in the next paragraph, but it is not explained). -Orel ?? )}
+Also, it does not really explain how Dark Matter plays a role (you mention it in the next paragraph, but it is not explained). -Orel ?? )}
 
-    From fitting this structure, the composition of the universe can be fit.
-    In terms of energy, 68.6\% of the universe is composed of Dark Energy, which is causing almost all galaxies in sight to accellerate away from the Milky Way.
+    From fitting this structure, the composition of the universe can be modelled.
+    In terms of energy, 68.6\% of the universe {\color{red}is hypothesized to be Dark Energy (better scientific wording??)}, which causes almost all visible galaxies to accellerate away from the Milky Way.
     % 100% - ( 26.5% + 4.9 ) = 73.5% (from beginning of chapter)
     Another 4.9\% of the universe's energy is stored in baryonic matter, like protons and neutrons.
     The remaining 26.5\% of the universe's energy is contained in Dark Matter \cite{planck2015}.
 
-    As another important piece of evidence is the abundance of Deuterium present in the universe.
-    The amount of deuterium that was left over from the big bang depends on the amount of baryons in the universe.
+    Another important piece of evidence for the existance of Dark Matter is the abundance of Deuterium present in the universe.
+    The amount of Deuterium that was left over from the big bang depends on the amount of baryons in the universe.
     The amount of baryons predicted by this is not enough to account for the total mass of the universe, thus it must exist in other (darker) particles.
-    {\color{red}(The abundance of deuterium is relevant for the argument of baryonic/non-baryonic dark matter. Meaning, it does not directly point to the existence of dark matter, but more suggests about its nature. It is a good point to bring up (and expand), but probably in a different section, no? -Orel ??)}
-    Most theories of dark matter being locked up in cold, dead stars (MACHOs) {\color{red}(Explain MACHO acronym??)} are limited by this baryon limitation {\color{red}(cite??)}.
+    {\color{red}(The abundance of Deuterium is relevant for the argument of baryonic/non-baryonic Dark Matter. Meaning, it does not directly point to the existence of Dark Matter, but more suggests about its nature. It is a good point to bring up (and expand), but probably in a different section, no? -Orel ??)}
+    Most theories of Dark Matter being {\color{red}locked up (more scientific phrase??)} in cold dead stars, referred to as MAssivly Compact Halo Objects (MACHOs) have been abandoned due to this baryon limitation {\color{red}(cite??)}.
 
-    Another measurement that depends heavily on the presence of dark matter is the rate at which galaxies form clumps.
+    Another measurement that depends heavily on the presence of Dark Matter is the rate at which galaxies form clumps.
     In the Sloan Digital Sky Survey (SDSS), the positions of 1.6 million galaxies, quasars, and stars are mapped \cite{sdss_release}.
-    By simulating the distribution of similar objects as the universe ages, only with a dark matter component does the universe form clumps that match SDSS observations.
+    By simulating the distribution of similar objects as the universe ages, only with a Dark Matter component does the universe form clumps that match SDSS observations.
   
-    A much more detailed discussion on the evidence for dark matter can be read here \cite{DMPrimer}.
+    A much more detailed discussion on the evidence for Dark Matter can be read here \cite{DMPrimer}.
     {\color{red}(Unfortunately, this cannot really be done in a thesis (unlike a paper). A thesis needs to contain detailed explanations on its main subject. I guess you figured that already from all of my previous comments. -Orel ??)}
     {\color{red}(Take a few more ideas from that primer, explain them, then leave out the above line altogether)}
 
@@ -315,12 +321,12 @@ Also, it does not really explain how dark matter plays a role (you mention it in
   At the largest spatial scales, $\Lambda$CDM is the currently accepted model of cosmology.
   The $\Lambda$ refers to the density of dark energy, while CDM refers to Cold Dark Matter.
   $\Lambda$CDM models how the universe expanded from the big bang until the present day universe.
-  The predictions this model makes revolve around how different particles {\color{red}condensed out of the universe (what do you mean by condensed out of the universe?? -Orel)} at different times, and how their distribution throughout the universe changed over time.
+  This model predicts the different times particles froze out of the universe, and their resulting distributions.
 
   A large part of $\Lambda$CDM comes from measuring fluctuations in the Cosmic Microwave Background (CMB).
   In these fluctuations, a snapshot of the universe when it was 380,000 years old is preserved, providing many clues as to the development of the universe, including its age, energy content, structure, and expansion. 
   {\color{red}(You should explain what is learned from the CMB and how. -Orel ??)}
-  This CMB snapshot also provides hints about the nature of dark matter, including some basic requirements for any potential dark matter candidate particle.
+  This CMB snapshot also provides hints about the nature of Dark Matter, including some basic requirements for any potential Dark Matter candidate particle.
 
   \begin{figure}[ht]
     \includegraphics[width=0.95\textwidth]{images/cmb_skymap/cmb_skymap.eps}
@@ -348,30 +354,32 @@ Also, it does not really explain how dark matter plays a role (you mention it in
 
   One recently favored Standard Model Dark Matter candidate was the neutrino, due to its numerous nature and lack of interaction with the strong and electromagnetic forces.
   This was generally referred to as Hot Dark Matter, as neutrinos travel at relativistic speeds.
-  However, it was eventually demonstrated that because of these relativistic speeds, neutrinos would be able to smear out any of their initial overdensities.
+  However, it was eventually demonstrated that because of these relativistic speeds, neutrinos would diffuse out of their initial overdensities.
   This would result in large super-cluster-scale gravitational wells forming first, then cluster-scale wells, then galaxy-scale wells {\color{red}(what is the term for this?? hierarchicial formation? structure formation?)}.
-  When observations are made of earlier times, its found to be the opposite: galaxy-scale gravitational wells form first, then cluster-scale wells, then super-cluster-scale wells in present times.
-  As this is the opposite of whats expected for relativistic dark matter, neutrinos were ruled out as a dark matter candidate {\color{red}(cite??)}.
+  When observations are made of earlier times, the opposite is found: galaxy-scale gravitational wells form first, then cluster-scale wells, then super-cluster-scale wells in present times.
+  As this is the opposite of what is expected for relativistic Dark Matter, neutrinos were ruled out as a Dark Matter candidate {\color{red}(cite??)}.
   % from this discussion: https://physics.stackexchange.com/questions/158319/why-are-neutrinos-ruled-out-as-a-major-or-even-sole-component-of-dark-matter
   
   {\color{red}(why neutralino??)}
   
-  While the currently favored dark matter candidate is the neutralino, the lightest supersymmetric particle, a more general term for dark matter candidate particles that meets the conditions required by cosmology and particle physics is a WIMP, or Weakly Interacting Massive Particle.
+  While the currently favored Dark Matter candidate is the neutralino, the lightest supersymmetric particle, a more general term for Dark Matter candidate particles that meets the conditions required by cosmology and particle physics is a WIMP, or Weakly Interacting Massive Particle.
   One of the major predictions from particle physics and cosmology is referred to as the "WIMP Miracle".
-  In it, particle physics and cosmology separately predict that if dark matter is WIMP, it should have a velocity-averaged cross section of around $3*10^{-27}\text{cm}^{3}\text{s}^{-1}$, though each field comes to this value by very separate math. {\color{red}(cite??)}
+  In it, particle physics and cosmology separately predict that if Dark Matter is WIMP, it should have a velocity-averaged cross section of around $3*10^{-27}\text{cm}^{3}\text{s}^{-1}$, though each field comes to this value by very separate math. {\color{red}(cite??)}
   {\color{red}(It's not exactly math, there is some physical constraints in it. Can you find a better way of explaining it?? -Orel)}
 
-  In the 1990s, supersymmetry predicted the existance of a WIMP-like particle with a crosssection of around \nicetilde \SI{3e-26}{cm$^2$} \cite{Jungman:1995df}.
+  In the 1990s, supersymmetry predicted the existance of a WIMP-like particle with a {\color{red}cross section (cross section is always 2 words!??)} of around \nicetilde \SI{3e-26}{cm$^2$} \cite{Jungman:1995df}.
   % $3*{10}^{-26}\ {\textrm{cm}}^{2}$
   {\color{red}(And what happened since the 90s?? -Orel)}
   {\color{red}(Also, here is says $10^{-26}$ and before it said $10^{-27}$, intentional?? -Orel )}
-  What also made this WIMP particle a promising candidate is that it also solves several problems in cosmology, and that such a WIMP-like particle would have a similar cross section.
-  Thus, two separate fields of physics came together and noticed that they both were looking for a WIMP-like particle within a mass and crosssection range.
-  In $\Delta$CDM cosmology, the relic density is all of the leftover dark matter particles after the universe became too cold to produce more dark matter particles.
+  What made this WIMP particle a more promising candidate is that several cosmological problems can also be solved by a weakly-interacting GeV-TeV mass particle.
+  {\color{red}What were these cosmological problems that were fixed??}
+  Thus, two separate fields of physics recognized that they both were looking for a WIMP-like particle within the same mass and cross section range.
 
-  {\color{red} relic density??}
+  In $\Delta$CDM cosmology, the relic density is all of the leftover Dark Matter particles after the universe became too cold to produce more Dark Matter particles.
 
-  There are other potential dark matter candidates, both as other particle types or as modifications to other areas of physics, but they are not explored in this thesis.
+  {\color{red}One or two more sentences on the relic density??}
+
+  There are other potential Dark Matter candidates, both as other particle types or as modifications to other areas of physics, but they are not explored in this thesis.
   See Ref. \cite{DMPrimer} for more a more detailed discussion.
 
 
