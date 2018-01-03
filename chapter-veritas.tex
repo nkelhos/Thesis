@@ -98,7 +98,7 @@ Instead, a single point-like light source appears smeared out on the focal plane
 This smearing is then quantified by a fitted gaussian function, usually called the optical Point Spread Function\footnote{Please note that this is different from the PSF described in Chapter \ref{ch:grrecon}, which quantifies the spread in the reconstructed gamma-ray positions.  The optical PSF instead describes the spread of UV-Optical photons.} (PSF).
 By pointing a telescope at different stars and placing a CCD at the focal plane, the mirror PSF is measured monthly.
 The first VERITAS telescope's first calibration image shown in Figure \ref{fig:mirrorpolaris}.
-The mirror psf roughly gaussian-shaped but with longer tails, with a $ \ang{0.06} $ full width half maximum \cite{Veritas_Detector}.
+The mirror PSF roughly gaussian-shaped but with longer tails, with a $ \ang{0.06} $ full width half maximum \cite{Veritas_Detector}.
 
 \begin{figure}[ht]
   \centering
@@ -169,10 +169,10 @@ To operate, the PMTs are connected to high voltage, typically \SIrange{900}{1200
 % mean voltage = 1054, standev = 162, approximate as 1050+-150 = rane of 900-1200
 The PMTs' output signals are first sent through an amplifier, before travelling down a \nicetilde{}\SI{45}{m} cable to trigger and digitization electronics stationed near the telescope, which digitize the signal.
 
-The first circuit that the signal passes through is a Constant Fraction Descriminator (CFD) circuit.
-This circuit, shown in Figure \ref{fig:cfd_operation}, duplicates the signal voltage pulse from the PMTs, inverts and delays the duplicate pulse, and adds it back to the original pulse.
-This combined pulse then crosses the zero-volts threshold (called a Zero Threshold Descriminator) at the same time {\color{red}(how 'same'?? within 1 ns??)} as the original pulse reaches its peak, acting as a maximum-voltage detection circuit.
-When a maximum voltage is detected by the circuit, it emits a \SI{10}{ns} trigger pulse to other electronics.
+The first circuit that the signal passes through is a Constant Fraction Descriminator (CFD) circuit~\cite{cfd_behavior}.
+This circuit's behavior, shown in Figure \ref{fig:cfd_operation}, duplicates the signal voltage pulse from the PMTs, inverts and delays the duplicate pulse, and adds it back to the original pulse.
+This combined pulse then sent to a Zero Crossing Discriminator (ZCD), which emits a \SI{10}{ns} trigger pulse when it crosses the zero-volts threshold.
+% theres also CFD Design Review Jun 2001: http://www.if.pw.edu.pl/~alice/CFD7.pdf , slide 12
 
 \begin{figure}[ht]
   \centering
@@ -180,32 +180,30 @@ When a maximum voltage is detected by the circuit, it emits a \SI{10}{ns} trigge
   \caption[CFD Operation]{
     CFD signal processing, from Ref. \cite{cfd_operation}.
     An input signal on the left is manipulated to allow for constant fraction discrimination.
-    {\color{red}(check that this diagram fits well with the text??)}
   }
   \label{fig:cfd_operation}
 \end{figure}
 
 The use of this circuit has two main benefits.
-{\color{red} The first use is that the CFD circuit will trigger at the same time regardless of the pulse size (??).}
-If a simple threshold trigger is used to detect a signal pulse, the time of the trigger will be earlier for larger pulses, and later for smaller pulses.
-The CFD's zero threshold trigger is invoked when the signal voltage pulse is reaches a fraction of its maximum value.
+The first is that the CFD circuit will trigger at the same position within the pulse, regardless of the pulse's size.
+If a simple voltage-threshold trigger is instead used, the time of the trigger will be earlier for faster-rising large pulses, and later for slower-rising small pulses.
+The CFD's zero threshold trigger is invoked when the signal voltage pulse is reaches a predetermined fraction of its maximum value.
 For VERITAS, this fraction threshold is set at 75\% of its maximum value.
 % griffin 2016 thesis, page 47, figure 3.17 caption
-
-The second use is that when the CFD circuit detects a voltage pulse larger than a given maximum threshold, it can emit an extra logic trigger, called a low-gain trigger.
+The second benefit is that when the CFD circuit detects a voltage pulse larger than a given maximum threshold, it can emit an extra logic trigger, called a low-gain trigger.
 This extra low-gain trigger is then used by the FADC to switch between high-gain and low-gain mode when digitizing voltage pulses.
 
-%CFD behavior cite??
-
-%CFD model??
-
-%FADC model??
+Stars and other sources of background light emit background visible photons (Night Sky Background or NSB photons) that can falsely trigger the CFD circuit, contaminating any Cherenkov signals.
+In order to reduce this contamination, the CFD circuit is set to ignore any pulses smaller than 50mV.
+This threshold is adjusted during observations to account for varying rates of NSB photons.
 
 After the CFD emits a trigger pulse, the signal voltage pulse is passed to another circuit for digization, a Flash Analog-to-Digital Circuit (FADC).
-This FADC circuit then, for each nanosecond time bin, measures how large the voltage pulse is with a series of 255 {\color{red}(??)} constant-voltage thresholds.
+This FADC circuit then, for each 2-nanosecond time bin, measures how large the voltage pulse is with a series of 255 voltage thresholds.
+% see Bird 2015 thesis, page 52, top line
+% time bin = 2ns, stored in an 8-bit int, so 256 possible values, or 255 values + a 0 value
 The highest threshold that is crossed in a single time bin then determines the digital voltage value that is saved to the FADC buffer for that time bin.
 
-{\color{red}(?? Please read the T1 paper again, this paragraph is not entirely correct -Gernot)}
+{\color{red}(?? Please read the T1 paper again, the following paragraph is not entirely correct -Gernot)}
 If the low-gain trigger pulse was also recieved by the FADC, then the signal voltage pulse is de-amplified {\color{red}(means attenuated, or reverse the effect of the previous amplification??)} before being digitized, since the CFD low-gain threshold is set to lower than the FADC maximum digitizable voltage.
 If this low-gain triggering did not take place, then the FADC would become saturated.
 Once the voltage pulse is digitized, it is saved to a rolling buffer {\color{red}(how long is the buffer??)} in the FADC, waiting for higher level triggers, signaling the FADC to readout its buffers into a datafile.
@@ -213,9 +211,10 @@ Once the voltage pulse is digitized, it is saved to a rolling buffer {\color{red
 \subsection{PMT Upgrade}
 In summer of 2012, all PMTs in the telescopes were replaced with improved PMTs.
 Specifically, the original Photonis XP2970 models were replaced with the Hamamatsu R10560-100-20 MOD.
-This was done because that R10560 has a considerably higher quantum efficiency (\nicetilde$90\%$ {\color{red}(??this is not the right value??)}), compared to the XP2970 (\nicetilde$75\%${\color{red}(??this is not the right value??)}).
-This higher quantum efficiency means more photons from a shower are detected by the PMT, which means VERITAS is more sensitive to lower energy gamma rays \cite{pmtmodels}.
-In addition, the voltage pulse due to a single photoelectron is shorter with the R10560 compared to the XP2970, as shown in Figure \ref{fig:pmt_pulse_widths}.
+This was done because that R10560 has a considerably higher collection rate of Chernekov photons at 35\%, compared to the XP2970's 23\%.
+This higher collection rate means more photons from a shower are detected by the PMT, which makes VERITAS more sensitive to lower energy gamma rays.
+In addition, single-photoelectron studies indicate the R10560's voltage pulse FWHM is \nicetilde{}40\% shorter than the XP2970, as shown in Figure \ref{fig:pmt_pulse_widths}.
+These thinner voltage pulses allow for easier discrimination between NSB fluctuations and Cherenkov signals~\cite{pmtmodels}.
 
 \begin{figure}[ht]
   \centering

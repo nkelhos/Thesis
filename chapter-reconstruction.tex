@@ -72,7 +72,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
     \end{figure}
 
     To better handle these near-parallel image axes at low elevations, the reconstructed position can be determined from more parameters than just the weighted intersection points from the image axes.
-    From simulations, the distance between the center of the Hillas shower image and the true position can be calculated, where the angular distance between the two is the \disp{} parameter\cite{Senturk:2011}, shown in Figure \ref{fig:dispdiagram}.
+    From simulations, the distance between the center of the Hillas shower image and the true position can be calculated, where the angular distance between the two is the \disp{} parameter~\cite{Senturk:2011}, shown in Figure \ref{fig:dispdiagram}.
     Then, this \disp{} parameter can be provided to a machine learning algorithm \cite{Beilicke2012NIM}, along with other image parameters like:
     \begin{description}
       \item[\textit{width}:] image angular width
@@ -95,7 +95,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
       \centering
       \includegraphics[width=0.5\textwidth]{images/disp_parameter_cropped.eps}
       \caption[Angular Reconstruction Disp]{
-        The \disp{} parameter is the angular distance between the center (red dot) of a {\color{red}hillas (capitolize??)} image (blue oval) and the true sky position (green dot).
+        The \disp{} parameter is the angular distance between the center (red dot) of a Hillas image (blue oval) and the true sky position (green dot).
         Generally, longer shower images have a larger \disp{} angle.
       }
       \label{fig:dispdiagram}
@@ -162,15 +162,15 @@ This database includes the width and length of the shower, how far away its core
   In addition to the event list, the instrument response functions (IRFs) must also be imported into Gammalib and CTOOLS.
   These IRFs consist of the effective areas, the point spread functions, the background models, and the energy dispersion.
   The effective area quantifies the total gamma-ray collection area of the observatory, needed for spectral measurements, and is described in Section \ref{subsec:effarea}.
-  The point spread function (sometimes referred to as {\color{red}psf (look up how other phds capitolize this??)}) quantifies the distribution of true positions for a reconstructed position {\color{red}Isn't it the other way around?? -Orel}, which is needed for identifying point sources and extended spatial structures.
+  The point spread function (PSF) quantifies the distribution of reconstructed positions for a given true position, which is needed for modeling point sources and extended spatial structures.
   This is described further in Section \ref{subsec:psf}.
   The background models measure the relative number of observed events in different parts of the camera, and their construction is described in Section \ref{background_production}.
-  The energy dispersion quantifies the distribution of true energies for a given reconstructed energy {\color{red}Is this the right way around?? -orel}, and is discussed in Section \ref{subsec:edisp}.
+  The energy dispersion quantifies the distribution of reconstructed energies for a given true energy, and is discussed in Section \ref{subsec:edisp}.
 
   Each of these IRFs vary in a parameter space with several dimensions, including event energy, reconstructed distance from the camera center, telescope elevation and azimuth, and night sky background noise.
   In CTOOLS' default configuration, all IRFs are stored in a single directory of files, and each event list contains a filepath reference to indicate which volume of the parameter space it uses.
-  Once each volume is loaded, individual events can then interpolate their specific effective area, psf, and energy dispersion (the backgrounds are utilized differently, as discussed in Section \ref{background_production}).
-  {\color{red}All of this information from 5.5 to 5.5.1 on data format and dividing runs to smaller chunks etc. has to be rewritten from the physical point of view and all of the computational references should be removed. I know it sounds weird, but the computational details are of no interest. What’s important is the fact you divided your data into smaller bins in order to avoid large changes within each bin.  We can discuss this of course. -Orel??}
+  Once each volume is loaded, individual events can then interpolate their specific effective area, PSF, and energy dispersion (the backgrounds are utilized differently, as discussed in Section \ref{background_production}).
+  {\color{red}All of this information from 5.5 to 5.5.1 on data format and dividing runs to smaller chunks etc. has to be rewritten from the physical point of view and all of the computational references should be removed. I know it sounds weird, but the computational details are of no interest. What's important is the fact you divided your data into smaller bins in order to avoid large changes within each bin.  We can discuss this of course. -Orel??}
 
   {\color{red}(This paragraph just kind of starts here, theres no transition from the previous paragraph!??)}
   However, the galactic center is at an elevation of \ang{30}, much lower than most VERITAS observation targets.
@@ -226,43 +226,46 @@ This database includes the width and length of the shower, how far away its core
 
     When reconstructing the source position of each gamma ray, it is necessary to know the uncertainty of the position.
     Primarily, errors in the position come from the randomness of shower images.
-    The same gamma ray may develop varying outcomes due to several causes.
-    Differences may be due to different particles early in the shower gaining different amounts of energy, or particles scattering at different angles.
-    In addition, different Cherenkov photons may be absorbed by the atmosphere, or reflected by the mirrors, or converted into PMT photoelectrons.
-    {\color{red}(''differently`` is used too much in this paragraph, find alternate words!??)}
-    In the image and position reconstruction, this means that an initial gamma ray can develop into a distribution of camera images and reconstructed positions.
+    The same gamma ray may develop varying outcomes due to differences in which:
+    \begin{itemize}[label=$\bullet$]
+      \item particles early in the shower gaining different amounts of energy
+      \item angles shower particles scatter at
+      \item Cherenkov photons are absorbed by the atmosphere
+      \item Cherenkov photons are reflected by the mirrors
+      \item Cherenkov photons are converted into PMT photoelectrons
+    \end{itemize}
+    In the image and position reconstruction, these all means that the same initial gamma ray can develop into a distribution of camera images and reconstructed positions.
     Inversely, a single reconstructed position can come from a distribution of true gamma-ray positions.
 
-    This distribution of reconstructed positions, called the point spread function (psf), primarily affects the reconstructed shape of gamma-ray emission structures in the sky.
-    A singular point source, nominally shaped by a Dirac function, is instead distributed out according to the psf.
+    This distribution of reconstructed positions, called the point spread function (PSF), primarily affects the reconstructed shape of gamma-ray emission structures in the sky.
+    A singular point source, nominally shaped by a Dirac function, is instead distributed out according to the PSF.
     When searching for an extended source, like a dark matter halo, understanding the distribution of reconstructed positions is important.
-    A large psf on all events, for instance, will artificially expand the observed dark matter halo.
+    A large PSF on all events, for instance, will artificially expand the observed dark matter halo.
 
-    For VERITAS, the psf is estimated by simulating many gamma rays, then measuring the distribution of true positions for each reconstructed position.
+    For VERITAS, the PSF is estimated by simulating many gamma rays, then measuring the distribution of true positions for each reconstructed position.
     The distribution of event positions are fitted with a King function \cite{king1962} (see Equation \ref{eqn:king}), as the H.E.S.S. collaboration has noted that the King function better models the longer PSF tails at lower elevations (Section 5.2.2 in \cite{Mayer2015}).
     The radially-normalized King probability density function is defined as
 
     \begin{equation} \label{eqn:king}
-    \text{psf}_{king}(r) = \frac{1}{2 \pi \sigma^{2} } \left( 1 - \frac{1}{\gamma} \right) \left( 1 + \frac{ r^{2} }{ 2 \gamma \sigma^{2} } \right)^{-\gamma}
+    \text{PSF}_{king}(r) = \frac{1}{2 \pi \sigma^{2} } \left( 1 - \frac{1}{\gamma} \right) \left( 1 + \frac{ r^{2} }{ 2 \gamma \sigma^{2} } \right)^{-\gamma}
     \end{equation}
 
     where $r$ is the angular distance from the reconstructed position, $\sigma$ is similar to the width of a gaussian, and $\gamma$ governs how long the tails are.
     A King function fitting algorithm was added to Eventdisplay, that fits the $\gamma$ and $\sigma$ parameters to a set of simulated gamma rays.
-    This {\color{red} leads to good fits (not very elegant wording!??)} over almost all of the parameter space.
-    In Figure \ref{fig:psf_paramspace}, the psf is shown for one Sgr A* run.
-    In it, one can see how the psf containment radius changes vs reconstructed energy and offset from the camera's center.
+    This fits well over almost all of the parameter space.
+    In Figure \ref{fig:psf_paramspace}, the PSF is shown for one Sgr A* run.
+    In it, one can see how the PSF containment radius changes vs reconstructed energy and offset from the camera's center.
     Other runs, which have different elevations, azimuths and NSB noise levels will have different values at each point in the energy/offset parameter space.
 
     % plot of psfs from chunkplot
     \begin{figure}[ht]
       \centering
-      \includegraphics[width=0.85\textwidth]{images/psf_king_plots/psf_parameter_space.eps}
+      \includegraphics[width=0.85\textwidth]{images/psf_king_plots/psf_parameter_space.pdf}
       \caption[PSF Parameter Space]{
         The 68\% containment radius for the Energy/Offset parameter space for Sgr A* run 78128. 
         The green points are from data, showing a subset of the event locations from run 78128 in the parameter space.
         The color axis is the containment radius, calculated from simulations.
         While events from all energies are shown, only events from \SIrange{4}{70}{\TeV} are used (see Section \ref{subsec:crab_analysis}).
-        {\color{red}Switch x-axis units to TeV, not log10(TeV)??}
       }
       \label{fig:psf_paramspace}
     \end{figure}
@@ -604,7 +607,7 @@ I am sure that if you do this calculation you can estimate that the effect is mu
     \end{figure}
 
     In Figure \ref{fig:dpix_move}, the movement of gamma-like events is shown, when pixel 115 was disabled in all four telescopes.
-    Only events which moved more than $0.1*\text{psf}$ are shown.
+    Only events which moved more than $0.1*\text{PSF}$ are shown.
     It should be noted that relatively few ( {\color{red}\nicetilde{}100 in the 20-minute-long run 53703 events} move more than this, and the events that do move are mostly ones with non-compact image shapes that are amputated when a pixel is disabled.
     {\color{red}(How many events are there in a 20 min run? People outside of VERITAS (and me) do not know the event rate so 100 can be 10\% or 0.1\% ??)}
     {\color{red}(Run 53703's datafile was deleted, and I don't have any other crab runs with soft cuts to estimate the event rate for a 20 minute run :(, see /afs/ifh.de/user/n/nkelhos/scratch/Effect\_Of\_Near\_Stars/Pixel\_Off\_Effect for more info ??)}
