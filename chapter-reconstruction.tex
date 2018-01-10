@@ -14,19 +14,20 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
 \section{Pixel Identification}
   The first step is to determine which pixels are part of a shower image.
-  This is done by subtracting the dc pedestal from the entire trace, and then integrating {\color{red} here you should mention the integration length.  Otherwise the second part will be unclear -Gernot??} the total dc in each voltage trace.
+  This is done by subtracting the dc pedestal from the entire trace, and then summing all trace bins within a fixed window, called the integration length, to get the total dc.
 
   Most voltage traces have the same general shape: a quickly rising start of the pulse, followed by a longer, slowly falling tail.
   To act as a point of reference in each voltage pulse, the time when the voltage trace is at half of its maximum value is called $T_{0}$.
   The trace is then integrated a second time using a smaller 14 or \SI{24}{ns}-wide time window, starting at $T_0 - 30\%$, to reduce the inclusion of dc from NSB photons and electronic noise.
-  This two-pass algorithm is usually referred to as the double-pass method \cite{doublepass}.
-  If a pixel's second-pass total dc is higher than 5 times the pedestal variation, then it is considered an image pixel.
+  This integration is the first of two passes, usually referred to as the double-pass method \cite{doublepass}.
+  If a pixel's first-pass total dc is higher than 5 times the pedestal variation, then it is classified as an image pixel.
   If it is between 2.5 and 5 times the pedestal variation, it is considered a border pixel.
 
   Once all pixels have been classified, isolated border pixels that have no neighboring image pixel are removed from the image, as they are more likely to be due to noise than Cherenkov photons.
   Then, the time gradient from the image and border pixels can be found by performing a linear fit of the $T_{0}$ times.
-  This time gradient can then be used to place a third integration window {\color{red} Wrong, this is actually the second integration only.  Please correct also the paragraph above -Gernot?? Not sure I understand, there are 3 integration windows} with 30\% of the window before each pixel's $T_{0}$, to more accurately measure the charge due to Cherenkov photons in the pixel.
-  {\color{red} i'm not sure, but isn't this the second integration pass what defines the 'double-pass' method?? -Orel}
+  This time gradient can then be used to place a third integration window for a 
+with 30\% of the window before each pixel's $T_{0}$, to more accurately measure the charge due to Cherenkov photons in the pixel.
+  This third integration window is the second pass in the double-pass method.
 
   From the image pixels, border pixels, and time gradient, the shower's Hillas parameters \cite{hillas_params} can be calculated.
   These parameters include the shower size in photoelectrons (or equivalent units), center of charge, angle, length, and width.
@@ -45,11 +46,10 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
   \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/large_angle_image_intersection_error_cropped.eps}
+    \includegraphics[width=0.95\textwidth]{images/large_angle_image_intersection_error/laiie_cropped.pdf}
     \caption[Large Image Intersection Angles]{
       In diagram (a), when a noisy pixel is added to an image, the reconstructed position is only moved a small distance (the purple arrow).
       In diagram (b), due to the large angle between images, the error in the reconstructed position is much larger.
-      {\color{red}(purple too hard to see, change to better color!??}
     }
     \label{fig:largeintersectangle}
   \end{figure}
@@ -472,6 +472,7 @@ This database includes the width and length of the shower, how far away its core
       Middle: Histogram of all events in energy.
       Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV}.  
       The blue circles centered on the Crab Nebula highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
+      {\color{red}(Add high energy plot??)}
     }
     \label{fig:bkgvsel_crab}
   \end{figure}
