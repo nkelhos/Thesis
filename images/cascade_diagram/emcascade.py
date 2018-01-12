@@ -19,6 +19,7 @@ for i in range(nlayers-1) :
         elist[j]['children'] = [ len(elist)-2, len(elist)-1 ]
       elif elist[j]['type'] in ['e+','e-'] :
         brem = roll_brem_or_pair()
+        brem = True # 
         if brem :
           elist += [ {'type':'gamma','gen':i+1,'parent':j} ]
           elist += [ {'type':elist[j]['type'],'gen':i+1,'parent':j} ]
