@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os, random
 from graphviz import Digraph
+print 'make sure to run me with python <=2.8 !!'
 
 nlayers = 5
 elist = []
@@ -30,24 +31,28 @@ for i in range(nlayers-1) :
           elist[j]['children'] = [ len(elist)-2, len(elist)-1 ]
 
 for ielem, elem in enumerate(elist) :
-  print(ielem,elem)
+  print ielem,elem
 
 labels = {'gamma':'\u0263'}
 
-gvfile = 'emcascade.gv'
-g = Digraph('G', filename=gvfile, format='png')
-g.attr(size='15')
+dotlines = []
+dotlines += [ 'digraph G {' ]
+gvfile = 'emcascadegv'
+g = Digraph('G', filename=gvfile, format='pdf')
+asize = 15
+g.attr( size = '%d' % asize )
+#dotlines += [ 'node [ size=%d ]' % asize ]
 g.node_attr.update(color='lightblue2', style='filled', shape='circle', fixedsize='true', width='0.35')
+#dotlines += [ 'node [ color=
 
 typecol = {'gamma':'palegreen2','e+':'gold','e-':'lightblue2'}
-print()
-print('digraph G {')
 for iel, el in enumerate(elist) :
   if el['type'] in labels.keys() :
     l = labels[el['type']]
   else :
     l = el['type']
-  print('  %d [ label=%s ]' % ( iel, l ) )
+  
+  dotlines += [ '  %d [ label="%s" ]' % ( iel, l ) ]
   if el['gen'] == 0 :
     l += 'o'
   g.node( '%d'%iel, label=l, color=typecol[ el['type'] ] )
@@ -55,11 +60,26 @@ for iel, el in enumerate(elist) :
 for iel, el in enumerate(elist) :
   if 'children' in el.keys() :
     for c in el['children'] :
-      print('  %d -> %d' % ( iel, c ) )
+      dotlines += [ '  %d -> %d' % ( iel, c ) ]
       g.edge('%s'%iel,'%s'%c)
   
-print('}')
+dotlines += [ '}' ]
 
 g.render()
 
-os.system('convert %s.png emcascade.eps' % gvfile )
+#os.system('convert %s.png emcascade.eps' % gvfile )
+
+dotfile = 'graph.dot'
+print 'writing', dotfile
+with open( dotfile, 'w' ) as f :
+  for dl in dotlines :
+    f.write( dl + '\n' )
+
+cfile = 'cascade.tex'
+cmd = 'fdp -Txdot %s | dot2tex -ftikz -s > %s' % ( dotfile, cfile )
+print '$', cmd 
+os.system( cmd )
+cmd = 'pdflatex %s' % cfile
+print '$', cmd
+os.system( cmd )
+
