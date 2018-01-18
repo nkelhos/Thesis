@@ -33,7 +33,7 @@ for i in range(nlayers-1) :
 for ielem, elem in enumerate(elist) :
   print ielem,elem
 
-labels = {'gamma':'\u0263'}
+labels = {'gamma':'\gamma{}', 'e+':'e^{+}', 'e-':'e^{-}'}
 
 dotlines = []
 dotlines += [ 'digraph G {' ]
@@ -51,17 +51,27 @@ for iel, el in enumerate(elist) :
     l = labels[el['type']]
   else :
     l = el['type']
-  
-  dotlines += [ '  %d [ label="%s" ]' % ( iel, l ) ]
   if el['gen'] == 0 :
     l += 'o'
+  dotlines += [ '  %d [ label="%s" ] ;' % ( iel, l ) ]
   g.node( '%d'%iel, label=l, color=typecol[ el['type'] ] )
   
 for iel, el in enumerate(elist) :
   if 'children' in el.keys() :
     for c in el['children'] :
-      dotlines += [ '  %d -> %d' % ( iel, c ) ]
+      dotlines += [ '  %d -> %d ;' % ( iel, c ) ]
       g.edge('%s'%iel,'%s'%c)
+
+maxgen = max( [ elem['gen'] for elem in elist ] )
+for i in range(maxgen+1) :
+  ranklist = []
+  for jel, el in enumerate( elist ) :
+    if el['gen'] == i :
+      ranklist += [ jel ]
+  rankline = '{ rank=same ; '
+  rankline += ' '.join([ '%d'%jel for jel in ranklist ])
+  rankline += ' }'
+  dotlines += [ rankline ]
   
 dotlines += [ '}' ]
 
@@ -69,14 +79,14 @@ g.render()
 
 #os.system('convert %s.png emcascade.eps' % gvfile )
 
-dotfile = 'graph.dot'
+dotfile = 'cascade.dot'
 print 'writing', dotfile
 with open( dotfile, 'w' ) as f :
   for dl in dotlines :
     f.write( dl + '\n' )
 
 cfile = 'cascade.tex'
-cmd = 'fdp -Txdot %s | dot2tex -ftikz -s > %s' % ( dotfile, cfile )
+cmd = 'fdp -Txdot %s | dot2tex -t math -ftikz -s > %s' % ( dotfile, cfile )
 print '$', cmd 
 os.system( cmd )
 cmd = 'pdflatex %s' % cfile
