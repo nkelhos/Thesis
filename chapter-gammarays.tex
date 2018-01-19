@@ -210,26 +210,11 @@ This discussion revolves around three main topics: astrophysical mechanisms for 
 
   \begin{figure}[ht]
     \centering
-    \feynmandiagram[horizontal=a to b]{
-      i1 -- [fermion] a -- [fermion] i2,
-      a  -- [photon]  b,
-      f1 -- [fermion] b -- [fermion] f2
-    };
-    \caption[em1test]{em1test}
-    \label{fig:em1test}
+    \includegraphics[width=0.95\textwidth]{images/cascade_diagram/feynman/cascade.pdf}
+    \caption[em3test]{em3test}
+    \label{fig:em3test}
   \end{figure}
-  
-  \begin{figure}[ht]
-    \centering
-    \feynmandiagram[horizontal=i0 to a]{
-      i0 -- [photon , edge label=\(\gamma\)] a,
-      a  -- [fermion, edge label=\(e^{+}\) ] b,
-      a  -- [fermion, edge label=\(e^{-}\) ] c 
-    };
-    \caption[em2test]{em2test}
-    \label{fig:em2test}
-  \end{figure}
-  
+
   As most (\nicetilde 99\%) of detected air showers are due to {\color{red}protons and not gamma rays (what about electron showers??)}, understanding the differences between hadronic and electromagnetic showers becomes useful in removing unwanted proton events and preserving gamma-ray events within the reconstruction method, sometimes referred to as gamma-hadron separation.
   Hadronic showers start with a primary \nicetilde TeV proton that interacts with an atmospheric atom.
   {\color{red}This proton then converts (?? It doesn't convert to pions. Definately not to pi+ pi- adn pi0, (charge conservation). -Orel)} into $\pi^{+}$, $\pi^{-}$, and $\pi^{0}$, each with roughly \nicetilde $\frac{1}{3}$ of the initial proton's energy.

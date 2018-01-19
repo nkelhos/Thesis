@@ -35,6 +35,12 @@ for ielem, elem in enumerate(elist) :
 
 labels = {'gamma':'\gamma{}', 'e+':'e^{+}', 'e-':'e^{-}'}
 
+tikzlines = []
+tikzlines += [ r'\documentclass[tikz]{standalone}' ]
+tikzlines += [ r'\usepackage{tikz-feynman}' ]
+tikzlines += [ r'\begin{document}' ]
+tikzlines += [ r'\feynmandiagram [layered layout, horizontal=a to b] {' ]
+
 dotlines = []
 dotlines += [ 'digraph G {' ]
 gvfile = 'emcascadegv'
@@ -92,4 +98,16 @@ os.system( cmd )
 cmd = 'pdflatex %s' % cfile
 print '$', cmd
 os.system( cmd )
+
+tikzlines += [ '};' ]
+tikzlines += [ '\end{document}' ]
+
+tikztex = 'feynman/cascade.tex'
+with open( tikztex, 'w' ) as f :
+  for tl in tikzlines :
+    f.write( tl + '\n' )
+cmd = 'lualatex --output-format=pdf %s' % tikztex
+print 
+os.system( cmd )
+
 
