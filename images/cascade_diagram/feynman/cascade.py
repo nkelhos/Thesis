@@ -32,20 +32,22 @@ for ielem, elem in enumerate(elist) :
   print(ielem,elem)
 
 tikzlines = []
+#tikzlines += [ r'\RequirePackage{luatex85}'        ]
 tikzlines += [ r'\documentclass[tikz]{standalone}' ]
 tikzlines += [ r'\usepackage{tikz-feynman}'        ]
 tikzlines += [ r'\begin{document}'                 ]
-tikzlines += [ r'\feynmandiagram [small, layered layout, vertical=a to b] {' ]
+tikzlines += [ r'\feynmandiagram [layered layout, xscale=0.5] {' ]
 
 linetypes  = {'gamma':'photon','e+':'anti fermion','e-':'fermion'}
 linelabels = {'gamma':'\gamma','e+':'e^{+}'       ,'e-':'e^{-}'  }
 
 for i, p in enumerate(elist) :
   if p['gen'] == 0 :
-    tikzlines += [ '  alpha -- [photon, edge label=\(\gamma_o\)] a0,' ]
+    tikzlines += [ '  alpha[particle=\(\gamma_o\)] -- [photon] a0,' ]
+  elif p['gen'] == nlayers-1 :
+    tikzlines += [ '  a%d -- [%s] a%d[particle=\(%s\)] ,'   % ( p['parent'], linetypes[p['type']], i, linelabels[p['type']] ) ]
   else :
     tikzlines += [ '  a%d -- [%s, edge label=\(%s\)] a%d ,' % ( p['parent'], linetypes[p['type']], linelabels[p['type']], i ) ]
-
 
 tikzlines += [ '};' ]
 tikzlines += [ '\end{document}' ]
