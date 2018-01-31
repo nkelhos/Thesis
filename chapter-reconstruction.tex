@@ -57,7 +57,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
 
   \subsection{Angular Reconstruction with Boosted Decision Trees}\label{subsec:disp}
     At high elevations, shower images often form small intesection angles, because the telescopes are spread out in two dimensions, relative to the shower in the atmosphere.
-    At low elevations near the galactic center, however, the telescope array flattens into one dimension, which makes the shower's impact parameter (the shortest distance between the telescope and the shower core axis) smaller for two of the telescopes.
+    At low elevations near the Galactic Center, however, the telescope array flattens into one dimension, which makes the shower's impact parameter (the shortest distance between the telescope and the shower core axis) smaller for two of the telescopes.
     These two closer telescopes then have very short, almost circular images, which increases the sensitivity of those two image axes to noisy pixels or shower fluctuations, as shown in Figure \ref{fig:showerhighlowelev}.
     This also causes the remaining telescope images to have large intersection angles, which also reduces the accuracy of the position reconstruction.
 
@@ -176,7 +176,7 @@ This database includes the width and length of the shower, how far away its core
   {\color{red}All of this information from 5.5 to 5.5.1 on data format and dividing runs to smaller chunks etc. has to be rewritten from the physical point of view and all of the computational references should be removed. I know it sounds weird, but the computational details are of no interest. What's important is the fact you divided your data into smaller bins in order to avoid large changes within each bin.  We can discuss this of course. -Orel??}
 
   {\color{red}(This paragraph just kind of starts here, theres no transition from the previous paragraph!??)}
-  However, the galactic center is at an elevation of \ang{30}, much lower than most VERITAS observation targets.
+  However, the Galactic Center is at an elevation of \ang{30}, much lower than most VERITAS observation targets.
   At this elevation, with its field of view of \ang{3.5}, the airmass column density ($g/cm^{2}$) is 20\% higher at the bottom of the camera than at the top.
   Add to this that during a single 30 minute observation, the elevation of the Galactic Center can change by several degrees.
   This means the airmass in view of the camera may change rapidly, resulting in IRFs that are time dependent.
@@ -295,7 +295,7 @@ This database includes the width and length of the shower, how far away its core
     Each background model is constructed from one of two templates, and the templates are built from dark run observations (see Figure \ref{fig:gcfieldsofview}).
     These background models calculate the number of expected events in the camera, per unit solid angle, unit time, and unit energy.
     This is used to quantify how many counts are expected in different parts of the camera when observing any target.
-    Understanding the background shape of the camera is crucial for properly studying extended sources, like dark matter halos, which may extend several degrees from the galactic center.
+    Understanding the background shape of the camera is crucial for properly studying extended sources, like dark matter halos, which may extend several degrees from the Galactic Center.
     Improperly estimating background models can result in fake structures appearing around an astrophysical target.
     Background models with more than three dimensions are also possible, but require many more simulations, and are beyond the scope of this thesis.
     
@@ -453,7 +453,7 @@ This database includes the width and length of the shower, how far away its core
   This faint deficit is due to the \nicetilde20\% higher column density at the low-elevation parts of the camera.
   This higher column density causes air showers to start farther away from the telescopes, where more Cherenkov photons are absorbed, resulting in fewer events being detectable in the lower half of the camera.
 
-  When similar plots are made for the galactic center in Figure \ref{fig:bkgvsel_sgra}, the effect is much stronger, and rotated.
+  When similar plots are made for the Galactic Center in Figure \ref{fig:bkgvsel_sgra}, the effect is much stronger, and rotated.
   In the top plot, events are radially symmetric around the source position.
   When only the events from \SIrange{1.5}{3.25}{\TeV} are plotted, a much clearer deficit is visible on the lower right part of the plot.
   This area corresponds to the deficit at the bottom of the camera in Figures \ref{fig:back_lowelev29}.B and \ref{fig:back_lowelev26}.B.
@@ -635,7 +635,7 @@ I am sure that if you do this calculation you can estimate that the effect is mu
     This can have effects on the energy reconstruction.
     Additionally, for CTA and its projected \ang{7} diameter field of view, more stars will be in the field of view, implying there will be more camera pixels affected by their light.
     
-    {\color{red}(There aren't any bright stars or dead pixels in the galactic center data? Tie this back to why this dead pixel study is stil relevant. ??)}
+    {\color{red}(There aren't any bright stars or dead pixels in the Galactic Center data? Tie this back to why this dead pixel study is stil relevant. ??)}
     
     {\color{red}(Again, if I understood correctly that this is negligible, then please preface these two paragraphs by saying that while for VERITAS this effect was found to be negligible, for future experiments like CTA it could be important and then suggest all the ways you think the study can be expanded. Maybe even make it a sub-section in itself. ??)}
 
