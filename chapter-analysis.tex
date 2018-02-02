@@ -138,7 +138,6 @@
   
   {\color{red}likelihood equation??}
   
-  
   The ratio of the two likelihoods then follows a gaussian (with certain assumptions), meaning the sigificance of the alternative hypothesis over the null can be calculated.
   As part of this likelihood ratio test, the signal and background models must be constructed.
   Background models can be camera background models (discussed in Section \ref{sec:bkgmodels}), or astrophysical models of background gamma-ray emitters.
@@ -146,7 +145,7 @@
   {\color{red}test statistic equation??}
 
 \section{Background Models}\label{sec:bkgmodels}
-  The background models predict the amount of background counts produced by a gamma-ray-empty sky.
+  The background models predict the amount of background counts produced by a sky without gamma rays.
   This is used to model the effect of the background (primarily proton) events, which are several orders of magnitude more populous than the gamma rays.
   Producing the backgrounds is performed by binning observation sources with weak or no gamma-ray emission.
   For this low-elevation analysis, special observation runs were taken several degrees away from the Galactic Center (see Figure \ref{fig:gcfieldsofview}).
@@ -427,7 +426,6 @@
     }
     \label{fig:gc_resmap_sighist}
   \end{figure}
-
   
 \section{Upper Limit}
   An upper limit on the flux of a source can be calculated by scaling the flux of a model until the log-likelihood is at the 0.95 confidence level.
@@ -441,6 +439,9 @@
   
   Since, when all other variables are fixed, a larger gamma ray flux results from a larger velocity-averaged crosssection, they can both be replaced with their upper limits {\color{red}(??)}.
 
+  From the 9 WIMP masses tested, the calculated upper limits are shown in Figure \ref{fig:ulim}.
+  
+
   \begin{figure}[ht]
     \centering
     \includegraphics[width=0.95\textwidth]{images/ulimit/final_upper_limit_plot.eps}
@@ -448,11 +449,54 @@
       Dark Matter upper limits on velocity-averaged cross-sections.
       For reproduction, data values from this work {\color{red}are in table ??}.
       The relic cross-section limit is from \cite{updatedWIMPRelicCrossSection}.
-      {\color{red} use updated values from arxiv: Dark Matter Constraints from a Joint Analysis of Dwarf Spheroidal Galaxy Observations with VERITAS, ancillary files on the right! ??}
+      {\color{red}(Do I need to incorporate the systematic uncertainty in this, or is this already accounted for by the energy migration matrices??)}
+      {\color{red}(Use updated values from arxiv: Dark Matter Constraints from a Joint Analysis of Dwarf Spheroidal Galaxy Observations with VERITAS, ancillary files on the right! ??)}
     }
     \label{fig:ulim}
   \end{figure}
   
+  
+  
+  
+  The residual map in Figure \ref{fig:gc_resmap} has a gradient that is visible to the naked eye, going from the lower right to the upper left.
+  This means that the radial camera background models are not accurately fitting the shape of the observed events.
+  The direction of the residual gradient aligns with the elevation gradient in the camera, visible in Figures \ref{fig:back_lowelev29} D and E, and Figures \ref{fig:back_lowelev26} D and E.
+  To check that this elevation gradient has a negligible effect on the upper limit result in figure \ref{fig:ulim}, the likelihood analysis was redone with an elevation gradient.
+  As this analysis is limited to the energy range \SIrange{4}{70}{TeV}, the elevation gradient will increase the number of events detected at the bottom of the camera, due to the thicker atmosphere providing increased interaction mass.
+  And, since the Galactic Center is visible almost directly south at an azimuth of \ang{193}, the elevation axis is almost parallel to the Declination axis.
+  From relative differences between the total counts and observed counts in Figures \ref{fig:gc_profile_gal_l} and \ref{fig:gc_profile_gal_l}, a gradient of 5\%/\degree{} was chosen.
+  An example background is shown in Figure \ref{fig:bkg_flatvsgrad}, before and after the gradient is applied.
+  
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.98\textwidth]{images/background_gradient/gradientcomparison.pdf}
+    \caption[Background Gradient Comparison]{
+      The background models for run 68348, minutes 16-24.
+      Left is the original radial background, centered \ang{0.5} North of the Galactic Center.
+      Right is the same background, after applying the 5\%/\degree gradient along the elevation axis.
+    }
+    \label{fig:bkg_flatvsgrad}
+  \end{figure}
+  
+  After these were applied to all background models, the likelihood analysis was re-ran for the \SI{10}{\TeV} WIMP mass.
+  The resulting upper limit with the gradient was only 0.1\% different than with a simple radial background, indicating the upper limits are not very sensitive to the background models.
+  % on warp-zeuthen.desy.de:
+  % cd $VERIPY/thesis/analysis/dm_plus_pnt/
+  %
+  % no gradient:
+  % $ grep "crosssection_ul" logs/statistics.brbbbar.10.0TeV.nfits1000.withpntsrc.txt 
+  % [1.6279762902243517e-24, 'cm^3/s']
+  %
+  % with gradient:
+  % $ grep "crosssection_ul" with_elev_gradient/logs/statistics.brbbbar.10.0TeV.nfits1000.withpntsrc.txt 
+  % [1.6280879530415155e-24, 'cm^3/s']
+  This likely stems from the fact that the test statistic is a ratio of likelihoods of two model groups, both of which contain the background models.
+  Thus, any strong effect in the background models of the numerator likelihood is mitigated by also being in the denominator.
+  
+  
+  
+  
+
 \section{Systematic Errors}  
 
 Stuff?
