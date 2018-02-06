@@ -455,16 +455,13 @@
     \label{fig:ulim}
   \end{figure}
   
-  
-  
-  
   The residual map in Figure \ref{fig:gc_resmap} has a gradient that is visible to the naked eye, going from the lower right to the upper left.
   This means that the radial camera background models are not accurately fitting the shape of the observed events.
   The direction of the residual gradient aligns with the elevation gradient in the camera, visible in Figures \ref{fig:back_lowelev29} D and E, and Figures \ref{fig:back_lowelev26} D and E.
   To check that this elevation gradient has a negligible effect on the upper limit result in figure \ref{fig:ulim}, the likelihood analysis was redone with an elevation gradient.
   As this analysis is limited to the energy range \SIrange{4}{70}{TeV}, the elevation gradient will increase the number of events detected at the bottom of the camera, due to the thicker atmosphere providing increased interaction mass.
   And, since the Galactic Center is visible almost directly south at an azimuth of \ang{193}, the elevation axis is almost parallel to the Declination axis.
-  From relative differences between the total counts and observed counts in Figures \ref{fig:gc_profile_gal_l} and \ref{fig:gc_profile_gal_l}, a gradient of 5\%/\degree{} was chosen.
+  A gradient of 5\%/\degree{} was chosen due to the relative differences between the total modeled counts and the observed counts in Figures \ref{fig:gc_profile_gal_l} and \ref{fig:gc_profile_gal_l}.
   An example background is shown in Figure \ref{fig:bkg_flatvsgrad}, before and after the gradient is applied.
   
   \begin{figure}[ht]
@@ -473,7 +470,7 @@
     \caption[Background Gradient Comparison]{
       The background models for run 68348, minutes 16-24.
       Left is the original radial background, centered \ang{0.5} North of the Galactic Center.
-      Right is the same background, after applying the 5\%/\degree gradient along the elevation axis.
+      Right is the same background, after applying the 5\%/\degree{} gradient along the elevation axis.
     }
     \label{fig:bkg_flatvsgrad}
   \end{figure}

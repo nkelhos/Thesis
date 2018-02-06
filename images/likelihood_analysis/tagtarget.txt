@@ -1,1 +1,1 @@
-brbbbar.10.0TeV.nfits1000.withpntsrc
+brbbbar.45.0TeV.nfits1000.withpntsrc
