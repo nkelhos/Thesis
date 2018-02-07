@@ -9,7 +9,7 @@ for f in `ls -1 *png` ; do
   echo $f
   EPS=${f%.*}
   EPS=$(echo $EPS | tr '.-' '_')
-  EPS="${EPS}.eps"
+  EPS="${EPS}.pdf"
   echo "-> $EPS"
   convert $f $EPS
 done

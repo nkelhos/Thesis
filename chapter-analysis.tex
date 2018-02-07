@@ -176,7 +176,7 @@
     
     \begin{figure}[h]
       \centering
-      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_skymap.eps}
+      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_skymap.pdf}
       \caption[Crab Counts Skymap]
       {
         Skymap of event positions.
@@ -208,12 +208,18 @@
     
     \begin{figure}[h]
       \centering
-      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall.eps}
+      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall.pdf}
       \caption[Crab Test Spectrum]
       {
         Crab Nebula spectra from various analyses and observatories.
-        Red is the spectra from the CTOOLS analysis described in this chapter.
-        Blue is the standard VERITAS Eventdisplay spectrum using the same set of observations.
+        The solid red line is the best-fit spectra from the CTOOLS analysis described in this chapter, using only events from \SIrange{4}{70}{TeV}.
+        The inner red envelope is the statistical fitting error on the solid red line.
+        The outer red envelope is the combined statistical+systematic error.
+        The dark blue line is the standard VERITAS Eventdisplay spectrum using the same set of observations.
+        The dark blue datapoints are flux points for specific energy bins, from Eventdisplay.
+        Light blue is a Crab Nebula spectrum from HESS~\cite{hess2006crab}.
+        Purple is a previously published spectrum from VERITAS~\cite{veritas2015crab}.
+        Orange is a spectrum from MAGIC~\cite{magic2015crab}.
         {\color{red}(Update hess/magic lines to have higher maximum energy points??)}
       }
       \label{fig:crab_test_spectra}
@@ -223,7 +229,7 @@
     
     \begin{figure}[h]
       \centering
-      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spl.eps}
+      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spl.pdf}
       \caption[Crab Profile along Galactic L]
       {
         The number of counts along a \ang{0.16}-wide-slice through the Crab along the Galactic L axis.
@@ -237,7 +243,7 @@
 
     \begin{figure}[h]
       \centering
-      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spb.eps}
+      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spb.pdf}
       \caption[Crab Profile along Galactic B]
       {
         The number of counts along a \ang{0.16}-wide-slice through the Crab along the Galactic B axis.
@@ -251,7 +257,7 @@
     
     \begin{figure}[h]
       \centering
-      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_splalt.eps}
+      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_splalt.pdf}
       \caption[Crab Profile along Galactic L Off Source]
       {
         The number of counts along a \ang{0.16}-wide-slice along the Galactic L axis.
@@ -267,7 +273,7 @@
 
     \begin{figure}[h]
       \centering
-      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_ep.eps}
+      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_ep.pdf}
       \caption[Crab Profile in Energy]
       {
         The number of counts in a \ang{0.6} x \ang{0.6} square centered on the Crab, vs energy.
@@ -426,6 +432,8 @@
     }
     \label{fig:gc_resmap_sighist}
   \end{figure}
+
+  {\color{red}Plot of point source spectra as cross-check??}
   
 \section{Upper Limit}
   An upper limit on the flux of a source can be calculated by scaling the flux of a model until the log-likelihood is at the 0.95 confidence level.
