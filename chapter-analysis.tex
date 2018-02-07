@@ -151,8 +151,8 @@
   For this low-elevation analysis, special observation runs were taken several degrees away from the Galactic Center (see Figure \ref{fig:gcfieldsofview}).
 
   These background runs were then assembled into background models via the procedure in Section \ref{background_production}.
-  To account for the difference between the V5 and V6 observatory configurations, the background observations are divided up based on their epoch, producing unqiue backgrounds for each epoch.
-  These background templates vary with respect to the radial distance from the camera center, and the event energy.
+  To account for the difference between the V5 and V6 observatory configurations, the background observations are divided up based on their epoch, producing a unique background template for each epoch.
+  These background templates only depend on the radial distance from the camera center and the event energy.
 
   To confirm that these background models fit properly, a simple likelihood analysis was performed with the Off observations and their backgrounds.
   If the background models were assembled accurately, after the liklelihood normalization, the number of events observed and predicted by the models is shown in {\color{red}Figure ??}.
@@ -164,15 +164,15 @@
   The first was on the well-studied Crab nebula, and the second was on the source at the center of our galaxy.
   To also uncover any low-elevation effects, the Crab observations were limited to ones with elevations < \ang{32.5} (see Figure \ref{fig:datapointingelevations}).
 
-  {\color{red}(plot of Crab, Sgr A*, Sgr A* Off sources elevations??)}
-
   \subsection{Test Crab Analysis}\label{subsec:crab_analysis}
 
     In order to test that the converted data, irfs, and ctools likelihood engine all work properly, a test analysis on the Crab nebula was performed.
     As the Crab nebula is the brightest gamma ray emitter in the sky, it has been observed extensively by VERITAS and other gamma ray telescopes.
     Since the Galactic Center only rises to around \ang{30} elevation, elevation effects would also need to be searched for.
-    After searching for low-elevation Crab observations, a total of 17.1 hours of livetime were found.
-    These consist of 7.3 {\color{red}(doesn't match with plot??)} hours of V5 epoch data, and 9.8 {\color{red}(doesn't match with plot??)} hours of V6 epoch data.
+    After searching for low-elevation Crab observations, a total of 17.1 hours of data were found.
+    Time cuts were applied to this data to restrict it an elevation range of \SIrange{27.5}{32.5}{\degree}, similar to the Galactic Center data later on.
+    This resulted in {\color{red}(??)} minutes of V5 epoch data, and {\color{red}(??)} minutes of V6 epoch data.
+    %These consist of 7.3 {\color{red}(doesn't match with plot??)} hours of V5 epoch data, and 9.8 {\color{red}(doesn't match with plot??)} hours of V6 epoch data.
     
     \begin{figure}[h]
       \centering
@@ -197,11 +197,13 @@
     Part of this decrease is explored in Section (see Figures \ref{fig:bkgvsel_crab} and \ref{fig:bkgvsel_sgra}), but implementing corrections requires large changes to existing code, along with a larger set of simulations, neither of which were feasible during this work.
     Above 70 TeV, simulations become too computationally expensive to create when attempting to calculate IRFs.
     
-    After fitting all events from \SIrange{4}{70}{TeV}, with a pivot energy $ E_{0}= \SI{10}{TeV} $, the $ I_{0} = \left(1.472\pm0.09\right)*10^{-19} \frac{ph}{cm^{2} s MeV} $, $ \gamma = 2.382 \pm 0.076 $, with a Test Statistic of 1929.01. {\color{red}(?? update values!)}.
-    As the crab (alternative) hypothesis has 110 free parameters, and the no-crab (null) hypothesis has 108 free parameters, the Test Statistic has $ 110 - 108 = 2 $ degrees of freedom.
-    This is roughly equivalent to a {\color{red}significance of ??}.
+    %After fitting all events from \SIrange{4}{70}{TeV}, with a pivot energy $ E_{0}= \SI{10}{TeV} $, the $ I_{0} = \left(1.472\pm0.09\right)*10^{-19} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.382 \pm 0.076 $, with a Test Statistic of 1929.01. {\color{red}(?? update values!)}.
+    After fitting all events from \SIrange{4}{70}{TeV}, with the pivot energy fixed to $ E_{0}= \SI{16.73}{TeV} $, the best fit power law values were $ I_{0} = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a Test Statistic of 408.8.
+    % values from nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/crab_test/logs/statistics.txt
+    As the alternate Crab Nebula hypothesis has 110 free parameters, and the no-crab (null) hypothesis has 108 free parameters, the Test Statistic has $ 110 - 108 = 2 $ degrees of freedom.
     
     In the standard VERITAS Eventdisplay analysis, the crab is found to have a point source significance of \SI{21.3}{$\sigma$}.
+    {\color{red}Check if they use same or different energy ranges??}
     
     
     \begin{figure}[h]
@@ -209,7 +211,7 @@
       \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall.eps}
       \caption[Crab Test Spectrum]
       {
-        Crab spectra from various analyses and observatories.
+        Crab Nebula spectra from various analyses and observatories.
         Red is the spectra from the CTOOLS analysis described in this chapter.
         Blue is the standard VERITAS Eventdisplay spectrum using the same set of observations.
         {\color{red}(Update hess/magic lines to have higher maximum energy points??)}
@@ -221,7 +223,7 @@
     
     \begin{figure}[h]
       \centering
-      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_spl.eps}
+      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spl.eps}
       \caption[Crab Profile along Galactic L]
       {
         The number of counts along a \ang{0.16}-wide-slice through the Crab along the Galactic L axis.
@@ -235,7 +237,7 @@
 
     \begin{figure}[h]
       \centering
-      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_spb.eps}
+      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spb.eps}
       \caption[Crab Profile along Galactic B]
       {
         The number of counts along a \ang{0.16}-wide-slice through the Crab along the Galactic B axis.
@@ -249,7 +251,7 @@
     
     \begin{figure}[h]
       \centering
-      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_splalt.eps}
+      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_splalt.eps}
       \caption[Crab Profile along Galactic L Off Source]
       {
         The number of counts along a \ang{0.16}-wide-slice along the Galactic L axis.
@@ -315,7 +317,7 @@
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/counts_skymap.eps}
     \caption[Galactic Center Counts Skymap]{
       Skymap of all event positions used in this analysis.
-      No adjustment for effective area, observation time, or background rate is done here.
+      No adjustments are made here for effective area, observation time, or background rate.
       {\color{red}Veritas->VERITAS}
     }
     \label{fig:gc_counts_skymap}
@@ -328,7 +330,7 @@
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/counts_enhist.pdf}
     \caption[Galactic Center Counts Energy Histogram]{
       Histogram of all event energies used in this analysis.
-      No adjustments for effective area, observation time, or background rate is done here.
+      No adjustments are made here for effective area, observation time, or background rate.
     }
     \label{fig:gc_counts_enhist}
   \end{figure}
@@ -337,11 +339,11 @@
 
   In Figure \ref{fig:gc_profile_gal_l}, the observed counts are shown compared to the final, likelihood-optimized modelled counts.
   The histogram bins are along a \ang{0.22}-wide slice along the galactic l axis, centered on Sgr A*'s galactic b coordinate.
-  The purple histogram bins are the modelled counts from only the camera background models.
-  The green histogram bins are the total modelled counts from the camera background models and the astrophysical models.
-  The blue points with error bars are the observed counts in each bin, with poissonian errors.
-  The lighter green line is a higher-resolution sampling of the total modelled counts.
-  The feature where the observed counts are shifted to the left of the models is likely due to unaccounted-for elevation effects in the camera background models.
+  Purple histogram bins are the modelled counts from only the camera background models.
+  Green histogram bins are the total modelled counts from the camera background models and the astrophysical models.
+  Blue points with error bars are the observed counts in each bin, with poissonian errors.
+  The feature where the observed counts are higher on the left and lower on the right is likely due to unaccounted-for elevation effects in the camera background models.
+  The impact of this elevation effect is tested later in Section \ref{sec:elevgradient}.
   
   \begin{figure}[h]
     \centering
@@ -385,18 +387,17 @@
   
   To check for any poorly modelled areas of the sky, a residual skymap is shown in Figure \ref{fig:gc_resmap}.
   This calculates how significant the difference is between the observed and modelled number of counts.
-  Each bin's significance is 
+  Each bin's significance is calculated with Equation \ref{eqn:resmap_signif},
   
   % see http://cta.irap.omp.eu/ctools/users/reference_manual/csresmap.html
-  \begin{equation}
-    \label{eqn:resmap_signif}
-    \text{Significance} = sign(D-M) \sqrt{ 2 \left ( D * ln \left ( \frac{D}{M} \right ) + M - D \right ) }
+  \begin{equation}\label{eqn:resmap_signif}
+    \text{Significance} = sign(D-M) \sqrt{ 2 \left ( D * \textrm{ln} \left ( \frac{D}{M} \right ) + M - D \right ) }
   \end{equation}
   
   where D is the number of observed counts, and M is the number of modelled counts.
   Equation \ref{eqn:resmap_signif} is derived from the Li and Ma {\color{red}equation ??}. 
   In this plot, the deficiency of the radially-symmetric camera background models is apparent.
-  Lighter/darker areas indicate places where there were more/less observed counts than the models predicted.
+  Lighter/darker areas indicate places where there were more/less observed counts than the best-fit models predicted.
   
   \begin{figure}[ht]
     \centering
@@ -410,8 +411,8 @@
     \label{fig:gc_resmap}
   \end{figure}
 
-  Even if the source and background models were perfectly known, there would still be statistical fluctuations in the observed counts, and the residual significances would form a gaussian distribution, shown as the green line in Figure \ref{fig:gc_resmap_sighist}.
-  However, the distribution of the pixel significances from Figure \ref{fig:gc_resmap} is shown in Figure \ref{fig:gc_resmap_sighist}, and qualitativly not gaussian shaped {\color{red}(??)}.
+  If the source and background models were perfectly known, there would still be statistical fluctuations in the observed counts, and the residual significances would form a gaussian distribution, shown as the green line in Figure \ref{fig:gc_resmap_sighist}.
+  However, the distribution of the pixel significances from Figure \ref{fig:gc_resmap} is also shown in Figure \ref{fig:gc_resmap_sighist}, and qualitativly not gaussian shaped {\color{red}(??)}.
   {\color{red}?? How well does it fit, and quantitativly how bad does it fit??}
   As a large number of bins are clustered around +2 and -2 signifiance, this hints that the residuals in Figure \ref{fig:gc_resmap} are potentially not due solely from statistical noise, and that the background modelling could be improved.
   
@@ -420,8 +421,7 @@
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_resmap_phist_algosignificance.eps}
     \caption[Galactic Center Residual Histogram]
     {
-      Histogram of the residual skymap bin significances from Figure \ref{fig:gc_resmap}.
-      See equation \ref{eqn:resmap_signif} for details.
+      Histogram of the residual skymap bin significances from Figure \ref{fig:gc_resmap}, calculated with Equation \ref{eqn:resmap_signif}.
       Only skymap bins within each observation's region of interest (the green circles in Figure \ref{fig:gcfieldsofview}) are histogrammed.
     }
     \label{fig:gc_resmap_sighist}
@@ -437,24 +437,30 @@
     \frac{d\phi}{dE d\Omega} = \frac{ \left \langle \sigma v \right \rangle }{8\pi m_{\chi}^{2}} \frac{dN_{\gamma}}{dE} \int \rho^{2} dl
   \end{equation}
   
-  Since, when all other variables are fixed, a larger gamma ray flux results from a larger velocity-averaged crosssection, they can both be replaced with their upper limits {\color{red}(??)}.
-
+  Since, when all other variables are fixed, a larger gamma ray flux results from a larger velocity-averaged crosssection, they can both be replaced with their upper limits.
   From the 9 WIMP masses tested, the calculated upper limits are shown in Figure \ref{fig:ulim}.
-  
 
   \begin{figure}[ht]
     \centering
     \includegraphics[width=0.95\textwidth]{images/ulimit/ulimit.pdf}
     \caption[Dark Matter Upper Limit Plot]{
       Dark Matter upper limits on velocity-averaged cross-sections.
-      For reproduction, data values from this work are in the Appendix, Table \ref{tab:ulimvals}.
-      The relic cross-section limit is from \cite{updatedWIMPRelicCrossSection}.
-      {\color{red}(Do I need to incorporate the systematic uncertainty in this, or is this already accounted for by the energy migration matrices??)}
+      Data values from this work's upper limits are in Appendix Table \ref{tab:ulimvals}.
+      The pink upper limit is from 216 hours of VERITAS observations of several dwarf spheroidal galaxies, stacked into a single likelihood analysis~\cite{verdsphul}.
+      The green upper limit is from 254 hours of HESS observations of the Galactic Center~\cite{hessgcul}.
+      The yellow upper limit is from a combined Fermi-Magic likelihood analysis using observations from several dwarf satellite galaxies~\cite{fermagicul}.
+      Fermi and MAGIC spent a total of 6 years and 158 hours observing these galaxies, respectivly.
+      The light blue line is the relic cross-section~\cite{updatedWIMPRelicCrossSection}.
+      {\color{red}(Do I need to incorporate systematic uncertainties in this, or is this already accounted for by the energy migration matrices??)}
       {\color{red}(Use updated values from arxiv: Dark Matter Constraints from a Joint Analysis of Dwarf Spheroidal Galaxy Observations with VERITAS, ancillary files on the right! ??)}
     }
     \label{fig:ulim}
   \end{figure}
   
+\FloatBarrier
+
+\section{Elevation Gradient Impact}\label{sec:elevgradient}
+
   The residual map in Figure \ref{fig:gc_resmap} has a gradient that is visible to the naked eye, going from the lower right to the upper left.
   This means that the radial camera background models are not accurately fitting the shape of the observed events.
   The direction of the residual gradient aligns with the elevation gradient in the camera, visible in Figures \ref{fig:back_lowelev29} D and E, and Figures \ref{fig:back_lowelev26} D and E.
@@ -488,7 +494,7 @@
   % $ grep "crosssection_ul" with_elev_gradient/logs/statistics.brbbbar.10.0TeV.nfits1000.withpntsrc.txt 
   % [1.6280879530415155e-24, 'cm^3/s']
   This likely stems from the fact that the test statistic is a ratio of likelihoods of two model groups, both of which contain the background models.
-  Thus, any strong effect in the background models of the numerator likelihood is mitigated by also being in the denominator.
+  Thus, any strong effect in the background models will appear in the top and bottom of the likelihood ratio, and partially cancel.
   
   
   
