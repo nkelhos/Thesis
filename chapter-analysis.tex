@@ -22,6 +22,7 @@
 
   All three sets of data include observations from both the V5 epoch (after moving T4 but before the camera upgrade), and the V6 epoch (after the camera upgrade).
   All used data was taken from April 2010 to June 2016.
+  The specific VERITAS data run numbers are listed in Appendix \ref{app:runlists}.
 
   %
   % times calculated with $VERIPY/thesis/plots/obs_times.py
@@ -162,7 +163,7 @@
 \section{Test Point Sources}
   To verify that the CTOOLs likelihood analysis is working properly, two point sources were analyzed first, before any dark matter analysis was performed.
   The first was on the well-studied Crab nebula, and the second was on the source at the center of our galaxy.
-  To also uncover any low-elevation effects, the Crab observations were limited to ones with elevations < \ang{32.5} (see Figure \ref{fig:datapointingelevations}).
+  To also uncover any low-elevation effects, the Crab observations had time cuts applied to restrict their pointing elevations to \SIrange{27.5}{32.5}{\degree{}} (see Figure \ref{fig:datapointingelevations}).
 
   \subsection{Test Crab Analysis}\label{subsec:crab_analysis}
 
@@ -171,7 +172,7 @@
     Since the Galactic Center only rises to around \ang{30} elevation, elevation effects would also need to be searched for.
     After searching for low-elevation Crab observations, a total of 17.1 hours of data were found.
     Time cuts were applied to this data to restrict it an elevation range of \SIrange{27.5}{32.5}{\degree}, similar to the Galactic Center data later on.
-    This resulted in {\color{red}(??)} minutes of V5 epoch data, and {\color{red}(??)} minutes of V6 epoch data.
+    This resulted in \SI{3.3}{hours} of V5 epoch data, and \SI{5.5}{hours} of V6 epoch data (see Table \ref{tab:observation_times}).
     %These consist of 7.3 {\color{red}(doesn't match with plot??)} hours of V5 epoch data, and 9.8 {\color{red}(doesn't match with plot??)} hours of V6 epoch data.
     
     \begin{figure}[h]
@@ -236,7 +237,7 @@
         Blue points are the number of observed counts, with poissonian error bars.
         The green histogram bars are the number of counts predicted by all models.
         Purple histogram bars are the number of counts predicted by only the camera-background models.
-        The dark green line is a high-resolution version of the green histogram.
+        {\color{red}(add insets showing slices!??)}
       }
       \label{fig:crab_profile_l}
     \end{figure}
@@ -250,7 +251,6 @@
         Blue points are the number of observed counts, with poissonian error bars.
         The green histogram bars are the number of counts predicted by all models.
         Purple histogram bars are the number of counts predicted by only the camera-background models.
-        The dark green line is a high-resolution version of the green histogram.
       }
       \label{fig:crab_profile_b}
     \end{figure}
@@ -266,7 +266,6 @@
         Blue points are the number of observed counts, with poissonian error bars.
         The green histogram bars are the number of counts predicted by all models (not visible as the astrophysical crab model doesn't contribute any amount of counts in this offset slice).
         Purple histogram bars are the number of counts predicted by only the camera-background models.
-        The dark green line is a high-resolution version of the green histogram.
       }
       \label{fig:crab_profile_l_off}
     \end{figure}
@@ -291,19 +290,22 @@
     The difference between these two lines is then the counts from the Crab point source model.
     In Figure \ref{fig:crab_profile_energy}, a similar plot is made, though integrated in a \ang{0.6}x\ang{0.6} square around the crab at different energies.
 
+    \FloatBarrier
+
 \section{Dark Matter Likelihood Analysis}
   
   \subsection{Non-Dark Astrophysical Models}
   For this analysis, a point source model was added at the position of Sgr A*.
-  This is because other analyses (\cite{gc_pnt_is_not_dm1}, \cite{gc_pnt_is_not_dm2}, and \cite{gc_pnt_is_not_dm3} {\color{red}read these to double-check they lean away from a dm source??}) have indicated that the bright gamma-ray source at Sgr A* is not consistant with a dark matter halo.
-  Instead, a point source with a broken power law spectrum (Equation \ref{eqn:brokenplaw}) is added to the list of models, with the magnitude of its flux left free by the likelihood engine.
+  This is because other studies have indicated that the gamma-ray excess at Sgr A* is not consistant with a dark matter halo~\cite{gc_pnt_is_not_dm1, gc_pnt_is_not_dm2, gc_pnt_is_not_dm3}.
+  Instead, a point source with the broken power law spectrum in Equation \ref{eqn:brokenplaw} is added to the list of models, with the magnitude of its flux left free by the likelihood engine.
   
   \begin{equation}\label{eqn:brokenplaw}
     \frac{dN}{dE} = N_{0} * { \left ( \frac{E}{E_{pivot}} \right ) }^{\alpha} {e}^{-\frac{E}{E_{cut}}}
   \end{equation}
   
-  From \cite{VeritasGCRidge2015}, the specific values used in this point source were $E_{pivot}=\SI{1}{TeV}$, $E_{cut}=\SI{12.8}{TeV}$, and $\alpha=-2.1$.
-  {\color{red}(Also look at 2016 paper: \url{http://iopscience.iop.org/article/10.3847/0004-637X/821/2/129/meta}! ??}
+  
+  The initial values used in Equation \ref{eqn:brokenplaw} are from \cite{VeritasGCRidge2015}, where the specific values are $E_{pivot}=\SI{1}{TeV}$, $E_{cut}=\SI{12.8}{TeV}$, and $\alpha=-2.1$.
+  % theres also the 2016 paper http://iopscience.iop.org/article/10.3847/0004-637X/821/2/129/meta
   The normalization $N_{0}$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was left free in the likelihood optimization, while $E_{pivot}$, $E_{cut}$, and $\alpha$ were all fixed.
   The normalization was left free to allow for the potential of some mixing between the point source events and any dark matter halo events, i.e. a stronger dark matter halo gamma-ray flux would result in a weaker point source flux.
   
@@ -324,7 +326,6 @@
     \caption[Galactic Center Counts Skymap]{
       Skymap of all event positions used in this analysis.
       No adjustments are made here for effective area, observation time, or background rate.
-      {\color{red}Veritas->VERITAS}
     }
     \label{fig:gc_counts_skymap}
   \end{figure}
