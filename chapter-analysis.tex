@@ -54,7 +54,7 @@
   There are comparativly fewer Sgr A* Off observations, as there are no gamma-ray emitters at or near that position, and telescope time is valuable.
   There is also even fewer Crab observations, as the majority of its observations are done at higher elevations, where the telescope is more sensitive to lower energies.
   
-  For all of these observations, quality checks were applied.
+  For all of these observations, quality cuts were applied.
   This includes monitoring the telescope hardware and weather by a team of VERITAS collaboration members who take the observations.
   After the data is taken, a separate collaboration member will go through each observation to check it again, and mark any bad observations or apply time cuts, which are then removed.
 
@@ -139,7 +139,7 @@
   
   {\color{red}likelihood equation??}
   
-  The ratio of the two likelihoods then follows a gaussian (with certain assumptions), meaning the sigificance of the alternative hypothesis over the null can be calculated.
+  The ratio of the two likelihoods then, with certain assumptions, follows a gaussian, meaning the sigificance of the alternative hypothesis over the null can be calculated {\color{red}(is this true??)}.
   As part of this likelihood ratio test, the signal and background models must be constructed.
   Background models can be camera background models (discussed in Section \ref{sec:bkgmodels}), or astrophysical models of background gamma-ray emitters.
 
@@ -148,7 +148,7 @@
 \section{Background Models}\label{sec:bkgmodels}
   The background models predict the amount of background counts produced by a sky without gamma rays.
   This is used to model the effect of the background (primarily proton) events, which are several orders of magnitude more populous than the gamma rays.
-  Producing the backgrounds is performed by binning observation sources with weak or no gamma-ray emission.
+  Background models are produced by binning observation sources with weak or no gamma-ray emission.
   For this low-elevation analysis, special observation runs were taken several degrees away from the Galactic Center (see Figure \ref{fig:gcfieldsofview}).
 
   These background runs were then assembled into background models via the procedure in Section \ref{background_production}.
@@ -160,200 +160,245 @@
 
   {\color{red}(using just the background observations, show profile plots in galactic-b and energy??)}
 
-\section{Test Point Sources}
-  To verify that the CTOOLs likelihood analysis is working properly, two point sources were analyzed first, before any dark matter analysis was performed.
-  The first was on the well-studied Crab nebula, and the second was on the source at the center of our galaxy.
+\section{Test Crab Nebula Analysis}
+  To verify that the CTOOLs likelihood analysis is working properly, the Crab Nebula was analyzed first, before any dark matter analysis was performed.
   To also uncover any low-elevation effects, the Crab observations had time cuts applied to restrict their pointing elevations to \SIrange{27.5}{32.5}{\degree{}} (see Figure \ref{fig:datapointingelevations}).
 
-  \subsection{Test Crab Analysis}\label{subsec:crab_analysis}
+  In order to test that the converted data, irfs, and ctools likelihood engine all work properly, a test analysis on the Crab nebula was performed.
+  As the Crab nebula is the brightest gamma ray emitter in the sky, it has been observed extensively by VERITAS and other gamma ray telescopes.
+  Since the Galactic Center only rises to around \ang{30} elevation, elevation effects would also need to be searched for.
+  After searching for low-elevation Crab observations, a total of 17.1 hours of data were found.
+  Time cuts were applied to this data to restrict it an elevation range of \SIrange{27.5}{32.5}{\degree}, similar to the Galactic Center data later on.
+  This resulted in \SI{3.3}{hours} of V5 epoch data, and \SI{5.5}{hours} of V6 epoch data (see Table \ref{tab:observation_times}).
+    
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_skymap.pdf}
+    \caption[Crab Counts Skymap]
+    {
+      Skymap of event positions.
+      No corrections are made for observing time or effective area.
+    }
+    \label{fig:crab_skymap}
+  \end{figure}
+  
+  The Crab was modeled by a single point source with the simple power law spectrum in Equation \ref{eqn:powerlaw}.
 
-    In order to test that the converted data, irfs, and ctools likelihood engine all work properly, a test analysis on the Crab nebula was performed.
-    As the Crab nebula is the brightest gamma ray emitter in the sky, it has been observed extensively by VERITAS and other gamma ray telescopes.
-    Since the Galactic Center only rises to around \ang{30} elevation, elevation effects would also need to be searched for.
-    After searching for low-elevation Crab observations, a total of 17.1 hours of data were found.
-    Time cuts were applied to this data to restrict it an elevation range of \SIrange{27.5}{32.5}{\degree}, similar to the Galactic Center data later on.
-    This resulted in \SI{3.3}{hours} of V5 epoch data, and \SI{5.5}{hours} of V6 epoch data (see Table \ref{tab:observation_times}).
-    %These consist of 7.3 {\color{red}(doesn't match with plot??)} hours of V5 epoch data, and 9.8 {\color{red}(doesn't match with plot??)} hours of V6 epoch data.
-    
-    \begin{figure}[h]
-      \centering
-      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_skymap.pdf}
-      \caption[Crab Counts Skymap]
-      {
-        Skymap of event positions.
-        No corrections are made for observing time or effective area.
-      }
-      \label{fig:crab_skymap}
-    \end{figure}
-    
-    The Crab was modeled by a single point source with a simple power law spectrum:
+  \begin{equation} \label{eqn:powerlaw}
+  F\left( E \right) = I_{0} \left( \frac{E}{E_{0}} \right)^{-\gamma}
+  \end{equation}
 
-    \begin{equation} \label{eqn:powerlaw}
-    F\left( E \right) = I_{0} \left( \frac{E}{E_{0}} \right)^{-\gamma}
-    \end{equation}
-
-    Only events between \SIrange{4}{70}{TeV} are used in this test analysis.
-    At an elevation of \ang{25}, the reconstruction software is able to reconstruct events as low as \SI{1.5}{TeV}.
-    But, in this 'threshold' energy region, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region are not accurate.
-    Part of this decrease is explored in Section (see Figures \ref{fig:bkgvsel_crab} and \ref{fig:bkgvsel_sgra}), but implementing corrections requires large changes to existing code, along with a larger set of simulations, neither of which were feasible during this work.
-    Above 70 TeV, simulations become too computationally expensive to create when attempting to calculate IRFs.
+  The position of the point source and the $E_{0}$ parameter were fixed, while the prefactor $I_{0}$ and the spectral index $\gamma$ were free to vary during the likelihood optimization.
+  Only events between \SIrange{4}{70}{TeV} are used in this test analysis.
+  At an elevation of \ang{25}, the reconstruction software is able to reconstruct events as low as \SI{1.5}{TeV}.
+  But, in this 'threshold' energy region, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region are not accurate.
+  Part of this decrease is explored in Section (see Figures \ref{fig:bkgvsel_crab} and \ref{fig:bkgvsel_sgra}), but implementing corrections requires large changes to existing code, along with a larger set of simulations, neither of which were feasible during this work.
+  Above 70 TeV, simulations become too computationally expensive to create when attempting to calculate IRFs.
     
-    %After fitting all events from \SIrange{4}{70}{TeV}, with a pivot energy $ E_{0}= \SI{10}{TeV} $, the $ I_{0} = \left(1.472\pm0.09\right)*10^{-19} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.382 \pm 0.076 $, with a Test Statistic of 1929.01. {\color{red}(?? update values!)}.
-    After fitting all events from \SIrange{4}{70}{TeV}, with the pivot energy fixed to $ E_{0}= \SI{16.73}{TeV} $, the best fit power law values were $ I_{0} = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a Test Statistic of 408.8.
-    % values from nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/crab_test/logs/statistics.txt
-    As the alternate Crab Nebula hypothesis has 110 free parameters, and the no-crab (null) hypothesis has 108 free parameters, the Test Statistic has $ 110 - 108 = 2 $ degrees of freedom.
-    
-    In the standard VERITAS Eventdisplay analysis, the crab is found to have a point source significance of \SI{21.3}{$\sigma$}.
-    {\color{red}Check if they use same or different energy ranges??}
+  %After fitting all events from \SIrange{4}{70}{TeV}, with a pivot energy $ E_{0}= \SI{10}{TeV} $, the $ I_{0} = \left(1.472\pm0.09\right)*10^{-19} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.382 \pm 0.076 $, with a Test Statistic of 1929.01. {\color{red}(?? update values!)}.
+  After fitting all events from \SIrange{4}{70}{TeV}, with the pivot energy fixed to $ E_{0}= \SI{16.73}{TeV} $, the best fit power law values were $ I_{0} = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a Test Statistic of 408.8.
+  % values from nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/crab_test/logs/statistics.txt
+  As the alternate Crab Nebula hypothesis has 110 free parameters, and the no-crab (null) hypothesis has 108 free parameters, the Test Statistic has $ 110 - 108 = 2 $ degrees of freedom.
+  
+  In the standard VERITAS Eventdisplay analysis, the Crab Nebula is found to have a point source significance of \SI{21.3}{$\sigma$}.
+  {\color{red}Check if they use same or different energy ranges??}
     
     
-    \begin{figure}[h]
-      \centering
-      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall.pdf}
-      \caption[Crab Test Spectrum]
-      {
-        Crab Nebula spectra from various analyses and observatories.
-        The solid red line is the best-fit spectra from the CTOOLS analysis described in this chapter, using only events from \SIrange{4}{70}{TeV}.
-        The inner red envelope is the statistical fitting error on the solid red line.
-        The outer red envelope is the combined statistical+systematic error.
-        The dark blue line is the standard VERITAS Eventdisplay spectrum using the same set of observations.
-        The dark blue datapoints are flux points for specific energy bins, from Eventdisplay.
-        Light blue is a Crab Nebula spectrum from HESS~\cite{hess2006crab}.
-        Purple is a previously published spectrum from VERITAS~\cite{veritas2015crab}.
-        Orange is a spectrum from MAGIC~\cite{magic2015crab}.
-        {\color{red}(Update hess/magic lines to have higher maximum energy points??)}
-      }
-      \label{fig:crab_test_spectra}
-    \end{figure}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall.pdf}
+    \caption[Crab Test Spectrum]
+    {
+      Crab Nebula spectra from various analyses and observatories.
+      The solid red line is the best-fit spectra from the CTOOLS analysis described in this chapter, using only events from \SIrange{4}{70}{TeV}.
+      The inner red envelope is the statistical fitting error on the solid red line.
+      The outer red envelope is the combined statistical+systematic error.
+      The dark blue line is the standard VERITAS Eventdisplay spectrum using the same set of observations.
+      The dark blue datapoints are flux points for specific energy bins, from Eventdisplay.
+      Light blue is a Crab Nebula spectrum from HESS~\cite{hess2006crab}.
+      Purple is a previously published spectrum from VERITAS~\cite{veritas2015crab}.
+      Orange is a spectrum from MAGIC~\cite{magic2015crab}.
+      {\color{red}(Update hess/magic lines to have higher maximum energy points??)}
+    }
+    \label{fig:crab_test_spectra}
+  \end{figure}
     
-    In Figure \ref{fig:crab_test_spectra}, the fitted crab spectra is shown, along with literature results from earlier VERITAS, HESS, and MAGIC observations of the Crab.
-    
-    \begin{figure}[h]
-      \centering
-      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spl.pdf}
-      \llap{
-        \makebox[13.75cm][l]{ % x position
-          \raisebox{5cm}{    % y position
-            {
-              \setlength{\fboxsep}{0pt}
-              \setlength{\fboxrule}{1pt}
-              \fbox{
-                \includegraphics[height=4.5cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profl_skymap.pdf}
-              }
+  In Figure \ref{fig:crab_test_spectra}, the fitted Crab Nebula spectra is shown, along with literature results from earlier VERITAS, HESS, and MAGIC observations of the Crab.
+  
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spl.pdf}
+    \llap{
+      \makebox[13.75cm][l]{ % x position
+        \raisebox{5cm}{     % y position
+          {
+            \setlength{\fboxsep}{0pt}
+            \setlength{\fboxrule}{1pt}
+            \fbox{
+              \includegraphics[height=4.5cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profl_skymap.pdf}
             }
           }
         }
       }
-      \caption[Crab Profile along Galactic L]
-      {
-        The number of counts along a \ang{0.16}-wide-slice through the Crab along the Galactic L axis.
-        Blue points are the number of observed counts, with poissonian error bars.
-        The green histogram bars are the number of counts predicted by all models.
-        Purple histogram bars are the number of counts predicted by only the camera-background models.
-        {\color{red}(add insets showing slices!??)}
-      }
-      \label{fig:crab_profile_l}
-    \end{figure}
+    }
+    \caption[Crab Profile along Galactic L]
+    {
+      The number of counts along a \ang{0.16}-wide-slice through the Crab along the Galactic L axis.
+      Blue points are the number of observed counts, with poissonian error bars.
+      The green histogram bars are the number of counts predicted by all models.
+      Purple histogram bars are the number of counts predicted by only the camera-background models.
+      The inset plot shows the counts map from Figure \ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
+    }
+    \label{fig:crab_profile_l}
+  \end{figure}
 
-    \begin{figure}[h]
-      \centering
-      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spb.pdf}
-      \caption[Crab Profile along Galactic B]
-      {
-        The number of counts along a \ang{0.16}-wide-slice through the Crab along the Galactic B axis.
-        Blue points are the number of observed counts, with poissonian error bars.
-        The green histogram bars are the number of counts predicted by all models.
-        Purple histogram bars are the number of counts predicted by only the camera-background models.
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spb.pdf}
+    \llap{
+      \makebox[13.75cm][l]{ % x position
+        \raisebox{5cm}{     % y position
+          {
+            \setlength{\fboxsep}{0pt}
+            \setlength{\fboxrule}{1pt}
+            \fbox{
+              \includegraphics[height=4.5cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profb_skymap.pdf}
+            }
+          }
+        }
       }
-      \label{fig:crab_profile_b}
-    \end{figure}
+    }
+    \caption[Crab Profile along Galactic B]
+    {
+      The number of counts along a \ang{0.16}-wide-slice through the Crab along the Galactic B axis.
+      Blue points are the number of observed counts, with poissonian error bars.
+      The green histogram bars are the number of counts predicted by all models.
+      Purple histogram bars are the number of counts predicted by only the camera-background models.
+      The inset plot shows the counts map from Figure \ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
+    }
+    \label{fig:crab_profile_b}
+  \end{figure}
     
-    \begin{figure}[h]
-      \centering
-      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_splalt.pdf}
-      \caption[Crab Profile along Galactic L Off Source]
-      {
-        The number of counts along a \ang{0.16}-wide-slice along the Galactic L axis.
-        This slice doesn't go through the Crab, but instead \ang{1} higher in Galactic B.
-        As this doesn't include the Crab, this plot primarily demonstrates the camera background modelling.
-        Blue points are the number of observed counts, with poissonian error bars.
-        The green histogram bars are the number of counts predicted by all models (not visible as the astrophysical crab model doesn't contribute any amount of counts in this offset slice).
-        Purple histogram bars are the number of counts predicted by only the camera-background models.
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_splalt.pdf}
+    \llap{
+      \makebox[13.75cm][l]{ % x position
+        \raisebox{6.5cm}{     % y position
+          {
+            \setlength{\fboxsep}{0pt}
+            \setlength{\fboxrule}{1pt}
+            \fbox{
+              \includegraphics[height=3cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profa_skymap.pdf}
+            }
+          }
+        }
       }
-      \label{fig:crab_profile_l_off}
-    \end{figure}
+    }
+    \caption[Crab Profile along Galactic L Off Source]
+    {
+      The number of counts along a \ang{0.16}-wide-slice along the Galactic L axis.
+      This slice doesn't go through the Crab, but instead \ang{1} higher in Galactic B.
+      As this doesn't include the Crab, this plot primarily demonstrates the camera background modeling.
+      Blue points are the number of observed counts, with poissonian error bars.
+      The green histogram bars are the number of counts predicted by all models (not visible as the astrophysical Crab Nebula model doesn't contribute any amount of counts in this offset slice).
+      Purple histogram bars are the number of counts predicted by only the camera-background models.
+      The inset plot shows the counts map from Figure \ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
+    }
+    \label{fig:crab_profile_l_off}
+  \end{figure}
 
-    \begin{figure}[h]
-      \centering
-      \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_ep.pdf}
-      \caption[Crab Profile in Energy]
-      {
-        The number of counts in a \ang{0.6} x \ang{0.6} square centered on the Crab, vs energy.
-        Blue points are the number of observed counts, with poissonian error bars.
-        The green histogram bars are the number of counts predicted by all models.
-        Purple histogram bars are the number of counts predicted by only the camera-background models.
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_ep.pdf}
+    \llap{
+      \makebox[11cm][l]{  % x position
+        \raisebox{7cm}{ % y position
+          {
+            \setlength{\fboxsep}{0pt}
+            \setlength{\fboxrule}{1pt}
+            \fbox{
+              \includegraphics[height=3cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profe_skymap.pdf}
+            }
+          }
+        }
       }
-      \label{fig:crab_profile_energy}
-    \end{figure}
+    }
+    \caption[Crab Profile in Energy]
+    {
+      The number of counts in a \ang{0.6} x \ang{0.6} square centered on the Crab, vs energy.
+      Blue points are the number of observed counts, with poissonian error bars.
+      The green histogram bars are the number of counts predicted by all models.
+      Purple histogram bars are the number of counts predicted by only the camera-background models.
+      The inset plot shows the counts map from Figure \ref{fig:crab_skymap}, with a blue square showing the profile bin location.
+    }
+    \label{fig:crab_profile_energy}
+  \end{figure}
     
-    The fitted models can also be viewed, as a check that the likelihood engine is fitting the models to the data.
-    In Figure \ref{fig:crab_skymap}, the position of all counts is shown in galactic l and b.
-    In Figures \ref{fig:crab_profile_l} and \ref{fig:crab_profile_b}, the counts in the observations and models were integrated along a slice of galactic l and b.
-    The counts from only the camera background models is shown, along with the counts from all camera backgrounds plus the point source.
-    The difference between these two lines is then the counts from the Crab point source model.
-    In Figure \ref{fig:crab_profile_energy}, a similar plot is made, though integrated in a \ang{0.6}x\ang{0.6} square around the crab at different energies.
+  The fitted models can also be viewed, as a check that the likelihood engine is fitting the models to the data.
+  In Figure \ref{fig:crab_skymap}, the position of all counts is shown in galactic l and b.
+  In Figures \ref{fig:crab_profile_l} and \ref{fig:crab_profile_b}, the counts in the observations and models were integrated along a slice of galactic l and b.
+  The counts from only the camera background models is shown, along with the counts from all camera backgrounds plus the point source.
+  The difference between these two lines is then the counts from the Crab point source model.
+  In Figure \ref{fig:crab_profile_energy}, a similar plot is made, though integrated in a \ang{0.6}x\ang{0.6} square around the Crab Nebula at different energies.
 
-    \FloatBarrier
+  \FloatBarrier
 
 \section{Dark Matter Likelihood Analysis}
   
-  \subsection{Non-Dark Astrophysical Models}
-  For this analysis, a point source model was added at the position of Sgr A*.
-  This is because other studies have indicated that the gamma-ray excess at Sgr A* is not consistant with a dark matter halo~\cite{gc_pnt_is_not_dm1, gc_pnt_is_not_dm2, gc_pnt_is_not_dm3}.
-  Instead, a point source with the broken power law spectrum in Equation \ref{eqn:brokenplaw} is added to the list of models, with the magnitude of its flux left free by the likelihood engine.
-  
-  \begin{equation}\label{eqn:brokenplaw}
-    \frac{dN}{dE} = N_{0} * { \left ( \frac{E}{E_{pivot}} \right ) }^{\alpha} {e}^{-\frac{E}{E_{cut}}}
-  \end{equation}
-  
-  
-  The initial values used in Equation \ref{eqn:brokenplaw} are from \cite{VeritasGCRidge2015}, where the specific values are $E_{pivot}=\SI{1}{TeV}$, $E_{cut}=\SI{12.8}{TeV}$, and $\alpha=-2.1$.
-  % theres also the 2016 paper http://iopscience.iop.org/article/10.3847/0004-637X/821/2/129/meta
-  The normalization $N_{0}$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was left free in the likelihood optimization, while $E_{pivot}$, $E_{cut}$, and $\alpha$ were all fixed.
-  The normalization was left free to allow for the potential of some mixing between the point source events and any dark matter halo events, i.e. a stronger dark matter halo gamma-ray flux would result in a weaker point source flux.
-  
-  Diffuse emission, eliminated due to complexity?
-
-  \subsection{Dark Matter Models}
-  Dark Matter halos are modeled by a spherically-symmetric mass-per-volume density profile.
-  In this analysis, an Einasto density profile (discussed in Section \ref{dm_spatial}) is used as the spatial component of the dark matter halo model.
-  For the spectral component, each dark matter mass tested has its own spectrum produced with CLUMPY (see Section \ref{dm_spectral}).
-
-  \subsection{Likelihood Results}
-  
-  A histogram of all observed events is shown in Figure \ref{fig:gc_counts_skymap}.
+  As the test analysis on the Crab Nebula data shows results consistant with other analysis methods and observatories, the main dark matter analysis can begin in earnest.
+  The 108 hours of Galactic Center data used is described in Section \ref{veritasdata}.
+  A skymap histogram of all observed events is shown in Figure \ref{fig:gc_counts_skymap}.
+  A histogram of all events' energies from \SIrange{4}{70}{TeV} is shown in Figure \ref{fig:gc_counts_enhist}.
+  Both of these plots have no corrections for observing time or effective area.
+  After assembling the data, assembling the models is the next step.
+  These include the camera background models, similar to the Crab Nebula analysis.
   
   \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/counts_skymap.eps}
+    \includegraphics[width=0.65\textwidth]{images/likelihood_analysis/counts_skymap.pdf}
     \caption[Galactic Center Counts Skymap]{
-      Skymap of all event positions used in this analysis.
+      Skymap of all events used in this analysis.
       No adjustments are made here for effective area, observation time, or background rate.
     }
     \label{fig:gc_counts_skymap}
   \end{figure}
-
-  An energy histogram of all events from \SIrange{4}{70}{TeV} is shown in Figure \ref{fig:gc_counts_enhist}.
   
-  \begin{figure}[ht]
+  \begin{figure}[h]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/counts_enhist.pdf}
+    \includegraphics[width=0.65\textwidth]{images/likelihood_analysis/counts_enhist.pdf}
     \caption[Galactic Center Counts Energy Histogram]{
       Histogram of all event energies used in this analysis.
       No adjustments are made here for effective area, observation time, or background rate.
     }
     \label{fig:gc_counts_enhist}
   \end{figure}
+
+  \FloatBarrier
+
+  \subsection{Non-Dark Astrophysical Models}
+  For this analysis, a point source model was added at the position of Sgr A*.
+  This is because other studies have indicated that the gamma-ray excess at Sgr A* is not consistant with a dark matter halo~\cite{gc_pnt_is_not_dm1, gc_pnt_is_not_dm2, gc_pnt_is_not_dm3}.
+  Instead, a point source with the broken power law spectrum in Equation \ref{eqn:brokenplaw} was added to the list of models.
+  
+  \begin{equation}\label{eqn:brokenplaw}
+    \frac{dN}{dE} = N_{0} * { \left ( \frac{E}{E_{pivot}} \right ) }^{\alpha} {e}^{-\frac{E}{E_{cut}}}
+  \end{equation}
+  
+  The initial values used in Equation \ref{eqn:brokenplaw} are from \cite{VeritasGCRidge2015}, where the specific values are $E_{pivot}=\SI{1}{TeV}$, $E_{cut}=\SI{12.8}{TeV}$, and $\alpha=-2.1$.
+  % theres also the 2016 paper http://iopscience.iop.org/article/10.3847/0004-637X/821/2/129/meta
+  The normalization parameter $N_{0}$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was left free in the likelihood optimization, while $E_{pivot}$, $E_{cut}$, and $\alpha$ were all fixed.
+  The normalization $N_{0}$ was left free to allow for the potential of some mixing between the point source events and any dark matter halo events, i.e. a stronger dark matter halo gamma-ray flux would result in a weaker point source flux.
+  
+  Diffuse emission, eliminated due to complexity?
+
+  \subsection{Dark Matter Models}
+  Dark Matter halos are modeled by a spherically-symmetric mass-per-volume density profile.
+  In this analysis, an Einasto density profile (discussed in Section \ref{dm_spatial}) is used for the spatial component of the dark matter halo model.
+  For the spectral component, each dark matter mass tested has its own spectrum produced with CLUMPY (see Section \ref{dm_spectral}).
+
+  \subsection{Likelihood Results}
+  
 
   The analysis uses the $b\bar{b}$ annihilation channel, and are shown for just at \SI{45}{TeV}.
 
@@ -368,9 +413,22 @@
   \begin{figure}[h]
     \centering
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_gal_l.eps}
+    \llap{
+      \makebox[13.75cm][l]{ % x position
+        \raisebox{7cm}{   % y position
+          {
+            \setlength{\fboxsep }{0pt}
+            \setlength{\fboxrule}{1pt}
+            \fbox{
+              \includegraphics[height=3cm]{images/likelihood_analysis/counts_skymap.pdf}
+            }
+          }
+        }
+      }
+    }
     \caption[Galactic Center Profile vs Galactic L]{
       Observed vs modeled counts in a slice of the sky parallel to the galactic L axis at $B=0$.
-      Modeled counts from camera-background-models are shown in purple, total modeled counts are shown in green.
+      Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
       The faint green line shows the total modelled counts at a higher spatial resolution, scaled to the histogram bins.
       Observed counts with poissonian errors are shown in blue.
     }
@@ -383,9 +441,22 @@
   \begin{figure}[h]
     \centering
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_gal_b.eps}
+    \llap{
+      \makebox[13.75cm][l]{ % x position
+        \raisebox{7cm}{   % y position
+          {
+            \setlength{\fboxsep }{0pt}
+            \setlength{\fboxrule}{1pt}
+            \fbox{
+              \includegraphics[height=3cm]{images/likelihood_analysis/counts_skymap.pdf}
+            }
+          }
+        }
+      }
+    }
     \caption[Galactic Center Profile vs Galactic B]{
       Observed vs modeled counts in a slice of the sky parallel to the galactic B axis at $L=0$.
-      Modeled counts from camera-background-models are shown in purple, total modeled counts are shown in green.
+      Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
     }
     \label{fig:gc_profile_gal_b}
@@ -397,9 +468,22 @@
   \begin{figure}[h]
     \centering
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_energy.eps}
+    \llap{
+      \makebox[10.8cm][l]{ % x position
+        \raisebox{7.21cm}{   % y position
+          {
+            \setlength{\fboxsep }{0pt}
+            \setlength{\fboxrule}{1pt}
+            \fbox{
+              \includegraphics[height=2.8cm]{images/likelihood_analysis/counts_skymap.pdf}
+            }
+          }
+        }
+      }
+    }
     \caption[Galactic Center Profile vs Energy]{
       Observed vs modeled counts in a \ang{0.2}$\times$\ang{0.2} square bin centered on Sgr A* at energies from \SIrange{4}{70}{TeV}.
-      Modeled counts from camera-background-models are shown in purple, total modeled counts are shown in green.
+      Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
     }
     \label{fig:gc_profile_energy}
@@ -434,7 +518,7 @@
   If the source and background models were perfectly known, there would still be statistical fluctuations in the observed counts, and the residual significances would form a gaussian distribution, shown as the green line in Figure \ref{fig:gc_resmap_sighist}.
   However, the distribution of the pixel significances from Figure \ref{fig:gc_resmap} is also shown in Figure \ref{fig:gc_resmap_sighist}, and qualitativly not gaussian shaped {\color{red}(??)}.
   {\color{red}?? How well does it fit, and quantitativly how bad does it fit??}
-  As a large number of bins are clustered around +2 and -2 signifiance, this hints that the residuals in Figure \ref{fig:gc_resmap} are potentially not due solely from statistical noise, and that the background modelling could be improved.
+  As a large number of bins are clustered around +2 and -2 signifiance, this hints that the residuals in Figure \ref{fig:gc_resmap} are potentially not due solely from statistical noise, and that the background modeling could be improved.
   
   \begin{figure}[ht]
     \centering
@@ -481,7 +565,7 @@
   
 \FloatBarrier
 
-\section{Elevation Gradient Impact}\label{sec:elevgradient}
+\section{Impact of Elevation Gradient}\label{sec:elevgradient}
 
   The residual map in Figure \ref{fig:gc_resmap} has a gradient that is visible to the naked eye, going from the lower right to the upper left.
   This means that the radial camera background models are not accurately fitting the shape of the observed events.
