@@ -160,7 +160,7 @@
 
   {\color{red}(using just the background observations, show profile plots in galactic-b and energy??)}
 
-\section{Test Crab Nebula Analysis}
+\section{Crab Nebula Analysis}\label{sec:crab_analysis}
   To verify that the CTOOLs likelihood analysis is working properly, the Crab Nebula was analyzed first, before any dark matter analysis was performed.
   To also uncover any low-elevation effects, the Crab observations had time cuts applied to restrict their pointing elevations to \SIrange{27.5}{32.5}{\degree{}} (see Figure \ref{fig:datapointingelevations}).
 
@@ -397,15 +397,54 @@
   In this analysis, an Einasto density profile (discussed in Section \ref{dm_spatial}) is used for the spatial component of the dark matter halo model.
   For the spectral component, each dark matter mass tested has its own spectrum produced with CLUMPY (see Section \ref{dm_spectral}).
 
-  \subsection{Likelihood Results}
+  \subsection{Likelihood Maximization Results}
+  
+  \begin{table}
+    \centering
+    \begin{tabular}{|l|l|}
+      \hline
+      \textbf{DM Mass} & \textbf{Halo TS} \\
+      \[TeV\] & \\
+      \hline 
+      \input{images/likelihood_analysis/tsvals.tex}
+      \hline 
+    \end{tabular}
+    \caption[DM Halo TS Values]{
+      TS values for each DM Halo Model likelihood ratio maximization fit.
+      {\color{red}(Can this text wrap around??)}
+    }
+    \label{tab:tsvals}
+  \end{table}
+
+  With the previously mentioned observations and models, the likelihood function was maximized to find the best-fit model parameters.
+  In Table \ref{tab:tsvals}, the TS values from each dark matter mass are shown.
+  From Wilk's theorem {\color{red}(reference??)}, with a TS value greater than 20 would hint at the presence of a dark matter halo.
+  As all of these are less than zero, it can be said that the null (no dark matter) hypothesis is statistically favorable.
+
   
 
-  The analysis uses the $b\bar{b}$ annihilation channel, and are shown for just at \SI{45}{TeV}.
-
-  In Figure \ref{fig:gc_profile_gal_l}, the observed counts are shown compared to the final, likelihood-optimized modelled counts.
+  As there are 948 camera background models, each with a free Normalisation and Spectral Index, these are histogrammed to check their health in Figure~\ref{fig:param_hist}.
+  The Spectral Index distribution is centered on zero because the power law is applied to an existing (non-power-law) background shape.
+  This means on average, the background models required little spectral hardening or softening.
+  
+  \begin{figure}[h]
+    \begin{tabular}{ll}
+      \includegraphics[scale=0.425]{images/likelihood_analysis/plot_pref.pdf} &
+      \includegraphics[scale=0.425]{images/likelihood_analysis/plot_indx.pdf}
+    \end{tabular}
+    \caption{
+      Histogram of the two free parameters in each of the 948 camera background models.
+    }
+    \label{fig:param_hist}
+  \end{figure}
+    
+  
+  
+  To check that the other models are fitting the observed events, we can compare the observed vs modeled counts in different slices.
+  In Figure~\ref{fig:gc_profile_gal_l}, the observed counts are shown compared to the final, likelihood-optimized modeled counts.
   The histogram bins are along a \ang{0.22}-wide slice along the galactic l axis, centered on Sgr A*'s galactic b coordinate.
-  Purple histogram bins are the modelled counts from only the camera background models.
-  Green histogram bins are the total modelled counts from the camera background models and the astrophysical models.
+  Purple histogram bins are the modeled counts from only the camera background models.
+  Green histogram bins are the total modeled counts from the camera background models and the astrophysical models.
   Blue points with error bars are the observed counts in each bin, with poissonian errors.
   The feature where the observed counts are higher on the left and lower on the right is likely due to unaccounted-for elevation effects in the camera background models.
   The impact of this elevation effect is tested later in Section \ref{sec:elevgradient}.
@@ -415,7 +454,7 @@
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_gal_l.eps}
     \llap{
       \makebox[13.75cm][l]{ % x position
-        \raisebox{7cm}{   % y position
+        \raisebox{7cm}{     % y position
           {
             \setlength{\fboxsep }{0pt}
             \setlength{\fboxrule}{1pt}
@@ -429,13 +468,14 @@
     \caption[Galactic Center Profile vs Galactic L]{
       Observed vs modeled counts in a slice of the sky parallel to the galactic L axis at $B=0$.
       Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
-      The faint green line shows the total modelled counts at a higher spatial resolution, scaled to the histogram bins.
+      The faint green line shows the total modeled counts at a higher spatial resolution, scaled to the histogram bins.
       Observed counts with poissonian errors are shown in blue.
+      {\color{red}(fix inset to show regions!??)}
     }
     \label{fig:gc_profile_gal_l}
   \end{figure}
 
-  Figure \ref{fig:gc_profile_gal_b} is almost the same as Figure \ref{fig:gc_profile_gal_l}, except it is a slice through Sgr A* along the galactic b axis,
+  Figure \ref{fig:gc_profile_gal_b} is similar to Figure \ref{fig:gc_profile_gal_l}, except it slices through Sgr A* along the galactic b axis,
   The feature where the observed counts are shifted to the left of the models is also visible here.
 
   \begin{figure}[h]
@@ -463,7 +503,7 @@
   \end{figure}
 
   Figure \ref{fig:gc_profile_energy} shows the same profile, except instead integrated over a \ang{0.2}$\times$\ang{0.2} galactic (l,b) square centered on Sgr A*.
-  Again, purple is modelled camera-background counts, green is total modelled counts, and blue is observed counts.
+  Again, purple is modeled camera-background counts, green is total modeled counts, and blue is observed counts.
   
   \begin{figure}[h]
     \centering
@@ -489,8 +529,8 @@
     \label{fig:gc_profile_energy}
   \end{figure}
   
-  To check for any poorly modelled areas of the sky, a residual skymap is shown in Figure \ref{fig:gc_resmap}.
-  This calculates how significant the difference is between the observed and modelled number of counts.
+  To check for any poorly modeled areas of the sky, a residual skymap is shown in Figure \ref{fig:gc_resmap}.
+  This calculates how significant the difference is between the observed and modeled number of counts.
   Each bin's significance is calculated with Equation \ref{eqn:resmap_signif},
   
   % see http://cta.irap.omp.eu/ctools/users/reference_manual/csresmap.html
@@ -498,7 +538,7 @@
     \text{Significance} = sign(D-M) \sqrt{ 2 \left ( D * \textrm{ln} \left ( \frac{D}{M} \right ) + M - D \right ) }
   \end{equation}
   
-  where D is the number of observed counts, and M is the number of modelled counts.
+  where D is the number of observed counts, and M is the number of modeled counts.
   Equation \ref{eqn:resmap_signif} is derived from the Li and Ma {\color{red}equation ??}. 
   In this plot, the deficiency of the radially-symmetric camera background models is apparent.
   Lighter/darker areas indicate places where there were more/less observed counts than the best-fit models predicted.
