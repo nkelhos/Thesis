@@ -37,8 +37,9 @@ for src in srcs :
   
 legend = fax.legend( loc='upper left', shadow=True )
 fax.set_xlim([22,33])
-plt.savefig('plot.png', dpi=100, bbox_inches='tight')
-os.system('convert plot.png plot.eps')
+for ext in ['pdf','png'] :
+  plt.savefig('plot.%s'%ext, dpi=100, bbox_inches='tight')
+#os.system('convert plot.png plot.eps')
 fig.clf()
   
 fig = plt.figure( figsize=(15,8) )
@@ -61,6 +62,7 @@ for wobble in ['N','E','S','W'] :
   fax.bar( [e[0] for e in elevbins], expos, eldiv, color=cols[wobble], alpha=0.6, label='Wobble %s' % wobble )
 legend = fax.legend( loc='upper left', shadow=True )
 fax.set_xlim([22,33])
-plt.savefig('plot.wobbles.png', dpi=100, bbox_inches='tight')
-os.system('convert plot.png plot.eps')
+for ext in ['png','pdf'] :
+  plt.savefig('plot.wobbles.%s'%ext, dpi=100, bbox_inches='tight')
+#os.system('convert plot.png plot.eps')
 

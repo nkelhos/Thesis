@@ -9,7 +9,7 @@
   \label{fig:veritasarray}
 \end{figure}
 
-VERITAS, or Very Energetic Radiation Imaging Telescope Array System pictured in Figure \ref{fig:veritasarray}, is a gamma ray observatory operating in Arizona, USA, and is capable of detecting \nicetilde{}\TeV{} gamma rays.
+VERITAS, or Very Energetic Radiation Imaging Telescope Array System pictured in Figure~\ref{fig:veritasarray}, is a gamma ray observatory operating in Arizona, USA, and is capable of detecting \nicetilde{}\TeV{} gamma rays.
 The observatory consists of an array of four Imaging Atmospheric Cherenkov Telescopes (IACTs), each spaced \nicetilde{}\SI{90}{m} apart.
 Each telescope possesses an array of 345 mirrors, and a 499 Photomultiplier Tube (PMT) camera on a set of struts.
 When a gamma ray produces an air shower in the atmosphere, the shower emits blue-UV Cherenkov photons over a timespan of nanoseconds.
@@ -17,11 +17,11 @@ By focusing these photons onto the PMT camera with the mirrors, images of the sh
 
 
 The different hardware components are examined in this chapter, in order of signal propagation.
-Section \ref{sec:telpoint} details the Telescope Pointing, including its monitoring and calibration.
-The Mirrors are discussed in Section \ref{sec:mirrors}, including their properties and alignment.
-In Section \ref{sec:pmts}, the PMTs are explored, including their performance and calibration.
-The trigger system is examined in Section \ref{sec:trig}, relating how candidate signal voltages are saved while discarding those sourced from noise.
-Section \ref{sec:epochs} relates the different observatory epochs, as over time changes and modifications have altered the observatory's performance.
+Section~\ref{sec:telpoint} details the Telescope Pointing, including its monitoring and calibration.
+The Mirrors are discussed in Section~\ref{sec:mirrors}, including their properties and alignment.
+In Section~\ref{sec:pmts}, the PMTs are explored, including their performance and calibration.
+The trigger system is examined in Section~\ref{sec:trig}, relating how candidate signal voltages are saved while discarding those sourced from noise.
+Section~\ref{sec:epochs} relates the different observatory epochs, as over time changes and modifications have altered the observatory's performance.
 
 
 \section{Telescope Pointing}\label{sec:telpoint}
@@ -50,10 +50,10 @@ After applying this model, the telescope pointing can be tracked with an accurac
 As an improvement to the encoder measurements, a VERITAS Pointing Monitor (VPM) system is also in place.
 The VPM consists of two CCD cameras and 4 LED lights affixed to each telescope.
 The CCD cameras are oriented such that they can view the PMT camera and the background stars.
-The LED lights are attached to the PMT camera, next to the Winston cones, detailed in Section \ref{sec:pmts}.
+The LED lights are attached to the PMT camera, next to the Winston cones, detailed in Section~\ref{sec:pmts}.
 The first CCD camera is attached below the bottom mirrors, and images the stars in the field of view.
 The second CCD camera is attached to the support struts, roughly halfway between the mirrors and the camera, and images the focal plane of the telescope.
-Both cameras are marked by red dashed-line circles in Figure \ref{fig:davcottel}.
+Both cameras are marked by red dashed-line circles in Figure~\ref{fig:davcottel}.
 During regular observations, these cameras take images of background stars and the focal plane LEDs every two seconds.
 By extrapolating the LED positions from the star positions {\color{red}(is this how it works?? its unclear from the VPM memo...)}, an improved pointing accuracy of \nicetilde{}\ang{0.007} can be achieved~\cite{VPMmemo}.
 %  0.007 comes from Grube 2011 VPM Memo:
@@ -67,18 +67,18 @@ This improvement persists down to an elevation of \ang{30}, where the data analy
 \section{Mirrors}\label{sec:mirrors}
 
 When the Cherenkov light from a gamma-ray shower first interacts with the telescope array, it is reflected by some of the 345 mirrors.
-These mirrors face towards the incoming Cherenkov light, with the PMT camera facing the mirrors, as shown in Figure \ref{fig:davcottel}.
-When its spherical mirrors, spherical dish, and focal length ratio of \nicetilde{}2 are considered, this configuration is referred to as a Davies-Cotton telescope \cite{daviescotton}.
+These mirrors face towards the incoming Cherenkov light, with the PMT camera facing the mirrors, as shown in Figure~\ref{fig:davcottel}.
+When its spherical mirrors, spherical dish, and focal length ratio of \nicetilde{}2 are considered, this configuration is referred to as a Davies-Cotton telescope~\cite{daviescotton}.
 Each mirror has an area of \SI{0.322}{m$^2$}, and a spherical curvature radius of \SI{24}{m}.
-The mirrors are each mounted along the support structure so that the total diameter of the telescope's mirror area is \SI{12}{m}, with a total area of \SI{111}{m$^2$} and a focal length of \SI{12}{m} \cite{Veritas_Detector}.
-Figure \ref{fig:mirreflect} shows the mirrors' reflectivity as a function of wavelength.
+The mirrors are each mounted along the support structure so that the total diameter of the telescope's mirror area is \SI{12}{m}, with a total area of \SI{111}{m$^2$} and a focal length of \SI{12}{m}~\cite{Veritas_Detector}.
+Figure~\ref{fig:mirreflect} shows the mirrors' reflectivity as a function of wavelength.
 The VERITAS specifications state that the mirror reflectivity must be $\geq 85\%$, between \SIrange{280}{450}{nm}.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.75\textwidth]{images/mirror_reflect}
   \caption[Mirror Reflectivity]{
-    Mirror reflectivity as a function of wavelength for each telescope, from Ref \cite{mirrorfacets}. 
+    Mirror reflectivity as a function of wavelength for each telescope, from Ref.~\cite{mirrorfacets}. 
     The lines are almost identical as each is an average over each telescope's 345 mirrors.
   }
   \label{fig:mirreflect}
@@ -86,7 +86,7 @@ The VERITAS specifications state that the mirror reflectivity must be $\geq 85\%
 
 As the mirrors are exposed to the elements, they slowly accumulate dust and scratches.
 To combat this, they are cleaned and recoated every two years.
-Each mirror is attached to the support structure via three adjustable mounting points, allowing for adjustment of the mirror orientation to point directly at the camera, as detailed in \cite{mirroralign}.
+Each mirror is attached to the support structure via three adjustable mounting points, allowing for adjustment of the mirror orientation to point directly at the camera, as detailed in~\cite{mirroralign}.
 This alignment is measured and adjusted at regular intervals, using background stars as a calibration source.
 
 Understanding these 
@@ -99,14 +99,14 @@ Due to dust, minor imperfections in the surface of the mirrors, and small mirror
 Instead, a single point-like light source appears blurred out on the focal plane.
 This blurring is quantified by a fitted gaussian function, usually called the Optical Point Spread Function\footnote{Please note that this is different from the PSF described in Chapter \ref{ch:grrecon}, which quantifies the spread in the reconstructed gamma-ray positions.  The OPSF instead describes the spread of UV-Optical photons.} (OPSF).
 By pointing a telescope at different stars and placing a CCD at the focal plane, the OPSF is measured monthly.
-Figure \ref{fig:mirrorpolaris} shows a calibration image from the first VERITAS telescope.
-The OPSF is roughly gaussian-shaped but with longer tails and a $ \ang{0.06} $ full width half maximum \cite{Veritas_Detector}.
+Figure~\ref{fig:mirrorpolaris} shows a calibration image from the first VERITAS telescope.
+The OPSF is roughly gaussian-shaped but with longer tails and a $ \ang{0.06} $ full width half maximum~\cite{Veritas_Detector}.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.75\textwidth]{images/mirror_polaris.eps}
   \caption[Polaris PSF]{
-    Image of Polaris after reflecting off the mirrors, demonstrating the shape of the OPSF, from \cite{Veritas_Detector}.
+    Image of Polaris after reflecting off the mirrors, demonstrating the shape of the OPSF, from~\cite{Veritas_Detector}.
     The circle indicates the radius of a PMT.}
   \label{fig:mirrorpolaris}
 \end{figure}
@@ -127,8 +127,8 @@ By using the CCD to examine the position of the star in each mirror, the mirror'
 Each telescope has a PMT Camera on the end of four supporting arms, inside a protective housing.
 This camera consists of 499 Photo Multiplier Tubes (PMTs), each with a Winston cone to increase the light collection area for each PMT~\cite{Winston1970}.
 % Winston 1970, Hildebrand and Winston 1982, Hildebrand 1985, Welford and Winston 1989
-The PMTs are Hamamatsu's model R10560-100-20 MOD \cite{pmtmodels}.
-These Winston cones can be seen attached to the PMTs in Figure \ref{fig:winstcones}.
+The PMTs are Hamamatsu's model R10560-100-20 MOD~\cite{pmtmodels}.
+These Winston cones can be seen attached to the PMTs in Figure~\ref{fig:winstcones}.
 
 \begin{figure}[ht]
   \centering
@@ -173,7 +173,7 @@ To operate, the PMTs are connected to high voltage, typically \SIrange{900}{1200
 The PMTs' output signals are first sent through an amplifier, before travelling down a \nicetilde{}\SI{45}{m} cable to trigger and digitization electronics stationed near the telescope.
 
 The first circuit that the signal passes through is a Constant Fraction Discriminator (CFD) circuit~\cite{cfd_behavior}.
-This circuit's behavior, shown in Figure \ref{fig:cfd_operation}, duplicates the signal voltage pulse from the PMTs, inverts and delays the duplicate pulse, and adds it back to the original pulse.
+This circuit's behavior, shown in Figure~\ref{fig:cfd_operation}, duplicates the signal voltage pulse from the PMTs, inverts and delays the duplicate pulse, and adds it back to the original pulse.
 This combined pulse then sent to a Zero Crossing Discriminator (ZCD), which emits a \SI{10}{ns} trigger pulse when it crosses the zero-volts threshold.
 % theres also CFD Design Review Jun 2001: http://www.if.pw.edu.pl/~alice/CFD7.pdf , slide 12
 
@@ -181,7 +181,7 @@ This combined pulse then sent to a Zero Crossing Discriminator (ZCD), which emit
   \centering
   \includegraphics[width=0.95\textwidth]{images/cfd_operation/cfd_operation.pdf}
   \caption[CFD Operation]{
-    CFD signal processing, from Ref. \cite{cfd_operation}.
+    CFD signal processing, from Ref.~\cite{cfd_operation}.
     An input signal on the left is manipulated to allow for constant fraction discrimination.
   }
   \label{fig:cfd_operation}
@@ -216,7 +216,7 @@ In summer of 2012, all PMTs in the telescopes were replaced with improved PMTs.
 Specifically, the original Photonis XP2970 models were replaced with the Hamamatsu R10560-100-20 MOD.
 This was done because that R10560 has a considerably higher collection rate of Chernekov photons (35\%), compared to the XP2970 (23\%).
 This higher collection rate means more photons from a shower are detected by the PMT, which makes VERITAS more sensitive to lower energy gamma rays.
-In addition, single-photoelectron studies indicate the R10560's voltage pulse FWHM is \nicetilde{}40\% shorter than the XP2970, as shown in Figure \ref{fig:pmt_pulse_widths}.
+In addition, single-photoelectron studies indicate the R10560's voltage pulse FWHM is \nicetilde{}40\% shorter than the XP2970, as shown in Figure~\ref{fig:pmt_pulse_widths}.
 These thinner voltage pulses allow for easier discrimination between NSB fluctuations and Cherenkov signals~\cite{pmtmodels}.
 
 \begin{figure}[ht]
@@ -231,7 +231,7 @@ These thinner voltage pulses allow for easier discrimination between NSB fluctua
 
 The data used in this thesis was taken both before and after this upgrade, which means the telescope performance is different for these two time periods.
 This is accounted for by separate simulations for each PMT model, mostly resulting in different effective areas at the lower energies.
-These epochs are discussed further in Section \ref{sec:epochs}.
+These epochs are discussed further in Section~\ref{sec:epochs}.
 
 
 \subsection{PMT Calibration}
@@ -254,7 +254,7 @@ As the opaque plate has holes for each PMT, each PMT gets on average \SIrange{0}
 Large numbers of flashes can then be used to gather information on each PMTs' distribution of pulse widths.
 By examining a histogram of the pulses' integrated charges, one can see poisson-statistics peaks that are formed for the 1, 2, 3, and further integer numbers of photons.
 These peaks can then be used to translate the digital counts from the PMTs into their originating photoelectrons.
-These calibration techniques are further detailed in \cite{calib_techniques}.
+These calibration techniques are further detailed in Ref.~\cite{calib_techniques}.
 
 {\color{red}(Figure describing poissonian peaks??)}
 
@@ -317,10 +317,10 @@ As the first three telescopes were constructed and brought online, data taken af
 Telescope 1 was placed at (-37.6, -23.7), telescope 2 at (44.1, -47.7), and telescope 3 at (29.4, 60.1).
 In 2007, the fourth telescope was constructed at (-35.9, 11.3), and data taken between this point in time and the next major upgrade is considered the fourth epoch (V4).
 
-In September 2009, telescope 1 was moved to a new position (135.4, -8.61), after it was demonstrated with simulations that it would grant a \nicetilde{}30\% improvement in sensitivity \cite{veritas_t1_move}.
+In September 2009, telescope 1 was moved to a new position (135.4, -8.61), after it was demonstrated with simulations that it would grant a \nicetilde{}30\% improvement in sensitivity~\cite{veritas_t1_move}.
 Data taken after this relocation is referred to as the fifth epoch (V5).
 
-In August 2012, the PMTs in all cameras were replaced with improved PMTs that had a higher quantum efficiency, improving the telescopes ability to resolve images \cite{pmtmodels}.
+In August 2012, the PMTs in all cameras were replaced with improved PMTs that had a higher quantum efficiency, improving the telescopes ability to resolve images~\cite{pmtmodels}.
 Data taken after this upgrade is considered part of the sixth epoch (V6).
 
 As these different epochs have different telescope configurations, the instrument response functions are different, meaning each epoch behaves in a quantifiably distinct manner.

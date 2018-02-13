@@ -1,11 +1,13 @@
 #!/usr/bin/env python
-import veripy, os, gammalib, aplpy
+import veripy, os, gammalib, aplpy, numpy
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 db = veripy.VeritasDB()
 
-  
-blanksky = gammalib.GSkyMap( 'TAN', 'GAL', 0, 2.0, 0.1, 0.1, 120, 120, 1 )
+mapcenter_x, mapcenter_y = 0, 2 # lb
+binsz=0.1
+nbins=120  
+blanksky = gammalib.GSkyMap( 'TAN', 'GAL', mapcenter_x, mapcenter_y, binsz, binsz, nbins, nbins, 1 )
 fitsfile = 'blankskky.fits'
 blanksky.save( fitsfile, True )
 fig = aplpy.FITSFigure(fitsfile)
@@ -31,14 +33,37 @@ for src in sources :
 
   if src == 'Sgr A*' :
     co = 'green'
-    la = 'Sgr A* Observations'
+    la = 'Data Observation Regions'
   elif src == 'Sgr A* Off' :
     co = 'blue'
-    la = 'Sgr A* Off (Background) Observations'
-  patch = mpatches.Patch(color=co, label=la)
+    la = 'Background Observation Regions'
+  patch = mpatches.Circle((0,0), radius=1, facecolor=co, edgecolor='black', linewidth=2, label=la)
   patches += [ patch ]
-  fig.show_circles( gall, galb, radii, facecolor=co, zorder=1, edgecolor=None )
-  fig.show_circles( gall, galb, radii, zorder=2, linewidth=1 )
+  fig.show_circles( gall, galb, radii, facecolor=co, zorder=2, edgecolor=None )
+  fig.show_circles( gall, galb, radii, zorder=3, linewidth=1 )
+
+cols = {'Sgr A*':'orange','Sgr A* Off':'red'}
+for src in sources :
+  srcdir = db.source2dir(src)
+  fig.show_markers( srcdir.l_deg(), srcdir.b_deg()    , marker='v', color='black', edgecolor=cols[src], label='%s Position'%src, zorder=4 )
+  fig.add_label(    srcdir.l_deg(), srcdir.b_deg()+0.4, src, color=cols[src] )
+  
+# galactic plane
+npts   = 5
+span   = binsz*nbins
+pdelta = span / npts
+plane_x, plane_y = [], []
+for i in range(npts+1) :
+  plane_x += [ mapcenter_x - (span/2) + i*pdelta ]
+  plane_y += [ 0.5 ]
+for i in range(npts+1) :
+  plane_x += [ mapcenter_x + (span/2) - i*pdelta ]
+  plane_y += [ -0.5 ]
+co = '#89f5ff'
+pgon = [numpy.array([[px,py] for px,py in zip(plane_x,plane_y)])]
+fig.show_polygons( pgon, zorder=1, alpha=0.7, facecolor=co, edgecolor=co )
+patch = mpatches.Patch( facecolor=co, edgecolor=co, alpha=0.7, label='Galactic Plane' )
+patches += [ patch ]
 
 legend = ax.legend( handles=patches, loc='upper right', shadow=True )
 
@@ -58,6 +83,7 @@ fig.ticks.set_minor_frequency(2) # number of minor ticks per major tick
 fig.set_tick_labels_xformat('ddd')
 fig.set_tick_labels_yformat('ddd')
 
-fig.savefig('plot.png')
+for ext in ['png','pdf'] :
+  fig.savefig('plot.%s'%ext)
 
-os.system('convert plot.png plot.eps')
+#os.system('convert plot.png plot.eps')
