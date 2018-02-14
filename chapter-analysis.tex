@@ -1,5 +1,18 @@
 \cleartooddpage[\thispagestyle{empty}]
+\newcommand{\Like}{L}
+\newcommand{\LogLike}{\mathcal{L}}
+\newcommand{\xtrue}{\mathbf{x }}
+\newcommand{\xdet }{\mathbf{x'}}
+\newcommand{\ltrue}{\mathbf{l }}
+\newcommand{\ldet }{\mathbf{l'}}
+\newcommand{\btrue}{\mathbf{b }}
+\newcommand{\bdet }{\mathbf{b'}}
+\newcommand{\Etrue}{\mathbf{E }}
+\newcommand{\Edet }{\mathbf{E'}}
+\newcommand{\ttrue}{\mathbf{t }}
+\newcommand{\tdet }{\mathbf{t'}}
 \chapter{Analysis}\label{chapter:analysis}
+
 
 \section{Veritas Data}\label{veritasdata}
   The analysis in this thesis relies on three sets of VERITAS data.
@@ -51,38 +64,172 @@
   \end{figure}
 
   There are comparativly fewer Sgr A* Off observations because this source is only used for background estimation, and telescope time is in high demand.
-  There is also even fewer Crab observations, as the majority of it's data is taken at higher elevations, where the telescope is more sensitive to lower energies.
+  There is also even fewer Crab observations, as the majority of its data is taken at higher elevations, where the telescope is has increased sensitivity to lower energies.
   
   For all of these observations, quality cuts were applied.
   This includes monitoring the telescope hardware and weather by a team of VERITAS collaboration members who take the observations.
   After the data is taken, a separate collaboration member will go through each observation to check it again, and mark any bad observations or apply time cuts, which are then removed.
 
-  As multiple studies in the past have shown that the different VERITAS epochs perform differently, each epoch has their own separate set of effective areas, point spread functions, energy migration matricies, and camera background models.
+  Because VERITAS epoch has a different hardware configuration, each epoch has their own separate set of effective areas, point spread functions, energy migration matricies, and camera background models.
   In addition, specific IRFs were calculated for additional data dimensions, including the frequency of night sky background photons in the camera, the telescope elevation, the event energy, and each event's distance from the camera center.
+  
+  After this data is collected, it is combined with a likelihood analysis, detailed in the next section.
 
 \section{Likelihood Ratio Test}
-  The likelihood ratio test is a method of comparing whether a function is a statistically preferable fit to some data, compared to another function.
-  This ratio test performed by calculating the test statistic (TS) for a set of data and two functions of that data ($M_{\text{null}}$ and $M_{\text{alt}}$), shown in Equation~\ref{eqn:test_statistic}.
+  The likelihood ratio test determines which of two models is a statistically better fit to some data.
+  It is performed by calculating the likelihood of detecting a group of events, given two potential models.
+  Each model must first be folded with the PSF and Energy Dispersion, then the likelhood can be calculated.
+  Once the likelhood is calculated, then the parameters of the model are varied until the maximum likelihood is found for eah model.
+  These two maximum likelihoods can then be used to calculate the Test Statistic, which determines which model is statistically favored.
+  
+  \subsection{Likelihood Calculation}
+  At its heart, a likelihood is a product of probabilities.
+  For a simple scenario where the number of events observed in some detector bin are determined by poisson statistics, the likelihood $\Like$ is calculated by Equation~\ref{eqn:simple_like}.
+  In it, $n$ is the number of observed events in the bin and $m$ is the average number of events predicted to be in the bin by the model begin tested.
+  
+  \begin{equation}\label{eqn:simple_like}
+    \Like = \frac{e^{-m} m^n}{n!}
+  \end{equation}
+  
+  The average number of events $m$ is determined by integrating over all astrophysical models in energy, sky position, and time, after folding in the PSF and the energy dispersion.
+  This integration and folding is discussed later in the section.
+  When combining multiple bins ordered by index $j$, these probabilities are multiplied as in Equation~\ref{eqn:simple_like_2}.
+  These could be bins in sky position, energy, or time, or any combination of the three.
+  Future likelihood calculations may also include shower core position on the ground, or distance to the shower, or other observables.
+  
+  \begin{equation}\label{eqn:simple_like_2}
+    \Like = \prod_j \frac{ e^{-m_j} \; m_{j}^{n_j}}{n_{j}!}
+  \end{equation}
+
+  Equation~\ref{eqn:simple_like_2} is a general formula for calculating a binned likelihood.
+  As events are grouped by bins, some information is lost, which results in a less-powerful ratio test {\color{red}(??)}.
+  To preserve the test's power, the above result can be expanded into an unbinned likelihood can be derived.
+  First, Equation~\ref{eqn:simple_like_2} can be rearrainged:
+  
+  \begin{equation}\label{eqn:simple_like_3}
+    \Like = \prod_j e^{-m_j} \prod_j \frac{m_j^{n_j}}{n_{j}!}
+  \end{equation}
+    
+  \begin{equation}\label{eqn:simple_like_4}
+    \Like = e^{- \sum_j m_j} \prod_j \frac{m_j^{n_j}}{n_{j}!}
+  \end{equation}
+  
+  Then, the size of each bin can be shrunk until there are only 1 or 0 events in each bin.
+  For empty bins, the product in Equation~\ref{eqn:simple_like_4} becomes
+  
+  \begin{equation}\label{eqn:simple_like_4a}
+    n=0 \rightarrow \frac{m_j^{n_j}}{n_j!} = \frac{m_j^{0}}{0!} = \frac{1}{1} = 1 .
+  \end{equation}
+
+  For bins with 1 event, the product in Equation~\ref{eqn:simple_like_4} becomes
+
+  \begin{equation}\label{eqn:simple_like_4b}
+    n=1 \rightarrow \frac{m_j^{n_j}}{n_j!} = \frac{m_j^1}{1!} = \frac{m_j}{1} = m_j = m_i ,
+  \end{equation}
+
+  where $i$ is the $i^{\textrm{th}}$ event, and $m_i$ is the number of predicted events at event $i$'s sky position, energy, and time.
+  {\color{red}(What area does $m_i$ integrate over??)}
+  Then Equation~\ref{eqn:simple_like_4} becomes Equation~\ref{eqn:simple_like_5}.
+  
+  \begin{equation}\label{eqn:simple_like_5}
+    \Like = e^{- \sum_j m_j} \prod_i m_i
+  \end{equation}
+  
+  Because $\Like$ is expensive to compute and differentiate (needed later for maximization), the log-likelihood $\LogLike$ is instead calculated.
+  
+  \begin{equation}\label{eqn:simple_like_6}
+    \LogLike = \textrm{log} \left ( \Like \right ) 
+  \end{equation}
+  
+  This is possible because both $\Like$ and $\LogLike$ are both {\color{red}increasing functions (is this why??)}, so the maximum of both will be at the same position in the parameter space.
+  The log likelihood for a group of bins is then:
+  
+  \begin{equation}
+    \LogLike = \textrm{log} \left ( e^{- \sum_j m_j} \prod_i m_i \right ) = - \sum_j m_j + \sum_i \textrm{log} \left ( m_i \right )
+  \end{equation}
+  
+  {\color{red}(how does log($m_i$) become $P_i$ in arxiv ctools equation (1)?? infinitly small bin size?? )}
+  
+  \subsection{Model Folding}
+  The average number of counts $m$ predicted by a model is calculated by integrating over the energy, sky region, and time region being tested.
+  This must be done, because the reconstruction method is not perfect, all events from the astrophysical models are diffused according to the PSF and Energy Dispersion.
+  Another way of understanding this is that if a source is located in some sky bin $j$, events from that source can be reconstructed in neighboring bins $j+1$ and $j-1$, increasing the predicted number of events in those bins and decreasing the number of events in bin $j$, as determined by the PSF.
+  Similarly, energy dispersion will diffuse events out among neighboring energy bins as well.
+  {\color{red}(a plot or diagram might be handy here)}
+
+  This leads to the need to define two separate coordinate systems, $\xtrue$ and $\xdet$.
+  $\xtrue$ is a coordinate in true space (galactic $\ltrue$ and $\btrue$, energy $\Etrue$, and time $\ttrue$) space, before folding is applied.
+  On the other hand, $\xdet$ is the coordinate in reconstructed detector space ($\ldet$ and $\bdet$, $\Edet$, and $\ttrue$), after folding is applied.
+  Equation~\ref{eqn:folding} shows this integration.
+  
+  \begin{equation}\label{eqn:folding}
+    P_i \left( \xdet \right ) = \int_\xtrue R \left ( \xdet, \xtrue \right ) * M \left ( \xtrue \right ) d\xtrue
+  \end{equation}
+  
+  Here, $P_i \left( \xdet \right )$ is the probability of detecting an event at detector coordinates $\xdet = \left ( \ldet, \bdet, \Edet, \tdet \right )$.
+  The function $M\left ( \xtrue \right )$ is the number of counts predicted by the astrophysical models at coordinate $\xtrue$, and $R \left ( \xdet, \xtrue \right )$ is the dispersion at $\xdet$ due to $\xtrue$.
+  The function $R$ (the instrument Response function) incorporates the Effective Area, PSF, and Energy Dispersion information as shown in Equation~\ref{eqn:foldingR}, and is discussed further in Sections \ref{subsec:effarea}, \ref{subsec:psf}, and \ref{subsec:edisp}.
+  
+  \begin{equation}\label{eqn:foldingR}
+    R(\xdet,\xtrue) = A_{\textrm{eff}}(\xtrue) * PSF(\xdet,\xtrue) * E_{\textrm{disp}}(\Edet,\xtrue)
+  \end{equation}
+  
+  In Equation~\ref{eqn:foldingR}, functions $A$, $PSF$, and $E$ are all calculated from tables of stored values, and are derived from simulations.
+  {\color{red}(probably have to talk about how they're calculated!??)}
+
+  The Crab Nebula point source in Section~\ref{sec:crab_analysis}, the Galactic Center point source in Section~\ref{subsec:gcpointsrc}, and the Dark Matter Halo model in Section~\ref{subsec:dmhalomodel} all have this folding applied to the number of events they predict.
+  An important distinction is that this folding is only applied to these astrophysical models, and not to the camera background models.
+  This is because the background models are created with data events from actual observations, which have the folding already applied, and thus are already in $\xdet$ space.
+  
+  \subsection{Likelihood Maximization}
+  Once the likelihood for a particular model is calculated, 
+  
+  
+  
+  \subsection{Test Statistic Calculation}
+  
+  \begin{equation}
+    \textrm{TS} = - 2 \; \textrm{log} \left (  \frac{ \LogLike(\hat{d},M_{\textrm{null}}) }{ \LogLike( \hat{d}, M_{\textrm{alt} } ) } \right )
+  \end{equation}
+  
+  
+  
+
+  
+
+
+
+  
+  
+  
+  
+  
+  The statistical preference for one model over the other is called the Test Statistic (TS), which is calculated in Equation~\ref{eqn:test_statistic}.
   
   % from https://arxiv.org/pdf/1606.00393.pdf, equation 50
   \begin{equation}\label{eqn:test_statistic}
-    \text{TS} = 2 \, \text{ln} \, L \left(M_{\text{alt}} \right ) - 2 \, \text{ln} \, L \left( M_{\text{null}} \right )
+    \text{TS} = - 2 \textrm{log} \left ( \frac{ \Like \left ( \hat{d}, \, M_{\textrm{null}} \right ) }{ \Like \left ( \hat{d}, \, M_{\textrm{alt}} \right ) } \right )
   \end{equation}
-  
-  The function $L$ is the likelihood of each model, calculated via summing the likelhiood of individual observations $L_i$ in Equation~\ref{eqn:sum_likelihood}.
   
   % from https://arxiv.org/pdf/1606.00393.pdf, equation 6
   \begin{equation}\label{eqn:sum_likelihood}
-    - \text{ln} \, L \left(M \right ) = - \sum_i \text{ln} \, L_i \left(M \right )
+    \Like \left( \hat{d}, M \right ) = \sum_i \textrm{log} \, \textrm{P} \left( M, d_i \right )
   \end{equation}
   
-  The two functions $M_{\text{null}}$ and $M_{alt}$ are sometimes referred to as hypotheses.
-  For the unbinned statistical comparison used in this analysis, the likelihood $L$ of each function $M$ is computed via Equation~\ref{eqn:unbinned_likelihood}.
-  
+  \begin{equation}
+    
+  \end{equation}
+
   % from https://arxiv.org/pdf/1606.00393.pdf, equation 1
   \begin{equation}\label{eqn:unbinned_likelihood}
     - \text{ln} \, L_i \left ( M \right ) = e_i \left ( M \right ) - \sum_k \text{ln} \, P_i \left ( \boldsymbol{p}'_k, E'_k, t'_k \, | \, M \right )
   \end{equation}
+  
+  
+  The function $L$ is the likelihood of each model, calculated via summing the likelhiood of individual observations $L_i$ in Equation~\ref{eqn:sum_likelihood}.
+  
+  The two functions $M_{\text{null}}$ and $M_{alt}$ are sometimes referred to as hypotheses.
+  For the unbinned statistical comparison used in this analysis, the likelihood $L$ of each function $M$ is computed via Equation~\ref{eqn:unbinned_likelihood}.
   
   Where $i$ is the $i^{\text{th}}$ observation, also referred to as a chunk in Section~\ref{fitsconversion}.
   $k$ is the $k^{\text{th}}$ event in the observation, $\boldsymbol{p}'_k$ is the reconstructed event point-of-origin, $E'_k$ is the reconstructed event energy, and $t'_k$ is the event arrival time.
@@ -183,6 +330,8 @@
   \begin{equation} \label{eqn:powerlaw}
   F\left( E \right) = I_{0} \left( \frac{E}{E_{0}} \right)^{-\gamma}
   \end{equation}
+  
+  {\color{red}(State Crab model as a function of $M(\xtrue)$ !??)}
 
   The sky position of the point source and the pivot energy $E_{0}$ of its spectrum were fixed, while the prefactor $I_{0}$ and the spectral index $\gamma$ were free to vary during the likelihood optimization.
   Only events between \SIrange{4}{70}{TeV} are used in this test analysis.
@@ -373,7 +522,7 @@
 
   \FloatBarrier
 
-  \subsection{Non-Dark Astrophysical Models}
+  \subsection{Non-Dark Astrophysical Models}\label{subsec:gcpointsrc}
   For this analysis, a point source model was added at the position of Sgr A*.
   This is because other studies have indicated that the gamma-ray excess at Sgr A* is not consistant with a dark matter halo~\cite{gc_pnt_is_not_dm1, gc_pnt_is_not_dm2, gc_pnt_is_not_dm3}.
   Instead, a point source with the broken power law spectrum in Equation~\ref{eqn:brokenplaw} was added to the list of models.
@@ -381,6 +530,8 @@
   \begin{equation}\label{eqn:brokenplaw}
     \frac{dN}{dE} = N_{0} * { \left ( \frac{E}{E_{pivot}} \right ) }^{\alpha} {e}^{-\frac{E}{E_{cut}}}
   \end{equation}
+
+  {\color{red}(State GC Point Source model as a function of $M(\xtrue)$ !??)}
   
   The initial values used in Equation~\ref{eqn:brokenplaw} are from \cite{VeritasGCRidge2015}, where the specific values are $E_{pivot}=\SI{1}{TeV}$, $E_{cut}=\SI{12.8}{TeV}$, and $\alpha=-2.1$.
   % theres also the 2016 paper http://iopscience.iop.org/article/10.3847/0004-637X/821/2/129/meta
@@ -391,7 +542,7 @@
   Hard cuts may have minimized its effect??
   If diffuse emission really needed to be modeled, it would show up in the profiles along galactic b??
 
-  \subsection{Dark Matter Models}
+  \subsection{Dark Matter Models}\label{subsec:dmhalomodel}
   Dark Matter halos are modeled by a spherically-symmetric mass-per-volume density profile.
   In this analysis, an Einasto density profile (discussed in Section~\ref{dm_spatial}) is used for the spatial component of the dark matter halo model.
   For the spectral component, each dark matter mass tested has its own spectrum produced with CLUMPY (see Section~\ref{dm_spectral}).
@@ -410,8 +561,6 @@
     \end{tabular}
     \caption[DM Halo TS Values]{
       TS values for each DM Halo Model likelihood ratio maximization fit.
-
-      {\color{red}(Can this text wrap around??)}
 
       {\color{red}(Why is the 66.5 TeV one have -5.8 TS??)}
       
