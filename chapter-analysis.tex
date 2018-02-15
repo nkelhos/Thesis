@@ -1,6 +1,7 @@
 \cleartooddpage[\thispagestyle{empty}]
 \newcommand{\Like}{L}
 \newcommand{\LogLike}{\mathcal{L}}
+\newcommand{\LogLikeMax}{\LogLike_{\textrm{max}}}
 \newcommand{\xtrue}{\mathbf{x }}
 \newcommand{\xdet }{\mathbf{x'}}
 \newcommand{\ltrue}{\mathbf{l }}
@@ -11,6 +12,10 @@
 \newcommand{\Edet }{\mathbf{E'}}
 \newcommand{\ttrue}{\mathbf{t }}
 \newcommand{\tdet }{\mathbf{t'}}
+\newcommand{\Aeff }{A_\textrm{eff }}
+\newcommand{\Edisp}{E_\textrm{disp}}
+\newcommand{\Mnull}{M_\textrm{null}}
+\newcommand{\Malt }{M_\textrm{alt }}
 \chapter{Analysis}\label{chapter:analysis}
 
 
@@ -144,13 +149,20 @@
   This is possible because both $\Like$ and $\LogLike$ are both {\color{red}increasing functions (is this why??)}, so the maximum of both will be at the same position in the parameter space.
   The log likelihood for a group of bins is then:
   
-  \begin{equation}
+  \begin{equation}\label{eqn:simple_like_7}
     \LogLike = \textrm{log} \left ( e^{- \sum_j m_j} \prod_i m_i \right ) = - \sum_j m_j + \sum_i \textrm{log} \left ( m_i \right )
   \end{equation}
   
+  When the bin size is infinitly small, $m_i$ becomes the value of the model's pdf at the position of the event, $P(i,m)$.
+  
+  \begin{equation}\label{eqn:simple_like_8}
+    \LogLike = \textrm{log} \left ( e^{- \sum_j m_j} \prod_i m_i \right ) = - \sum_j m_j + \sum_i \textrm{log} \left ( P(i,m) \right )
+  \end{equation}
+    
+  
   {\color{red}(how does log($m_i$) become $P_i$ in arxiv ctools equation (1)?? infinitly small bin size?? )}
   
-  \subsection{Model Folding}
+  \subsection{Instrument Response Function Folding}\label{subsec:folding}
   The average number of counts $m$ predicted by a model is calculated by integrating over the energy, sky region, and time region being tested.
   This must be done, because the reconstruction method is not perfect, all events from the astrophysical models are diffused according to the PSF and Energy Dispersion.
   Another way of understanding this is that if a source is located in some sky bin $j$, events from that source can be reconstructed in neighboring bins $j+1$ and $j-1$, increasing the predicted number of events in those bins and decreasing the number of events in bin $j$, as determined by the PSF.
@@ -158,8 +170,8 @@
   {\color{red}(a plot or diagram might be handy here)}
 
   This leads to the need to define two separate coordinate systems, $\xtrue$ and $\xdet$.
-  $\xtrue$ is a coordinate in true space (galactic $\ltrue$ and $\btrue$, energy $\Etrue$, and time $\ttrue$) space, before folding is applied.
-  On the other hand, $\xdet$ is the coordinate in reconstructed detector space ($\ldet$ and $\bdet$, $\Edet$, and $\ttrue$), after folding is applied.
+  $\xtrue$ is a coordinate in true space (galactic $\ltrue$ and $\btrue$, energy $\Etrue$, and time $\ttrue$) space, \textit{before} folding is applied.
+  On the other hand, $\xdet$ is the coordinate in reconstructed detector space ($\ldet$ and $\bdet$, $\Edet$, and $\tdet$), \textit{after} folding is applied.
   Equation~\ref{eqn:folding} shows this integration.
   
   \begin{equation}\label{eqn:folding}
@@ -171,138 +183,94 @@
   The function $R$ (the instrument Response function) incorporates the Effective Area, PSF, and Energy Dispersion information as shown in Equation~\ref{eqn:foldingR}, and is discussed further in Sections \ref{subsec:effarea}, \ref{subsec:psf}, and \ref{subsec:edisp}.
   
   \begin{equation}\label{eqn:foldingR}
-    R(\xdet,\xtrue) = A_{\textrm{eff}}(\xtrue) * PSF(\xdet,\xtrue) * E_{\textrm{disp}}(\Edet,\xtrue)
+    R(\xdet,\xtrue) = \Aeff(\xtrue) * PSF(\xdet,\xtrue) * \Edisp(\Edet,\xtrue)
   \end{equation}
   
-  In Equation~\ref{eqn:foldingR}, functions $A$, $PSF$, and $E$ are all calculated from tables of stored values, and are derived from simulations.
+  In Equation~\ref{eqn:foldingR}, functions $\Aeff$, $PSF$, and $\Edisp$ are all calculated from tables of stored values, and are derived from simulations.
   {\color{red}(probably have to talk about how they're calculated!??)}
 
   The Crab Nebula point source in Section~\ref{sec:crab_analysis}, the Galactic Center point source in Section~\ref{subsec:gcpointsrc}, and the Dark Matter Halo model in Section~\ref{subsec:dmhalomodel} all have this folding applied to the number of events they predict.
   An important distinction is that this folding is only applied to these astrophysical models, and not to the camera background models.
   This is because the background models are created with data events from actual observations, which have the folding already applied, and thus are already in $\xdet$ space.
   
-  \subsection{Likelihood Maximization}
-  Once the likelihood for a particular model is calculated, 
+  \subsection{Combining Models into Hypothises}
   
+  When calculating the likelihood of a bin in Equation~\ref{eqn:simple_like_1}, the average number of counts predicted in a bin may come from multiple sources.
+  Some fraction may come from a background model, another fraction from a specific source model, etc.
+  So in order to account for multiple models, their predicted counts in a bin must be summed first, as in Equation~\ref{eqn:combinemodels}.
+  
+  \begin{equation}\label{eqn:combinemodels}
+    \Like = \frac{e^{- \left ( \sum_k m_k \right ) } \left ( \sum_k m_k \right )^n}{n!}
+  \end{equation}
+
+  In this, index $k$ loops over the various models that contribute events to a particular bin.
+  
+  Part of calculating the test statistic is assembling two hypotheses, or model groups.
+  For the analyses in this thesis, simple hypotheses are created, where one or more point-source models are grouped with multiple camera background models.
+  
+  
+  \subsection{Likelihood Maximization}\label{subsec:likemax}
+  The calculation of one likelihood is the measure of one fit, while this analysis requires finding the best fit model, by maximizing the likelihood.
+  This is done by changing the parameters of the model, but only in directions that increase the likelihood.
+  The model function used in Equation~\ref{eqn:folding} is built from spatial, spectral, and temporal components that are multiplied together in Equation~\ref{eqn:modelparts}.
+
+  \begin{equation}\label{eqn:modelparts}
+    M(\xtrue) = M_s(\xtrue) * M_e(\xtrue) * M_t(\xtrue)
+  \end{equation}
+  
+  In this, $M_s$ is the spatial component, $M_e$ is the spectral component, and $M_t$ is the temporal component.
+  As the known point sources in this analysis have relatively constant flux, and the dark matter halo is assumed to be in equilibrium, $M_t(\xtrue)=1$.
+  For the simple case of a point source with a power law spectrum, Equation~\ref{eqn:simple_pntsrc_Ms} describes its spatial distribution with a Dirac delta function.
+  
+  \begin{equation}\label{eqn:simple_pntsrc_Ms}
+    M_{s,\textrm{point}}(\xtrue) = M_s(\ltrue,\btrue,\Etrue,\ttrue) = \lim_{a\to\infty} \frac{1}{ \abs{a} \sqrt{\pi} } e^{ - \left ( \sqrt{ (\ltrue-l_o)^2 + (\btrue-b_o)^2 }/a \right )^2 }
+  \end{equation}
+  
+  In Equation~\ref{eqn:simple_pntsrc_Ms}, $l_o$ and $b_o$ are the sky coordinates of the point source.
+  More complex $M_s$ functions may have the spatial structure also depend on energy $\Etrue$ or time $\ttrue$.
+  The power law energy spectrum is described by Equation~\ref{eqn:simple_pntsrc_Me}.
+  
+  \begin{equation}\label{eqn:simple_pntsrc_Me}
+    M_{e,\textrm{powerlaw}}(\xtrue) = M_e(\ltrue,\btrue,\Etrue,\ttrue) = N_o \left ( \frac{\Etrue}{E_o} \right )^{-\gamma}
+  \end{equation}
+  
+  In Equation~\ref{eqn:simple_pntsrc_Me}, $N_o$ is the normalization of the flux, $E_o$ is the pivot energy, and $\gamma$ is the spectral index.
+  
+  When setting up this model, the different parameters $l_o$, $b_o$, $N_o$, $E_o$, and $\gamma$ can be fixed, or left free.
+  Free parameters can then be altered to find the maximium likelihood, while fixed parameters are never changed.
+  For the analyses described in this thesis, the specific models and their $M_s$ and $M_e$ functions are discussed in later subsections of this chapter.
+  CTOOLS performs the likelihood maximization with the Levenberg-Marquardt method~\cite{marquardt1963algorithm}, though there is a method to add other algorithms.
   
   
   \subsection{Test Statistic Calculation}
   
-  \begin{equation}
-    \textrm{TS} = - 2 \; \textrm{log} \left (  \frac{ \LogLike(\hat{d},M_{\textrm{null}}) }{ \LogLike( \hat{d}, M_{\textrm{alt} } ) } \right )
+  For searching for the presence of a source, the test statistic can be calculated from the maximized likelihood of two model sets.
+  The first set, called the Null Hypothesis, is the base model set $\Mnull$ without the target model being searched for.
+  The second set, called the Alternate Hypothesis, is the base model set along with the target model, referred to as $\Malt$.
+  Once the maximum likelihood $\LogLike_{\textrm{max}}$ is found for these two hypotheses, the test statistic can be calculated with Equation~\ref{eqn:tscalc}.
+  
+  \begin{equation}\label{eqn:tscalc}
+    \textrm{TS} = - 2 \; \textrm{log} \left (  \frac{ \LogLikeMax( \Mnull ) }{ \LogLikeMax( \Malt ) } \right )
   \end{equation}
+  {\color{red}(Does this really need the second log? or is it a misprint everywhere??)}
   
+  This TS then can be used to determine the statistical significance of the target model.
+  With Wilk's theorem, the if events are simulated using the Null Hypothesis pdf many times, the resulting test statistics will form a $\Chi^2$ distribution with $n$ degrees of freedom, where $n$ is the difference in number of free parameters between the two model sets $\Malt$ and $\Mnull$~\cite{wilks1938}.
+  From this distribution, a test statistic can be converted into a p-value.
+  In the case of {\color{red}(??)}, the significance of the target model can be calculated as $\sqrt{\textrm{TS}}$.
   
+  {\color{red}(how do we convert a TS into a p-value??)}
+  % http://pulsar.sternwarte.uni-erlangen.de/black-hole/2ndschool/talks/likelihood_1.pdf
   
-
-  
-
-
-
-  
-  
-  
-  
-  
-  The statistical preference for one model over the other is called the Test Statistic (TS), which is calculated in Equation~\ref{eqn:test_statistic}.
-  
-  % from https://arxiv.org/pdf/1606.00393.pdf, equation 50
-  \begin{equation}\label{eqn:test_statistic}
-    \text{TS} = - 2 \textrm{log} \left ( \frac{ \Like \left ( \hat{d}, \, M_{\textrm{null}} \right ) }{ \Like \left ( \hat{d}, \, M_{\textrm{alt}} \right ) } \right )
-  \end{equation}
-  
-  % from https://arxiv.org/pdf/1606.00393.pdf, equation 6
-  \begin{equation}\label{eqn:sum_likelihood}
-    \Like \left( \hat{d}, M \right ) = \sum_i \textrm{log} \, \textrm{P} \left( M, d_i \right )
-  \end{equation}
-  
-  \begin{equation}
-    
-  \end{equation}
-
-  % from https://arxiv.org/pdf/1606.00393.pdf, equation 1
-  \begin{equation}\label{eqn:unbinned_likelihood}
-    - \text{ln} \, L_i \left ( M \right ) = e_i \left ( M \right ) - \sum_k \text{ln} \, P_i \left ( \boldsymbol{p}'_k, E'_k, t'_k \, | \, M \right )
-  \end{equation}
-  
-  
-  The function $L$ is the likelihood of each model, calculated via summing the likelhiood of individual observations $L_i$ in Equation~\ref{eqn:sum_likelihood}.
-  
-  The two functions $M_{\text{null}}$ and $M_{alt}$ are sometimes referred to as hypotheses.
-  For the unbinned statistical comparison used in this analysis, the likelihood $L$ of each function $M$ is computed via Equation~\ref{eqn:unbinned_likelihood}.
-  
-  Where $i$ is the $i^{\text{th}}$ observation, also referred to as a chunk in Section~\ref{fitsconversion}.
-  $k$ is the $k^{\text{th}}$ event in the observation, $\boldsymbol{p}'_k$ is the reconstructed event point-of-origin, $E'_k$ is the reconstructed event energy, and $t'_k$ is the event arrival time.
-  The primed $\boldsymbol{p}'$, $E'$, and $t'$ denote the reconstructed (detector) quantities, which are separate from the true (sky) $\boldsymbol{p}$, $E$, and $t$ quantities.
-  The function $P$ is the poissonian probability of getting an event with properties $\boldsymbol{p}'$, $E'$, and $t'$, given the hypothesis $M$, shown in Equation~\ref{eqn:probability_summation}.
-  
-  % from https://arxiv.org/pdf/1606.00393.pdf, equation 7
-  \begin{equation}\label{eqn:probability_summation}
-  P_i \left ( \boldsymbol{p}', E', t' | M \right ) = \sum_j P_i \left ( \boldsymbol{p}', E', t' | M_j \right )
-  \end{equation}
-
-  Where $M_j$ is the $j^{\text{th}}$ model within hypothesis $M$.
-  Each hypothesis contains one camera background model (Section~\ref{background_production}) per chunk (Section~\ref{fitsconversion}), plus any astrophysical models.
-  $P_i \left( \boldsymbol{p}', E', t' | M_j \right )$ is the probability of getting an event from a single astrophysical model $M_j$, depicted in Equation~\ref{eqn:single_probability}.
-  
-  % from https://arxiv.org/pdf/1606.00393.pdf, equation 8
-  \begin{equation}\label{eqn:single_probability}
-    P_i \left ( \boldsymbol{p}', E', t' | M \right ) = \int_{ \boldsymbol{p},E,t} R_i \left( \boldsymbol{p}',E',t'| \boldsymbol{p},E,t \right ) \times M_j^S \left( \boldsymbol{p}, E, t \right ) d\boldsymbol{p} \, dE \, dt
-  \end{equation}
-  
-  While for a detector model (like the background models), $P_i$ is calculated via:
-  
-  % from https://arxiv.org/pdf/1606.00393.pdf, equation 9
-  \begin{equation}
-    P_i \left ( \boldsymbol{p}', E', t' | M_j \right ) = M^D_{j,i} \left ( \boldsymbol{p}', E', t' \right )
-  \end{equation}
-  
-  Where:
-
-  % from https://arxiv.org/pdf/1606.00393.pdf, equation 10
-  \begin{equation}
-    M^S \left ( \boldsymbol{p}, E, t \right ) = M_S \left ( \boldsymbol{p}|E,t \right ) \times M_E \left ( E | t \right ) \times M_T \left ( t \right )
-  \end{equation}
-  
-  {\color{red} Explain better what these three equations are??  what is $R_i$??}
-  
-  Equation~\ref{eqn:single_probability} is formed by convolving the predicted number of counts from the model with the detector dispersion function $R$.
-  
-  In Equation~\ref{eqn:unbinned_likelihood}, $e_i \left ( M \right )$ is the predicted number of events from hypothesis $M$, detailed in Equation~\ref{eqn:model_integration}.
-
-  % from https://arxiv.org/pdf/1606.00393.pdf, equation 2
-  \begin{equation}\label{eqn:model_integration}
-    e_i \left(M \right ) = \int_{GTI} \int_{Ebounds} \int_{ROI} P_i \, \left( \boldsymbol{p}', E', t' \, | \, M \right ) d\boldsymbol{p}' \, dE' \, dt'
-  \end{equation}
-  
-  This is calculated via integrating over each observation's live time window (the Good Time Interval or $GTI$), the reconstructed energy range ($Ebounds$), and the spatial Region Of Interest ($ROI$).
-  
-  
-  The likelihood ratio test useful for comparing two hypotheses.
-  They are referred to as the null and alternative hypotheses.
-  Each hypothesis consists of a collection of models, where each model predicts the number of events at each point in the energy/space/time parameter space.
-  Once each hypothesis is constructed, the likelihood for each can be computed.
-  
-  {\color{red}likelihood equation??}
-  
-  The ratio of the two likelihoods then, with certain assumptions, follows a gaussian, meaning the sigificance of the alternative hypothesis over the null can be calculated {\color{red}(is this true??)}.
-  As part of this likelihood ratio test, the signal and background models must be constructed.
-  Background models can be camera background models (discussed in Section~\ref{sec:bkgmodels}), or astrophysical models of background gamma-ray emitters.
-
-  {\color{red}test statistic equation??}
 
 \section{Background Models}\label{sec:bkgmodels}
   The background models predict the amount of background counts produced by a sky without gamma rays.
   This is used to model the effect of the background (primarily proton) events, which are several orders of magnitude more populous than the gamma rays.
   Background models are produced by binning observation sources with weak or no gamma-ray emission.
-  For this low-elevation analysis the dark region Sgr A* Off, described in Section~\ref{veritasdata}, were used to build these backgrounds.
-  These background runs were then assembled into background models, using the method described in Section~\ref{background_production}.
+  For this low-elevation analysis the observations of the dark region Sgr A* Off, described in Section~\ref{veritasdata}, were used to build these backgrounds.
+  These dark region events were then binned into background models, using the method described in Section~\ref{background_production}.
   To account for the difference between the V5 and V6 observatory configurations, the background observations are divided up based on their epoch, producing a unique background template for each epoch.
   These background templates only depend on the radial distance from the camera center and the event energy.
-
-  %To confirm that these background models fit properly, a simple likelihood analysis was performed with the Off observations and their backgrounds.
-  %If the background models were assembled accurately, after the liklelihood normalization, the number of events observed and predicted by the models is shown in {\color{red}Figure ??}.
-  %{\color{red}(using just the background observations, show profile plots in galactic-b and energy??)}
 
 \section{Crab Nebula Analysis}\label{sec:crab_analysis}
   To verify that the CTOOLs likelihood method is physically correct, the Crab Nebula was analyzed first, before any dark matter analysis was performed.
@@ -323,27 +291,23 @@
     \label{fig:crab_skymap}
   \end{figure}
   
-  The Crab was modeled by a single point source with the simple power law spectrum in Equation~\ref{eqn:powerlaw}.
-  This point source is modeled by a dirac function {\color{red}(??)}, which is then folded with the point spread function and the energy migration matrix.
-  By accounting for the dispersion in the position and energy reconstruction, this converts the model from astrophysical space to detector space.
+  The Crab was modeled by a point source with the simple power law spectrum in Equation~\ref{eqn:crab_model}, both of which are discussed in Subsection~\ref{subsec:likemax}.
 
-  \begin{equation} \label{eqn:powerlaw}
-  F\left( E \right) = I_{0} \left( \frac{E}{E_{0}} \right)^{-\gamma}
+  \begin{equation}\label{eqn:crab_model}
+    M(\xtrue) = M_{s,\textrm{powerlaw}}(\xtrue) * M_{e,\textrm{point}}(\xtrue) = N_o \left ( \frac{\Etrue}{E_o} \right )^{-\gamma} * \lim_{a\to\infty} \frac{1}{ \abs{a} \sqrt{\pi} } e^{ - \left ( \sqrt{ (\ltrue-l_c)^2 + (\btrue-b_c)^2 }/a \right )^2 }
   \end{equation}
-  
-  {\color{red}(State Crab model as a function of $M(\xtrue)$ !??)}
 
-  The sky position of the point source and the pivot energy $E_{0}$ of its spectrum were fixed, while the prefactor $I_{0}$ and the spectral index $\gamma$ were free to vary during the likelihood optimization.
+  The sky position of the point source is fixed to the Crab Nebula, $(l_c,b_c) = (\ang{184.557600},\ang{-5.784180})$.
+  The pivot energy $E_o$ of its spectrum was fixed to \SI{16.73}{TeV}, while the normalization $N_o$ and the spectral index $\gamma$ were free to vary during the likelihood optimization.
   Only events between \SIrange{4}{70}{TeV} are used in this test analysis.
   At an elevation of \ang{25}, the reconstruction software is able to reconstruct events as low as \SI{1.5}{TeV}.
-  But, in this 'threshold' energy region, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region are not accurate.
+  Below \SI{4}{TeV} however, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region are not accurate.
   Part of this decrease is explored in Section~\ref{subsec:bkgstructure} (see Figures \ref{fig:bkgvsel_crab} and \ref{fig:bkgvsel_sgra}), but accounting for this requires an unfeasibly large set of simulations.
-  Simulations become too computationally expensive above \SI{200}{TeV} to create when attempting to calculate IRFs.
+  At higher energies, simulations become too computationally expensive above \SI{200}{TeV} when attempting to calculate IRFs.
   In order to ensure there were enough downward-fluctuating simulations to properly populate the IRFs, the analysis was limited to a maximum event energy of \SI{70}{TeV}.
     
-  %After fitting all events from \SIrange{4}{70}{TeV}, with a pivot energy $ E_{0}= \SI{10}{TeV} $, the $ I_{0} = \left(1.472\pm0.09\right)*10^{-19} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.382 \pm 0.076 $, with a Test Statistic of 1929.01. {\color{red}(?? update values!)}.
-  After fitting all model parameters to the events from \SIrange{4}{70}{TeV}, with the pivot energy fixed to $ E_{0}= \SI{16.73}{TeV} $, the best fit power law values were $ I_{0} = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a Test Statistic of 408.8.
   % values from nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/crab_test/logs/statistics.txt
+  After fitting all model parameters to the events from \SIrange{4}{70}{TeV}, the best fit power law values were $ N_o = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a Test Statistic of 408.8.
   As the alternate Crab Nebula hypothesis has 110 free parameters, and the no-crab (null) hypothesis has 108 free parameters, the Test Statistic has $ 110 - 108 = 2 $ degrees of freedom.
   
   In the standard VERITAS Eventdisplay analysis, the Crab Nebula is found to have a point source significance of \SI{21.3}{$\sigma$}.
@@ -528,14 +492,14 @@
   Instead, a point source with the broken power law spectrum in Equation~\ref{eqn:brokenplaw} was added to the list of models.
   
   \begin{equation}\label{eqn:brokenplaw}
-    \frac{dN}{dE} = N_{0} * { \left ( \frac{E}{E_{pivot}} \right ) }^{\alpha} {e}^{-\frac{E}{E_{cut}}}
+    \frac{dN}{dE} = N_{0} * { \left ( \frac{E}{E_{pivot}} \right ) }^{\gamma} {e}^{-\frac{E}{E_{cut}}}
   \end{equation}
 
   {\color{red}(State GC Point Source model as a function of $M(\xtrue)$ !??)}
   
-  The initial values used in Equation~\ref{eqn:brokenplaw} are from \cite{VeritasGCRidge2015}, where the specific values are $E_{pivot}=\SI{1}{TeV}$, $E_{cut}=\SI{12.8}{TeV}$, and $\alpha=-2.1$.
+  The initial values used in Equation~\ref{eqn:brokenplaw} are from \cite{VeritasGCRidge2015}, where the specific values are $E_{pivot}=\SI{1}{TeV}$, $E_{cut}=\SI{12.8}{TeV}$, and $\gamma=-2.1$.
   % theres also the 2016 paper http://iopscience.iop.org/article/10.3847/0004-637X/821/2/129/meta
-  The normalization parameter $N_{0}$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was left free in the likelihood optimization, while $E_{pivot}$, $E_{cut}$, and $\alpha$ were all fixed.
+  The normalization parameter $N_{0}$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was left free in the likelihood optimization, while $E_{pivot}$, $E_{cut}$, and $\gamma$ were all fixed.
   The normalization $N_{0}$ was left free to allow for the potential of some mixing between the point source events and any dark matter halo events, i.e. a stronger dark matter halo gamma-ray flux would result in a weaker point source flux.
   
   Diffuse emission, eliminated due to complexity??
@@ -546,6 +510,7 @@
   Dark Matter halos are modeled by a spherically-symmetric mass-per-volume density profile.
   In this analysis, an Einasto density profile (discussed in Section~\ref{dm_spatial}) is used for the spatial component of the dark matter halo model.
   For the spectral component, each dark matter mass tested has its own spectrum produced with CLUMPY (see Section~\ref{dm_spectral}).
+  For the spatial component, the halo profile $M_{s,\textrm{halo}}$ is calculated in Section~\ref{dm_spatial}.
 
   \subsection{Likelihood Maximization Results}
   

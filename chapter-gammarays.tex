@@ -162,6 +162,8 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
     
     {\color{red}DM Flux skymap in galactic (l,b) ??}
     
+    This J-factor profile can be combined with interpolation to form the spatial component of the dark matter halo, $M_{s,\textrm{halo}}$.
+    
   \subsection{Spectrum of Gamma Rays from Dark Matter}\label{dm_spectral}
     In order to calculate the gamma-ray brightness of the dark matter halo, the produced spectrum from each WIMP annihilation must be known.
 
@@ -176,7 +178,7 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
     The spectral models that CLUMPY uses are based on the tables in the PPPC 4 DM ID~\cite{pppc4_dm_spectra}.
     For this analysis, only the $b\bar{b}$ annihilation channel is considered.
     Figure~\ref{fig:chichi_spectrum} shows the resultant spectra from the single annihilation of two WIMPs.
-    Each line represents a spectrum from a different initial WIMP mass.
+    Each line shows the spectrum from a different initial WIMP mass.
 
     \begin{figure}[ht]
       \centering
@@ -187,7 +189,8 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
       \label{fig:chichi_spectrum}
     \end{figure}
 
-    These spectra, then can be combined with the {\color{red}J-factor equation (You didn’t mention what the J-factor is (and its figure is not mentioned in the text??). -Orel)} to calculate how many gamma rays are produced by the halo.
+    These spectra are then stored in an interpolation table, which can be used as the spectral component $M_{\textrm{e,halo}}$ for the dark matter halo model in the likelihood analysis, detailed in Section~\ref{subsec:dmhalomodel}.
+    These spectra, then can be combined with the {\color{red}J-factor equation (You didn't mention what the J-factor is (and its figure is not mentioned in the text??). -Orel)} to calculate how many gamma rays are produced by the halo.
 
     \FloatBarrier
     
