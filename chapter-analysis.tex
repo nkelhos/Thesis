@@ -162,13 +162,54 @@
   
   {\color{red}(how does log($m_i$) become $P_i$ in arxiv ctools equation (1)?? infinitly small bin size?? )}
   
-  \subsection{Instrument Response Function Folding}\label{subsec:folding}
-  The average number of counts $m$ predicted by a model is calculated by integrating over the energy, sky region, and time region being tested.
-  This must be done, because the reconstruction method is not perfect, all events from the astrophysical models are diffused according to the PSF and Energy Dispersion.
-  Another way of understanding this is that if a source is located in some sky bin $j$, events from that source can be reconstructed in neighboring bins $j+1$ and $j-1$, increasing the predicted number of events in those bins and decreasing the number of events in bin $j$, as determined by the PSF.
-  Similarly, energy dispersion will diffuse events out among neighboring energy bins as well.
-  {\color{red}(a plot or diagram might be handy here)}
+  \subsection{Models}
+  
+  Models are used in a likelihood analysis to predict the number of events that a particular source deposits into a particular bin.
+  For any given analysis, each source of events gets its own model.
+  Basic models can be broken apart into their spatial, spectral, and temporal components, as in Equation~\ref{eqn:modelparts}.
 
+  \begin{equation}\label{eqn:modelparts}
+    M(l,b,E,t) = M_s(l,b,E,t) * M_e(l,b,E,t) * M_t(l,b,E,t)
+  \end{equation}
+  
+  In this equation, $l$ $b$ are Galactic sky coordinates, $E$ is the energy, and $t$ is the time.
+  For this thesis, the sources being modeled are either constant in flux, or in equilibrium, so time-dependent effects are ignored by setting $M_t() = 1$.
+
+  For a basic point source, the spatial model function $M_s$ is shown in Equation~\ref{eqn:pntsrc_Ms}.
+
+  \begin{equation}\label{eqn:pntsrc_Ms}
+    M_{s,\textrm{pnt}}(l,b,E,t) = \lim_{a\to\infty} \frac{1}{ \abs{a} \sqrt{\pi} } e^{ - \left ( \sqrt{ (l-l_o)^2 + (b-b_o)^2 }/a \right )^2 }
+  \end{equation}
+  
+  In this equation, $l_o$ and $b_o$ control the position of the point source in Galactic sky coordinates, which can be model parameters.
+  More complex $M_s$ functions may have the spatial structure also depend on energy $E$ or time $t$, or may take on other spatial shapes.
+  For a basic power law, the spectral model function $M_e$ is shown in Equation~\ref{eqn:powerlaw_Me}.
+  
+  \begin{equation}\label{eqn:powerlaw_Me}
+    M_{e,\textrm{powerlaw}}(l,b,E,t) = N_o \left ( \frac{E}{E_o} \right )^{-\gamma}
+  \end{equation}
+
+  In this equation, $N_o$ is the flux normalization, $E_o$ is the pivot energy, and $\gamma$ is the spectral index, which can all be model parameters.
+
+  
+  \subsection{Instrument Response Function Folding}\label{subsec:folding}
+  The average number of counts predicted by a model is calculated by integrating over the entire energy, sky, and time regions in the analysis.
+  Because the reconstruction method is not perfect, all events from the astrophysical models are diffused according to the PSF and Energy Dispersion.
+  Another way of understanding this is that if a source is located in some sky bin $j$, events from that source can be reconstructed in neighboring bins $j+1$ and $j-1$, increasing the predicted number of events in those bins and decreasing the number of events in bin $j$, as determined by the PSF.
+  This dispersion is shown in Figure~\ref{fig:responsedispersion}.
+  Similarly, energy dispersion will diffuse events out among neighboring energy bins as well.
+  
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.85\textwidth]{images/responsefunction/responsefunction.pdf}
+    \caption[Response Function Dispersion]
+    {
+      Left: Events from a source at the green arrow detected by a 'perfect' detector, with bins in true coordinates.
+      Right: Events from a source detected by a 'real-world' detector, with bins in reconstructed coordinates.
+    }
+    \label{fig:responsedispersion}
+  \end{figure}
+  
   This leads to the need to define two separate coordinate systems, $\xtrue$ and $\xdet$.
   $\xtrue$ is a coordinate in true space (galactic $\ltrue$ and $\btrue$, energy $\Etrue$, and time $\ttrue$) space, \textit{before} folding is applied.
   On the other hand, $\xdet$ is the coordinate in reconstructed detector space ($\ldet$ and $\bdet$, $\Edet$, and $\tdet$), \textit{after} folding is applied.
@@ -186,32 +227,45 @@
     R(\xdet,\xtrue) = \Aeff(\xtrue) * PSF(\xdet,\xtrue) * \Edisp(\Edet,\xtrue)
   \end{equation}
   
-  In Equation~\ref{eqn:foldingR}, functions $\Aeff$, $PSF$, and $\Edisp$ are all calculated from tables of stored values, and are derived from simulations.
-  {\color{red}(probably have to talk about how they're calculated!??)}
+  In Equation~\ref{eqn:foldingR}, functions $\Aeff$, $PSF$, and $\Edisp$ are all interpolated from tables of stored values, which are derived from simulations.
 
   The Crab Nebula point source in Section~\ref{sec:crab_analysis}, the Galactic Center point source in Section~\ref{subsec:gcpointsrc}, and the Dark Matter Halo model in Section~\ref{subsec:dmhalomodel} all have this folding applied to the number of events they predict.
   An important distinction is that this folding is only applied to these astrophysical models, and not to the camera background models.
   This is because the background models are created with data events from actual observations, which have the folding already applied, and thus are already in $\xdet$ space.
   
-  \subsection{Combining Models into Hypothises}
+  \subsection{Combining Models into Hypotheses}\label{subsec:hypotheses}
   
-  When calculating the likelihood of a bin in Equation~\ref{eqn:simple_like_1}, the average number of counts predicted in a bin may come from multiple sources.
-  Some fraction may come from a background model, another fraction from a specific source model, etc.
-  So in order to account for multiple models, their predicted counts in a bin must be summed first, as in Equation~\ref{eqn:combinemodels}.
+  When calculating the likelihood of a bin in Equation~\ref{eqn:simple_like}, the predicted number of counts in a bin may come from a combination of sources.
+  Some fraction may come from a background model, another fraction from a specific source model, and still others from other models.
+  So in order to account for these multiple models, their predicted counts in a bin must be summed first, as in Equation~\ref{eqn:combinemodels}.
   
   \begin{equation}\label{eqn:combinemodels}
     \Like = \frac{e^{- \left ( \sum_k m_k \right ) } \left ( \sum_k m_k \right )^n}{n!}
   \end{equation}
 
-  In this, index $k$ loops over the various models that contribute events to a particular bin.
+  In Equation~\ref{eqn:combinemodels}, index $k$ loops over the various models that contribute events to a particular bin.
   
-  Part of calculating the test statistic is assembling two hypotheses, or model groups.
-  For the analyses in this thesis, simple hypotheses are created, where one or more point-source models are grouped with multiple camera background models.
-  
+  In order to calculate a test statistic, the models must be grouped into two sets, called hypotheses.
+  For a basic analysis, the Null hypothesis consists of all models, except the one in particular being searched for.
+  The second hypothesis, called the Alternate hypothesis, consists of all the models in the Null hypothesis, plus the model being searched for.
+  For example, if one has three observations of the Crab Nebula, this would mean there are three camera background models, plus a point source model for the Crab Nebula.
+  The Null hypothesis would be just the camera background models, while the Alternate hypothesis would be the camera backgrounds plus the Crab Nebula model.
+  Once these two hypotheses are assembled, then their maximum likelihood can be searched for.
   
   \subsection{Likelihood Maximization}\label{subsec:likemax}
-  The calculation of one likelihood is the measure of one fit, while this analysis requires finding the best fit model, by maximizing the likelihood.
-  This is done by changing the parameters of the model, but only in directions that increase the likelihood.
+  Once each hypothesis is assembled, their maximum likelihoods must be searched for.
+  This maximum likelihood is found by iteravely changing the parameters of a hypothesis's component models in directions that increase the likelihood.
+  For example, take the alternate hypothesis used in Section~\ref{subsec:hypotheses}, with three camera background models and one Crab Nebula point source.
+  Each camera background model has a base template multiplied by a power law.
+  Each power law has a normalization and a spectral index, so the background camera models have the parameters $N_1$, $N_2$, $N_3$, $\gamma_1$, $\gamma_2$, and $\gamma_3$.
+  The Crab Nebula point source power law also has normalization and spectral index parameters $N_c$ and $\gamma_c$.
+  Then this alternate hypothesis would have 8 free parameters, $N_1$, $N_2$, $N_3$, $N_c$, $\gamma_1$, $\gamma_2$, $\gamma_3$, and $\gamma_c$.
+  For calculating the test statistic for the presence of the Crab Nebula, the Null hypothesis is just the camera background models, with 6 free parameters $N_1$, $N_2$, $N_3$, $\gamma_1$, $\gamma_2$, and $\gamma_3$.
+  
+  When finding the maximum likelihood for each hypothesis, these parameters are varied
+
+
+  
   The model function used in Equation~\ref{eqn:folding} is built from spatial, spectral, and temporal components that are multiplied together in Equation~\ref{eqn:modelparts}.
 
   \begin{equation}\label{eqn:modelparts}
