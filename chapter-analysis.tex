@@ -75,28 +75,30 @@
   This includes monitoring the telescope hardware and weather by a team of VERITAS collaboration members who take the observations.
   After the data is taken, a separate collaboration member will go through each observation to check it again, and mark any bad observations or apply time cuts, which are then removed.
 
-  Because VERITAS epoch has a different hardware configuration, each epoch has their own separate set of effective areas, point spread functions, energy migration matricies, and camera background models.
+  Because VERITAS epoch has a different hardware configuration, each epoch has its own separate set of effective areas, point spread functions, energy migration matricies, and camera background models.
   In addition, specific IRFs were calculated for additional data dimensions, including the frequency of night sky background photons in the camera, the telescope elevation, the event energy, and each event's distance from the camera center.
   
-  After this data is collected, it is combined with a likelihood analysis, detailed in the next section.
+  After this data is collected, it is used in a likelihood analysis, detailed in the next section.
 
 \section{Likelihood Ratio Test}
-  The likelihood ratio test determines which of two models is a statistically better fit to some data.
-  It is performed by calculating the likelihood of detecting a group of events, given two potential models.
-  Each model must first be folded with the PSF and Energy Dispersion, then the likelhood can be calculated.
-  Once the likelhood is calculated, then the parameters of the model are varied until the maximum likelihood is found for eah model.
-  These two maximum likelihoods can then be used to calculate the Test Statistic, which determines which model is statistically favored.
+  The likelihood ratio test determines which of two model groups is a statistically better fit to some data.
+  It is performed by calculating, for a group of events, the likelihood of detecting that group of events with each of two model groups.
+  Individual models within a group may need to be folded with the PSF and Energy Dispersion, before the likelhood can be calculated.
+  Once the likelhood is calculated, then the parameters of the model are varied until the maximum likelihood is found for each model.
+  These two maximum likelihoods can then be used to calculate the Test Statistic, which determines which model is statistically favored, and to what degree it is favored.
   
   \subsection{Likelihood Calculation}
   At its heart, a likelihood is a product of probabilities.
-  For a simple scenario where the number of events observed in some detector bin are determined by poisson statistics, the likelihood $\Like$ is calculated by Equation~\ref{eqn:simple_like}.
-  In it, $n$ is the number of observed events in the bin and $m$ is the average number of events predicted to be in the bin by the model begin tested.
+  With two events, the likelihood is $(\textrm{probability that event 1 happens})\times(\textrm{probability that event 2 happens})$.
+  When the number of events observed in some detector bin are determined by poisson statistics, the likelihood $\Like$ is calculated by Equation~\ref{eqn:simple_like}.
+  In it, $n$ is the number of observed events in the bin.
+  $m$ is the number of events a model group is predicted to deposit in the bin.
   
   \begin{equation}\label{eqn:simple_like}
     \Like = \frac{e^{-m} m^n}{n!}
   \end{equation}
   
-  The average number of events $m$ is determined by integrating over all astrophysical models in energy, sky position, and time, after folding in the PSF and the energy dispersion.
+  The average number of events $m$ is determined by integrating over a group's models in energy, sky position, and time, after folding in the PSF and the energy dispersion.
   This integration and folding is discussed later in the section.
   When combining multiple bins ordered by index $j$, these probabilities are multiplied as in Equation~\ref{eqn:simple_like_2}.
   These could be bins in sky position, energy, or time, or any combination of the three.
@@ -107,8 +109,8 @@
   \end{equation}
 
   Equation~\ref{eqn:simple_like_2} is a general formula for calculating a binned likelihood.
-  As events are grouped by bins, some information is lost, which results in a less-powerful ratio test {\color{red}(??)}.
-  To preserve the test's power, the above result can be expanded into an unbinned likelihood can be derived.
+  As events are grouped by bins, some information is lost, which results in a less powerful ratio test {\color{red}(??)}.
+  To preserve the test's power, the above result can be expanded into an unbinned likelihood through the following derivation.
   First, Equation~\ref{eqn:simple_like_2} can be rearrainged:
   
   \begin{equation}\label{eqn:simple_like_3}
@@ -140,7 +142,9 @@
     \Like = e^{- \sum_j m_j} \prod_i m_i
   \end{equation}
   
-  Because $\Like$ is expensive to compute and differentiate (needed later for maximization), the log-likelihood $\LogLike$ is instead calculated.
+  When calculating $\Like$, certain computational problems can arise.
+  Calculating the product of many small probabilities can result in extremely small numbers, beyond the binary storage limit of common variable types.
+  Calculating derivatives of some of these numbers is computationally expensive, so to solve these two problems, the log-likelihood $\LogLike$ is instead calculated.
   
   \begin{equation}\label{eqn:simple_like_6}
     \LogLike = \textrm{log} \left ( \Like \right ) 
@@ -153,26 +157,37 @@
     \LogLike = \textrm{log} \left ( e^{- \sum_j m_j} \prod_i m_i \right ) = - \sum_j m_j + \sum_i \textrm{log} \left ( m_i \right )
   \end{equation}
   
-  When the bin size is infinitly small, $m_i$ becomes the value of the model's pdf at the position of the event, $P(i,m)$.
+  When the bin size is infinitly small, $m_i$ becomes the value of the probability density function (of all models combined) at the position of the event, $P_i$, as in Equation~\ref{eqn:simple_like_8}.
   
   \begin{equation}\label{eqn:simple_like_8}
-    \LogLike = \textrm{log} \left ( e^{- \sum_j m_j} \prod_i m_i \right ) = - \sum_j m_j + \sum_i \textrm{log} \left ( P(i,m) \right )
+    \LogLike = \textrm{log} \left ( e^{- \sum_j m_j} \prod_i m_i \right ) = - \sum_j m_j + \sum_i \textrm{log} \left ( P_i \right )
   \end{equation}
-    
   
   {\color{red}(how does log($m_i$) become $P_i$ in arxiv ctools equation (1)?? infinitly small bin size?? )}
+
+  Equation~\ref{eqn:simple_like_8} is how the unbinned log-likelihood used in this analysis is calculated.
+  The sum over $m_j$ can be interpreted as the total number of events predicted by all models, sometimes referred to as $N_{pred}$.
+  The reader should note however, that while a binned likelihood calculation scales with the number of bins (and some lost information), the unbinned likelihood calculation scales with the number of events, which can lead to large likelihood maximization times (see later in this section).
   
   \subsection{Models}
   
   Models are used in a likelihood analysis to predict the number of events that a particular source deposits into a particular bin.
   For any given analysis, each source of events gets its own model.
-  Basic models can be broken apart into their spatial, spectral, and temporal components, as in Equation~\ref{eqn:modelparts}.
+  Each model is described by a function $M$, and different sources will have different $M$ functions.
+  The function $M$ has dimensional units of $\frac{\textrm{counts}}{\textrm{energy}\times\textrm{solid angle}\times\textrm{area}\times\textrm{time}}$.
+  This function can be integrated over the energy, sky, and time region covered by a bin to calcuate the number of events predicted in that bin, as shown by Equation~\ref{eqn:model_int}.
+  
+  \begin{equation}\label{eqn:model_int}
+    m_{i \, \textrm{or} \, j} = \int_{t\,\textrm{bin}} \int_{E\,\textrm{bin}} \int_{b\,\textrm{bin}} \int_{l\,\textrm{bin}} M(l,b,E,t)\; dl \, db \, dE \, dt
+  \end{equation}
+  
+  In this equation, $l$ and $b$ are Galactic sky coordinates\footnote{This thesis focuses on a galaxy-centered source, so Galactic l and b are used here.  The sky coordinate system can be exchanged with an equitorial system like RA/Dec or any other spherical coordinate system without a loss of efficacy.}, $E$ is the energy, and $t$ is the time.
+  The basic models used in this analysis can be broken apart into their spatial, spectral, and temporal components, as in Equation~\ref{eqn:modelparts}.
 
   \begin{equation}\label{eqn:modelparts}
     M(l,b,E,t) = M_s(l,b,E,t) * M_e(l,b,E,t) * M_t(l,b,E,t)
   \end{equation}
   
-  In this equation, $l$ $b$ are Galactic sky coordinates, $E$ is the energy, and $t$ is the time.
   For this thesis, the sources being modeled are either constant in flux, or in equilibrium, so time-dependent effects are ignored by setting $M_t() = 1$.
 
   For a basic point source, the spatial model function $M_s$ is shown in Equation~\ref{eqn:pntsrc_Ms}.
@@ -181,8 +196,8 @@
     M_{s,\textrm{pnt}}(l,b,E,t) = \lim_{a\to\infty} \frac{1}{ \abs{a} \sqrt{\pi} } e^{ - \left ( \sqrt{ (l-l_o)^2 + (b-b_o)^2 }/a \right )^2 }
   \end{equation}
   
-  In this equation, $l_o$ and $b_o$ control the position of the point source in Galactic sky coordinates, which can be model parameters.
-  More complex $M_s$ functions may have the spatial structure also depend on energy $E$ or time $t$, or may take on other spatial shapes.
+  In this equation, $l_o$ and $b_o$ specify the position of the point source in Galactic sky coordinates, which can be model parameters.
+  More complex $M_s$ functions may have the spatial structure also depend on energy $E$ or time $t$, or may take on other spatial shapes like an ellipse or a radially-symmetric profile.
   For a basic power law, the spectral model function $M_e$ is shown in Equation~\ref{eqn:powerlaw_Me}.
   
   \begin{equation}\label{eqn:powerlaw_Me}
@@ -205,7 +220,7 @@
     \caption[Response Function Dispersion]
     {
       Left: Events from a source at the green arrow detected by a 'perfect' detector, with bins in true coordinates.
-      Right: Events from a source detected by a 'real-world' detector, with bins in reconstructed coordinates.
+      Right: The same events detected by a 'real-world' detector, with bins in reconstructed coordinates.
     }
     \label{fig:responsedispersion}
   \end{figure}
@@ -230,87 +245,57 @@
   In Equation~\ref{eqn:foldingR}, functions $\Aeff$, $PSF$, and $\Edisp$ are all interpolated from tables of stored values, which are derived from simulations.
 
   The Crab Nebula point source in Section~\ref{sec:crab_analysis}, the Galactic Center point source in Section~\ref{subsec:gcpointsrc}, and the Dark Matter Halo model in Section~\ref{subsec:dmhalomodel} all have this folding applied to the number of events they predict.
-  An important distinction is that this folding is only applied to these astrophysical models, and not to the camera background models.
+  An important distinction is that this folding is only applied to these astrophysical models, and not to the camera background models\footnote{In Gammalib and CTOOLS, model class names that start with GModel* are astrophysical models that will have folding applied to them, while model class names that start with GCTAModel* are already in reconstructed space.}.
   This is because the background models are created with data events from actual observations, which have the folding already applied, and thus are already in $\xdet$ space.
   
   \subsection{Combining Models into Hypotheses}\label{subsec:hypotheses}
   
   When calculating the likelihood of a bin in Equation~\ref{eqn:simple_like}, the predicted number of counts in a bin may come from a combination of sources.
   Some fraction may come from a background model, another fraction from a specific source model, and still others from other models.
-  So in order to account for these multiple models, their predicted counts in a bin must be summed first, as in Equation~\ref{eqn:combinemodels}.
+  So in order to account for these multiple models, their predicted counts in a bin must be summed first, as in Equation~\ref{eqn:combinemodels}, before being used in Equation~\ref{eqn:simple_like_8}.
   
   \begin{equation}\label{eqn:combinemodels}
-    \Like = \frac{e^{- \left ( \sum_k m_k \right ) } \left ( \sum_k m_k \right )^n}{n!}
+    m_{i\,\textrm{or}\,j} = \sum_k m_k(i\,\textrm{or}\,j)
   \end{equation}
 
   In Equation~\ref{eqn:combinemodels}, index $k$ loops over the various models that contribute events to a particular bin.
+  $m_k$ is number of counts predicted by model $k$, at the position of event $i$ or bin $j$.
   
   In order to calculate a test statistic, the models must be grouped into two sets, called hypotheses.
-  For a basic analysis, the Null hypothesis consists of all models, except the one in particular being searched for.
-  The second hypothesis, called the Alternate hypothesis, consists of all the models in the Null hypothesis, plus the model being searched for.
+  For a basic analysis, the null hypothesis consists of all models, except the one in particular being searched for, called here $\Mnull$.
+  The second hypothesis, called the alternate hypothesis, consists of all the models in the null hypothesis, plus the model being searched for, called here $\Malt$.
   For example, if one has three observations of the Crab Nebula, this would mean there are three camera background models, plus a point source model for the Crab Nebula.
-  The Null hypothesis would be just the camera background models, while the Alternate hypothesis would be the camera backgrounds plus the Crab Nebula model.
-  Once these two hypotheses are assembled, then their maximum likelihood can be searched for.
+  The null hypothesis would be just the camera background models, while the alternate hypothesis would be the camera backgrounds plus the Crab Nebula model.
+  Once these two hypotheses for an analysis are assembled, then their maximum likelihood can be searched for.
   
   \subsection{Likelihood Maximization}\label{subsec:likemax}
-  Once each hypothesis is assembled, their maximum likelihoods must be searched for.
-  This maximum likelihood is found by iteravely changing the parameters of a hypothesis's component models in directions that increase the likelihood.
+  This maximum likelihood is found by iteratively changing the parameters of a hypothesis's component models in directions that increase the likelihood.
   For example, take the alternate hypothesis used in Section~\ref{subsec:hypotheses}, with three camera background models and one Crab Nebula point source.
   Each camera background model has a base template multiplied by a power law.
-  Each power law has a normalization and a spectral index, so the background camera models have the parameters $N_1$, $N_2$, $N_3$, $\gamma_1$, $\gamma_2$, and $\gamma_3$.
+  Each power law has two parameters, a normalization and a spectral index, so the background camera models have the parameters $N_1$, $N_2$, $N_3$, $\gamma_1$, $\gamma_2$, and $\gamma_3$.
   The Crab Nebula point source power law also has normalization and spectral index parameters $N_c$ and $\gamma_c$.
+  The Crab Nebula model also has its location parameters $l_c$ and $b_c$, but since these are fixed in this example (and thesis), the likelihood maximization won't try to vary them.
   Then this alternate hypothesis would have 8 free parameters, $N_1$, $N_2$, $N_3$, $N_c$, $\gamma_1$, $\gamma_2$, $\gamma_3$, and $\gamma_c$.
-  For calculating the test statistic for the presence of the Crab Nebula, the Null hypothesis is just the camera background models, with 6 free parameters $N_1$, $N_2$, $N_3$, $\gamma_1$, $\gamma_2$, and $\gamma_3$.
+  For calculating the test statistic for the presence of the Crab Nebula, the null hypothesis is just the camera background models, with 6 free parameters $N_1$, $N_2$, $N_3$, $\gamma_1$, $\gamma_2$, and $\gamma_3$.
   
-  When finding the maximum likelihood for each hypothesis, these parameters are varied
-
-
-  
-  The model function used in Equation~\ref{eqn:folding} is built from spatial, spectral, and temporal components that are multiplied together in Equation~\ref{eqn:modelparts}.
-
-  \begin{equation}\label{eqn:modelparts}
-    M(\xtrue) = M_s(\xtrue) * M_e(\xtrue) * M_t(\xtrue)
-  \end{equation}
-  
-  In this, $M_s$ is the spatial component, $M_e$ is the spectral component, and $M_t$ is the temporal component.
-  As the known point sources in this analysis have relatively constant flux, and the dark matter halo is assumed to be in equilibrium, $M_t(\xtrue)=1$.
-  For the simple case of a point source with a power law spectrum, Equation~\ref{eqn:simple_pntsrc_Ms} describes its spatial distribution with a Dirac delta function.
-  
-  \begin{equation}\label{eqn:simple_pntsrc_Ms}
-    M_{s,\textrm{point}}(\xtrue) = M_s(\ltrue,\btrue,\Etrue,\ttrue) = \lim_{a\to\infty} \frac{1}{ \abs{a} \sqrt{\pi} } e^{ - \left ( \sqrt{ (\ltrue-l_o)^2 + (\btrue-b_o)^2 }/a \right )^2 }
-  \end{equation}
-  
-  In Equation~\ref{eqn:simple_pntsrc_Ms}, $l_o$ and $b_o$ are the sky coordinates of the point source.
-  More complex $M_s$ functions may have the spatial structure also depend on energy $\Etrue$ or time $\ttrue$.
-  The power law energy spectrum is described by Equation~\ref{eqn:simple_pntsrc_Me}.
-  
-  \begin{equation}\label{eqn:simple_pntsrc_Me}
-    M_{e,\textrm{powerlaw}}(\xtrue) = M_e(\ltrue,\btrue,\Etrue,\ttrue) = N_o \left ( \frac{\Etrue}{E_o} \right )^{-\gamma}
-  \end{equation}
-  
-  In Equation~\ref{eqn:simple_pntsrc_Me}, $N_o$ is the normalization of the flux, $E_o$ is the pivot energy, and $\gamma$ is the spectral index.
-  
-  When setting up this model, the different parameters $l_o$, $b_o$, $N_o$, $E_o$, and $\gamma$ can be fixed, or left free.
-  Free parameters can then be altered to find the maximium likelihood, while fixed parameters are never changed.
-  For the analyses described in this thesis, the specific models and their $M_s$ and $M_e$ functions are discussed in later subsections of this chapter.
-  CTOOLS performs the likelihood maximization with the Levenberg-Marquardt method~\cite{marquardt1963algorithm}, though there is a method to add other algorithms.
-  
+  When finding the maximum likelihood for each hypothesis, these free parameters are incrementally varied, and the likelihood is recalculated.
+  If the likelihood has increased, these new parameter values are kept, if it descreased, then they are varied in the other direction.
+  This procedure is then repeated, until no more changes in the value of the likelihood are noted.
+  There are several maximization algorithms, and by default CTOOLS uses the Levenberg-Marquardt method~\cite{marquardt1963algorithm}, though other algorithms can be added.
+  Once the maximum likelihood is calculated for both hypotheses, then the test statistic can be calculated.
   
   \subsection{Test Statistic Calculation}
   
-  For searching for the presence of a source, the test statistic can be calculated from the maximized likelihood of two model sets.
-  The first set, called the Null Hypothesis, is the base model set $\Mnull$ without the target model being searched for.
-  The second set, called the Alternate Hypothesis, is the base model set along with the target model, referred to as $\Malt$.
-  Once the maximum likelihood $\LogLike_{\textrm{max}}$ is found for these two hypotheses, the test statistic can be calculated with Equation~\ref{eqn:tscalc}.
+  For searching for the presence of a source, the Test Statistic (TS) determines how favorable the alternate hypothesis is compared to the null hypothesis.
+  Once the maximum likelihood $\LogLike_{\textrm{max}}$ is found for these two hypotheses, the TS can be calculated with Equation~\ref{eqn:tscalc}.
   
   \begin{equation}\label{eqn:tscalc}
     \textrm{TS} = - 2 \; \textrm{log} \left (  \frac{ \LogLikeMax( \Mnull ) }{ \LogLikeMax( \Malt ) } \right )
   \end{equation}
   {\color{red}(Does this really need the second log? or is it a misprint everywhere??)}
   
-  This TS then can be used to determine the statistical significance of the target model.
-  With Wilk's theorem, the if events are simulated using the Null Hypothesis pdf many times, the resulting test statistics will form a $\Chi^2$ distribution with $n$ degrees of freedom, where $n$ is the difference in number of free parameters between the two model sets $\Malt$ and $\Mnull$~\cite{wilks1938}.
-  From this distribution, a test statistic can be converted into a p-value.
+  With Wilk's theorem, the if events are repeated simulated using the null hypothesis probability density function, the resulting TS's will form a $\Chi^2$ distribution with $n$ degrees of freedom, where $n$ is the difference in number of free parameters between the two hypotheses~\cite{wilks1938}.
+  From this distribution, a TS can be converted into a p-value.
   In the case of {\color{red}(??)}, the significance of the target model can be calculated as $\sqrt{\textrm{TS}}$.
   
   {\color{red}(how do we convert a TS into a p-value??)}
@@ -319,7 +304,7 @@
 
 \section{Background Models}\label{sec:bkgmodels}
   The background models predict the amount of background counts produced by a sky without gamma rays.
-  This is used to model the effect of the background (primarily proton) events, which are several orders of magnitude more populous than the gamma rays.
+  This is used to model the probability density function of the background (primarily proton) events, which are several orders of magnitude more populous than the gamma rays.
   Background models are produced by binning observation sources with weak or no gamma-ray emission.
   For this low-elevation analysis the observations of the dark region Sgr A* Off, described in Section~\ref{veritasdata}, were used to build these backgrounds.
   These dark region events were then binned into background models, using the method described in Section~\ref{background_production}.
@@ -329,7 +314,7 @@
 \section{Crab Nebula Analysis}\label{sec:crab_analysis}
   To verify that the CTOOLs likelihood method is physically correct, the Crab Nebula was analyzed first, before any dark matter analysis was performed.
   As the Crab Nebula is the brightest gamma ray emitter in the sky, it has been observed extensively by VERITAS and other gamma ray telescopes.
-  After searching for low-elevation Crab observations, a total of 17.1 hours of data were found.
+  After searching for low-elevation Crab observations, a total of 17.1 hours of data were selected from the VERITAS data archives.
   Since the Galactic Center only rises to around \ang{30} elevation, elevation effects would also need to be searched for.
   To uncover any low-elevation effects, time cuts were applied to this data to restrict the telescope pointing elevations to \SIrange{27.5}{32.5}{\degree}, similar to the Galactic Center data later on (see Figure~\ref{fig:datapointingelevations}).
   This resulted in \SI{3.3}{hours} of V5 and \SI{5.5}{hours} of V6 epoch data (see Table \ref{tab:observation_times}).
@@ -345,7 +330,7 @@
     \label{fig:crab_skymap}
   \end{figure}
   
-  The Crab was modeled by a point source with the simple power law spectrum in Equation~\ref{eqn:crab_model}, both of which are discussed in Subsection~\ref{subsec:likemax}.
+  The Crab was modeled by a point source with the simple power law spectrum in Equation~\ref{eqn:crab_model}, both of which are discussed in Section~\ref{subsec:likemax}.
 
   \begin{equation}\label{eqn:crab_model}
     M(\xtrue) = M_{s,\textrm{powerlaw}}(\xtrue) * M_{e,\textrm{point}}(\xtrue) = N_o \left ( \frac{\Etrue}{E_o} \right )^{-\gamma} * \lim_{a\to\infty} \frac{1}{ \abs{a} \sqrt{\pi} } e^{ - \left ( \sqrt{ (\ltrue-l_c)^2 + (\btrue-b_c)^2 }/a \right )^2 }
@@ -407,7 +392,7 @@
     }
     \caption[Crab Profile along Galactic L]
     {
-      The number of counts along a \ang{0.16}-wide-slice through the Crab along the Galactic L axis.
+      The number of counts along a \ang{0.16}-wide-slice through the Crab along the Galactic L axis ($\ldet$ coordinate space).
       Blue points are the number of observed counts, with poissonian error bars.
       The green histogram bars are the number of counts predicted by all models.
       Purple histogram bars are the number of counts predicted by only the camera-background models.
@@ -434,7 +419,7 @@
     }
     \caption[Crab Profile along Galactic B]
     {
-      The number of counts along a \ang{0.16}-wide-slice through the Crab along the Galactic B axis.
+      The number of counts along a \ang{0.16}-wide-slice through the Crab along the Galactic B axis ($\bdet$ coordinate space).
       Blue points are the number of observed counts, with poissonian error bars.
       The green histogram bars are the number of counts predicted by all models.
       Purple histogram bars are the number of counts predicted by only the camera-background models.
@@ -461,7 +446,7 @@
     }
     \caption[Crab Profile along Galactic L Off Source]
     {
-      The number of counts along a \ang{0.16}-wide-slice along the Galactic L axis.
+      The number of counts along a \ang{0.16}-wide-slice along the Galactic L axis ($\ldet$ coordinate space).
       This slice doesn't go through the Crab, but instead \ang{1} higher in Galactic B.
       As this doesn't include the Crab, this plot primarily demonstrates the camera background modeling.
       Blue points are the number of observed counts, with poissonian error bars.
@@ -490,7 +475,7 @@
     }
     \caption[Crab Profile in Energy]
     {
-      The number of counts in a \ang{0.6} x \ang{0.6} square centered on the Crab, vs energy.
+      The number of counts in a \ang{0.6} x \ang{0.6} square centered on the Crab, vs energy ($\Edet$ space).
       Blue points are the number of observed counts, with poissonian error bars.
       The green histogram bars are the number of counts predicted by all models.
       Purple histogram bars are the number of counts predicted by only the camera-background models.
@@ -523,6 +508,7 @@
     \includegraphics[width=0.65\textwidth]{images/likelihood_analysis/counts_skymap.pdf}
     \caption[Galactic Center Counts Skymap]{
       Skymap of all events used in this analysis.
+      Note that these are in ($\ldet$,$\bdet$) coordinates, not ($\ltrue$,$\btrue$).
       No adjustments are made here for effective area, observation time, or background rate.
     }
     \label{fig:gc_counts_skymap}
@@ -532,7 +518,7 @@
     \centering
     \includegraphics[width=0.65\textwidth]{images/likelihood_analysis/counts_enhist.pdf}
     \caption[Galactic Center Counts Energy Histogram]{
-      Histogram of all event energies used in this analysis.
+      Histogram of all event energies ($\Edet$) used in this analysis.
       No adjustments are made here for effective area, observation time, or background rate.
     }
     \label{fig:gc_counts_enhist}
@@ -546,25 +532,27 @@
   Instead, a point source with the broken power law spectrum in Equation~\ref{eqn:brokenplaw} was added to the list of models.
   
   \begin{equation}\label{eqn:brokenplaw}
-    \frac{dN}{dE} = N_{0} * { \left ( \frac{E}{E_{pivot}} \right ) }^{\gamma} {e}^{-\frac{E}{E_{cut}}}
+    M_e(\xtrue) = M_s(\ltrue,\btrue,\Etrue,\ttrue) = N_o * { \left ( \frac{\Etrue}{E_{pivot}} \right ) }^{\gamma} {e}^{-\frac{E}{E_{cut}}}
   \end{equation}
 
   {\color{red}(State GC Point Source model as a function of $M(\xtrue)$ !??)}
   
   The initial values used in Equation~\ref{eqn:brokenplaw} are from \cite{VeritasGCRidge2015}, where the specific values are $E_{pivot}=\SI{1}{TeV}$, $E_{cut}=\SI{12.8}{TeV}$, and $\gamma=-2.1$.
   % theres also the 2016 paper http://iopscience.iop.org/article/10.3847/0004-637X/821/2/129/meta
-  The normalization parameter $N_{0}$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was left free in the likelihood optimization, while $E_{pivot}$, $E_{cut}$, and $\gamma$ were all fixed.
-  The normalization $N_{0}$ was left free to allow for the potential of some mixing between the point source events and any dark matter halo events, i.e. a stronger dark matter halo gamma-ray flux would result in a weaker point source flux.
+  The normalization parameter $N_o$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was left free in the likelihood optimization, while $E_{pivot}$, $E_{cut}$, and $\gamma$ were all fixed.
+  The normalization $N_o$ was left free to allow for the potential of some mixing between the point source events and any dark matter halo events, i.e. a stronger dark matter halo gamma-ray flux would result in a weaker point source flux.
   
+  {\color{red}
   Diffuse emission, eliminated due to complexity??
   Hard cuts may have minimized its effect??
   If diffuse emission really needed to be modeled, it would show up in the profiles along galactic b??
+  }
 
   \subsection{Dark Matter Models}\label{subsec:dmhalomodel}
   Dark Matter halos are modeled by a spherically-symmetric mass-per-volume density profile.
-  In this analysis, an Einasto density profile (discussed in Section~\ref{dm_spatial}) is used for the spatial component of the dark matter halo model.
-  For the spectral component, each dark matter mass tested has its own spectrum produced with CLUMPY (see Section~\ref{dm_spectral}).
-  For the spatial component, the halo profile $M_{s,\textrm{halo}}$ is calculated in Section~\ref{dm_spatial}.
+  In this analysis, an Einasto density profile is used for the spatial component function $M_s$ of the dark matter halo model.
+  See Section~\ref{dm_spatial} for a discussion on this $M_{s,\textrm{halo}}$ function.
+  For the spectral component, each dark matter mass tested has its own spectrum function $M_e$ produced with CLUMPY (see Section~\ref{dm_spectral}).
 
   \subsection{Likelihood Maximization Results}
   
@@ -604,8 +592,7 @@
     \end{tabular}
     \caption{
       Histogram of the two free parameters in each of the 948 camera background models.
-      Only the parameters from the $m_\chi\;=\;$\SI{45}{TeV} likelihood fit.
-      {\color{red}(specify that these are just from one dm halo analysis!??)}
+      Only the parameters from the $m_\chi\;=\;$\SI{45}{TeV} likelihood fit are shown here.
     }
     \label{fig:param_hist}
   \end{figure}
@@ -636,11 +623,10 @@
       }
     }
     \caption[Galactic Center Profile vs Galactic L]{
-      Observed vs modeled counts in a slice of the sky parallel to the galactic L axis at $B=0$.
+      Observed vs modeled counts in a slice of the sky parallel to the galactic $\ldet$ axis at $B=0$.
       Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
       The faint green line shows the total modeled counts at a higher spatial resolution, scaled to the histogram bins.
       Observed counts with poissonian errors are shown in blue.
-      {\color{red}(fix inset to show regions!??)}
     }
     \label{fig:gc_profile_gal_l}
   \end{figure}
@@ -665,7 +651,7 @@
       }
     }
     \caption[Galactic Center Profile vs Galactic B]{
-      Observed vs modeled counts in a slice of the sky parallel to the galactic B axis at $L=0$.
+      Observed vs modeled counts in a slice of the sky parallel to the galactic $\bdet$ axis at $L=0$.
       Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
     }
@@ -824,9 +810,6 @@
   % [1.6280879530415155e-24, 'cm^3/s']
   This likely stems from the fact that the test statistic is a ratio of likelihoods of two model groups, both of which contain the background models.
   Thus, any strong effect in the background models will appear in the top and bottom of the likelihood ratio, and partially cancel.
-  
-  
-  
   
 
 \section{Systematic Errors}  
