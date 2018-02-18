@@ -93,7 +93,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
 
     \begin{figure}[ht]
       \centering
-      \includegraphics[width=0.5\textwidth]{images/disp_parameter_cropped.eps}
+      \includegraphics[width=0.5\textwidth]{images/disp_parameter/disp_parameter.pdf}
       \caption[Angular Reconstruction Disp]{
         The \disp{} parameter is the angular distance between the center (red dot) of a Hillas image (blue oval) and the true sky position (green dot).
         Generally, longer shower images have a larger \disp{} angle.
@@ -113,7 +113,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
     % made from screenshot of last slide in Dropbox/Presentations/20160719_Group_Meeting.key
     \begin{figure}[ht]
       \centering
-      \includegraphics[width=0.85\textwidth]{images/disp_training.eps}
+      \includegraphics[width=0.85\textwidth]{images/disp_training/disp_training.eps}
       \caption[Disp BDT Training]{
         The true \disp{} vs the BDT-predicted \disp{}, for \nicetilde17,000 gamma-ray event images in T1, from \SI{500}{\GeV} to \SI{200}{\TeV}.
       }
@@ -201,7 +201,7 @@ This database includes the width and length of the shower, how far away its core
 
     \begin{figure}[ht]
       \centering
-      \includegraphics[width=0.85\textwidth]{images/effarea_plots/effarea_space.eps}
+      \includegraphics[width=0.85\textwidth]{images/effarea_plots/effarea_space.pdf}
       \caption[Effective Area Parameter Space]{
         Effective areas at different points in the Energy and Camera Offset parameter space for run 78128.
         Data is shown as the black points, indicating the position of some events from that run in the parameter space.
@@ -215,7 +215,7 @@ This database includes the width and length of the shower, how far away its core
 
     \begin{figure}[ht]
       \centering
-      \includegraphics[width=0.85\textwidth]{images/effarea_plots/effarea_events.eps}
+      \includegraphics[width=0.85\textwidth]{images/effarea_plots/effarea_events.pdf}
       \caption[Effective Areas Used]{
       Illustration of the effective areas used by all events in each analysis.
       From these plots, it is easy to check for events with anomalously high (>\SI{400000}{m${}^2$}) or low (\nicetilde\SI{0}{m${}^2$}) effective areas.
@@ -322,7 +322,6 @@ This database includes the width and length of the shower, how far away its core
 
     Then, the events are divided into high and low energies, and the events' reconstructed camera positions are binned radially about the camera center, with each bin divided by its bin area, producing two spatial functions.
     These high- and low-energy spatial functions are shown in Figure~\ref{fig:background_radial}.
-    {\color{red}(tweak hyperref plugin to make links a different color??)}
     
     \begin{figure}[ht]
       \centering
@@ -340,6 +339,7 @@ This database includes the width and length of the shower, how far away its core
     \begin{equation}\label{eqn:bck_template}
       f(e,x,y) = A \times \textrm{spectral}(e) \times \textrm{spatial}(e,x,y) 
     \end{equation} 
+    {\color{red}(Fix to follow ctools function name conventions! $M(x)$ ?? )}
     
     The function $f(e,x,a)$ has units of $\frac{\textrm{Number of Counts}}{ \textrm{MeV} \times \textrm{s} \times \textrm{sr} }$.
     The multiplied functions are then scaled with a constant $A$ such that the total integral of the template (integrating across camera x, camera y, and energy) is equal to the original number of counts in the dark runs, as in Equation~\ref{eqn:background_template_function}.
@@ -347,6 +347,8 @@ This database includes the width and length of the shower, how far away its core
     \begin{equation}\label{eqn:background_template_function}
       \textrm{Number of Background Events} = A \times \int \textrm{spectral}(e) \times \textrm{spatial}(e,x,y) \times dx \: dy \: de
     \end{equation}
+    
+    {\color{red}(Fix to follow ctools function name conventions! $M(x)$ ?? )}
 
     This function $f(e,x,y)$ is the background template in camera x/y, which due to its radial symmetry can then immediatly be used as a CTOOLS background model in RA/Dec.
     Each background template is used in the likelihood analysis as a model multiplied by two free parameters, a normalization factor, and the event energy exponentiated by the spectral index.
@@ -537,6 +539,7 @@ This database includes the width and length of the shower, how far away its core
       Relative to the peak energy for an observing run, lower energy events will be detected more at the top of the camera.
       Events higher than the peak energy will be detected closer to the bottom of the camera.
       Behavior may also depend on the number of telescopes observing the event, or the specific telescope combination.
+      {\color{red}(Fix gradient transparency!??)}
       {\color{red}(more??)}
     }
     \label{fig:bkg_diagram}

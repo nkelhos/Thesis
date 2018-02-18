@@ -181,7 +181,7 @@
     m_{i \, \textrm{or} \, j} = \int_{t\,\textrm{bin}} \int_{E\,\textrm{bin}} \int_{b\,\textrm{bin}} \int_{l\,\textrm{bin}} M(l,b,E,t)\; dl \, db \, dE \, dt
   \end{equation}
   
-  In this equation, $l$ and $b$ are Galactic sky coordinates\footnote{This thesis focuses on a galaxy-centered source, so Galactic l and b are used here.  The sky coordinate system can be exchanged with an equitorial system like RA/Dec or any other spherical coordinate system without a loss of efficacy.}, $E$ is the energy, and $t$ is the time.
+  In this equation, $l$ and $b$ are Galactic sky coordinates\footnote{This thesis focuses on a galaxy-centered source, so galactic l and b are used here.  The sky coordinate system can be exchanged with an equitorial system like RA/Dec or any other spherical coordinate system without a loss of efficacy.}, $E$ is the energy, and $t$ is the time.
   The basic models used in this analysis can be broken apart into their spatial, spectral, and temporal components, as in Equation~\ref{eqn:modelparts}.
 
   \begin{equation}\label{eqn:modelparts}
@@ -235,6 +235,8 @@
   \end{equation}
   
   Here, $P_i \left( \xdet \right )$ is the probability of detecting an event at detector coordinates $\xdet = \left ( \ldet, \bdet, \Edet, \tdet \right )$.
+  The integration $\int_\xtrue$ takes place over the entire true space, time, and energy region being studied.
+  Within CTOOLS, these are the Region Of Interest (ROI), the Good Time Interval (GTI), and the energy range.
   The function $M\left ( \xtrue \right )$ is the number of counts predicted by the astrophysical models at coordinate $\xtrue$, and $R \left ( \xdet, \xtrue \right )$ is the dispersion at $\xdet$ due to $\xtrue$.
   The function $R$ (the instrument Response function) incorporates the Effective Area, PSF, and Energy Dispersion information as shown in Equation~\ref{eqn:foldingR}, and is discussed further in Sections \ref{subsec:effarea}, \ref{subsec:psf}, and \ref{subsec:edisp}.
   
@@ -298,7 +300,7 @@
   From this distribution, a TS can be converted into a p-value.
   In the case of {\color{red}(??)}, the significance of the target model can be calculated as $\sqrt{\textrm{TS}}$.
   
-  {\color{red}(how do we convert a TS into a p-value??)}
+  {\color{red}(is this how we convert a TS into a p-value??)}
   % http://pulsar.sternwarte.uni-erlangen.de/black-hole/2ndschool/talks/likelihood_1.pdf
   
 
@@ -324,7 +326,7 @@
     \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_skymap.pdf}
     \caption[Crab Counts Skymap]
     {
-      Skymap of event positions.
+      Skymap of event positions, (\ldet,\bdet).
       No corrections are made for observing time or effective area.
     }
     \label{fig:crab_skymap}
@@ -340,14 +342,14 @@
   The pivot energy $E_o$ of its spectrum was fixed to \SI{16.73}{TeV}, while the normalization $N_o$ and the spectral index $\gamma$ were free to vary during the likelihood optimization.
   Only events between \SIrange{4}{70}{TeV} are used in this test analysis.
   At an elevation of \ang{25}, the reconstruction software is able to reconstruct events as low as \SI{1.5}{TeV}.
-  Below \SI{4}{TeV} however, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region are not accurate.
+  Below \SI{4}{TeV} however, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region may not be accurate.
   Part of this decrease is explored in Section~\ref{subsec:bkgstructure} (see Figures \ref{fig:bkgvsel_crab} and \ref{fig:bkgvsel_sgra}), but accounting for this requires an unfeasibly large set of simulations.
   At higher energies, simulations become too computationally expensive above \SI{200}{TeV} when attempting to calculate IRFs.
   In order to ensure there were enough downward-fluctuating simulations to properly populate the IRFs, the analysis was limited to a maximum event energy of \SI{70}{TeV}.
     
   % values from nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/crab_test/logs/statistics.txt
   After fitting all model parameters to the events from \SIrange{4}{70}{TeV}, the best fit power law values were $ N_o = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a Test Statistic of 408.8.
-  As the alternate Crab Nebula hypothesis has 110 free parameters, and the no-crab (null) hypothesis has 108 free parameters, the Test Statistic has $ 110 - 108 = 2 $ degrees of freedom.
+  As the alternate Crab Nebula hypothesis has 110 free parameters, and the no-Crab-Nebula (null) hypothesis has 108 free parameters, the Test Statistic has $ 110 - 108 = 2 $ degrees of freedom.
   
   In the standard VERITAS Eventdisplay analysis, the Crab Nebula is found to have a point source significance of \SI{21.3}{$\sigma$}.
   {\color{red}Check if they use same or different energy ranges??}
@@ -390,9 +392,9 @@
         }
       }
     }
-    \caption[Crab Profile along Galactic L]
+    \caption[Crab Profile along Galactic l]
     {
-      The number of counts along a \ang{0.16}-wide-slice through the Crab along the Galactic L axis ($\ldet$ coordinate space).
+      The number of counts along a \ang{0.16}-wide-slice through the Crab along the galactic l axis ($\ldet$ coordinate space).
       Blue points are the number of observed counts, with poissonian error bars.
       The green histogram bars are the number of counts predicted by all models.
       Purple histogram bars are the number of counts predicted by only the camera-background models.
@@ -417,9 +419,9 @@
         }
       }
     }
-    \caption[Crab Profile along Galactic B]
+    \caption[Crab Profile along Galactic b]
     {
-      The number of counts along a \ang{0.16}-wide-slice through the Crab along the Galactic B axis ($\bdet$ coordinate space).
+      The number of counts along a \ang{0.16}-wide-slice through the Crab along the galactic b axis ($\bdet$ coordinate space).
       Blue points are the number of observed counts, with poissonian error bars.
       The green histogram bars are the number of counts predicted by all models.
       Purple histogram bars are the number of counts predicted by only the camera-background models.
@@ -444,10 +446,10 @@
         }
       }
     }
-    \caption[Crab Profile along Galactic L Off Source]
+    \caption[Crab Profile along Galactic l Off Source]
     {
-      The number of counts along a \ang{0.16}-wide-slice along the Galactic L axis ($\ldet$ coordinate space).
-      This slice doesn't go through the Crab, but instead \ang{1} higher in Galactic B.
+      The number of counts along a \ang{0.16}-wide-slice along the galactic l axis ($\ldet$ coordinate space).
+      This slice doesn't go through the Crab, but instead \ang{1} higher in galactic b.
       As this doesn't include the Crab, this plot primarily demonstrates the camera background modeling.
       Blue points are the number of observed counts, with poissonian error bars.
       The green histogram bars are the number of counts predicted by all models (not visible as the astrophysical Crab Nebula model doesn't contribute any amount of counts in this offset slice).
@@ -485,11 +487,11 @@
   \end{figure}
     
   The fitted models can also be viewed, as a check that the likelihood engine is fitting the models to the data.
-  In Figure~\ref{fig:crab_skymap}, the position of all counts is shown in galactic l and b.
+  In Figure~\ref{fig:crab_skymap}, the position of all counts is shown in galactic $\ldet$ and $\bdet$.
   In Figures \ref{fig:crab_profile_l} and \ref{fig:crab_profile_b}, the counts in the observations and models were integrated along a slice of galactic l and b.
-  The counts from only the camera background models is shown, along with the counts from all camera backgrounds plus the point source.
-  The difference between these two lines is then the counts from the Crab point source model.
-  In Figure~\ref{fig:crab_profile_energy}, a similar plot is made, though integrated in a \ang{0.6}x\ang{0.6} square around the Crab Nebula at different energies.
+  The counts from only the camera background models is shown in purple, along with the counts from all camera backgrounds plus the point source in green.
+  The difference between these two histograms is then the counts from the Crab point source model.
+  In Figure~\ref{fig:crab_profile_energy}, a similar plot is made, though integrated in a \ang{0.6}$\times$\ang{0.6} square around the Crab Nebula at different energies.
 
   \FloatBarrier
 
@@ -532,14 +534,12 @@
   Instead, a point source with the broken power law spectrum in Equation~\ref{eqn:brokenplaw} was added to the list of models.
   
   \begin{equation}\label{eqn:brokenplaw}
-    M_e(\xtrue) = M_s(\ltrue,\btrue,\Etrue,\ttrue) = N_o * { \left ( \frac{\Etrue}{E_{pivot}} \right ) }^{\gamma} {e}^{-\frac{E}{E_{cut}}}
+    M_e(\xtrue) = M_e(\ltrue,\btrue,\Etrue,\ttrue) = N_o * { \left ( \frac{\Etrue}{E_{pivot}} \right ) }^{\gamma} {e}^{-\frac{E}{E_{cutoff}}}
   \end{equation}
-
-  {\color{red}(State GC Point Source model as a function of $M(\xtrue)$ !??)}
   
-  The initial values used in Equation~\ref{eqn:brokenplaw} are from \cite{VeritasGCRidge2015}, where the specific values are $E_{pivot}=\SI{1}{TeV}$, $E_{cut}=\SI{12.8}{TeV}$, and $\gamma=-2.1$.
+  The initial values used in Equation~\ref{eqn:brokenplaw} are from \cite{VeritasGCRidge2015}, where the specific values are $E_{pivot}=\SI{1}{TeV}$, $E_{cutoff}=\SI{12.8}{TeV}$, and $\gamma=-2.1$.
   % theres also the 2016 paper http://iopscience.iop.org/article/10.3847/0004-637X/821/2/129/meta
-  The normalization parameter $N_o$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was left free in the likelihood optimization, while $E_{pivot}$, $E_{cut}$, and $\gamma$ were all fixed.
+  The normalization parameter $N_o$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was left free in the likelihood optimization, while $E_{pivot}$, $E_{cutoff}$, and $\gamma$ were all fixed.
   The normalization $N_o$ was left free to allow for the potential of some mixing between the point source events and any dark matter halo events, i.e. a stronger dark matter halo gamma-ray flux would result in a weaker point source flux.
   
   {\color{red}
@@ -558,10 +558,10 @@
   
   \begin{table}
     \centering
-    \begin{tabular}{|l|l|}
+    \begin{tabular}{|r|r|}
       \hline
-      \textbf{DM Mass $m_\chi$} & \textbf{Halo TS} \\
-      \[TeV\] & \\
+      \textbf{DM Mass} & \textbf{Halo TS} \\
+      \textbf{$m_\chi$} [TeV] & \\
       \hline 
       \input{images/likelihood_analysis/tsvals.tex}
       \hline 
@@ -578,10 +578,10 @@
 
   With the previously mentioned observations and models, the likelihood function was maximized to find the best-fit model parameters.
   In Table \ref{tab:tsvals}, the TS values from each dark matter mass are shown.
-  From Wilk's theorem {\color{red}(reference??)}, with a TS value greater than 20 would hint at the presence of a dark matter halo.
+  From Wilk's theorem~\cite{wilks1938}, with a TS value greater than 20 would hint at the presence of a dark matter halo.
   As all of these are less than zero, it can be said that the null (no dark matter) hypothesis is statistically favorable.
 
-  As there are 948 camera background models in each likelihood analysis, each with a free Normalisation and Spectral Index, these are histogrammed as a sanity check in Figure~\ref{fig:param_hist}.
+  As there are 948 camera background models in each likelihood analysis, each with a free Normalization and Spectral Index, these are histogrammed as a sanity check in Figure~\ref{fig:param_hist}.
   The Spectral Index distribution is centered on zero because the power law is applied to an existing (non-power-law) background shape.
   This means on average, the background models required little spectral hardening or softening.
   
@@ -622,7 +622,7 @@
         }
       }
     }
-    \caption[Galactic Center Profile vs Galactic L]{
+    \caption[Galactic Center Profile vs Galactic l]{
       Observed vs modeled counts in a slice of the sky parallel to the galactic $\ldet$ axis at $B=0$.
       Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
       The faint green line shows the total modeled counts at a higher spatial resolution, scaled to the histogram bins.
@@ -650,7 +650,7 @@
         }
       }
     }
-    \caption[Galactic Center Profile vs Galactic B]{
+    \caption[Galactic Center Profile vs Galactic b]{
       Observed vs modeled counts in a slice of the sky parallel to the galactic $\bdet$ axis at $L=0$.
       Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
