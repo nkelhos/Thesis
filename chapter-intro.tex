@@ -8,14 +8,18 @@
 
   These questions have been asked repeatedly since the 1930s, but different measurements produce conflicting answers.
   Observing cosmological features like the cosmic microwave background, the distribution of galaxies, and gravitational lensing around galaxy clusters results in a larger mass, while observing the quantity of light produced results in a smaller mass.
-  This implies that there is missing mass, missing \textit{stuff}, unaccounted for by the existing model of physics and our universe.
+  The cosmic micrwave background's spectrum is only well fit if there is much more mass present in the universe than is currently observable.
+  Galaxies are observed to rotate quite fast, much faster than their bayronic mass alone would allow.
+  Galaxy clusters have two clouds of mass, one of regular baryonic mass observable via X-Ray observations, another observable via the gravitational lensing of visible light.
+  Collisions between two clusters cause these two clouds to pass through each other, dragging and slowing each other down.
+  The difference in drag hints that the gravitationally-lensed mass has a smaller cross-section than the proton-proton cross-section {\color{red}(check this??)}.
+  
+  This all heavily implies that there is missing mass, missing \textit{stuff}, unaccounted for by the existing model of physics and our universe.
   As this mass prefers to only interact gravitationally and seemingly ignores the electromagnetic spectrum, it has earned the (in)conspicuous title of Dark Matter.
-
-  {\color{red}(Explain specifics a bit more.  Intro+Conclusion chapters should be able to operate on their own. -Orel ??)}
 
 \section{Motivation}
   This thesis will demonstrate that, by analyzing gamma-rays from the Galactic Center, a search for a Dark Matter can be conducted.
-  Dark Matter is proposed to be a particle that self-annihilates into standard model particles.
+  Dark Matter is proposed to be a particle that annihilates with itself into standard model particles.
   If Dark Matter particles form a spherical cloud (referred to as a halo) around the center of our galaxy, and if the annihliation of these particles produces (either directly or through secondary interactions) a detectable quantity of gamma rays, the density profile of this Dark Matter halo can be measured.
   If instead the gamma-ray flux is below detection limits, then combining this data with our knowledge of our gamma-ray telescope's sensitivity can place an upper limit on the cross-section of the dark matter particle.
 
@@ -47,7 +51,6 @@
   % see Dropbox/Research/Thesis/images/GalacticCenterInRadio.key for figure construction
   \begin{figure}[ht]
     \centering
-    %\includegraphics[width=0.95\textwidth]{images/GalacticCenterInRadio.eps}
     \includegraphics[width=0.95\textwidth]{images/GalacticCenterInRadio/GalacticCenterInRadio.pdf}
     \caption[Galactic Center in Radio]{
       The center of our galaxy, viewed at a radio wavelength of $\lambda=90\text{cm}$.
@@ -75,11 +78,15 @@
 
 
 \section{Halo Analysis}
-  After several years of observation, VERITAS has accumulated ~110 hours of Galactic Center data.
-  To analyze these observations, the CTOOLS software package is used~\cite{gammalibctools}.
-  With CTOOLS, the Galactic Center region can be modeled with different dark matter halos, and the likelihood of each halo (and no dark matter halo) can be calculated.
-  These likelihoods can then be used to answer the question, "Is there a dark matter halo emitting gamma rays around the Galactic Center?".
-  If the answer is no, then an upper limit on the dark matter cross section can be calculated for each dark matter mass.
-  This upper limit can then be used to exclude part of the parameter space for dark matter searches.
+  After several years of observation, VERITAS has accumulated \SI{108}{hours} of Galactic Center data.
+  To analyze these observations, an unbinned likelihood analysis is used.
+  With this analysis, the Galactic Center region is modeled with nine different dark matter halos, and the statistical existance of each halo can be calculated.
+  For the spatial shape of the dark matter halo, a cuspy Einasto profile is chosen.
+  For the spectral shape, only the $b\bar{b}$ annihilation channel is used.
+  Each of the nine dark matter halos is modeled with a different dark matter mass $m_{\chi}$, which changes the spectrum of gamma rays produced in each $\chi\chi$ annihilation.
+  
+  From this analysis, no dark matter signal was found at any of these masses.
+  With this null result, the next step is to calculate the upper limit on the cross-section, indicating that any $\chi$ cross-section {\color{red}(in this sentence: velocity-averaged cross-section!??)} larger than this upper limit would be visible, and can be ruled out.
+  From these upper limits, new limits can be placed on the WIMP velocity-averaged cross-section at \SI{100}{TeV}.
 
 
