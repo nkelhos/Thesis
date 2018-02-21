@@ -69,11 +69,15 @@
   \end{figure}
 
   There are comparativly fewer Sgr A* Off observations because this source is only used for background estimation, and telescope time is in high demand.
-  There is also even fewer Crab observations, as the majority of its data is taken at higher elevations, where the telescope is has increased sensitivity to lower energies.
+  There are also fewer Crab observations, as the majority of its data is taken at higher elevations, where the telescope has increased sensitivity to lower energies.
   
   For all of these observations, quality cuts were applied.
-  This includes monitoring the telescope hardware and weather by a team of VERITAS collaboration members who take the observations.
-  After the data is taken, a separate collaboration member will go through each observation to check it again, and mark any bad observations or apply time cuts, which are then removed.
+  This includes monitoring the telescope hardware and cloud ceiling in the field of view.
+  Two far-infrared Pyropemeters are used to measure the cloud ceiling height, by measuring the temperature of the sky.
+  With the pyrometer, clouds are significantly warmer (~\ang{50} C) than clear sky.
+  Low-quality segments of data, where there are large (>20\%) and/or rapid (<=\SI{30}{s}) changes in the L3 trigger rate or cloud ceiling height, are removed from the analysis.
+  {\color{red}(find weather quality cuts citation!?? -Orel)}
+  % see Bird 2015 thesis pg 55
 
   Because VERITAS epoch has a different hardware configuration, each epoch has its own separate set of effective areas, point spread functions, energy migration matricies, and camera background models.
   In addition, specific IRFs were calculated for additional data dimensions, including the frequency of night sky background photons in the camera, the telescope elevation, the event energy, and each event's distance from the camera center.
@@ -83,23 +87,23 @@
 \section{Likelihood Ratio Test}
   The likelihood ratio test determines which of two model groups is a statistically better fit to some data.
   It is performed by calculating, for a group of events, the likelihood of detecting that group of events with each of two model groups.
-  Individual models within a group may need to be folded with the PSF and Energy Dispersion, before the likelhood can be calculated.
   Once the likelhood is calculated, then the parameters of the model are varied until the maximum likelihood is found for each model.
   These two maximum likelihoods can then be used to calculate the Test Statistic, which determines which model is statistically favored, and to what degree it is favored.
   
   \subsection{Likelihood Calculation}
   At its heart, a likelihood is a product of probabilities.
   With two events, the likelihood is $(\textrm{probability that event 1 happens})\times(\textrm{probability that event 2 happens})$.
-  When the number of events observed in some detector bin are determined by poisson statistics, the likelihood $\Like$ is calculated by Equation~\ref{eqn:simple_like}.
-  In it, $n$ is the number of observed events in the bin.
-  $m$ is the number of events a model group is predicted to deposit in the bin.
+  In a counting experiment like VERITAS, the likelihood $\Like$ is determined via poissonian statistics, shown in Equation~\ref{eqn:simple_like}.
+  In it, $n$ is the number of observed events, and $m$ is the number of events a model group predicts.
   
   \begin{equation}\label{eqn:simple_like}
     \Like = \frac{e^{-m} m^n}{n!}
   \end{equation}
   
   The average number of events $m$ is determined by integrating over a group's models in energy, sky position, and time, after folding in the PSF and the energy dispersion.
+  {\color{red}(Missing orel comment??)}
   This integration and folding is discussed later in the section.
+  For increased statistical power, the VERITAS data can be split into bins in energy, galactic l and b, and time.
   When combining multiple bins ordered by index $j$, these probabilities are multiplied as in Equation~\ref{eqn:simple_like_2}.
   These could be bins in sky position, energy, or time, or any combination of the three.
   Future likelihood calculations may also include shower core position on the ground, or distance to the shower, or other observables.
@@ -108,7 +112,7 @@
     \Like = \prod_j \frac{ e^{-m_j} \; m_{j}^{n_j}}{n_{j}!}
   \end{equation}
 
-  Equation~\ref{eqn:simple_like_2} is a general formula for calculating a binned likelihood.
+  Equation~\ref{eqn:simple_like_2} is a general formula for calculating a binned likelihood of poissonian events.
   As events are grouped by bins, some information is lost, which results in a less powerful ratio test {\color{red}(??)}.
   To preserve the test's power, the above result can be expanded into an unbinned likelihood through the following derivation.
   First, Equation~\ref{eqn:simple_like_2} can be rearrainged:
@@ -135,6 +139,7 @@
   \end{equation}
 
   where $i$ is the $i^{\textrm{th}}$ event, and $m_i$ is the number of predicted events at event $i$'s sky position, energy, and time.
+  $m_j$ converts to $m_i$, because all the $n=0$ bins are now 1 and can be ignored, so a loop over the $j$ bins becomes a loop over the $i$ events.
   {\color{red}(What area does $m_i$ integrate over??)}
   Then Equation~\ref{eqn:simple_like_4} becomes Equation~\ref{eqn:simple_like_5}.
   
@@ -150,7 +155,7 @@
     \LogLike = \textrm{log} \left ( \Like \right ) 
   \end{equation}
   
-  This is possible because both $\Like$ and $\LogLike$ are both {\color{red}increasing functions (is this why??)}, so the maximum of both will be at the same position in the parameter space.
+  This is possible because both $\Like$ and $\LogLike$ are both strictly increasing functions, so the maximum of both will be at the same position in the parameter space.
   The log likelihood for a group of bins is then:
   
   \begin{equation}\label{eqn:simple_like_7}
@@ -181,7 +186,7 @@
     m_{i \, \textrm{or} \, j} = \int_{t\,\textrm{bin}} \int_{E\,\textrm{bin}} \int_{b\,\textrm{bin}} \int_{l\,\textrm{bin}} M(l,b,E,t)\; dl \, db \, dE \, dt
   \end{equation}
   
-  In this equation, $l$ and $b$ are Galactic sky coordinates\footnote{This thesis focuses on a galaxy-centered source, so galactic l and b are used here.  The sky coordinate system can be exchanged with an equitorial system like RA/Dec or any other spherical coordinate system without a loss of efficacy.}, $E$ is the energy, and $t$ is the time.
+  In this equation, $l$ and $b$ are sky coordinates, $E$ is energy, and $t$ is time.
   The basic models used in this analysis can be broken apart into their spatial, spectral, and temporal components, as in Equation~\ref{eqn:modelparts}.
 
   \begin{equation}\label{eqn:modelparts}
@@ -235,8 +240,7 @@
   \end{equation}
   
   Here, $P_i \left( \xdet \right )$ is the probability of detecting an event at detector coordinates $\xdet = \left ( \ldet, \bdet, \Edet, \tdet \right )$.
-  The integration $\int_\xtrue$ takes place over the entire true space, time, and energy region being studied.
-  Within CTOOLS, these are the Region Of Interest (ROI), the Good Time Interval (GTI), and the energy range.
+  The integration $\int_\xtrue$ takes place over the entire true space, time, and energy regions being studied.
   The function $M\left ( \xtrue \right )$ is the number of counts predicted by the astrophysical models at coordinate $\xtrue$, and $R \left ( \xdet, \xtrue \right )$ is the dispersion at $\xdet$ due to $\xtrue$.
   The function $R$ (the instrument Response function) incorporates the Effective Area, PSF, and Energy Dispersion information as shown in Equation~\ref{eqn:foldingR}, and is discussed further in Sections \ref{subsec:effarea}, \ref{subsec:psf}, and \ref{subsec:edisp}.
   
@@ -247,8 +251,8 @@
   In Equation~\ref{eqn:foldingR}, functions $\Aeff$, $PSF$, and $\Edisp$ are all interpolated from tables of stored values, which are derived from simulations.
 
   The Crab Nebula point source in Section~\ref{sec:crab_analysis}, the Galactic Center point source in Section~\ref{subsec:gcpointsrc}, and the Dark Matter Halo model in Section~\ref{subsec:dmhalomodel} all have this folding applied to the number of events they predict.
-  An important distinction is that this folding is only applied to these astrophysical models, and not to the camera background models\footnote{In Gammalib and CTOOLS, model class names that start with GModel* are astrophysical models that will have folding applied to them, while model class names that start with GCTAModel* are already in reconstructed space.}.
-  This is because the background models are created with data events from actual observations, which have the folding already applied, and thus are already in $\xdet$ space.
+  An important distinction is that this folding is only applied to these astrophysical models, and not to the camera background models.
+  This is because the background models are created with data from actual observations, which have the folding already applied, and thus are already in $\xdet$ space.
   
   \subsection{Combining Models into Hypotheses}\label{subsec:hypotheses}
   
@@ -267,6 +271,7 @@
   For a basic analysis, the null hypothesis consists of all models, except the one in particular being searched for, called here $\Mnull$.
   The second hypothesis, called the alternate hypothesis, consists of all the models in the null hypothesis, plus the model being searched for, called here $\Malt$.
   For example, if one has three observations of the Crab Nebula, this would mean there are three camera background models, plus a point source model for the Crab Nebula.
+  {\color{red}(why does three observations = 3 background models plus 1 source model?? -orel)}
   The null hypothesis would be just the camera background models, while the alternate hypothesis would be the camera backgrounds plus the Crab Nebula model.
   Once these two hypotheses for an analysis are assembled, then their maximum likelihood can be searched for.
   
@@ -280,10 +285,8 @@
   Then this alternate hypothesis would have 8 free parameters, $N_1$, $N_2$, $N_3$, $N_c$, $\gamma_1$, $\gamma_2$, $\gamma_3$, and $\gamma_c$.
   For calculating the test statistic for the presence of the Crab Nebula, the null hypothesis is just the camera background models, with 6 free parameters $N_1$, $N_2$, $N_3$, $\gamma_1$, $\gamma_2$, and $\gamma_3$.
   
-  When finding the maximum likelihood for each hypothesis, these free parameters are incrementally varied, and the likelihood is recalculated.
-  If the likelihood has increased, these new parameter values are kept, if it descreased, then they are varied in the other direction.
-  This procedure is then repeated, until no more changes in the value of the likelihood are noted.
-  There are several maximization algorithms, and by default CTOOLS uses the Levenberg-Marquardt method~\cite{marquardt1963algorithm}, though other algorithms can be added.
+  When finding the maximum likelihood for each hypothesis, these free parameters are incrementally varied, and the likelihood is recalculated, repeated until a maximum likelihood is reached.
+  While there are many maximization algorithms, this analysis uses the Levenberg-Marquardt method~\cite{marquardt1963algorithm}.
   Once the maximum likelihood is calculated for both hypotheses, then the test statistic can be calculated.
   
   \subsection{Test Statistic Calculation}
@@ -294,13 +297,15 @@
   \begin{equation}\label{eqn:tscalc}
     \textrm{TS} = - 2 \; \textrm{log} \left (  \frac{ \LogLikeMax( \Mnull ) }{ \LogLikeMax( \Malt ) } \right )
   \end{equation}
-  {\color{red}(Does this really need the second log? or is it a misprint everywhere??)}
   
-  With Wilk's theorem, the if events are repeated simulated using the null hypothesis probability density function, the resulting TS's will form a $\Chi^2$ distribution with $n$ degrees of freedom, where $n$ is the difference in number of free parameters between the two hypotheses~\cite{wilks1938}.
+  With Wilk's theorem, the events can be repeatedly simulated using the null hypothesis probability density function.
+  For each simulation, a TS can be calculated.
+  After many simulations, resulting TS's will form a $\chi^2$ distribution with $n$ degrees of freedom, where $n$ is the difference in number of free parameters between the two hypotheses~\cite{wilks1938}.
   From this distribution, a TS can be converted into a p-value.
-  In the case of {\color{red}(??)}, the significance of the target model can be calculated as $\sqrt{\textrm{TS}}$.
+  In situations where there is only one or two degrees of freedom {\color{red}(??)}, the significance of a specific model can be calculated as $\sqrt{\textrm{TS}}$.
+  {\color{red}(cleanup this paragraph more??)}
   
-  {\color{red}(is this how we convert a TS into a p-value??)}
+  {\color{red}(is this how we convert a TS into a p-value?? discuss with orel and galo more)}
   % http://pulsar.sternwarte.uni-erlangen.de/black-hole/2ndschool/talks/likelihood_1.pdf
   
 
@@ -314,7 +319,7 @@
   These background templates only depend on the radial distance from the camera center and the event energy.
 
 \section{Crab Nebula Analysis}\label{sec:crab_analysis}
-  To verify that the CTOOLs likelihood method is physically correct, the Crab Nebula was analyzed first, before any dark matter analysis was performed.
+  To verify that the likelihood method is physically correct, the Crab Nebula was analyzed first, before any dark matter analysis was performed.
   As the Crab Nebula is the brightest gamma ray emitter in the sky, it has been observed extensively by VERITAS and other gamma ray telescopes.
   After searching for low-elevation Crab observations, a total of 17.1 hours of data were selected from the VERITAS data archives.
   Since the Galactic Center only rises to around \ang{30} elevation, elevation effects would also need to be searched for.
@@ -341,14 +346,14 @@
   The sky position of the point source is fixed to the Crab Nebula, $(l_c,b_c) = (\ang{184.557600},\ang{-5.784180})$.
   The pivot energy $E_o$ of its spectrum was fixed to \SI{16.73}{TeV}, while the normalization $N_o$ and the spectral index $\gamma$ were free to vary during the likelihood optimization.
   Only events between \SIrange{4}{70}{TeV} are used in this test analysis.
-  At an elevation of \ang{25}, the reconstruction software is able to reconstruct events as low as \SI{1.5}{TeV}.
+  At an elevation of \ang{25}, the reconstruction method is able to reconstruct events as low as \SI{1.5}{TeV}.
   Below \SI{4}{TeV} however, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region may not be accurate.
   Part of this decrease is explored in Section~\ref{subsec:bkgstructure} (see Figures \ref{fig:bkgvsel_crab} and \ref{fig:bkgvsel_sgra}), but accounting for this requires an unfeasibly large set of simulations.
   At higher energies, simulations become too computationally expensive above \SI{200}{TeV} when attempting to calculate IRFs.
-  In order to ensure there were enough downward-fluctuating simulations to properly populate the IRFs, the analysis was limited to a maximum event energy of \SI{70}{TeV}.
+  In order to ensure there were enough simulations to properly populate the high-energy end of the IRFs, the analysis was limited to a maximum event energy of \SI{70}{TeV}.
     
   % values from nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/crab_test/logs/statistics.txt
-  After fitting all model parameters to the events from \SIrange{4}{70}{TeV}, the best fit power law values were $ N_o = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a Test Statistic of 408.8.
+  After fitting all model parameters to the events from \SIrange{4}{70}{TeV}, the best fit power law values were $ N_o = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a Test Statistic of 408.8, corresponding to \SI{~20}{$\sigma$}.
   As the alternate Crab Nebula hypothesis has 110 free parameters, and the no-Crab-Nebula (null) hypothesis has 108 free parameters, the Test Statistic has $ 110 - 108 = 2 $ degrees of freedom.
   
   In the standard VERITAS Eventdisplay analysis, the Crab Nebula is found to have a point source significance of \SI{21.3}{$\sigma$}.
@@ -497,12 +502,13 @@
 
 \section{Dark Matter Likelihood Analysis}\label{sec:dmlike}
   
-  As the test analysis on the Crab Nebula data shows results consistant with other analysis methods and observatories, the main dark matter analysis can begin in earnest.
+  As the test analysis on the Crab Nebula data shows results consistant with other VERITAS, H.E.S.S., and MAGIC studies, the main dark matter analysis can begin in earnest.
   The 108 hours of Galactic Center data used is described in Section~\ref{veritasdata}.
   A skymap histogram of all observed events is shown in Figure~\ref{fig:gc_counts_skymap}.
   A histogram of all events' energies from \SIrange{4}{70}{TeV} is shown in Figure~\ref{fig:gc_counts_enhist}.
+  {\color{red}(is there value to showing these two uncorrected histograms?? -orel)}
   Both of these plots have no corrections for observing time or effective area.
-  After assembling the data, assembling the models is the next step.
+  After gathering the data, assembling the models is the next step.
   These include the camera background models, similar to the Crab Nebula analysis.
   
   \begin{figure}[ht]
@@ -531,7 +537,9 @@
   \subsection{Non-Dark Astrophysical Models}\label{subsec:gcpointsrc}
   For this analysis, a point source model was added at the position of Sgr A*.
   This is because other studies have indicated that the gamma-ray excess at Sgr A* is not consistant with a dark matter halo~\cite{gc_pnt_is_not_dm1, gc_pnt_is_not_dm2, gc_pnt_is_not_dm3}.
+  {\color{red}(comma between each citation?? -Orel)}
   Instead, a point source with the broken power law spectrum in Equation~\ref{eqn:brokenplaw} was added to the list of models.
+  {\color{red}(why a broken power law?? it should be motivated since its not the simplest model -Orel)}
   
   \begin{equation}\label{eqn:brokenplaw}
     M_e(\xtrue) = M_e(\ltrue,\btrue,\Etrue,\ttrue) = N_o * { \left ( \frac{\Etrue}{E_{pivot}} \right ) }^{\gamma} {e}^{-\frac{E}{E_{cutoff}}}
@@ -555,7 +563,12 @@
   For the spectral component, each dark matter mass tested has its own spectrum function $M_e$ produced with CLUMPY (see Section~\ref{dm_spectral}).
 
   \subsection{Likelihood Maximization Results}
-  
+
+  With the previously mentioned observations and models, the likelihood function was maximized to find the best-fit model parameters.
+  In Table \ref{tab:tsvals}, the TS values from each dark matter mass are shown.
+  From Wilk's theorem~\cite{wilks1938}, with a TS value greater than 20 would hint at the presence of a dark matter halo.
+  As all of these are less than zero, it can be said that the null (no dark matter) hypothesis is statistically favorable.
+
   \begin{table}
     \centering
     \begin{tabular}{|r|r|}
@@ -572,14 +585,11 @@
       {\color{red}(Why is the 66.5 TeV one have -5.8 TS??)}
       
       {\color{red}(Comment on why they're all negative?? (the crab TS was positive!))}
+      
+      {\color{red}(this table should come after the paragraph that references it!??)}
     }
     \label{tab:tsvals}
   \end{table}
-
-  With the previously mentioned observations and models, the likelihood function was maximized to find the best-fit model parameters.
-  In Table \ref{tab:tsvals}, the TS values from each dark matter mass are shown.
-  From Wilk's theorem~\cite{wilks1938}, with a TS value greater than 20 would hint at the presence of a dark matter halo.
-  As all of these are less than zero, it can be said that the null (no dark matter) hypothesis is statistically favorable.
 
   As there are 948 camera background models in each likelihood analysis, each with a free Normalization and Spectral Index, these are histogrammed as a sanity check in Figure~\ref{fig:param_hist}.
   The Spectral Index distribution is centered on zero because the power law is applied to an existing (non-power-law) background shape.
@@ -625,7 +635,6 @@
     \caption[Galactic Center Profile vs Galactic l]{
       Observed vs modeled counts in a slice of the sky parallel to the galactic $\ldet$ axis at $B=0$.
       Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
-      The faint green line shows the total modeled counts at a higher spatial resolution, scaled to the histogram bins.
       Observed counts with poissonian errors are shown in blue.
     }
     \label{fig:gc_profile_gal_l}
@@ -714,6 +723,7 @@
   If the source and background models were perfectly known, there would still be statistical fluctuations in the observed counts, and the residual significances would form a gaussian distribution, shown as the green line in Figure~\ref{fig:gc_resmap_sighist}.
   However, the distribution of the pixel significances from Figure~\ref{fig:gc_resmap} is also shown in Figure~\ref{fig:gc_resmap_sighist}, and qualitativly not gaussian shaped {\color{red}(??)}.
   {\color{red}?? How well does it fit, and quantitativly how bad does it fit??}
+  {\color{red}do a gaussian fit of the data, and report the p-value of the fit?? -Orel)}
   As a large number of bins are clustered around +2 and -2 signifiance, this hints that the residuals in Figure~\ref{fig:gc_resmap} are potentially not due solely from statistical noise, and that the background modeling could be improved.
   
   \begin{figure}[ht]
@@ -722,7 +732,8 @@
     \caption[Galactic Center Residual Histogram]
     {
       Histogram of the residual skymap bin significances from Figure~\ref{fig:gc_resmap}, calculated with Equation~\ref{eqn:resmap_signif}.
-      Only skymap bins within each observation's region of interest (the green circles in Figure~\ref{fig:gcfieldsofview}) are histogrammed.
+      Only skymap bins within Sgr A*'s region of interest are histogrammed.
+      {\color{red}(Describe what the green line is?? -orel)}
     }
     \label{fig:gc_resmap_sighist}
   \end{figure}
@@ -730,8 +741,8 @@
   {\color{red}Plot of point source spectra as cross-check??}
   
 \section{Upper Limit}
-  From the dark matter flux Equation~\ref{eqn:dmflux}, an upper limit on the observed gamma-ray flux can be derived.
-  When all other variables in Equation~\ref{eqn:dmflux} are fixed, a larger velocity-averaged crosssection always results in a larger gamma-ray flux, meaning the flux and crosssection can both be replaced by their upper limits ($x \rightarrow x \left |_{\textrm{ul}}$), as in Equation~\ref{eqn:ulim}.
+  From the dark matter flux Equation~\ref{eqn:dmflux} {\color{red}(repeat the equation here?? -orel)}, an upper limit on the observed gamma-ray flux can be derived.
+  When all other variables in Equation~\ref{eqn:dmflux} are fixed, a larger velocity-averaged cross-section always results in a larger gamma-ray flux, meaning the flux and cross-section can both be replaced by their upper limits ($x \rightarrow x \left |_{\textrm{ul}}$), as in Equation~\ref{eqn:ulim}.
   
   \begin{equation}\label{eqn:ulim}
     \frac{d\phi}{dE d\Omega} \left. \right |_{\textrm{ul}} = \frac{ \left \langle \sigma v \right \rangle \left | \right _{\textrm{ul}} }{8\pi m_{\chi}^{2}} \frac{dN_{\gamma}}{dE} \int \rho^{2} \; dl \;
@@ -754,7 +765,7 @@
   These show the upper limits calculated from this work, along with several comparison upper limits.
   The pink upper limit is from 216 hours of VERITAS observations of several dwarf spheroidal galaxies, stacked into a single likelihood analysis~\cite{verdsphul}.
   The green upper limit is from 254 hours of H.E.S.S. observations of the Galactic Center~\cite{hessgcul}.
-  The yellow upper limit is from a combined Fermi-Magic likelihood analysis using observations from several dwarf satellite galaxies~\cite{fermagicul}.
+  The yellow upper limit is from a combined Fermi-MAGIC likelihood analysis using observations from several dwarf satellite galaxies~\cite{fermagicul}.
   Fermi and MAGIC spent a total of 6 years and 158 hours observing these galaxies, respectivly.
   The light blue line is the relic cross-section~\cite{updatedWIMPRelicCrossSection}.
   
@@ -783,6 +794,7 @@
   As this analysis is limited to the energy range \SIrange{4}{70}{TeV}, the elevation gradient will increase the number of events detected at the bottom of the camera, due to the thicker atmosphere providing increased interaction mass.
   And, since the Galactic Center is visible almost directly south at an azimuth of \ang{193}, the elevation axis is almost parallel to the Declination axis.
   A gradient of 5\%/\degree{} was chosen due to the relative differences between the total modeled counts and the observed counts in Figures \ref{fig:gc_profile_gal_l} and \ref{fig:gc_profile_gal_b}.
+  {\color{red}(Its hard to see how you get 5\% from the plots, from profile plots it looks like 10\%, can a residual plot be made and shown here?? -orel)}
   An example background is shown in Figure~\ref{fig:bkg_flatvsgrad}, before and after the gradient is applied.
   
   \begin{figure}[ht]
@@ -792,6 +804,7 @@
       The background models for run 68348, minutes 16-24.
       Left is the original radial background, centered \ang{0.5} North of the Galactic Center.
       Right is the same background, after applying the 5\%/\degree{} gradient along the elevation axis.
+      {\color{red}(orel can barely see a difference, any way to make it clearer??)}
     }
     \label{fig:bkg_flatvsgrad}
   \end{figure}
@@ -809,10 +822,10 @@
   % $ grep "crosssection_ul" with_elev_gradient/logs/statistics.brbbbar.10.0TeV.nfits1000.withpntsrc.txt 
   % [1.6280879530415155e-24, 'cm^3/s']
   This likely stems from the fact that the test statistic is a ratio of likelihoods of two model groups, both of which contain the background models.
-  Thus, any strong effect in the background models will appear in the top and bottom of the likelihood ratio, and partially cancel.
+  Thus, the likelihoods from both model groups changed by a similar amount, and in the same direction, partially cancelling.
   
 
-\section{Systematic Errors}  
+\section{Systematic Uncertainties}  
 
 Stuff?
 
