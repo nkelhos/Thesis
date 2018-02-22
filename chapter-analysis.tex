@@ -16,8 +16,8 @@
 \newcommand{\Edisp}{E_\textrm{disp}}
 \newcommand{\Mnull}{M_\textrm{null}}
 \newcommand{\Malt }{M_\textrm{alt }}
-\chapter{Analysis}\label{chapter:analysis}
 
+\chapter{A Likelihood Search for Dark Matter}\label{chapter:analysis}
 
 \section{Veritas Data}\label{veritasdata}
   The analysis in this thesis relies on three sets of VERITAS data.
@@ -74,7 +74,7 @@
   For all of these observations, quality cuts were applied.
   This includes monitoring the telescope hardware and cloud ceiling in the field of view.
   Two far-infrared Pyropemeters are used to measure the cloud ceiling height, by measuring the temperature of the sky.
-  With the pyrometer, clouds are significantly warmer (~\ang{50} C) than clear sky.
+  With the pyrometer, clouds are significantly warmer (\nicetilde\ang{50} C) than clear sky.
   Low-quality segments of data, where there are large (>20\%) and/or rapid (<=\SI{30}{s}) changes in the L3 trigger rate or cloud ceiling height, are removed from the analysis.
   {\color{red}(find weather quality cuts citation!?? -Orel)}
   % see Bird 2015 thesis pg 55
@@ -93,7 +93,7 @@
   \subsection{Likelihood Calculation}
   At its heart, a likelihood is a product of probabilities.
   With two events, the likelihood is $(\textrm{probability that event 1 happens})\times(\textrm{probability that event 2 happens})$.
-  In a counting experiment like VERITAS, the likelihood $\Like$ is determined via poissonian statistics, shown in Equation~\ref{eqn:simple_like}.
+  In a counting experiment like VERITAS, the likelihood $\Like$ is determined via poissonian statistics, shown in Equation~~\ref{eqn:simple_like}.
   In it, $n$ is the number of observed events, and $m$ is the number of events a model group predicts.
   
   \begin{equation}\label{eqn:simple_like}
@@ -353,7 +353,7 @@
   In order to ensure there were enough simulations to properly populate the high-energy end of the IRFs, the analysis was limited to a maximum event energy of \SI{70}{TeV}.
     
   % values from nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/crab_test/logs/statistics.txt
-  After fitting all model parameters to the events from \SIrange{4}{70}{TeV}, the best fit power law values were $ N_o = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a Test Statistic of 408.8, corresponding to \SI{~20}{$\sigma$}.
+  After fitting all model parameters to the events from \SIrange{4}{70}{TeV}, the best fit power law values were $ N_o = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a Test Statistic of 408.8, corresponding to \nicetilde{}\SI{20}{$\sigma$}.
   As the alternate Crab Nebula hypothesis has 110 free parameters, and the no-Crab-Nebula (null) hypothesis has 108 free parameters, the Test Statistic has $ 110 - 108 = 2 $ degrees of freedom.
   
   In the standard VERITAS Eventdisplay analysis, the Crab Nebula is found to have a point source significance of \SI{21.3}{$\sigma$}.

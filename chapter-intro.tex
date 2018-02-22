@@ -2,50 +2,50 @@
 \chapter{Introduction}
 
   How much mass is contained within a given volume of space?
-  Inside a Galaxy?
-  Inside a Cluster of Galaxies?
-  The observable universe?
+  Within a Galaxy?
+  Within a Cluster of Galaxies?
+  Within the observable universe?
 
   These questions have been asked repeatedly since the 1930s, but different measurements produce conflicting answers.
   Observing cosmological features like the cosmic microwave background, the distribution of galaxies, and gravitational lensing around galaxy clusters results in a larger mass, while observing the quantity of light produced results in a smaller mass.
-  The cosmic micrwave background's spectrum is only well fit if there is much more mass present in the universe than is currently observable.
+  The cosmic micrwave background's spectrum is only well fit if there is much more mass present in the universe than is currently interacting with light.
   Galaxies are observed to rotate quite fast, much faster than their bayronic mass alone would allow.
-  Galaxy clusters have two clouds of mass, one of regular baryonic mass observable via X-Ray observations, another observable via the gravitational lensing of visible light.
-  Collisions between two clusters cause these two clouds to pass through each other, dragging and slowing each other down.
-  The difference in drag hints that the gravitationally-lensed mass has a smaller cross-section than the proton-proton cross-section {\color{red}(check this??)}.
+  In addition, galaxy clusters have two clouds of mass, one of hydrogen gas observable via X-Ray observations, another observable via the gravitational lensing of visible light.
+  Collisions between two clusters cause these two clouds to pass through each other, dragging and slowing each other down at different rates.
+  The differences in drag hints that the gravitationally-lensed mass has a smaller cross-section than the hydrogen gas cross-section.
   
-  This all heavily implies that there is missing mass, missing \textit{stuff}, unaccounted for by the existing model of physics and our universe.
+  All of this heavily implies that there is missing mass, missing \textit{stuff}, unaccounted for by the existing model of physics and our universe.
   As this mass prefers to only interact gravitationally and seemingly ignores the electromagnetic spectrum, it has earned the (in)conspicuous title of Dark Matter.
 
 \section{Motivation}
-  This thesis will demonstrate that, by analyzing gamma-rays from the Galactic Center, a search for a Dark Matter can be conducted.
+  This thesis will demonstrate that, by detecting gamma-rays from the Galactic Center with the VERITAS observatory, a search for a Dark Matter can be conducted.
   Dark Matter is proposed to be a particle that annihilates with itself into standard model particles.
   If Dark Matter particles form a spherical cloud (referred to as a halo) around the center of our galaxy, and if the annihliation of these particles produces (either directly or through secondary interactions) a detectable quantity of gamma rays, the density profile of this Dark Matter halo can be measured.
-  If instead the gamma-ray flux is below detection limits, then combining this data with our knowledge of our gamma-ray telescope's sensitivity can place an upper limit on the cross-section of the dark matter particle.
+  If instead the gamma-ray flux is below detection limits, then knowledge of the observatory's sensitivity can place an upper limit on the cross-section of the dark matter particle.
 
 \section{Dark Matter}
 
   % WMAP: 4.6% energy from baryonic matter, 24% energy from cold dark matter
-  From measuring the cosmic microwave background, WMAP satellite found that Dark Matter makes up 24\% of the energy of the universe\cite{pdg_2012}, thus understanding the nature of Dark Matter is fundamental to understanding our universe.
+  From measuring the cosmic microwave background, WMAP satellite found that Dark Matter makes up 24\% of the energy of the universe~\cite{pdg_2012}, thus understanding the nature of Dark Matter is fundamental to understanding our universe.
   It is currently believed that Dark Matter is a particle, unknown to the standard model of particle physics.
   As many particle models either predict it to either a) couple weakly to other particles, b) interact via the Weak force, or c) both, it is referred to as a Weakly Interacting Massive Particle, or WIMP.
 
-  From both cosmology and particle physics, the WIMP is predicted to have a mass in the range of GeV to TeV, and an annihilation cross-section around \nicetilde{}\SI{3e-26}{cm${}^3$s${}^{-1}$} {\color{red}(cross-section for self-interaction? interaction with a different particle?? relative cross-section to proton-proton crosssection?? -Orel)}.
+  From both cosmology and particle physics, the WIMP is predicted to have a mass in the range of GeV to TeV, and a velocity-averaged self-interaction cross-section of around \nicetilde{}\SI{3e-26}{cm${}^3$s${}^{-1}$}.
   WIMPs may directly annihilate or decay into gamma rays, or they may first produce quarks or leptons, which would then produce gamma rays through secondary interactions.
   These gamma rays would then have energies similar to the original WIMP mass, around the TeV scale.
   This potential for WIMP Dark Matter to produce TeV gamma rays makes it an attractive science target for gamma-ray observatories like VERITAS.
 
   Then, the question becomes, where should we point our gamma-ray observatories?
-  From gravitational and optical measurements, it is well documented {\color{red}(cite??)} that halos of Dark Matter augment the gravitational wells of {\color{red}(almost??)} all dwarf galaxies, regular galaxies, and galaxy clusters.
+  From gravitational and optical measurements, it is well documented that halos of Dark Matter augment the gravitational wells of most dwarf galaxies, regular galaxies, and galaxy clusters.
   Dwarf galaxies tend to have fewer background gamma-ray sources, but also have lower quantities of Dark Matter, making them weaker sources of dark matter gamma rays.
   Galaxy Clusters, while more massive (and thus more emissive), have a non-negligable redshift, which introducing more model parameters.
-  The Galactic Center, on the other hand, possesses more Dark Matter mass at higher densities than any dwarf galaxy, while also being closer than any dwarf galaxy {\color{red}(??)}, making it an excellent target for gamma-ray Dark Matter searches.
+  The Galactic Center, on the other hand, possesses higher densities of Dark Matter mass than any dwarf galaxy, while also being closer than any dwarf galaxy, making it an excellent target for gamma-ray Dark Matter searches.
 
 
 \section{Galactic Center and Gamma Rays}
 
-  At the center of our galaxy there is a supermassive black hole, with a mass of \SI{4e6}{\Msol{}} \cite{sgra_massdist}.
-  As Dark Matter appears to accompany most Baryonic gravitational wells {\color{red}(??)}, it is expected that there is a halo of dark matter particles at the Galactic Center.
+  At the center of our galaxy there is a supermassive black hole, with a mass of \SI{4e6}{\Msol{}}~\cite{sgra_massdist}.
+  As Dark Matter appears to accompany most Baryonic gravitational wells, it is expected that there is a halo of dark matter particles at the Galactic Center.
   Studying this halo is difficult, however, as our galaxy's large graviational well has accreted a large amount of dust, as well as there being a large number of stars and supernova remntants nearby.
 
   % see Dropbox/Research/Thesis/images/GalacticCenterInRadio.key for figure construction
@@ -78,7 +78,7 @@
 
 
 \section{Halo Analysis}
-  After several years of observation, VERITAS has accumulated \SI{108}{hours} of Galactic Center data.
+  After several years of operation, VERITAS has accumulated \SI{108}{hours} of Galactic Center data.
   To analyze these observations, an unbinned likelihood analysis is used.
   With this analysis, the Galactic Center region is modeled with nine different dark matter halos, and the statistical existance of each halo can be calculated.
   For the spatial shape of the dark matter halo, a cuspy Einasto profile is chosen.
@@ -86,7 +86,7 @@
   Each of the nine dark matter halos is modeled with a different dark matter mass $m_{\chi}$, which changes the spectrum of gamma rays produced in each $\chi\chi$ annihilation.
   
   From this analysis, no dark matter signal was found at any of these masses.
-  With this null result, the next step is to calculate the upper limit on the cross-section, indicating that any $\chi$ cross-section {\color{red}(in this sentence: velocity-averaged cross-section!??)} larger than this upper limit would be visible, and can be ruled out.
+  With this null result, the next step is to calculate the upper limit on the velocity-averaged cross-section of this WIMP.
   From these upper limits, new limits can be placed on the WIMP velocity-averaged cross-section at \SI{100}{TeV}.
 
 

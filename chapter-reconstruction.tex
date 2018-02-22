@@ -19,7 +19,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
   Most voltage traces have the same general shape: a quickly rising start of the pulse, followed by a longer, slowly falling tail.
   To act as a point of reference in each voltage pulse, the time when the voltage trace is at half of its maximum value is called $T_{0}$.
   The trace is then integrated a second time using a smaller 14 or \SI{24}{ns}-wide time window, starting at $T_0 - 30\%$, to reduce the inclusion of dc from NSB photons and electronic noise.
-  This integration is the first of two passes, usually referred to as the double-pass method \cite{doublepass}.
+  This integration is the first of two passes, usually referred to as the double-pass method~\cite{doublepass}.
   If a pixel's first-pass total dc is higher than 5 times the pedestal variation, then it is classified as an image pixel.
   If it is between 2.5 and 5 times the pedestal variation, it is considered a border pixel.
 
@@ -29,7 +29,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 with 30\% of the window before each pixel's $T_{0}$, to more accurately measure the charge due to Cherenkov photons in the pixel.
   This third integration window is the second pass in the double-pass method.
 
-  From the image pixels, border pixels, and time gradient, the shower's Hillas parameters \cite{hillas_params} can be calculated.
+  From the image pixels, border pixels, and time gradient, the shower's Hillas parameters~\cite{hillas_params} can be calculated.
   These parameters include the shower size in photoelectrons (or equivalent units), center of charge, angle, length, and width.
   The center of charge is the charge-weighted average of all image and border pixel positions.
   The angle of the shower determines how the image's major axis is oriented in the camera.
@@ -73,7 +73,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
 
     To better handle these near-parallel image axes at low elevations, the reconstructed position can be determined from more parameters than just the weighted intersection points from the image axes.
     From simulations, the distance between the center of the Hillas shower image and the true position can be calculated, where the angular distance between the two is the \disp{} parameter~\cite{Senturk:2011}, shown in Figure~\ref{fig:dispdiagram}.
-    Then, this \disp{} parameter can be provided to a machine learning algorithm \cite{Beilicke2012NIM}, along with other image parameters like:
+    Then, this \disp{} parameter can be provided to a machine learning algorithm~\cite{Beilicke2012NIM}, along with other image parameters like:
     \begin{description}
       \item[\textit{width}:] image angular width
       \item[\textit{length}:] image angular length
@@ -160,7 +160,7 @@ This database includes the width and length of the shower, how far away its core
   Once gamma rays have been reconstructed with Eventdisplay, they must be converted to a FITS file format compatible with Gammalib and CTOOLS.
   This format consists of a FITS file with an event list table, containing each gamma ray, its energy, sky direction, and time.
   This also includes meta information about the event list like the telescope's pointing target and the start and end times of the event list.
-  This FITS file can then be read into Gammalib and CTOOLS \cite{gammalibctools}.
+  This FITS file can then be read into Gammalib and CTOOLS~\cite{gammalibctools}.
 
   In addition to the event list, the instrument response functions (IRFs) must also be imported into Gammalib and CTOOLS.
   These IRFs consist of the effective areas, the point spread functions, the background models, and the energy dispersion.
@@ -246,7 +246,7 @@ This database includes the width and length of the shower, how far away its core
     A large PSF on all events, for instance, will artificially expand the observed dark matter halo.
 
     For VERITAS, the PSF is estimated by simulating many gamma rays, then measuring the distribution of true positions for each reconstructed position.
-    The distribution of event positions are fitted with a King function \cite{king1962} (see Equation~\ref{eqn:king}), as the H.E.S.S. collaboration has noted that the King function better models the longer PSF tails at lower elevations (Section 5.2.2 in \cite{Mayer2015}).
+    The distribution of event positions are fitted with a King function~\cite{king1962} (see Equation~\ref{eqn:king}), as the H.E.S.S. collaboration has noted that the King function better models the longer PSF tails at lower elevations (Section 5.2.2 in Ref. \cite{Mayer2015}).
     The radially-normalized King probability density function is defined as
 
     \begin{equation} \label{eqn:king}
@@ -500,7 +500,7 @@ This database includes the width and length of the shower, how far away its core
 
   \subsection{Diffuse Simulations}\label{subsubsec:diffusesims}
     Diffuse simulations were performed at similar energies and elevations to see if this effect was still present.
-    These consisted of simulating 50,000 gamma rays with CORSIKA (\cite{corsika1998}) at 1.4, 1.6, 2, and \SI{5}{\TeV}.
+    These consisted of simulating 50,000 gamma rays with CORSIKA~\cite{corsika1998} at 1.4, 1.6, 2, and \SI{5}{\TeV}.
     The telescopes were fixed to an (azimuth,elevation) of (\ang{193}, \ang{28}).
     The events themselves were distributed in a diffuse \ang{2.5}-radius disk.
     To approximate a simple gamma-hadron cut, any events with a mean-scaled-width falling outside the range of -2.0 to 0.5 were removed, which eliminates many of the showers that appear proton-like.
