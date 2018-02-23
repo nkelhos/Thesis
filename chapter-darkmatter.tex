@@ -6,8 +6,6 @@
   This chapter discusses the main features of Dark Matter physics.
   These include the astrophysical evidence for the existance of Dark Matter, an outline of the current cosmological paradigm of $\Lambda$CDM and the Standard Model, as well as arguments for why Dark Matter may be in the form of a new, unknown particle.
 
-  %{\color{red}(Should I show the following calculation into this paragraph to justify the above percentages??)}
-  %\begin{verbatim}
   %From: https://arxiv.org/abs/1502.01589 , Table 3, column [4] :
   %  omega_b h^2 = 0.02225
   %  omega_c h^2 = 0.1198
@@ -17,23 +15,15 @@
   %  omega_b = 0.02225 / h^2 = 0.0491 =  4.9% of universe's energy is in baryonic matter
   %  omega_c = 0.1198  / h^2 = 0.2647 = 26.5% of universe's energy is in dark matter
   %  ( 26.5 - 4.9 ) / 26.5 = 81.5% of universe's mass is stored in dark matter
-  %\end{verbatim}
 
 \section{Astrophysical Evidence for Dark Matter}
-The current effects attributed to Dark Matter can be grouped into three observable physical effects, and four different length scales.
-These physical effects include observations of gravity pulling on electromagnetic emitters, gravity bending background light, and the universe's total energy budget.
-On the smallest length scales, concentrations of several thousand stars can be seen revolving around their center of mass, at a larger distribution of speeds than one would expect from the existing visible amount of matter.
-At larger scales the optical light from galaxies, as well as hydrogen lines, can be used to measure the amount of mass and its rotational velocity around the center of galaxies.
-At even larger scales, galaxy velocities can be measured and compared, x-ray telescopes can monitor the amount of hot gas, and mass-heavy areas of space will gravitationally lens background galaxies.
-At the the largest scale, the measurement of oscillations in the cosmic microwave background can be used to determine the amount of dark and baryonic matter.
   
-  {\color{red}(supernovae??)}
-
-  {\color{red}(quasar time delay images??)}
-  % Quasar Microlensing at High Magnification and the Role of Dark Matter: Enhanced Fluctuations and Suppressed Saddle Points
-  % schechter 2002
-
-  {\color{red}(weak lensing??)}
+  The current effects attributed to Dark Matter can be grouped into three observable physical effects, and four different length scales.
+  These physical effects include observations of gravity pulling on electromagnetic emitters, gravity bending background light, and the universe's total energy budget.
+  On the smallest length scales, concentrations of several thousand stars can be seen revolving around their center of mass, at a larger distribution of speeds than one would expect from the existing visible amount of matter.
+  At larger scales the optical light from galaxies, as well as hydrogen lines, can be used to measure the amount of mass and its rotational velocity around the center of galaxies.
+  At even larger scales, galaxy velocities can be measured and compared, x-ray telescopes can monitor the amount of hot gas, and mass-heavy areas of space will gravitationally lens background galaxies.
+  At the the largest scale, the measurement of oscillations in the cosmic microwave background can be used to determine the amount of dark and baryonic matter.
   
   \subsection{$10^{19}\:\text{m}$ : Dwarf Galaxy Scale}\label{dm_dwarfscale}
     % 10^19m comes from: 
@@ -102,12 +92,12 @@ At the the largest scale, the measurement of oscillations in the cosmic microwav
     %   thus 
     %   M_\odot = 1.3271244e20 m^3 s^-2 / 6.67408e-11 m^3 kg^-1 s^2
     %           = 1.98847e30 kg
-    By comparing the 'total' mass derived from the velocity distributions to the 'bright' mass derived from the brightness observations, the mass-to-light ratio can be calculated, indicating the amount of Dark Matter present in the galaxy~\cite{faber_ml}.
     
+    The first way measures the 'total' mass from the rotational profile, while the second only measures the mass of its 'luminous' parts.
+    The ratio of the 'total' mass divided by the 'luminous' mass is called the mass-to-light ratio, which indicates the amount of Dark Matter present in the galaxy~\cite{faber_ml}.
     Dwarf galaxies have mass-to-light ratios of around 5-100 $\frac{M_\odot}{L_\odot}$, but can reach up to \nicetilde 1000~\cite{Simon2007_dwarfgalaxykeck}.
     These high values are considered strong evidence in favor of Dark Matter.
     A random assortment of Local Group dwarf galaxies and their $\frac{M_\odot}{L_\odot}$ is shown in Table~\ref{tab:mlratios:dwarfgals}.
-    {\color{red}(Say explicitly that the mass is measured in two different ways, one directly from the luminous material, the other from the rotation, etc. -Orel ??)}
     
     \begin{table}[]
       \centering
@@ -191,8 +181,24 @@ At the the largest scale, the measurement of oscillations in the cosmic microwav
     \end{table}
       
     A random sample of galaxies from Ref. \cite{faber_ml} are shown alongside their mass-to-light ratios in Table \ref{tab:mlratios}.
-    Our own Milky Way galaxy is measured to have a mass to light ratio of 10 $\frac{M_{\odot}}{L_{\odot}}$ {\color{red}(and?? cite??)}.
-    Galaxy rotation curves can also be measured through weak gravitational lensing~\cite{weak_lensing_2001} {\color{red}(expand??)}.
+    Our own Milky Way galaxy is measured to have a mass to light ratio of \SIrange{1.2}{1.5} $\frac{M_{\odot}}{L_{\odot}}$~\cite{milkyway_ml_ratio}, indicating for every 5 sun-like stars in our galaxy, there are another two stars worth of dark matter.
+    
+    The further evidence of dark matter can also be deduced through additional weak gravitational lensing~\cite{weak_lensing_2001}.
+    Lensing of elliptical galaxies can constrain mass profiles~\cite{weak_lensing_ellipse}.{\color{red}(expand??)}
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.95\textwidth]{images/weak_lensing_ellipse/weak_lensing.pdf}
+      \caption[Weak Lensing with an Ellipse Galaxy]{
+        Galaxy 0047-281 imaged by the Hubble Space Telescope, from Ref. \cite{weak_lensing_ellipse}.
+        Left: Original image.
+        Right: Same as Left but with galaxy subtracted, leaving behind 4 lensed images A, B, C, and D of a background galaxy.
+      }
+      \label{fig:ellipse}
+    \end{figure}
+    
+    
+    Galaxy lensing can be used to estimate the size of the substructure of a lensing galaxy, based on the 4 lensed images of a quasar~\cite{weak_lensing_quasar}.{\color{red}(expand??)}
+
 
   \subsection{$10^{23}\:\text{m}$ : Galaxy Cluster Scale}
     %
