@@ -100,11 +100,8 @@
     \Like = \frac{e^{-m} m^n}{n!}
   \end{equation}
   
-  The average number of events $m$ is determined by integrating over a group's models in energy, sky position, and time, after folding in the PSF and the energy dispersion.
-  {\color{red}(It is not found by integrating over the group's model, but by maximizing the likelihood!?? -orel)}
-  This integration and folding is discussed later in the section.
   For increased statistical power, the VERITAS data can be split into bins in energy, galactic l and b, and time.
-  When combining multiple bins ordered by index $j$, these probabilities are multiplied as in Equation~\ref{eqn:simple_like_2}.
+  When combining multiple bins ordered by index $j$, each bin's likelihood is multiplied together as in Equation~\ref{eqn:simple_like_2}.
   These could be bins in sky position, energy, or time, or any combination of the three.
   Future likelihood calculations may also include shower core position on the ground, or distance to the shower, or other observables.
   
@@ -113,8 +110,8 @@
   \end{equation}
 
   Equation~\ref{eqn:simple_like_2} is a general formula for calculating a binned likelihood of poissonian events.
-  As events are grouped by bins, some information is lost, which results in a less powerful ratio test {\color{red}(??)}.
-  To preserve the test's power, the above result can be expanded into an unbinned likelihood through the following derivation.
+  As events are grouped by bins, some information is lost, which generally results in a less powerful ratio test.
+  The above result can be expanded into an unbinned likelihood through the following derivation.
   First, Equation~\ref{eqn:simple_like_2} can be rearrainged:
   
   \begin{equation}\label{eqn:simple_like_3}
@@ -139,13 +136,15 @@
   \end{equation}
 
   where $i$ is the $i^{\textrm{th}}$ event, and $m_i$ is the number of predicted events at event $i$'s sky position, energy, and time.
-  $m_j$ converts to $m_i$, because all the $n=0$ bins are now 1 and can be ignored, so a loop over the $j$ bins becomes a loop over the $i$ events.
+  In this derivation, $m_j$ converts to $m_i$, because all the $n=0$ bins are now 1 and can be ignored, so a loop over the $j$ bins becomes a loop over the $i$ events.
   {\color{red}(What area does $m_i$ integrate over??)}
   Then Equation~\ref{eqn:simple_like_4} becomes Equation~\ref{eqn:simple_like_5}.
   
   \begin{equation}\label{eqn:simple_like_5}
     \Like = e^{- \sum_j m_j} \prod_i m_i
   \end{equation}
+  
+  {\color{red}(mention that $\prod_i m_i$ encodes the positions of the events, this is the data, whereas the $\sum_j$ is the models??)}
   
   When calculating $\Like$, certain computational problems can arise.
   Calculating the product of many small probabilities can result in extremely small numbers, beyond the binary storage limit of common variable types.
@@ -169,6 +168,7 @@
   \end{equation}
   
   {\color{red}(how does log($m_i$) become $P_i$ in arxiv ctools equation (1)?? infinitly small bin size?? )}
+  {\color{red}(describe $P_i$ earlier, or transition from $m_i$ to $P_i$ right after $m_i$ is defined)}
 
   Equation~\ref{eqn:simple_like_8} is how the unbinned log-likelihood used in this analysis is calculated.
   The sum over $m_j$ can be interpreted as the total number of events predicted by all models, sometimes referred to as $N_{pred}$.
@@ -270,8 +270,8 @@
   In order to calculate a test statistic, the models must be grouped into two sets, called hypotheses.
   For a basic analysis, the null hypothesis consists of all models, except the one in particular being searched for, called here $\Mnull$.
   The second hypothesis, called the alternate hypothesis, consists of all the models in the null hypothesis, plus the model being searched for, called here $\Malt$.
+  Each observation would get its own camera background model, and then any additional astrophysical models are added separately.
   For example, if one has three observations of the Crab Nebula, this would mean there are three camera background models, plus a point source model for the Crab Nebula.
-  {\color{red}(why does three observations = 3 background models plus 1 source model?? -orel)}
   The null hypothesis would be just the camera background models, while the alternate hypothesis would be the camera backgrounds plus the Crab Nebula model.
   Once these two hypotheses for an analysis are assembled, then their maximum likelihood can be searched for.
   
@@ -298,14 +298,12 @@
     \textrm{TS} = - 2 \; \textrm{log} \left (  \frac{ \LogLikeMax( \Mnull ) }{ \LogLikeMax( \Malt ) } \right )
   \end{equation}
   
-  With Wilk's theorem, the events can be repeatedly simulated using the null hypothesis probability density function.
+  With Wilk's theorem~\cite{wilks1938}, the events can be repeatedly simulated using the null hypothesis probability density function.
   For each simulation, a TS can be calculated.
-  After many simulations, resulting TS's will form a $\chi^2$ distribution with $n$ degrees of freedom, where $n$ is the difference in number of free parameters between the two hypotheses~\cite{wilks1938}.
+  After many simulations, resulting TS's will form a $\chi^2$ distribution with $n$ degrees of freedom, where $n$ is the difference in number of free parameters between the two hypotheses.
   From this distribution, a TS can be converted into a p-value.
-  In situations where there is only one or two degrees of freedom {\color{red}(??)}, the significance of a specific model can be calculated as $\sqrt{\textrm{TS}}$.
-  {\color{red}(cleanup this paragraph more??)}
-  
-  {\color{red}(is this how we convert a TS into a p-value?? discuss with orel and galo more)}
+  In situations where there is only one or two degrees of freedom, the significance of a specific model can be calculated as $\sqrt{\textrm{TS}}$.
+  {\color{red}(explain that there wasn't time to calculate the actual P-value)}
   % http://pulsar.sternwarte.uni-erlangen.de/black-hole/2ndschool/talks/likelihood_1.pdf
   
 
@@ -317,6 +315,7 @@
   These dark region events were then binned into background models, using the method described in Section~\ref{background_production}.
   To account for the difference between the V5 and V6 observatory configurations, the background observations are divided up based on their epoch, producing a unique background template for each epoch.
   These background templates only depend on the radial distance from the camera center and the event energy.
+  {\color{red}(Explicitly say that these background templates are used in both the crab analysis and the GC, and mention why this decently motivated (and ok to do) (normal background for point sources are made by subtracting the source and binning radially ??)}
 
 \section{Crab Nebula Likelihood Analysis}\label{sec:crab_analysis}
   To verify that the likelihood method is physically correct, the Crab Nebula was analyzed first, before any dark matter analysis was performed.
@@ -367,6 +366,7 @@
     {
       Crab Nebula spectra from various analyses and observatories.
       The solid red line is the best-fit spectra from the CTOOLS analysis described in this chapter, using only events from \SIrange{4}{70}{TeV}.
+      {\color{red}(Remove all but 1 CTOOLS reference!!! in the whole thing!!!!!!)}
       The inner red envelope is the statistical fitting error on the solid red line.
       The outer red envelope is the combined statistical+systematic error.
       The dark blue line is the standard VERITAS Eventdisplay spectrum using the same set of observations.
@@ -505,15 +505,16 @@
   As the test analysis on the Crab Nebula data shows results consistant with other VERITAS, H.E.S.S., and MAGIC studies, the main dark matter analysis can begin in earnest.
   The 108 hours of Galactic Center data used is described in Section~\ref{veritasdata}.
   A skymap histogram of all observed events is shown in Figure~\ref{fig:gc_counts_skymap}.
+  {\color{red}(mention that the lack of corrections explains the weird overlapping shape??)}
   A histogram of all events' energies from \SIrange{4}{70}{TeV} is shown in Figure~\ref{fig:gc_counts_enhist}.
-  {\color{red}(is there value to showing these two uncorrected histograms?? -orel)}
+  {\color{red}(mention that the lack of corrections explains why it doesn't look like a power law??)}
   Both of these plots have no corrections for observing time or effective area.
   After gathering the data, assembling the models is the next step.
   These include the camera background models, similar to the Crab Nebula analysis.
   
   \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.65\textwidth]{images/likelihood_analysis/counts_skymap.pdf}
+    \includegraphics[width=0.65\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_counts.pdf}
     \caption[Galactic Center Counts Skymap]{
       Skymap of all events used in this analysis.
       Note that these are in ($\ldet$,$\bdet$) coordinates, not ($\ltrue$,$\btrue$).
@@ -524,7 +525,7 @@
   
   \begin{figure}[h]
     \centering
-    \includegraphics[width=0.65\textwidth]{images/likelihood_analysis/counts_enhist.pdf}
+    \includegraphics[width=0.65\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_enhist.pdf}
     \caption[Galactic Center Counts Energy Histogram]{
       Histogram of all event energies ($\Edet$) used in this analysis.
       No adjustments are made here for effective area, observation time, or background rate.
@@ -545,7 +546,7 @@
     M_e(\xtrue) = M_e(\ltrue,\btrue,\Etrue,\ttrue) = N_o * { \left ( \frac{\Etrue}{E_{pivot}} \right ) }^{\gamma} {e}^{-\frac{E}{E_{cutoff}}}
   \end{equation}
   
-  The initial values used in Equation~\ref{eqn:brokenplaw} are from \cite{VeritasGCRidge2015}, where the specific values are $E_{pivot}=\SI{1}{TeV}$, $E_{cutoff}=\SI{12.8}{TeV}$, and $\gamma=-2.1$.
+  The initial values used in Equation~\ref{eqn:brokenplaw} are from Ref. \cite{VeritasGCRidge2015}, where the specific values are $E_{pivot}=\SI{1}{TeV}$, $E_{cutoff}=\SI{12.8}{TeV}$, and $\gamma=-2.1$.
   % theres also the 2016 paper http://iopscience.iop.org/article/10.3847/0004-637X/821/2/129/meta
   The normalization parameter $N_o$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was left free in the likelihood optimization, while $E_{pivot}$, $E_{cutoff}$, and $\gamma$ were all fixed.
   The normalization $N_o$ was left free to allow for the potential of some mixing between the point source events and any dark matter halo events, i.e. a stronger dark matter halo gamma-ray flux would result in a weaker point source flux.
@@ -554,7 +555,10 @@
   Diffuse emission, eliminated due to complexity??
   Hard cuts may have minimized its effect??
   If diffuse emission really needed to be modeled, it would show up in the profiles along galactic b??
+  (because its radial, i probably need to mention why I assume its isotropic??)
   }
+  
+  {\color{red}(only got to here with orel's comments!??)}
 
   \subsection{Dark Matter Models}\label{subsec:dmhalomodel}
   Dark Matter halos are modeled by a spherically-symmetric mass-per-volume density profile.
@@ -579,6 +583,8 @@
   From Wilk's theorem~\cite{wilks1938}, with a TS value greater than 20 would hint at the presence of a dark matter halo.
   As all of these are less than zero, it can be said that the null (no dark matter) hypothesis is statistically favorable.
 
+  \FloatBarrier
+  
   \begin{table}
     \centering
     \begin{tabular}{|r|r|}
@@ -628,7 +634,7 @@
   
   \begin{figure}[h]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_gal_l.eps}
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_showclean_l_sprof.pdf}
     \llap{
       \makebox[13.75cm][l]{ % x position
         \raisebox{7cm}{     % y position
@@ -656,7 +662,7 @@
 
   \begin{figure}[h]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_gal_b.eps}
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_showclean_b_sprof.pdf}
     \llap{
       \makebox[13.75cm][l]{ % x position
         \raisebox{7cm}{   % y position
@@ -683,10 +689,10 @@
   
   \begin{figure}[h]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/profile_energy.eps}
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_enprofile.pdf}
     \llap{
       \makebox[10.9cm][l]{ % x position
-        \raisebox{7.15cm}{   % y position
+        \raisebox{7.15cm}{ % y position
           {
             \setlength{\fboxsep }{0pt}
             \setlength{\fboxrule}{1pt}
@@ -722,7 +728,7 @@
   
   \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_resmap_algosignificance.eps}
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_ALGOSIGNIFICANCE_withoutobradius_resmap.pdf}
     \caption[Galactic Center Residual Map]
     {
       Significance of each skymap bin's residual counts.
@@ -740,7 +746,7 @@
   
   \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_resmap_phist_algosignificance.eps}
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_phist_ALGOSIGNIFICANCE_resmap.pdf}
     \caption[Galactic Center Residual Histogram]
     {
       Histogram of the residual skymap bin significances from Figure~\ref{fig:gc_resmap}, calculated with Equation~\ref{eqn:resmap_signif}.
