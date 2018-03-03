@@ -34,11 +34,12 @@
     At scales of $\nicetilde 10^{19}$m, groups of thousands stars, called satellite galaxies or dwarf galaxies, lie at the edge of full size galaxies like our own.
     These dwarf galaxies are strong evidence for dark matter because their luminous matter is not enough to gravitationally bind them.
     An example of a dwarf galaxy is shown in Figure~\ref{fig:sculptor}, the Sculptor Dwarf Galaxy, imaged in the optical frequencies by the MPG/ESO Telescope.
-    \begin{figure}[ht]
+
+    \begin{figure}[h]
       \centering
-      \includegraphics[width=0.9\textwidth]{images/sculptor/sculptor.eps}
+      \includegraphics[width=0.95\textwidth]{images/sculptor/sculptor.eps}
       \caption[Sculptor Dwarf Galaxy]{
-        The Sculptor Dwarf Galaxy \cite{sculptor_image}, imaged with the MPG/ESO telescope~\cite{sculptor_paper}.
+        The Sculptor Dwarf Galaxy~\cite{sculptor_image}, imaged with the MPG/ESO telescope~\cite{sculptor_paper}.
         This dwarf galaxy has a $\frac{M_\odot}{L_\odot}$ ratio of 15.3~\cite{sculptor_ml}.
       }
       \label{fig:sculptor}
@@ -51,28 +52,36 @@
     What makes this possible is that the velocity dispersion of a group of stars is proportional to the total mass of the graviational well.
     This can be seen by applying the virial theorem and Maxwell-Boltzmann statistics.
     The virial theorem, Equation~\ref{eqn:virial}, states an n-body system in equilibrium will always have the same ratio of kinetic energy (KE) to potential energy (PE).
+
     \begin{equation}\label{eqn:virial}
       2 \text{KE} = \text{PE}
     \end{equation}
+
     Thus, by measuring stellar velocities and calculating the total kinetic energy of a group of stars, the potential energy can be calculated, which indicates the amount of mass present in the group.
 
     % derivation from https://en.wikipedia.org/wiki/Maxwell%E2%80%93Boltzmann_distribution
     Maxwell-Boltzmann statistics can also be used to measure the amount of mass in a system.
     Using the Maxwell-Boltzmann distribution, the velocity probability density function is then Equation~\ref{eqn:mb_vel3d}:
+
     \begin{equation}\label{eqn:mb_vel3d}
       f_v(v_x,v_y,v_z)= \left ( \frac{m}{2\pi k T} \right ) ^ { \frac{3}{2} } \text{exp} \left [ - \frac{m \left ( v_x^2 + v_y^2 + v_z^2 \right )}{2 k T} \right ]
     \end{equation}
+
     where $m$ is the mass of the system, $k$ is the Boltzmann constant, and $T$ is the equilibrium temperature of the system {\color{red}(??)}.
     
     In one dimension, each velocity distribution is a normal distribution, described by Equation~\ref{eqn:mb_vel1d},
+
     \begin{equation}\label{eqn:mb_vel1d}
       f_v(v_i) = \sqrt{ \frac{m}{2\pi k T} } \text{exp} \left [ - \frac{m v_i^2}{2kT} \right ]
     \end{equation}
+
     where the mean velocity in each direction is $\mu_{v_i} = 0$ and the standard deviation is $\sigma_{v_i} = \sqrt{\frac{kT}{m}}$.
     When these three dimensions are combined into a 3-dimensional normal distribution, the mean velocity vector is $\vec{\mu}_v = \vec{0}$, and its distribution has a width described by Equation~\ref{eqn:mb_sigma}:
+
     \begin{equation}\label{eqn:mb_sigma}
       \sigma_v = \sqrt{\frac{3kT}{m}}
     \end{equation}
+
     A Maxwell-Boltzmann distribution's most probable speed is $\left \langle v \right \rangle = \frac{2}{\sqrt{\pi}} \sqrt{\frac{2kT}{m}}$.
     Therefore, measuring the mean speed and distribution of speeds of a group of stars can yield the total mass of the system, described by Equation (??).
     {\color{red}(THIS MAXWELL STUFF IS WRONG, THE MASS $m$ CANCELS, NEEDS TO BE REDONE!??)}
@@ -101,7 +110,7 @@
     
     \begin{table}[]
       \centering
-      \caption{$\frac{M_\odot}{L_\odot}$ ratios of various dwarf galaxy objects~\cite{localdwarfs}.}
+      \caption[Ratios of $\frac{M_\odot}{L_\odot}$ for Various Dwarf Galaxy Objects]{Ratios of $\frac{M_\odot}{L_\odot}$ for various dwarf galaxy objects~\cite{localdwarfs}.}
       \label{tab:mlratios:dwarfgals}
       \begin{tabular}{l r}
         Object      &  Mass, units of $\frac{M_\odot}{L_\odot}$ \\
@@ -163,7 +172,7 @@
     
     \begin{table}[]
       \centering
-      \caption{$\frac{M_\odot}{L_\odot}$ ratios of various galactic-scale objects~\cite{faber_ml}.}
+      \caption[Ratios of $\frac{M_\odot}{L_\odot}$ for Various Galactic-scale Objects]{Ratios of $\frac{M_\odot}{L_\odot}$ for various galactic-scale objects~\cite{faber_ml}.}
       \label{tab:mlratios}
       \begin{tabular}{l r}
         Object          & Mass, units of $\frac{M_\odot}{L_\odot}$ \\
@@ -185,6 +194,7 @@
     
     The further evidence of dark matter can also be deduced through additional weak gravitational lensing~\cite{weak_lensing_2001}.
     Lensing of elliptical galaxies can constrain mass profiles~\cite{weak_lensing_ellipse}.{\color{red}(expand??)}
+
     \begin{figure}
       \centering
       \includegraphics[width=0.95\textwidth]{images/weak_lensing_ellipse/weak_lensing.pdf}
@@ -206,8 +216,75 @@
     %
     % galaxy cluster wiki page
     % 2-10 Mpc, call it 6Mpc = 1.85*10^23m ~ 10^23m
-    At scales of $\nicetilde 10^{23}$m, Dark Matter's effects on galactic clusters become observable by comparing three techniques.
-    In the first technique, galaxy clusters are massive enough to bend the images of background galaxies.
+    At scales of $\nicetilde 10^{23}$m, Dark Matter's effects on galactic clusters become observable with two separate techniques.
+    
+    Mass-To-Light Ratios
+    Velocity dispersions of galaxies within clusters was measured
+    Luminosities were measured
+    List some ratios here in a table.
+    \cite{cluster_ml_ratios}
+
+    Lensing Technique
+    Galaxy Clusters Abell 370 and Cluster 2244-02 are very massive, enough to bend light
+    Galaxies behind these clusters have their light bent and distorted into arcs
+    Modeling these arcs can produce a mass-map of the foreground galaxy cluster
+    These mass maps indicate a very high mass-to-light ratio, 100-1000 Msol-over-Lsol
+    \cite{cluster_lensing}
+    
+    Strong Lensing
+    Cluster 0024+1654 has 8 subimages of a background galaxy, imaged by hubble
+    These 8 images can be used to make a total-mass map
+    Known masses can be modeled and subtracted, leaving behind a DM mass halo
+    \cite{cluster_strong_lensing}
+    
+    Bullet Cluster Technique
+    Two colliding galaxy clusters
+    Each cluster has 2 meaurable mass components, gas, and total mass
+    Gas is measured through X-ray observations, since its a hot plasma
+    Total mass is measured from weak lensing maps
+    When two clusters passed through each other, their mass components dragged on each other
+    The gas drags on itself, slowing down
+    The total mass travels further than the gas because it drags on itself less than the gas
+    Thus, because the gas and the total mass are at different positions, the total mass must consist of dark matter
+    \cite{bullet_cluster_composite}
+    \cite{bullet_cluster}
+    \cite{bullet_cluster2}
+    MACS J0025.4-1222 is another galaxy cluster collision
+    \cite{cluster_MACS}
+    72 more galaxy cluster collisions were studied, improving dm cross section limit.
+    \cite{cluster_72}
+    
+    Doughnut Technique
+    Two clusters collide, viewed along the collision trajectory
+    A ring-like structure of DM is leftover
+    \cite{dm_doughnut}
+    
+    X-Ray Measurements of Inter-Cluster Medium
+    Chandra measures x-rays from cluster center
+    \cite{cluster_chandra}
+    
+    Velocity Dispersion of Galaxies with Clusters
+    The velocity dispersion for several clusters was measured
+    \cite{}
+
+    Rotational Technique
+    Galaxy rotational velocities measured to get total mass
+    
+
+  
+    The first technique calculates the 
+compares the total mass of a cluster from gravitational lensing to the luminous mass from optical observations.
+    In the first technique, different components of colliding galaxy clusters drag on each other, slowing them down at different rates.
+    In the second technique, the total gravitational mass and the luminous mass can both be measured for a cluster of galxies leading to a descrepancy explainable by dark matter.
+    
+    In the first technique, observations are taken of two galaxy clusters that have recently collided, one of which is called the Bullet Cluster~\cite{bullet_cluster}.
+    Each of these galaxy clusters has 3 measurable groups of mass.
+    The first is the mass locked up in stars, the second is the gas between the stars, and the third is the total graviational mass.
+    The mass due to stars can be measured by observing the amount of visible light
+
+
+
+galaxy clusters are massive enough to bend the images of background galaxies.
     The type and amount of bending can be used to determine the mass of the intermediate galaxy.
 
     X-Ray observations of galaxy clusters can measure the amount of hot baryonic mass.
@@ -224,6 +301,9 @@
       }
       \label{fig:abelllensing}
     \end{figure}
+    
+
+    Thus, there are two 
     
     Calculating the mass of an object from its gravitationally lensed images is done by {\color{red}(??)} \cite{}.
     {\color{red}\url{http://adsabs.harvard.edu/abs/1990ApJ...349L...1T}??}.
@@ -264,7 +344,7 @@
     % https://en.wikipedia.org/wiki/Chronology_of_the_universe
     \begin{table}[h]
       \centering
-      \caption{
+      \caption[Key Events During the Life of the Universe]{
         Key events during the development of the universe.
         The Time column is the age of the universe at that event.
         The Temperature column is the universe's average temperature at that time.
