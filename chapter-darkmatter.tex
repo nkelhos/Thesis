@@ -113,7 +113,7 @@
       \caption[Ratios of $\frac{M_\odot}{L_\odot}$ for Various Dwarf Galaxy Objects]{Ratios of $\frac{M_\odot}{L_\odot}$ for various dwarf galaxy objects~\cite{localdwarfs}.}
       \label{tab:mlratios:dwarfgals}
       \begin{tabular}{l r}
-        Object      &  Mass, units of $\frac{M_\odot}{L_\odot}$ \\
+        Object      &  Mass, $\left [ \frac{M_\odot}{L_\odot} \right ]$ \\
         \hline
         IC 10       &  0.1 \\
         NGC 147     &  7.1 \\
@@ -175,7 +175,7 @@
       \caption[Ratios of $\frac{M_\odot}{L_\odot}$ for Various Galactic-scale Objects]{Ratios of $\frac{M_\odot}{L_\odot}$ for various galactic-scale objects~\cite{faber_ml}.}
       \label{tab:mlratios}
       \begin{tabular}{l r}
-        Object          & Mass, units of $\frac{M_\odot}{L_\odot}$ \\
+        Object      &  Mass, $\left [ \frac{M_\odot}{L_\odot} \right ]$ \\
         \hline
         M31 (Andromeda) &  7.6  \\
         M33             &  4.5  \\
@@ -216,25 +216,71 @@
     %
     % galaxy cluster wiki page
     % 2-10 Mpc, call it 6Mpc = 1.85*10^23m ~ 10^23m
-    At scales of $\nicetilde 10^{23}$m, Dark Matter's effects on galactic clusters become observable with two separate techniques.
-    
-    Mass-To-Light Ratios
-    Velocity dispersions of galaxies within clusters was measured
-    Luminosities were measured
-    \cite{cluster_ml_ratios}
+    At scales of $\nicetilde 10^{23}$m, Dark Matter's effects on galactic clusters become observable with several techniques.
+    In one technique, the mass-to-light ratio can be measured for galaxy clusters.
+    This is done the same as with dwarf galaxies; luminous mass is derived from the brightness of the cluster, while total mass is measured from the velocity dispersion of individual galaxies within the cluster.
+    From measurements of several hundred galaxy clusters, it was found that galaxy clusters have mass-to-light ratios of \SIrange{10}{1000}{$\frac{\Msol}{\Lsol}$}~\cite{cluster_ml_ratios}, indicating a very high amount of dark matter is present in these objects.
 
-    Lensing Technique
-    Galaxy Clusters Abell 370 and Cluster 2244-02 are very massive, enough to bend light
-    Galaxies behind these clusters have their light bent and distorted into arcs
-    Modeling these arcs can produce a mass-map of the foreground galaxy cluster
-    These mass maps indicate a very high mass-to-light ratio, 100-1000 Msol-over-Lsol
-    \cite{cluster_lensing}
+    \begin{table}
+      \centering
+      \caption[Ratios of \MLsol for Various Galaxy Clusters]{Ratios of \MLsol for various galaxy clusters~\cite{cluster_ml_ratios}.}
+      \label{tab:cluster_ml_ratios}
+      \begin{tabular}{l r}
+        Object      &  Mass, \MLsol \\
+        \hline
+        Abell 85   & 445 \\
+        Abell 458  & 401 \\
+        Abell 999  & 100 \\
+        Abell 1228 & 37  \\
+        Abell 2426 & 80  \\
+        Abell 3122 & 960 \\
+        Abell 3126 & 491 \\
+        Abell 3354 & 94  \\
+        Abell 3695 & 180 \\
+        Abell 3921 & 175 \\
+      \end{tabular}
+    \end{table}
     
-    Strong Lensing
-    Cluster 0024+1654 has 8 subimages of a background galaxy, imaged by hubble
-    These 8 images can be used to make a total-mass map
-    Known masses can be modeled and subtracted, leaving behind a DM mass halo
-    \cite{cluster_strong_lensing}
+    Another technique for measuring the total mass is by examining the amount of gravitational lensing caused by a cluster.
+    This was used with galaxy clusters Abell 370 and CL 2244-02 to estimate the amount of dark matter in each~\cite{cluster_lensing}.
+    This technique works by exploiting the alignment of Earth, a galaxy cluster, and a distant background galaxy.
+    Galaxy clusters are massive enough that images of background galaxies can be strongly distorted.
+    By measuring and modeling the distortion of the background image, the cluster's total mass can be found.
+    Then comparing this total mass to the luminous mass provides an estimate for the amount of dark matter contained in the galaxy cluster.
+    
+    Abell 370 and several distorted background galaxies are shown in Figure~\ref{fig:abell370}.
+    This technique found that for both Abell 370 and CL 2244-02, a large amount of dark matter is required to fit the observed arcs, within the range of 200-1000 \MLsol.
+    {\color{red}(examine update paper \cite{abell370_2010}??)}
+    
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.95\textwidth]{images/abell370/abell370_cropped.pdf}
+      \caption[Gravitational Lensing in Abell 370]{
+        Galaxy cluster Abell 370 is shown here, along with many gravitationally lensed background galaxies.
+        In Ref.~\cite{cluster_lensing}, the large arc marked by the green lines is the distorted background galaxy image used to calculate the cluster's total mass.
+        Credit: NASA, ESA/Hubble, HST Frontier Fields~\cite{abell370_hubble}.
+      }
+      \label{fig:abell370}
+    \end{figure}
+    
+    Another example of using gravitational lensing to measure dark matter mass is with cluster Cl0024+1654.
+    This galaxy cluster creates several lensed images of the same background galaxy, which are used to measure the total mass
+    The lensing is shown in Figure~\ref{fig:stronglens}, where the blue arcs are the distorted background galaxy images.
+    From all of these lensed images, the best fit amount of dark matter indicates this cluster has a mass-to-light ratio of 230 \hMLsol~\cite{cluster_strong_lensing_1996, cluster_strong_lensing_1998, cluster_strong_lensing_2010}.
+    {\color{red}(need to explain what \hMLsol is??)}
+    
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.95\textwidth]{images/cluster_strong_lensing_8/stronglensing2.pdf}
+      \caption[Gravitational Lensing in Cl0024+1654]{
+        Strong lensing of a blue background galaxy by galaxy cluster Cl0024+1654 into multiple blue distorted images~\cite{cluster_strong_lensing_1996}.
+      }
+      \label{fig:stronglens}
+    \end{figure}
+    
+    X-Ray Measurements of Inter-Cluster Medium
+    Chandra measures x-rays from cluster center
+    \cite{cluster_chandra}
     
     Bullet Cluster Technique
     Two colliding galaxy clusters
@@ -257,10 +303,6 @@
     Two clusters collide, viewed along the collision trajectory
     A ring-like structure of DM is leftover
     \cite{dm_doughnut}
-    
-    X-Ray Measurements of Inter-Cluster Medium
-    Chandra measures x-rays from cluster center
-    \cite{cluster_chandra}
     
 
     
