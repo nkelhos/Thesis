@@ -32,15 +32,14 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
   Additionally, electrons spiralling through magnetic fields can produce synchrotron photons at X-Ray energies, meaning fewer upscatters are needed to reach TeV energies~\cite{self_compton}.
 
   In hadronic processes, protons can be accelerated by fermi acceleraton or as part of an Active Galactic Nucleus jet~\cite{hadronic1,hadronic2}.
-  Then, upon striking an ambient atom, the proton will {\color{red}decay (?? this is not the right word!!)} into $\pi^{+}$, $\pi^{-}$, and $\pi^{0}$.
+  Then, upon striking an ambient atom, the proton will convert into $\pi^{+}$, $\pi^{-}$, and $\pi^{0}$~\cite{pp_pion,pp_pion2}.
   The $\pi^{0}$ then quickly (\SI{8.5e-17}{s}~\cite{pdg2016}) decomposes into a $\gamma\gamma$ pair, with \nicetilde$10\%$ of the original proton's energy.
   Much of the diffuse gamma ray component of the galactic disk is due to extra-galactic high-energy protons colliding with the atoms of the dusty galactic plane~\cite{GalacticDiffuseGammaRays}.
 
-  
-  {\color{red}(No subsection here, so need a transition paragraph to Dark Matter Interactions subsection)}
-  
-  %\subsection{Dark Matter Interactions}\label{dmgammaproduction}
-    {\color{red}As discussed in various extensions of SUSY (?? why do you mention SUSY all of a sudden? make sure to motivate it?)}, dark matter may be detectable by three general search schemes, illustrated in Figure~\ref{fig:3_searches}.
+  \subsection{Dark Matter Interactions}\label{dmgammaproduction}
+    
+    The dark matter particle searched for in this thesis is a WIMP, a particle predicted by SUSY.
+    This WIMP may be detectable by three general search schemes, illustrated in Figure~\ref{fig:3_searches}.
 
     % add popular figure for the three detection type
     \begin{figure}[ht]
@@ -50,7 +49,6 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
         The three general search techniques for dark matter.}
       \label{fig:3_searches}
     \end{figure}
-    
 
     In Collider searches, $ss \rightarrow \chi\chi$, standard model particles ($ss$) are accelerated into each other within a detector, and the resulting particle fragments are measured by a slew of measuring equipment.
     {\color{red}Since the properties of the input accelerated particles are well known and the (?? this is not entirely true, the interior quarks and gluons can have different momentums, sentence should be more precise -Orel)} output fragment particles are well measured, searching for any break from {\color{red}conservation laws (?? The break from conservation laws does not yield dark matter particles. It can be used to search for them. Maybe ''suggest dark matter particles production``? --Orel)} may yield dark matter particles. {\color{red}(Sentence is fragmented, needs fixing)}
@@ -82,13 +80,12 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
   % black hole
   Through kinematic observations of nearby stars, it was deduced that the Galactic Center is home to a supermassive black hole, with a mass of \SI{4e6}{\Msol}~\cite{sgra_massdist}.
   The Galactic Center also is a source of \TeV{} gamma rays, though the mechanism that produces them is still under debate.
-  One possibility is that the supermassive black hole accelerates protons to PeV energies, {\color{red}which convert (?? should be more precise? -Orel)} into TeV gamma rays~\cite{gc_pevatron}.
+  One possibility is that the supermassive black hole accelerates protons to PeV energies, which then collide with local atoms to produce $\pi^0$s, which then decay into TeV gamma rays~\cite{gc_pevatron}.
   The second possibility suggests a nearby population of pulsar wind nebulae may be accelerating electrons, which then upscatter local photons to TeV energies~\cite{gc_pulsars}.
-  While the Galactic Center is a source of gamma rays, the current generation of gamma-ray telescopes can only resolve it into a point source, due to their limited angular resolution {\color{red}(cite VERITAS and HESS??)}.
-  This analysis instead focuses on the gamma-ray flux outside this point-like inner region.{\color{red}(not clean enough??)}
+  While the Galactic Center is a source of gamma rays, the current generation of gamma-ray telescopes can only resolve it into a point source, due to their limited angular resolution~\cite{VeritasGCRidge2015,gc_pointsrc_hess}.
 
   The disk of gas present in the galactic plane acts as an interaction medium for passing cosmic rays, both from nearby galactic accelerators and from extragalactic sources.
-  {\color{red}(discuss diffuse emission??)}
+  {\color{red}(discuss diffuse emission, can't find papers on it at TeV energies??)}
 
   {\color{red}(somewhere in thesis cite something from each defense committee member!)}
 
@@ -120,7 +117,10 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
     
     where $\alpha$ is fixed to 0.17 from Ref.~\cite{PieriGalaxySims}.
     $r_s$ is {\color{red}(and was chosen how??)}.
+    % for r_s, see gMW_TOT_RSCALE in clumpy halo parameter file
+    % for \rho_s, see ??
     $\rho_s$ is {\color{red}(and was chosen how??)}.
+    These parameters are taken from the best-fit values for a Milky-Way-like galaxy in Ref.~\cite{pieriGalaxySims}
 
     The distance to the Galactic Center is fixed at \SI{8}{kpc}~\cite{gc_distance_1,gc_distance_2,gc_distance_3}, and the local estimated dark matter mass density is fixed at \SI{0.4}{\GeV\per\cm^3}~\cite{local_dm_density}, though this varies depending on the assumed Milky Way mass profile~\cite{direct_dm_astrophysical_uncertainties}.
     A scale radius $r_s$ of \SI{15.14}{kpc} {\color{red}(cite??)} is also used, and the Einasto profile for the the Galactic Center halo is shown in Figure~\ref{fig:gchalo_density}.
