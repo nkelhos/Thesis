@@ -561,10 +561,17 @@
   {\color{red}(only got to here with orel's comments!??)}
 
   \subsection{Dark Matter Models}\label{subsec:dmhalomodel}
-  Dark Matter halos are modeled by a spherically-symmetric mass-per-volume density profile.
+  Dark Matter halos are modeled by a spherically-symmetric mass-per-volume density profile, combined with an annihilation spectrum.
+  This is assembled with a simplified version of Equation~\ref{eqn:dmflux}, shown in Equation~\ref{eqn:dmmodel}.
+  
+  \begin{equation}\label{eqn:dmmodel}
+    M_{\textrm{dm}} = N \times M_{\textrm{e,halo}} \times M_{\textrm{s,halo}}
+  \end{equation}
+  
   In this analysis, an Einasto density profile is used for the spatial component function $M_s$ of the dark matter halo model.
   See Section~\ref{dm_spatial} for a discussion on this $M_{s,\textrm{halo}}$ function.
   For the spectral component, each dark matter mass tested has its own spectrum function $M_e$ produced with CLUMPY (see Section~\ref{dm_spectral}).
+  The parameter $N$ is the magnitude of the halo, which the likelihood engine is free to scale up and down to get the best fit.
 
   \subsection{Likelihood Maximization Results}\label{like_results}
 

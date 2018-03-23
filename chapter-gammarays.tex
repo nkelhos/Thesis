@@ -32,7 +32,7 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
   Additionally, electrons spiralling through magnetic fields can produce synchrotron photons at X-Ray energies, meaning fewer upscatters are needed to reach TeV energies~\cite{self_compton}.
 
   In hadronic processes, protons can be accelerated by fermi acceleraton or as part of an Active Galactic Nucleus jet~\cite{hadronic1,hadronic2}.
-  Then, upon striking an ambient atom, the proton will convert into $\pi^{+}$, $\pi^{-}$, and $\pi^{0}$~\cite{pp_pion,pp_pion2}.
+  Then, upon striking an ambient atom, the proton will {\color{red}convert (is convert the right word??)} into $\pi^{+}$, $\pi^{-}$, and $\pi^{0}$~\cite{pp_pion,pp_pion2}.
   The $\pi^{0}$ then quickly (\SI{8.5e-17}{s}~\cite{pdg2016}) decomposes into a $\gamma\gamma$ pair, with \nicetilde$10\%$ of the original proton's energy.
   Much of the diffuse gamma ray component of the galactic disk is due to extra-galactic high-energy protons colliding with the atoms of the dusty galactic plane~\cite{GalacticDiffuseGammaRays}.
 
@@ -112,35 +112,36 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
     The Einasto profile is described by Equation~\ref{eqn:einasto},
 
     \begin{equation} \label{eqn:einasto}
-      \rho_{DM} \left( r \right) = \rho_{s} Exp \left( - \frac{2}{\alpha} \left( {\left( \frac{r}{r_s} \right)}^{\alpha} - 1 \right) \right)
+      \rho_{\textrm{DM}} \left( r \right) = \rho_{s} Exp \left( - \frac{2}{\alpha} \left( {\left( \frac{r}{r_s} \right)}^{\alpha} - 1 \right) \right)
     \end{equation}
     
-    where $\alpha$ is fixed to 0.17 from Ref.~\cite{PieriGalaxySims}.
-    $r_s$ is {\color{red}(and was chosen how??)}.
-    % for r_s, see gMW_TOT_RSCALE in clumpy halo parameter file
-    % for \rho_s, see ??
-    $\rho_s$ is {\color{red}(and was chosen how??)}.
-    These parameters are taken from the best-fit values for a Milky-Way-like galaxy in Ref.~\cite{pieriGalaxySims}
-
-    The distance to the Galactic Center is fixed at \SI{8}{kpc}~\cite{gc_distance_1,gc_distance_2,gc_distance_3}, and the local estimated dark matter mass density is fixed at \SI{0.4}{\GeV\per\cm^3}~\cite{local_dm_density}, though this varies depending on the assumed Milky Way mass profile~\cite{direct_dm_astrophysical_uncertainties}.
-    A scale radius $r_s$ of \SI{15.14}{kpc} {\color{red}(cite??)} is also used, and the Einasto profile for the the Galactic Center halo is shown in Figure~\ref{fig:gchalo_density}.
+    where $\alpha$ is fixed to 0.17, and $r_s$ is fixed to \SI{15.14}{kpc}.
+    Both $\alpha$ and $r_s$ are from the best fit values of the Aq-A-1 simulation in Table 2 of Ref.~\cite{mw_halo_params}.
+    The $r_s$ parameter is calculated via $r_s=r_{-2}=15.14\:\textrm{kpc}$, where $r_{-2}=\frac{11.05}{h}\:\textrm{kpc}$ (in Ref.~\ref{mw_halo_params}, Table 2) and $h=0.73$ from Section 2.1 in Ref.~\cite{mw_halo_params}.
+    The distance to the galactic center is known to be $r_\odot=8\:\textrm{kpc}$~\cite{gc_distance_1,gc_distance_2,gc_distance_3}, and the local estimated dark matter mass density is $\rho_\odot = 0.4\:\frac{\textrm{GeV}}{\textrm{cm}^3}$~\cite{local_dm_density}, though this varies depending on the assumed Milky Way mass profile~\cite{direct_dm_astrophysical_uncertainties}.
+    Since $r_\odot$ and $\rho_\odot$ are known, then in Equation~\ref{eqn:einasto} the dark matter density at the scale radius $\rho_s$ is derived to be \SI{0.12}{\GeV\per\cm^3}.
+    With these values, the Einasto profile in Equation~\ref{eqn:einasto} is shown in Figure~\ref{fig:gchalo_density}.
   
     \begin{figure}[ht]
       \centering
       \includegraphics[width=0.95\textwidth]{images/halo/gc_einasto_profile.pdf}
       \caption[Galactic Center Einasto Halo Density]{
-        Mass density of the dark matter halo used in this analysis.
+        Mass density of the Einasto dark matter halo used in this analysis.
         \CaptionBlankLine
         }
       \label{fig:gchalo_density}
     \end{figure}
+
+    Other density profiles exist, but for this analysis only the Einasto profile is considered.
+    Most simulations show that density profiles should terminate in a sharp peak at $r=0$, but observations of dwarf galaxies instead favor a flat core within a given radius~\cite{flores1994observational,CoreVsCusp}.
+    This may be due to the presence of baryons in this core region, which can diffuse the central cusp of WIMPs into a core-like shape~\cite{corecusp_baryondiffuse1,corecusp_baryondiffuse2}.
+    As this flat core occurs in the inner-most region covered by the gamma-ray observations in this analysis, the choice of a cuspy or cored dark matter halo can have a significant impact on this analysis.
+    Specifically, if the dark matter halo follows a cored profile when using a cuspy halo model, then any derived upper limits on the dark matter cross-section would be different.
+    For simplicity of implementation, only a cuspy halo is used in this thesis.
     
-    Other profiles exist, but for this analysis only the Einasto profile is considered.
-    Most simulations show that density profiles should terminate in a sharp peak at $r=0$ {\color{red}(?? Why is this point about how to terminate the profile important and why is it simpler to assume what you did? -Orel)}, but observations of dwarf galaxies instead favor a flat core within a given radius~\cite{CoreVsCusp}.
-    For simplicity in this initial analysis, no core flattening is applied.
-    
-    These profiles can then be used to calculate the spatial distribution of the gamma-ray {\color{red}flux (??)}.
-    For annihilating dark matter, $\rho\left(r\right)^2$ must be integrated along the line of sight.
+    When choosing which dark matter target to observe with a gamma-ray observatory, knowing the gamma-ray brightness of different sources can be useful.
+    This Einasto density profile can be integrated to calculate this gamma-ray brightness, independent of the WIMP model being searched for.
+    For annihilating dark matter, $\rho_{\textrm{DM}}\left(r\right)^2$ must be integrated along the line of sight.
     Equation~\ref{eqn:dmflux} can be used to calculate the amount of gamma rays produced by these annihilations.
     
     \begin{equation}\label{eqn:dmflux}
@@ -150,16 +151,15 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
     In this equation, the photon flux $\Phi$ is the number of gamma rays detected per $\textrm{area}\times\textrm{time}$.
     The velocity-averaged cross-section of the dark matter candidate is $\left \langle \sigma v \right \rangle$.
     Velocity-averaging is used because the cross-section is velocity dependent, and the WIMPs that pass through a volume of space will have a distribution of velocities {\color{red}(cite??)}.
-    Sometimes, part of Equation~\ref{eqn:dmflux} is calculated separately, as in Equation~\ref{eqn:jfactor}.
+    Sometimes, part of Equation~\ref{eqn:dmflux} is calculated separately, as in Equation~\ref{eqn:jfactor}, and is referred to as the $J$ factor.
 
     \begin{equation}\label{eqn:jfactor}
-      \textrm{J Factor} = \int \rho^2 dl
+      J = \int \rho^2 dl
     \end{equation}
 
-    The J Factor is sometimes separatly calculated to compare the relative gamma-ray brightness of different gravitational wells.
-    The Einasto density in Equation~\ref{eqn:einasto} can be integrated to calculate the J-Factor at various radii, which is shown in Figure~\ref{fig:gchalo_jfactor}.
-    {\color{red}(what integration radius??)}
-    $\frac{dN_{\gamma}}{dE}$ is the spectrum of photons produced by a single $\chi\chi$ annihilation.
+    The $J$ factor is sometimes separately calculated to compare the relative gamma-ray brightness of different dark matter halos, which is a function of both dark matter density and observing distance.
+    The Einasto density in Equation~\ref{eqn:einasto} can be integrated to calculate the $J$ factor at various radii, which is shown in Figure~\ref{fig:gchalo_jfactor}.
+    The values in this figure are calculated using an integration radius of \ang{0.01}.
     The spectrum of photons produced by a single $\chi\chi$ annihilation is $\frac{dN_{\gamma}}{dE}$.
     
     \begin{figure}[ht]
@@ -172,10 +172,6 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
       \label{fig:gchalo_jfactor}
     \end{figure}
     
-    {\color{red}Additionally (Additionally to what?? -Orel)}, simulations of galaxy formation indicate that the presence of baryons can diffuse the central cusp of particles into a core-like shape~\cite{corecusp_baryondiffuse1,corecusp_baryondiffuse2}.
-    This creates a central area of constant density in the profile called a core.
-    However, due to the small volume contained by this core within most galaxies, there are comparatively few stellar emitters that can be used to precisely determine the core's behavior.
-    {\color{red}(Not sure what is the meant by this paragraph and how it connects to the previous one?? -Orel)}
 
     {\color{red}Sommerfield enhancement \url{https://arxiv.org/pdf/1005.4678.pdf} (??)}
 
@@ -183,11 +179,11 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
     
     {\color{red}DM Flux skymap in galactic (l,b) ??}
     
-    This J-factor profile can be combined with interpolation to form the spatial component of the dark matter halo, $M_{s,\textrm{halo}}$.
+    This J-factor profile then forms the spatial component of the dark matter halo, $M_{s,\textrm{halo}}$, used in Chapter~\ref{chapter:analysis}.
     
   \subsection{Spectrum of Gamma Rays from Dark Matter}\label{dm_spectral}
     In order to calculate the gamma-ray brightness of the dark matter halo, the produced spectrum from each WIMP annihilation must be known.
-    Each WIMP annihilation can have multiple outcomes (each producing different pairs of particles), referred to as annihilation channels.
+    Each WIMP annihilation can have distinct outcomes (each producing different pairs of particles), referred to as annihilation channels.
     WIMPs may annihilate directly into two gamma rays (the $\gamma\gamma$ channel), or may instead produce a quark-antiquark pair ($b\bar{b}$, $t\bar{t}$, ...), a lepton-antilepton pair, or almost any other standard model particle-antiparticle pair.
 
     Non-gamma-ray annihilation channels still indirectly produce gamma rays as the original particle pair decays.
@@ -210,6 +206,7 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
 
     These spectra are then stored in an interpolation table, which can be used as the spectral component $M_{\textrm{e,halo}}$ for the dark matter halo model in the likelihood analysis, detailed in Section~\ref{subsec:dmhalomodel}.
     These spectra can then be combined with J factor Equation~\ref{eqn:jfactor} to calculate Equation~\ref{eqn:dmflux}: how many gamma rays are produced by the halo.
+    This is done in Equation~\ref{eqn:dmmodel}
 
     \FloatBarrier
     
@@ -244,7 +241,7 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
       Diagram of an electromagnetic cascade as it decends downwards through the atmosphere, layered by interaction generation.
       $\gamma{}_o$ is the initial astrophysical gamma ray.
       The shower shown here continues for many generations after these first four.
-      {\color{red}(color each particle!!??)}
+      Diagram produced with the TikZ-Feynman package~\cite{ellis2017tikz}.
     }
     \label{fig:emcascade}
   \end{figure}
@@ -253,6 +250,7 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
   Understanding the differences between hadronic and electromagnetic showers is useful for removing unwanted proton events and preserving gamma-ray events within the reconstruction method, sometimes referred to as gamma-hadron separation.
   Hadronic showers start with a primary \nicetilde TeV proton that interacts with an atmospheric atom.
   {\color{red}This proton then converts (?? It doesn't convert to pions. Definately not to pi+ pi- adn pi0, (charge conservation). -Orel)} into $\pi^{+}$, $\pi^{-}$, and $\pi^{0}$, each with roughly \nicetilde $\frac{1}{3}$ of the initial proton's energy.
+  {\color{red}(Include feynman diagrams of proton->pion and pion->gammagamma ?? )}
   {\color{red}(?? Isn't there also a neutron in some diagrams??)}
   % see here for neutron: https://en.wikipedia.org/wiki/Cosmic_ray
   The $\pi^{+}$ and $\pi^{-}$ can travel far in the tranverse direction, away from the main axis of the primary particle, then decay into $\mu^{+}\nu_{\mu}$ and $\mu^{-}\bar{\nu}_{\mu}$ pairs, respectively.
@@ -265,7 +263,7 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
   The initial energies were chosen because a \SI{1}{TeV} proton will on average divest $\frac{1}{3}$ of its energy to the $\pi^{0}$.
 
   This $\pi^{0}$ then decays into the electromagnetic sub-shower faintly visible in the interior of the proton shower.
-  The net effect is that, when compared to a gamma ray, a proton must start with $3\times$ the energy to produce a similar amount of Cherenkov photons, which be distributed in a wider pattern.
+  The net effect is that, when compared to a gamma ray, a proton must start with 3 times the energy to produce a similar amount of Cherenkov photons, which are distributed in a wider pattern.
 
   \begin{figure}[ht]
     \centering
@@ -279,7 +277,6 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
   \FloatBarrier
 
   \subsection{Cherenkov Photons}\label{sec:cherenkov}
-  {\color{red}(No Solo Subsections!??)}
 
   Within atmospheric showers, any charged particles travelling at velocity $v > c_{atmosphere}$ will induce the atmosphere to produce Cherenkov photons~\cite{cherenkov}, where $c$ is the speed of light in the atmosphere.
   From a single charged particle of constant velocity, Cherenkov photons form a conical wavefront shown in Figure~\ref{fig:cherenkovangle}, similar to a sonic boom shockwave or the wake produced when a boat travels faster than the speed of the waves.

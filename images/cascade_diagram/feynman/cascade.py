@@ -36,18 +36,26 @@ tikzlines = []
 tikzlines += [ r'\documentclass[tikz]{standalone}' ]
 tikzlines += [ r'\usepackage{tikz-feynman}'        ]
 tikzlines += [ r'\begin{document}'                 ]
+#tikzlines += [ r'\tikzfeynmanset{']
+#tikzlines += [ r'  every particle/.style={red},']
+#tikzlines += [ r'}' ]
 tikzlines += [ r'\feynmandiagram [layered layout, xscale=0.5] {' ]
 
-linetypes  = {'gamma':'photon','e+':'anti fermion','e-':'fermion'}
-linelabels = {'gamma':'\gamma','e+':'e^{+}'       ,'e-':'e^{-}'  }
+linetypes   = {'gamma':'photon', 'e+':'anti fermion'   , 'e-':'fermion'}
+linelabels  = {'gamma':'\gamma', 'e+':'e^{+}'          , 'e-':'e^{-}'  }
+labelcolors = {'gamma':'red'   , 'e+':'green!70!black' , 'e-':'blue'   }
 
 for i, p in enumerate(elist) :
+  ptype  = p['type']
+  ltype  = linetypes[ptype]
+  lcol   = labelcolors[ptype]
+  llabel = linelabels[ptype]
   if p['gen'] == 0 :
     tikzlines += [ '  alpha[particle=\(\gamma_o\)] -- [photon] a0,' ]
   elif p['gen'] == nlayers-1 :
-    tikzlines += [ '  a%d -- [%s] a%d[particle=\(%s\)] ,'   % ( p['parent'], linetypes[p['type']], i, linelabels[p['type']] ) ]
+    tikzlines += [ '  a%d -- [%s, %s] a%d[%s, particle=\(%s\)] ,' % ( p['parent'], lcol, ltype, i, lcol, llabel ) ]
   else :
-    tikzlines += [ '  a%d -- [%s, edge label=\(%s\)] a%d ,' % ( p['parent'], linetypes[p['type']], linelabels[p['type']], i ) ]
+    tikzlines += [ '  a%d -- [%s, %s, edge label=\(%s\)] a%d ,'   % ( p['parent'], lcol, ltype, llabel, i ) ]
 
 tikzlines += [ '};' ]
 tikzlines += [ '\end{document}' ]
