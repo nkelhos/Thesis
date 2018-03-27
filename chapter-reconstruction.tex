@@ -182,7 +182,7 @@ This database includes the width and length of the shower, how far away its core
   Add to this that during a single 30 minute observation, the elevation of the Galactic Center can change by several degrees.
   This means the airmass in view of the camera may change rapidly, resulting in IRFs that are time dependent.
 
-  To allow for the inclusion of this time dependence in the analysis, observing runs were broken up into smaller time {\color{red}chunks (try to find another word, chunks doesn't work well!??)}, and each time chunk had IRFs assigned to each chunk based on that chunk's position in the elevation/azimuth/night-sky-background-noise parameter space.
+  To allow for the inclusion of this time dependence in the analysis, observing runs were broken up into smaller temporal parts, and each time part had IRFs assigned to each chunk based on that chunk's position in the elevation/azimuth/night-sky-background-noise parameter space.
   There were minor issues with converting the IRFs, which are noted in the following sections.
 
   \FloatBarrier
@@ -207,7 +207,6 @@ This database includes the width and length of the shower, how far away its core
         Effective areas at different points in the Energy and Camera Offset parameter space for run 78128.
         Data is shown as the black points, indicating the position of some events from that run in the parameter space.
         The color axis indicates the Effective Area, calculated from simulations, at different gamma-ray energies and distances from the camera center.
-        {\color{red}Switch x-axis units to TeV, not log10(TeV)??}
       }
       \label{fig:effarea_paramspace}
     \end{figure}
@@ -269,7 +268,7 @@ This database includes the width and length of the shower, how far away its core
         The 68\% containment radius for the Energy/Offset parameter space for Sgr A* run 78128. 
         The green points are from data, showing a subset of the event locations from run 78128 in the parameter space.
         The color axis is the containment radius, calculated from simulations.
-        While events from all energies are shown, only events from \SIrange{4}{70}{\TeV} are used (see Section~\ref{sec:crab_analysis} {\color{red}(where is this section now!??)}).
+        While events from all energies are shown, only events from \SIrange{4}{70}{\TeV} are used (see Section~\ref{sec:crab_analysis}).
       }
       \label{fig:psf_paramspace}
     \end{figure}
@@ -278,7 +277,7 @@ This database includes the width and length of the shower, how far away its core
 
     \begin{figure}[ht]
       \centering
-      \includegraphics[width=0.85\textwidth]{images/psf_gc_eventhist/eventpsf.eps}
+      \includegraphics[width=0.85\textwidth]{images/psf_gc_eventhist/eventpsf.pdf}
       \caption[Crab and Galactic Center Event PSFs]{
         The 68\% containment radius for all Galactic Center and Crab Nebula events used in this analysis.
         {\color{red}why the long tail?? Large offset and low energy data?? -Gernot}
@@ -312,11 +311,9 @@ This database includes the width and length of the shower, how far away its core
       \includegraphics[width=0.65\textwidth]{images/ctools_background/background_construction.eps}
       \caption[CTOOLS Background Fine Energy Bins]{
         The V5 Background's fine energy bins.
-        The top plot shows the number of events in each fine energy bin.
-        The bottom plot shows the CTOOLS background values.
-        The black lines show the fits background value and energy bin width saved to the background file, while the blue line shows the background value after CTOOLS loads and interpolates those fits background values.
-        {\color{red}Please do not mention it as CTOOLS. Rather, write it in “physics language”, fit, background rate, etc. ?? -Orel}
-        {\color{red}X axis labels should be consistant!??}
+        The top plot shows the number of events in each fine energy bin from all background runs.
+        The bottom plot shows the background rate, the number of background events divided by the observation time, solid angle, and energy span.
+        The black lines show the background rate in each energy bin, while the blue line shows the used background rate after interpolation is applied.
       }
       \label{fig:background_profile}
     \end{figure}
@@ -359,7 +356,7 @@ This database includes the width and length of the shower, how far away its core
   \FloatBarrier
 
   \subsection{Energy Dispersion}\label{subsec:edisp}
-    As events are reconstructed imperfectly, it is important to understand what the distribution of true energies are for a given reconstructed energy.{\color{red}(Again, not sure, but perhaps the other way around?? -Orel)}{\color{red}(just remove all mentions of $f_{reco}$, its not necessary ??)}
+    As events are reconstructed imperfectly, it is important to understand what the distribution of reconstructed energies are for a given true energy.
     This \textit{dispersion in energy} is quantified by an energy migration matrix $E_{i,j}$, where $i$ denotes the $i^{\text{th}}$ reconstructed energy bin, and $j$ denotes the $j^{\text{th}}$ true energy bin.
     The energy migration matrix can be used to account for two significant effects.
     The first is that the reconstruction method introduces biases in the event energy, meaning an event at a given true energy can be reconstructed on average at a higher or lower energy.
@@ -547,6 +544,9 @@ This database includes the width and length of the shower, how far away its core
   
 
   \end{figure}
+  
+  {\color{red} Discuss how this can be used to calculate the 'detectable depth' of gamma rays in g/$\textrm{cm}^2$, and how this depth changes with energy??}
+  
   \FloatBarrier
 
   \subsection{Effect of Stars}

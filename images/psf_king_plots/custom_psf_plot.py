@@ -11,12 +11,12 @@ fname = 'psf_parameter_space.pdf'
 show_events = True
 
 frac    = 0.68
-thmin   = 0.0
+thmin   = 0.0001
 thmax   = 2.15
-thnbins = 70 # 100
+thnbins = 80
 enmin   = GEnergy(   1.5, 'TeV')
 enmax   = GEnergy( 150.0, 'TeV')
-ennbins = 70 # 100
+ennbins = 120
 
 thdelta = ( thmax - thmin ) / thnbins
 endelta = ( enmax.log10TeV() - enmin.log10TeV() ) / ennbins
@@ -27,22 +27,25 @@ for j in range(ennbins) :
   en = ( (j+0.5) * endelta ) + enmin.log10TeV()
   for i in range(thnbins) :
     th = ( ( (i+0.5) * thdelta ) + thmin ) * gammalib.deg2rad
-    #contain_rad = veripy.containment_radius( run, en, th, contain=frac, npts=200 ) 
     contain_rad = run.response().psf().containment_radius( frac, en, th )
     contain_rad *= gammalib.rad2deg 
     EN.append(  en                    )
     TH.append(  th * gammalib.rad2deg )
     PSF.append( contain_rad           )
 
+print('len(EN):',len(EN))
+
 # reshape our lists into pcolormesh-acceptable numpy arrays
-EN  = numpy.reshape( EN , (thnbins, ennbins) )
-TH  = numpy.reshape( TH , (thnbins, ennbins) )
-PSF = numpy.reshape( PSF, (thnbins, ennbins) )
+EN  = numpy.reshape( EN , (ennbins,thnbins) )
+TH  = numpy.reshape( TH , (ennbins,thnbins) )
+PSF = numpy.reshape( PSF, (ennbins,thnbins) )
+
+print('dim(EN):',EN.shape)
 
 # construct our plot
 fig = plt.figure(figsize=(10,5))
 ax  = fig.add_subplot( 1,1,1, adjustable='box', aspect=1.0 )
-im  = plt.pcolormesh( EN, TH, PSF, vmax=0.5, cmap=plt.get_cmap('jet')) #rainbow'))
+im  = plt.pcolormesh( EN, TH, PSF, vmax=0.5, cmap=plt.get_cmap('jet'), linewidth=0, rasterized=True )
 ax.set_aspect(0.6)
 cb  = fig.colorbar( im )
 
@@ -52,10 +55,6 @@ plt.title(   'PSF %d%% Containment Radius for Galactic Center Run %d' % ( int(fr
 plt.xlabel(  r'Event Energy [TeV]', fontsize=15 )
 plt.ylabel(  r'Angle from Camera Center [${}^{\circ}$]', fontsize=15 )
 plt.tick_params(axis='both', which='major', labelsize=15 )
-
-# fix the x and y axes limits
-plt.gca().set_xlim([enmin.log10TeV(), enmax.log10TeV()])
-plt.gca().set_ylim([thmin,thmax])
 
 # plot event positions if requested
 if show_events :
@@ -78,14 +77,11 @@ if show_events :
   plt.scatter( EN, OF, color='black', s=1 )
 
 xvals = [2,3,5,10,20,30,50,100]
-xticks = [ math.log10(x) for x in xvals ]
-xlabels = [ str(x) for x in xvals ]
-ax.set_xticks( xticks )
-ax.set_xticklabels( xlabels )
-#ax.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
+ax.set_xticks(      [ math.log10(x) for x in xvals ] )
+ax.set_xticklabels( [ str(x)        for x in xvals ] )
+plt.gca().set_xlim([enmin.log10TeV()+(endelta*0.5), enmax.log10TeV()-(endelta*0.5)])
+plt.gca().set_ylim([thmin           +(thdelta*0.5), thmax           -(thdelta*0.5)])
   
-#ifname = os.path.splitext(fname)[0]+'.pdf'
-plt.savefig( fname , bbox_inches='tight', dpi=150 )
-#cmd = 'convert %s %s' % ( ifname, fname )
-#os.system( cmd )
+plt.savefig( fname , bbox_inches='tight', dpi=300 )
+plt.savefig( os.path.splitext(fname)[0]+'.png' , bbox_inches='tight', dpi=300 )
 
