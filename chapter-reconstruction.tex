@@ -391,10 +391,9 @@ This database includes the width and length of the shower, how far away its core
   \FloatBarrier
 
 \section{Camera Studies}
-  The objective of this thesis is to put upper limits on the existance of a gamma-ray source that is both extended and faint.
-  {\color{red}(That is not the objective of the analysis though. The objective is to search for dark matter, not to admit defeat from the get go and aim at setting an upper limit.?? -Orel) (This sounds like you've already admitted defeat before the analysis started, your object should be to find dark matter, win a nobel prize!??)}
-  In order to better understand the effects that may impact the VERITAS camera behavior in the reconstruction method, several studies were performed.
-  {\color{red} You should connect between these two sentences, “because it is extended and faint, the background has to be determined with high precisions, etc.” ?? -Orel}
+  The objective of this thesis is search for dark matter via the existance of a gamma-ray halo that is both extended and faint.
+  The extension and faintness of the halo, plus the relativly large amount of noise near the Galactic Center, make it a priority for understanding how the VERITAS camera behaves in high-noise conditions.
+  In order to better understand the camera's behavior in the reconstruction method, several studies were performed.
 
   \subsection{Background Structure at the Low Energy Threshold}\label{subsec:bkgstructure}
     To produce background models, events were binned according to their energy, elevation, and camera x and y coordinates.
@@ -416,8 +415,9 @@ This database includes the width and length of the shower, how far away its core
       \centering
       \includegraphics[width=\textwidth]{images/ctools/backgrounds_highelev.eps}
       \caption[FITS Background at \ang{50} Elevation]{
-        Gamma-like Events from 52 observations (approximately \nicetilde20 hours) of M82, between \ang{50} and \ang{52} elevations.
+        Gamma-like events from 52 observations (approximately \nicetilde20 hours) of M82, between \ang{50} and \ang{52} elevations.
         Events in Figure A are divided into 3 equal-statistics energy bins, and binned in Camera Coordinates in Figures B, C, and D.
+        Notice the left-most bin (2\%-34\%) overlaps the peak (at -0.5) in the energy histogram by \nicetilde 30\% of its width, unlike in Figure~\ref{fig:back_lowelev29}.
       }
       \label{fig:back_highelev}
     \end{figure}
@@ -432,6 +432,7 @@ This database includes the width and length of the shower, how far away its core
       \caption[CTOOLS Background at \ang{29} Elevation]{
         15 Sagittarius A* Off runs (\nicetilde7.5 observation hours), between elevations $ \ang{27.5} $ and $ \ang{30} $.
         Events are divided into 6 equal-statistics energy bins, of which four are binned in Camera Coordinates in Figures B, C, D, and E.
+        Notice the left-most bin (from 2\% to 17\%) does not overlap the peak (at $\textrm{log}_{10}\left ( \textrm{TeV} \right ) \approx 0.3$, unlike in Figure~\ref{fig:back_highelev}.
       }
       \label{fig:back_lowelev29}
     \end{figure}
