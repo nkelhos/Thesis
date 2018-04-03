@@ -50,43 +50,34 @@
     The width of the distribution of the velocities is called the velocity dispersion.
     By looking at this velocity dispersion, the total mass of the dwarf galaxy can be inferred~\cite{dwarf_gal_vel_dispersion, dwarf_gal_vel_dispersion2}.
     What makes this possible is that the velocity dispersion of a group of stars is proportional to the total mass of the graviational well.
-    This can be seen by applying the virial theorem and Maxwell-Boltzmann statistics.
-    The virial theorem, Equation~\ref{eqn:virial}, states an n-body system in equilibrium will always have the same ratio of kinetic energy (KE) to potential energy (PE).
+    This can be seen by applying the virial theorem.
+    The virial theorem, Equation~\ref{eqn:virial}, states an n-body system in equilibrium will always have the same ratio of kinetic energy $T$ to potential energy $V$, as long as the gravitational potential is proportional to $r^-1$.
 
     \begin{equation}\label{eqn:virial}
-      2 \text{KE} = \text{PE}
+      T = \frac{V}{2}
     \end{equation}
 
+    The kinetic energy of a group of massive objects is Equation~\ref{eqn:kineticen}.
+    
+    \begin{equation}\label{eqn:kineticen}
+      T = \sum_i \frac{1}{2} m_i \left \langle v_i^2 \right \rangle = \frac{1}{2} M \left \langle v^2 \right \rangle
+    \end{equation}
+    
+    Where $m_i$ is the mass of each star, $v_i$ is the velocity of each star, $M$ is the total mass of all stars.
+    The same can be done with galaxies within a cluster as well, instead of stars within a galaxy.
+    The total potential energy is Equation~\ref{eqn:potentialen}.
+
+    \begin{equation}\label{eqn:potentialen}
+      V = ??
+    \end{equation}
+    % see: http://www.jb.man.ac.uk/~gp/PHYS_30392/12_CSM13_Density_of_the_Universe_II_b.pdf
+    
+    When Equations~\ref{eqn:virial,eqn:kineticen,eqn:potentialen} are combined, $M$ can be solved for, only as a function of the velocities{\color{red}(??)}.
+    \begin{equation}\label{eqn:virial_combined}
+      \frac{1}{2} M \left \langle v^2 \right \rangle = \frac{1}{2} ??
+    \end{equation}
+    
     Thus, by measuring stellar velocities and calculating the total kinetic energy of a group of stars, the potential energy can be calculated, which indicates the amount of mass present in the group.
-
-    % derivation from https://en.wikipedia.org/wiki/Maxwell%E2%80%93Boltzmann_distribution
-    Maxwell-Boltzmann statistics can also be used to measure the amount of mass in a system.
-    Using the Maxwell-Boltzmann distribution, the velocity probability density function is then Equation~\ref{eqn:mb_vel3d}:
-
-    \begin{equation}\label{eqn:mb_vel3d}
-      f_v(v_x,v_y,v_z)= \left ( \frac{m}{2\pi k T} \right ) ^ { \frac{3}{2} } \text{exp} \left [ - \frac{m \left ( v_x^2 + v_y^2 + v_z^2 \right )}{2 k T} \right ]
-    \end{equation}
-
-    where $m$ is the mass of the system, $k$ is the Boltzmann constant, and $T$ is the equilibrium temperature of the system {\color{red}(??)}.
-    
-    In one dimension, each velocity distribution is a normal distribution, described by Equation~\ref{eqn:mb_vel1d},
-
-    \begin{equation}\label{eqn:mb_vel1d}
-      f_v(v_i) = \sqrt{ \frac{m}{2\pi k T} } \text{exp} \left [ - \frac{m v_i^2}{2kT} \right ]
-    \end{equation}
-
-    where the mean velocity in each direction is $\mu_{v_i} = 0$ and the standard deviation is $\sigma_{v_i} = \sqrt{\frac{kT}{m}}$.
-    When these three dimensions are combined into a 3-dimensional normal distribution, the mean velocity vector is $\vec{\mu}_v = \vec{0}$, and its distribution has a width described by Equation~\ref{eqn:mb_sigma}:
-
-    \begin{equation}\label{eqn:mb_sigma}
-      \sigma_v = \sqrt{\frac{3kT}{m}}
-    \end{equation}
-
-    A Maxwell-Boltzmann distribution's most probable speed is $\left \langle v \right \rangle = \frac{2}{\sqrt{\pi}} \sqrt{\frac{2kT}{m}}$.
-    Therefore, measuring the mean speed and distribution of speeds of a group of stars can yield the total mass of the system, described by Equation (??).
-    {\color{red}(THIS MAXWELL STUFF IS WRONG, THE MASS $m$ CANCELS, NEEDS TO BE REDONE!??)}
-    
-    Thus, by measuring the distribution of star velocities and the average temperature of the system {\color{red}(what is temp T of the system??  does it come from $v_p$??  clean up this paragraph??)}, the total mass of a system can be calculated: $m = \frac{3kT}{\sigma^2}$.
     As stellar velocity measurements rely on doppler-shifted spectral lines, and not the star's absolute brightness, any derived mass estimates are fairly resistant to changes in observed brightness.
     These changes in brightness can be from atmospheric variations during telescope observations or changes in the amount of light-absorbing dust in the line-of-sight.
 
