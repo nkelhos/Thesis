@@ -21,11 +21,12 @@
 
 \section{Veritas Data}\label{veritasdata}
   The analysis in this thesis relies on three sets of VERITAS data.
-  One set are observations of the Crab Nebula, another of the Galactic Center, and a third set of a dark region \nicetilde\ang{5} away from the Galactic Center.
+  One set contains observations of the Crab Nebula, another of the Galactic Center.
+  A third set contains observations of a dark region \nicetilde\ang{5} away from the Galactic Center.
   This dark region is referred to as  Sgr A* Off, and is located at (l,b)=(\ang{357.3396}, \ang{3.9984}).
   Sgr A* Off is located a few degrees away to avoid the bright diffuse gamma-ray emission caused by the galactic plane.
   The Galactic Center and Sgr A* Off observation regions are shown in Figure~\ref{fig:gcfieldsofview}.
-  To quantify the detector efficiency, observations are taken at \ang{0.5} or \ang{0.7} offsets from each observing target, in four different directions (wobbles) along Right Ascension/Declination axes.
+  To quantify the detector efficiency, observations are taken at \ang{0.5} or \ang{0.7} offsets from each observing target, in four different directions (wobbles) along right ascension/declination axes.
 
   \begin{figure}[ht]
     \centering
@@ -34,7 +35,7 @@
       Fields of view for Galactic Center observations.
       Each circle marks the detection area of one telescope pointing.
       Green circles are Galactic Center observations, while dark blue circles are the Sgr A* Off observations used to construct the camera-background templates.
-      The light blue region is the galactic plane.
+      The light blue band is the galactic plane.
     }
     \label{fig:gcfieldsofview}
   \end{figure}
@@ -79,30 +80,30 @@
   {\color{red}(find weather quality cuts citation!?? -Orel)}
   % see Bird 2015 thesis pg 55
 
-  Because VERITAS epoch has a different hardware configuration, each epoch has its own separate set of effective areas, point spread functions, energy migration matricies, and camera background models.
+  Because each VERITAS epoch has a different hardware configuration, they also each have their own separate set of effective areas, point spread functions, energy migration matricies, and camera background models.
   In addition, specific IRFs were calculated for additional data dimensions, including the frequency of night sky background photons in the camera, the telescope elevation, the event energy, and each event's distance from the camera center.
   
   After this data is collected, it is used in a likelihood analysis, detailed in the next section.
 
 \section{Likelihood Ratio Test}\label{sec:likeratio}
-  The likelihood ratio test determines which of two model groups is a statistically better fit to some data.
+  A likelihood ratio test determines which of two model groups is a statistically better fit to a set of data.
   It is performed by calculating, for a group of events, the likelihood of detecting that group of events with each of two model groups.
   Once the likelhood is calculated, then the parameters of the model are varied until the maximum likelihood is found for each model.
-  These two maximum likelihoods can then be used to calculate the Test Statistic, which determines which model is statistically favored, and to what degree it is favored.
+  These two maximum likelihoods can then be used to calculate the test statistic (TS), which determines which model is statistically favored, and to what degree it is favored.
   
   \subsection{Likelihood Calculation}
   At its heart, a likelihood is a product of probabilities.
   With two events, the likelihood is $(\textrm{probability that event 1 happens})\times(\textrm{probability that event 2 happens})$.
   In a counting experiment like VERITAS, the likelihood $\Like$ is determined via poissonian statistics, shown in Equation~~\ref{eqn:simple_like}.
-  In it, $n$ is the number of observed events, and $m$ is the number of events a model group predicts.
+  In this equation, $n$ is the number of observed events, and $m$ is the number of events a model group predicts.
   
   \begin{equation}\label{eqn:simple_like}
     \Like = \frac{e^{-m} m^n}{n!}
   \end{equation}
   
   For increased statistical power, the VERITAS data can be split into bins in energy, galactic l and b, and time.
-  When combining multiple bins ordered by index $j$, each bin's likelihood is multiplied together as in Equation~\ref{eqn:simple_like_2}.
-  These could be bins in sky position, energy, or time, or any combination of the three.
+  When combining multiple bins arbitrarily ordered by index $j$, each bin's likelihood is multiplied together as in Equation~\ref{eqn:simple_like_2}.
+  These could be bins of events in sky position, energy, time, or other event parameters, or any combination of these parameters.
   Future likelihood calculations may also include shower core position on the ground, or distance to the shower, or other observables.
   
   \begin{equation}\label{eqn:simple_like_2}
@@ -111,8 +112,8 @@
 
   Equation~\ref{eqn:simple_like_2} is a general formula for calculating a binned likelihood of poissonian events.
   As events are grouped by bins, some information is lost, which generally results in a less powerful ratio test.
-  The above result can be expanded into an unbinned likelihood through the following derivation.
-  First, Equation~\ref{eqn:simple_like_2} can be rearrainged:
+  The result in Equation~\ref{eqn:simple_like_2} can be expanded into an unbinned likelihood through the following derivation.
+  First, Equation~\ref{eqn:simple_like_2} can be rearranged:
   
   \begin{equation}\label{eqn:simple_like_3}
     \Like = \prod_j e^{-m_j} \prod_j \frac{m_j^{n_j}}{n_{j}!}
@@ -155,13 +156,13 @@
   \end{equation}
   
   This is possible because both $\Like$ and $\LogLike$ are both strictly increasing functions, so the maximum of both will be at the same position in the parameter space.
-  The log likelihood for a group of bins is then:
+  The log-likelihood for a group of bins is then:
   
   \begin{equation}\label{eqn:simple_like_7}
     \LogLike = \textrm{log} \left ( e^{- \sum_j m_j} \prod_i m_i \right ) = - \sum_j m_j + \sum_i \textrm{log} \left ( m_i \right )
   \end{equation}
   
-  When the bin size is infinitly small, $m_i$ becomes the value of the probability density function (of all models combined) at the position of the event, $P_i$, as in Equation~\ref{eqn:simple_like_8}.
+  When the bin size is infinitely small, $m_i$ becomes the value of the probability density function (of all models combined) at the position of the event, $P_i$, as in Equation~\ref{eqn:simple_like_8}.
   
   \begin{equation}\label{eqn:simple_like_8}
     \LogLike = \textrm{log} \left ( e^{- \sum_j m_j} \prod_i m_i \right ) = - \sum_j m_j + \sum_i \textrm{log} \left ( P_i \right )
@@ -170,11 +171,11 @@
   {\color{red}(how does log($m_i$) become $P_i$ in arxiv ctools equation (1)?? infinitly small bin size?? )}
   {\color{red}(describe $P_i$ earlier, or transition from $m_i$ to $P_i$ right after $m_i$ is defined)}
 
-  Equation~\ref{eqn:simple_like_8} is how the unbinned log-likelihood used in this analysis is calculated.
+  The unbinned Equation~\ref{eqn:simple_like_8} is how the log-likelihood is calculated in this analysis.
   The sum over $m_j$ can be interpreted as the total number of events predicted by all models, sometimes referred to as $N_{pred}$.
-  The reader should note however, that while a binned likelihood calculation scales with the number of bins (and some lost information), the unbinned likelihood calculation scales with the number of events, which can lead to large likelihood maximization times (see later in this section).
+  Please note however, that while a binned likelihood calculation scales with the number of bins (and some lost information), the unbinned likelihood calculation scales with the number of events, which can lead to large likelihood maximization times (see later in this section).
   
-  \subsection{Models}
+  \subsection{Models}\label{sec:model_irf_folding}
   
   Models are used in a likelihood analysis to predict the number of events that a particular source deposits into a particular bin.
   In a likelihood analysis, each source of events gets its own model.
@@ -183,27 +184,27 @@
   This function can be integrated over the energy, sky, and time region covered by a bin to calcuate the number of events predicted in that bin, as shown by Equation~\ref{eqn:model_int}.
   
   \begin{equation}\label{eqn:model_int}
-    m_{i \, \textrm{or} \, j} = \int_{t\,\textrm{bin}} \int_{E\,\textrm{bin}} \int_{b\,\textrm{bin}} \int_{l\,\textrm{bin}} M(l,b,E,t)\; dl \, db \, dE \, dt
+    m_{i \, \textrm{or} \, j} = \int_{t\,\textrm{bin}} \int_{E\,\textrm{bin}} \int_{b\,\textrm{bin}} \int_{l\,\textrm{bin}} M(l,b,E,t)\; dl \; db \; dE \; dt
   \end{equation}
   
   In this equation, $l$ and $b$ are sky coordinates, $E$ is energy, and $t$ is time.
   The basic models used in this analysis can be broken apart into their spatial, spectral, and temporal components, as in Equation~\ref{eqn:modelparts}.
 
   \begin{equation}\label{eqn:modelparts}
-    M(l,b,E,t) = M_s(l,b,E,t) * M_e(l,b,E,t) * M_t(l,b,E,t)
+    M(l,b,E,t) = M_s(l,b,E,t) \; \times \; M_e(l,b,E,t) \; \times \; M_t(l,b,E,t)
   \end{equation}
   
-  For this thesis, the sources being modeled are either constant in flux, or in equilibrium, so time-dependent effects are ignored by setting $M_t() = 1$.
+  For this thesis, the sources being modeled are either constant in flux, or in equilibrium, so time-dependent effects are ignored by setting $M_t(...) = 1$.
 
   For a basic point source, the spatial model function $M_s$ is shown in Equation~\ref{eqn:pntsrc_Ms}.
 
   \begin{equation}\label{eqn:pntsrc_Ms}
-    M_{s,\textrm{pnt}}(l,b,E,t) = \lim_{a\to\infty} \frac{1}{ \abs{a} \sqrt{\pi} } e^{ - \left ( \sqrt{ (l-l_o)^2 + (b-b_o)^2 }/a \right )^2 }
+    M_{s,\textrm{point}}(l,b,E,t) = \lim_{a\to\infty} \frac{1}{ \abs{a} \sqrt{\pi} } e^{ - \left ( \sqrt{ (l-l_o)^2 + (b-b_o)^2 }/a \right )^2 }
   \end{equation}
   
   In this equation, $l_o$ and $b_o$ specify the position of the point source in Galactic sky coordinates, which can be model parameters.
   More complex $M_s$ functions may have the spatial structure also depend on energy $E$ or time $t$, or may take on other spatial shapes like an ellipse or a radially-symmetric profile.
-  For a basic power law, the spectral model function $M_e$ is shown in Equation~\ref{eqn:powerlaw_Me}.
+  {\color{red}For a basic power law (reword?? -parents)}, the spectral model function $M_e$ is shown in Equation~\ref{eqn:powerlaw_Me}.
   
   \begin{equation}\label{eqn:powerlaw_Me}
     M_{e,\textrm{powerlaw}}(l,b,E,t) = N_o \left ( \frac{E}{E_o} \right )^{-\gamma}
@@ -216,7 +217,7 @@
   The average number of counts predicted by a model is calculated by integrating over the entire energy, sky, and time regions in the analysis.
   Because the reconstruction method is not perfect, all events from the astrophysical models are diffused according to the PSF and Energy Dispersion.
   Another way of understanding this is that if a source is located in some sky bin $j$, events from that source can be reconstructed in neighboring bins $j+1$ and $j-1$, increasing the predicted number of events in those bins and decreasing the number of events in bin $j$, as determined by the PSF.
-  This dispersion is shown in Figure~\ref{fig:responsedispersion}.
+  This dispersion is illustrated in Figure~\ref{fig:responsedispersion}.
   Similarly, energy dispersion will diffuse events out among neighboring energy bins as well.
   
   \begin{figure}[h]
@@ -230,9 +231,10 @@
     \label{fig:responsedispersion}
   \end{figure}
   
-  This leads to the need to define two separate coordinate systems, $\xtrue$ and $\xdet$.
+  This leads to the need to define two distinct coordinate systems, $\xtrue$ and $\xdet$.
   $\xtrue$ is a coordinate in true space (galactic $\ltrue$ and $\btrue$, energy $\Etrue$, and time $\ttrue$) space, \textit{before} folding is applied.
-  On the other hand, $\xdet$ is the coordinate in reconstructed detector space ($\ldet$ and $\bdet$, $\Edet$, and $\tdet$), \textit{after} folding is applied.
+  Alternatively, $\xdet$ is the coordinate in reconstructed detector space ($\ldet$ and $\bdet$, $\Edet$, and $\tdet$), \textit{after} folding is applied.
+  Another way this can be thought of is that $\xtrue$ is the physical coordinates for events \textit{before} they reach Earth's atmosphere, and $\xdet$ is \textit{after} the events have been reconstructed.
   Equation~\ref{eqn:folding} shows this integration.
   
   \begin{equation}\label{eqn:folding}
@@ -265,7 +267,7 @@
   \end{equation}
 
   In Equation~\ref{eqn:combinemodels}, index $k$ loops over the various models that contribute events to a particular bin.
-  $m_k$ is number of counts predicted by model $k$, at the position of event $i$ or bin $j$.
+  The factor $m_k$ represents the number of counts predicted by model $k$, at the position of event $i$ or bin $j$.
   
   In order to calculate a test statistic, the models must be grouped into two sets, called hypotheses.
   For a basic analysis, the null hypothesis consists of all models, except the one in particular being searched for, called here $\Mnull$.
@@ -281,8 +283,8 @@
   Each camera background model has a base template multiplied by a power law.
   Each power law has two parameters, a normalization and a spectral index, so the background camera models have the parameters $N_1$, $N_2$, $N_3$, $\gamma_1$, $\gamma_2$, and $\gamma_3$.
   The Crab Nebula point source power law also has normalization and spectral index parameters $N_c$ and $\gamma_c$.
-  The Crab Nebula model also has its location parameters $l_c$ and $b_c$, but since these are fixed in this example (and thesis), the likelihood maximization won't try to vary them.
-  Then this alternate hypothesis would have 8 free parameters, $N_1$, $N_2$, $N_3$, $N_c$, $\gamma_1$, $\gamma_2$, $\gamma_3$, and $\gamma_c$.
+  The Crab Nebula model also has its location parameters $l_c$ and $b_c$, but since these are fixed in this example (and thesis), the likelihood maximization can't vary them.
+  Therefore this alternate hypothesis would have 8 free parameters, $N_1$, $N_2$, $N_3$, $N_c$, $\gamma_1$, $\gamma_2$, $\gamma_3$, and $\gamma_c$.
   For calculating the test statistic for the presence of the Crab Nebula, the null hypothesis is just the camera background models, with 6 free parameters $N_1$, $N_2$, $N_3$, $\gamma_1$, $\gamma_2$, and $\gamma_3$.
   
   When finding the maximum likelihood for each hypothesis, these free parameters are incrementally varied, and the likelihood is recalculated, repeated until a maximum likelihood is reached.
@@ -291,7 +293,7 @@
   
   \subsection{Test Statistic Calculation}
   
-  For searching for the presence of a source, the Test Statistic (TS) determines how favorable the alternate hypothesis is compared to the null hypothesis.
+  In order to search for the presence of a source, the test statistic (TS) determines how favorable the alternate hypothesis is compared to the null hypothesis.
   Once the maximum likelihood $\LogLike_{\textrm{max}}$ is found for these two hypotheses, the TS can be calculated with Equation~\ref{eqn:tscalc}.
   
   \begin{equation}\label{eqn:tscalc}
@@ -313,7 +315,7 @@
   Background models are produced by binning observation sources with weak or no gamma-ray emission.
   For this low-elevation analysis the observations of the dark region Sgr A* Off, described in Section~\ref{veritasdata}, were used to build these backgrounds.
   These dark region events were then binned into background models, using the method described in Section~\ref{background_production}.
-  To account for the difference between the V5 and V6 observatory configurations, the background observations are divided up based on their epoch, producing a unique background template for each epoch.
+  To account for the difference between the V5 and V6 observatory configurations, the background observations are divided up based on their VERITAS hardware epoch, producing a unique background template for each epoch.
   These background templates only depend on the radial distance from the camera center and the event energy.
   {\color{red}(Explicitly say that these background templates are used in both the crab analysis and the GC, and mention why this decently motivated (and ok to do) (normal background for point sources are made by subtracting the source and binning radially ??)}
 
@@ -336,24 +338,25 @@
     \label{fig:crab_skymap}
   \end{figure}
   
-  The Crab was modeled by a point source with the simple power law spectrum in Equation~\ref{eqn:crab_model}, both of which are discussed in Section~\ref{subsec:likemax}.
+  The Crab was modeled by a point source with the simple power law spectrum in Equation~\ref{eqn:crab_model}.
+  These spatial and spectral shapes are both discussed in Section~\ref{subsec:likemax}.
 
   \begin{equation}\label{eqn:crab_model}
     M(\xtrue) = M_{s,\textrm{powerlaw}}(\xtrue) * M_{e,\textrm{point}}(\xtrue) = N_o \left ( \frac{\Etrue}{E_o} \right )^{-\gamma} * \lim_{a\to\infty} \frac{1}{ \abs{a} \sqrt{\pi} } e^{ - \left ( \sqrt{ (\ltrue-l_c)^2 + (\btrue-b_c)^2 }/a \right )^2 }
   \end{equation}
 
   The sky position of the point source is fixed to the Crab Nebula, $(l_c,b_c) = (\ang{184.557600},\ang{-5.784180})$.
-  The pivot energy $E_o$ of its spectrum was fixed to \SI{16.73}{TeV}, while the normalization $N_o$ and the spectral index $\gamma$ were free to vary during the likelihood optimization.
+  The pivot energy $E_o$ of its spectrum was fixed at \SI{16.73}{TeV}, while the normalization $N_o$ and the spectral index $\gamma$ are free to vary during the likelihood optimization.
   Only events between \SIrange{4}{70}{TeV} are used in this test analysis.
   At an elevation of \ang{25}, the reconstruction method is able to reconstruct events as low as \SI{1.5}{TeV}.
   Below \SI{4}{TeV} however, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region may not be accurate.
   Part of this decrease is explored in Section~\ref{subsec:bkgstructure} (see Figures \ref{fig:bkgvsel_crab} and \ref{fig:bkgvsel_sgra}), but accounting for this requires an unfeasibly large set of simulations.
-  At higher energies, simulations become too computationally expensive above \SI{200}{TeV} when attempting to calculate IRFs.
-  In order to ensure there were enough simulations to properly populate the high-energy end of the IRFs, the analysis was limited to a maximum event energy of \SI{70}{TeV}.
+  At energies above \SI{200}{TeV}, simulations become too computationally expensive when attempting to calculate IRFs.
+  In order to ensure there are enough simulations to properly populate the high-energy end of the IRFs, the analysis was limited to a maximum event energy of \SI{70}{TeV}.
     
   % values from nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/crab_test/logs/statistics.txt
-  After fitting all model parameters to the events from \SIrange{4}{70}{TeV}, the best fit power law values were $ N_o = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a Test Statistic of 408.8, corresponding to \nicetilde{}\SI{20}{$\sigma$}.
-  As the alternate Crab Nebula hypothesis has 110 free parameters, and the no-Crab-Nebula (null) hypothesis has 108 free parameters, the Test Statistic has $ 110 - 108 = 2 $ degrees of freedom.
+  After fitting all model parameters to the events from \SIrange{4}{70}{TeV}, the best fit power law values were $ N_o = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a test statistic of 408.8, corresponding to \nicetilde{}\SI{20}{$\sigma$}.
+  As the alternate Crab Nebula hypothesis has 110 free parameters, and the no-Crab-Nebula (null) hypothesis has 108 free parameters, the test statistic has $ 110 - 108 = 2 $ degrees of freedom.
   
   In the standard VERITAS Eventdisplay analysis, the Crab Nebula is found to have a point source significance of \SI{21.3}{$\sigma$}.
   {\color{red}Check if they use same or different energy ranges??}
@@ -399,7 +402,7 @@
     }
     \caption[Crab Profile along Galactic l]
     {
-      The number of counts along a \ang{0.16}-wide-slice through the Crab along the galactic l axis ($\ldet$ coordinate space).
+      The number of counts along a \ang{0.16}-wide-slice \ang{0.5} North of the Crab, along the galactic l axis ($\ldet$ coordinate space).
       Blue points are the number of observed counts, with poissonian error bars.
       The green histogram bars are the number of counts predicted by all models.
       Purple histogram bars are the number of counts predicted by only the camera-background models.
@@ -457,7 +460,8 @@
       This slice doesn't go through the Crab, but instead \ang{1} higher in galactic b.
       As this doesn't include the Crab, this plot primarily demonstrates the camera background modeling.
       Blue points are the number of observed counts, with poissonian error bars.
-      The green histogram bars are the number of counts predicted by all models (not visible as the astrophysical Crab Nebula model doesn't contribute any amount of counts in this offset slice).
+      The green histogram bars are the number of counts predicted by all models.
+      As the Crab Nebula doesn't contribute any events \ang{1} to the North, the green histogram bars are identical (and behind) the purple histogram bars.
       Purple histogram bars are the number of counts predicted by only the camera-background models.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
     }
