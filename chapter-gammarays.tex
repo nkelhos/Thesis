@@ -51,8 +51,8 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
     \end{figure}
 
     In Collider searches, $ss \rightarrow \chi\chi$, standard model particles ($ss$) are accelerated into each other within a detector, and the resulting particle fragments are measured by a slew of measuring equipment.
-    {\color{red}Since the properties of the input accelerated particles are well known and the (?? this is not entirely true, the interior quarks and gluons can have different momentums, sentence should be more precise -Orel)} output fragment particles are well measured, searching for any break from {\color{red}conservation laws (?? The break from conservation laws does not yield dark matter particles. It can be used to search for them. Maybe ''suggest dark matter particles production``? --Orel)} may yield dark matter particles. {\color{red}(Sentence is fragmented, needs fixing)}
-    {\color{red}This method has previously allowed for the discovery of many other new particles (?? Not accurate, most of these particles were detected directly through the particles they decayed to (like the higgs decaying to two photons). Dark matter would manifest as missing momentum since we cannot see the particles it decays to. -Orel)}, including the gluon in 1979~\cite{gluon_discovery}, the W and Z bosons in 1983~\cite{WZ_discovery1,WZ_discovery2}, the top quark in 1995~\cite{top_discovery}, the tau neutrino in 2000~\cite{tau_neutrino_discovery}, and the higgs boson in 2012~\cite{Higgs_ATLAS,Higgs_CMS}.
+    Since the initial particles are accelerated to known energies, and the output fragment particles are well measured, searching for any break from conservation laws may yield dark matter particles. 
+    %{\color{red}This method has previously allowed for the discovery of many other new particles (?? Not accurate, most of these particles were detected directly through the particles they decayed to (like the higgs decaying to two photons). Dark matter would manifest as missing momentum since we cannot see the particles it decays to. -Orel)}, including the gluon in 1979~\cite{gluon_discovery}, the W and Z bosons in 1983~\cite{WZ_discovery1,WZ_discovery2}, the top quark in 1995~\cite{top_discovery}, the tau neutrino in 2000~\cite{tau_neutrino_discovery}, and the higgs boson in 2012~\cite{Higgs_ATLAS,Higgs_CMS}.
 
     For Direct searches, $\chi s \rightarrow \chi s$, sensitive particle detectors are built deep underground, where a dark matter particle impacting against an electron or nuclei creates a detectable recoil.
     This recoil can cause a detectable charge, an increase in temperature, an acoustic vibration, or a visual reaction like a photon or a gas bubble in a liquid, so detectors are built to measure some of these effects.
@@ -101,6 +101,8 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
     WIMPs may annihilate into any standard model particle-antiparticle pair, but most studies examine a WIMP annihilating into a quark-antiquark pair, or a pair of gamma-ray photons.
 
     For example, two annihilating WIMPs may produce a $t\bar{t}$ pair, which then decays into... {\color{red}(?? The top decays to Wb 99.9\% of the time. -Orel)}.
+    {\color{red}(Where is this stated?? all I can find is $t\bar{t} \rightarrow W^{+}bW^{-}\bar{b}$ ??)}
+    % see http://pdg.lbl.gov/2017/reviews/rpp2017-rev-top-quark.pdf
     Or, they may produce $b\bar{b}$, or $\gamma\gamma$.
 
     These different annihilations will produce different spectra of final gamma rays.
@@ -150,7 +152,7 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
     
     In this equation, the photon flux $\Phi$ is the number of gamma rays detected per $\textrm{area}\times\textrm{time}$.
     The velocity-averaged cross-section of the dark matter candidate is $\left \langle \sigma v \right \rangle$.
-    Velocity-averaging is used because the cross-section is velocity dependent, and the WIMPs that pass through a volume of space will have a distribution of velocities {\color{red}(cite??)}.
+    Velocity-averaging is used because the cross-section is velocity dependent, and the WIMPs that pass through a volume of space will have a distribution of velocities~\cite{wimp_veldist}.
     Sometimes, part of Equation~\ref{eqn:dmflux} is calculated separately, as in Equation~\ref{eqn:jfactor}, and is referred to as the $J$ factor.
 
     \begin{equation}\label{eqn:jfactor}
@@ -218,9 +220,10 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
   When the primary is a gamma ray or a charged lepton, it creates an electromagnetic shower.
   Electromagnetic showers produce a cascade of $e^{\pm}$s and $\gamma$'s, where each successive generation of particles tends to have more particles but less energy per particle than the last.
   To start the shower, the primary gamma ray will interact with an atmospheric atom, producing an $e^{-}e^{+}$ pair, each with roughly half the primary gamma ray's energy, as shown in Figure~\ref{fig:emcascade}.
-  The $e^{-}$ and $e^{+}$ may emit some photons as bremstrahlung radiation, and then {\color{red}collide with other atmospheric atoms to produce more $e^{-}e^{+}$ pairs (?? The photons are the ones which produce more e+e- pairs -Orel)}.
+  The $e^{-}$ and $e^{+}$ emit bremstrahlung and cherenkov photons.
+  The higher-energy bremstrahlung photons then pair produce $e^{-}e^{+}$, which go on to produce more bremstrahlung and cherenkov photons.
   As each newly created particle has less energy than its parent particle, eventually the particles in the shower don't have enough energy to produce additional child-particles.
-  This occurs when electrons have around \SI{80}{MeV} of kinetic energy, where they rapidly lose energy to ionization~\cite{pdg_2014}.
+  As a further energy loss, when electrons have around \SI{80}{MeV} of kinetic energy, they also rapidly lose energy to ionization~\cite{pdg_2014}.
 
   %\begin{figure}[ht]
   %  \centering

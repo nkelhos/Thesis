@@ -89,10 +89,6 @@ To combat this, they are cleaned and recoated every two years.
 Each mirror is attached to the support structure via three adjustable mounting points, allowing for adjustment of the mirror orientation to point directly at the camera, as detailed in~\cite{mirroralign}.
 This alignment is measured and adjusted at regular intervals, using background stars as a calibration source.
 
-Understanding these 
-High quality mirror reflectivity contr
-{\color{red}(Why is the PSF so important for your thesis?? -Gernot)}
-
 \subsection{Star Point Spread Function}
 
 Due to dust, minor imperfections in the surface of the mirrors, and small mirror misalignments, the photons that bounce off the mirrors are not reflected perfectly.
@@ -111,6 +107,9 @@ The OPSF is roughly gaussian-shaped but with longer tails and a $ \ang{0.06} $ f
   \label{fig:mirrorpolaris}
 \end{figure}
 
+This point spread function is important, because it determines how accurately cherenkov showers are imaged.
+A larger star point spread function means cherenkov images are blurred out, which adds to the gamma-ray point spread function, discussed in Chapter~\ref{ch:grrecon}.
+A larger gamma-ray point spread function then blurs out each gamma-ray emitter, making them harder to distinguish from one another.
 
 
 \subsection{Mirror Alignment}
