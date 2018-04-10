@@ -124,7 +124,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
     {\color{red} profile plot of the true/BDT disp vs true disp, with 68\% containment errorbars, and talk about it in the text! is there a bias? at what disps? }
 
     The small improvement in the position reconstruction due to the \disp{} method can be seen in Figure~\ref{fig:disp_event_offset}.
-    With the Geometric (red) events, more are concentrated further from the point source, while with the {\color{red}Disp (capitolization??)} method, a few more are concentrated at the source itself.
+    With the Geometric (red) events, more are concentrated further from the point source, while with the \disp{} method, a few more are concentrated at the source itself.
     
     {\color{red}Again, you need to be more specific. First, it is important to note this is data, it's always good to ''brag`` that your reconstruction method is tested on data.  Second, you need to discuss the actual resolution obtained with both methods and state the improvement achieved with DISP. I think the RMS might be a better test of this and anyway the mean would be too affected by the tail. In fact I think the quantiles are better?? -Orel}
     
@@ -154,36 +154,28 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
 \section{Energy Reconstruction}\label{subsec:enrecon}
   To reconstruct the energy of each shower, a lookup table of simulated showers is built.
 This database includes the width and length of the shower, how far away its core position is, how bright it was, as well as its reconstructed and true energy.
-  By scanning through this database for showers that are similar to the one being constructed, the most similar-looking shower then indicates the true energy {\color{red} (is there any interpolation?? -Orel?? ask gernot)}.
+  By searching through this database for showers that are similar to the one being constructed, the most similar-looking shower then indicates the true energy {\color{red} (is there any interpolation?? -Orel?? ask gernot)}.
 
 
 \section{FITS Conversion for Gammalib and CTOOLs}\label{fitsconversion}
-  Once gamma rays have been reconstructed with Eventdisplay, they must be converted to a FITS file format compatible with Gammalib and CTOOLS.
-  This format consists of a FITS file with an event list table, containing each gamma ray, its energy, sky direction, and time.
-  This also includes meta information about the event list like the telescope's pointing target and the start and end times of the event list.
-  This FITS file can then be read into Gammalib and CTOOLS~\cite{gammalibctools}.
-
-  In addition to the event list, the instrument response functions (IRFs) must also be imported into Gammalib and CTOOLS.
+  Once gamma rays have been reconstructed with Eventdisplay, they must be exported to Gammalib and CTOOLS~\cite{gammalibctools}.
+  This involves converting the event list and instrument response functions (IRFs) to a FITS file format.
   These IRFs consist of the effective areas, the point spread functions, the background models, and the energy dispersion.
   The effective area quantifies the total gamma-ray collection area of the observatory, needed for spectral measurements, and is described in Section~\ref{subsec:effarea}.
   The point spread function (PSF) quantifies the distribution of reconstructed positions for a given true position, which is needed for modeling point sources and extended spatial structures.
   This is described further in Section~\ref{subsec:psf}.
   The background models measure the relative number of observed events in different parts of the camera, and their construction is described in Section~\ref{background_production}.
   The energy dispersion quantifies the distribution of reconstructed energies for a given true energy, and is discussed in Section~\ref{subsec:edisp}.
+  
+  During the export, several decisions are baked into the event lists and IRFs.
+  As this thesis revolves around an analysis at an elevation of \nicetilde{}\ang{30}, the IRFs may rapidly change.
+  At this elevation, with VERITAS's field of view of \ang{3.5}, the airmass column density ($g/cm^{2}$) is 20\% higher at the bottom of the camera than at the top.
+  Combined with the fact that a observing target can move several degrees over one observation, this means the airmass can change by 10's of percent over a single 30-minute observation.
+  This changing atmosphere would mean the IRFs at the beginning of an observation may be measurably different than at the end of an observation.
 
-  Each of these IRFs vary in a parameter space with several dimensions, including event energy, reconstructed distance from the camera center, telescope elevation and azimuth, and night sky background noise.
-  In CTOOLS' default configuration, all IRFs are stored in a single directory of files, and each event list contains a filepath reference to indicate which volume of the parameter space it uses.
-  Once each volume is loaded, individual events can then interpolate their specific effective area, PSF, and energy dispersion (the backgrounds are utilized differently, as discussed in Section~\ref{background_production}).
-  {\color{red}All of this information from 5.5 to 5.5.1 on data format and dividing runs to smaller chunks etc. has to be rewritten from the physical point of view and all of the computational references should be removed. I know it sounds weird, but the computational details are of no interest. What's important is the fact you divided your data into smaller bins in order to avoid large changes within each bin.  We can discuss this of course. -Orel??}
-
-  {\color{red}(This paragraph just kind of starts here, theres no transition from the previous paragraph!??)}
-  However, the Galactic Center is at an elevation of \ang{30}, much lower than most VERITAS observation targets.
-  At this elevation, with its field of view of \ang{3.5}, the airmass column density ($g/cm^{2}$) is 20\% higher at the bottom of the camera than at the top.
-  Add to this that during a single 30 minute observation, the elevation of the Galactic Center can change by several degrees.
-  This means the airmass in view of the camera may change rapidly, resulting in IRFs that are time dependent.
-
-  To allow for the inclusion of this time dependence in the analysis, observing runs were broken up into smaller temporal parts, and each time part had IRFs assigned to each chunk based on that chunk's position in the elevation/azimuth/night-sky-background-noise parameter space.
-  There were minor issues with converting the IRFs, which are noted in the following sections.
+  To reduce the impact of this, observations are broken up into 8-minute-long parts.
+  For each of these 8 minute parts, IRFs are exported alongside the observation.
+  A part's average elevation, azimuth, and night sky background rate are used to select the best-matching IRFs for that part.
 
   \FloatBarrier
   
@@ -523,30 +515,21 @@ This database includes the width and length of the shower, how far away its core
 
     This striking effect can be seen in the Galactic Center data in Figure~\ref{fig:bkgvsel_sgra}.
     These structures, and their strong dependency on both the energy and elevation of the telescopes may be a large factor in why the low-energy threshold regime of gamma-ray telescopes is poorly understood.
-    Incorporating this effect into the instrument response functions would require modifying Eventdisplay and CTOOLS, as well as creating another batch of diffuse simulations with elevation increments smaller than \ang{5}, all of which are computationally expensive.
-    {\color{red}It is good to explain that this is a global issue and even suggest how it can be fixed generally for VERITAS, but do not mention the software packages or computationally expensive. Instead, write something like “background templates are needed for the different bins” and that it is beyond the scope of this analysis (or that it was not performed due to time constraints). ?? -Orel}
-    {\color{red}(Since there isn't enough background runs to make properly elevation and energy dependent background models (see significance skymap in chapter 6), This should be phrased as "More data is needed to properly populate the increased number of bins." ??)}
+    Incorporating this effect into the instrument response functions would require creating another batch of diffuse simulations with elevation increments smaller than \ang{5}, and calculating instrument IRFs at these finer elevation increments, and at different camera x, camera y, and energy points in the parameter space, all of which are computationally expensive.
+    An alternative solution might be to assemble templates for the camera backgrounds.
+    These templates can utilize observations at different elevations to quantify how the template shape changes, and can be built for custom time windows, including accounting for the effects of stars and disabled pixels, which are discussed in the next subsection.
+    However, due to time constraints these templates were not constructed.
+    
+    A secondary effect of the previously mentioned diffuse simulations may be that the effective area and energy dispersion IRFs may become more accurate.
+    Currently, IRFs are calculated by simulating gamma rays in the atmosphere at a single elevation and azimuth, and then wobbling the cameras away from these events by a fixed angle $W$, typically from \SIrange{0.25}{2.0}\degree.
+    This wobbling is done randomly, to sample various parts of the camera evenly.
+    This means that the calculated effective area and energy dispersion are averages over a ring of radius $W$ around the camera center.
+    The above affect in the previous paragraphs shows that at a fixed elevation, different parts of the camera posess different background rates.
+    This implies that the effective areas of the background protons and electrons change with respect to camera x and camera y.
+    Since this is an effect of the atmosphere's changing depth, this hints that the \textit{gamma-ray} effective areas also change with respect to camera x and camera y.
+    And, since different parts of the camera are sensitive to different energies (due to the changing atmosphere), using diffuse simulations in different parts of the camera may improve the accuracy energy dispersion as well.
+    This improved energy dispersion could, for example, be used to more precisely determine the falloff energy of a gamma-ray source's energy spectrum, or potentially reduce the systematic uncertainty in the gamma-ray energy reconstruction.
   
-  
-  {\color{red}(discuss figure \ref{fig:bkg_diagram} more!??)}
-
-  \begin{figure}[ht]
-    \centering
-    \includegraphics[width=\textwidth]{images/background_template/background_template.pdf}
-    \caption[Background Phenomenology]{
-      How the elevation gradient affects the background rate.
-      Relative to the peak energy for an observing run, lower energy events will be detected more at the top of the camera.
-      Events higher than the peak energy will be detected closer to the bottom of the camera.
-      Behavior may also depend on the number of telescopes observing the event, or the specific telescope combination.
-      {\color{red}(Fix gradient transparency!??)}
-      {\color{red}(more??)}
-    }
-    \label{fig:bkg_diagram}
-  
-
-  \end{figure}
-  
-  {\color{red} Discuss how this can be used to calculate the 'detectable depth' of gamma rays in g/$\textrm{cm}^2$, and how this depth changes with energy??}
   
   \FloatBarrier
 
