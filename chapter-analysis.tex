@@ -21,7 +21,7 @@
 
 \section{Veritas Data}\label{veritasdata}
   The analysis in this thesis relies on three sets of VERITAS data.
-  One set contains observations of the Crab Nebula, another of the Galactic Center.
+  One set contains observations of the Crab Nebula, and another of the Galactic Center.
   A third set contains observations of a dark region \nicetilde\ang{5} away from the Galactic Center.
   This dark region is referred to as  Sgr A* Off, and is located at (l,b)=(\ang{357.3396}, \ang{3.9984}).
   Sgr A* Off is located a few degrees away to avoid the bright diffuse gamma-ray emission caused by the galactic plane.
@@ -86,7 +86,7 @@
 
 \section{Likelihood Ratio Test}\label{sec:likeratio}
   A likelihood ratio test determines which of two model groups is a statistically better fit to a set of data.
-  It is performed by calculating, for a group of events, the likelihood of detecting that group of events with each of two model groups.
+  It is performed by calculating, for a group of events, the likelihood of detecting that group of events for each of two model groups.
   Once the likelhood is calculated, then the parameters of the model are varied until the maximum likelihood is found for each model.
   These two maximum likelihoods can then be used to calculate the test statistic (TS), which determines which model is statistically favored, and to what degree it is favored.
   
@@ -94,7 +94,7 @@
   At its heart, a likelihood is a product of probabilities.
   With two events, the likelihood is $(\textrm{probability that event 1 happens})\times(\textrm{probability that event 2 happens})$.
   In a counting experiment like VERITAS, the likelihood $\Like$ is determined via poissonian statistics, shown in Equation~~\ref{eqn:simple_like}.
-  In this equation, $n$ is the number of observed events, and $m$ is the number of events a model group predicts.
+  In this equation, $n$ is the number of observed events, and $m$ is the average number of events predicted by a model group.
   
   \begin{equation}\label{eqn:simple_like}
     \Like = \frac{e^{-m} m^n}{n!}
@@ -102,7 +102,7 @@
   
   For increased statistical power, the VERITAS data can be split into bins in energy, galactic l and b, and time.
   When combining multiple bins arbitrarily ordered by index $j$, each bin's likelihood is multiplied together as in Equation~\ref{eqn:simple_like_2}.
-  These could be bins of events in sky position, energy, time, or other event parameters, or any combination of these parameters.
+  These events could be binned in dimensions of sky position, energy, time, or other event parameters, or any combination of these parameters.
   Future likelihood calculations may also include shower core position on the ground, or distance to the shower, or other observables.
   
   \begin{equation}\label{eqn:simple_like_2}
@@ -123,7 +123,7 @@
   \end{equation}
   
   Then, the size of each bin can be shrunk until there are only 1 or 0 events in each bin.
-  For empty bins, the product in Equation~\ref{eqn:simple_like_4} becomes
+  For empty bins (where $n=0$), the product in Equation~\ref{eqn:simple_like_4} becomes
   
   \begin{equation}\label{eqn:simple_like_4a}
     n=0 \rightarrow \frac{m_j^{n_j}}{n_j!} = \frac{m_j^{0}}{0!} = \frac{1}{1} = 1 .
@@ -170,8 +170,8 @@
   {\color{red}(how does log($m_i$) become $P_i$ in arxiv ctools equation (1)?? infinitly small bin size?? )}
   {\color{red}(describe $P_i$ earlier, or transition from $m_i$ to $P_i$ right after $m_i$ is defined)}
 
-  The unbinned Equation~\ref{eqn:simple_like_8} is how the log-likelihood is calculated in this analysis.
-  The sum over $m_j$ can be interpreted as the total number of events predicted by all models, sometimes referred to as $N_{pred}$.
+  The unbinned Equation~\ref{eqn:simple_like_8} shows how the log-likelihood is calculated in this analysis.
+  The $\sum_{j} m_{j}$ term can be interpreted as the total number of events predicted by all models, sometimes referred to as $N_{pred}$.
   Please note however, that while a binned likelihood calculation scales with the number of bins (and some lost information), the unbinned likelihood calculation scales with the number of events, which can lead to large likelihood maximization times (see later in this section).
   
   \subsection{Models}\label{sec:model_irf_folding}
@@ -190,10 +190,10 @@
   The basic models used in this analysis can be broken apart into their spatial, spectral, and temporal components, as in Equation~\ref{eqn:modelparts}.
 
   \begin{equation}\label{eqn:modelparts}
-    M(l,b,E,t) = M_s(l,b,E,t) \; \times \; M_e(l,b,E,t) \; \times \; M_t(l,b,E,t)
+    M(l,b,E,t) = M_s(l,b,E,t) \; \; M_e(l,b,E,t) \; \; M_t(l,b,E,t)
   \end{equation}
   
-  For this thesis, the sources being modeled are either constant in flux, or in equilibrium, so time-dependent effects are ignored by setting $M_t(...) = 1$.
+  For this thesis, the sources being modeled are either constant in flux, or in equilibrium, so time-dependent effects are ignored by setting $M_{t}(l,b,E,t) = 1$.
 
   For a basic point source, the spatial model function $M_s$ is shown in Equation~\ref{eqn:pntsrc_Ms}.
 
@@ -202,8 +202,9 @@
   \end{equation}
   
   In this equation, $l_o$ and $b_o$ specify the position of the point source in Galactic sky coordinates, which can be model parameters.
-  More complex $M_s$ functions may have the spatial structure also depend on energy $E$ or time $t$, or may take on other spatial shapes like an ellipse or a radially-symmetric profile.
-  {\color{red}For a basic power law (reword?? -parents)}, the spectral model function $M_e$ is shown in Equation~\ref{eqn:powerlaw_Me}.
+  More complex $M_s$ functions may also have the spatial structure depend on energy $E$ or time $t$, or may take on other spatial shapes like an ellipse or a radially-symmetric profile.
+  The energy spectrum can be similarly modeled by a basic power law.
+  This basic power law is defined by the model function $M_e$, and is shown in Equation~\ref{eqn:powerlaw_Me}.
   
   \begin{equation}\label{eqn:powerlaw_Me}
     M_{e,\textrm{powerlaw}}(l,b,E,t) = N_o \left ( \frac{E}{E_o} \right )^{-\gamma}
@@ -282,11 +283,12 @@
   Each camera background model has a base template multiplied by a power law.
   Each power law has two parameters, a normalization and a spectral index, so the background camera models have the parameters $N_1$, $N_2$, $N_3$, $\gamma_1$, $\gamma_2$, and $\gamma_3$.
   The Crab Nebula point source power law also has normalization and spectral index parameters $N_c$ and $\gamma_c$.
-  The Crab Nebula model also has its location parameters $l_c$ and $b_c$, but since these are fixed in this example (and thesis), the likelihood maximization can't vary them.
+  The Crab Nebula model also has location parameters $l_c$ and $b_c$, but since these are fixed in this example (and thesis), the likelihood maximization can't vary them.
   Therefore this alternate hypothesis would have 8 free parameters, $N_1$, $N_2$, $N_3$, $N_c$, $\gamma_1$, $\gamma_2$, $\gamma_3$, and $\gamma_c$.
   For calculating the test statistic for the presence of the Crab Nebula, the null hypothesis is just the camera background models, with 6 free parameters $N_1$, $N_2$, $N_3$, $\gamma_1$, $\gamma_2$, and $\gamma_3$.
   
-  When finding the maximum likelihood for each hypothesis, these free parameters are incrementally varied, and the likelihood is recalculated, repeated until a maximum likelihood is reached.
+  When finding the maximum likelihood for each hypothesis, these free parameters are incrementally varied, and the likelihood is recalculated.
+  This procedure is repeated until a maximum likelihood is reached.
   While there are many maximization algorithms, this analysis uses the Levenberg-Marquardt method~\cite{marquardt1963algorithm}.
   Once the maximum likelihood is calculated for both hypotheses, then the test statistic can be calculated.
   
@@ -301,8 +303,8 @@
   
   With Wilk's theorem~\cite{wilks1938}, the events can be repeatedly simulated using the null hypothesis probability density function.
   For each simulation, a TS can be calculated.
-  After many simulations, resulting TS's will form a $\chi^2$ distribution with $n$ degrees of freedom, where $n$ is the difference in number of free parameters between the two hypotheses.
-  From this distribution, a TS can be converted into a p-value.
+  After many simulations, the resulting TS's will form a $\chi^2$ distribution with $n$ degrees of freedom, where $n$ is the difference in number of free parameters between the two hypotheses.
+  From this simulated TS distribution, an actual TS can be converted into a p-value.
   In situations where there is only one or two degrees of freedom, the significance of a specific model can be calculated as $\sqrt{\textrm{TS}}$.
   Due to time constraints, the p-value of this test statistic was not calculated.
   % http://pulsar.sternwarte.uni-erlangen.de/black-hole/2ndschool/talks/likelihood_1.pdf
@@ -334,11 +336,12 @@
     {
       Skymap of event positions, (\ldet,\bdet).
       No corrections are made for observing time or effective area.
+      {\color{red}(change binsize to bin size??)}
     }
     \label{fig:crab_skymap}
   \end{figure}
   
-  The Crab was modeled by a point source with the simple power law spectrum in Equation~\ref{eqn:crab_model}.
+  The Crab is modeled by a point source with the simple power law spectrum in Equation~\ref{eqn:crab_model}.
   These spatial and spectral shapes are both discussed in Section~\ref{subsec:likemax}.
 
   \begin{equation}\label{eqn:crab_model}
@@ -346,16 +349,16 @@
   \end{equation}
 
   The sky position of the point source is fixed to the Crab Nebula, $(l_c,b_c) = (\ang{184.557600},\ang{-5.784180})$.
-  The pivot energy $E_o$ of its spectrum was fixed at \SI{16.73}{TeV}, while the normalization $N_o$ and the spectral index $\gamma$ are free to vary during the likelihood optimization.
+  The pivot energy $E_o$ of its spectrum is fixed at \SI{16.73}{TeV}, while the normalization $N_o$ and the spectral index $\gamma$ are free to vary during the likelihood optimization.
   Only events between \SIrange{4}{70}{TeV} are used in this test analysis.
   At an elevation of \ang{25}, the reconstruction method is able to reconstruct events as low as \SI{1.5}{TeV}.
   Below \SI{4}{TeV} however, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region may not be accurate.
   Part of this decrease is explored in Section~\ref{subsec:bkgstructure} (see Figures \ref{fig:bkgvsel_crab} and \ref{fig:bkgvsel_sgra}), but accounting for this requires an unfeasibly large set of simulations.
   At energies above \SI{200}{TeV}, simulations become too computationally expensive when attempting to calculate IRFs.
-  In order to ensure there are enough simulations to properly populate the high-energy end of the IRFs, the analysis was limited to a maximum event energy of \SI{70}{TeV}.
+  In order to ensure there are enough simulations to properly populate the high-energy end of the IRFs, the analysis is limited to a maximum event energy of \SI{70}{TeV}.
     
   % values from nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/crab_test/logs/statistics.txt
-  After fitting all model parameters to the events from \SIrange{4}{70}{TeV}, the best fit power law values were $ N_o = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a test statistic of 408.8, corresponding to \nicetilde{}\SI{20.2}{$\sigma$}.
+  After fitting all model parameters to the events from \SIrange{4}{70}{TeV}, the best fit power law values are $ N_o = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a test statistic of 408.8, corresponding to \nicetilde{}\SI{20.2}{$\sigma$}.
   As the alternate Crab Nebula hypothesis has 110 free parameters, and the no-Crab-Nebula (null) hypothesis has 108 free parameters, the test statistic has $ 110 - 108 = 2 $ degrees of freedom.
   
     
