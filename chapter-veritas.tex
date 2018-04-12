@@ -207,7 +207,7 @@ The highest threshold that is crossed in a single time bin then determines the d
 {\color{red}(?? Please read the T1 paper again, the following paragraph is not entirely correct -Gernot)}
 If the low-gain trigger pulse was also recieved by the FADC, then the signal voltage pulse is de-amplified {\color{red}(means attenuated, or reverse the effect of the previous amplification??)} before being digitized, since the CFD low-gain threshold is set lower than the FADC maximum digitizable voltage.
 If this low-gain triggering did not take place, then the FADC would become saturated.
-Once the voltage pulse is digitized, it is saved to a rolling buffer {\color{red}(how long is the buffer??)} in the FADC, waiting for higher level triggers, signaling the FADC to readout its buffers into a datafile.
+Once the voltage pulse is digitized, it is saved to an \SI{8}{$\mu$s}-long rolling buffer in the FADC, waiting for higher level triggers, signaling the FADC to readout its buffers into a datafile~\cite{veritas_FADC}.
 
 \subsection{PMT Upgrade}
 In summer of 2012, all PMTs in the telescopes were replaced with improved PMTs.
@@ -251,8 +251,8 @@ These calibration techniques are further detailed in Ref.~\cite{calib_techniques
 
 \section{Trigger System}\label{sec:trig}
 
-The operation of VERITAS requires digitizing voltage pulses with voltage samples roughly once per nanosecond, per photomultiplier tube.
-This means that, with 255{\color{red}(??)} voltage levels, 1 second of raw voltage data would require 2 Terabytes of harddrive space.
+The operation of VERITAS requires digitizing voltage pulses with voltage samples roughly once per two nanoseconds, per photomultiplier tube.
+This means that with 255 voltage levels, 1 second of all voltage measurements would require 1 Terabyte of harddrive space.
 Since this is unfeasable with today's computing systems, only subsets of the raw pixel voltages are saved when certain trigger conditions are met.
 To complicate matters, photons from atmospheric muons and the night sky background can also cause voltage pulses similar to a gamma ray shower's cherenkov photons.
 Thus, VERITAS has a system of triggers that reduces the amount of raw data that is saved, while also partially filtering out non-gamma-ray events.
@@ -261,18 +261,16 @@ The L1 is the first and lowest level trigger.
 An L1 trigger (sometimes called a pixel trigger) is emitted when a PMT's CFD circuit detects a signal voltage above a given threshold, typically in the 10s of mV.
 This threshold voltage is varied throughout data taking by a rate-feedback system, which adjusts the trigger threshold according to the night sky background level.
 
-{\color{red}((??) Again, this paragraph is far too detailed and not relevant -Gernot)}
-{\color{red}((??) this paragraph does not connect to the ones above and below -Parents)}
+Once L1 triggers have been emitted, they are passed to the L2 trigger system.
 The L2 (image) trigger is emitted by the FPGA when a group of L1 triggers meet certain requirements.
-These requirements include that multiple L1 triggers must fall within a certain time window, and that multiple L1 triggers form one of several predefined shapes, or templates.
-The coincident time window varies. {\color{red}(elaborate??)}
-There are several patterns. {\color{red}(elaborate??)}
-The pattern requirements help reduce the number of triggers from non-gamma-ray sources.
+These requirements include that multiple L1 triggers must fall within a certain time window, and that multiple L1 triggers match a pattern condition.
+Multiple L1 triggers must be within \SIrange{5}{10}{ns} of each other, depending on the VERITAS hardware epoch.
+Any pixel with an L1 trigger and two neighboring pixels with L1 triggers (each pixel has 6 neighboring pixels) meets the pattern condition~\cite{veritas_v6_trigger}.
+The pattern requirement helps reduce the number of triggers from non-gamma-ray sources.
 Night sky background photons are only able to trigger individual pixels, and muons tend to create ring-shaped images.
 Once one of these patterns occurs within a time window, the FPGA emits an L2 trigger, which is sent to the L3 (array) trigger system.
 
-{\color{red}(check for any 'a \nicetilde`, there should be no article!??)}
-The L3 (array) trigger system is a computer which looks for coincident L2 triggers that fall within \nicetilde\SI{50}{ns} time window.
+The L3 (array) trigger system is a computer which looks for coincident L2 triggers that fall within a \nicetilde\SI{50}{ns} time window.
 This window is varied for each telescope based on the azimuth and elevation of the pointing, as these can introduce delays between images of up to hundreds of nanoseconds.
 During a typical observation period, the L3 trigger rate is around \SIrange{200}{300}{Hz}.
 

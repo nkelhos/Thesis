@@ -185,7 +185,7 @@ This database includes the width and length of the shower, how far away its core
     Effective area is the measure of how large an observatory's collection area is, which determines how many gamma rays can be detected per unit time, solid angle, and energy.
 
     For each point in the parameter space, the effective areas are calculated with many {\color{red}(how many?? -Gernot (probably # corsika showers * number of core rescatters * # camera repositions))} Monte Carlo gamma ray simulations.
-    This is done in the shower plane, {\color{red} the plane perpendicular to the line drawn between an observing source, and the center (shower plane depends only on the pointing direction, not on what source is observed -Gernot??)}of the observatory.
+    This is done in the shower plane, the plane perpendicular to the line drawn between a pointing target and the center of the observatory.
     The effective area is then calculated via:
     $A=\pi R^2 \frac{N_{\text{survived}}}{N_{\text{simulated}}}$
     where R is the radius of the area within which simulated showers are directed to fall, $N_{\text{simulated}}$ is the number of showers that were initially simulated into the area, and $N_{\text{survived}}$ is the number of simulated showers that pass all cuts.
@@ -403,7 +403,7 @@ This database includes the width and length of the shower, how far away its core
       \caption[FITS Background at \ang{50} Elevation]{
         Gamma-like events from 52 observations (approximately \nicetilde20 hours) of M82, between \ang{50} and \ang{52} elevations.
         Events in Figure A are divided into 3 equal-statistics energy bins, and binned in Camera Coordinates in Figures B, C, and D.
-        Notice the left-most bin (2\%-34\%) overlaps the peak (at -0.5) in the energy histogram by \nicetilde 30\% of its width, unlike in Figure~\ref{fig:back_lowelev29}.
+        Notice the left-most bin (2\%-34\%) overlaps the histogram peak (at -0.5) in the energy histogram by \nicetilde 30\% of its width, unlike in Figure~\ref{fig:back_lowelev29}.
       }
       \label{fig:back_highelev}
     \end{figure}

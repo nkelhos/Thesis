@@ -385,11 +385,11 @@
     
   \begin{table}
     \centering
-    \begin{tabular}{|r|r|r|r|r|r|}
+    \begin{tabular}{|r|c|c|c|c|c|}
       \hline
       \textbf{Analysis} & \textbf{Min}    & \textbf{Max}    & \textbf{FOV} & \textbf{PSF} & \textbf{$\sigma$} \\
-      \textbf{Method}   & \textbf{Energy} & \textbf{Energy} &  #           & #            &                   \\
-                        & TeV             & TeV             &              &              &                   \\
+      \textbf{Method}   & \textbf{Energy} & \textbf{Energy} &  \#          & \#           &                   \\
+                        & TeV             & TeV             &  Events      & Events       &                   \\
       \hline 
       On/Off Region & 3.16 & 79.4 & 11197 & 145 & 21.3 \\
       Likelihood    & 4.00 & 70.0 & 9319  & 120 & 20.2 \\
@@ -569,9 +569,8 @@
   \subsection{Non-Dark Astrophysical Models}\label{subsec:gcpointsrc}
   For this analysis, a point source model was added at the position of Sgr A*.
   This is because other studies have indicated that the gamma-ray excess at Sgr A* is not consistant with a dark matter halo~\cite{gc_pnt_is_not_dm1, gc_pnt_is_not_dm2, gc_pnt_is_not_dm3}.
-  {\color{red}(comma between each citation?? -Orel)}
   Instead, a point source with the broken power law spectrum in Equation~\ref{eqn:brokenplaw} was added to the list of models.
-  {\color{red}(why a broken power law?? it should be motivated since its not the simplest model -Orel)}
+  This is chosen because, in a previous VERITAS analysis of the Galactic Center, a broken power law was found to be a better fit than a simple power law~\cite{VeritasGCRidge2015}.
   
   \begin{equation}\label{eqn:brokenplaw}
     M_e(\xtrue) = M_e(\ltrue,\btrue,\Etrue,\ttrue) = N_o * { \left ( \frac{\Etrue}{E_{pivot}} \right ) }^{\gamma} {e}^{-\frac{E}{E_{cutoff}}}
@@ -690,7 +689,7 @@
       Observed vs modeled counts in a slice of the sky parallel to the galactic $\ldet$ axis at $B=0$.
       Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
-      {\color{red}(Also, I wouldn’t write src in the legend, but maybe something like “Point src (non-DM)”. To save space you can remove the “Model:” from the legend (everywhere) -Orel ??)}
+      {\color{red}(Also, I wouldn't write src in the legend, but maybe something like "Point src (non-DM)". To save space you can remove the "Model:" from the legend (everywhere) -Orel ??)}
     }
     \label{fig:gc_profile_gal_l}
   \end{figure}
@@ -745,7 +744,7 @@
       Observed vs modeled counts in a \ang{0.2}$\times$\ang{0.2} square bin centered on Sgr A* at energies from \SIrange{4}{70}{TeV}.
       Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
-      {\color{red}(Is the integral of the data and the sum of models the same? My guess is that it isn’t, which would point to a problem in normalization (at least in the cube around the point source). --Orel??)}
+      {\color{red}(Is the integral of the data and the sum of models the same? My guess is that it isn't, which would point to a problem in normalization (at least in the cube around the point source). --Orel??)}
     }
     \label{fig:gc_profile_energy}
   \end{figure}
@@ -834,8 +833,6 @@
       The results from this work are in dark blue, while pink, green, and yellow show published limits from VERITAS, H.E.S.S., and a joint Fermi-MAGIC analysis.
       Data values from this work's upper limits are in Appendix Table \ref{tab:ulimvals}.
       The light blue line is the relic crosssection.
-      {\color{red}(Do I need to incorporate systematic uncertainties in this, or is this already accounted for by the energy migration matrices??)}
-      {\color{red}(Refresh plot!??)}
     }
     \label{fig:ulim}
   \end{figure}
@@ -861,7 +858,8 @@
       The background models for run 68348, minutes 16-24.
       Left is the original radial background, centered \ang{0.5} North of the Galactic Center.
       Right is the same background, after applying the 5\%/\degree{} gradient along the elevation axis.
-      {\color{red}(orel can barely see a difference, any way to make it clearer??)}
+      While faint, the difference between the two can be seen in the central dark-red ring.
+      In the left, the ring is symmetric, while in the right, the ring is darker at the bottom than at the top.
     }
     \label{fig:bkg_flatvsgrad}
   \end{figure}
