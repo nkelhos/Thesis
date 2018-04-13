@@ -1,27 +1,40 @@
 \cleartooddpage[\thispagestyle{empty}]
 \chapter{Conclusion}
 
-There is strong evidence that Dark Matter is a WIMP particle.
-This evidence includes rotational measurements of dwarf galaxies, full grown galaxies, and galaxy clusters.
-Cosmological issues would also be resolved if most of the universe's matter was locked up in WIMPs.
+VERITAS gamma-ray data was used in a new likelihood ratio test to measure the properties of astrophysical gamma-ray sources.
+This method is also unique in that it folded the VERITAS PSF, Effective Areas, and Energy Dispersion into the studied models.
+This likelihood test was verified with a well-studied source, the Crab Nebula.
+Using 9 hours of Crab Nebula observations, this test found that the best fit flux spectral index and normalization were found to be consistant with existing analysis methods.
 
-WIMPs may form a dense halo around the Galactic Center.
-WIMPs annihilations may produce gamma rays.
-VERITAS is sensitive to TeV gamma rays.
-VERITAS has spent 108 hours observing the Galactic Center
-This work has used an unbinned likelihood analysis to analyize thi data.
-This analysis included energy dispersion and psf folding into its likelihood models.
+Having verified this new analysis method, a search for Dark Matter was conducted.
+108 hours of gamma-ray observations of the Galactic Center were analyzed with a likelihood ratio test.
+This test searched for a halo of WIMP dark matter particles that were annihilating into $b\bar{b}$ quarks, which then cascaded into gamma rays.
+The tested halo follows a simple Einasto halo profile, though it does not have a flat density core.
+Nine different WIMP masses were tested with this search.
+The VERITAS PSF, Effective Areas, and Energy Dispersion were also folded into the WIMP halo models.
+As some new behavior was discovered in the background models at the low energies (\SIrange{1.5}{4}{TeV}), only events with a reconstructed energy of \SIrange{4}{70}{TeV} were used in this analysis.
+As shown in Table~\ref{tab:tsvals}, it was found that no significant Dark Matter signal was detected at any of the WIMP masses.
 
-For the Galactic Center analysis, 950 models were assembled.
-948 were camera background models.
-Another model was added for the point source model for the Galactic Center central source.
-The last model was a dark matter halo, using an Einsto cuspy profile, and a $b\bar{b}$ annihilation channel for $m_{\chi}=(4.25,6.5, 10, 14.3, 20.512, 30.4, 45, 66.5, 98) \textrm{TeV}$.
-None of these dark matter halos had a significant test statistic, indicating no dark matter halo was detected for any of these $m_{\chi}$.
-Upper limits were then calculated by increasing the scale of the dark matter halos until the likelihood had decreased according to a 95\% confidence limit.
-This work demonstrates that new limits on the WIMP cross-section can be placed at $m_{\chi}=100\,TeV$ with a cuspy Einasto halo and the $b\bar{b}$ annihilation channel.
+To examine what WIMP candidates have been ruled out by this search, an upper limit was calculated for each of the nine WIMP masses.
+These upper limits are shown in Figure~\ref{fig:ulim}, where new limits are able to be placed at WIMP masses above \SI{70}{TeV}.
+This likelihood ratio test also offers improved sensitivity over the standard On-Off analysis method, providing stronger limits with fewer hours of observation.
 
-This work can be improved in the future by improved background modeling.
-Improving the background models would allow for \SIrange{1.5}{4}{TeV} events to be included, providing ~40\% more events to the analysis, providing stronger upper limits for all $m_{\chi}$.
+To look for areas in the skymap where the models are not optimally fitting the events, a residual skymap is made.
+As the halos were not detected, only the camera background models and the Galctic Center point source contributed to the residual skymap.
+In this residual skymap, a strong gradient is noted along the observatory's elevation axis.
+This gradient is due to the camera background models not properly handling the atmospheric gradient, which at \ang{30} elevation is approximately \nicetilde{}20\% different between the top and bottom of the VERITAS field of view.
+By adding a simple elevation gradient to the background models, the sensitivity of the Dark Matter upper limit to the background modeling was tested.
+It was found that for a moderate gradient of 5\%/\degree{}, the upper limit at one $m_{\chi}$ only moved by 0.1\%, indicating it is not strongly dependent on the background shape.
 
-{\color{red}(abstract + conclusion should give rough idea of everything covered by the thesis??)}
+There are several improvements which can be made to this analysis method.
+The background models created for this thesis indicate the proton background varies with respect to event energy and position in the camera, whereas before this point, only a radial dependence was noted.
+These background models can be improved to account for these new dependencies, which would allow for the inclusion of low energy events from \SI{1.5}{4}{TeV}.
+This additional energy range would allow for the inclusion of \nicetilde{}40\% more events, improving Dark Matter searches and upper limits.
+However, the causes of the variations in camera sensitivity are not well understood, and need to be explored further.
+These variations are at least partly due to the atmospheric gradient.
+As gamma-ray showers and proton showers behave similarly in the atmosphere, it may also mean that the gamma-ray effective areas and energy dispersions also depend on the (x,y) position within the camera, instead of just the camera radius.
+More studies would need to be done to explore this.
+
+VERITAS gamma-ray data was used in a likelihood ratio test, to conduct a basic search for Dark Matter.
+No signal was detected, but for cuspy WIMP halos, a new region of the $ \left ( m_{\chi}, \left \langle \sigma v \right \rangle \right )$ parameter space has been eliminated.
 
