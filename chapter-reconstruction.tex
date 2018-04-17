@@ -567,6 +567,27 @@ This database includes the width and length of the shower, how far away its core
       \label{fig:dpix_rel_camera}
     \end{figure}
     
+    When these bins are combined radially around the disabled pixel, a clear loss of events is visible in Figure~\ref{fig:dpix_rel_radial}.
+    From this, it can be seen that at \ang{0.1} from the disabled pixel, the relative event rate is almost 7\% lower than when the pixel was enabled.
+    From a area-weighted average of all bins within \ang{0.33} of a pixel, the average event rate is approximately 3.1\% lower than when the pixel is enabled.
+    % see images/disabled_pixel/dead_pixel_calcs/calc.py
+    % dead pixel signature: crab run 88721, pixel 216 (voltage gets dropped by more than 50%)
+    % also see DQM page for that run (AvgTraceMap plots)
+    % 1.3% of pixel-minutes are lost due to disabled pixels (18083/1427286 = 0.0126)
+    % calc this for each runlist as a measure of how few star-disabled pixels there are
+    % point out this is a better measure of star effects, since this is lower-level than stars,
+    %   its how many pixels are disabled for any reason
+    
+    \begin{figure}[ht]
+      \centering
+      \includegraphics[width=0.8\textwidth]{images/disabled_pixel/relativerate_radial.pdf}
+      \caption[Relative Event Rate After Disabling Camera Pixels]{
+        Event rate in the camera with pixel 115 disabled (denoted by the black circle) in all four telescopes, relative to having all pixels enabled.
+        X axis shows the angular distance from the disabled pixel.
+      }
+      \label{fig:dpix_rel_radial}
+    \end{figure}
+    
     While this single-pixel loss-of-events effect was notable, it was not incorporated into the main analysis of this thesis due to the small effect it would have, compared to the amount of work it would take to implement.
     Future analyses may be able to account for these effects in their models of the background rates and effective areas.
     
