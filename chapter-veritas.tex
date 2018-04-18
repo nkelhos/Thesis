@@ -205,7 +205,7 @@ This FADC circuit then, for each 2-nanosecond time bin, measures how large the v
 The highest threshold that is crossed in a single time bin then determines the digital voltage value that is saved to the FADC buffer for that time bin.
 
 {\color{red}(?? Please read the T1 paper again, the following paragraph is not entirely correct -Gernot)}
-If the low-gain trigger pulse was also recieved by the FADC, then the signal voltage pulse is de-amplified {\color{red}(means attenuated, or reverse the effect of the previous amplification??)} before being digitized, since the CFD low-gain threshold is set lower than the FADC maximum digitizable voltage.
+If the low-gain trigger pulse was also recieved by the FADC, then the signal voltage pulse is attenuated before being digitized, since the CFD low-gain threshold is set lower than the FADC maximum digitizable voltage.
 If this low-gain triggering did not take place, then the FADC would become saturated.
 Once the voltage pulse is digitized, it is saved to an \SI{8}{$\mu$s}-long rolling buffer in the FADC, waiting for higher level triggers, signaling the FADC to readout its buffers into a datafile~\cite{veritas_FADC}.
 
