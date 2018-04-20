@@ -137,15 +137,13 @@
 
   where $i$ is the $i^{\textrm{th}}$ event, and $m_i$ is the number of predicted events at event $i$'s sky position, energy, and time.
   In this derivation, $m_j$ converts to $m_i$, because all the $n=0$ bins are now 1 and can be ignored, so a loop over the $j$ bins becomes a loop over the $i$ events.
-  {\color{red}(What area does $m_i$ integrate over??)}
   Then Equation~\ref{eqn:simple_like_4} becomes Equation~\ref{eqn:simple_like_5}.
   
   \begin{equation}\label{eqn:simple_like_5}
     \Like = e^{- \sum_j m_j} \prod_i m_i
   \end{equation}
   
-  {\color{red}(mention that $\prod_i m_i$ encodes the positions of the events, this is the data, whereas the $\sum_j$ is the models??)}
-  
+  In Equation~\ref{eqn:simple_like_5}, $\prod_i m_i$ encodes the data events, while $\sum_j$ encodes the model information.
   When calculating $\Like$, certain computational problems can arise.
   Calculating the product of many small probabilities can result in extremely small numbers, beyond the binary storage limit of common variable types.
   Calculating derivatives of some of these numbers is computationally expensive, so to solve these two problems, the log-likelihood $\LogLike$ is instead calculated.
@@ -161,15 +159,12 @@
     \LogLike = \textrm{log} \left ( e^{- \sum_j m_j} \prod_i m_i \right ) = - \sum_j m_j + \sum_i \textrm{log} \left ( m_i \right )
   \end{equation}
   
-  When the bin size is infinitely small, $m_i$ becomes the value of the probability density function (of all models combined) at the position of the event, $P_i$, as in Equation~\ref{eqn:simple_like_8}.
+  When the bin size is infinitely small, $m_i$ becomes $P_i$, the value of the probability density function (of all models combined) at the position of the event, as in Equation~\ref{eqn:simple_like_8}.
   
   \begin{equation}\label{eqn:simple_like_8}
     \LogLike = \textrm{log} \left ( e^{- \sum_j m_j} \prod_i m_i \right ) = - \sum_j m_j + \sum_i \textrm{log} \left ( P_i \right )
   \end{equation}
   
-  {\color{red}(how does log($m_i$) become $P_i$ in arxiv ctools equation (1)?? infinitly small bin size?? )}
-  {\color{red}(describe $P_i$ earlier, or transition from $m_i$ to $P_i$ right after $m_i$ is defined)}
-
   The unbinned Equation~\ref{eqn:simple_like_8} shows how the log-likelihood is calculated in this analysis.
   The $\sum_{j} m_{j}$ term can be interpreted as the total number of events predicted by all models, sometimes referred to as $N_{pred}$.
   Please note however, that while a binned likelihood calculation scales with the number of bins (and some lost information), the unbinned likelihood calculation scales with the number of events, which can lead to large likelihood maximization times (see later in this section).
@@ -370,7 +365,6 @@
     {
       Crab Nebula spectra from various analyses and observatories.
       The solid red line is the best-fit spectra from the CTOOLS analysis described in this chapter, using only events from \SIrange{4}{70}{TeV}.
-      {\color{red}(Remove all but 1 CTOOLS reference!!! in the whole thing!!!!!!)}
       The inner red envelope is the statistical fitting error on the solid red line.
       The outer red envelope is the combined statistical+systematic error.
       The dark blue line is the standard VERITAS Eventdisplay spectrum using the same set of observations.
@@ -378,7 +372,6 @@
       Light blue is a Crab Nebula spectrum from HESS~\cite{hess2006crab}.
       Purple is a previously published spectrum from VERITAS~\cite{veritas2015crab}.
       Orange is a spectrum from MAGIC~\cite{magic2015crab}.
-      {\color{red}(Update hess/magic lines to have higher maximum energy points??)}
     }
     \label{fig:crab_test_spectra}
   \end{figure}
@@ -536,9 +529,9 @@
   As the test analysis on the Crab Nebula data shows results consistant with other VERITAS, H.E.S.S., and MAGIC studies, the main dark matter analysis can begin in earnest.
   The 108 hours of Galactic Center data used is described in Section~\ref{veritasdata}.
   A skymap histogram of all observed events is shown in Figure~\ref{fig:gc_counts_skymap}.
-  {\color{red}(mention that the lack of corrections explains the weird overlapping shape??)}
+  This skymap is uncorrected for exposure time or effective area; it is only a histogram of event positions.
   A histogram of all events' energies from \SIrange{4}{70}{TeV} is shown in Figure~\ref{fig:gc_counts_enhist}.
-  {\color{red}(mention that the lack of corrections explains why it doesn't look like a power law??)}
+  As this histogram is uncorrected for effective area, it does not follow the standard power-law shape.
   Both of these plots have no corrections for observing time or effective area.
   After gathering the data, assembling the models is the next step.
   These include the camera background models, similar to the Crab Nebula analysis.
@@ -588,8 +581,6 @@
   (because its radial, i probably need to mention why I assume its isotropic??)
   }
   
-  {\color{red}(only got to here with orel's comments!??)}
-
   \subsection{Dark Matter Models}\label{subsec:dmhalomodel}
   Dark Matter halos are modeled by a spherically-symmetric mass-per-volume density profile, combined with an annihilation spectrum.
   This is assembled with a simplified version of Equation~\ref{eqn:dmflux}, shown in Equation~\ref{eqn:dmmodel}.
@@ -638,8 +629,6 @@
       {\color{red}(Why is the 66.5 TeV one have -5.8 TS??)}
       
       {\color{red}(Comment on why they're all negative?? (the crab TS was positive!))}
-      
-      {\color{red}(this table should come after the paragraph that references it!??)}
     }
     \label{tab:tsvals}
   \end{table}
@@ -796,7 +785,12 @@
   {\color{red}Plot of point source spectra as cross-check??}
   
 \section{Upper Limit}\label{upper_limit}
-  From the dark matter flux Equation~\ref{eqn:dmflux} {\color{red}(repeat the equation here?? -orel)}, an upper limit on the observed gamma-ray flux can be derived.
+  From the dark matter flux Equation~\ref{eqn:dmflux}, an upper limit on the observed gamma-ray flux can be derived.
+
+  \begin{equation}
+    \frac{ d\Phi }{ dE d \Omega } = \frac{ \left \langle \sigma v \right \rangle }{8 \pi m_\chi^2} \frac{dN_{\gamma}}{dE} \int \rho^2 dl\tag{\ref{eqn:dmflux}}
+  \end{equation}
+
   When all other variables in Equation~\ref{eqn:dmflux} are fixed, a larger velocity-averaged cross section always results in a larger gamma-ray flux, meaning the flux and cross section can both be replaced by their upper limits ($x \rightarrow x \left |_{\textrm{ul}}$), as in Equation~\ref{eqn:ulim}.
   
   \begin{equation}\label{eqn:ulim}
