@@ -526,15 +526,15 @@
 
 \section{Dark Matter Likelihood Analysis}\label{sec:dmlike}
   
-  As the test analysis on the Crab Nebula data shows results consistant with other VERITAS, H.E.S.S., and MAGIC studies, the main dark matter analysis can begin in earnest.
-  The 108 hours of Galactic Center data used is described in Section~\ref{veritasdata}.
+  Since the test analysis on the Crab Nebula data shows results consistant with other VERITAS, H.E.S.S., and MAGIC studies, the main dark matter analysis can begin in earnest.
+  The 108 hours of Galactic Center data use in this analysis is described in Section~\ref{veritasdata}.
   A skymap histogram of all observed events is shown in Figure~\ref{fig:gc_counts_skymap}.
   This skymap is uncorrected for exposure time or effective area; it is only a histogram of event positions.
   A histogram of all events' energies from \SIrange{4}{70}{TeV} is shown in Figure~\ref{fig:gc_counts_enhist}.
   As this histogram is uncorrected for effective area, it does not follow the standard power-law shape.
-  Both of these plots have no corrections for observing time or effective area.
-  After gathering the data, assembling the models is the next step.
-  These include the camera background models, similar to the Crab Nebula analysis.
+  Neither of these plots have corrections for observing time or effective area.
+  Once the data is reconstructed, the next step is to set up the models.
+  These models include the camera background models, similar to the Crab Nebula analysis.
   
   \begin{figure}[ht]
     \centering
@@ -543,6 +543,7 @@
       Skymap of all events used in this analysis.
       Note that these are in ($\ldet$,$\bdet$) coordinates, not ($\ltrue$,$\btrue$).
       No adjustments are made here for effective area, observation time, or background rate.
+      {\color{red}(change zaxis label 'binsize' to 'bin size'??)}
     }
     \label{fig:gc_counts_skymap}
   \end{figure}
@@ -561,7 +562,7 @@
 
   \subsection{Non-Dark Astrophysical Models}\label{subsec:gcpointsrc}
   For this analysis, a point source model was added at the position of Sgr A*.
-  This is because other studies have indicated that the gamma-ray excess at Sgr A* is not consistant with a dark matter halo~\cite{gc_pnt_is_not_dm1, gc_pnt_is_not_dm2, gc_pnt_is_not_dm3}.
+  This was because other studies have indicated that the gamma-ray excess at Sgr A* is not consistant with a dark matter halo~\cite{gc_pnt_is_not_dm1, gc_pnt_is_not_dm2, gc_pnt_is_not_dm3}.
   Instead, a point source with the broken power law spectrum in Equation~\ref{eqn:brokenplaw} was added to the list of models.
   This is chosen because, in a previous VERITAS analysis of the Galactic Center, a broken power law was found to be a better fit than a simple power law~\cite{VeritasGCRidge2015}.
   
@@ -571,7 +572,7 @@
   
   The initial values used in Equation~\ref{eqn:brokenplaw} are from Ref. \cite{VeritasGCRidge2015}, where the specific values are $E_{pivot}=\SI{1}{TeV}$, $E_{cutoff}=\SI{12.8}{TeV}$, and $\gamma=-2.1$.
   % theres also the 2016 paper http://iopscience.iop.org/article/10.3847/0004-637X/821/2/129/meta
-  The normalization parameter $N_o$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was left free in the likelihood optimization, while $E_{pivot}$, $E_{cutoff}$, and $\gamma$ were all fixed.
+  The normalization parameter $N_o$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was free to change in the likelihood optimization, while $E_{pivot}$, $E_{cutoff}$, and $\gamma$ were all fixed.
   The normalization $N_o$ was left free to allow for the potential of some mixing between the point source events and any dark matter halo events, i.e. a stronger dark matter halo gamma-ray flux would result in a weaker point source flux.
   
   {\color{red}
@@ -590,7 +591,7 @@
   \end{equation}
   
   In this analysis, an Einasto density profile is used for the spatial component function $M_s$ of the dark matter halo model.
-  See Section~\ref{dm_spatial} for a discussion on this $M_{s,\textrm{halo}}$ function.
+  See Section~\ref{dm_spatial} for a discussion on this {\color{red} $M_{s,\textrm{halo}}$ (??)} function.
   For the spectral component, each dark matter mass tested has its own spectrum function $M_e$ produced with CLUMPY (see Section~\ref{dm_spectral}).
   The parameter $N$ is the magnitude of the halo, which the likelihood engine is free to scale up and down to get the best fit.
 
@@ -608,8 +609,8 @@
   
   With these two hypotheses, the likelihood function was maximized to find the best-fit model parameters for each $m_{\chi}$.
   In Table \ref{tab:tsvals}, the TS values from each dark matter mass are shown.
-  From Wilk's theorem~\cite{wilks1938}, with a TS value greater than 20 would hint at the presence of a dark matter halo.
-  As all of these are less than zero, it can be said that the null (no dark matter) hypothesis is statistically favorable.
+  Using Wilk's theorem~\cite{wilks1938} with a likelihood ratio with one free parameter, a TS value greater than 20 would hint at the presence of a dark matter halo.
+  As all of these are less than zero, it shows that the null (no dark matter) hypothesis is statistically favorable.
 
   \FloatBarrier
   
@@ -633,9 +634,9 @@
     \label{tab:tsvals}
   \end{table}
 
-  As there are 948 camera background models in each likelihood analysis, each with a free Normalization and Spectral Index, these are histogrammed as a sanity check in Figure~\ref{fig:param_hist}.
-  The Spectral Index distribution is centered on zero because the power law is applied to an existing (non-power-law) background shape.
-  This means on average, the background models required little spectral hardening or softening.
+  As there are 948 camera background models in each likelihood analysis, each with a free normalization and spectral index, these are histogrammed as a sanity check in Figure~\ref{fig:param_hist}.
+  The spectral index distribution is centered on zero because the power law is applied to an existing (non-power-law) background shape.
+  This means that on average the background models required little spectral hardening or softening.
   
   \begin{figure}[h]
     \begin{tabular}{ll}
@@ -651,11 +652,12 @@
     
   To check that the other models are fitting the observed events, we can compare the observed vs modeled counts in different slices.
   In Figure~\ref{fig:gc_profile_gal_l}, the observed counts are shown compared to the final, likelihood-optimized modeled counts.
-  The histogram bins are along a \ang{0.22}-wide slice along the galactic l axis, centered on Sgr A*'s galactic b coordinate.
+  The histogram bins are a \ang{0.22}-wide slice along the galactic l axis, centered on Sgr A*'s galactic b coordinate.
   Purple histogram bins are the modeled counts from only the camera background models.
   Green histogram bins are the total modeled counts from the camera background models, the Galactic Center point source, and the Dark Matter Halo.
   Blue points with error bars are the observed counts in each bin, with poissonian errors.
-  The feature where the observed counts are higher on the left and lower on the right is likely due to unaccounted-for elevation effects in the camera background models.
+  The observed counts are higher on the left and lower on the right than the modeled histogram.
+  This is likely due to unaccounted-for elevation effects in the camera background models.
   The impact of this elevation effect is tested later in Section~\ref{sec:elevgradient}.
   
   \begin{figure}[h]
@@ -684,7 +686,7 @@
   \end{figure}
 
   Figure~\ref{fig:gc_profile_gal_b} is similar to Figure~\ref{fig:gc_profile_gal_l}, except it slices through Sgr A* along the galactic b axis,
-  The feature where the observed counts are shifted to the left of the models is also visible here.
+  The feature where the observed counts are higher on the left and lower on the right is also visible here.
 
   \begin{figure}[h]
     \centering
@@ -710,7 +712,7 @@
     \label{fig:gc_profile_gal_b}
   \end{figure}
 
-  Figure~\ref{fig:gc_profile_energy} shows the same profile, except instead integrated over a \ang{0.2}$\times$\ang{0.2} galactic (l,b) square centered on Sgr A*.
+  Figure~\ref{fig:gc_profile_energy} shows the same profile, except integrated over a \ang{0.2}$\times$\ang{0.2} galactic (l,b) square centered on Sgr A*.
   Again, purple is modeled camera-background counts, green is total modeled counts, and blue is observed counts.
   
   \begin{figure}[h]
@@ -764,11 +766,11 @@
     \label{fig:gc_resmap}
   \end{figure}
 
-  If the source and background models were perfectly known, there would still be statistical fluctuations in the observed counts, and the residual significances would form a gaussian distribution, shown as the green line in Figure~\ref{fig:gc_resmap_sighist}.
-  However, the distribution of the pixel significances from Figure~\ref{fig:gc_resmap} is also shown in Figure~\ref{fig:gc_resmap_sighist}, and qualitativly not gaussian shaped {\color{red}(??)}.
-  {\color{red}?? How well does it fit, and quantitativly how bad does it fit??}
-  {\color{red}do a gaussian fit of the data, and report the p-value of the fit?? -Orel)}
-  As a large number of bins are clustered around +2 and -2 signifiance, this hints that the residuals in Figure~\ref{fig:gc_resmap} are potentially not due solely from statistical noise, and that the background modeling could be improved.
+  If the source and background models were perfectly known, there would still be statistical fluctuations in the observed counts, and the residual significances would form a Gaussian distribution, shown as the green line in Figure~\ref{fig:gc_resmap_sighist}.
+  However, the distribution of the pixel significances from Figure~\ref{fig:gc_resmap} is also shown in Figure~\ref{fig:gc_resmap_sighist}, and is qualitatively not Gaussian shaped {\color{red}(??)}.
+  {\color{red}?? How well does it fit, and quantitatively how bad does it fit??}
+  {\color{red}do a Gaussian fit of the data, and report the p-value of the fit?? -Orel)}
+  As a large number of bins are clustered around +2 and -2 significance, this hints that the residuals in Figure~\ref{fig:gc_resmap} are not solely due to statistical noise, and that the background modeling could be improved.
   
   \begin{figure}[ht]
     \centering
@@ -777,9 +779,7 @@
     {
       Histogram of the residual skymap bin significances from Figure~\ref{fig:gc_resmap}, calculated with Equation~\ref{eqn:resmap_signif}.
       Only skymap bins within Sgr A*'s region of interest are histogrammed.
-      If all astrophysical sources were modeled correctly, the differences in the residual skymap would only be due to noise, and would follow a gaussian distribution, the green line.
-      {\color{red}(Describe what the green line is?? -orel)}
-      
+      If all astrophysical sources were modeled correctly, the differences in the residual skymap would only be due to noise, and would follow a Gaussian distribution, the green line.
     }
     \label{fig:gc_resmap_sighist}
   \end{figure}
@@ -799,8 +799,8 @@
     \frac{d\phi}{dE d\Omega} \left. \right |_{\textrm{ul}} = \frac{ \left \langle \sigma v \right \rangle \left | \right _{\textrm{ul}} }{8\pi m_{\chi}^{2}} \frac{dN_{\gamma}}{dE} \int \rho^{2} \; dl \;
   \end{equation}
   
-  When calculating the upper limit with a log-likelihood ratio test, the confidance interval is used to calculate a likelihood upper limit, $L_{\textrm{ul}}$.
-  This likelihood upper limit is calculated in Equation~\ref{eqn:ulim_deltaL}, where $\alpha$ is the confidance interval as a fraction of 1.
+  When calculating the upper limit with a log-likelihood ratio test, the confidence interval is used to calculate a likelihood upper limit, $L_{\textrm{ul}}$.
+  This likelihood upper limit is calculated in Equation~\ref{eqn:ulim_deltaL}, where $\alpha$ is the confidence interval as a fraction of 1.
 
   \begin{equation}\label{eqn:ulim_deltaL}
     L_{\textrm{ul}} = L_{\textrm{max}} - \left ( \textrm{erf}^{-1} \left ( \alpha \right ) \right )^2
@@ -809,16 +809,16 @@
   {\color{red}(Where indeed does it come from? What is erf?? -Orel)}
 
   A 95\% confidence interval is desired, so $\alpha$ is set to 0.95 for the upper limit calculation in this section.
-  Then the magnitude of the dark matter halo model's flux $\Phi$ is fixed at one magnitude, the likelihood method finds the best fit values for the remaining free parameters, and the likelihood is recalculated.
+  Then the dark matter halo model's flux $\Phi$ is fixed at one magnitude, the likelihood method finds the best fit values for the remaining free parameters, and the likelihood is recalculated.
   This is repeated until the the likelihood is found to be within a certain tolerance of $L_{\textrm{ul}}$.
-  Once the upper limit model flux $\Phi$ is found, then with Equation~\ref{eqn:ulim} the cross section upper limit can be calculated.
+  Once the upper limit model flux $\Phi$ is found and combined with Equation~\ref{eqn:ulim}, the cross section upper limit can be calculated.
 
   From the 9 WIMP masses tested in Section~\ref{sec:dmlike}, the calculated upper limits are shown in Figure~\ref{fig:ulim}.
-  These show the upper limits calculated from this work, along with several comparison upper limits.
+  Several other upper limits are also shown for comparison.
   The pink upper limit is from 216 hours of VERITAS observations of several dwarf spheroidal galaxies, stacked into a single likelihood analysis~\cite{verdsphul}.
   The green upper limit is from 254 hours of H.E.S.S. observations of the Galactic Center~\cite{hessgcul}.
   The yellow upper limit is from a combined Fermi-MAGIC likelihood analysis using observations from several dwarf satellite galaxies~\cite{fermagicul}.
-  Fermi and MAGIC spent a total of 6 years and 158 hours observing these galaxies, respectivly.
+  Fermi and MAGIC spent a total of 6 years and 158 hours observing these galaxies, respectively.
   The light blue line is the relic cross section~\cite{updatedWIMPRelicCrossSection}.
   
   \begin{figure}[ht]
@@ -843,7 +843,7 @@
   To check that this elevation gradient has a negligible effect on the upper limit result in Figure~\ref{fig:ulim}, the likelihood analysis was redone with an elevation gradient.
   As this analysis is limited to the energy range \SIrange{4}{70}{TeV}, the elevation gradient will increase the number of events detected at the bottom of the camera, due to the thicker atmosphere providing increased interaction mass.
   And, since the Galactic Center is visible almost directly south at an azimuth of \ang{193}, the elevation axis is almost parallel to the Declination axis.
-  A gradient of 5\%/\degree{} was chosen due to the relative differences between the total modeled counts and the observed counts in Figures \ref{fig:gc_profile_gal_l} and \ref{fig:gc_profile_gal_b}.
+  A gradient of 5\%/degree was chosen due to the relative differences between the total modeled counts and the observed counts in Figures \ref{fig:gc_profile_gal_l} and \ref{fig:gc_profile_gal_b}.
   {\color{red}(Its hard to see how you get 5\% from the plots, from profile plots it looks like 10\%, can a residual plot be made and shown here?? -orel)}
   An example background is shown in Figure~\ref{fig:bkg_flatvsgrad}, before and after the gradient is applied.
   
@@ -860,8 +860,9 @@
     \label{fig:bkg_flatvsgrad}
   \end{figure}
   
-  After these were applied to all background models, the likelihood analysis was re-ran for the \SI{10}{\TeV} WIMP mass.
-  The resulting upper limit with the gradient was only 0.1\% different than with a simple radial background, indicating the upper limits are not very sensitive to the background models.
+  After these were applied to all background models, the likelihood analysis was re-run for the \SI{10}{\TeV} WIMP mass.
+  The resulting upper limit with the gradient was only 0.1\% different from the upper limit with radial background models.
+  This indicates the upper limits are not very sensitive to the background models.
   % on warp-zeuthen.desy.de:
   % cd $VERIPY/thesis/analysis/dm_plus_pnt/
   %
@@ -872,8 +873,8 @@
   % with gradient:
   % $ grep "crosssection_ul" with_elev_gradient/logs/statistics.brbbbar.10.0TeV.nfits1000.withpntsrc.txt 
   % [1.6280879530415155e-24, 'cm^3/s']
-  This likely stems from the fact that the test statistic is a ratio of likelihoods of two model groups, both of which contain the background models.
-  Thus, the likelihoods from both model groups changed by a similar amount, and in the same direction, partially cancelling.
+  This likely stems from the fact that the test statistic is a ratio of the likelihoods of two model groups, both of which contain the background models.
+  Thus, the likelihoods from both model groups changed by a similar amount, and in the same direction, partially cancelling out.
   
   {\color{red}(talk about how effective area might be affected by elevation??)}
 
