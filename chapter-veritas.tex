@@ -54,8 +54,9 @@ The first CCD camera is attached below the bottom mirrors, and images the stars 
 The second CCD camera is attached to the support struts, roughly halfway between the mirrors and the camera, and images the focal plane of the telescope.
 Both cameras are marked by red dashed-line circles in Figure~\ref{fig:davcottel}.
 During regular observations, these cameras take images of background stars and the focal plane LEDs every two seconds.
-By extrapolating the LED positions from the star positions {\color{red}(is this how it works?? its unclear from the VPM memo...)}, an improved pointing accuracy of \nicetilde{}\ang{0.007} can be achieved~\cite{VPMmemo}.
+By extrapolating the LED positions from the star positions, an improved pointing accuracy of \nicetilde{}\ang{0.007} can be achieved~\cite{VPMmemo}.
 %  0.007 comes from Grube 2011 VPM Memo:
+%    "VERITAS Pointing Monitor" on https://veritas.sao.arizona.edu/wiki/index.php/VERITAS_Memos
 %    20 arcseconds systematic error on VPN calibration (Section 3, last paragraph, and section 5 last paragraph)
 %    +5 arcseconds due to scatter of star database positions (Section 5 last paragraph)
 %    = 25 arcseconds total VPM systematic error
@@ -204,10 +205,9 @@ This FADC circuit then, for each 2-nanosecond time bin, measures how large the v
 % time bin = 2ns, stored in an 8-bit int, so 256 possible values, or 255 values + a 0 value
 The highest threshold that is crossed in a single time bin then determines the digital voltage value that is saved to the FADC buffer for that time bin.
 
-{\color{red}(?? Please read the T1 paper again, the following paragraph is not entirely correct -Gernot)}
-If the low-gain trigger pulse was also recieved by the FADC, then the signal voltage pulse is attenuated before being digitized, since the CFD low-gain threshold is set lower than the FADC maximum digitizable voltage.
-If this low-gain triggering did not take place, then the FADC would become saturated.
-Once the voltage pulse is digitized, it is saved to an \SI{8}{$\mu$s}-long rolling buffer in the FADC, waiting for higher level triggers, signaling the FADC to readout its buffers into a datafile~\cite{veritas_FADC}.
+If the low-gain trigger pulse was also recieved by the FADC, then the signal voltage pulse directed to a separate circuit that does not amplify the voltage pulse as much before digitizing it.
+This low-gain option increases the digitizable dynamic range of the entire system.
+Once the voltage pulse is digitized, it is saved to an \SI{8}{$\mu$s}-long rolling buffer in the FADC, waiting for higher level triggers, signaling the FADC to readout its buffers into a datafile~\cite{Veritas_Detector,veritas_FADC}.
 
 \subsection{PMT Upgrade}
 In summer of 2012, all PMTs in the telescopes were replaced with improved PMTs.
