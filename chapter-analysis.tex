@@ -527,14 +527,14 @@
 \section{Dark Matter Likelihood Analysis}\label{sec:dmlike}
   
   Since the test analysis on the Crab Nebula data shows results consistant with other VERITAS, H.E.S.S., and MAGIC studies, the main dark matter analysis can begin in earnest.
-  The 108 hours of Galactic Center data use in this analysis is described in Section~\ref{veritasdata}.
+  The 108 hours of Galactic Center data used in this analysis is described in Section~\ref{veritasdata}.
   A skymap histogram of all observed events is shown in Figure~\ref{fig:gc_counts_skymap}.
   This skymap is uncorrected for exposure time or effective area; it is only a histogram of event positions.
   A histogram of all events' energies from \SIrange{4}{70}{TeV} is shown in Figure~\ref{fig:gc_counts_enhist}.
   As this histogram is uncorrected for effective area, it does not follow the standard power-law shape.
   Neither of these plots have corrections for observing time or effective area.
   Once the data is reconstructed, the next step is to set up the models.
-  These models include the camera background models, similar to the Crab Nebula analysis.
+  These include the camera background models, similar to the Crab Nebula analysis, as well as a point source at the Galactic Center, and a dark matter halo.
   
   \begin{figure}[ht]
     \centering
@@ -562,7 +562,7 @@
 
   \subsection{Non-Dark Astrophysical Models}\label{subsec:gcpointsrc}
   For this analysis, a point source model was added at the position of Sgr A*.
-  This was because other studies have indicated that the gamma-ray excess at Sgr A* is not consistant with a dark matter halo~\cite{gc_pnt_is_not_dm1, gc_pnt_is_not_dm2, gc_pnt_is_not_dm3}.
+  This was done because other studies have indicated that the gamma-ray excess at Sgr A* is not consistant with a dark matter halo~\cite{gc_pnt_is_not_dm1, gc_pnt_is_not_dm2, gc_pnt_is_not_dm3}.
   Instead, a point source with the broken power law spectrum in Equation~\ref{eqn:brokenplaw} was added to the list of models.
   This is chosen because, in a previous VERITAS analysis of the Galactic Center, a broken power law was found to be a better fit than a simple power law~\cite{VeritasGCRidge2015}.
   
@@ -609,8 +609,8 @@
   
   With these two hypotheses, the likelihood function was maximized to find the best-fit model parameters for each $m_{\chi}$.
   In Table \ref{tab:tsvals}, the TS values from each dark matter mass are shown.
-  Using Wilk's theorem~\cite{wilks1938} with a likelihood ratio with one free parameter, a TS value greater than 20 would hint at the presence of a dark matter halo.
-  As all of these are less than zero, it shows that the null (no dark matter) hypothesis is statistically favorable.
+  Using Wilk's theorem~\cite{wilks1938} with one free parameter, a TS value greater than 20 would hint at the presence of a dark matter halo.
+  The fact that all of these are less than zero shows that the null (no dark matter) hypothesis is statistically favored.
 
   \FloatBarrier
   
@@ -652,7 +652,7 @@
     
   To check that the other models are fitting the observed events, we can compare the observed vs modeled counts in different slices.
   In Figure~\ref{fig:gc_profile_gal_l}, the observed counts are shown compared to the final, likelihood-optimized modeled counts.
-  The histogram bins are a \ang{0.22}-wide slice along the galactic l axis, centered on Sgr A*'s galactic b coordinate.
+  The histogram bins are located on \ang{0.22}-wide slice along the galactic l axis, centered on Sgr A*'s galactic b coordinate.
   Purple histogram bins are the modeled counts from only the camera background models.
   Green histogram bins are the total modeled counts from the camera background models, the Galactic Center point source, and the Dark Matter Halo.
   Blue points with error bars are the observed counts in each bin, with poissonian errors.
@@ -686,7 +686,7 @@
   \end{figure}
 
   Figure~\ref{fig:gc_profile_gal_b} is similar to Figure~\ref{fig:gc_profile_gal_l}, except it slices through Sgr A* along the galactic b axis,
-  The feature where the observed counts are higher on the left and lower on the right is also visible here.
+  The feature in which the observed counts are higher on the left and lower on the right is also visible here.
 
   \begin{figure}[h]
     \centering
@@ -712,7 +712,7 @@
     \label{fig:gc_profile_gal_b}
   \end{figure}
 
-  Figure~\ref{fig:gc_profile_energy} shows the same profile, except integrated over a \ang{0.2}$\times$\ang{0.2} galactic (l,b) square centered on Sgr A*.
+  Figure~\ref{fig:gc_profile_energy} shows the same profile, except it is integrated over a \ang{0.2}$\times$\ang{0.2} galactic (l,b) square centered on Sgr A*.
   Again, purple is modeled camera-background counts, green is total modeled counts, and blue is observed counts.
   
   \begin{figure}[h]
@@ -760,8 +760,9 @@
     \caption[Galactic Center Residual Map]
     {
       Significance of each skymap bin's residual counts.
-      See equation \ref{eqn:resmap_signif} for details.
-      The dark upper-left and lighter lower-right areas are due to the the radially-symmetric background, when a non-radially symmetric one would have been more ideal.
+      See Equation~\ref{eqn:resmap_signif} for details.
+      {\color{red}(binsize needs a closing parentheses??)}
+      The dark upper-left and lighter lower-right areas are due to the the radially-symmetric background, whereas a non-radially symmetric one would have been more ideal.
     }
     \label{fig:gc_resmap}
   \end{figure}
@@ -769,7 +770,7 @@
   If the source and background models were perfectly known, there would still be statistical fluctuations in the observed counts, and the residual significances would form a Gaussian distribution, shown as the green line in Figure~\ref{fig:gc_resmap_sighist}.
   However, the distribution of the pixel significances from Figure~\ref{fig:gc_resmap} is also shown in Figure~\ref{fig:gc_resmap_sighist}, and is qualitatively not Gaussian shaped {\color{red}(??)}.
   {\color{red}?? How well does it fit, and quantitatively how bad does it fit??}
-  {\color{red}do a Gaussian fit of the data, and report the p-value of the fit?? -Orel)}
+  {\color{red}(do a Gaussian fit of the data, and report the p-value of the fit?? -Orel)}
   As a large number of bins are clustered around +2 and -2 significance, this hints that the residuals in Figure~\ref{fig:gc_resmap} are not solely due to statistical noise, and that the background modeling could be improved.
   
   \begin{figure}[ht]
@@ -793,7 +794,8 @@
     \frac{ d\Phi }{ dE d \Omega } = \frac{ \left \langle \sigma v \right \rangle }{8 \pi m_\chi^2} \frac{dN_{\gamma}}{dE} \int \rho^2 dl\tag{\ref{eqn:dmflux}}
   \end{equation}
 
-  When all other variables in Equation~\ref{eqn:dmflux} are fixed, a larger velocity-averaged cross section always results in a larger gamma-ray flux, meaning the flux and cross section can both be replaced by their upper limits ($x \rightarrow x \left |_{\textrm{ul}}$), as in Equation~\ref{eqn:ulim}.
+  When all other variables in Equation~\ref{eqn:dmflux} are fixed, a larger velocity-averaged cross section always results in a larger gamma-ray flux.
+  This means that the flux and cross section can both be replaced by their upper limits ($x \rightarrow x \left |_{\textrm{ul}}$), as in Equation~\ref{eqn:ulim}.
   
   \begin{equation}\label{eqn:ulim}
     \frac{d\phi}{dE d\Omega} \left. \right |_{\textrm{ul}} = \frac{ \left \langle \sigma v \right \rangle \left | \right _{\textrm{ul}} }{8\pi m_{\chi}^{2}} \frac{dN_{\gamma}}{dE} \int \rho^{2} \; dl \;
@@ -809,8 +811,8 @@
   {\color{red}(Where indeed does it come from? What is erf?? -Orel)}
 
   A 95\% confidence interval is desired, so $\alpha$ is set to 0.95 for the upper limit calculation in this section.
-  Then the dark matter halo model's flux $\Phi$ is fixed at one magnitude, the likelihood method finds the best fit values for the remaining free parameters, and the likelihood is recalculated.
-  This is repeated until the the likelihood is found to be within a certain tolerance of $L_{\textrm{ul}}$.
+  In this procedure, the dark matter halo model's flux $\Phi$ is fixed at one magnitude, and then the likelihood method finds the best fit values for the remaining free parameters.
+  This is repeated for various $\Phi$ until the the likelihood is found to be within a certain tolerance of $L_{\textrm{ul}}$.
   Once the upper limit model flux $\Phi$ is found and combined with Equation~\ref{eqn:ulim}, the cross section upper limit can be calculated.
 
   From the 9 WIMP masses tested in Section~\ref{sec:dmlike}, the calculated upper limits are shown in Figure~\ref{fig:ulim}.
@@ -839,7 +841,7 @@
 
   The residual map in Figure~\ref{fig:gc_resmap} has a gradient that is visible to the naked eye, going from the lower right to the upper left.
   This means that the radial camera background models are not accurately fitting the shape of the observed events.
-  The direction of the residual gradient aligns with the elevation gradient in the camera, visible in Figures \ref{fig:back_lowelev29} D and E, and Figures \ref{fig:back_lowelev26} D and E.
+  The direction of the residual gradient aligns with the elevation gradient in the camera, visible in Figures \ref{fig:back_lowelev29}.D and .E, and Figures \ref{fig:back_lowelev26}.D and .E.
   To check that this elevation gradient has a negligible effect on the upper limit result in Figure~\ref{fig:ulim}, the likelihood analysis was redone with an elevation gradient.
   As this analysis is limited to the energy range \SIrange{4}{70}{TeV}, the elevation gradient will increase the number of events detected at the bottom of the camera, due to the thicker atmosphere providing increased interaction mass.
   And, since the Galactic Center is visible almost directly south at an azimuth of \ang{193}, the elevation axis is almost parallel to the Declination axis.
@@ -852,8 +854,8 @@
     \includegraphics[width=0.98\textwidth]{images/background_gradient/gradientcomparison.pdf}
     \caption[Background Gradient Comparison]{
       The background models for run 68348, minutes 16-24.
-      Left is the original radial background, centered \ang{0.5} North of the Galactic Center.
-      Right is the same background, after applying the 5\%/\degree{} gradient along the elevation axis.
+      Left is the original radial background, centered \ang{0.5} north of the Galactic Center.
+      Right is the same background, after applying the 5\%/degree gradient along the elevation axis.
       While faint, the difference between the two can be seen in the central dark-red ring.
       In the left, the ring is symmetric, while in the right, the ring is darker at the bottom than at the top.
     }
