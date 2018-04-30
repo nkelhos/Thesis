@@ -1,4 +1,6 @@
 \cleartooddpage[\thispagestyle{empty}]
+\newcommand{\EReco}{$\textrm{E}_{\textrm{Reconstructed}}$}
+\newcommand{\ETrue}{$\textrm{E}_{\textrm{True}}$}
 
 \chapter{Gamma Ray Reconstruction Methods}\label{ch:grrecon}
 
@@ -272,9 +274,8 @@ This database includes the width and length of the shower, how far away its core
       \includegraphics[width=0.85\textwidth]{images/psf_gc_eventhist/eventpsf.pdf}
       \caption[Crab and Galactic Center Event PSFs]{
         The 68\% containment radius for all Galactic Center and Crab Nebula events used in this analysis.
-        {\color{red}why the long tail?? Large offset and low energy data?? -Gernot}
-        {\color{red}You need to explain in the text any non-trivial features in the plots. That is, you need to say what is the resolution observed and explain what is the second peak seen in the Galactic centre data. ?? -Orel}
-        {\color{red}Crab -> Crab Nebula ??}
+        The odd structure is due to the varying effective area at different offsets and energies, which changes the distribution of events in the PSF table, which already has varying.
+        The long tails are likely due to events at the edge of the observable energy and offset ranges, where the PSF gets worse.
       }
       \label{fig:gc_psf_hist}
     \end{figure}
@@ -357,18 +358,18 @@ This database includes the width and length of the shower, how far away its core
 
     \begin{figure}[ht]
       \centering
-      \includegraphics[width=0.85\textwidth]{images/edisp_plots/edisp.eps}
+      \includegraphics[width=0.85\textwidth]{images/edisp_plots/edisp.pdf}
       \caption[Energy Migration Matrix]{
         An energy migration matrix used with Sgr A* run 82288.
         The reconstructed energy is on the x axis, and the true energy is on the y axis.
         The z (color) axis denotes the number of simulated events that passed all cuts.
-
-        {\color{red} (why does the z axis have units of 1/s*MeV?? GCTAEdisp2D::operator() returns these units, but why??)} 
-      
-        {\color{red}Most events are reconstructed off axis?? -Gernot}
+        Events at a given \ETrue{} are reconstructed at a spread of \EReco{}.
+        This spread is due to the variability in how air showers develop in the atmosphere.
+        Small variations early in the shower can have a large impact on the shower's cherenkov image, meaning the shower can look like it was from a higher- or lower-energy gamma ray.
+        At the lowest \ETrue{} energies, events are reconstructed at higher \EReco{} energies.
+        This is due to ??.
         
         {\color{red}Need to explain downturn at lowest energies?? -Gernot}
-        
         {\color{red}Again, please describe in the text non-trivial features in the plot (the bias at low energy) ?? -orel}
       }
       \label{fig:migmatrix}
@@ -462,7 +463,6 @@ This database includes the width and length of the shower, how far away its core
       Middle: Histogram of all events in energy.
       Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV}.  
       The blue circles centered on the Crab Nebula highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
-      {\color{red}(Add high energy plot??)}
     }
     \label{fig:bkgvsel_crab}
   \end{figure}

@@ -54,43 +54,46 @@ mean_theta = [ theta_center( itheta ) for itheta in range(ntheta) ]
   
 # loop over theta bins
 images = []
-for itheta in [2] : # only 0.5 degree offset
-  theta = gammalib.deg2rad * theta_center( itheta )
-  
-  map_matrix = []
-  for ietrue in range( e_nbins) :
-    etrue = etrue_center( ietrue )
-    for iemigr in range( e_nbins) :
-      emigr = etrue_center( iemigr )
-      map_matrix += [ edisp( log10(emigr), log10(etrue), theta ) ]
-  
-  s_matrix = numpy.reshape( map_matrix, (e_nbins,e_nbins) )
-  shaped_matrix = numpy.ma.masked_array( s_matrix, s_matrix < 0.5 )
-  
-  fig = plt.figure( figsize=[9,9] )
-  ax  = fig.add_subplot( 1, 1, 1, adjustable='box', aspect=1.0 )
-  im  = plt.pcolormesh( shaped_emigr, shaped_etrue, shaped_matrix, vmax=30 )
-  plt.title( r'Energy Migration Matrix for Galactic Center Run 78128 (Offset %.1f${}^{\circ}$)' % (theta*gammalib.rad2deg), fontsize=15 )
-  plt.plot( [emin,emax], [emin,emax], 'r--' )
-  plt.xlabel( r'E${}_{\text{Reconstructed}}$ [TeV]', fontsize=15 )
-  plt.ylabel( r'E${}_{\text{True}}$ [TeV]', fontsize=15 )
-  plt.xscale( 'log' )
-  plt.yscale( 'log' )
-  plt.gca().set_xlim( [ emin, emax ] )
-  plt.gca().set_ylim( [ emin, emax ] )
-  divider = mpl_toolkits.axes_grid1.make_axes_locatable(ax)
-  cax = divider.append_axes('right', size='5%', pad=0.05 )
-  cb  = plt.colorbar( im, cax=cax)
-  cb.set_label(r"$\frac{\text{\# of Events}}{\text{s}*\text{MeV}}$", fontsize=15)
-  image = os.path.join( temp_dir, 'migmatrix_itheta%d.png'%itheta )
-  plt.tick_params( axis='both', which='major', labelsize=15 )
-  plt.savefig( image, bbox_inches='tight', dpi=100 )
-  plt.close()
-  print('writing %s' % image )
-  images += [ image ]
-  
-cmd = 'montage -mode concatenate -tile 1x%d %s %s' % ( len(images), ' '.join(images), fname )
-os.system( cmd )
+#for itheta in [2] : # only 0.5 degree offset
 
-cmd = 'convert %s %s' % ( fname, os.path.splitext(fname)[0]+'.eps' )
-os.system( cmd )
+itheta = 2
+
+theta = gammalib.deg2rad * theta_center( itheta )
+
+map_matrix = []
+for ietrue in range( e_nbins) :
+  etrue = etrue_center( ietrue )
+  for iemigr in range( e_nbins) :
+    emigr = etrue_center( iemigr )
+    map_matrix += [ edisp( log10(emigr), log10(etrue), theta ) ]
+
+s_matrix = numpy.reshape( map_matrix, (e_nbins,e_nbins) )
+shaped_matrix = numpy.ma.masked_array( s_matrix, s_matrix < 0.5 )
+
+fig = plt.figure( figsize=[9,9] )
+ax  = fig.add_subplot( 1, 1, 1, adjustable='box', aspect=1.0 )
+im  = plt.pcolormesh( shaped_emigr, shaped_etrue, shaped_matrix, vmax=30, rasterized=True )
+plt.title( r'Energy Migration Matrix for Galactic Center Run 78128 (Offset %.1f${}^{\circ}$)' % (theta*gammalib.rad2deg), fontsize=15 )
+plt.plot( [emin,emax], [emin,emax], 'r--' )
+plt.xlabel( r'E${}_{\text{Reconstructed}}$ [TeV]', fontsize=15 )
+plt.ylabel( r'E${}_{\text{True}}$ [TeV]', fontsize=15 )
+plt.xscale( 'log' )
+plt.yscale( 'log' )
+plt.gca().set_xlim( [ emin, emax ] )
+plt.gca().set_ylim( [ emin, emax ] )
+divider = mpl_toolkits.axes_grid1.make_axes_locatable(ax)
+cax = divider.append_axes('right', size='5%', pad=0.05 )
+cb  = plt.colorbar( im, cax=cax)
+cb.set_label(r"$\frac{\text{\# of Events}}{\text{MeV}}$", fontsize=15)
+image = 'edisp.pdf' #os.path.join( temp_dir, 'edisp.pdf' )
+plt.tick_params( axis='both', which='major', labelsize=15 )
+plt.savefig( image, bbox_inches='tight', dpi=100 )
+plt.close()
+print('writing %s' % image )
+images += [ image ]
+  
+#cmd = 'montage -mode concatenate -tile 1x%d %s %s' % ( len(images), ' '.join(images), fname )
+#os.system( cmd )
+
+#cmd = 'convert %s %s' % ( fname, os.path.splitext(fname)[0]+'.eps' )
+#os.system( cmd )
