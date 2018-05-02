@@ -322,68 +322,32 @@
     The time/temperature that Baryogenesis occurred at has not been determined.
     However, there are several competing theories that may explain how an unequal ratio of baryons to antibaryons were created~\cite{baryogenesis1,baryogenesis2}.
     
-    Electroweak phase transition(??).
+    At this point, the universe is a sea of photons, electrons, and baryons.
+    Once the universe cooled below the electron-proton binding energy {\color{red}(??)}, electrons were captured by protons.
+    These captured electrons then release photons as they relax to the ground state, which are then able to survive to the current day as most particles from that point on are electrically neutral {\color{red}(??)}.
+    This leads to a sea of blackbody photons called the cosmic micrwave background.
+    Since these are photons emitted by the last electrically charged particles, density variations in the charged particles produce density variations in the cosmic microwave background.
+    Studying the spectrum of these density variations allows for models of the big bang theory and of the universe's development to be tested.
     
+    During this time, a background population of WIMP dark matter particles were repeadtedly created and annihilated.
+    After the universe expanded further, the density of these WIMPs decreased to the point where they were no longer running into each other.
+    This increased WIMP transparency froze the number of WIMPs at that time, called the relic density.
+    From the equation
     
-    Closer to the big bang, there was a point in time referred to as the 'freezout'.
-    Before that time, the universe was a quark-gluon plasma, and the temperature was too hot to allow baryons to exist for any long period of time.
+    % see http://pdg.lbl.gov/2013/reviews/rpp2013-rev-dark-matter.pdf for more basic info
+    % see https://arxiv.org/pdf/1603.03797.pdf
+    
 
-    % borrow dark matter-related events from this chart?
-    % https://en.wikipedia.org/wiki/Chronology_of_the_universe
-    \begin{table}[h]
-      \centering
-      \caption[Key Events During the Life of the Universe]{
-        Key events during the development of the universe.
-        The Time column is the age of the universe at that event.
-        The Temperature column is the universe's average temperature at that time.
-        The Distance column is how far light could have traveled in that time, if it started at the beginning of the universe and travelled at present-day $c$.
-        {\color{red}Idea from \url{http://www.th.physik.uni-bonn.de/drees/non\_ac/presentation\_Narimani.pdf} , slide 10, CREDIT THIS!!}
-        {\color{red}(Source remaining values??)}
-        {\color{red}(If a term is mentioned here, it needs to be explained!! ??)}
-        % see http://www.sciencedirect.com/science/article/pii/S0370157304003515 page 286 for more info
-        % see https://arxiv.org/pdf/hep-ph/0602002.pdf
-        % maybe check PDG?
-        % http://www.particleadventure.org/history-universe.html
-      }
-      % Space column is just Time column * 3e8 m/s
-      \label{cosmo_events}
-      \begin{tabular}{lcc}
-        Event                                         & Time                    & Temperature                \\
-        \hline
-        Big Bang (Planck Time \& Temp)                & $10^{-43}\,$s           & $10^{19}\,$\GeV            \\
-        % https://www.physics.umd.edu/courses/Phys741/xji/chapter2.pdf , pg 22, equation 2.10/2.11
-        % planck mass
-        % M_{pl} = \sqrt{ \frac{ \hbar c }{ G_N } } = 1.22*10^19 GeV
-        % hbar : reduced planck constant
-        % c    : speed of light
-        % G_N  : newtons gravitational constant
-        % planck time t_P = ~10^-43 s
-
-        Inflation                                     & $10^{-34}\,$s (?)       & ??                         \\
-        Baryogenesis                                  & ??                      & ??                         \\
-        EW phase transition                           & \SI{20}{ps}             & \SI{100}{\GeV}             \\
-        Dark Matter Freeze-out                        & ??                      & ??                         \\
-        QCD phase transition                          & \SI{20}{\mu.s}          & \SI{150}{\MeV}             \\
-        Neutrino decoupling                           & \SI{1}{s}               & \SI{1}{\MeV}               \\
-        Neutron freezout                              & \SI{1}{s}               & \SI{1}{\MeV}               \\
-        $\text{e}^+ - \text{e}^-$ annihilation        & \SI{6}{s}               & \SI{500}{keV}              \\
-        Big Bang nucleosynthesis                      & \SI{3}{min}             & \SI{100}{keV}              \\
-        Matter and radiation densities equal          & \SI{60}{kyr}            & \SI{0.75}{eV}              \\
-        (ion?) Recombination                          & \SIrange{260}{380}{kyr} & \SIrange{0.26}{0.33}{eV}   \\
-        Photon decoupling                             & \SI{380}{kyr}           & \SIrange{0.23}{0.38}{eV}   \\
-        Reionization                                  & \SIrange{100}{400}{Myr} & \SIrange{2.6 }{7   }{meV}  \\
-        Dark energy-matter equality                   & \SI{9}{Gyr}             & \SI{0.33}{meV}             \\
-        Present                                       & \SI{13.8}{Gyr}          & \SI{0.24}{meV}             \\
-      \end{tabular}
-    \end{table}
+    
     
     After that freezout, the temperature was low enough that baryon creation and annihilation rates plummited.
     Thus, the number of baryons that were in the universe at the freezout temperature determines how many baryons are in existance today, since there are no significant ways to destroy universe-scale quantities of baryons.
     This freezout left an imprint of its structure, where higher and lower densities of remaining baryons led to higher and lower densities of CMB photons.
     {\color{red}(This is not entirely accurate (the fraction of baryons to anti-baryons is too high to be explained as a simple statistical fluctuation which froze).
 Also, it does not really explain how Dark Matter plays a role (you mention it in the next paragraph, but it is not explained). -Orel ?? )}
+    
 
-    From fitting this structure, the composition of the universe can be modeled.
+    From this structure, the composition of the universe can be modeled.
     In terms of energy, 68.6\% of the universe is stored in Dark Energy, a repulsive force which causes almost all visible galaxies to accelerate away from the Milky Way.
     % 100% - ( 26.5% + 4.9 ) = 73.5% (from beginning of chapter)
     Another 4.9\% of the universe's energy is stored in baryonic matter, like protons and neutrons.
@@ -399,14 +363,60 @@ Also, it does not really explain how Dark Matter plays a role (you mention it in
     In the Sloan Digital Sky Survey (SDSS), the positions of 1.6 million galaxies, quasars, and stars are mapped~\cite{sdss_release}.
     By simulating the distribution of similar objects as the universe ages, only with a Dark Matter component does the universe form clumps that match SDSS observations.
   
-    A much more detailed discussion on the evidence for Dark Matter can be read here \cite{DMPrimer}.
-    {\color{red}(Unfortunately, this cannot really be done in a thesis (unlike a paper). A thesis needs to contain detailed explanations on its main subject. I guess you figured that already from all of my previous comments. -Orel ??)}
-    {\color{red}(Take a few more ideas from that primer, explain them, then leave out the above line altogether)}
+    {\color{red}(Take a few more ideas from the primer \cite{DMPrimer}, explain them, then leave out the above line altogether (??))}
 
     {\color{red}(baryon acoustic oscillations?? \url{http://iopscience.iop.org/article/10.1086/466512/meta} )}
     
-    
     {\color{red}(cmb temperature and polarization??)}
+    
+    % borrow dark matter-related events from this chart?
+    % https://en.wikipedia.org/wiki/Chronology_of_the_universe
+    %\begin{table}[h]
+    %  \centering
+    %  \caption[Key Events During the Life of the Universe]{
+    %    Key events during the development of the universe.
+    %    The Time column is the age of the universe at that event.
+    %    The Temperature column is the universe's average temperature at that time.
+    %    The Distance column is how far light could have traveled in that time, if it started at the beginning of the universe and travelled at present-day $c$.
+    %    {\color{red}Idea from \url{http://www.th.physik.uni-bonn.de/drees/non\_ac/presentation\_Narimani.pdf} , slide 10, CREDIT THIS!!}
+    %    {\color{red}(Source remaining values??)}
+    %    {\color{red}(If a term is mentioned here, it needs to be explained!! ??)}
+        % see http://www.sciencedirect.com/science/article/pii/S0370157304003515 page 286 for more info
+        % see https://arxiv.org/pdf/hep-ph/0602002.pdf
+        % maybe check PDG?
+        % http://www.particleadventure.org/history-universe.html
+    %  }
+      % Space column is just Time column * 3e8 m/s
+    %  \label{cosmo_events}
+    %  \begin{tabular}{lcc}
+    %    Event                                         & Time                    & Temperature                \\
+    %    \hline
+    %    Big Bang (Planck Time \& Temp)                & $10^{-43}\,$s           & $10^{19}\,$\GeV            \\
+        % https://www.physics.umd.edu/courses/Phys741/xji/chapter2.pdf , pg 22, equation 2.10/2.11
+        % planck mass
+        % M_{pl} = \sqrt{ \frac{ \hbar c }{ G_N } } = 1.22*10^19 GeV
+        % hbar : reduced planck constant
+        % c    : speed of light
+        % G_N  : newtons gravitational constant
+        % planck time t_P = ~10^-43 s
+
+    %    Inflation                                     & $10^{-34}\,$s (?)       & ??                         \\
+    %    Baryogenesis                                  & ??                      & ??                         \\
+    %    ElectroWeak phase transition                  & \SI{20}{ps}             & \SI{100}{\GeV}             \\
+    %    Dark Matter Freeze-out                        & ??                      & ??                         \\
+    %    QCD phase transition                          & \SI{20}{\mu.s}          & \SI{150}{\MeV}             \\
+    %    Neutrino decoupling                           & \SI{1}{s}               & \SI{1}{\MeV}               \\
+    %    Neutron freezout                              & \SI{1}{s}               & \SI{1}{\MeV}               \\
+    %    $\text{e}^+ - \text{e}^-$ annihilation        & \SI{6}{s}               & \SI{500}{keV}              \\
+    %    Big Bang nucleosynthesis                      & \SI{3}{min}             & \SI{100}{keV}              \\
+    %    Matter and radiation densities equal          & \SI{60}{kyr}            & \SI{0.75}{eV}              \\
+    %    (ion?) Recombination                          & \SIrange{260}{380}{kyr} & \SIrange{0.26}{0.33}{eV}   \\
+    %    Photon decoupling                             & \SI{380}{kyr}           & \SIrange{0.23}{0.38}{eV}   \\
+    %    Reionization                                  & \SIrange{100}{400}{Myr} & \SIrange{2.6 }{7   }{meV}  \\
+    %    Dark energy-matter equality                   & \SI{9}{Gyr}             & \SI{0.33}{meV}             \\
+    %    Present                                       & \SI{13.8}{Gyr}          & \SI{0.24}{meV}             \\
+    %  \end{tabular}
+    %\end{table}
     
 
 \section{$\Lambda$CDM Cosmology and the Standard Model}
