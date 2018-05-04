@@ -149,8 +149,11 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
       \label{fig:disp_event_offset}
     \end{figure}
   
+  {\color{red}(Find some part of the phase space where DISP offers an improvement, and make plots showing that low energy performance is better, though tradeoff is high energy performance is worse. see https://www.dropbox.com/sh/3w93xgr9g072y2x/AADbIXJZwHFXz40lzslP_DFVa?dl=0 for the specific plots to remake (??))}
+  
   {\color{red}Also include dispgeom\_comparison\_psftable.crab.png in \$V/thesis/plots , but only focus on my energy range, and switch it to be distributions at each energy}
 
+  
   \FloatBarrier
 
 \section{Energy Reconstruction}\label{subsec:enrecon}
@@ -371,6 +374,9 @@ This database includes the width and length of the shower, how far away its core
         
         {\color{red}Need to explain downturn at lowest energies?? -Gernot}
         {\color{red}Again, please describe in the text non-trivial features in the plot (the bias at low energy) ?? -orel}
+        {\color{red}Add boundary lines in reconstructed energy based on event cuts??}
+        {\color{red}Check other thesis for energy migration matrix stuff and explainations??}
+        {\color{red}Check how anasum low-energy limit is calculated, and where it is applied??}
       }
       \label{fig:migmatrix}
     \end{figure}
@@ -548,6 +554,8 @@ This database includes the width and length of the shower, how far away its core
     The first analysis was with the default analysis chain settings, and the second time with a single pixel disabled in all four telescopes.
     This mimics the effect of having a star in the field of view that is bright enough to disable a pixel.
 
+    {\color{red}(Justification for this study: because this study shows pixels only reduce the events near the pixels, and the DM upper limits are dominated by events near the center (where the halo is brightest), and there aren't too many dead pixels near the GC (check??), this is why we can safely ignore the effect of dead pixels.)}
+    
     After gamma-hadron cuts are applied to both sets of events, studies can be performed on events that only appeared in one set and not the other.
     Some events may only pass gamma-hadron cuts with the pixel enabled ($P_e$), while others only pass when the pxiel is disabled ($P_d$).
     Events that are present both when the pixel is disabled and enabled can also be tested to see how far their reconstructed position moved in the camera.
@@ -620,6 +628,7 @@ This database includes the width and length of the shower, how far away its core
     Since a one pixel disabled in all telescopes resulted in 0.7\% fewer events, and the Sgr A* observations in this analysis have \nicetilde{}4.4 pixels disabled, a rough estimate for the events lost due to stars near Sgr A* is approximately 3\%.
     {\color{red}(Is 3\% acceptably small?? whats the threshold where it becomes ok to ignore 3\%??)}
     For the Crab Nebula, with its 8.4 lost pixels, loses approximately 5.9\% of nearby events.
+    {\color{red}('Nearby` doesn't make sense when pixels are scattered around, should switch to total \% of events lost??)}
     Note however, that the majority of these event losses are not gamma rays from the observing target, but are instead lost background events near (<\ang{0.5}) the position of the stars that disabled pixels.
     Another reason these disabled pixels are not accounted for is discussed in Chapter~\ref{chapter:analysis}, where small disabled-pixel effect is dwarfed by the problems with modeling how the background rate is affected by the atmospheric gradient.
     Future analyses may be able to account for these effects in their models of the background rates and effective areas.
