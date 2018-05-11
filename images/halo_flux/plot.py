@@ -18,7 +18,7 @@ db    = veripy.VeritasDB()
 lwid  = 1
 lsize = 18
 
-fig = aplpy.FITSFigure('halo.profeinasto.fits', convention='calabretta')
+fig = aplpy.FITSFigure('halo.profeinasto.core000pc.fits', convention='calabretta')
 fig.recenter( sgra.l_deg(), sgra.b_deg(), radius=2.5 )
 fax = plt.gca()
 
