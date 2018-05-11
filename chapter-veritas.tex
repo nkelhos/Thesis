@@ -9,8 +9,8 @@
   \label{fig:veritasarray}
 \end{figure}
 
-VERITAS, or Very Energetic Radiation Imaging Telescope Array System pictured in Figure~\ref{fig:veritasarray}, is a gamma-ray observatory operating in Arizona, USA, and is capable of detecting \nicetilde{}\TeV{} gamma rays.
-The observatory consists of an array of four Imaging Atmospheric Cherenkov Telescopes (IACTs), each spaced \nicetilde{}\SI{90}{m} apart.
+VERITAS, or Very Energetic Radiation Imaging Telescope Array System pictured in Figure~\ref{fig:veritasarray}, is a gamma-ray observatory operating in Arizona, USA, and is capable of detecting gamma rays with energies from \SI{100}{\GeV{}} to \SI{70}{\TeV{}}.
+The observatory consists of an array of four Imaging Atmospheric Cherenkov Telescopes (IACTs), spaced \nicetilde{}\SI{90}{m} apart.
 Each telescope possesses an array of 345 mirrors, and a 499 Photomultiplier Tube (PMT) camera on a set of struts.
 When a gamma ray produces an air shower in the atmosphere, the shower emits blue-UV Cherenkov photons over a timespan of nanoseconds.
 By focusing these photons onto the PMT camera with the mirrors, images of the shower can be taken, in which each pixel of the image consists of analog voltage pulses from each PMT.
@@ -79,7 +79,6 @@ The VERITAS specifications state that the mirror reflectivity must be $\geq 85\%
   \includegraphics[width=0.75\textwidth]{images/mirror_reflect}
   \caption[Mirror Reflectivity]{
     Mirror reflectivity as a function of wavelength for each telescope, from Ref.~\cite{mirrorfacets}. 
-    The lines are almost identical as each is an average over each telescope's 345 mirrors.
   }
   \label{fig:mirreflect}
 \end{figure}
@@ -91,10 +90,10 @@ This alignment is measured and adjusted at regular intervals, using background s
 
 \subsection{Star Point Spread Function}
 
-Due to dust, minor imperfections in the surface of the mirrors, and small mirror misalignments, the photons that bounce off the mirrors are not reflected perfectly.
+Due to minor imperfections in the surface of the mirrors, dust, and small mirror misalignments, the photons that bounce off the mirrors are not reflected perfectly.
 Instead, a single point-like light source appears blurred out on the focal plane.
 This blurring is quantified by a fitted gaussian function, usually called the Optical Point Spread Function\footnote{Please note that this is different from the PSF described in Chapter \ref{ch:grrecon}, which quantifies the spread in the reconstructed gamma-ray positions.  The OPSF instead describes the spread of UV-Optical photons.} (OPSF).
-By pointing a telescope at different stars and placing a CCD at the focal plane, the OPSF is measured monthly.
+By pointing a telescope at different stars and pointing CCDs at the focal plane, the OPSF is measured monthly.
 Figure~\ref{fig:mirrorpolaris} shows a calibration image from the first VERITAS telescope.
 The OPSF is roughly gaussian-shaped but with longer tails and a $ \ang{0.06} $ full width half maximum~\cite{Veritas_Detector}.
 
@@ -103,14 +102,13 @@ The OPSF is roughly gaussian-shaped but with longer tails and a $ \ang{0.06} $ f
   \includegraphics[width=0.75\textwidth]{images/mirror_polaris.eps}
   \caption[Polaris PSF]{
     Image of Polaris after reflecting off the mirrors, demonstrating the shape of the OPSF, from~\cite{Veritas_Detector}.
+    The star has a full-width at half-maximum angle of \ang{0.06}.
     The circle indicates the radius of a PMT.}
-    {\color{red}(do you have a 2d plot of OPSF?? -maria)}
   \label{fig:mirrorpolaris}
 \end{figure}
 
 This point spread function is important, because it determines how accurately cherenkov showers are imaged.
 A larger star point spread function means cherenkov images are blurred out, which adds to the gamma-ray point spread function, discussed in Chapter~\ref{ch:grrecon}.
-A larger gamma-ray point spread function then blurs out each gamma-ray emitter, making them harder to distinguish from one another.
 
 
 \subsection{Mirror Alignment}
@@ -199,7 +197,7 @@ The second benefit is that when the CFD circuit detects a voltage pulse larger t
 This extra low-gain trigger is then used by the Flash Analog-to-Digital Circuit (FADC) to switch between high-gain and low-gain mode when digitizing voltage pulses.
 
 Stars and other sources of background light emit background visible photons (Night Sky Background or NSB photons) that can falsely trigger the CFD circuit, contaminating any Cherenkov signals.
-In order to reduce this contamination, the CFD circuit is set to ignore any pulses smaller than 50mV.
+In order to reduce this contamination, the CFD circuit is set to ignore any pulses smaller than 45mV.
 This threshold is adjusted during observations to account for varying rates of NSB photons.
 
 After the CFD emits a trigger pulse, the signal voltage pulse is passed to the FADC circuit for digitization.
@@ -208,17 +206,18 @@ This FADC circuit then, for each 2-nanosecond time bin, measures how large the v
 % time bin = 2ns, stored in an 8-bit int, so 256 possible values, or 255 values + a 0 value
 The highest threshold that is crossed in a single time bin then determines the digital voltage value that is saved to the FADC buffer for that time bin.
 
-If the low-gain trigger pulse was also recieved by the FADC, then the signal voltage pulse directed to a separate circuit that does not amplify the voltage pulse as much before digitizing it.
+If the low-gain trigger pulse was also recieved by the FADC, then the signal voltage pulse directed to a separate low-gain circuit that does not amplify the voltage pulse before digitizing it.
+The high-gain trigger works up to 120 photo-electron signals, while the low-gain works up to 750 photoelectron signals.
 This low-gain option increases the digitizable dynamic range of the entire system.
 Once the voltage pulse is digitized, it is saved to an \SI{8}{$\mu$s}-long rolling buffer in the FADC, waiting for higher level triggers, signaling the FADC to readout its buffers into a datafile~\cite{Veritas_Detector,veritas_FADC}.
 
 \subsection{PMT Upgrade}
 In summer of 2012, all PMTs in the telescopes were replaced with improved PMTs.
 Specifically, the original Photonis XP2970 models were replaced with the Hamamatsu R10560-100-20 MOD.
-This was done because the R10560 has a considerably higher collection rate of Chernekov photons (35\%), compared to the XP2970 (23\%).
+This was done because the R10560 collects 23\% of incident Chernekov photons, 35\% more than the the XP2970.
 This higher collection rate means more photons from a shower are detected by the PMT, which makes VERITAS more sensitive to lower energy gamma rays.
-In addition, single-photoelectron studies indicate the R10560's voltage pulse FWHM is \nicetilde{}40\% shorter than the XP2970, as shown in Figure~\ref{fig:pmt_pulse_widths}.
-These thinner voltage pulses allow for easier discrimination between NSB fluctuations and Cherenkov signals~\cite{pmtmodels}.
+In addition, single-photoelectron studies indicate the R10560's voltage pulse's full duration at half maximum time is \nicetilde{}40\% shorter than the XP2970, as shown in Figure~\ref{fig:pmt_pulse_widths}.
+These shorter voltage pulses allow for easier discrimination between NSB fluctuations and Cherenkov signals~\cite{pmtmodels}.
 
 \begin{figure}[ht]
   \centering
@@ -231,7 +230,7 @@ These thinner voltage pulses allow for easier discrimination between NSB fluctua
 \end{figure}
 
 The data used in this thesis was taken both before and after this upgrade, which means the telescope performance is different for these two time periods.
-This is accounted for by separate simulations for each PMT model, mostly resulting in different effective areas at the lower energies.
+This is accounted for by separate simulations for each PMT model, mostly resulting in different effective areas (discussed in Section~\ref{subsec:effarea}) at the lower energies.
 These epochs are discussed further in Section~\ref{sec:epochs}.
 
 
@@ -239,16 +238,17 @@ These epochs are discussed further in Section~\ref{sec:epochs}.
 
 While the VERITAS PMTs are all the same model, there are still differences from PMT to PMT that can impact any data taken.
 Primarily, these differences can cause the same number of incident photons to create differently-shaped output voltage pulses in each PMT.
-To account for these differences, there a calibration procedure that is applied nightly or semi-nightly.
+To account for these differences, a calibration procedure is applied nightly or semi-nightly.
 These are performed with a set of flashing LEDs, placed next to the mirrors such that they illuminate the PMTs.
 
-{\color{red}Once every few nights (every few nights or once per dark run?? -maria)} the single-photoelectron curves for each PMT are measured.
+Once per dark run, the single-photoelectron curves for each PMT are measured.
+A dark run is the roughly two-week-long period when the moon is below the horizon at night, providing optimally-dark observing conditions.
 This is done by placing an opaque (several-mm-thick metal) plate over the PMTs, with a mm-diameter hole drilled over the location of each PMT.
 The LEDs are then flashed repeatedly.
 As the opaque plate has holes for each PMT, each PMT gets on average \SIrange{0}{5} photons per flash.
 Large numbers of flashes can then be used to gather information on each PMTs' distribution of pulse widths.
 By examining a histogram of the pulses' integrated charges, one can see poisson-statistics peaks that are formed for the 1, 2, 3, and further integer numbers of photons.
-These peaks can then be used to translate the digital counts from the PMTs into their originating photoelectrons.
+These peaks are then used to translate the digital counts from the PMTs into their originating photoelectrons.
 These calibration techniques are further detailed in Ref.~\cite{calib_techniques}.
 
 
@@ -263,23 +263,22 @@ Thus, VERITAS has a system of triggers that reduces the amount of raw data that 
 The trigger system consists of three levels.
 The L1 is the first and lowest level trigger.
 An L1 trigger (sometimes called a pixel trigger) is emitted when a PMT's CFD circuit detects a signal voltage above a given threshold, typically in the 10s of mV.
-This threshold voltage is varied throughout data taking by a rate-feedback system, which adjusts the trigger threshold according to the night sky background level.
+This threshold voltage is varied throughout data taking by a rate-feedback system, which adjusts the trigger threshold according to the night-sky-background level.
 
 Once L1 triggers have been emitted, they are passed to the L2 trigger system.
-The L2 (image) trigger is emitted by the FPGA when a group of L1 triggers meet certain requirements.
-These requirements include that multiple L1 triggers must fall within a certain time window, and that multiple L1 triggers match a pattern condition.
+The L2 (image) trigger is emitted when a group of L1 triggers meet certain requirements.
+These requirements are that multiple L1 triggers must fall within a certain time window, and that multiple L1 triggers match a pattern condition.
 Multiple L1 triggers must be within \SIrange{5}{10}{ns} of each other, depending on the VERITAS hardware epoch.
 Any pixel with an L1 trigger and two neighboring pixels with L1 triggers (each pixel has 6 neighboring pixels) meets the pattern condition~\cite{veritas_v6_trigger}.
 The pattern requirement helps reduce the number of triggers from non-gamma-ray sources.
 Night sky background photons are only able to trigger individual pixels, and muons tend to create ring-shaped images.
-Once one of these patterns occurs within a time window, the FPGA emits an L2 trigger, which is sent to the L3 (array) trigger system.
+Once one of these patterns occurs within a time window, the L2 system emits an L2 trigger, which is sent to the L3 (array) trigger system.
 
-The L3 (array) trigger system is a computer which looks for coincident L2 triggers that fall within a \nicetilde\SI{50}{ns} time window.
+The L3 (array) trigger system looks for coincident L2 triggers that fall within a \nicetilde\SI{50}{ns} time window.
 This window is adjusted for each telescope based on the azimuth and elevation of the pointing, as these can introduce delays between images of up to hundreds of nanoseconds.
 During a typical observation period, the L3 trigger rate is around \SIrange{200}{300}{Hz}.
-
 Once an L3 trigger is invoked, a signal is sent to all telescopes that directs the digitized voltages for all pixels in the cameras to be read out from their buffers, and saved to memory.
-These pixel voltages are then processed by the analysis software to reconstruct the gamma-ray events.
+These pixel voltages can then be processed by the analysis software to reconstruct the gamma-ray events.
 
 
 
@@ -288,26 +287,27 @@ When the L3 trigger is invoked and the buffers are being read out, the FADCs are
 Being unable to store new PMT voltages effectively reduces the amount of time spent observing gamma rays.
 This lost time is usually referred to as deadtime.
 As the deadtime is a fixed time loss per event, the percent of time lost due to event readout rises with the a higher frequency of readouts.
-This means that at an L3 trigger rate of \nicetilde{}\SI{300}{Hz}, approximately \nicetilde{}12\% of the time is lost due to buffer readouts.
-Since the L3 rate varies over the course of a single 30 minute run, this means that the deadtime also varies, and is accounted for in Chapter~\ref{chapter:analysis}.
+For an L3 trigger rate of \nicetilde{}\SI{300}{Hz}, approximately \nicetilde{}12\% of the time is lost due to buffer readouts.
+Since the L3 rate varies over the course of a single 30 minute run, the deadtime also varies, and is accounted for in the analysis in Chapter~\ref{chapter:analysis}.
 
 \subsection{Time Zero Calibration}
 As all PMTs and signal cables are not identical, there are differences in how long a voltage pulse takes to travel.
 More specifically, the time between a) when the photon strikes the PMT's photocathode and b) when the voltage pulse sets off its L1 trigger, can vary from pixel to pixel.
 This is usually measured by looking at the average arrival time of many events over all camera pixels.
-By looking at the average arrival time, pixels that are consistantly early or late can be accounted for, which improves image identification.
+By looking at the average arrival time, pixels that are consistantly early or late are accounted for, improving image identification.
 
 \section{Epochs}\label{sec:epochs}
 Since it was completed in 2007, VERITAS has evolved over several years as collaboration members have upgraded it to improve its performance.
-However, these major differences need to be taken into account in the analysis chain.
+Each improvement in performance needs to be taken into account in the analysis chain.
 To organize these differences, in the data they are referred to as epochs 1, 2, 3, 4, 5, and 6 (usually denoted as V1, V2, V3, V4, V5, and V6).
 The four telescopes were built within a coordinate system where the origin is at 31.675N, 110.962W, the x axis points East, and the y axis points North.
+These local coordinates can be described by the format (X n, Y e).
 
 As the first three telescopes were constructed and brought online, data taken after each is considered part of the first, second, and third epochs.
-Telescope 1 was placed at (-37.6, -23.7), telescope 2 at (44.1, -47.7), and telescope 3 at (29.4, 60.1).
-In 2007, the fourth telescope was constructed at (-35.9, 11.3), and data taken between this point in time and the next major upgrade is considered the fourth epoch (V4).
+Telescope 1 was placed at (-37.6n, -23.7e), telescope 2 at (44.1n, -47.7e), and telescope 3 at (29.4n, 60.1e).
+In 2007, the fourth telescope was constructed at (-35.9n, 11.3e), and data taken between this point in time and the next major upgrade is considered the fourth epoch (V4).
 
-In September 2009, telescope 1 was moved to a new position (135.4, -8.61), after it was demonstrated with simulations that it would grant a \nicetilde{}30\% improvement in sensitivity~\cite{veritas_t1_move}.
+In September 2009, telescope 1 was moved to a new position (135.4n, -8.61e), after it was demonstrated with simulations that it would grant a \nicetilde{}30\% improvement in sensitivity~\cite{veritas_t1_move}.
 Data taken after this relocation is referred to as the fifth epoch (V5).
 
 In August 2012, the PMTs in all cameras were replaced with improved PMTs that had a higher quantum efficiency, improving the telescopes ability to resolve images~\cite{pmtmodels}, and is discussed in Section~\ref{sec:pmts}.
