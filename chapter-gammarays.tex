@@ -32,15 +32,13 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
   Additionally, electrons spiralling through magnetic fields can produce synchrotron photons at X-Ray energies, meaning fewer upscatters are needed to reach TeV energies~\cite{self_compton}.
 
   In hadronic processes, protons can be accelerated ($p_{accel}$) by fermi acceleraton or as part of an Active Galactic Nucleus jet~\cite{hadronic1,hadronic2}.
-  Then, upon striking an ambient proton ($p_{ambient}$), the interaction will produce $\pi^{+}$, $\pi^{-}$, and $\pi^{0}$, as in Equation~\ref{eqn:protonproton}~\cite{pp_pion,pp_pion2}.
+  Then, upon striking an ambient proton ($p_{ambient}$), the interaction will produce $\pi^{+}$, $\pi^{-}$, $\pi^{0}$, and other particles ('...') as in Equation~\ref{eqn:protonproton}~\cite{pp_pion,pp_pion2}.
   
   \begin{equation}\label{eqn:protonproton}
-    p_{accel} + p_{ambient} \rightarrow \pi^+ + \pi^+ + \pi^0
+    p_{accel} + p_{ambient} \rightarrow \pi^+ + \pi^+ + \pi^0 + ...
   \end{equation}
-  
-  {\color{red}(should it be mentioned that other particles can be produced, if I mention it later in Equation~\ref{eqn:protoncollision} ??)}
 
-  The $\pi^{0}$ then quickly (\SI{8.5e-17}{s}~\cite{pdg2016}) decomposes into a $\gamma\gamma$ pair, with \nicetilde$15\%$ of the original proton's energy.
+  The $\pi^{0}$ then quickly (\SI{8.5e-17}{s}~\cite{pdg2016}) decomposes into two gamma ras, each with \nicetilde$15\%$ of the original proton's energy.
   Much of the diffuse gamma ray component of the galactic disk is due to extra-galactic high-energy protons colliding with the atoms of the dusty galactic plane~\cite{GalacticDiffuseGammaRays}.
 
   \subsection{Dark Matter Interactions}\label{dmgammaproduction}
@@ -92,9 +90,8 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
 
   The disk of gas present in the galactic plane acts as an interaction medium for passing protons, both from nearby galactic accelerators and from extragalactic sources.
   The interactions between this disk of gas and protons produce $\pi^0$'s, which decay into $\gamma\gamma$ pairs~\cite{hess_gc_diffuse}.
-  This emission is not modeled in this analysis due to time constraints {\color{red}(??)}.
+  This emission is not modeled in this analysis, as atmospheric effects dwarf any diffuse emission the residual skymaps, discussed in Section~\ref{subsec:likemax}.
 
-  {\color{red}(somewhere in thesis cite something from each defense committee member!)}
 
 \section{Indirect Dark Matter Search}
   For this analysis, it is important to understand how a terrestrial telescope can detect the presence of dark matter.
@@ -178,14 +175,26 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
       \label{fig:gchalo_jfactor}
     \end{figure}
     
-
     {\color{red}Sommerfield enhancement \url{https://arxiv.org/pdf/1005.4678.pdf} (??)}
-
     % from http://www.pnas.org/content/112/40/12264.full.pdf
     
-    {\color{red}DM Flux skymap in galactic (l,b) ??}
-    
     This J-factor profile then forms the spatial component of the dark matter halo, $M_{s,\textrm{halo}}$, used in Chapter~\ref{chapter:analysis}.
+    The J-factor is shown in a two-dimensional plot in Figure~\ref{fig:halojfactor}.
+  
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/halo_flux/plot.pdf}
+    \caption[Galactic Center Halo J-factor Skymap]{
+      J-factor of the dark matter halo model used in this analysis.
+      The green circles indicate the different observation regions.
+      Note this is showing the same model as Figure~\ref{fig:gchalo_jfactor}, except here the J-factor axis is linear instead of logarithmic.
+      The black corners are from the halo model only being calculated out to a radius of \ang{3}, since there aren't any observations that extend past that.
+    }
+    \label{fig:halojfactor}
+  \end{figure}
+  
+  \FloatBarrier
+  
     
   \subsection{Spectrum of Gamma Rays from Dark Matter}\label{dm_spectral}
     In order to calculate the gamma-ray brightness of the dark matter halo, the produced spectrum from each WIMP annihilation must be known.
@@ -245,7 +254,7 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
   Of all detected air showers, \nicetilde{}99\% are due to protons and electrons, and not gamma rays.
   Understanding the differences between hadronic and electromagnetic showers is useful for removing unwanted proton events and preserving gamma-ray events within the reconstruction method, sometimes referred to as gamma-hadron separation.
   Hadronic showers start with a primary \nicetilde TeV proton $p_{cosmic}$ that interacts with an atmospheric proton $p_{atmo}$.
-  The proton-proton collision then produces a set of pions, as in Equation~\ref{eqn:protoncollision}, as well as other particles (`...') that vary with the initial kinetic energy.
+  The proton-proton collision then produces a set of pions, as in Equation~\ref{eqn:protoncollision}, as well as other particles (`...') whose production rates vary with available interaction energy.
   
   \begin{equation}\label{eqn:protoncollision}
     p_{cosmic} + p_{atmo} \rightarrow \pi^+ + \pi^+ + \pi^0 + ...
