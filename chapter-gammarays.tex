@@ -154,7 +154,7 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
     In this equation, the photon flux $\Phi$ is the number of gamma rays detected per $\textrm{area}\times\textrm{time}$.
     The velocity-averaged cross section of the dark matter candidate is $\left \langle \sigma v \right \rangle$.
     Velocity-averaging is used because the cross section is velocity dependent, and the WIMPs that pass through a volume of space will have a distribution of velocities~\cite{wimp_veldist}.
-    Sometimes, part of Equation~\ref{eqn:dmflux} is calculated separately, as in Equation~\ref{eqn:jfactor}, and is referred to as the $J$ factor.
+    Sometimes, the density integral in Equation~\ref{eqn:dmflux} is calculated separately, as in Equation~\ref{eqn:jfactor}, and is referred to as the $J$ factor.
 
     \begin{equation}\label{eqn:jfactor}
       J = \int \rho^2 dl
@@ -175,9 +175,6 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
       \label{fig:gchalo_jfactor}
     \end{figure}
     
-    {\color{red}Sommerfield enhancement \url{https://arxiv.org/pdf/1005.4678.pdf} (??)}
-    % from http://www.pnas.org/content/112/40/12264.full.pdf
-    
     This J-factor profile then forms the spatial component of the dark matter halo, $M_{s,\textrm{halo}}$, used in Chapter~\ref{chapter:analysis}.
     The J-factor is shown in a two-dimensional plot in Figure~\ref{fig:halojfactor}.
   
@@ -192,6 +189,14 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
     }
     \label{fig:halojfactor}
   \end{figure}
+
+  More exotic WIMP models may slightly alter the gamma-ray brightness of the dark matter halo, compared to the previously mentioned WIMP model.
+  For example, if dark matter WIMPs have an attractive force between them, their effective annihilation crosssection is enhanced, increasing the halo's gamma-ray emission.
+  This effect is called Sommerfeld Enhancement~\cite{sommerfeld}.
+  The dark matter model searched for in this thesis does not include this effect.
+  % originally from http://inspirehep.net/record/1286230/files/Thesis-2009-Nierop.pdf
+  % from http://www.pnas.org/content/112/40/12264.full.pdf
+    
   
   \FloatBarrier
   

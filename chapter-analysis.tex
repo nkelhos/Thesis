@@ -247,7 +247,7 @@
   
   In Equation~\ref{eqn:foldingR}, functions $\Aeff$, $PSF$, and $\Edisp$ are all interpolated from tables of stored values, which are derived from simulations.
 
-  The Crab Nebula point source in Section~\ref{sec:crab_analysis}, the Galactic Center point source in Section~\ref{subsec:gcpointsrc}, and the Dark Matter Halo model in Section~\ref{subsec:dmhalomodel} all have this folding applied to the number of events they predict.
+  The Crab Nebula point source in Section~\ref{sec:crab_analysis}, the Galactic Center point source in Section~\ref{subsec:gcpointsrc}, and the dark matter halo model in Section~\ref{subsec:dmhalomodel} all have this folding applied to the number of events they predict.
   An important distinction is that this folding is only applied to these astrophysical models, and not to the camera background models.
   This is because the background models are created with data from actual observations, which have the folding already applied, and thus are already in $\xdet$ space.
   
@@ -582,7 +582,7 @@
   }
   
   \subsection{Dark Matter Models}\label{subsec:dmhalomodel}
-  Dark Matter halos are modeled by a spherically-symmetric mass-per-volume density profile, combined with an annihilation spectrum.
+  Dark matter halos are modeled by a spherically-symmetric mass-per-volume density profile, combined with an annihilation spectrum.
   This is assembled with a simplified version of Equation~\ref{eqn:dmflux}, shown in Equation~\ref{eqn:dmmodel}.
   
   \begin{equation}\label{eqn:dmmodel}
@@ -653,7 +653,7 @@
   In Figure~\ref{fig:gc_profile_gal_l}, the observed counts are shown compared to the final, likelihood-optimized modeled counts.
   The histogram bins are located on \ang{0.22}-wide slice along the galactic l axis, centered on Sgr A*'s galactic b coordinate.
   Purple histogram bins are the modeled counts from only the camera background models.
-  Green histogram bins are the total modeled counts from the camera background models, the Galactic Center point source, and the Dark Matter Halo.
+  Green histogram bins are the total modeled counts from the camera background models, the Galactic Center point source, and the dark matter halo.
   Blue points with error bars are the observed counts in each bin, with poissonian errors.
   The observed counts are higher on the left and lower on the right than the modeled histogram.
   This is likely due to unaccounted-for elevation effects in the camera background models.
@@ -827,13 +827,16 @@
     \centering
     \includegraphics[width=0.95\textwidth]{images/ulimit/ulimit.pdf}
     \caption[Dark Matter Upper Limit Plot]{
-      Dark Matter upper limits on velocity-averaged cross sections.
+      Dark matter upper limits on velocity-averaged cross sections.
       The results from this work are in dark blue, while pink, green, and yellow show published limits from VERITAS, H.E.S.S., and a joint Fermi-MAGIC analysis.
       Data values from this work's upper limits are in Appendix Table \ref{tab:ulimvals}.
       The light blue line is the relic cross section.
     }
     \label{fig:ulim}
   \end{figure}
+  
+  These limits were calculated using a simple WIMP model, one that does not include the effect of Sommerfeld Enhancement~\cite{sommerfeld}.
+  If Sommerfeld Enhancement were included in the dark matter halo model, stronger limits would naively be expected.
   
 \FloatBarrier
 
