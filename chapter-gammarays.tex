@@ -3,47 +3,51 @@
 
 
 This analysis searches for dark matter using gamma rays, thus a discussion on gamma rays and their properties is necessary.
-The discussion revolves around three main topics: astrophysical mechanisms that create gamma rays, the production of gamma rays from the dark matter halo around the Galactic Center, and gamma-ray-induced air showers in the Earth's atmosphere.
+In this chapter, three different topics are discussed.
+The first is the astrophysical mechanisms that produce gamma rays, the second is how dark matter around the Galactic Center can produce gamma rays, and the third is how gamma rays induce air showers in the Earth's atmosphere.
 
-\section{Methods of Creation}
+\section{Production of TeV Gamma Rays}
 
   There are several mechanisms that can produce photons with TeV energies.
-  A gamma ray can start as a thermal photon, then gain significant energy from interactions with electrons, referred to as a leptonic production.
+  A gamma ray can start as a {\color{red}thermal photon (it can't start as a thermal photon. At low energies is its most probably produced by thermal processes -maria??)}, then gain significant energy from electroweak interactions with electrons, referred to as a leptonic production.
   Alternately, a gamma ray can be created from a high-energy proton colliding with other matter, referred to as hadronic production.
-  The primary mechanism this analysis searches for is the annihilation of two WIMP dark matter particles that either directly or indirectly produce gamma rays, and is discussed below.
+  The primary mechanism this analysis searches for is the annihilation of two WIMP dark matter particles that either directly or indirectly produce gamma rays, and is discussed in Section~\ref{dm_spectral}.
 
   In leptonic production, electrons and low-energy photons collide, transferring energy to the photon.
   This interaction is called upscattering or Inverse Compton scattering~\cite{compton_effect}.
-  While the chance that any one thermal photon will be upscattered to TeV energies is low, astrophysical scales involve large populations of photons and electrons.
-  When these two populations interact, a small fraction of the original photon population can achieve TeV-scale energies~\cite{gammas_from_electrons}.
+  %While the chance that any one thermal photon will be upscattered to TeV energies is low, astrophysical scales involve large populations of photons and electrons.
+  %When these two populations interact, a small fraction of the original photon population can achieve TeV-scale energies~\cite{gammas_from_electrons}.
 
   In order to efficiently produce gamma rays via this method, a population of high-energy electrons is needed.
   One environment for producing these electrons is around pulsar wind nebulae.
   Due to their rapid rotation, pulsar wind nebulae are constantly twisting their magnetic field lines.
-  These magnetic field lines occasionally break and reconnect, which temporarily create electric fields that can accelerate electrons outwards to higher energies than thermal sources (i.e. solar wind) alone can achieve~\cite{gamma_pwn1,gamma_pwn2}.
+  These magnetic field lines occasionally {\color{red}break and reconnect (why do they break and reconnect?? -maria)}, which temporarily create electric fields that can accelerate electrons outwards to higher energies than thermal sources (i.e. solar wind) alone can achieve~\cite{gamma_pwn1,gamma_pwn2}.
 
+  {\color{red}(You mention that electrons are produced here (first sentence) but then, you only talk about charged particles. Are these charged particles electrons or also protrons?
+What you describe here is the acceleration mechanism, not the production mechanism. -maria ??)}
   Another mechanism that produces high-energy electrons is supernovae remnants.
   The supernova remnant consists of gas expanding into the surrounding interstellar gas, creating a moving shockfront at the boundary between these two volumes.
-  Some charged particles in the expanding gas are able to cross the shockfront, where a small fraction will be reflected by magnetic fields.
-  Upon recrossing the shockfront, they are again reflected by magnetic fields, which are expanding outwards with the supernova remnant gas, imparting energy to the charged particles.
-  These particles repeatedly cross the shockfront, where a smaller and smaller fraction of particles gain more and more energy, in a mechanism called Fermi Acceleration~\cite{fermi1949,highenergyelectron_snr}.
+  {\color{red}Some charged particles (What is the limit? When can they cross the shock front?? -maria)} in the expanding gas are able to cross the shockfront, where a small fraction will be reflected by magnetic fields.
+  Upon recrossing the shockfront, they are again reflected by magnetic fields, which are expanding outwards with the supernova remnant gas, {\color{red}imparting energy (whats the formula for calculating this energy?? -maria)} to the charged particles.
+  These particles repeatedly cross the shockfront, where a smaller and smaller fraction of particles gain more and more energy, in a mechanism called first-order Fermi acceleration~\cite{fermi1949,highenergyelectron_snr}.
   
   After either of these processes produce electrons with high energies, these electrons can then upscatter ambient photons to TeV energies.
   Additionally, electrons spiralling through magnetic fields can produce synchrotron photons at X-Ray energies, meaning fewer upscatters are needed to reach TeV energies~\cite{self_compton}.
 
-  In hadronic processes, protons can be accelerated ($p_{accel}$) by fermi acceleraton or as part of an Active Galactic Nucleus jet~\cite{hadronic1,hadronic2}.
-  Then, upon striking an ambient proton ($p_{ambient}$), the interaction will produce $\pi^{+}$, $\pi^{-}$, $\pi^{0}$, and other particles ('...') as in Equation~\ref{eqn:protonproton}~\cite{pp_pion,pp_pion2}.
+  In hadronic processes, protons can be accelerated ($p_{accel}$) by Fermi acceleraton or as part of an {\color{red}Active Galactic Nucleus jet (only these to options to accelerate protrons? what is with protrons in SNRs?? -maria)}~\cite{hadronic1,hadronic2}.
+  Then, upon striking an ambient proton ($p_{ambient}$), the interaction will produce $\pi^{+}$, $\pi^{-}$, $\pi^{0}$, and other particles as in Equation~\ref{eqn:protonproton}~\cite{pp_pion,pp_pion2}.
   
   \begin{equation}\label{eqn:protonproton}
     p_{accel} + p_{ambient} \rightarrow \pi^+ + \pi^+ + \pi^0 + ...
   \end{equation}
 
-  The $\pi^{0}$ then quickly (\SI{8.5e-17}{s}~\cite{pdg2016}) decomposes into two gamma ras, each with \nicetilde$15\%$ of the original proton's energy.
-  Much of the diffuse gamma ray component of the galactic disk is due to extra-galactic high-energy protons colliding with the atoms of the dusty galactic plane~\cite{GalacticDiffuseGammaRays}.
+  The $\pi^{0}$ then quickly (\SI{8.5e-17}{s}~\cite{pdg2016}) decomposes into two gamma rays.
+  As each pion tends to get $\frac{1}{3}$ the original proton's kinetic energy, and the $\pi^0$ splits into two gamma rays, each gamma ray ends up with \nicetilde$15\%$ of the original proton's kinetic energy.
+  Much of the diffuse gamma-ray component of the galactic disk is due to extra-galactic high-energy protons colliding with the atoms of the {\color{red}dusty (is it really dust? molecular clouds?? -maria)} galactic plane~\cite{GalacticDiffuseGammaRays}.
 
   \subsection{Dark Matter Interactions}\label{dmgammaproduction}
     
-    The dark matter particle searched for in this thesis is a WIMP, a particle predicted by SUSY.
+    The dark matter particle searched for in this thesis is a WIMP, a particle predicted by SUSY theory.
     This WIMP may be detectable by three general search schemes, illustrated in Figure~\ref{fig:3_searches}.
 
     % add popular figure for the three detection type
@@ -55,14 +59,14 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
       \label{fig:3_searches}
     \end{figure}
     
-    In Collider searches, $ss \rightarrow \chi\chi$, standard model particles ($ss$) are accelerated into each other within a detector, and the resulting particle fragments are measured by a slew of measuring equipment.
+    In collider searches, $ss \rightarrow \chi\chi$, standard model particles ($ss$) are {\color{red}accelerated into (accelerated into? What do you mean?? -maria)} each other within a detector, and the resulting particle fragments are measured by a slew of {\color{red}measuring equipment (which kind of measuring equipment?? -maria)}.
     Since the initial particles are accelerated to known energies, and the output fragment particles are well measured, searching for any break from conservation laws may yield dark matter particles. 
     
-    For Direct searches, $\chi s \rightarrow \chi s$, sensitive particle detectors are built deep underground, where a dark matter particle impacting against an electron or nuclei creates a detectable recoil.
-    This recoil can cause a detectable charge, an increase in temperature, an acoustic vibration, or a visual reaction like a photon or a gas bubble in a liquid, so detectors are built to measure some of these effects.
+    For direct searches, $\chi s \rightarrow \chi s$, sensitive particle detectors are built {\color{red}deep underground (why underground? what's the benefit?? -maria)}, where a dark matter particle impacting against an electron or nuclei creates a detectable recoil.
+    This recoil can cause a detectable charge, an {\color{red}increase in temperature, an acoustic vibration, or a visual reaction like a photon or a gas bubble in a liquid (why increase in temperature, visual reaction, etc?? -maria)}, so detectors are built to measure some of these effects.
     However, to date no substantial dark matter signal has been detected with these methods~\cite{direct_dm_detection}.
     
-    For Indirect searches, $\chi\chi \rightarrow ss$, astrophysical observations are analyzed for excess amounts of standard model particles, more than can be explained by known astrophysical processes.
+    For indirect searches, $\chi\chi \rightarrow ss$, astrophysical observations are analyzed for excess amounts of standard model particles, more than can be explained by known astrophysical processes.
     This analysis searches for an excess of gamma rays, as the center of our galaxy is believed to host a dark matter halo.
     This spherical halo would allow for many $\chi\chi$ annihilations, producing gamma rays via: 
     
@@ -82,8 +86,8 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
   The immediate area surrounding the Galactic Center contains a point-source gamma-ray emitter, although its mechanism is poorly understood.
 
   % black hole
-  Through kinematic observations of nearby stars, it was deduced that the Galactic Center is home to a supermassive black hole, with a mass of \SI{4e6}{\Msol}~\cite{sgra_massdist}.
-  The Galactic Center also is a source of \TeV{} gamma rays, though the mechanism that produces them is still under debate.
+  Through kinematic observations of nearby stars, it was deduced that the Galactic Center is home to a supermassive black hole, with a mass of \SI{4e6}{ \Msol{} }~\cite{sgra_massdist}.
+  The Galactic Center is also a source of TeV {\color{red} gamma rays (how do we know that? do you have a refererence?? -maria)}, though the mechanism that produces them is still under debate.
   One possibility is that the supermassive black hole accelerates protons to PeV energies, which then collide with local atoms to produce $\pi^0$s, which then decay into TeV gamma rays~\cite{gc_pevatron}.
   The second possibility suggests a nearby population of pulsar wind nebulae may be accelerating electrons, which then upscatter local photons to TeV energies~\cite{gc_pulsars}.
   While the Galactic Center is a source of gamma rays, the current generation of gamma-ray telescopes can only resolve it into a point source, due to their limited angular resolution~\cite{VeritasGCRidge2015,gc_pointsrc_hess}.
@@ -94,8 +98,9 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
 
 
 \section{Indirect Dark Matter Search}
-  For this analysis, it is important to understand how a terrestrial telescope can detect the presence of dark matter.
-  VERITAS can detect gamma rays that are emitted when two dark matter particles annihilate.
+  For this analysis, it is important to understand how a {\color{red}terrestrial telescope can detect the presence of dark matter (That's not only important for this analysis here, isn't it..?? -maria)}.
+  Imaging atmospheric cherenkov telescopes like H.E.S.S., MAGIC, and VERITAS can indirectly search for dark matter.
+  In these searches, these observatories detect gamma rays that are emitted when two dark matter particles annihilate.
   Because the rate of annihilation depends on the local dark matter density, the radially-dependent structure of dark matter halos also affects the analysis.
 
   \subsection{Dark Matter and Gamma Rays}
@@ -106,22 +111,28 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
     For example, two annihilating WIMPs may produce a $t\bar{t}$ pair, which then decays into $W^+bW^-\bar{b}$~\cite{pdg2016}.
     Alternately, other pairs may be produced, like  $b\bar{b}$, $c\bar{c}$, $W^+W^-$, $u^+u^-$, or $\tau^+\tau^-$.
     These different annihilations produce different spectra of final gamma rays.
-    The final spectrum of gamma rays use in this analysis is calculated in Section~\ref{dm_spectral}.
+    The final spectrum of gamma rays used in this analysis is calculated in Section~\ref{dm_spectral}.
   
   \subsection{Dark Matter Halo Structure}\label{dm_spatial}
     Observations allow most galactic dark matter halos to be modeled using a class of similar density profiles.
     A currently favored profile is the Einasto profile~\cite{einastoprofile1,einastoprofile2}.
-    This profile describes the mass-density of dark matter at a distance r from the halo center, $\rho(r)$.
-    The Einasto profile is described by Equation~\ref{eqn:einasto},
+    This profile describes the mass-density of dark matter at a distance $r$ from the halo center, $\rho(r)$.
+    The Einasto profile is described by Equation~\ref{eqn:einasto}.
 
     \begin{equation} \label{eqn:einasto}
       \rho_{\textrm{DM}} \left( r \right) = \rho_{s} Exp \left( - \frac{2}{\alpha} \left( {\left( \frac{r}{r_s} \right)}^{\alpha} - 1 \right) \right)
     \end{equation}
     
-    where $\alpha$ is fixed to 0.17, and $r_s$ is fixed to \SI{15.14}{kpc}.
+    
+    In Equation~\ref{eqn:einasto}, $r_s$ is the scale radius of the halo, which specifies how wide the dark matter halo is.
+    The parameter $\rho_s$ is the scale density, the dark matter density at the scale radius.
+    The parameter $\alpha$ is the power of the density profile's slope.
+    A larger $\alpha$ results in smaller dark matter densities above and below the scale radius $r_s$.
+    In the model, the parameter $\alpha$ is fixed to 0.17, and $r_s$ is fixed to \SI{15.14}{kpc}.
     Both $\alpha$ and $r_s$ are from the best fit values of the Aq-A-1 simulation in Table 2 of Ref.~\cite{mw_halo_params}.
     The $r_s$ parameter is calculated via $r_s=r_{-2}=15.14\:\textrm{kpc}$, where $r_{-2}=\frac{11.05}{h_{73}}\:\textrm{kpc}$ (in Ref.~\cite{mw_halo_params}, Table 2) and $h_{73}=0.73$ from Section 2.1 in Ref.~\cite{mw_halo_params}.
-    The distance to the galactic center is known to be $r_\odot=8\:\textrm{kpc}$~\cite{gc_distance_1,gc_distance_2,gc_distance_3}, and the local estimated dark matter mass density is $\rho_\odot = 0.4\:\frac{\textrm{GeV}}{\textrm{cm}^3}$~\cite{local_dm_density}, though this varies depending on the assumed Milky Way mass profile~\cite{direct_dm_astrophysical_uncertainties}.
+    The distance to the galactic center is known to be $r_\odot=8\:\textrm{kpc}$~\cite{gc_distance_1,gc_distance_2,gc_distance_3}.
+    The assumed Milky Way mass profile has a mass density of $\rho_\odot = 0.4\:\frac{\textrm{GeV}}{\textrm{cm}^3}$~\cite{local_dm_density,direct_dm_astrophysical_uncertainties}.
     Since $r_\odot$ and $\rho_\odot$ are known, then in Equation~\ref{eqn:einasto} the dark matter density at the scale radius $\rho_s$ is derived to be \SI{0.12}{\GeV\per\cm^3}.
     With these values, the Einasto profile in Equation~\ref{eqn:einasto} is shown in Figure~\ref{fig:gchalo_density}.
   
@@ -129,18 +140,20 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
       \centering
       \includegraphics[width=0.95\textwidth]{images/halo/gc_einasto_profile.pdf}
       \caption[Galactic Center Einasto Halo Density]{
-        Mass density of the Einasto dark matter halo used in this analysis.
+        Mass density of the Einasto dark matter halo (Equation~\ref{eqn:einasto}) used in this analysis.
+        The bottom x axis shows the angle from the Galactic Center, while the top x axis shows the distance in kiloparsecs.
+        {\color{red}('distance from GC' in axes label should be 'Distance from Galactic Center' ??)}
         \CaptionBlankLine
         }
       \label{fig:gchalo_density}
     \end{figure}
 
-    Other density profiles exist, but for this analysis only the Einasto profile is considered.
+    Other density profiles exist, but for this analysis only the {\color{red}Einasto profile is considered (why did you choose this one?? -maria)}.
     Most simulations show that density profiles should terminate in a sharp peak at $r=0$, but observations of dwarf galaxies instead favor a flat core within a given radius~\cite{flores1994observational,CoreVsCusp}.
     This may be due to the presence of baryons in this core region, which can diffuse the central cusp of WIMPs into a core-like shape~\cite{corecusp_baryondiffuse1,corecusp_baryondiffuse2}.
     As this flat core occurs in the inner-most region covered by the gamma-ray observations in this analysis, the choice of a cuspy or cored dark matter halo can have a significant impact on this analysis.
     Specifically, if the dark matter halo follows a cored profile when using a cuspy halo model, then any derived upper limits on the dark matter cross section would be different.
-    For simplicity of implementation, only a cuspy halo is used in this thesis.
+    For simplicity of implementation, only a {\color{red}cuspy (Do you have another word for it? it sound a bit like slang, doesn't the profile has a typical name (Gauss or King etc)?? -maria)} halo is used in this thesis.
     
     When choosing which dark matter target to observe with a gamma-ray observatory, knowing the gamma-ray brightness of different sources can be useful.
     This Einasto density profile can be integrated to calculate this gamma-ray brightness, independent of the WIMP model being searched for.
@@ -154,7 +167,7 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
     In this equation, the photon flux $\Phi$ is the number of gamma rays detected per $\textrm{area}\times\textrm{time}$.
     The velocity-averaged cross section of the dark matter candidate is $\left \langle \sigma v \right \rangle$.
     Velocity-averaging is used because the cross section is velocity dependent, and the WIMPs that pass through a volume of space will have a distribution of velocities~\cite{wimp_veldist}.
-    Sometimes, the density integral in Equation~\ref{eqn:dmflux} is calculated separately, as in Equation~\ref{eqn:jfactor}, and is referred to as the $J$ factor.
+    The density integral in Equation~\ref{eqn:dmflux} is often calculated separately, as in Equation~\ref{eqn:jfactor}, and is referred to as the $J$ factor.
 
     \begin{equation}\label{eqn:jfactor}
       J = \int \rho^2 dl
@@ -169,8 +182,9 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
     \centering
       \includegraphics[width=0.95\textwidth]{images/halo/gc_einasto_jfactor.pdf}
       \caption[Galactic Center Einasto Halo Jfactor]{
-        J-factor profile as a function of angle from the Galactic Center.
+        J-factor profile as a function of angle from the Galactic Center, calculated via Equation~\ref{eqn:jfactor} with the Einasto density profile in Equation~\ref{eqn:einasto}.
         J-factor values are calculated with an integration angle of \ang{0.01}.
+        {\color{red}(top x axis should be Galactic Center, not GC??)}
       }
       \label{fig:gchalo_jfactor}
     \end{figure}
@@ -186,12 +200,13 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
       The green circles indicate the different observation regions.
       Note this is showing the same model as Figure~\ref{fig:gchalo_jfactor}, except here the J-factor axis is linear instead of logarithmic.
       The black corners are from the halo model only being calculated out to a radius of \ang{3}, since there aren't any observations that extend past that.
+      {\color{red}Change x and y axis labels to Galactic Longitude (l) and Galactic Latitude (b).}
     }
     \label{fig:halojfactor}
   \end{figure}
 
   More exotic WIMP models may slightly alter the gamma-ray brightness of the dark matter halo, compared to the previously mentioned WIMP model.
-  For example, if dark matter WIMPs have an attractive force between them, their effective annihilation crosssection is enhanced, increasing the halo's gamma-ray emission.
+  For example, if dark matter WIMPs have an attractive force between them, their effective annihilation cross section is enhanced, increasing the gamma-ray emission from the halo.
   This effect is called Sommerfeld Enhancement~\cite{sommerfeld}.
   The dark matter model searched for in this thesis does not include this effect.
   % originally from http://inspirehep.net/record/1286230/files/Thesis-2009-Nierop.pdf
@@ -211,7 +226,7 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
     Mixing channels requires multiple dark matter halo models however, which is beyond the scope of this single halo analysis.
     The software package CLUMPY~\cite{CLUMPYcode} is used to calculate the gamma-ray spectra for each annihilation channel.
     The spectral models that CLUMPY uses are based on the tables in the PPPC 4 DM ID~\cite{pppc4_dm_spectra}.
-    For this analysis, only the $b\bar{b}$ annihilation channel is considered.
+    For this analysis, {\color{red}only the $b\bar{b}$ annihilation channel is considered (why only this channel?? -maria)}.
     Figure~\ref{fig:chichi_spectrum} shows the resultant spectra from the single annihilation of two WIMPs.
     Each line shows the spectrum from a different initial WIMP mass.
 
@@ -225,7 +240,7 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
     \end{figure}
 
     These spectra are then stored in an interpolation table, which can be used as the spectral component $M_{\textrm{e,halo}}$ for the dark matter halo model in the likelihood analysis, detailed in Section~\ref{subsec:dmhalomodel}.
-    These spectra can then be combined with J factor Equation~\ref{eqn:jfactor} to calculate Equation~\ref{eqn:dmflux}: how many gamma rays are produced by the halo.
+    The spectra can then be combined with J factor Equation~\ref{eqn:jfactor} to calculate Equation~\ref{eqn:dmflux}: how {\color{red}many gamma rays are produced by the halo (Not sure if I would point to equation 6.21. I would show  and explain the equation here as this chapter describes the physics needed to understand the thesis.  This happened previously in the thesis again. ?? -maria)}.
     This is done in Equation~\ref{eqn:dmmodel}
 
     \FloatBarrier
@@ -238,7 +253,8 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
   When the primary is a gamma ray or a charged lepton, it creates an electromagnetic shower.
   Electromagnetic showers produce a cascade of $e^{\pm}$s and $\gamma$'s, where each successive generation of particles tends to have more particles but less energy per particle than the last.
   To start the shower, the primary gamma ray will interact with an atmospheric atom, producing an $e^{-}e^{+}$ pair, each with roughly half the primary gamma ray's energy, as shown in Figure~\ref{fig:emcascade}.
-  The $e^{-}$ and $e^{+}$ emit bremstrahlung and cherenkov photons.
+  The $e^{-}$ and $e^{+}$ emit bremstrahlung and Cherenkov photons.
+  {\color{red}(Explain this effect more. How do we know that this is Cherenkov radiation. Does every particle produce Cherenkov radiation? What is the limit?  I would separate the air shower development and the production of Cherenkov radiation here. ?? -maria )}
   The higher-energy bremstrahlung photons then pair produce $e^{-}e^{+}$, which go on to produce more bremstrahlung and cherenkov photons.
   As each newly created particle has less energy than its parent particle, eventually the particles in the shower don't have enough energy to produce additional child-particles.
   As a further energy loss, when electrons have around \SI{80}{MeV} of kinetic energy, they also rapidly lose energy to ionization~\cite{pdg_2014}.
@@ -247,10 +263,9 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
     \centering
     \includegraphics[width=0.95\textwidth]{images/cascade_diagram/feynman/cascade.pdf}
     \caption[Electromagnetic Cascade]{
-      Diagram of an electromagnetic cascade as it decends downwards through the atmosphere, layered by interaction generation.
+      Diagram of an electromagnetic cascade as it decends downwards through the atmosphere, layered by interaction generation~\cite{ellis2017tikz}.
       $\gamma{}_o$ is the initial astrophysical gamma ray.
       The shower shown here continues for many generations after these first four.
-      Diagram produced with the TikZ-Feynman package~\cite{ellis2017tikz}.
       \CaptionBlankLine
     }
     \label{fig:emcascade}
@@ -297,7 +312,7 @@ The discussion revolves around three main topics: astrophysical mechanisms that 
   
   In Figure~\ref{fig:gamma_vs_proton_airshower}, the differences between a gamma-ray shower and a proton shower are shown.
   The gamma-ray shower on the left has most of its particles along the veritical core of the shower, while the proton shower has particles spread out in a wider, fan-like shape.
-  The initial energies were chosen because a \SI{1}{TeV} proton will on average divest $\frac{1}{3}$ of its energy to the $\pi^{0}$.
+  The initial energies were chosen because a \SI{1}{TeV} proton will on average divest $\frac{1}{3}$ of its energy to the $\pi^{0}$ {\color{red}(Why not using showers at the same energy?? -maria)}.
 
   This $\pi^{0}$ then decays into the electromagnetic sub-shower faintly visible in the interior of the proton shower.
   The net effect is that, when compared to a gamma ray, a proton must start with 3 times the energy to produce a similar amount of Cherenkov photons, which are distributed in a wider pattern.
