@@ -21,7 +21,8 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
   In order to efficiently produce gamma rays via this method, a population of high-energy electrons is needed.
   One environment for producing these electrons is around pulsar wind nebulae.
   Due to their rapid rotation, pulsar wind nebulae are constantly twisting their magnetic field lines.
-  These magnetic field lines occasionally {\color{red}break and reconnect (why do they break and reconnect?? -maria)}, which temporarily create electric fields that can accelerate electrons outwards to higher energies than thermal sources (i.e. solar wind) alone can achieve~\cite{gamma_pwn1,gamma_pwn2}.
+  These magnetic field lines get twisted tighter and tighter, until they break and reconnect with neighboring lines.
+  This breaking and reconnection temporarily creates electric fields that can accelerate electrons outwards to higher energies than thermal sources (i.e. solar wind) alone can achieve~\cite{gamma_pwn1,gamma_pwn2}.
 
   {\color{red}(You mention that electrons are produced here (first sentence) but then, you only talk about charged particles. Are these charged particles electrons or also protrons?
 What you describe here is the acceleration mechanism, not the production mechanism. -maria ??)}
@@ -87,7 +88,7 @@ What you describe here is the acceleration mechanism, not the production mechani
 
   % black hole
   Through kinematic observations of nearby stars, it was deduced that the Galactic Center is home to a supermassive black hole, with a mass of \SI{4e6}{ \Msol{} }~\cite{sgra_massdist}.
-  The Galactic Center is also a source of TeV {\color{red} gamma rays (how do we know that? do you have a refererence?? -maria)}, though the mechanism that produces them is still under debate.
+  The Galactic Center is also a source of TeV gamma rays~\cite{gc_pointsrc_hess,gc_pointsource_hess2,gc_veritas_pointsource,gc_magic_pointsource}, though the mechanism that produces them is still under debate.
   One possibility is that the supermassive black hole accelerates protons to PeV energies, which then collide with local atoms to produce $\pi^0$s, which then decay into TeV gamma rays~\cite{gc_pevatron}.
   The second possibility suggests a nearby population of pulsar wind nebulae may be accelerating electrons, which then upscatter local photons to TeV energies~\cite{gc_pulsars}.
   While the Galactic Center is a source of gamma rays, the current generation of gamma-ray telescopes can only resolve it into a point source, due to their limited angular resolution~\cite{VeritasGCRidge2015,gc_pointsrc_hess}.
@@ -142,7 +143,6 @@ What you describe here is the acceleration mechanism, not the production mechani
       \caption[Galactic Center Einasto Halo Density]{
         Mass density of the Einasto dark matter halo (Equation~\ref{eqn:einasto}) used in this analysis.
         The bottom x axis shows the angle from the Galactic Center, while the top x axis shows the distance in kiloparsecs.
-        {\color{red}('distance from GC' in axes label should be 'Distance from Galactic Center' ??)}
         \CaptionBlankLine
         }
       \label{fig:gchalo_density}
@@ -184,7 +184,6 @@ What you describe here is the acceleration mechanism, not the production mechani
       \caption[Galactic Center Einasto Halo Jfactor]{
         J-factor profile as a function of angle from the Galactic Center, calculated via Equation~\ref{eqn:jfactor} with the Einasto density profile in Equation~\ref{eqn:einasto}.
         J-factor values are calculated with an integration angle of \ang{0.01}.
-        {\color{red}(top x axis should be Galactic Center, not GC??)}
       }
       \label{fig:gchalo_jfactor}
     \end{figure}
@@ -200,7 +199,6 @@ What you describe here is the acceleration mechanism, not the production mechani
       The green circles indicate the different observation regions.
       Note this is showing the same model as Figure~\ref{fig:gchalo_jfactor}, except here the J-factor axis is linear instead of logarithmic.
       The black corners are from the halo model only being calculated out to a radius of \ang{3}, since there aren't any observations that extend past that.
-      {\color{red}Change x and y axis labels to Galactic Longitude (l) and Galactic Latitude (b).}
     }
     \label{fig:halojfactor}
   \end{figure}
@@ -226,7 +224,7 @@ What you describe here is the acceleration mechanism, not the production mechani
     Mixing channels requires multiple dark matter halo models however, which is beyond the scope of this single halo analysis.
     The software package CLUMPY~\cite{CLUMPYcode} is used to calculate the gamma-ray spectra for each annihilation channel.
     The spectral models that CLUMPY uses are based on the tables in the PPPC 4 DM ID~\cite{pppc4_dm_spectra}.
-    For this analysis, {\color{red}only the $b\bar{b}$ annihilation channel is considered (why only this channel?? -maria)}.
+    For the initial study in this analysis, only the $b\bar{b}$ annihilation channel is considered.
     Figure~\ref{fig:chichi_spectrum} shows the resultant spectra from the single annihilation of two WIMPs.
     Each line shows the spectrum from a different initial WIMP mass.
 
@@ -312,7 +310,8 @@ What you describe here is the acceleration mechanism, not the production mechani
   
   In Figure~\ref{fig:gamma_vs_proton_airshower}, the differences between a gamma-ray shower and a proton shower are shown.
   The gamma-ray shower on the left has most of its particles along the veritical core of the shower, while the proton shower has particles spread out in a wider, fan-like shape.
-  The initial energies were chosen because a \SI{1}{TeV} proton will on average divest $\frac{1}{3}$ of its energy to the $\pi^{0}$ {\color{red}(Why not using showers at the same energy?? -maria)}.
+  The initial energies were chosen because a \SI{1}{TeV} proton will on average divest $\frac{1}{3}$ of its energy to the $\pi^{0}$.
+  Since these two showers start with the same amount of available energy, they produce a similar amount of Cherenkov light.
 
   This $\pi^{0}$ then decays into the electromagnetic sub-shower faintly visible in the interior of the proton shower.
   The net effect is that, when compared to a gamma ray, a proton must start with 3 times the energy to produce a similar amount of Cherenkov photons, which are distributed in a wider pattern.
