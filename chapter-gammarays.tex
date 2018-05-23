@@ -9,8 +9,8 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
 \section{Production of TeV Gamma Rays}
 
   There are several mechanisms that can produce photons with TeV energies.
-  A gamma ray can start as a {\color{red}thermal photon (it can't start as a thermal photon. At low energies is its most probably produced by thermal processes -maria??)}, then gain significant energy from electroweak interactions with electrons, referred to as a leptonic production.
-  Alternately, a gamma ray can be created from a high-energy proton colliding with other matter, referred to as hadronic production.
+  A gamma ray can start as as a low-energy photon, then gain significant energy from electroweak interactions with electrons, referred to as a leptonic production.
+  Alternately, a gamma ray can be created from a high-energy proton colliding with another proton, referred to as hadronic production.
   The primary mechanism this analysis searches for is the annihilation of two WIMP dark matter particles that either directly or indirectly produce gamma rays, and is discussed in Section~\ref{dm_spectral}.
 
   In leptonic production, electrons and low-energy photons collide, transferring energy to the photon.
@@ -24,8 +24,7 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
   These magnetic field lines get twisted tighter and tighter, until they break and reconnect with neighboring lines.
   This breaking and reconnection temporarily creates electric fields that can accelerate electrons outwards to higher energies than thermal sources (i.e. solar wind) alone can achieve~\cite{gamma_pwn1,gamma_pwn2}.
 
-  {\color{red}(You mention that electrons are produced here (first sentence) but then, you only talk about charged particles. Are these charged particles electrons or also protrons?
-What you describe here is the acceleration mechanism, not the production mechanism. -maria ??)}
+  {\color{red}(You mention that electrons are produced here (first sentence) but then, you only talk about charged particles. Are these charged particles electrons or also protons?  What you describe here is the acceleration mechanism, not the production mechanism. -maria ??)}
   Another mechanism that produces high-energy electrons is supernovae remnants.
   The supernova remnant consists of gas expanding into the surrounding interstellar gas, creating a moving shockfront at the boundary between these two volumes.
   {\color{red}Some charged particles (What is the limit? When can they cross the shock front?? -maria)} in the expanding gas are able to cross the shockfront, where a small fraction will be reflected by magnetic fields.
@@ -35,7 +34,7 @@ What you describe here is the acceleration mechanism, not the production mechani
   After either of these processes produce electrons with high energies, these electrons can then upscatter ambient photons to TeV energies.
   Additionally, electrons spiralling through magnetic fields can produce synchrotron photons at X-Ray energies, meaning fewer upscatters are needed to reach TeV energies~\cite{self_compton}.
 
-  In hadronic processes, protons can be accelerated ($p_{accel}$) by Fermi acceleraton or as part of an {\color{red}Active Galactic Nucleus jet (only these to options to accelerate protrons? what is with protrons in SNRs?? -maria)}~\cite{hadronic1,hadronic2}.
+  In hadronic processes, protons can be accelerated ($p_{accel}$) by Fermi acceleraton, through a supernova remnant like electrons~\cite{proton_snr_accel}, or as part of an Active Galactic Nucleus jet~\cite{hadronic1,hadronic2}.
   Then, upon striking an ambient proton ($p_{ambient}$), the interaction will produce $\pi^{+}$, $\pi^{-}$, $\pi^{0}$, and other particles as in Equation~\ref{eqn:protonproton}~\cite{pp_pion,pp_pion2}.
   
   \begin{equation}\label{eqn:protonproton}
@@ -60,11 +59,19 @@ What you describe here is the acceleration mechanism, not the production mechani
       \label{fig:3_searches}
     \end{figure}
     
-    In collider searches, $ss \rightarrow \chi\chi$, standard model particles ($ss$) are {\color{red}accelerated into (accelerated into? What do you mean?? -maria)} each other within a detector, and the resulting particle fragments are measured by a slew of {\color{red}measuring equipment (which kind of measuring equipment?? -maria)}.
+    In collider searches, $ss \rightarrow \chi\chi$, standard model particles ($ss$) are collided within a detector, and the resulting particle fragments are measured by a slew of detectors~\cite{atlas,cms}.
+    These detectors include scintillation crystals with avalanche photodiodes and silicon strip detectors.
+    Some of these detectors are within magnetic fields that curve charged particles, aiding in their measurement.
     Since the initial particles are accelerated to known energies, and the output fragment particles are well measured, searching for any break from conservation laws may yield dark matter particles. 
     
-    For direct searches, $\chi s \rightarrow \chi s$, sensitive particle detectors are built {\color{red}deep underground (why underground? what's the benefit?? -maria)}, where a dark matter particle impacting against an electron or nuclei creates a detectable recoil.
-    This recoil can cause a detectable charge, an {\color{red}increase in temperature, an acoustic vibration, or a visual reaction like a photon or a gas bubble in a liquid (why increase in temperature, visual reaction, etc?? -maria)}, so detectors are built to measure some of these effects.
+    For direct searches, $\chi s \rightarrow \chi s$, sensitive particle detectors are built deep underground.
+    When a WIMP impacts a nucleus within the detector, an observable signal can be produced.
+    Being underground shields the detectors from cosmic rays, which create background collisions that can mask WIMP signals.
+    In liquid Xenon detectors, particle collisions in the liquid produce UV photons and electrons, which are used to infer the presence of WIMPS~\cite{direct_lux}.
+    Cryogenic detectors use pucks of germanium and silicon to measure particle collisions.
+    These collisions produce detectable ionization and phonon signals, which are used to classify the incidident particle~\cite{direct_cdms}.
+    Scintillation detectors are built with crystals like Titanium-doped Sodium Iodine.
+    When a external particle collides with a nucleus of the crystal, the nucleus relaxes by releasing a photon~\cite{direct_dama}.
     However, to date no substantial dark matter signal has been detected with these methods~\cite{direct_dm_detection}.
     
     For indirect searches, $\chi\chi \rightarrow ss$, astrophysical observations are analyzed for excess amounts of standard model particles, more than can be explained by known astrophysical processes.
@@ -99,7 +106,7 @@ What you describe here is the acceleration mechanism, not the production mechani
 
 
 \section{Indirect Dark Matter Search}
-  For this analysis, it is important to understand how a {\color{red}terrestrial telescope can detect the presence of dark matter (That's not only important for this analysis here, isn't it..?? -maria)}.
+  For this analysis, it is necessary to understand how a terrestrial telescope can detect the presence of dark matter.
   Imaging atmospheric cherenkov telescopes like H.E.S.S., MAGIC, and VERITAS can indirectly search for dark matter.
   In these searches, these observatories detect gamma rays that are emitted when two dark matter particles annihilate.
   Because the rate of annihilation depends on the local dark matter density, the radially-dependent structure of dark matter halos also affects the analysis.
@@ -148,12 +155,12 @@ What you describe here is the acceleration mechanism, not the production mechani
       \label{fig:gchalo_density}
     \end{figure}
 
-    Other density profiles exist, but for this analysis only the {\color{red}Einasto profile is considered (why did you choose this one?? -maria)}.
+    Other density profiles exist, but in this initial analysis only the Einasto profile is considered.
     Most simulations show that density profiles should terminate in a sharp peak at $r=0$, but observations of dwarf galaxies instead favor a flat core within a given radius~\cite{flores1994observational,CoreVsCusp}.
     This may be due to the presence of baryons in this core region, which can diffuse the central cusp of WIMPs into a core-like shape~\cite{corecusp_baryondiffuse1,corecusp_baryondiffuse2}.
     As this flat core occurs in the inner-most region covered by the gamma-ray observations in this analysis, the choice of a cuspy or cored dark matter halo can have a significant impact on this analysis.
     Specifically, if the dark matter halo follows a cored profile when using a cuspy halo model, then any derived upper limits on the dark matter cross section would be different.
-    For simplicity of implementation, only a {\color{red}cuspy (Do you have another word for it? it sound a bit like slang, doesn't the profile has a typical name (Gauss or King etc)?? -maria)} halo is used in this thesis.
+    For simplicity of implementation, only a cuspy halo is used in this thesis.
     
     When choosing which dark matter target to observe with a gamma-ray observatory, knowing the gamma-ray brightness of different sources can be useful.
     This Einasto density profile can be integrated to calculate this gamma-ray brightness, independent of the WIMP model being searched for.
@@ -252,7 +259,7 @@ What you describe here is the acceleration mechanism, not the production mechani
   Electromagnetic showers produce a cascade of $e^{\pm}$s and $\gamma$'s, where each successive generation of particles tends to have more particles but less energy per particle than the last.
   To start the shower, the primary gamma ray will interact with an atmospheric atom, producing an $e^{-}e^{+}$ pair, each with roughly half the primary gamma ray's energy, as shown in Figure~\ref{fig:emcascade}.
   The $e^{-}$ and $e^{+}$ emit bremstrahlung and Cherenkov photons.
-  {\color{red}(Explain this effect more. How do we know that this is Cherenkov radiation. Does every particle produce Cherenkov radiation? What is the limit?  I would separate the air shower development and the production of Cherenkov radiation here. ?? -maria )}
+  Cherenkov photon production is discussed further in Section~\ref{sec:cherenkov}.
   The higher-energy bremstrahlung photons then pair produce $e^{-}e^{+}$, which go on to produce more bremstrahlung and cherenkov photons.
   As each newly created particle has less energy than its parent particle, eventually the particles in the shower don't have enough energy to produce additional child-particles.
   As a further energy loss, when electrons have around \SI{80}{MeV} of kinetic energy, they also rapidly lose energy to ionization~\cite{pdg_2014}.
