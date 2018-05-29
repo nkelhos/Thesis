@@ -24,12 +24,15 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
   These magnetic field lines get twisted tighter and tighter, until they break and reconnect with neighboring lines.
   This breaking and reconnection temporarily creates electric fields that can accelerate electrons outwards to higher energies than thermal sources (i.e. solar wind) alone can achieve~\cite{gamma_pwn1,gamma_pwn2}.
 
-  {\color{red}(You mention that electrons are produced here (first sentence) but then, you only talk about charged particles. Are these charged particles electrons or also protons?  What you describe here is the acceleration mechanism, not the production mechanism. -maria ??)}
-  Another mechanism that produces high-energy electrons is supernovae remnants.
-  The supernova remnant consists of gas expanding into the surrounding interstellar gas, creating a moving shockfront at the boundary between these two volumes.
-  {\color{red}Some charged particles (What is the limit? When can they cross the shock front?? -maria)} in the expanding gas are able to cross the shockfront, where a small fraction will be reflected by magnetic fields.
+  Another mechanism that produces high-energy charged particles is located at supernova shockfronts, called fermi acceleration.
+  During and after a supernova's initial detonation, charged fermions are quickly heated.
+  These heated particles then expand outwards into the surrounding interstellar gas, creating a moving shockfront at the boundary between these two volumes.
+  {\color{red}A fraction of the charged particles (What is the limit? When can they cross the shock front?? -maria)} in the expanding gas are able to cross the shockfront, where a small fraction will be reflected by magnetic fields.
+  {\color{red}(specify that the particles have to be going faster than the shockfront??)}
   Upon recrossing the shockfront, they are again reflected by magnetic fields, which are expanding outwards with the supernova remnant gas, {\color{red}imparting energy (whats the formula for calculating this energy?? -maria)} to the charged particles.
+  {\color{red}(relate this to how it contributes to the VERITAS background, since my DM signal doesn't come from fermi acceleration??)}
   These particles repeatedly cross the shockfront, where a smaller and smaller fraction of particles gain more and more energy, in a mechanism called first-order Fermi acceleration~\cite{fermi1949,highenergyelectron_snr}.
+  While this acceleration mechanism can produce high-energy charged particles, its still uncertain as to how the initial particles gain the energy necessary to cross the shockfront, known as the injection problem~\cite{inject2001}.
   
   After either of these processes produce electrons with high energies, these electrons can then upscatter ambient photons to TeV energies.
   Additionally, electrons spiralling through magnetic fields can produce synchrotron photons at X-Ray energies, meaning fewer upscatters are needed to reach TeV energies~\cite{self_compton}.
@@ -43,7 +46,7 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
 
   The $\pi^{0}$ then quickly (\SI{8.5e-17}{s}~\cite{pdg2016}) decomposes into two gamma rays.
   As each pion tends to get $\frac{1}{3}$ the original proton's kinetic energy, and the $\pi^0$ splits into two gamma rays, each gamma ray ends up with \nicetilde$15\%$ of the original proton's kinetic energy.
-  Much of the diffuse gamma-ray component of the galactic disk is due to extra-galactic high-energy protons colliding with the atoms of the {\color{red}dusty (is it really dust? molecular clouds?? -maria)} galactic plane~\cite{GalacticDiffuseGammaRays}.
+  Much of the diffuse gamma-ray component of the galactic disk is due to extra-galactic high-energy protons colliding with the protons of the galactic plane~\cite{GalacticDiffuseGammaRays}.
 
   \subsection{Dark Matter Interactions}\label{dmgammaproduction}
     
@@ -247,6 +250,7 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
     These spectra are then stored in an interpolation table, which can be used as the spectral component $M_{\textrm{e,halo}}$ for the dark matter halo model in the likelihood analysis, detailed in Section~\ref{subsec:dmhalomodel}.
     The spectra can then be combined with J factor Equation~\ref{eqn:jfactor} to calculate Equation~\ref{eqn:dmflux}: how {\color{red}many gamma rays are produced by the halo (Not sure if I would point to equation 6.21. I would show  and explain the equation here as this chapter describes the physics needed to understand the thesis.  This happened previously in the thesis again. ?? -maria)}.
     This is done in Equation~\ref{eqn:dmmodel}
+    {\color{red}(These forward references can probably be converted to a footnote to be less disruptive to the reader??)}
 
     \FloatBarrier
     
