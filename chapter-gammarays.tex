@@ -26,9 +26,48 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
 
   Another mechanism that produces high-energy charged particles is located at supernova shockfronts, called diffuse shock acceleration.
   During and after a supernova's initial detonation, charged fermions are quickly heated.
-  These heated particles then expand outwards into the surrounding interstellar gas, creating a moving shockfront at the boundary between these two volumes.
+  These heated particles then expand outwards, creating a moving shockfront at the boundary between the expanding particles and the surrounding Inter-Stellar Medium (ISM).
+  These expanding particles bring their own magnetic fields, which can reflect charged particles.
+  As the shockfront expands, it also runs into the ambient magnetic fields in the ISM, which can also reflect charged particles.
+  This shockfront is shown in Figure~\ref{fig:snr_shockfront}.
+  
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.75\textwidth]{images/snr_shockfront/shockfront_diagram.pdf}
+    \caption[Supernova Shockfront]{
+      Diagram of supernova shockfront.
+      Relative to some inertial observer, the supernova plasma expands at velocity $v_s$, while the ISM moves at velocity $v_m$.
+    }
+    \label{fig:snr_shockfront}
+  \end{figure}
+  
+  In this situation, particles that are able to cross the shockfront are reflected off the magnetic fields on the other side, gaining a small amount of energy each time.
+  On average, a particle gains energy for each crossings cycle (up-to-down and down-to-up stream) by Equation~\ref{eqn:snr_en_per_cycle}.
+  
+  \begin{equation}\label{eqn:snr_en_per_cycle}
+    \left \langle \frac{\Delta E}{E} \right \rangle = \frac{4}{3} \left ( \frac{v_{s}-v_{m}}{c} \right )
+  \end{equation}
+  
+  In Equation~\ref{eqn:snr_en_per_cycle}, $\Dela E$ is the energy gained by the particle, $E$ is the initial energy of the particle, $v_s$ is the velocity of the supernova expansion, and $v_m$ is the velocity of the ISM.
+  
+
+  Equation~\ref{eqn:snr_spectrum} shows the differential energy spectrum produced by particles that escape the shockfront.
+  
+  \begin{equation}\label{eqn:snr_spectrum}
+    N(E)=E^{ \frac{log\:P}{log\: \beta} -1}
+  \end{equation}
+
+  Probability $P$ is the chance a particle is trapped between the shockfronts, calculated as $1 - \frac{R_o}{R_i}$, where $R_i$ is the rate initial particles are injected into the shockfront, and $R_o$ is the rate particles permanently escape downstream.
+  The variable $\beta$ is the percent increase in energy during each crossing cycle, $\beta = 1+ \frac{4}{3} \left ( \frac{v_s - v_m}{c} \right )$.
+  
+  snr spectral index plots go here.
+  
   \cite{dsa1,dsa2,dsa3,dsa4,dsa5}
+
   {\color{red}A fraction of the charged particles (What is the limit? When can they cross the shock front?? -maria)} in the expanding gas are able to cross the shockfront, where a small fraction will be reflected by magnetic fields.
+  
+  % slides on supernova shockwaves
+  % https://isapp2012paris.sciencesconf.org/conference/isapp2012paris/Stefano_Gabici_three.pdf
   
   % Drury, 2012, "Origin of Cosmic Rays"
   % https://doi.org/10.1016/j.astropartphys.2012.02.006
