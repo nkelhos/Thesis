@@ -1,4 +1,7 @@
 \cleartooddpage[\thispagestyle{empty}]
+
+\newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \lim_{#1}\;$}}}
+
 \chapter{Gamma Rays and Dark Matter}\label{ch_gamma}
 
 
@@ -24,7 +27,7 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
   These magnetic field lines get twisted tighter and tighter, until they break and reconnect with neighboring lines.
   This breaking and reconnection temporarily creates electric fields that can accelerate electrons outwards to higher energies than thermal sources (i.e. solar wind) alone can achieve~\cite{gamma_pwn1,gamma_pwn2}.
 
-  Another mechanism that produces high-energy charged particles is located at supernova shockfronts, called diffuse shock acceleration.
+  Another mechanism that produces high-energy charged particles is located at supernova shockfronts, called diffuse shock acceleration~\cite{dsa1,dsa2,dsa3,dsa4,dsa5}.
   During and after a supernova's initial detonation, charged fermions are quickly heated.
   These heated particles then expand outwards, creating a moving shockfront at the boundary between the expanding particles and the surrounding Inter-Stellar Medium (ISM).
   These expanding particles bring their own magnetic fields, which can reflect charged particles.
@@ -49,7 +52,6 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
   \end{equation}
   
   In Equation~\ref{eqn:snr_en_per_cycle}, $\Dela E$ is the energy gained by the particle, $E$ is the initial energy of the particle, $v_s$ is the velocity of the supernova expansion, and $v_m$ is the velocity of the ISM.
-  
 
   Equation~\ref{eqn:snr_spectrum} shows the differential energy spectrum produced by particles that escape the shockfront.
   
@@ -59,10 +61,41 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
 
   Probability $P$ is the chance a particle is trapped between the shockfronts, calculated as $1 - \frac{R_o}{R_i}$, where $R_i$ is the rate initial particles are injected into the shockfront, and $R_o$ is the rate particles permanently escape downstream.
   The variable $\beta$ is the percent increase in energy during each crossing cycle, $\beta = 1+ \frac{4}{3} \left ( \frac{v_s - v_m}{c} \right )$.
+  Since the trapping probability is less than 1 but also close to 1, for extremely small $P$'s, Equation~\ref{eqn:snr_simple_P} simplifies Equation~\ref{eqn:snr_spectrum} exponent numerator to -1.
   
-  snr spectral index plots go here.
+  \begin{equation}\label{eqn:snr_simple_P}
+    \Lim{P \rightarrow 1^{-}} \; \textrm{log}_{10} P = -P
+  \end{equation}
   
-  \cite{dsa1,dsa2,dsa3,dsa4,dsa5}
+  Likewise, since $\beta$ is greater than 1 but also close to 1, Equation~\ref{eqn:snr_simple_B} simplifies Equation~\ref{eqn:snr_spectrum} exponent denominator to 1.
+
+  \begin{equation}\label{eqn:snr_simple_B}
+    \Lim{\beta \rightarrow 1^{+} } \; \textrm{log}_{10} \beta = \beta
+  \end{equation}
+  
+  {\color{red} Need to show why P and $\beta$ approach -1 and 1 ??}
+  
+  Since both $P$ and $\beta$ are close to -1 and 1 respectively, Equation~\ref{eqn:snr_spectrum} simplifies to $N(E) \approx E^{-2}$, matching the observed cosmic ray spectrum~\cite{}
+  
+  In Equation~\ref{eqn:snr_spectrum}, the exponent is often referred to as the spectral index $\gamma$.
+  The spectral index's dependence on $P$ and $\beta$ is shown in two plots in Figure~\ref{fig:snr_spectrum}.
+  The top plot in Figure~\ref{fig:snr_spectrum} shows how changing $\beta$, the energy gain per shockfront crossing cycle, and the bottom plot shows the differential spectra with the spectral indicies from the top plot.
+  From these two plots, it can be seen that increasing the energy gain per crossing cycle $\beta$ creates a harder spectrum of particles with more higher energy particles, since they can reach escape energies in fewer cycles.
+  It can also be seen that trapping more particles at the shockfront (higher $P$) also creates a harder spectrum of escaping particles, as particles can be contained for more cycles, gaining more energy before escaping~\cite{dsa6}.
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/snr_shockfront/snr_spectrum.pdf}
+    \caption[Supernova Diffuse Acceleration Spectral Indicies]{
+      The top plot shows the spectral indicies produced by various combinations of $\beta$, the fractional energy gained by a particle in one crossing cycle (upstream $\rightarrow$ downstream $\rightarrow$ upstream), and $P$, the average chance a particle isunable to escape the shockfront.
+      The contours for three spectral indicies $\gamma$ are shown.
+      For example, at the orange triangle, each crossing cycle increases a particles energy by a factor of 1.10, while it has a 90\% chance of being permanently trapped, which produces particles with a spectral index of $\gamma=-2.1$.
+      The bottom plot shows the differential flux produced by power laws with the three spectral indicies shown in the top plot.
+    }\label{fig:snr_spectrum}
+  \end{figure}
+  
+  \FloatBarrier
+
 
   {\color{red}A fraction of the charged particles (What is the limit? When can they cross the shock front?? -maria)} in the expanding gas are able to cross the shockfront, where a small fraction will be reflected by magnetic fields.
   
