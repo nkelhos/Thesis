@@ -79,3 +79,26 @@ mergelist += [ os.path.splitext(fname)[0] + '.pdf' ]
 if not os.path.exists( os.path.splitext(fname)[0] + '.pdf' ) :
   gen_pdf( fname, tlines )
 
+
+tlines  = [ r'\begin{tikzpicture} ' ]
+tlines += [ r'\begin{feynman} ' ]
+tlines += [ r'\diagram[layered layout, horizontal=l1 to l2] {' ]
+tlines += [ r'  p1 [particle=\(\gamma\)] -- [boson]   l1,']
+tlines += [ r'  e1 [particle=\(e^{-}\)]  -- [fermion] l1,']
+tlines += [ r'  l1 -- [fermion] l2,' ]
+tlines += [ r'  l2 -- [boson]   p2 [particle=\(\gamma\)],']
+tlines += [ r'  l2 -- [fermion] e2 [particle=\(e^{-}\)],']
+#tlines += [ r'  u [particle=\(u\)]  -- [fermion] w1,']
+#tlines += [ r'  w1 -- [photon, edge label=\(W^{+}\)] w2,']
+#tlines += [ r'  w2 -- [fermion] m [particle=\(\nu_{\mu}\)],']
+#tlines += [ r'  d [particle=\(\overline d\)] -- [anti fermion] w1,']
+#tlines += [ r'  w2 -- [anti fermion] n [particle=\(\mu^{+}\)]']
+tlines += [ r'};' ]
+#tlines += [ r'\draw [decoration={brace}, decorate] (d.south west) -- (u.north west) node [pos=0.5, left] {\(\pi^{+}\)}; ' ]
+tlines += [ r'\end{feynman}' ]
+tlines += [ r'\end{tikzpicture}' ]
+
+fname = 'inversecompton.tex'
+mergelist += [ os.path.splitext(fname)[0] + '.pdf' ]
+if not os.path.exists( os.path.splitext(fname)[0] + '.pdf' ) :
+  gen_pdf( fname, tlines )
