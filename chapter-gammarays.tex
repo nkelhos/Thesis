@@ -1,6 +1,7 @@
 \cleartooddpage[\thispagestyle{empty}]
 
 \newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \lim_{#1}\;$}}}
+\renewcommand{\labelitemi}{\textbullet}
 
 \chapter{Gamma Rays and Dark Matter}\label{ch_gamma}
 
@@ -19,6 +20,39 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
   In leptonic production, electrons and low-energy photons collide, transferring energy to the photon.
   This interaction is called upscattering or Inverse Compton scattering~\cite{compton_effect}.
   In Inverse Compton scattering, a charged particle interacts with a photon, and some the electron's kinetic energy is transferred to the photon, shifting it to a higher frequency.
+  The feynman diagram for this interaction can be seen in Figure~\ref{fig:inv_compt_feyn}.
+  For Inverse Compton scattering, a field of photons will gain energy according to Equation~\ref{eqn:inv_compt_en_gain_rate}~\cite{inv_compt1,inv_compt2},
+
+  % https://eud.gsfc.nasa.gov/Volker.Beckmann/school/download/Longair_Radiation3.pdf equation 11
+  \begin{equation}\label{eqn:inv_compt_en_gain_rate}
+    \frac{dE}{dt} = \frac{4}{3} \: \sigma_{\perp} \: U \: c \: \gamma^2 \: \frac{ v^2 }{ c^2 } \;\; .
+  \end{equation}
+
+  In Equation~\ref{eqn:inv_compt_en_gain_rate}, 
+  \begin{itemize}
+    \item $\sigma_{\perp}$ is the perpendicular cross section between the photon and the charged particle, 
+    \item $c$ is the speed of light in vaccum,
+    \item $\gamma$ is the Lorentz factor,
+    \item $U$ is the energy density of the photon field in the rest frame of the electron (e.g. $Uc=N\hbar \omega c$), and 
+    \item $v$ is the velocity of the electron in the laboratory frame.
+  \end{itemize}
+
+  The average energy $E_{up}$ of photons upscattered this way can be calculated with Equation~\ref{eqn:inv_compt_avg_up_en},
+  
+  % https://eud.gsfc.nasa.gov/Volker.Beckmann/school/download/Longair_Radiation3.pdf equation 15
+  \begin{equation}\label{eqn:inv_compt_avg_up_en}
+    E_{up} = \frac{4}{3} \: \gamma^2 \: E_{0}
+  \end{equation}
+  
+  In Equation~\ref{eqn:inv_compt_avg_up_en}, $E_{0}$ is the energy of the original photon.
+  At Earth, astrophysical electrons are detected at energies of \SI{500}{GeV}~\cite{500GeVElectrons}.
+  At these energies, the Lorentz factor is $\gamma\approx{}10^6$.
+  With this Lorentz factor, upscattered photons can increase their energy by up to\footnote{This is the maximum average energy gain when the upscattered photon is emitted back along its original trajectory.} $\gamma^{2}\approx{}10^{12}$.
+  For example, a green photon ($\lambda{}=550\,\textrm{nm}$, $E_{green}=0.3\,\textrm{eV}$) would get scattered up to \SI{300}{keV}, becoming a {\color{red}(a what??)}.
+  {\color{red}(recheck all this math!!!??? something is off!! )}
+  
+  
+  
   {\color{red}(This is a good example where physics details are needed. Even if it does not pertain directly to the signal you are looking for, you have to explain here what IC is. Show the Feynman diagram, maybe the cross-section, describe a little better/longer. Also, how are the low energy photons produced?? -Orel)}
   %While the chance that any one thermal photon will be upscattered to TeV energies is low, astrophysical scales involve large populations of photons and electrons.
   %When these two populations interact, a small fraction of the original photon population can achieve TeV-scale energies~\cite{gammas_from_electrons}.
@@ -27,7 +61,8 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
     \centering
     \includegraphics[width=0.45\textwidth]{images/feynman_particles/inversecompton.pdf}
     \caption[Inverse Compton Scattering Feynman Diagram]{
-      Feynman diagram of Inverse Compton scattering.
+      Feynman diagram of Inverse Compton scattering, where an electron upscatters a lower-energy red photon to a higher-energy blue photon.
+      {\color{red}(switch this to a green and x-ray photon)}
     }
     \label{fig:inv_compt_feyn}
   \end{figure}
