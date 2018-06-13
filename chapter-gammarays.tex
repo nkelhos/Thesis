@@ -21,8 +21,19 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
   This interaction is called upscattering or Inverse Compton scattering~\cite{compton_effect}.
   In Inverse Compton scattering, a charged particle interacts with a photon, and some the electron's kinetic energy is transferred to the photon, shifting it to a higher frequency.
   The feynman diagram for this interaction can be seen in Figure~\ref{fig:inv_compt_feyn}.
-  For Inverse Compton scattering, a field of photons will gain energy according to Equation~\ref{eqn:inv_compt_en_gain_rate}~\cite{inv_compt1,inv_compt2},
-
+  
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{images/feynman_particles/inversecompton.pdf}
+    \caption[Inverse Compton Scattering Feynman Diagram]{
+      Feynman diagram of Inverse Compton scattering, where an electron upscatters a lower-energy red photon to a higher-energy blue photon.
+    }
+    \label{fig:inv_compt_feyn}
+  \end{figure}
+  \FloatBarrier
+  
+  In Inverse Compton scattering, a field of photons with an electron present will gain energy according to Equation~\ref{eqn:inv_compt_en_gain_rate}~\cite{inv_compt1,inv_compt2},
+  
   % https://eud.gsfc.nasa.gov/Volker.Beckmann/school/download/Longair_Radiation3.pdf equation 11
   \begin{equation}\label{eqn:inv_compt_en_gain_rate}
     \frac{dE}{dt} = \frac{4}{3} \: \sigma_{\perp} \: U \: c \: \gamma^2 \: \frac{ v^2 }{ c^2 } \;\; .
@@ -41,32 +52,53 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
   
   % https://eud.gsfc.nasa.gov/Volker.Beckmann/school/download/Longair_Radiation3.pdf equation 15
   \begin{equation}\label{eqn:inv_compt_avg_up_en}
-    E_{up} = \frac{4}{3} \: \gamma^2 \: E_{0}
+    E_{up} = \frac{4}{3} \: \gamma^2 \: E_{0} \;\;.
   \end{equation}
+  
+  % me = 5e5 eV (mass of electron)
+  
+  % formula for calculating gamma (lorentz factor) from relativistic kinetic energy
+  % Ek = mc^2 / sqrt(1-v^2/c^2) - mc^2
+  % Ek + mc^2 = mc^2 / sqrt(1-v^2/c^2)
+  % ( Ek + mc^2 ) / mc^2 = 1 / sqrt(1-(v^2/c^2)) = g
+  
+  % lorentz factor for various kinetic energy electrons
+  % Ek = 5e5  eV, 500 KeV, g =   2
+  % Ek = 1e6  eV,   1 MeV, g =   3
+  % Ek = 1e7  eV,  10 MeV, g =  21
+  % Ek = 1e8  eV, 100 MeV, g = 201
+  % Ek = 1e9  eV,   1 GeV, g = 2e3
+  % Ek = 1e10 eV,  10 GeV, g = 2e4
+  % Ek = 5e11 eV, 500 GeV, g = 1e6
+  
+  % calculating the energy in eV of a green photon
+  % lg = 550e-9 m  = 5.5e-7 m
+  % c = l*w
+  % wg = c / lg
+  % wg = 2.99e8 m/s / 5.5e-7 m = 5.4e14 1/s
+  % E  = hbar w
+  % hbar = 1.05e-34 m^2 kg / s (reduced planck constant)
+  % 1 J = 6.24e18 eV
+  % Eg = hbar wg
+  % Eg = 1.05e-34 m^2 kg / s    * 5.4e14 1/s * 6.24e18 eV/J
+  % Eg = 1.05 * 5.4 * 6.24 e-34 e14 e18 eV
+  % Eg = 35.3e-2 eV
+  % Eg = 0.35 eV (energy of a green photon)
+  
+  % 500 GeV electron upscatters a 0.35 eV photon (green) into a ?? eV photon?
+  % gamma = (Ek + Ee) / Ee
+  % gamma = ( 5e11 eV + 5e5 eV ) / 5e5 eV
+  % gamma = 1e6
+  % Eup = (4/3) * gamma^2 * Eg
+  % Eup = (4/3) * 1e12 * 0.35 eV
+  % Eup = 4.67e11 eV = 467 GeV
   
   In Equation~\ref{eqn:inv_compt_avg_up_en}, $E_{0}$ is the energy of the original photon.
   At Earth, astrophysical electrons are detected at energies of \SI{500}{GeV}~\cite{500GeVElectrons}.
   At these energies, the Lorentz factor is $\gamma\approx{}10^6$.
   With this Lorentz factor, upscattered photons can increase their energy by up to\footnote{This is the maximum average energy gain when the upscattered photon is emitted back along its original trajectory.} $\gamma^{2}\approx{}10^{12}$.
-  For example, a green photon ($\lambda{}=550\,\textrm{nm}$, $E_{green}=0.3\,\textrm{eV}$) would get scattered up to \SI{300}{keV}, becoming a {\color{red}(a what??)}.
-  {\color{red}(recheck all this math!!!??? something is off!! )}
+  For example, a green photon ($\lambda_{\textrm{green}}=550\,\textrm{nm}$, $E_{\textrm{green}}=0.3\,\textrm{eV}$) could be upscattered to as high as \SI{467}{GeV}, becoming a gamma ray detectable by VERITAS.
   
-  
-  
-  {\color{red}(This is a good example where physics details are needed. Even if it does not pertain directly to the signal you are looking for, you have to explain here what IC is. Show the Feynman diagram, maybe the cross-section, describe a little better/longer. Also, how are the low energy photons produced?? -Orel)}
-  %While the chance that any one thermal photon will be upscattered to TeV energies is low, astrophysical scales involve large populations of photons and electrons.
-  %When these two populations interact, a small fraction of the original photon population can achieve TeV-scale energies~\cite{gammas_from_electrons}.
-
-  \begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.45\textwidth]{images/feynman_particles/inversecompton.pdf}
-    \caption[Inverse Compton Scattering Feynman Diagram]{
-      Feynman diagram of Inverse Compton scattering, where an electron upscatters a lower-energy red photon to a higher-energy blue photon.
-      {\color{red}(switch this to a green and x-ray photon)}
-    }
-    \label{fig:inv_compt_feyn}
-  \end{figure}
-
   In order to efficiently produce gamma rays via this method, a population of high-energy electrons is needed.
   One environment for producing these electrons is around pulsar wind nebulae.
   Due to their rapid rotation, pulsar wind nebulae are constantly twisting their magnetic field lines.
@@ -123,7 +155,7 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
   
   {\color{red} Need to show why P and $\beta$ approach -1 and 1 ??}
   
-  Since both $P$ and $\beta$ are close to -1 and 1 respectively, Equation~\ref{eqn:snr_spectrum} simplifies to $N(E) \approx E^{-2}$, matching the observed cosmic ray spectrum~\cite{}
+  Since both $P$ and $\beta$ are close to -1 and 1 respectively, Equation~\ref{eqn:snr_spectrum} simplifies to $N(E) \approx E^{-2}$, matching the observed cosmic ray spectrum~\cite{}{\color{red}(??)}.
   
   In Equation~\ref{eqn:snr_spectrum}, the exponent is often referred to as the spectral index $\gamma$.
   The spectral index's dependence on $P$ and $\beta$ is shown in two plots in Figure~\ref{fig:snr_spectrum}.
