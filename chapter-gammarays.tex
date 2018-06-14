@@ -85,7 +85,7 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
   % Eg = 35.3e-2 eV
   % Eg = 0.35 eV (energy of a green photon)
   
-  % 500 GeV electron upscatters a 0.35 eV photon (green) into a ?? eV photon?
+  % 500 GeV electron upscatters a 0.35 eV photon (green) into a ? eV photon?
   % gamma = (Ek + Ee) / Ee
   % gamma = ( 5e11 eV + 5e5 eV ) / 5e5 eV
   % gamma = 1e6
@@ -109,10 +109,9 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
   Another mechanism that produces high-energy charged particles is located at supernova shockfronts, called diffuse shock acceleration~\cite{dsa1,dsa2,dsa3,dsa4,dsa5}.
   During and after a supernova's initial detonation, charged fermions are quickly heated.
   These heated particles then expand outwards, creating a moving shockfront at the boundary between the expanding particles and the surrounding Inter-Stellar Medium (ISM).
-  These expanding particles bring their own magnetic fields, which can reflect charged particles.
+  These expanding particles bring their own magnetic fields, which reflect charged particles.
   As the shockfront expands, it also runs into the ambient magnetic fields in the ISM, which can also reflect charged particles.
   This shockfront is shown in Figure~\ref{fig:snr_shockfront}.
-  {\color{red}(Maria already mentioned it, and I agree, you need to provide the equations describing Fermi acceleration. Being more accurate about the fractions of particles reflected/accelerated, would be better as well. Essentially same as before, less story-like. Also, you speak in the paragraph about charged particles in general, but later you mention that this is a way to accelerate electrons. Maybe make it clearer?? -Orel )}
   
   \begin{figure}[ht]
     \centering
@@ -124,38 +123,79 @@ The first is the astrophysical mechanisms that produce gamma rays, the second is
     \label{fig:snr_shockfront}
   \end{figure}
   
-  In this situation, particles that are able to cross the shockfront are reflected off the magnetic fields on the other side, gaining a small amount of energy each time.
+  In this situation, particles that cross the shockfront are reflected off the magnetic fields on the other side, gaining a small amount of energy each time.
   On average, a particle gains energy for each crossings cycle (up-to-down and down-to-up stream) by Equation~\ref{eqn:snr_en_per_cycle}.
   
   \begin{equation}\label{eqn:snr_en_per_cycle}
     \left \langle \frac{\Delta E}{E} \right \rangle = \frac{4}{3} \left ( \frac{v_{s}-v_{m}}{c} \right )
   \end{equation}
   
-  In Equation~\ref{eqn:snr_en_per_cycle}, $\Dela E$ is the energy gained by the particle, $E$ is the initial energy of the particle, $v_s$ is the velocity of the supernova expansion, and $v_m$ is the velocity of the ISM.
-
+  In Equation~\ref{eqn:snr_en_per_cycle}, $\Dela E$ is the energy gained by the particle, $E$ is the initial energy of the particle, $v_s$ is the velocity of the supernova expansion, $\rho_s$ is its density, $v_m$ is the velocity of the ISM, and $\rho_m$ is its density.
   Equation~\ref{eqn:snr_spectrum} shows the differential energy spectrum produced by particles that escape the shockfront.
   
   \begin{equation}\label{eqn:snr_spectrum}
-    N(E)=E^{ \frac{log\:P}{log\: \beta} -1}
+    N(E)=E^{ \frac{ \log \: P }{ \log \: \beta } -1 }
+  \end{equation}
+  
+  Probability $P$ is the chance a particle is trapped between the shockfronts, and $\beta$ is the energy increase percent per crossing cycle (upstream $\rightarrow$ downstream $\rightarrow$ upstream).
+  The factor $\beta$ can be calculated in Equation~\ref{eqn:snr_beta}, where $E_i$ is the energy of a particle after the $i^{\textrm{th}}$ crossing.
+
+  \begin{equation}\label{eqn:snr_beta}
+    \begin{split}
+      E_{i+1} & = \left ( 1 + \frac{4}{3} \frac{v_s - v_m}{c} \right ) E_i \\
+        \beta & = 1 + \frac{4}{3} \frac{v_s - v_m}{c} \\
+      E_{i+1} & = \beta E_i \\
+    \end{split}
   \end{equation}
 
-  Probability $P$ is the chance a particle is trapped between the shockfronts, calculated as $1 - \frac{R_o}{R_i}$, where $R_i$ is the rate initial particles are injected into the shockfront, and $R_o$ is the rate particles permanently escape downstream.
-  The variable $\beta$ is the percent increase in energy during each crossing cycle, $\beta = 1+ \frac{4}{3} \left ( \frac{v_s - v_m}{c} \right )$.
-  Since the trapping probability is less than 1 but also close to 1, for extremely small $P$'s, Equation~\ref{eqn:snr_simple_P} simplifies Equation~\ref{eqn:snr_spectrum} exponent numerator to -1.
-  
-  \begin{equation}\label{eqn:snr_simple_P}
-    \Lim{P \rightarrow 1^{-}} \; \textrm{log}_{10} P = -P
-  \end{equation}
-  
-  Likewise, since $\beta$ is greater than 1 but also close to 1, Equation~\ref{eqn:snr_simple_B} simplifies Equation~\ref{eqn:snr_spectrum} exponent denominator to 1.
+  The probility $P$ can be calculated via Equation~\ref{eqn:P_escape}, where $R_i$ the number of particles injected into the shock $R_i$ and $R_o$ is the number of particles that escape the shock in Equation~\ref{eqn:P_escape},
 
-  \begin{equation}\label{eqn:snr_simple_B}
-    \Lim{\beta \rightarrow 1^{+} } \; \textrm{log}_{10} \beta = \beta
+  \begin{equation}\label{eqn:P_escape}
+    P = 1 - \frac{R_o}{R_i} \; \; .
   \end{equation}
   
-  {\color{red} Need to show why P and $\beta$ approach -1 and 1 ??}
+  The factor $R_i$ can be calculated in Equation~\ref{eqn:snr_rin}, since particles cross the shock at velocity $c\,\cos(\theta)$, and diffuse isotropically ($dn = \frac{n}{4\pi}\,d\Omega = \frac{n}{4\pi} \sin(\theta)\, d\theta{} \, d\psi$), 
   
-  Since both $P$ and $\beta$ are close to -1 and 1 respectively, Equation~\ref{eqn:snr_spectrum} simplifies to $N(E) \approx E^{-2}$, matching the observed cosmic ray spectrum~\cite{}{\color{red}(??)}.
+  \begin{equation}\label{eqn:snr_rin}
+    \begin{split}
+      R_i & = \int c \, \cos(\theta) \, dn \\
+          & = \int_{0}^{\frac{\pi}{2}} c \, \cos(\theta) \frac{n}{4\pi} \sin(\theta) \, d\theta \int_{0}^{2\pi} d \psi \\
+      R_i & = \frac{n c}{4}  \; \; .
+    \end{split}
+  \end{equation}
+
+  The factor $R_o$ can b calculated as the number of particles lost downstream, leading to Equation~\ref{eqn:snr_ro},
+  \begin{equation}\label{eqn:snr_ro}
+     R_o = n v_m \; \; .
+  \end{equation}
+  
+  Then the return probability $P$ becomes Equation~\ref{eqn:snr_P1}.
+  Due to energy and momentum conservation across the shock, $v_m = \frac{v_s}{4}$, letting one calculate the return probability $P$ with Equation~\ref{eqn:snr_P1}.
+
+  \begin{equation}\label{eqn:snr_P1}
+    P = 1 - \frac{R_o}{R_i} = 1 - \frac{4 v_m}{c} = 1 - \frac{v_s}{c}
+  \end{equation}
+  
+  The factor $\beta$ can also be simplified from Equation~\ref{eqn:snr_beta} into Equation~\ref{eqn:snr_beta_simple},
+  
+  \begin{equation}\label{eqn:snr_beta_simple}
+    \beta = 1 + \frac{4}{3} \frac{v_s - v_m}{c} = 1 + \frac{v_s}{c}
+  \end{equation}
+  
+  Using Equations~\ref{eqn:snr_beta_simple} and \ref{eqn_snr_P1}, the exponent in Equation~\ref{eqn:snr_spectrum} simplifies via:
+  \begin{equation}
+    \begin{split}
+      \log (P)     & = \log \left ( 1 - \frac{v_s}{c} \right ) \approx - \frac{v_s}{c} \\
+      \log (\beta) & = \log \left ( 1 + \frac{v_s}{c} \right ) \approx + \frac{v_s}{c}
+    \end{split}
+  \end{equation}
+  
+  
+  
+
+
+  {\color{red}(Maria already mentioned it, and I agree, you need to provide the equations describing Fermi acceleration. Being more accurate about the fractions of particles reflected/accelerated, would be better as well. Essentially same as before, less story-like. Also, you speak in the paragraph about charged particles in general, but later you mention that this is a way to accelerate electrons. Maybe make it clearer?? -Orel )}
+
   
   In Equation~\ref{eqn:snr_spectrum}, the exponent is often referred to as the spectral index $\gamma$.
   The spectral index's dependence on $P$ and $\beta$ is shown in two plots in Figure~\ref{fig:snr_spectrum}.
