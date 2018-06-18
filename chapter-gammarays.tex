@@ -20,21 +20,21 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   The primary mechanism this analysis searches for is the annihilation of two WIMP dark matter particles that either directly or indirectly produce gamma rays, and is discussed in Section~\ref{dm_spectral}.
 
   In leptonic production, electrons and low-energy photons collide, transferring energy to the photon.
-  This interaction is called upscattering or Inverse Compton scattering~\cite{compton_effect}.
-  In Inverse Compton scattering, a charged particle interacts with a photon, and some the electron's kinetic energy is transferred to the photon, shifting it to a higher frequency.
+  This interaction is called upscattering or inverse Compton scattering~\cite{compton_effect}.
+  In inverse Compton scattering, a charged particle interacts with a photon, and some the electron's kinetic energy is transferred to the photon, shifting it to a higher frequency.
   The feynman diagram for this interaction can be seen in Figure~\ref{fig:inv_compt_feyn}.
   
   \begin{figure}[ht]
     \centering
     \includegraphics[width=0.45\textwidth]{images/feynman_particles/inversecompton.pdf}
     \caption[Inverse Compton Scattering Feynman Diagram]{
-      Feynman diagram of Inverse Compton scattering, where an electron upscatters a lower-energy red photon to a higher-energy blue photon.
+      Feynman diagram of inverse Compton scattering, where an electron upscatters a lower-energy red photon to a higher-energy blue photon.
     }
     \label{fig:inv_compt_feyn}
   \end{figure}
   \FloatBarrier
   
-  In Inverse Compton scattering, a field of photons with an electron present will gain energy according to Equation~\ref{eqn:inv_compt_en_gain_rate}~\cite{inv_compt1,inv_compt2},
+  In inverse Compton scattering, a field of photons with an electron present will gain energy according to Equation~\ref{eqn:inv_compt_en_gain_rate}~\cite{inv_compt1,inv_compt2},
   
   % https://eud.gsfc.nasa.gov/Volker.Beckmann/school/download/Longair_Radiation3.pdf equation 11
   \begin{equation}\label{eqn:inv_compt_en_gain_rate}
@@ -108,13 +108,16 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   This breaking and reconnection temporarily creates electric fields that can accelerate electrons outwards to higher energies than thermal sources (i.e. solar wind) alone can achieve~\cite{gamma_pwn1,gamma_pwn2}.
   {\color{red}(This paragraph also reads like a story and less like an accurate physical description. It should be rewritten more accurately. If you want, you can take the highlights from ref "Rees and Gunn, 1974" and rewrite them here. Or find a more modern paper/book to get a clearer description. -Orel ??)}
 
-  Another mechanism that produces high-energy charged particles is located at supernova shockfronts, called diffuse shock acceleration~\cite{dsa1,dsa2,dsa3,dsa4,dsa5}.
+  Another mechanism that produces high-energy charged particles is fermi acceleration\cite{fermi1949,highenergyelectron_snr}.
+  In general, this acceleration imparts energy to charged particles when they are reflected by an oncoming magnetic field.
+  
+  One environment where this can happen often is in the shockfront of a supernova, where the mechanism is called diffusive shock acceleration~\cite{dsa1,dsa2,dsa3,dsa4,dsa5}.
   During and after a supernova's initial detonation, charged fermions are quickly heated.
   These heated particles then expand outwards, creating a moving shockfront at the boundary between the expanding particles and the surrounding Inter-Stellar Medium (ISM).
   These expanding particles bring their own magnetic fields, which reflect charged particles.
   As the shockfront expands, it also runs into the ambient magnetic fields in the ISM, which can also reflect charged particles.
   This shockfront is shown in Figure~\ref{fig:snr_shockfront}.
-  
+
   \begin{figure}[ht]
     \centering
     \includegraphics[width=0.75\textwidth]{images/snr_shockfront/shockfront_diagram.pdf}
@@ -126,80 +129,56 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   \end{figure}
   
   In this situation, particles that cross the shockfront are reflected off the magnetic fields on the other side, gaining a small amount of energy each time.
-  On average, a particle gains energy for each crossings cycle (up-to-down and down-to-up stream) by Equation~\ref{eqn:snr_en_per_cycle}.
+  Over many crossings, charged particles can gain high energies, though the higher the energy of the particle, the more likely it can escape the shockfront, since it's gyroradius increases as its energy increases.
+  The amount of energy gained is governed by a parameter $\beta$, in Equation~\ref{eqn:snr_beta}, 
   
-  \begin{equation}\label{eqn:snr_en_per_cycle}
-    \left \langle \frac{\Delta E}{E} \right \rangle = \frac{4}{3} \left ( \frac{v_{s}-v_{m}}{c} \right )
-  \end{equation}
-  
-  In Equation~\ref{eqn:snr_en_per_cycle}, $\Dela E$ is the energy gained by the particle, $E$ is the initial energy of the particle, $v_s$ is the velocity of the supernova expansion, $\rho_s$ is its density, $v_m$ is the velocity of the ISM, and $\rho_m$ is its density.
-  Equation~\ref{eqn:snr_spectrum} shows the differential energy spectrum produced by particles that escape the shockfront.
-  
-  \begin{equation}\label{eqn:snr_spectrum}
-    N(E)=E^{ \frac{ \log \: P }{ \log \: \beta } -1 }
-  \end{equation}
-  
-  Probability $P$ is the chance a particle is trapped between the shockfronts, and $\beta$ is the energy increase percent per crossing cycle (upstream $\rightarrow$ downstream $\rightarrow$ upstream).
-  The factor $\beta$ can be calculated in Equation~\ref{eqn:snr_beta}, where $E_i$ is the energy of a particle after the $i^{\textrm{th}}$ crossing.
-
   \begin{equation}\label{eqn:snr_beta}
+    \beta = 1 - \frac{v_s}{c} \;\; .
+  \end{equation}
+  
+  This $\beta$ parameter can be interpreted as the fractional energy gain per crossing, as in Equation~\ref{eqn:snr_beta_en},
+
+  \begin{equation}\label{eqn:snr_beta_en}
+    E_{i+1} = \beta E_{i} \;\; .
+  \end{equation}
+  
+  In Equation~\ref{eqn:snr_beta_en}, $E_i$ is the average energy of a charged particle after it's $i^{\textrm{th}}$ crossing.
+  The energy gain $\beta$ factor influences the energy spectrum of the escaping charged particles, but so too does the return probability $P$, the probability that the charged particle remains trapped at the shockfront after each crossing.
+  This probability $P$ can be calculated with Equation~\ref{eqn:snr_prob}.
+  
+  \begin{equation}\label{eqn:snr_prob}
+    P = 1 - \frac{v_s}{c}
+  \end{equation}
+  
+  With this probability $P$ and the energy gain $\beta$, the energy spectrum of particles that permanently escape the shockfront can be calculated with Equation~\ref{eqn:snr_spec}.
+  
+  \begin{equation}\label{eqn:snr_spec}
+    \frac{dN}{dE} \approx E^{ \frac{\log P}{\log \beta} - 1 }
+  \end{equation}
+  
+  With Equations~\ref{eqn:snr_prob} and \ref{eqn:snr_beta}, the spectrum from Equation~\ref{eqn:snr_spec} can be simplified.
+
+  \begin{equation}\label{eqn:snr_simplify}
     \begin{split}
-      E_{i+1} & = \left ( 1 + \frac{4}{3} \frac{v_s - v_m}{c} \right ) E_i \\
-        \beta & = 1 + \frac{4}{3} \frac{v_s - v_m}{c} \\
-      E_{i+1} & = \beta E_i \\
-    \end{split}
-  \end{equation}
-
-  The probility $P$ can be calculated via Equation~\ref{eqn:P_escape}, where $R_i$ the number of particles injected into the shock $R_i$ and $R_o$ is the number of particles that escape the shock in Equation~\ref{eqn:P_escape},
-
-  \begin{equation}\label{eqn:P_escape}
-    P = 1 - \frac{R_o}{R_i} \; \; .
-  \end{equation}
-  
-  The factor $R_i$ can be calculated in Equation~\ref{eqn:snr_rin}, since particles cross the shock at velocity $c\,\cos(\theta)$, and diffuse isotropically ($dn = \frac{n}{4\pi}\,d\Omega = \frac{n}{4\pi} \sin(\theta)\, d\theta{} \, d\psi$), 
-  
-  \begin{equation}\label{eqn:snr_rin}
-    \begin{split}
-      R_i & = \int c \, \cos(\theta) \, dn \\
-          & = \int_{0}^{\frac{\pi}{2}} c \, \cos(\theta) \frac{n}{4\pi} \sin(\theta) \, d\theta \int_{0}^{2\pi} d \psi \\
-      R_i & = \frac{n c}{4}  \; \; .
-    \end{split}
-  \end{equation}
-
-  The factor $R_o$ can b calculated as the number of particles lost downstream, leading to Equation~\ref{eqn:snr_ro},
-  \begin{equation}\label{eqn:snr_ro}
-     R_o = n v_m \; \; .
-  \end{equation}
-  
-  Then the return probability $P$ becomes Equation~\ref{eqn:snr_P1}.
-  Due to energy and momentum conservation across the shock, $v_m = \frac{v_s}{4}$, letting one calculate the return probability $P$ with Equation~\ref{eqn:snr_P1}.
-
-  \begin{equation}\label{eqn:snr_P1}
-    P = 1 - \frac{R_o}{R_i} = 1 - \frac{4 v_m}{c} = 1 - \frac{v_s}{c}
-  \end{equation}
-  
-  The factor $\beta$ can also be simplified from Equation~\ref{eqn:snr_beta} into Equation~\ref{eqn:snr_beta_simple},
-  
-  \begin{equation}\label{eqn:snr_beta_simple}
-    \beta = 1 + \frac{4}{3} \frac{v_s - v_m}{c} = 1 + \frac{v_s}{c}
-  \end{equation}
-  
-  Using Equations~\ref{eqn:snr_beta_simple} and \ref{eqn:snr_P1}, the exponent in Equation~\ref{eqn:snr_spectrum} simplifies via:
-  \begin{equation}
-    \begin{split}
-      \log (P)     & = \log \left ( 1 - \frac{v_s}{c} \right ) \approx - \frac{v_s}{c} \\
-      \log (\beta) & = \log \left ( 1 + \frac{v_s}{c} \right ) \approx + \frac{v_s}{c}
+       \log P     & = \log \left ( 1 - \frac{v_s}{c} \right ) \approx - \frac{v_s}{c} \\
+       \log \beta & = \log \left ( 1 + \frac{v_s}{c} \right ) \approx + \frac{v_s}{c} \\
     \end{split}
   \end{equation}
   
+  Equation~\ref{eqn:snr_spec} then simplifies to
   
-  
+  \begin{equation}\label{eqn:snr_spec_final}
+    \begin{split}
+      \frac{dN}{dE} & \approx E^{ \frac{\log P}{\log \beta} - 1 } \\
+                    & \approx E^{ \frac{ -\frac{v_s}{c} }{ +\frac{v_s}{c} } - 1 } \\
+                    & \approx E^{ -1 - 1 } \\
+      \frac{dN}{dE} & \approx E^{ -2 } \;\; .
+    \end{split}
+  \end{equation}
 
-
-  {\color{red}(Maria already mentioned it, and I agree, you need to provide the equations describing Fermi acceleration. Being more accurate about the fractions of particles reflected/accelerated, would be better as well. Essentially same as before, less story-like. Also, you speak in the paragraph about charged particles in general, but later you mention that this is a way to accelerate electrons. Maybe make it clearer?? -Orel )}
-
-  
-  In Equation~\ref{eqn:snr_spectrum}, the exponent is often referred to as the spectral index $\gamma$.
+  In Equation~\ref{eqn:snr_spec_final}, the exponent is often referred to as the spectral index $\gamma$.
+  From this diffusive shock acceleration, the spectral index of charged particles is approximately -2.
+  This is quite close to the observed extragalactic cosmic ray spectrum range of 2-2.2, but additinal effects may soften this index to get to the observed galactic cosmic ray spectrum of $\approx{}3.7$~\cite{cosmicrayspectrumorigin}.
   The spectral index's dependence on $P$ and $\beta$ is shown in two plots in Figure~\ref{fig:snr_spectrum}.
   The top plot in Figure~\ref{fig:snr_spectrum} shows how changing $\beta$, the energy gain per shockfront crossing cycle, and the bottom plot shows the differential spectra with the spectral indicies from the top plot.
   From these two plots, it can be seen that increasing the energy gain per crossing cycle $\beta$ creates a harder spectrum of particles with more higher energy particles, since they can reach escape energies in fewer cycles.
@@ -218,8 +197,9 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   
   \FloatBarrier
 
+  
 
-  {\color{red}A fraction of the charged particles (What is the limit? When can they cross the shock front?? -maria)} in the expanding gas are able to cross the shockfront, where a small fraction will be reflected by magnetic fields.
+  %{\color{red}A fraction of the charged particles (What is the limit? When can they cross the shock front?? -maria)} in the expanding gas are able to cross the shockfront, where a small fraction will be reflected by magnetic fields.
   
   % slides on supernova shockwaves
   % https://isapp2012paris.sciencesconf.org/conference/isapp2012paris/Stefano_Gabici_three.pdf
@@ -234,17 +214,22 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   %   v2 = B2 * c # velocity of the gas particles
   %   1 crossing cycle = reflect off each shock once = E * B2 * 4/3 increase in particle energy
   %   particle tends to escape after (B1-B2)*1/4 crossing cycles
+
+
+  Protons accelerated in the manner form the majority of the events detected by the VERITAS telescope, forming an irriducible background in the galactic center observations.
+  This background is irriducible due to the fact that proton and gamma-ray air showers are very similar.
+
   
-  {\color{red}(specify that the particles have to be going faster than the shockfront??)}
-  Upon recrossing the shockfront, they are again reflected by magnetic fields, which are expanding outwards with the supernova remnant gas, {\color{red}imparting energy (whats the formula for calculating this energy?? -maria)} to the charged particles.
-  {\color{red}(relate this to how it contributes to the VERITAS background, since my DM signal doesn't come from fermi acceleration??)}
-  These particles repeatedly cross the shockfront, where a smaller and smaller fraction of particles gain more and more energy, in a mechanism called first-order Fermi acceleration~\cite{fermi1949,highenergyelectron_snr}.
-  However, it's still uncertain how the initial particles gain the energy necessary to cross the shockfront, known as the injection problem~\cite{inject2001}.
+  %{\color{red}(specify that the particles have to be going faster than the shockfront??)}
+  %Upon recrossing the shockfront, they are again reflected by magnetic fields, which are expanding outwards with the supernova remnant gas, {\color{red}imparting energy (whats the formula for calculating this energy?? -maria)} to the charged particles.
+  %{\color{red}(relate this to how it contributes to the VERITAS background, since my DM signal doesn't come from fermi acceleration??)}
+  %These particles repeatedly cross the shockfront, where a smaller and smaller fraction of particles gain more and more energy, in a mechanism called first-order Fermi acceleration~\cite{fermi1949,highenergyelectron_snr}.
+  %However, it's still uncertain how the initial particles gain the energy necessary to cross the shockfront, known as the injection problem~\cite{inject2001}.
   
   After either of these processes produce electrons with high energies, these electrons can then upscatter ambient photons to TeV energies.
   Additionally, electrons spiralling through magnetic fields can produce synchrotron photons at X-ray energies, meaning fewer upscatters are needed to reach TeV energies~\cite{self_compton}.
 
-  In hadronic processes, protons can be accelerated ($p_{accel}$) by Fermi acceleraton, in a supernova remnant~\cite{proton_snr_accel}, or as part of an Active Galactic Nucleus jet~\cite{hadronic1,hadronic2}.
+  In hadronic processes, protons can be accelerated ($p_{accel}$) by Fermi acceleraton, by a supernova remnant~\cite{proton_snr_accel}, or as part of an active galactic nucleus jet~\cite{hadronic1,hadronic2}.
   Then, upon striking an ambient proton ($p_{ambient}$), the interaction will produce $\pi^{+}$, $\pi^{-}$, $\pi^{0}$, and other particles~\cite{pp_pion,pp_pion2}.
   {\color{red}(I would mention that the process you are describing below is is one of the options to produce photons in the hadronic channel. -orel ??)}
   
@@ -253,7 +238,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   \end{equation}
 
   The $\pi^{0}$ then quickly (\SI{8.5e-17}{s}~\cite{pdg2016}) decays into two gamma rays.
-  As each pion tends to get $\frac{1}{3}$ the original proton's kinetic energy, and the $\pi^0$ decays into two gamma rays, each gamma ray ends up with \nicetilde$15\%$ of the original proton's kinetic energy.
+  Because each pion resulting from the original $pp$ interaction tends to receive $\frac{1}{3}$ of the original proton's kinetic energy, and the $\pi^0$ decays into two gamma rays, each gamma ray ends up with \nicetilde$15\%$ of the original proton's kinetic energy.
   {\color{red}(There is no way to discuss the pion and photon energies in a more formal context? Also, what does it say about the photon energy distribution? Can you say something about the photon energy ranges expected, given that the protons are usually of energy this or that?? -orel)}
   
   Much of the diffuse gamma-ray component of the galactic disk is due to extra-galactic high-energy protons colliding with the protons of the galactic plane~\cite{GalacticDiffuseGammaRays}.
@@ -289,7 +274,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     Cryogenic detectors use pucks of germanium and silicon to measure particle collisions.
     These collisions produce detectable ionization and phonon signals, which are used to classify the incident particle~\cite{direct_cdms}.
     Scintillation detectors are built with crystals like titanium-doped sodium iodine.
-    When an external particle collides with one of the nuclei within the crystal, that nucleus becomes excited, then relaxes by releasing a photon~\cite{direct_dama}.
+    When an external particle collides with one of the nuclei within the crystal, that nucleus becomes excited, and then relaxes by releasing a photon~\cite{direct_dama}.
     However, to date no substantial dark matter signal has been detected with these methods~\cite{direct_dm_detection}.
     
     For indirect searches, $\chi\chi \rightarrow ss$, astrophysical observations are analyzed for excess amounts of standard model particles, more than can be explained by known astrophysical processes.
@@ -325,7 +310,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
 
   The disk of gas present in the galactic plane acts as an interaction medium for passing protons, both from nearby galactic accelerators and from extragalactic sources.
   The interactions between this disk of gas and protons produce $\pi^0$s, which decay into $\gamma\gamma$ pairs~\cite{hess_gc_diffuse}.
-  This emission is not modeled in this analysis, as atmospheric effects overwhelm any diffuse emission in the residual skymaps\footnote{These residual maps are discussed in Section~\ref{subsec:likemax}.}.
+  This emission is not modeled in this analysis, because atmospheric effects overwhelm any diffuse emission in the residual skymaps\footnote{These residual maps are discussed in Section~\ref{subsec:likemax}.}.
 
 
 \section{Indirect Dark Matter Search}
@@ -337,7 +322,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
 
   \subsection{Dark Matter and Gamma Rays}
     Primarily, indirect searches focus on annihilating WIMPs, as the predicted decaying WIMP produces a lower flux of standard model particles than annihilation.
-    WIMPs may annihilate into any standard model particle-antiparticle pair, but most studies examine a WIMP annihilating into a quark-antiquark pair or a pair of gamma-ray photons.
+    WIMPs may annihilate into any standard model particle-antiparticle pair, but most studies examine a WIMP annihilating into a quark-antiquark or gamma-ray photon pair.
     For example, two annihilating WIMPs may produce a $t\bar{t}$ pair, which then decays into $W^+bW^-\bar{b}$~\cite{pdg2016}.
     Alternately, other pairs may be produced, like  $b\bar{b}$, $c\bar{c}$, $W^+W^-$, $u^+u^-$, or $\tau^+\tau^-$.
     These different annihilations produce different spectra of final gamma rays.
@@ -388,7 +373,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     Specifically, if the dark matter halo follows a cored profile when using a cuspy halo model, then any derived upper limits on the dark matter cross section would be different.
     For simplicity, only a cuspy halo is used in this thesis.
     
-    When choosing which dark matter target to observe with a gamma-ray observatory, knowing the gamma-ray brightness of different sources is useful.
+    When choosing which dark matter target to observe with a gamma-ray observatory, knowing the gamma-ray brightness of different sources can be useful.
     This Einasto density profile can be integrated to calculate this gamma-ray brightness, independent of the WIMP model being searched for.
     For annihilating dark matter, $\rho_{\textrm{DM}}\left(r\right)^2$ must be integrated along the line of sight.
     Equation~\ref{eqn:dmflux} can be used to calculate the amount of gamma rays produced by these annihilations.
@@ -407,7 +392,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       J = \int \rho^2 dl \;\; .
     \end{equation}
 
-    The $J$ factor is used to compare the relative gamma-ray brightness of different dark matter halos, which are a function of both dark matter density and observing distance.
+    The $J$ factor is used to compare the relative gamma-ray brightness of different dark matter halos, which is a function of both dark matter density and observing distance.
     The Einasto density in Equation~\ref{eqn:einasto} can be integrated to calculate the $J$ factor at various radii, which is shown in Figure~\ref{fig:gchalo_jfactor}.
     The values in this figure are calculated using an integration radius of \ang{0.01}.
     {\color{red}(What does the integration radius mean here exactly?? It is not entirely clear from this discussion. -orel)}
@@ -433,6 +418,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       The green circles indicate the different observation regions.
       Note this is showing the same model as Figure~\ref{fig:gchalo_jfactor}, except here the J-factor axis is linear instead of logarithmic.
       The black corners result from the halo model only being calculated out to a radius of \ang{3}, since there are no observations that extend past that.
+      {\color{red}(x-axis spelling ''Longiude``??)}
     }
     \label{fig:halojfactor}
   \end{figure}
@@ -440,7 +426,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   {\color{red}(This is not connected enough to the previous paragraphs. Maybe put it in its own sub-sub-section with a short intro?? -orel)}
   More exotic WIMP models may slightly alter the gamma-ray brightness of the dark matter halo, compared to the previously mentioned WIMP model.
   For example, if dark matter WIMPs have an attractive force between them, their effective annihilation cross section is enhanced, increasing the gamma-ray emission from the halo.
-  This effect is called Sommerfeld Enhancement~\cite{sommerfeld}.
+  This effect is called Sommerfeld enhancement~\cite{sommerfeld}.
   The dark matter search in this thesis does not include this effect.
   % originally from http://inspirehep.net/record/1286230/files/Thesis-2009-Nierop.pdf
   % from http://www.pnas.org/content/112/40/12264.full.pdf
@@ -520,7 +506,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     p_{\textrm{cosmic}} + p_{\textrm{atmo}} \rightarrow \pi^+ + \pi^+ + \pi^0 + ...
   \end{equation}
   
-  The interaction produces $\pi^+\pi^+\pi^0$, each with roughly \nicetilde $\frac{1}{3}$ of the initial proton's energy.
+  The interaction produces $\pi^+\pi^+\pi^0$, where each particle receives \nicetilde $\frac{1}{3}$ of the initial proton's energy.
   {\color{red}(You discussed this decay to gammas 3-4 times before, why show the diagram only now?? -orel)}
   This $\pi^{0}$ decay is shown in Figure~\ref{fig:feynman_pi0}.
   
@@ -595,7 +581,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \theta = ArcCos \left ( \frac{c}{n \; v} \right )
   \end{equation}
   
-  However in an atmospheric shower, the number and distribution of charged particles and their velocities, as well as energy losses, tend to smear the theoretically-clean Cherenkov cones into a diffuse pool of light on the ground, shown in Figure~\ref{fig:lightpool}.
+  Actual air showers are more complex, however, because the number and distribution of charged particles and their velocities, as well as energy losses, tend to smear the theoretically-clean Cherenkov cones into a diffuse pool of light on the ground, shown in Figure~\ref{fig:lightpool}.
 
   \begin{figure}[ht]
     \centering
@@ -616,7 +602,6 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   \end{equation}
   
   where $E$ is the energy emitted as Cherenkov radiation, $x$ is the length of the charged particle path, $ze$ is the charge of the particle, $\omega$ is the emitted Cherenkov photon frequency, $c$ is the speed of light (phase velocity) in the medium, $v$ is the speed of the particle, and $\epsilon(\omega)$ is the frequency-dependent permittivity.
-  The UV- and visible-spectrum Cherenkov photons are then imaged and recorded by the VERITAS observatory.
   
   \begin{figure}[ht]
     \centering
@@ -630,4 +615,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   In Figure~\ref{fig:cherenkovreactor}, a visible example of Cherenkov photons is shown, produced in the Advanced Test Reactor at the Idaho National Laboratory.
   Neutrons emitted by the reactor collide with atoms in the water, freeing some electrons with enough kinetic energy to travel faster than the speed of light in water.
   These superluminal-in-water electrons then create the blue Cherenkov photons imaged here.
+  
+  {\color{red}(expand this to a better transition paragraph to the next chapter??)}
+  The UV- and visible-spectrum Cherenkov photons are then imaged and recorded by the VERITAS observatory.
   
