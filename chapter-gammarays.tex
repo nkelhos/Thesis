@@ -97,19 +97,29 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   
   In Equation~\ref{eqn:inv_compt_avg_up_en}, $E_{0}$ is the energy of the original photon.
   At Earth, astrophysical electrons are detected at energies of \SI{500}{GeV}~\cite{500GeVElectrons}.
-  At these energies, the Lorentz factor is $\gamma\approx{}10^6$.
-  With this Lorentz factor, upscattered photons can increase their energy by up to\footnote{This is the maximum average energy gain when the upscattered photon is emitted back along its original trajectory.} $\gamma^{2}\approx{}10^{12}$.
+  At these energies, the Lorentz factor is $\gamma = 10^6$.
+  With this Lorentz factor, upscattered photons can increase their energy by up to\footnote{This is the maximum average energy gain when the upscattered photon is emitted back along its original trajectory.} $\gamma^{2} = 10^{12}$.
   For example, a green photon ($\lambda_{\textrm{green}}=550\,\textrm{nm}$, $E_{\textrm{green}}=0.3\,\textrm{eV}$) could be upscattered to as high as \SI{467}{GeV}, becoming a gamma ray detectable by VERITAS.
   
   In order to efficiently produce gamma rays via this method, a population of high-energy electrons is needed.
   One environment for producing these electrons is around pulsar wind nebulae.
-  Because pulsars spin rapidly, they produce a significant magnetic fields.
-  The Crab nebula for instance has a surface magnetic field strength of \SI{e12}{G}~\cite{pwn_evolution}, much larger than Earth's \approx{}\SI{0.5}{G}~\cite{earth_geomag}.
-  {\color{red}(why no line numbers??)}
+  Because pulsars spin rapidly, they produce strong magnetic fields.
+  For example, the pulsar at the heart of the Crab nebula has a surface magnetic field strength of \SI{e12}{G}~\cite{pwn_evolution}, much larger than Earth's $\sim$\SI{0.5}{G}~\cite{earth_geomag}.
+  These strong magnetic fields provide an environment for producing and accelerating charged particles.
+  In these strong magnetic fields, ambient photons can convert into $e^{+}e^{-}$~\cite{pwn_pairprod1,pwn_pairprod2}.
+  The probability $\Upsilon$ (0-1) of a photon pair-converting in a magnetic field is calculated by Equation~\ref{eqn:pwn_pairprod},
+  
+  \begin{equation}\label{eqn:pwn_pairprod}
+    \Upsilon = \frac{E}{mc^2} H \frac{e \hbar}{m^2c^3} \;\;,
+  \end{equation}
+  
+  where $E$ is the photon energy, $H$ is the ambiant magnetic field strength, $e$ is the electron charge, and $m$ is the mass of the electron~\cite{pwn_pairprod3}.
+  The factor $\frac{e \hbar}{m^2c^3}$ forms a critical magnetic field strength, which for electrons is $\frac{1}{4.4\times10^{13}\,\textrm{Gauss}}$, similar in scale to the pulsar's surface magnetic field strength.
   
   Due to their rapid rotation, pulsar wind nebulae are constantly twisting their magnetic field lines.
   These magnetic field lines get twisted tighter and tighter, until they break and reconnect with neighboring lines.
   This breaking and reconnection temporarily creates electric fields that can accelerate electrons outwards to higher energies than thermal sources (i.e. solar wind) alone can achieve~\cite{gamma_pwn1,gamma_pwn2}.
+
   {\color{red}(This paragraph also reads like a story and less like an accurate physical description. It should be rewritten more accurately. If you want, you can take the highlights from ref "Rees and Gunn, 1974" and rewrite them here. Or find a more modern paper/book to get a clearer description. -Orel ??)}
 
   Another mechanism that produces high-energy charged particles is fermi acceleration\cite{fermi1949,highenergyelectron_snr}.
