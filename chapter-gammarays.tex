@@ -106,7 +106,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   Because pulsars spin rapidly, they produce strong magnetic fields.
   For example, the pulsar at the heart of the Crab nebula has a surface magnetic field strength of \SI{e12}{G}~\cite{pwn_evolution}, much larger than Earth's $\sim$\SI{0.5}{G}~\cite{earth_geomag}.
   These strong magnetic fields provide an environment for producing and accelerating charged particles.
-  In these strong magnetic fields, ambient photons can convert into $e^{+}e^{-}$~\cite{pwn_pairprod1,pwn_pairprod2}.
+  In these strong magnetic fields, ambient photons can convert into $e^{+}e^{-}$~\cite{pwn_pairprod2,pwn_pairprod3}.
   The probability $\Upsilon$ (0-1) of a photon pair-converting in a magnetic field is calculated by Equation~\ref{eqn:pwn_pairprod},
   
   \begin{equation}\label{eqn:pwn_pairprod}
@@ -116,9 +116,32 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   where $E$ is the photon energy, $H$ is the ambient magnetic field strength, $e$ is the electron charge, and $m$ is the mass of the electron~\cite{pwn_pairprod3}.
   The factor $\frac{e \hbar}{m^2c^3}$ acts as a critical magnetic field strength, which for electrons is $\frac{1}{4.4\times10^{13}\,\textrm{Gauss}}$, similar in scale to the pulsar's surface magnetic field strength.
   
-  Charged particles can also be accelerated by a pulsar's magnetic fields, in a process called magnetic reconnection.
-  In this mechanism, two oppositely oriented magnetic fields move towards each other at some velocity.
-  These fields 
+  Charged particles can also be accelerated by a pulsar's magnetic fields, in a process called magnetic reconnection, shown in Figure~\ref{fig:magcon}.
+  In this mechanism, two oppositely oriented magnetic fields move towards each other at some velocity (Figure~\ref{fig:magcon}.a), due to the field lines being frozen into the local plasma.
+  Because the magnetic field lines are forced to merge (Figures \ref{fig:magcon}.b and c), this causes the ambient plasma in the region to move with the magnetic field lines{\color{red}(??)}.
+  This moving plasma then creates electric fields (Figure~\ref{fig:magcon}.d) that can accelerate charged particles~\cite{magcon_crab,magcon_schopper,magcon_review}.
+  
+  \begin{figure}[ht]
+    \centering
+    \begin{tabular}{m{1cm}m{10cm}}
+      (a) & \includegraphics[width=0.6\textwidth]{images/magnetic_reconnection/diagram_1_cr.pdf} \\
+      (b) & \includegraphics[width=0.6\textwidth]{images/magnetic_reconnection/diagram_2_cr.pdf} \\
+      (c) & \includegraphics[width=0.6\textwidth]{images/magnetic_reconnection/diagram_3_cr.pdf} \\
+      (d) & \includegraphics[width=0.6\textwidth]{images/magnetic_reconnection/magcon_efieldlines.pdf}
+    \end{tabular}
+    \caption[Magnetic Reconnection]{
+      Reconnection of two magnetic fields.
+      In (a), two oppositely-pointing magnetic fields move into each other.
+      In (b), reconnection starts to occur.
+      In (c), reconnection occurs, and drags plasma outwards along the $y=0$ axis.
+      In (d), the resulting electric fields from the moving plasma are shown in this scenario, from Ref.~\cite{magcon_crab}.
+    }
+    \label{fig:magcon}
+  \end{figure}
+  
+  \FloatBarrier
+  % Use figure 2 in http://iopscience.iop.org/article/10.1088/0004-637X/746/2/148/pdf
+  
   % Use these sources, to get an idea of the electric field strengths doing the accelerating
   % http://iopscience.iop.org/article/10.1088/0004-637X/746/2/148/pdf
   % https://aip.scitation.org/doi/pdf/10.1063/1.873696
