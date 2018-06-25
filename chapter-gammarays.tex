@@ -139,6 +139,30 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \label{fig:magcon}
   \end{figure}
   
+  The electric field in Figure~\ref{fig:magcon}.d is able to accelerate charged particles, and can be calculated with Equation~\ref{eqn:magcon_efield},
+  
+  \begin{equation}\label{eqn:magcon_efield}
+    \hat{E} = -\hat{V} \times \frac{B_{z}}{c} \;\; .
+  \end{equation}
+  
+  In Equation~\ref{eqn:magcon_efield}, 
+  
+  \begin{equation}
+    \hat{V} = \left ( c \frac{x}{L_x} \cosh^{-2} \left ( \frac{y}{\delta} \right ),-c\beta \tanh \left ( \frac{y}{\delta} \right ), 0 \right )
+  \end{equation}
+  From \cite{magcon_crab}, equations (2) and (3).
+  
+  \begin{equation}
+    \hat{B} = \left ( B_0 \tanh \left ( \frac{y}{\delta} \right ), \beta B_0 \frac{x}{L_x}, 0 \right )
+  \end{equation}
+  From \cite{magcon_crab}, equations (1) and (4).
+  
+  But this results in:
+  \begin{equation}
+    \hat{E} = \left (  0, 0, B_0 \frac{x^2}{L_x} \beta \sech \frac{y}{\delta}^2 - B_0 \beta \tanh \frac{y}{\delta}^2 \right )
+  \end{equation}
+  Which doesn't match the plot in Figure~\ref{fig:magcon}.d .
+  
   \FloatBarrier
   % Use figure 2 in http://iopscience.iop.org/article/10.1088/0004-637X/746/2/148/pdf
   
