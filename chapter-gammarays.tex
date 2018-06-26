@@ -119,7 +119,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   Charged particles can also be accelerated by a pulsar's magnetic fields, in a process called magnetic reconnection, shown in Figure~\ref{fig:magcon}.
   In this mechanism, two oppositely oriented magnetic fields move towards each other at some velocity (Figure~\ref{fig:magcon}.a), due to the field lines being frozen into the local plasma.
   Because the magnetic field lines are forced to merge (Figures \ref{fig:magcon}.b and c), this causes the ambient plasma in the region to move with the magnetic field lines{\color{red}(??)}.
-  This moving plasma then creates electric fields (Figure~\ref{fig:magcon}.d) that can accelerate charged particles~\cite{magcon_crab,magcon_schopper,magcon_review}.
+  This moving plasma then creates electric fields (Figure~\ref{fig:magcon}.d) that can accelerate charged particles~\cite{magcon_crab,magcon_schopper,magcon_review,gamma_pwn1,gamma_pwn2}.
   
   \begin{figure}[ht]
     \centering
@@ -139,29 +139,6 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \label{fig:magcon}
   \end{figure}
   
-  The electric field in Figure~\ref{fig:magcon}.d is able to accelerate charged particles, and can be calculated with Equation~\ref{eqn:magcon_efield},
-  
-  \begin{equation}\label{eqn:magcon_efield}
-    \hat{E} = -\hat{V} \times \frac{B_{z}}{c} \;\; .
-  \end{equation}
-  
-  In Equation~\ref{eqn:magcon_efield}, 
-  
-  \begin{equation}
-    \hat{V} = \left ( c \frac{x}{L_x} \cosh^{-2} \left ( \frac{y}{\delta} \right ),-c\beta \tanh \left ( \frac{y}{\delta} \right ), 0 \right )
-  \end{equation}
-  From \cite{magcon_crab}, equations (2) and (3).
-  
-  \begin{equation}
-    \hat{B} = \left ( B_0 \tanh \left ( \frac{y}{\delta} \right ), \beta B_0 \frac{x}{L_x}, 0 \right )
-  \end{equation}
-  From \cite{magcon_crab}, equations (1) and (4).
-  
-  But this results in:
-  \begin{equation}
-    \hat{E} = \left (  0, 0, B_0 \frac{x^2}{L_x} \beta \sech \frac{y}{\delta}^2 - B_0 \beta \tanh \frac{y}{\delta}^2 \right )
-  \end{equation}
-  Which doesn't match the plot in Figure~\ref{fig:magcon}.d .
   
   \FloatBarrier
   % Use figure 2 in http://iopscience.iop.org/article/10.1088/0004-637X/746/2/148/pdf
@@ -170,12 +147,30 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   % http://iopscience.iop.org/article/10.1088/0004-637X/746/2/148/pdf
   % https://aip.scitation.org/doi/pdf/10.1063/1.873696
   % https://www.annualreviews.org/doi/pdf/10.1146/annurev-astro-082708-101726
+  % something is still missing, can't find complete description of E field
   
-  Due to their rapid rotation, pulsar wind nebulae are constantly twisting their magnetic field lines.
-  These magnetic field lines get twisted tighter and tighter, until they break and reconnect with neighboring lines.
-  This breaking and reconnection temporarily creates electric fields that can accelerate electrons outwards to higher energies than thermal sources (i.e. solar wind) alone can achieve~\cite{gamma_pwn1,gamma_pwn2}.
-
-  {\color{red}(This paragraph also reads like a story and less like an accurate physical description. It should be rewritten more accurately. If you want, you can take the highlights from ref "Rees and Gunn, 1974" and rewrite them here. Or find a more modern paper/book to get a clearer description. -Orel ??)}
+  
+  
+  %The electric field in Figure~\ref{fig:magcon}.d is able to accelerate charged particles, and can be calculated with Equation~\ref{eqn:magcon_efield},
+  %\begin{equation}\label{eqn:magcon_efield}
+  %  \hat{E} = -\hat{V} \times \frac{B_{z}}{c} \;\; .
+  %\end{equation}
+  %In Equation~\ref{eqn:magcon_efield}, 
+  %\begin{equation}
+  %  \hat{V} = \left ( c \frac{x}{L_x} \cosh^{-2} \left ( \frac{y}{\delta} \right ),-c\beta \tanh \left ( \frac{y}{\delta} \right ), 0 \right )
+  %\end{equation}
+  %From \cite{magcon_crab}, equations (2) and (3).
+  % 
+  %\begin{equation}
+  %  \hat{B} = \left ( B_0 \tanh \left ( \frac{y}{\delta} \right ), \beta B_0 \frac{x}{L_x}, 0 \right )
+  %\end{equation}
+  %From \cite{magcon_crab}, equations (1) and (4).
+  % 
+  %But this results in:
+  %\begin{equation}
+  %  \hat{E} = \left (  0, 0, B_0 \frac{x^2}{L_x} \beta \sech \frac{y}{\delta}^2 - B_0 \beta \tanh \frac{y}{\delta}^2 \right )
+  %\end{equation}
+  %Which doesn't match the plot in Figure~\ref{fig:magcon}.d .
 
   Another mechanism that produces high-energy charged particles is fermi acceleration\cite{fermi1949,highenergyelectron_snr}.
   In general, this acceleration imparts energy to charged particles when they are reflected by an oncoming magnetic field.
@@ -265,10 +260,6 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   \end{figure}
   
   \FloatBarrier
-
-  
-
-  %{\color{red}A fraction of the charged particles (What is the limit? When can they cross the shock front?? -maria)} in the expanding gas are able to cross the shockfront, where a small fraction will be reflected by magnetic fields.
   
   % slides on supernova shockwaves
   % https://isapp2012paris.sciencesconf.org/conference/isapp2012paris/Stefano_Gabici_three.pdf
@@ -287,13 +278,6 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
 
   Protons accelerated in the manner form the majority of the events detected by the VERITAS telescope, forming an irriducible background in the galactic center observations.
   This background is irriducible due to the fact that proton and gamma-ray air showers are very similar.
-
-  
-  %{\color{red}(specify that the particles have to be going faster than the shockfront??)}
-  %Upon recrossing the shockfront, they are again reflected by magnetic fields, which are expanding outwards with the supernova remnant gas, {\color{red}imparting energy (whats the formula for calculating this energy?? -maria)} to the charged particles.
-  %{\color{red}(relate this to how it contributes to the VERITAS background, since my DM signal doesn't come from fermi acceleration??)}
-  %These particles repeatedly cross the shockfront, where a smaller and smaller fraction of particles gain more and more energy, in a mechanism called first-order Fermi acceleration~\cite{fermi1949,highenergyelectron_snr}.
-  %However, it's still uncertain how the initial particles gain the energy necessary to cross the shockfront, known as the injection problem~\cite{inject2001}.
   
   After either of these processes produce electrons with high energies, these electrons can then upscatter ambient photons to TeV energies.
   Additionally, electrons spiralling through magnetic fields can produce synchrotron photons at X-ray energies, meaning fewer upscatters are needed to reach TeV energies~\cite{self_compton}.
@@ -308,7 +292,8 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
 
   The $\pi^{0}$ then quickly (\SI{8.5e-17}{s}~\cite{pdg2016}) decays into two gamma rays.
   Because each pion resulting from the original $pp$ interaction tends to receive $\frac{1}{3}$ of the original proton's kinetic energy, and the $\pi^0$ decays into two gamma rays, each gamma ray ends up with \nicetilde$15\%$ of the original proton's kinetic energy.
-  {\color{red}(There is no way to discuss the pion and photon energies in a more formal context? Also, what does it say about the photon energy distribution? Can you say something about the photon energy ranges expected, given that the protons are usually of energy this or that?? -orel)}
+  In the rest frame, the $\pi^0$ has a mass of \SI{135}{\MeV}~\cite{pdg2016}, so each photon ends up with \SI{67.5}{\MeV}.
+  {\color{red}(what does it say about the photon energy distribution? Can you say something about the photon energy ranges expected, given that the protons are usually of energy this or that?? -orel) (try looking at "Cosmic Gamma Rays" by Stecker, 1971 for an idea of the gamma-ray energy distribution)}
   
   Much of the diffuse gamma-ray component of the galactic disk is due to extra-galactic high-energy protons colliding with the protons of the galactic plane~\cite{GalacticDiffuseGammaRays}.
   {\color{red}(Perhaps add another sentence to this one?? -orel)}
@@ -323,10 +308,15 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \begin{figure}[ht]
       \centering
       \includegraphics[width=0.65\textwidth]{images/3waystodetect/3waystodetect.pdf}
-      \caption[3 Search Techniques]{
+      \caption[Three Search Techniques]{
         The three general search techniques for dark matter.}
       \label{fig:3_searches}
     \end{figure}
+    
+    % 
+    % quark products collide with ambient GC gas, produce pion spectrum??
+    % direct detectors want to measure a number of recoils
+    %   
     
     In collider searches, $ss \rightarrow \chi\chi$, standard model particles ($ss$) are accelerated into each other within a detector, and the resulting particle fragments are measured by a slew of detectors~\cite{atlas,cms}.
     {\color{red}(You sometimes use capital S and sometimes lower-case s. ?? -orel)}
