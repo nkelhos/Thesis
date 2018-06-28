@@ -41,7 +41,7 @@ fig.ticks.set_linewidth( lwid+0.37 )
 fig.ticks.set_minor_frequency(4) # number of minor ticks per major tick
 fig.set_tick_labels_xformat('ddd')
 fig.set_tick_labels_yformat('ddd')
-fig.axis_labels.set_xtext('Galactic Longiude $l$')
+fig.axis_labels.set_xtext('Galactic Longitude $l$')
 fig.axis_labels.set_ytext('Galactic Latitude $b$')
 fig.axis_labels.set_font(size=lsize*0.75)
 fig.tick_labels.set_font(size=lsize*0.5)
