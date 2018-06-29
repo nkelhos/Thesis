@@ -490,6 +490,8 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     However, these mixed-channel searches are beyond the scope of this analysis.
     The software package CLUMPY~\cite{CLUMPYcode} is used to calculate the gamma-ray spectra for each annihilation channel.
     The spectral models that CLUMPY uses are based on the tables in the PPPC 4 DM ID~\cite{pppc4_dm_spectra}.
+    These tables are generated using monte carlo simulations with PYTHIA~\cite{pythia} and HERWIG~\cite{}.
+    % ?? also include ew correctons? \cite{pppc4_ewcorrections}
     For this analysis, only the $b\bar{b}$ annihilation channel is considered.
     Figure~\ref{fig:chichi_spectrum} shows the resultant spectra from the single annihilation of two WIMPs.
     {\color{red}(You should say how these spectra were calculated (using clumpy?). Also in the figure caption. Are these detailed simulations of the production and then decay of bb?? -orel )}
@@ -500,7 +502,8 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       \includegraphics[width=0.95\textwidth]{images/spectra/chichi_spectrum.pdf}
       \caption[Single Annihilation Spectra]{
         Resultant photon spectra from a single annihilation of WIMP particles.
-        Each colored line represents a different WIMP mass.}
+        Each colored line represents a different WIMP mass.
+        {\color{red}(how do we get these plots from PPPC4 tables??)}}
       \label{fig:chichi_spectrum}
     \end{figure}
 
