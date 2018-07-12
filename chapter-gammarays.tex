@@ -489,12 +489,11 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     For an example set of 100 WIMP annihilation pairs, 80 pairs may annihilate into a $t\hat{t}$ pair, but then another 10 pairs may annihilate into a $b\hat{b}$ pair, and the remaining 10 pairs annihilate into other standard model particles.
     However, these mixed-channel searches are beyond the scope of this analysis.
     The software package CLUMPY~\cite{CLUMPYcode} is used to calculate the gamma-ray spectra for each annihilation channel.
-    The spectral models that CLUMPY uses are based on the tables in the PPPC 4 DM ID~\cite{pppc4_dm_spectra}.
-    These tables are generated using monte carlo simulations with PYTHIA~\cite{pythia} and HERWIG~\cite{}.
-    % ?? also include ew correctons? \cite{pppc4_ewcorrections}
+    The spectral models that CLUMPY uses are based on the annihilation spectra in the PPPC 4 DM ID~\cite{pppc4_dm_spectra,pppc4_ewcorrections}.
+    These spectra are simulated using monte carlo simulations with PYTHIA~\cite{pythia} and HERWIG~\cite{herwig}.
     For this analysis, only the $b\bar{b}$ annihilation channel is considered.
     Figure~\ref{fig:chichi_spectrum} shows the resultant spectra from the single annihilation of two WIMPs.
-    {\color{red}(You should say how these spectra were calculated (using clumpy?). Also in the figure caption. Are these detailed simulations of the production and then decay of bb?? -orel )}
+    {\color{red}(Are these detailed simulations of the production and then decay of bb?? -orel )}
     Each line shows the spectrum from a different initial WIMP mass.
 
     \begin{figure}[ht]
@@ -503,10 +502,9 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       \caption[Single Annihilation Spectra]{
         Resultant photon spectra from a single annihilation of WIMP particles.
         Each colored line represents a different WIMP mass.
-        {\color{red}(how do we get these plots from PPPC4 tables??)}}
+      }
       \label{fig:chichi_spectrum}
     \end{figure}
-
 
     These spectra can be combined with the J factor Equation~\ref{eqn:jfactor} to calculate Equation~\ref{eqn:dmflux}: how many gamma rays are produced by the halo\footnote{
       These spectra are then used as the spectral component $M_{\textrm{e,halo}}$ for the dark matter halo model in the likelihood analysis in Equation~\ref{eqn:dmmodel}, detailed further in Section~\ref{subsec:dmhalomodel}.
@@ -515,6 +513,68 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
 
     \FloatBarrier
     
+\section{Cherenkov Photons}\label{sec:cherenkov}
+
+  As the section after this relies heavily on knowledge of Cherenkov light, Cherenkov light production is discussed here.
+  Within the Earth's atmosphere (or any dielectric medium), any charged particles travelling at velocity $v > c_{atmosphere}$, where $c_{atmosphere}$ is the phase velocity of light in the atmosphere, will induce the atmosphere to produce Cherenkov photons~\cite{cherenkov}.
+  From a single charged particle of constant velocity, Cherenkov photons form a conical wavefront shown in Figure~\ref{fig:cherenkovangle}.
+  This wavefront is similar to a sonic boom shockwave, or the wake produced when a boat travels faster than the speed of the waves.
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.27\textwidth]{images/cherenkov_angle/cherenkovangle.pdf}
+    \caption[Chernekov Emission Angle]{
+      Cherenkov light (blue arrows) is emitted at angle $\theta$, relative to the charged particle z's path.
+    }
+    \label{fig:cherenkovangle}
+  \end{figure}
+
+  Cherenkov photons are produced at an angle $\theta$ relative to the charged particle's path, determined by the index of refraction of the medium $n$, the speed of the charged particle $v$, and the speed of light in the medium $c$, as in Equation~\ref{eqn:cherenkovangle}.
+  For the air showers used in this analysis, the Cherenkov angle $\theta$ is \nicetilde\ang{1}.
+  % showers are 10km up, light pool on ground is 130m diameter, \theta = ArcSin(130/10000) * 180 / pi = 0.73deg ~ 1deg
+
+  \begin{equation}\label{eqn:cherenkovangle}
+    \theta = ArcCos \left ( \frac{c}{n \; v} \right )
+  \end{equation}
+  
+  Actual air showers are more complex, however, because the number and distribution of charged particles and their velocities, as well as energy losses, tend to smear the theoretically-clean Cherenkov cones into a diffuse pool of light on the ground, shown in Figure~\ref{fig:lightpool}.
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.85\textwidth]{images/lightpool/lightpool.pdf}
+    \caption[Chernekov Light Pool]{
+      Cherenkov light from a gamma ray shower illuminating the ground.
+      Due to the changing atmospheric density, the Cherenkov angle changes as the electromagnetic shower decends (Left), concentrating the emitted light into a ring-like pool (Right).
+      The initial gamma ray had an energy of \SI{1}{\TeV}.
+      Figure is from Ref.~\cite{Voelk}.
+    }
+    \label{fig:lightpool}
+  \end{figure}
+  
+  The spectrum of photons produced by the Cherenkov effect can be calculated with the Frank-Tamm formula~\cite{franktamm1,franktamm2} in Equation~\ref{eqn:franktamm},
+  
+  \begin{equation}\label{eqn:franktamm}
+    \frac{dE}{dx\,d\omega}=\frac{(ze)^2 \, \omega}{c^2} \left ( 1 - \frac{c^2}{v^2 \;\epsilon(\omega)} \right )
+  \end{equation}
+  
+  where $E$ is the energy emitted as Cherenkov radiation, $x$ is the length of the charged particle path, $ze$ is the charge of the particle, $\omega$ is the emitted Cherenkov photon frequency, $c$ is the speed of light (phase velocity) in the medium, $v$ is the speed of the particle, and $\epsilon(\omega)$ is the frequency-dependent permittivity.
+  
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.75\textwidth]{images/CherenkovReactor/cherenkovreactor.eps}
+    \caption[Chernekov Light from a Reactor]{
+      Blue Cherenkov light in the Advanced Test Reactor core, at the Idaho National Laboratory~\cite{cherenkovreactor,atrlab}.
+    }
+    \label{fig:cherenkovreactor}
+  \end{figure}
+  
+  In Figure~\ref{fig:cherenkovreactor}, a visible example of Cherenkov photons is shown, produced in the Advanced Test Reactor at the Idaho National Laboratory.
+  Neutrons emitted by the reactor collide with atoms in the water, freeing some electrons with enough kinetic energy to travel faster than the speed of light in water.
+  These superluminal-in-water electrons then create the blue Cherenkov photons imaged here.
+  
+  {\color{red}(expand this to a better transition paragraph to the next chapter??)}
+  The UV- and visible-spectrum Cherenkov photons are then imaged and recorded by the VERITAS observatory.
+  
     
 \section{Atmospheric Showers}
 
@@ -523,7 +583,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   When the primary is a gamma ray or a charged lepton, it creates an electromagnetic shower.
   Electromagnetic showers produce a cascade of $e^{\pm}$s and $\gamma$s, where each successive generation of particles tends to have more particles but less energy per particle than the last.
   To start the shower, the primary gamma ray will interact with an atmospheric atom, producing an $e^{-}e^{+}$ pair, each with roughly half the primary gamma ray's energy, as shown in Figure~\ref{fig:emcascade}.
-  The $e^{-}$ and $e^{+}$ emit bremsstrahlung photons, and incite the atmosphere to emit Cherenkov photons,.
+  The $e^{-}$ and $e^{+}$ emit bremsstrahlung photons, and incite the atmosphere to emit Cherenkov photons.
   Cherenkov photon production is discussed further in Section~\ref{sec:cherenkov}.
   The higher-energy bremsstrahlung photons then pair produce $e^{-}e^{+}$, which go on to produce more bremsstrahlung and Cherenkov photons.
   As each newly created particle has less energy than its parent particle, eventually the particles in the shower don't have enough energy to produce additional child-particles.
@@ -540,7 +600,35 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \label{fig:emcascade}
   \end{figure}
 
-  Of all detected air showers, \nicetilde{}99\% are due to protons and electrons, and not gamma rays.
+  Of all detected air showers, \nicetilde{}99\% are due to protons and electrons, rather than gamma rays.
+  These protons produce hadronic showers, which produce Cherenkov light.
+  In order to accurately measure the gamma rays from a source, these hadronic showers must first be removed.
+  Because hadronic showers produce a slightly different image of Cherenkov light, many of them can be excluded from the analysis.
+  
+  In Figure~\ref{fig:gamma_vs_proton_airshower}, the differences between a gamma-ray shower (left) and a proton shower (right) are shown.
+  In the figure, darker areas indicate more Cherenkov photons are produced by charged particles in the shower.
+  The gamma-ray shower produces most of its Cherenkov photons along the vertical core of the shower, while the proton shower produces Cherenkov photons spread out in a wider, fan-like shape.
+  The initial energies were chosen as such because a \SI{1}{TeV} proton will on average divest $\frac{1}{3}$ of its energy to the $\pi^{0}$.
+  Since these two showers start with the same amount of available energy, they produce a similar amount of Cherenkov light.
+  {\color{red}(You haven't discussed the Cherenkov light yet, so it's a little weird to mention this ratio here. Maybe talk about Cherenkov light earlier? Also, why is the last paragraph its own paragraph?? -orel)}
+
+  This $\pi^{0}$ then decays into the electromagnetic sub-shower faintly visible in the interior of the proton shower.
+  The net effect is that, when compared to a gamma ray, a proton must start with 3 times the energy to produce a similar amount of Cherenkov photons, which are distributed in a wider pattern.
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/showers_gamma_proton}
+    \caption[Gamma Ray and Proton Showers]{
+      A gamma ray shower alongside a proton shower~\cite{Bernlohr2008149}.
+    }
+    \label{fig:gamma_vs_proton_airshower}
+  \end{figure}
+  
+  \FloatBarrier
+
+  {\color{red}?? section rewrite begins here ??}
+
+
   {\color{red}(Maybe first say how a hadronic shower looks like and what it is and only then talk about the gamma-hadron separation?? -orel)}
   Understanding the differences between hadronic and electromagnetic showers is useful for removing unwanted proton events and preserving gamma-ray events within the reconstruction method, referred to as gamma-hadron separation.
   {\color{red}(You haven't really defined what an event is. Also, I would finish the sentence after gamma-ray events and in the next sentence simply say that this process of selecting gamma-ray events is usually referred to as gamma-hadron separation. ?? -orel)}
@@ -599,69 +687,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \caption[Gamma Ray and Proton Showers]{
       A gamma ray shower alongside a proton shower~\cite{Bernlohr2008149}.
     }
-    \label{fig:gamma_vs_proton_airshower}
+    %\label{fig:gamma_vs_proton_airshower}
   \end{figure}
   
-  \FloatBarrier
 
-  \subsection{Cherenkov Photons}\label{sec:cherenkov}
-
-  Within atmospheric showers, any charged particles travelling at velocity $v > c_{atmosphere}$, where $c_{atmosphere}$ is the speed of light in the atmosphere, will induce the atmosphere to produce Cherenkov photons~\cite{cherenkov}.
-  From a single charged particle of constant velocity, Cherenkov photons form a conical wavefront shown in Figure~\ref{fig:cherenkovangle}, similar to a sonic boom shockwave or the wake produced when a boat travels faster than the speed of the waves.
-
-  \begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.27\textwidth]{images/cherenkov_angle/cherenkovangle.pdf}
-    \caption[Chernekov Emission Angle]{
-      Cherenkov light (blue arrows) is emitted at angle $\theta$, relative to the charged particle z's path.
-    }
-    \label{fig:cherenkovangle}
-  \end{figure}
-
-  Cherenkov photons are produced at an angle $\theta$ relative to the charged particle's path, determined by the index of refraction of the medium $n$, the speed of the charged particle $v$, and the speed of light in the medium $c$, as in Equation~\ref{eqn:cherenkovangle}.
-  For the gamma-ray showers used in this analysis, the Cherenkov angle $\theta$ is \nicetilde\ang{1}.
-  {\color{red}(Is it only for the gamma-ray showers this angle?? -orel)}
-  % showers are 10km up, light pool on ground is 130m diameter, \theta = ArcSin(130/10000) * 180 / pi = 0.73deg ~ 1deg
-
-  \begin{equation}\label{eqn:cherenkovangle}
-    \theta = ArcCos \left ( \frac{c}{n \; v} \right )
-  \end{equation}
-  
-  Actual air showers are more complex, however, because the number and distribution of charged particles and their velocities, as well as energy losses, tend to smear the theoretically-clean Cherenkov cones into a diffuse pool of light on the ground, shown in Figure~\ref{fig:lightpool}.
-
-  \begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.85\textwidth]{images/lightpool/lightpool.pdf}
-    \caption[Chernekov Light Pool]{
-      Cherenkov light from a gamma ray shower illuminating the ground.
-      Due to the changing atmospheric density, the Cherenkov angle changes as the electromagnetic shower decends (Left), concentrating the emitted light into a ring-like pool (Right).
-      The initial gamma ray had an energy of \SI{1}{\TeV}.
-      Figure is from Ref.~\cite{Voelk}.
-    }
-    \label{fig:lightpool}
-  \end{figure}
-  
-  The spectrum of photons produced by the Cherenkov effect can be calculated with the Frank-Tamm formula~\cite{franktamm1,franktamm2} in Equation~\ref{eqn:franktamm},
-  
-  \begin{equation}\label{eqn:franktamm}
-    \frac{dE}{dx\,d\omega}=\frac{(ze)^2 \, \omega}{c^2} \left ( 1 - \frac{c^2}{v^2 \;\epsilon(\omega)} \right )
-  \end{equation}
-  
-  where $E$ is the energy emitted as Cherenkov radiation, $x$ is the length of the charged particle path, $ze$ is the charge of the particle, $\omega$ is the emitted Cherenkov photon frequency, $c$ is the speed of light (phase velocity) in the medium, $v$ is the speed of the particle, and $\epsilon(\omega)$ is the frequency-dependent permittivity.
-  
-  \begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.75\textwidth]{images/CherenkovReactor/cherenkovreactor.eps}
-    \caption[Chernekov Light from a Reactor]{
-      Blue Cherenkov light in the Advanced Test Reactor core, at the Idaho National Laboratory~\cite{cherenkovreactor,atrlab}.
-    }
-    \label{fig:cherenkovreactor}
-  \end{figure}
-  
-  In Figure~\ref{fig:cherenkovreactor}, a visible example of Cherenkov photons is shown, produced in the Advanced Test Reactor at the Idaho National Laboratory.
-  Neutrons emitted by the reactor collide with atoms in the water, freeing some electrons with enough kinetic energy to travel faster than the speed of light in water.
-  These superluminal-in-water electrons then create the blue Cherenkov photons imaged here.
-  
-  {\color{red}(expand this to a better transition paragraph to the next chapter??)}
-  The UV- and visible-spectrum Cherenkov photons are then imaged and recorded by the VERITAS observatory.
-  
