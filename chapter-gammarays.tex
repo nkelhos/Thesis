@@ -2,6 +2,9 @@
 
 \newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \lim_{#1}\;$}}}
 \renewcommand{\labelitemi}{\textbullet}
+\newcommand{\pip}[1]{$\pi^{+}$}
+\newcommand{\pim}[1]{$\pi^{-}$}
+\newcommand{\pio}[1]{$\pi^{0}$}
 
 \chapter{Gamma Rays and Dark Matter}\label{ch_gamma}
 
@@ -276,7 +279,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   %   particle tends to escape after (B1-B2)*1/4 crossing cycles
 
 
-  Protons accelerated in the manner form the majority of the events detected by the VERITAS telescope, forming an irriducible background in the galactic center observations.
+  Protons accelerated in the manner form the majority of the showers detected by the VERITAS telescope, forming an irriducible background in the galactic center observations.
   This background is irriducible due to the fact that proton and gamma-ray air showers are very similar.
   
   After either of these processes produce electrons with high energies, these electrons can then upscatter ambient photons to TeV energies.
@@ -392,10 +395,9 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     The parameter $\rho_s$ is the scale density, which is the dark matter density at the scale radius.
     The parameter $\alpha$ is the power of the density profile's slope.
     A larger $\alpha$ results in smaller dark matter densities above and below the scale radius $r_s$.
-    In the model, the parameter $\alpha$ is fixed to 0.17, and $r_s$ is fixed to \SI{15.14}{kpc}.
-    {\color{red}(Maybe reverse the order? You say that $\alpha$ and $r_s$ are from best fit values, then how $r_s$ is calculated. So after that you can give the alpha value and say that both are kept fix in your analysis or in the model. ?? -orel)}
     Both $\alpha$ and $r_s$ are from the best fit values of the Aq-A-1 simulation in Table 2 of Ref.~\cite{mw_halo_params}.
     The $r_s$ parameter is calculated via $r_s=r_{-2}=15.14\:\textrm{kpc}$, where $r_{-2}=\frac{11.05}{h_{73}}\:\textrm{kpc}$ (in Ref.~\cite{mw_halo_params}, Table 2) and $h_{73}=0.73$ from Section 2.1 in Ref.~\cite{mw_halo_params}.
+    In the model, the parameter $\alpha$ is fixed to 0.17, and $r_s$ is fixed to \SI{15.14}{kpc}.
     The distance to the galactic center is known to be $r_\odot=8\:\textrm{kpc}$~\cite{gc_distance_1,gc_distance_2,gc_distance_3}.
     The assumed Milky Way mass profile has a mass density of $\rho_\odot = 0.4\:\frac{\textrm{GeV}}{\textrm{cm}^3}$~\cite{local_dm_density,direct_dm_astrophysical_uncertainties}.
     Since $r_\odot$ and $\rho_\odot$ are known, then in Equation~\ref{eqn:einasto} the dark matter density at the scale radius $\rho_s$ is derived to be \SI{0.12}{\GeV\per\cm^3}.
@@ -490,10 +492,9 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     However, these mixed-channel searches are beyond the scope of this analysis.
     The software package CLUMPY~\cite{CLUMPYcode} is used to calculate the gamma-ray spectra for each annihilation channel.
     The spectral models that CLUMPY uses are based on the annihilation spectra in the PPPC 4 DM ID~\cite{pppc4_dm_spectra,pppc4_ewcorrections}.
-    These spectra are simulated using monte carlo simulations with PYTHIA~\cite{pythia} and HERWIG~\cite{herwig}.
+    These spectra are calculated using monte carlo simulations of with PYTHIA~\cite{pythia} and HERWIG~\cite{herwig}.
     For this analysis, only the $b\bar{b}$ annihilation channel is considered.
     Figure~\ref{fig:chichi_spectrum} shows the resultant spectra from the single annihilation of two WIMPs.
-    {\color{red}(Are these detailed simulations of the production and then decay of bb?? -orel )}
     Each line shows the spectrum from a different initial WIMP mass.
 
     \begin{figure}[ht]
@@ -509,14 +510,35 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     These spectra can be combined with the J factor Equation~\ref{eqn:jfactor} to calculate Equation~\ref{eqn:dmflux}: how many gamma rays are produced by the halo\footnote{
       These spectra are then used as the spectral component $M_{\textrm{e,halo}}$ for the dark matter halo model in the likelihood analysis in Equation~\ref{eqn:dmmodel}, detailed further in Section~\ref{subsec:dmhalomodel}.
     }.
-    {\color{red}(many gamma rays are produced by the halo (Not sure if I would point to equation 6.21. I would show and explain the equation here as this chapter describes the physics needed to understand the thesis. This happened previously in the thesis again. ?? -maria,orel ))}
+    {\color{red}(how many gamma rays are produced by the halo (Not sure if I would point to equation 6.21. I would show and explain the equation here as this chapter describes the physics needed to understand the thesis. ?? -maria,orel ))}
+    
+    For example, with a $<\sigma{}v> = 3 \times 10^{-26} \f $
+    
+    $ \left < \sigma v \right > = 3 \times 10^{-26} \;\, \frac{\textrm{cm}^3}{\textrm{s}} $
+
+    $ m_{\chi} = 10 \; \textrm{TeV} $
+
+    $ 4 - 70 \textrm{TeV} $
+
+    3 degree radius field-of-view
+  
+    NFW Halo, which has a J-Factor of ??
+    
+    Which results in flux X.  With 
+    
+    50,000 $m^2$ effective area
+
+    100 hours observing time
+    
+    This results in Y photons in the telescope.
 
     \FloatBarrier
     
 \section{Cherenkov Photons}\label{sec:cherenkov}
 
-  As the section after this relies heavily on knowledge of Cherenkov light, Cherenkov light production is discussed here.
-  Within the Earth's atmosphere (or any dielectric medium), any charged particles travelling at velocity $v > c_{atmosphere}$, where $c_{atmosphere}$ is the phase velocity of light in the atmosphere, will induce the atmosphere to produce Cherenkov photons~\cite{cherenkov}.
+  Because the detection of gamma rays in Section~\ref{sec:atmoshowers} relies heavily on knowledge of Cherenkov light, Cherenkov light and its production is discussed here.
+  Within the Earth's atmosphere (or any dielectric medium), the phase velocity of light $c_{atmosphere}$ is slightly slower than in a vacuum.
+  Any charged particles travelling at velocity $v > c_{atmosphere}$ will induce the atmosphere to produce Cherenkov photons~\cite{cherenkov}.
   From a single charged particle of constant velocity, Cherenkov photons form a conical wavefront shown in Figure~\ref{fig:cherenkovangle}.
   This wavefront is similar to a sonic boom shockwave, or the wake produced when a boat travels faster than the speed of the waves.
 
@@ -572,11 +594,11 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   Neutrons emitted by the reactor collide with atoms in the water, freeing some electrons with enough kinetic energy to travel faster than the speed of light in water.
   These superluminal-in-water electrons then create the blue Cherenkov photons imaged here.
   
-  {\color{red}(expand this to a better transition paragraph to the next chapter??)}
-  The UV- and visible-spectrum Cherenkov photons are then imaged and recorded by the VERITAS observatory.
+  Now that it is understood that Chernekov light is produced by charged particles, the next Section~\ref{sec:atmoshowers} discusses how particles from outer space can produce waves of Cherenkov photons.
+  These UV- and visible-spectrum Cherenkov photons are then imaged and recorded by the VERITAS observatory, discussed in Chapter~\ref{chapter:veritas}.
   
     
-\section{Atmospheric Showers}
+\section{Atmospheric Showers}\label{sec:atmoshowers}
 
   When a particle strikes an atom of Earth's atmosphere at GeV or higher energies, it sets off a cascade of energetic particles called an air shower~\cite{Bethe1934,Klein1999}.
   When the primary particle is composed of one or more hadrons, like a proton or iron atom, it creates a hadronic shower.
@@ -585,7 +607,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   To start the shower, the primary gamma ray will interact with an atmospheric atom, producing an $e^{-}e^{+}$ pair, each with roughly half the primary gamma ray's energy, as shown in Figure~\ref{fig:emcascade}.
   The $e^{-}$ and $e^{+}$ emit bremsstrahlung photons, and incite the atmosphere to emit Cherenkov photons.
   Cherenkov photon production is discussed further in Section~\ref{sec:cherenkov}.
-  The higher-energy bremsstrahlung photons then pair produce $e^{-}e^{+}$, which go on to produce more bremsstrahlung and Cherenkov photons.
+  The higher-energy bremsstrahlung photons then produce $e^{-}e^{+}$ pairs, which go on to produce more bremsstrahlung and Cherenkov photons.
   As each newly created particle has less energy than its parent particle, eventually the particles in the shower don't have enough energy to produce additional child-particles.
   When electrons have around \SI{80}{MeV} or less of kinetic energy, energy losses due to ionization begin to dominate~\cite{pdg_2014}.
 
@@ -601,47 +623,15 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   \end{figure}
 
   Of all detected air showers, \nicetilde{}99\% are due to protons and electrons, rather than gamma rays.
-  These protons produce hadronic showers, which produce Cherenkov light.
-  In order to accurately measure the gamma rays from a source, these hadronic showers must first be removed.
-  Because hadronic showers produce a slightly different image of Cherenkov light, many of them can be excluded from the analysis.
-  
-  In Figure~\ref{fig:gamma_vs_proton_airshower}, the differences between a gamma-ray shower (left) and a proton shower (right) are shown.
-  In the figure, darker areas indicate more Cherenkov photons are produced by charged particles in the shower.
-  The gamma-ray shower produces most of its Cherenkov photons along the vertical core of the shower, while the proton shower produces Cherenkov photons spread out in a wider, fan-like shape.
-  The initial energies were chosen as such because a \SI{1}{TeV} proton will on average divest $\frac{1}{3}$ of its energy to the $\pi^{0}$.
-  Since these two showers start with the same amount of available energy, they produce a similar amount of Cherenkov light.
-  {\color{red}(You haven't discussed the Cherenkov light yet, so it's a little weird to mention this ratio here. Maybe talk about Cherenkov light earlier? Also, why is the last paragraph its own paragraph?? -orel)}
-
-  This $\pi^{0}$ then decays into the electromagnetic sub-shower faintly visible in the interior of the proton shower.
-  The net effect is that, when compared to a gamma ray, a proton must start with 3 times the energy to produce a similar amount of Cherenkov photons, which are distributed in a wider pattern.
-
-  \begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.95\textwidth]{images/showers_gamma_proton}
-    \caption[Gamma Ray and Proton Showers]{
-      A gamma ray shower alongside a proton shower~\cite{Bernlohr2008149}.
-    }
-    \label{fig:gamma_vs_proton_airshower}
-  \end{figure}
-  
-  \FloatBarrier
-
-  {\color{red}?? section rewrite begins here ??}
-
-
-  {\color{red}(Maybe first say how a hadronic shower looks like and what it is and only then talk about the gamma-hadron separation?? -orel)}
-  Understanding the differences between hadronic and electromagnetic showers is useful for removing unwanted proton events and preserving gamma-ray events within the reconstruction method, referred to as gamma-hadron separation.
-  {\color{red}(You haven't really defined what an event is. Also, I would finish the sentence after gamma-ray events and in the next sentence simply say that this process of selecting gamma-ray events is usually referred to as gamma-hadron separation. ?? -orel)}
-  Hadronic showers start with a primary \nicetilde TeV proton $p_{\textrm{cosmic}}$ that interacts with an atmospheric proton $p_{\textrm{atmo}}$.
+  Protons produce hadronic showers which also produce Cherenkov light, like electromagnetic showers.
+  In the initial collision, the astrophysical proton $p_{\textrm{cosmic}}$ interacts with an atmospheric proton $p_{\textrm{atmo}}$.
   The proton-proton collision then produces a set of pions, as in Equation~\ref{eqn:protoncollision}, as well as other particles (`$X$') whose production rates vary with available interaction energy.
-  {\color{red}(The pp interaction doesn't always produce pions, right?? First you should talk in general about Hadronic air showers and then focus on those which look like gamma rays. Why don't you start with general lines, saying that many particles are produced at different rates and in different directions, mention how that would look like and then say that some of those particles are $\pi_0$ which produce electromagnetic showers. -orel )}
   
   \begin{equation}\label{eqn:protoncollision}
     p_{\textrm{cosmic}} + p_{\textrm{atmo}} \rightarrow \pi^+ + \pi^+ + \pi^0 + ...
   \end{equation}
   
   The interaction produces $\pi^+\pi^+\pi^0$, where each particle receives \nicetilde $\frac{1}{3}$ of the initial proton's energy.
-  {\color{red}(You discussed this decay to gammas 3-4 times before, why show the diagram only now?? -orel)}
   This $\pi^{0}$ decay is shown in Figure~\ref{fig:feynman_pi0}.
   
   \begin{figure}[ht]
@@ -664,21 +654,24 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \label{fig:feynman_piplus}
   \end{figure}
   
+  In order to accurately measure the gamma rays from an astrophysical source, the hadronic showers must first be removed.
+  Because hadronic showers produce a slightly different image of Cherenkov light, many of them can be excluded from the analysis.
+  The process of identifying and excluding these hadronic showers is sometimes known as gamma-hadron separation.
+
   % see here for neutron: https://en.wikipedia.org/wiki/Cosmic_ray
-  The $\pi^{+}$ and $\pi^{-}$ can travel far in the tranverse direction, away from the main axis of the primary particle, then decay into $\mu^{+}\nu_{\mu}$ and $\mu^{-}\bar{\nu}_{\mu}$ pairs, respectively.
-  The $\pi^{+}$ decay is shown in Figure~\ref{fig:feynman_piplus}.
-  The $\pi^{0}$ quickly decays into pair of gamma rays, each of which then start their own electromagnetic shower.
-  {\color{red}(The decay itself was mentioned a few lines back, should rewrite this and combine so not to repeat too much. ?? -orel)}
-  The $\pi^{+}$ and $\pi^{-}$ have longer decay times ($\pi^{\pm} \rightarrow $\SI{3e-8}{s} vs $\pi^{0} \rightarrow $\SI{9e-17}{s}~\cite{pdg_2014}), allowing them to carry energy farther away from the central shower axis.
+  In hadronic showers, any produced \pip{}'s and \pim{}'s can travel far in the tranverse direction, away from the main axis of the primary particle.
+  The \pip{}'s and \pim{}'s then decay into $\mu^{+}\nu_{\mu}$ and $\mu^{-}\bar{\nu}_{\mu}$ pairs, respectively.
+  The \pip{} decay is shown in Figure~\ref{fig:feynman_piplus}.
+  The \pio{} quickly decays into pair of gamma rays, each of which then start their own electromagnetic shower.
+  The \pip{} and \pim{} have longer decay times ($\pi^{\pm} \rightarrow $\SI{3e-8}{s} vs $\pi^{0} \rightarrow $\SI{9e-17}{s}~\cite{pdg_2014}), allowing them to carry energy farther away from the central shower axis.
   Both of these effects create sub-showers farther away from the primary particle axis, which tends to cause hadronic showers (and their resulting Cherenkov images, discussed in Section \ref{sec:cherenkov}) to be wider than a purely electromagnetic shower of the same length. 
   
-  In Figure~\ref{fig:gamma_vs_proton_airshower}, the differences between a gamma-ray shower and a proton shower are shown.
-  The gamma-ray shower on the left has most of its particles along the veritical core of the shower, while the proton shower has particles spread out in a wider, fan-like shape.
-  The initial energies were chosen as such because a \SI{1}{TeV} proton will on average divest $\frac{1}{3}$ of its energy to the $\pi^{0}$.
-  Since these two showers start with the same amount of available energy, they produce a similar amount of Cherenkov light.
-  {\color{red}(You haven't discussed the Cherenkov light yet, so it's a little weird to mention this ratio here. Maybe talk about Cherenkov light earlier? Also, why is the last paragraph its own paragraph?? -orel)}
-
-  This $\pi^{0}$ then decays into the electromagnetic sub-shower faintly visible in the interior of the proton shower.
+  In Figure~\ref{fig:gamma_vs_proton_airshower}, the differences between a gamma-ray shower (left) and a proton shower (right) are shown.
+  In the figure, darker areas indicate more Cherenkov photons are produced by charged particles in the shower.
+  The gamma-ray shower produces most of its Cherenkov photons along the vertical core of the shower, while the proton shower produces Cherenkov photons spread out in a wider, fan-like shape.
+  The initial energies were chosen as such because a \SI{1}{TeV} proton will on average divest $\frac{1}{3}$ of its energy to the \pio{}.
+  This means that the gamma-ray and the proton-produced-pion start with the same amount of available energy, and that both showers produce similar amounts of Cherenkov light.
+  The \pio{} then decays into the electromagnetic sub-shower in the interior of the proton shower.
   The net effect is that, when compared to a gamma ray, a proton must start with 3 times the energy to produce a similar amount of Cherenkov photons, which are distributed in a wider pattern.
 
   \begin{figure}[ht]
@@ -687,7 +680,10 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \caption[Gamma Ray and Proton Showers]{
       A gamma ray shower alongside a proton shower~\cite{Bernlohr2008149}.
     }
-    %\label{fig:gamma_vs_proton_airshower}
+    \label{fig:gamma_vs_proton_airshower}
   \end{figure}
   
+  \FloatBarrier
 
+  {\color{red}(The pp interaction doesn't always produce pions, right?? First you should talk in general about Hadronic air showers and then focus on those which look like gamma rays. Why don't you start with general lines, saying that many particles are produced at different rates and in different directions, mention how that would look like and then say that some of those particles are \pio{} which produce electromagnetic showers. -orel )}
+  
