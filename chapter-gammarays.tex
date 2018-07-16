@@ -5,6 +5,7 @@
 \newcommand{\pip}[1]{$\pi^{+}$}
 \newcommand{\pim}[1]{$\pi^{-}$}
 \newcommand{\pio}[1]{$\pi^{0}$}
+\newcommand{\sv}{\left < \sigma v \right >}
 
 \chapter{Gamma Rays and Dark Matter}\label{ch_gamma}
 
@@ -510,27 +511,44 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     These spectra can be combined with the J factor Equation~\ref{eqn:jfactor} to calculate Equation~\ref{eqn:dmflux}: how many gamma rays are produced by the halo\footnote{
       These spectra are then used as the spectral component $M_{\textrm{e,halo}}$ for the dark matter halo model in the likelihood analysis in Equation~\ref{eqn:dmmodel}, detailed further in Section~\ref{subsec:dmhalomodel}.
     }.
-    {\color{red}(how many gamma rays are produced by the halo (Not sure if I would point to equation 6.21. I would show and explain the equation here as this chapter describes the physics needed to understand the thesis. ?? -maria,orel ))}
     
-    For example, with a $<\sigma{}v> = 3 \times 10^{-26} \f $
+    Using some estimated parameters with Equation~\ref{eqn:dmflux}, the flux of gamma rays from a dark matter halo can be estimated to understand how few events a dark matter halo produces.
+    For this estimate, the dark matter mass is chosen to be \SI{10}{TeV}, and the velocity-averaged cross section $\left < \sigma v \right >$ is set at the relic cross section.
+    Other chosen parameters are specified in Table~\ref{tab:halo_nphotons}, to align with the VERITAS telescope performance, or the parameters of the dark matter analysis performed in later chapters.
+    For the table parameters, the dark matter halo would only produce a VERITAS-detectable gamma ray between \SIrange{4}{70}{TeV} every 39 hours.
+    This flux $\Phi$ is proportional to the $\sv$, so a factor of $n$ larger particle would produce a factor of $n$ larger photon flux.
+    It is interesting to note that, if the entire VERITAS energy range of \SIrange{1.5}{70} is used, the Integrated Photon Spectrum increases to 0.13 events per annihilation, increasing the observed photon flux by a factor of 26.
     
-    $ \left < \sigma v \right > = 3 \times 10^{-26} \;\, \frac{\textrm{cm}^3}{\textrm{s}} $
-
-    $ m_{\chi} = 10 \; \textrm{TeV} $
-
-    $ 4 - 70 \textrm{TeV} $
-
-    3 degree radius field-of-view
-  
-    NFW Halo, which has a J-Factor of ??
+    \begin{table}[]
+      \centering
+      \begin{tabular}{r|l}
+        \hline
+        \textbf{Estimated Parameters}            & \\
+        $m_{\chi}$                               & \SI{10}{TeV}         \\
+        relic $\left < \sigma v \right >$        & \SI{3e-26}{cm^3/s}   \\
+        Field of View                            & \ang{3}              \\
+        Detectable Photon Energy Range           & \SIrange{4}{70}{TeV} \\
+        Observatory Effective Area               & \SI{287000}{m^2}     \\
+        Annihilation Branch                      & $\chi\chi \rightarrow b\bar{b}$ \\
+        DM Halo Shape                            & Einasto              \\
+        \hline
+        \textbf{Derived Values}                  & \\
+        Integrated Photon Spectrum : $\int \frac{dN_{\gamma}}{dE} dE$        & 0.00536 photons per $\chi\chi$ annihilation \\
+        J factor :$\int \int \rho^2 dl\,d\Omega$ & \SI{3.88e22}{GeV^2/cm^5}      \\
+        Halo Flux $\Phi$                         & \SI{2.5e-11}{photons/(s*m^2)} \\
+        One halo photon detected every           & \SI{39}{hours} \\
+        \hline
+      \end{tabular}
+      \caption{
+        Number of Gamma Rays from a Dark Matter Halo.
+        Field of view is the radial field of view of VERITAS.
+        Observatory Effecitve area is the VERITAS effective area at \ang{28} telescope elevation, \ang{0.5} offset from GC, at the $\log_{10}$ mean energy in the selected energy range.
+        The Einasto halo shape parameters are chosen to be the same as in Section~\ref{dm_spatial}.
+      }
+      \label{tab:halo_nphotons}
+      % values derived with $VERIPY/thesis/analysis/example_dm_halo_photons/example.py
     
-    Which results in flux X.  With 
-    
-    50,000 $m^2$ effective area
-
-    100 hours observing time
-    
-    This results in Y photons in the telescope.
+    \end{table}
 
     \FloatBarrier
     
