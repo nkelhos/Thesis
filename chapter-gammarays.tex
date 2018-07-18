@@ -32,7 +32,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \centering
     \includegraphics[width=0.45\textwidth]{images/feynman_particles/inversecompton.pdf}
     \caption[Inverse Compton Scattering Feynman Diagram]{
-      Feynman diagram of inverse Compton scattering, where an electron upscatters a lower-energy red photon to a higher-energy blue photon.
+      Feynman diagram of inverse Compton scattering, where an electron upscatters a low-energy photon (red) to produce a higher-energy (blue) photon.
     }
     \label{fig:inv_compt_feyn}
   \end{figure}
@@ -347,16 +347,32 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
 \section{Galactic Center}
   
   The Galactic Center is a complex region of space, with many astrophysical sources of gamma rays.
-  At its heart is a supermassive black hole with a mass of \SI{4e6}{ \Msol{} }.
-  These sources include the dust along the galactic plane, as well as nearby supernova remnants.
+  At its heart is a supermassive black hole around which is gamma-ray emission, though the production mechanism is not well understood.
+  There are other gamma-ray sources as well, including dust along the galactic plane, supernova remnants, and inverse compton emission.
+  
+  The central black hole has a mass of \SI{4e6}{ \Msol{} }~\ref{sgra_massdist}.
+  When observed by TeV-gamma-ray observatories like VERITAS, H.E.S.S., and MAGIC, gamma-ray emission is observed~\ref{gc_pointsrc_hess,gc_veritas_pointsource,VeritasGCRidge2015,hesspsf,gc_hess_2015,gc_magic_2017}
+  The VERITAS observations are shown in Figure~\ref{fig:veritas_gc_ridge}.
+  
+  \begin{figure}[ht]
+    \includegraphics[width=0.85\textwidth]{images/veritas_gc_ridge/ridge.pdf}
+    \caption[VERITAS View of the Galactic Center Ridge]{
+      Galactic Center Ridge
+      \CaptionBlankLine
+    }
+    \label{fig:veritas_gc_ridge}
+  \end{figure}
+  
   
   * 4e6 \Msol black hole
   * central gamma-ray point source
     * proton pevatron -> pions, or
     * millisecond pulars
+    * summary of pevatron or pwn debate \ref{gc_pev_or_pwn}
   * protons collide with dust in galactic plane
   * supernova remnants
   * inverse compton: electrons upscatter photons
+  * fermi may see dm halo \ref{gc_fermi_dm}
 
 
 
@@ -556,7 +572,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       \caption{
         Number of Gamma Rays from a Dark Matter Halo.
         Field of view is the radial field of view of VERITAS.
-        Observatory Effecitve area is the VERITAS effective area at \ang{28} telescope elevation, \ang{0.5} offset from GC, at the $\log_{10}$ mean energy in the selected energy range.
+        Observatory Effecitve area is the VERITAS effective area at \ang{28} telescope elevation, \ang{0.5} offset from GC, at the $\log_{10}$ mean energy (\SI{16.7}{TeV})in the selected energy range.
         The Einasto halo shape parameters are chosen to be the same as in Section~\ref{dm_spatial}.
       }
       \label{tab:halo_nphotons}
