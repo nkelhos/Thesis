@@ -280,7 +280,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   %   particle tends to escape after (B1-B2)*1/4 crossing cycles
 
 
-  Protons accelerated in the manner form the majority of the showers detected by the VERITAS telescope, forming an irriducible background in the galactic center observations.
+  Protons accelerated in the manner form the majority of the showers detected by the VERITAS telescope, forming an irriducible background in the Galactic Center observations.
   This background is irriducible due to the fact that proton and gamma-ray air showers are very similar.
   
   After either of these processes produce electrons with high energies, these electrons can then upscatter ambient photons to TeV energies.
@@ -350,50 +350,55 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   At its heart is a supermassive black hole around which is gamma-ray emission, though the production mechanism is not well understood.
   There are other gamma-ray sources as well, including dust along the galactic plane, supernova remnants, and inverse compton emission.
   
-  The central black hole has a mass of \SI{4e6}{ \Msol{} }~\ref{sgra_massdist}.
-  When observed by TeV-gamma-ray observatories like VERITAS, H.E.S.S., and MAGIC, gamma-ray emission is observed~\ref{gc_pointsrc_hess,gc_veritas_pointsource,VeritasGCRidge2015,hesspsf,gc_hess_2015,gc_magic_2017}
-  The VERITAS observations are shown in Figure~\ref{fig:veritas_gc_ridge}.
+  Through kinematic observations of nearby stars, it has been inferred that the Galactic Center is home to a supermassive black hole, with a mass of \SI{4e6}{ \Msol{} }~\cite{sgra_massdist}.
+  The Galactic Center is a source of TeV gamma rays~\cite{gc_pointsrc_hess,gc_pointsource_hess2,gc_veritas_pointsource,gc_magic_pointsource}.
+  The VERITAS signifiance skymap of this source are shown in Figure~\ref{fig:veritas_gc_ridge}.
   
   \begin{figure}[ht]
-    \includegraphics[width=0.85\textwidth]{images/veritas_gc_ridge/ridge.pdf}
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/veritas_gc_ridge/ridge.pdf}
     \caption[VERITAS View of the Galactic Center Ridge]{
-      Galactic Center Ridge
+      Galactic Center Ridge, from Ref.~\cite{VeritasGCRidge2015}.
       \CaptionBlankLine
     }
     \label{fig:veritas_gc_ridge}
   \end{figure}
+
+  The mechanism that produces these TeV gamma rays is still under debate.
+  One model that explains possibility is that the supermassive black hole accelerates protons to PeV energies, which then collide with local atoms to produce $\pi^0$s, which then decay into TeV gamma rays~\cite{gc_pevatron}.
+  The second possibility suggests a nearby population of millisecond pulsars may be accelerating electrons, which then upscatter local photons to TeV energies~\cite{gc_pulsars}.
+  The debate between these two models is currently ongoing~\cite{gc_pev_or_pwn}.
+  Due to their limited angular resolution, the current generation of gamma-ray telescopes can only resolve the Galactic Center's gamma ray emission as a point source~\cite{VeritasGCRidge2015,gc_pointsrc_hess}.
+  The Fermi telescope has observed a similar source of GeV gamma rays around the Galactic Center~\cite{gc_fermi_dm}, though both dark matter and millisecond pulsars have varying degrees of success~\cite{fermi_gc_pulsar_vs_dm}.
   
+  In addition to this central source, there are also other sources of gamma rays in the vicinity.
+  One of these sources is a disk of dust along the galactic plane, acting as an interaction medium for diffuse proton cosmic rays.
+  These proton-proton collisions then produce neutral pions, which decay into gamma rays~\cite{hess_gc_diffuse}.
   
+  Gamma rays around the Galactic Center can also be produced by inverse compton scattering.
+  
+  Supernova remnants can also produce gamma rays, as their expanding shells interact with ambient dust.
+  
+  The extended emission sources (inverse compton, pion decay, and supernovae) are not modeled in this analysis, because atmospheric effects overwhelm any diffuse emission in the residual skymaps\footnote{These residual maps are discussed in Section~\ref{subsec:likemax}.}.
+
   * 4e6 \Msol black hole
   * central gamma-ray point source
-    * proton pevatron -> pions, or
-    * millisecond pulars
-    * summary of pevatron or pwn debate \ref{gc_pev_or_pwn}
+    * TeV
+      * proton pevatron -> pions, or
+      * millisecond pulsars
+      * summary of pevatron or pwn debate \cite{gc_pev_or_pwn}
+    * GeV
+      * fermi may see dm halo \cite{gc_fermi_dm}
+      * millisecond pulsars also?
   * protons collide with dust in galactic plane
   * supernova remnants
   * inverse compton: electrons upscatter photons
-  * fermi may see dm halo \ref{gc_fermi_dm}
-
 
 
   {\color{red}(The structure of this section is strange. You start by giving 3 examples of the gamma-ray sources there. Then you describe only two of them in more detail, with some repetitions of the intro. I suggest you re-write. Maybe move the black hole to the intro and then give a short description of all three gamma-ray sources in their own sub-sub-sections. -orel ??)}
 
-  %The Galactic Center is a complex region of space, with many astrophysical sources of gamma rays.
   {\color{red}(Maybe help the reader understand you are listing a few sources of gamma rays from the GC? It reads a little clunky as it is, took me until I reached the end to understand you are giving examples. ?? -orel)}
-  A disk of dust lies along the galactic plane, acting as an interaction medium for diffuse proton cosmic rays.
-  Nearby supernova remnants also produce gamma rays as their expanding shells interact with ambient dust.
-  The immediate area surrounding the Galactic Center contains a point-source gamma-ray emitter, although its mechanism is poorly understood.
 
-  % black hole
-  Through kinematic observations of nearby stars, it has been inferred that the Galactic Center is home to a supermassive black hole, with a mass of \SI{4e6}{ \Msol{} }~\cite{sgra_massdist}.
-  The Galactic Center is also a source of TeV gamma rays~\cite{gc_pointsrc_hess,gc_pointsource_hess2,gc_veritas_pointsource,gc_magic_pointsource}, though the mechanism that produces them is still under debate.
-  One possibility is that the supermassive black hole accelerates protons to PeV energies, which then collide with local atoms to produce $\pi^0$s, which then decay into TeV gamma rays~\cite{gc_pevatron}.
-  The second possibility suggests a nearby population of pulsar wind nebulae may be accelerating electrons, which then upscatter local photons to TeV energies~\cite{gc_pulsars}.
-  Due to their limited angular resolution, the current generation of gamma-ray telescopes can only resolve the Galactic Center's gamma ray emission as a point source~\cite{VeritasGCRidge2015,gc_pointsrc_hess}.
-
-  The disk of gas present in the galactic plane acts as an interaction medium for passing protons, both from nearby galactic accelerators and from extragalactic sources.
-  The interactions between this disk of gas and protons produce $\pi^0$s, which decay into $\gamma\gamma$ pairs~\cite{hess_gc_diffuse}.
-  This emission is not modeled in this analysis, because atmospheric effects overwhelm any diffuse emission in the residual skymaps\footnote{These residual maps are discussed in Section~\ref{subsec:likemax}.}.
 
 
 \section{Indirect Dark Matter Search}
@@ -429,7 +434,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     Both $\alpha$ and $r_s$ are from the best fit values of the Aq-A-1 simulation in Table 2 of Ref.~\cite{mw_halo_params}.
     The $r_s$ parameter is calculated via $r_s=r_{-2}=15.14\:\textrm{kpc}$, where $r_{-2}=\frac{11.05}{h_{73}}\:\textrm{kpc}$ (in Ref.~\cite{mw_halo_params}, Table 2) and $h_{73}=0.73$ from Section 2.1 in Ref.~\cite{mw_halo_params}.
     In the model, the parameter $\alpha$ is fixed to 0.17, and $r_s$ is fixed to \SI{15.14}{kpc}.
-    The distance to the galactic center is known to be $r_\odot=8\:\textrm{kpc}$~\cite{gc_distance_1,gc_distance_2,gc_distance_3}.
+    The distance to the Galactic Center is known to be $r_\odot=8\:\textrm{kpc}$~\cite{gc_distance_1,gc_distance_2,gc_distance_3}.
     The assumed Milky Way mass profile has a mass density of $\rho_\odot = 0.4\:\frac{\textrm{GeV}}{\textrm{cm}^3}$~\cite{local_dm_density,direct_dm_astrophysical_uncertainties}.
     Since $r_\odot$ and $\rho_\odot$ are known, then in Equation~\ref{eqn:einasto} the dark matter density at the scale radius $\rho_s$ is derived to be \SI{0.12}{\GeV\per\cm^3}.
     With these values, the Einasto profile in Equation~\ref{eqn:einasto} is shown in Figure~\ref{fig:gchalo_density}.
