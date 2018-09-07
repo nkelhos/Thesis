@@ -46,6 +46,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
   In averaging the intersection points, weighting for each intersection can be applied based on the angle between the two lines.
   This improves the reconstruction, because the intersection point from two images at \ang{90} angles will be less sensitive to image fluctuations than two images at \ang{160}, as shown in Figure~\ref{fig:largeintersectangle}.
   Additionally, the disp method described in Section~\ref{subsec:disp} can be utilized to offer improvements at lower telescope elevations.
+  {\color{red}the disp method here is trained with BDTs, but didn't have any effect, though its not the focus of this thesis??}
 
   \begin{figure}[ht]
     \centering
@@ -502,6 +503,7 @@ This database includes the width and length of the shower, how far away its core
       \includegraphics[width=\textwidth]{images/backgrounds_diffuse_vs_data/backgrounds_sims/backgrounds_sims.eps}
       \caption[Diffuse Simulated Backgrounds]{
         Diffuse simulated gamma-like events in the camera coordinate system at a \ang{28} elevation, at 4 different initial energies.
+        {\color{red}is this true or reconstructed positions??}
       }
       \label{fig:back_simdiffuse}
     \end{figure}
@@ -529,7 +531,7 @@ This database includes the width and length of the shower, how far away its core
     And, since different parts of the camera are sensitive to different energies (due to the changing atmosphere), using diffuse simulations in different parts of the camera may improve the accuracy energy dispersion as well.
     This improved energy dispersion could, for example, be used to more precisely determine the falloff energy of a gamma-ray source's energy spectrum, or potentially reduce the systematic uncertainty in the gamma-ray energy reconstruction.
   
-  {\color{red}(somewhere in thesis cite something from each defense committee member!)}
+  {\color{red}(somewhere in thesis cite something from each defense committee member!??)}
   
   \FloatBarrier
 
