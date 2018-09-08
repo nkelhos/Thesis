@@ -60,44 +60,28 @@
     The width of the distribution of the velocities is called the velocity dispersion.
     By looking at this velocity dispersion, the total mass of the dwarf galaxy can be inferred~\cite{dwarf_gal_vel_dispersion, dwarf_gal_vel_dispersion2}.
     What makes this possible is that the velocity dispersion of a group of stars is proportional to the total mass of the graviational well.
-    This can be seen by applying the virial theorem.
-    The virial theorem, Equation~\ref{eqn:virial}, states an n-body system in equilibrium will always have the same ratio of kinetic energy $T$ to potential energy $V$, as long as the gravitational potential is proportional to $r^-1$.
-
-    \begin{equation}\label{eqn:virial}
-      T = \frac{V}{2}
-    \end{equation}
-
-    The kinetic energy of a group of massive objects is Equation~\ref{eqn:kineticen}.
     
-    \begin{equation}\label{eqn:kineticen}
-      T = \sum_i \frac{1}{2} m_i \left \langle v_i^2 \right \rangle = \frac{1}{2} M \left \langle v^2 \right \rangle
+    This is derived from Jean's equation~\ref{eqn:jeans}, detailed in Ref.~\cite{galactic_dynamics}.
+    
+    \begin{equation}\label{eqn:jeans}
+      \frac{d}{dr} \left ( v \sigma_r^2\right) + \frac{2 \beta}{r}v \sigma_r^2 + v \frac{d \Phi}{dr}=0
     \end{equation}
     
-    Where $m_i$ is the mass of each star, $v_i$ is the velocity of each star, $M$ is the total mass of all stars.
-    The same can be done with galaxies within a cluster as well, instead of stars within a galaxy.
-    The total potential energy is Equation~\ref{eqn:potentialen}.
-
-    \begin{equation}\label{eqn:potentialen}
-      V = ??
-    \end{equation}
-    % see: http://www.jb.man.ac.uk/~gp/PHYS_30392/12_CSM13_Density_of_the_Universe_II_b.pdf
+    where $r$ is the distance from the center of mass, $v(r)$ is a 3D distribution of stars, $\Phi(r)$ is a gravitational potential, $\sigma_r(r)$ is the distribution of radial velocities, and $\sigma_\theta(r)$ is the distribution of velocities orthogonal to the $r$ direction..
+    The parameter $\beta = 1 - \frac{\sigma_{\theta}^2}{\sigma_r^2}$ characterizes how different the two velocity distributions ($\sigma_r(r)$ and $\sigma_{\theta}(r)$) are.
+    A solution to this equation can be used to calculate the measurable line-of-sight velocity distribution $\sigma_{los}$, shown in Equation~\ref{eqn:los_velocity_dist}.
     
-    % from : http://iopscience.iop.org/article/10.1086/518357/pdf
-    %   eqn 1: M = 10 r_hp \sigma^2_r / G
-    %     r_hp : half light radius
-    %     \sigma_r : 1D line-of-sight velocity dispersion
-    %     G : newtons gravitational constant
-    %     from Spitzer 1987
-    
-    % from : http://iopscience.iop.org/article/10.1086/521998/pdf
-    %   nfw halo from velocity dispersion calculated from eqn [A15] of Mamon & Lokas 2005
-    
-    When Equations~\ref{eqn:virial}, \ref{eqn:kineticen}, and \ref{eqn:potentialen} are combined, $M$ can be solved for, only as a function of the velocities{\color{red}(??)}.
-    \begin{equation}\label{eqn:virial_combined}
-      \frac{1}{2} M \left \langle v^2 \right \rangle = \frac{1}{2} ??
+    \begin{equation}\label{eqn:los_velocity_dist}
+      \sigma_{los}^2 \left ( R \right ) = \frac{2}{I(R)} \int_R^{\infty} \left ( 1 - \beta(r) \frac{R^2}{r^2}) \right ) \frac{r}{\sqrt{r^2-R^2}} \frac{1}{f(r)} \int_r^\infty f(s) \frac{v(s)GM(s)}{s^2} \; ds\; dr
     \end{equation}
     
-    Thus, by measuring stellar velocities and calculating the total kinetic energy of a group of stars, the potential energy can be calculated, which indicates the amount of mass present in the group.
+    with
+    
+    \begin{equation}
+      f(r) = f_{r'} \exp \left [ \int_{r'}^r \frac{2 \beta(t) }{t} \; dt \right ] .
+    \end{equation}
+    
+    This $\sigma_{los}(r)$ velocity distribution can then be compared to the radial velocity measurements of stars within dwarf galaxies to estimate the total mass (dark + baryonic)~\cite{dwarf_gal_vel_dispersion,dwarf_gal_vel_dispersion_a,dwarf_jfactors_no_priors}.
     As stellar velocity measurements rely on doppler-shifted spectral lines, and not the star's absolute brightness, any derived mass estimates are fairly resistant to changes in observed brightness.
     These changes in brightness can be from atmospheric variations during telescope observations or changes in the amount of light-absorbing dust in the line-of-sight.
     
