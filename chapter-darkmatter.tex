@@ -327,56 +327,34 @@
     The time/temperature that Baryogenesis occurred at has not been determined.
     However, there are several competing theories that may explain how an unequal ratio of baryons to antibaryons were created~\cite{baryogenesis1,baryogenesis2}.
     
-    At this point, the universe is a sea of photons, electrons, and baryons.
-    Once the universe cooled below the electron-proton binding energy, electrons were captured by protons in great numbers.
-    These captured electrons then release photons as they relaxed to the ground state.
-    Since electrons and protons have formed electrically neutral hydrogen atoms, the universe is transparent to these photons, which are free to travel the universe~\cite{planck2015,theEarlyUniverse,CMBFundamentals,CMBFlat}.
-    These blackbody photons are called the cosmic micrwave background.
-    Since these are photons emitted by the last electrically charged particles, density variations in the charged particles produce density variations in the cosmic microwave background.
-    Studying the spectrum of these density variations allows for models of the big bang theory and of the universe's development to be tested.
-    
     % see http://www.damtp.cam.ac.uk/user/db275/Cosmology/Lectures.pdf section 3.3.2
-    During this time, a background population of WIMP dark matter particles were repeatedly created and annihilated.
-    After the universe expanded further, the density of these WIMPs decreased to the point where they were no longer running into each other.
+    After this inflationary period, another important epoch was the WIMP freeze-out, when the universe was roughly 1 second old, though this time can vary by several orders of magnitude..
+    At this point, it is theorized that a population of WIMP dark matter particles were being repeatedly created and annihilated, and were in equilibrium.
+    After the universe expanded some more, the density of these WIMPs decreased to the point where they were no longer running into each other.
     This increased WIMP transparency froze the number of WIMPs at that time, called the relic density.
-    From the equation (??).
+    From the Boltzman Equation~\ref{eqn:boltz_dm}, a relationship can be estabilshed between the WIMP mass, cross section, and how many WIMPs are left over, frozen out (the relic density).
+    
+    % from http://www.damtp.cam.ac.uk/user/db275/Cosmology/Lectures.pdf
+    \begin{equation}\label{eqn:boltz_dm}
+      \frac{dN_\chi}{dt} = -s \left \langle \sigma v \right \rangle \left [ N_\chi^2 - \left ( N_\chi^{eq} \right )^2 \right ]
+    \end{equation}
+    
+    where $N_\chi$ is the number of WIMPs in a comoving volume, $N_\chi^{eq}$ is the number of WIMPs at equilibrium, $s$ is the Friedmann-Robertson-Walker metric, and $\left \langle \sigma v \right \rangle$ is the velocity-averaged cross section of the WIMP annihilation.
+    After many substitutions and some assumptions\footnote{This derivation is explained better in \url{http://www.damtp.cam.ac.uk/user/db275/Cosmology/Lectures.pdf}}, one finds that for a \nicetilde{}GeV WIMP and the observed relic abundance, the WIMP must have a $\left \langle \sigma v \right \rangle$ close to the Weak force cross section for a \nicetilde{}GeV particle.
+    This coincidence between the dark matter abundance and the particle physics cross section is sometimes called \textit{WIMP Miracle}.
     
     % see http://pdg.lbl.gov/2013/reviews/rpp2013-rev-dark-matter.pdf for more basic info
     % see https://arxiv.org/pdf/1603.03797.pdf
     
-    After that freezout, the temperature was low enough that baryon creation and annihilation rates plummeted.
-    Because there are no significant ways to destroy universe-scale quantities of baryons, their numbers remain unchanged since this freezout.
-    This freezout left an imprint of its structure, where higher and lower densities of remaining baryons led to higher and lower densities of CMB photons.
-    {\color{red}(This is not entirely accurate (the fraction of baryons to anti-baryons is too high to be explained as a simple statistical fluctuation which froze).
-Also, it does not really explain how dark matter plays a role (you mention it in the next paragraph, but it is not explained). -Orel ?? )}
-    
+    Later on when the universe is around \nicetilde380,000 years old and has expanded enough to cool to \nicetilde\SI{3000}{K}, another phase change can occur.
+    Here, the universe is a sea of photons and free electrons and protons.
+    With all the free electrons and protons around, the mean free path of the photon is small, so they are in thermal equilibrium with the electrons and protons.
+    Once the universe expands further, enough to cool below the electron-proton binding energy, electrons start being captured by protons in great numbers.
+    Since electrons and protons have formed electrically neutral hydrogen atoms, the universe becomes transparent to these photons, which are then free to travel the universe~\cite{planck2015,theEarlyUniverse,CMBFundamentals,CMBFlat}.
+    These blackbody photons are called the cosmic micrwave background.
+    Since these are photons emitted by the last electrically charged particles, density variations in the charged particles produce temperature variations in the cosmic microwave background.
+    Studying the spectrum of these temperature variations allows for models of the big bang theory and of the universe's development to be tested.
 
-    From this structure, the composition of the universe can be modeled.
-    In terms of energy, 68.6\% of the universe is stored in Dark Energy, a repulsive force which causes almost all visible galaxies to accelerate away from the Milky Way.
-    % 100% - ( 26.5% + 4.9 ) = 73.5% (from beginning of chapter)
-    Another 4.9\% of the universe's energy is stored in baryonic matter, like protons and neutrons.
-    The remaining 26.5\% of the universe's energy is contained in dark matter~\cite{planck2015}.
-
-    Another important piece of evidence for the existance of dark matter is the abundance of Deuterium present in the universe.
-    The amount of Deuterium that was left over from the big bang depends on the amount of baryons in the universe.
-    The amount of baryons predicted by this is not enough to account for the total mass of the universe, thus it must exist in other (darker) particles.
-    {\color{red}(The abundance of Deuterium is relevant for the argument of baryonic/non-baryonic dark matter. Meaning, it does not directly point to the existence of dark matter, but more suggests about its nature. It is a good point to bring up (and expand), but probably in a different section, no? -Orel ??)}
-
-    % 4 MACHO papers:
-    % http://iopscience.iop.org/article/10.1086/304535/pdf         1997 First two years of the MACHO Project
-    % https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.74.2867 1995 Experimental limits on microlensing
-    % http://iopscience.iop.org/article/10.1086/311355/pdf         1998 Eros and Macho combined limits
-    % http://iopscience.iop.org/article/10.1086/380562/pdf         2004 End of the Macho Era
-    % https://www.aanda.org/articles/aa/ps/2003/12/aa3417.ps.gz    2003 5 Years of EROS SMC data
-    
-    % also: http://iopscience.iop.org/article/10.1088/0034-4885/63/5/2r3/pdf page 809
-    %    http://iopscience.iop.org/article/10.1086/312243/meta Stellar remnants  ruled out by TeV gamma rays
-    %    https://www.nature.com/articles/365623a0 1993 Eros first data
-
-    Another measurement that depends heavily on the presence of dark matter is the rate at which galaxies cluster together.
-    In the Sloan Digital Sky Survey (SDSS), the positions of 1.6 million galaxies, quasars, and stars are mapped~\cite{sdss_release}.
-    By simulating the distribution of similar objects as the universe ages, only with a dark matter component does the universe form clumps that match SDSS observations.
-  
     {\color{red}(baryon acoustic oscillations?? \url{http://iopscience.iop.org/article/10.1086/466512/meta} )}
     After the CMB is emitted, gravity pulls atoms into local dense regions.
     and out of (heats up) local density variations left over from previous epochs.
@@ -391,55 +369,25 @@ Also, it does not really explain how dark matter plays a role (you mention it in
     
     {\color{red}(cmb polarization??)}
     How is CMB influenced by DM? or does DM just affect BAOs??
+    When CMB photons scatter off an electron, a polarization can be imparted (since the electron wiggles perpendicular to the scattering plane).
+    % This tells us something about dark matter?
     
-    % borrow dark matter-related events from this chart?
-    % https://en.wikipedia.org/wiki/Chronology_of_the_universe
-    %\begin{table}[h]
-    %  \centering
-    %  \caption[Key Events During the Life of the Universe]{
-    %    Key events during the development of the universe.
-    %    The Time column is the age of the universe at that event.
-    %    The Temperature column is the universe's average temperature at that time.
-    %    The Distance column is how far light could have traveled in that time, if it started at the beginning of the universe and travelled at present-day $c$.
-    %    {\color{red}Idea from \url{http://www.th.physik.uni-bonn.de/drees/non\_ac/presentation\_Narimani.pdf} , slide 10, CREDIT THIS!!}
-    %    {\color{red}(Source remaining values?)}
-    %    {\color{red}(If a term is mentioned here, it needs to be explained!! ?)}
-        % see http://www.sciencedirect.com/science/article/pii/S0370157304003515 page 286 for more info
-        % see https://arxiv.org/pdf/hep-ph/0602002.pdf
-        % maybe check PDG?
-        % http://www.particleadventure.org/history-universe.html
-    %  }
-      % Space column is just Time column * 3e8 m/s
-    %  \label{cosmo_events}
-    %  \begin{tabular}{lcc}
-    %    Event                                         & Time                    & Temperature                \\
-    %    \hline
-    %    Big Bang (Planck Time \& Temp)                & $10^{-43}\,$s           & $10^{19}\,$\GeV            \\
-        % https://www.physics.umd.edu/courses/Phys741/xji/chapter2.pdf , pg 22, equation 2.10/2.11
-        % planck mass
-        % M_{pl} = \sqrt{ \frac{ \hbar c }{ G_N } } = 1.22*10^19 GeV
-        % hbar : reduced planck constant
-        % c    : speed of light
-        % G_N  : newtons gravitational constant
-        % planck time t_P = ~10^-43 s
+    From the structure of the CMB, the composition of the universe can be modeled.
+    In terms of energy, 68.6\% of the universe is stored in Dark Energy, a repulsive force which causes almost all visible galaxies to accelerate away from the Milky Way.
+    % 100% - ( 26.5% + 4.9 ) = 73.5% (from beginning of chapter)
+    Another 4.9\% of the universe's energy is stored in baryonic matter, like protons and neutrons.
+    The remaining 26.5\% of the universe's energy is contained in dark matter~\cite{planck2015}.
 
-    %    Inflation                                     & $10^{-34}\,$s (?)       & ?                         \\
-    %    Baryogenesis                                  & ?                      & ?                         \\
-    %    ElectroWeak phase transition                  & \SI{20}{ps}             & \SI{100}{\GeV}             \\
-    %    Dark Matter Freeze-out                        & ?                      & ?                         \\
-    %    QCD phase transition                          & \SI{20}{\mu.s}          & \SI{150}{\MeV}             \\
-    %    Neutrino decoupling                           & \SI{1}{s}               & \SI{1}{\MeV}               \\
-    %    Neutron freezout                              & \SI{1}{s}               & \SI{1}{\MeV}               \\
-    %    $\text{e}^+ - \text{e}^-$ annihilation        & \SI{6}{s}               & \SI{500}{keV}              \\
-    %    Big Bang nucleosynthesis                      & \SI{3}{min}             & \SI{100}{keV}              \\
-    %    Matter and radiation densities equal          & \SI{60}{kyr}            & \SI{0.75}{eV}              \\
-    %    (ion?) Recombination                          & \SIrange{260}{380}{kyr} & \SIrange{0.26}{0.33}{eV}   \\
-    %    Photon decoupling                             & \SI{380}{kyr}           & \SIrange{0.23}{0.38}{eV}   \\
-    %    Reionization                                  & \SIrange{100}{400}{Myr} & \SIrange{2.6 }{7   }{meV}  \\
-    %    Dark energy-matter equality                   & \SI{9}{Gyr}             & \SI{0.33}{meV}             \\
-    %    Present                                       & \SI{13.8}{Gyr}          & \SI{0.24}{meV}             \\
-    %  \end{tabular}
-    %\end{table}
+    Another important piece of evidence for the existance of dark matter is the abundance of deuterium present in the universe.
+    The amount of deuterium that was left over from the big bang depends on the amount of baryons in the universe.
+    The amount of baryons predicted by this is not enough to account for the total mass of the universe, thus it must exist in other (darker) particles.
+    {\color{red}(The abundance of deuterium is relevant for the argument of baryonic/non-baryonic dark matter. Meaning, it does not directly point to the existence of dark matter, but more suggests about its nature. It is a good point to bring up (and expand), but probably in a different section, no? -Orel ??)}
+
+    Another measurement that depends heavily on the presence of dark matter is the rate at which galaxies cluster together.
+    In the Sloan Digital Sky Survey (SDSS), the positions of 1.6 million galaxies, quasars, and stars are mapped~\cite{sdss_release}.
+    By simulating the distribution of similar objects as the universe ages, only with a dark matter component does the universe form clumps that match SDSS observations.
+  
+    
     
 
 \section{$\Lambda$CDM Cosmology and the Standard Model}
@@ -503,6 +451,7 @@ Also, it does not really explain how dark matter plays a role (you mention it in
   In $\Delta$CDM cosmology, the relic density is all of the leftover dark matter particles after the universe became too cold to produce more dark matter particles.
 
   {\color{red}One or two more sentences on the relic density??}
+  % see http://www.damtp.cam.ac.uk/user/db275/Cosmology/Lectures.pdf
 
   There are other potential dark matter candidates, both as other particle types or as modifications to other areas of physics, but they are not explored in this thesis.
   See Ref. \cite{DMPrimer} for more a more detailed discussion.
