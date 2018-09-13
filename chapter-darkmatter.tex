@@ -69,7 +69,7 @@
     
     where $r$ is the distance from the center of mass, $v(r)$ is a 3D distribution of stars, $\Phi(r)$ is a gravitational potential, $\sigma_r(r)$ is the distribution of radial velocities, and $\sigma_\theta(r)$ is the distribution of velocities orthogonal to the $r$ direction..
     The parameter $\beta = 1 - \frac{\sigma_{\theta}^2}{\sigma_r^2}$ characterizes how different the two velocity distributions ($\sigma_r(r)$ and $\sigma_{\theta}(r)$) are.
-    A solution to this equation can be used to calculate the measurable line-of-sight velocity distribution $\sigma_{los}$, shown in Equation~\ref{eqn:los_velocity_dist}.
+    A solution to this equation can be used to calculate the measurable line-of-sight velocity distribution $\sigma_{los}$ as a function of the projected angle from the center-of-mass of the dwarf $R$, shown in Equation~\ref{eqn:los_velocity_dist}.
     
     \begin{equation}\label{eqn:los_velocity_dist}
       \sigma_{los}^2 \left ( R \right ) = \frac{2}{I(R)} \int_R^{\infty} \left ( 1 - \beta(r) \frac{R^2}{r^2}) \right ) \frac{r}{\sqrt{r^2-R^2}} \frac{1}{f(r)} \int_r^\infty f(s) \frac{v(s)GM(s)}{s^2} \; ds\; dr
@@ -77,14 +77,14 @@
     
     with
     
-    \begin{equation}
+    \begin{equation}\label{eqn:los_velocity_dist2}
       f(r) = f_{r'} \exp \left [ \int_{r'}^r \frac{2 \beta(t) }{t} \; dt \right ] .
     \end{equation}
     
-    This $\sigma_{los}(r)$ velocity distribution can then be compared to the radial velocity measurements of stars within dwarf galaxies to estimate the total mass (dark + baryonic)~\cite{dwarf_gal_vel_dispersion,dwarf_gal_vel_dispersion_a,dwarf_jfactors_no_priors}.
+    In Equations~\ref{eqn:los_velocity_dist} and \ref{eqn:los_velocity_dist2}, $I(R)$ is the surface brightness of the dwarf galaxy, $v(s)$ is the density profile of its luminous component, $M(s)=4\pi \int_0^s \rho_{\textrm{DM}}(r) r^2 \; dr$ the enclosed dark matter mass, and $\beta(r)$ velocity anisotropy profile.
+    The calculated $\sigma_{los}(r)$ velocity distribution in Equation~\ref{eqn:los_velocity_dist} can then be compared to the radial velocity measurements of stars within dwarf galaxies to estimate the total mass (dark + baryonic)~\cite{dwarf_gal_vel_dispersion,dwarf_gal_vel_dispersion_a,dwarf_jfactors_no_priors}.
     As stellar velocity measurements rely on doppler-shifted spectral lines, and not the star's absolute brightness, any derived mass estimates are fairly resistant to changes in observed brightness.
     These changes in brightness can be from atmospheric variations during telescope observations or changes in the amount of light-absorbing dust in the line-of-sight.
-    
 
     The second way to measure galaxy masses is by measuring the total brightness of a galaxy, and divide by the luminosity of the Sun $L_\odot$.
     This then indicates the number of solar masses $M_\odot$ contained in the galaxy, a measure of its baryonic (i.e. 'bright', not dark) mass.
@@ -350,7 +350,7 @@
     Here, the universe is a sea of photons and free electrons and protons.
     With all the free electrons and protons around, the mean free path of the photon is small, so they are in thermal equilibrium with the electrons and protons.
     Once the universe expands further, enough to cool below the electron-proton binding energy, electrons start being captured by protons in great numbers.
-    Since electrons and protons have formed electrically neutral hydrogen atoms, the universe becomes transparent to these photons, which are then free to travel the universe~\cite{planck2015,theEarlyUniverse,CMBFundamentals,CMBFlat}.
+    Since electrons and protons have formed electrically neutral hydrogen atoms (an event called Recombination), the universe becomes transparent to these photons, which are then free to travel the universe~\cite{planck2015,theEarlyUniverse,CMBFundamentals,CMBFlat}.
     These photons precisely follow a blackbody spectrum, shown in Figure~\ref{fig:cmb_black}, and are called the cosmic micrwave background.
     
     \begin{figure}[ht]
@@ -358,48 +358,76 @@
       \includegraphics[width=0.85\textwidth]{images/cmb_blackbody/cmb.pdf}
       \caption[Cosmic Microwave Background Blackbody]{
         The blackbody spectrum of the cosmic microwave background measured by the FIRAS instrument on the COBE satellite~\cite{mather1990}.
+        Errorbars shown are from an assumed 1\% error.
       }
       \label{fig:cmb_black}
     \end{figure}
     
     However, the CMB spectrum varies a small amount from a pure blackbody spectrum.
-    These deviations are due to baryon acoustic oscillations.
-    
-    Since these are photons emitted by the last electrically charged particles, density variations in the charged particles produce temperature variations in the cosmic microwave background.
-    Studying the spectrum of these temperature variations allows for models of the big bang theory and of the universe's development to be tested.
+    These variations also depend on the region of the sky measured, which is shown in Figure~\ref{fig:cmb}
 
-    {\color{red}(baryon acoustic oscillations?? \url{http://iopscience.iop.org/article/10.1086/466512/meta} )}
-    After the CMB is emitted, gravity pulls atoms into local dense regions.
-    and out of (heats up) local density variations left over from previous epochs.
-    When these atoms are pulled together by gravity to form higher densities, they heat up, so the blackbody temperature of the CMB in that region also rises.
-    As the temperature of these dense regions increases, the radiation pressure pushing them apart also increases, eventually driving the atoms apart.
-    When the atoms are driven apart to form rarefactions, they are slightly cooler, and ther CMB radio frequency emission is slighly lower in frequency.
-    Gravity then attracts them again, repeating the cycle.
-    After several cycles of atoms moving into and out of these gravitational wells, standing matter waves are set up, called Baryon Acoustic Oscillations (BAOs).
-    BAOs cause anisotropies in the CMB (and sdss??), as well as variations in the distribution of galaxies.
-    By measuring the spectrum of these anisotropies,
-    \cite{bao_SDSS,bao_6df}
+    \begin{figure}[ht]
+      \centering
+      \includegraphics[width=0.95\textwidth]{images/cmb_skymap/cmb_skymap.eps}
+      \caption[Cosmic Microwave Background Skymap]{
+        The cosmic microwave background temperature map of the universe \cite{wmap_skymap}, from 9 years of WMAP observations~\cite{wmap9year}.
+        This image shows a temperature range of \SI{\pm200}{\mu{}Kelvin}.
+      }
+      \label{fig:cmb}
+    \end{figure}
+
+    These deviations are due to Baryon Acoustic Oscillations (BAOs).
+    The Recombination of electrons and protons was not an instantaneous event, and instead happend over time.
+    During this gradual Recombination, some baryons were gravitationally pulled into areas of high mass densities.
+    These high-mass areas were formed in earlier times of the universe, and were spread out evenly.
+    These baryons would fall into these gravitational wells, until it became warmer, whereupon it emits more photons, which drive the mass out of the wells.
+    Eventually after leaving the wells, the photon pressure dropped and the gravitiational force took over, drawing the matter back towards the gravitational wells again.
+    After happening repeatedly, this created ripples of density waves (acoustic oscillations), which spread outwards, interferring with one another.
+    These density waves, which had dense high-temperature areas, and sparse low-temperature areas, then emitted blackbody photons at higher and lower temperatures, respectively.
+    These higher and lower temperatures account for the spectrum of variations in the CMB's temperature in different parts of the sky.
+    
+    As the CMB is emitted by scattering off the baryons, the CMB spectrum only depends on the baryon temperature.
+    However, since the baryons were pulled into the high density areas by gravity, the presence of dark matter alters the wavelength of these density ripples, stretching them out (??).
+    This is similar to a simple spring pendulum, where adding extra (dark) mass to an existing (baryonic) mass will decrease the oscillation frequency, resulting in BAOs with longer wavelengths.
+    Thus, by measuring the wavelength of the BAOs with the CMB correlations, the amount of dark matter in the universe can be measured.
+    The CMB correlation spectrum, measured by Planck, is shown in Figure~\ref{fig:cmb_correlation_spectra}.
+    
+    \begin{figure}[ht]
+      \centering
+      \includegraphics[width=0.85\textwidth]{images/cmb_spectra_planck_2015/cmb_spectra.pdf}
+      \caption[Cosmic Micrwave Background Correlation Spectrum]{
+        Correlation spectra from temperature measurements with the Planck satellite~\cite{planck2015_cmb_spectra}.
+        The upper plot shows the spectra, the lower panel shows the residuals.
+      }
+      \label{fig:cmb_correlation_spectra}
+    \end{figure}
+    
+    From the structure of the CMB, the composition of the universe can be modeled.
+    From the BAOs in Figure~\ref{fig:cmb_correlation_spectra}, it has been found that 68.6\% of the universe is stored in Dark Energy, a repulsive force which causes almost all visible galaxies to accelerate away from the Milky Way.
+    % 100% - ( 26.5% + 4.9 ) = 73.5% (from beginning of chapter)
+    Another 4.9\% of the universe's energy is stored in baryonic matter, like protons and neutrons.
+    The remaining 26.5\% of the universe's energy is contained in dark matter~\cite{planck2015}.
     
     {\color{red}(cmb polarization??)}
     How is CMB influenced by DM? or does DM just affect BAOs??
     When CMB photons scatter off an electron, a polarization can be imparted (since the electron wiggles perpendicular to the scattering plane).
+    Amount of polarization indicates how long the recombination took, longer recombination = more Thompson scattering of CMB photons off un-recombined electrons.
+    Lensing by dark matter structures contribute to B-mode polarization of CMB.
     % This tells us something about dark matter?
+    % "Detecting Dark Matter Annihilation with CMB Polarization : Signatures and Experimental Prospects"
+    % https://arxiv.org/pdf/astro-ph/0503486.pdf
+    %
+    % also https://www.mpifr-bonn.mpg.de/981464/puget.pdf
+    % also https://indico.scc.kit.edu/event/75/contributions/3903/attachments/1925/2608/Talk_Ensslin_Planck.pdf
     
-    From the structure of the CMB, the composition of the universe can be modeled.
-    In terms of energy, 68.6\% of the universe is stored in Dark Energy, a repulsive force which causes almost all visible galaxies to accelerate away from the Milky Way.
-    % 100% - ( 26.5% + 4.9 ) = 73.5% (from beginning of chapter)
-    Another 4.9\% of the universe's energy is stored in baryonic matter, like protons and neutrons.
-    The remaining 26.5\% of the universe's energy is contained in dark matter~\cite{planck2015}.
 
-    Another important piece of evidence for the existance of dark matter is the abundance of deuterium present in the universe.
-    The amount of deuterium that was left over from the big bang depends on the amount of baryons in the universe.
-    The amount of baryons predicted by this is not enough to account for the total mass of the universe, thus it must exist in other (darker) particles.
-    {\color{red}(The abundance of deuterium is relevant for the argument of baryonic/non-baryonic dark matter. Meaning, it does not directly point to the existence of dark matter, but more suggests about its nature. It is a good point to bring up (and expand), but probably in a different section, no? -Orel ??)}
-
+    Deuterium abundance??
+    Baryon and Deuterium populations linked, and Deuterium is low enough that the mass of baryons that go with it is less than the gravitational mass of everything in the universe.
+    Thus baryons can't make up all of mass, most must be non-baryonic.
+    
     Another measurement that depends heavily on the presence of dark matter is the rate at which galaxies cluster together.
     In the Sloan Digital Sky Survey (SDSS), the positions of 1.6 million galaxies, quasars, and stars are mapped~\cite{sdss_release}.
     By simulating the distribution of similar objects as the universe ages, only with a dark matter component does the universe form clumps that match SDSS observations.
-  
     
     
 
@@ -410,19 +438,23 @@
   $\Lambda$CDM models how the universe expanded from the big bang until the present day universe.
   This model predicts the different times particles froze out of the universe, and their resulting distributions.
 
-  A large part of $\Lambda$CDM comes from measuring fluctuations in the Cosmic Microwave Background (CMB).
+  Much of $\Lambda$CDM comes from measuring fluctuations in the Cosmic Microwave Background (CMB).
   In these fluctuations, a snapshot of the universe when it was 380,000 years old is preserved, providing many clues as to the development of the universe, including its age, energy content, structure, and expansion. 
+  Observations of the CMB indicate that it is close to a blackbody spectrum, and deviations from that spectrum are due to Baryon Acoustic Oscillations.
   {\color{red}(You should explain what is learned from the CMB and how. -Orel ??)}
+  These oscillations are fitted by a model of $\Lambda$CDM that depend primarily on six free parameters that describe the universe, including:
+  
+  \renewcommand{\labelitemi}{}
+  \begin{itemize}
+    \item $\Omega_b$   : Fraction of the universe's energy stored in baryons
+    \item $\Omega_c$   : Fraction of the universe's energy stored in (Cold) dark matter
+    \item $\theta_{\textrm{MC}}$ : Angular size of the sound horizon at recombination
+    \item $\tau$   : Thompson scattering optical depth due to reionization
+    \item $A_s$  : Initial super-horizon amplitude of curvature perturbations
+    \item $n_s$  : Spectral index of the seed density spectrum in the extremely early universe
+  \end{itemize}
+    
   This CMB snapshot also provides hints about the nature of dark matter, including some basic requirements for any potential dark matter candidate particle.
-
-  \begin{figure}[ht]
-    \includegraphics[width=0.95\textwidth]{images/cmb_skymap/cmb_skymap.eps}
-    \caption[Cosmic Microwave Background Skymap]{
-      The cosmic microwave background temperature map of the universe \cite{wmap_skymap}, from 9 years of WMAP observations~\cite{wmap9year}.
-      This image shows a temperature range of \SI{\pm200}{\mu{}Kelvin}.
-    }
-    \label{fig:cmb}
-  \end{figure}
 
   The current paradigm of particle physics is called the Standard Model~\cite{standardmodel}.
   It consists of groups of particles called quarks and leptons, as well as the bosons that mediate interactions between these particles.
@@ -469,5 +501,6 @@
   There are other potential dark matter candidates, both as other particle types or as modifications to other areas of physics, but they are not explored in this thesis.
   See Ref. \cite{DMPrimer} for more a more detailed discussion.
 
+  % neutralino as a WIMP: https://arxiv.org/pdf/1707.06277.pdf
 
 
