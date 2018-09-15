@@ -209,6 +209,8 @@
     These ratios of different lensed images indicate that there exists variations in the mass density in the lensing galaxy.
     These variations are best fit by randomly distributing spheres of lensing mass throughout the lensing galaxy, each having a mass of \SI{10^6}{\Msol}.
     This spheres of this mass are consistant with the scale of dark matter substructure predicted by CDM.
+    
+    
 
 
   \subsection{Scales of $10^{23}\:\text{m}$ : Galaxy Clusters}\label{dm_galclusters}
@@ -380,8 +382,8 @@
     The Recombination of electrons and protons was not an instantaneous event, and instead happend over time.
     During this gradual Recombination, some baryons were gravitationally pulled into areas of high mass densities.
     These high-mass areas were formed in earlier times of the universe, and were spread out evenly.
-    These baryons would fall into these gravitational wells, until it became warmer, whereupon it emits more photons, which drive the mass out of the wells.
-    Eventually after leaving the wells, the photon pressure dropped and the gravitiational force took over, drawing the matter back towards the gravitational wells again.
+    The baryons would fall into these gravitational wells, until they became warmer, whereupon the baryons emit more photons, which increases the photon pressure and drives the baryons out of the wells.
+    Eventually after leaving the wells, the photon pressure decreases and the gravitiational force takes over, drawing the matter back towards the gravitational wells again.
     After happening repeatedly, this created ripples of density waves (acoustic oscillations), which spread outwards, interferring with one another.
     These density waves, which had dense high-temperature areas, and sparse low-temperature areas, then emitted blackbody photons at higher and lower temperatures, respectively.
     These higher and lower temperatures account for the spectrum of variations in the CMB's temperature in different parts of the sky.
@@ -396,38 +398,33 @@
       \centering
       \includegraphics[width=0.85\textwidth]{images/cmb_spectra_planck_2015/cmb_spectra.pdf}
       \caption[Cosmic Micrwave Background Correlation Spectrum]{
-        Correlation spectra from temperature measurements with the Planck satellite~\cite{planck2015_cmb_spectra}.
+        Correlation spectra from CMB temperature measurements with the Planck satellite~\cite{planck2015_cmb_spectra}.
         The upper plot shows the spectra, the lower panel shows the residuals.
       }
       \label{fig:cmb_correlation_spectra}
     \end{figure}
     
-    From the structure of the CMB, the composition of the universe can be modeled.
     From the BAOs in Figure~\ref{fig:cmb_correlation_spectra}, it has been found that 68.6\% of the universe is stored in Dark Energy, a repulsive force which causes almost all visible galaxies to accelerate away from the Milky Way.
     % 100% - ( 26.5% + 4.9 ) = 73.5% (from beginning of chapter)
     Another 4.9\% of the universe's energy is stored in baryonic matter, like protons and neutrons.
     The remaining 26.5\% of the universe's energy is contained in dark matter~\cite{planck2015}.
     
-    {\color{red}(cmb polarization??)}
-    How is CMB influenced by DM? or does DM just affect BAOs??
-    When CMB photons scatter off an electron, a polarization can be imparted (since the electron wiggles perpendicular to the scattering plane).
-    Amount of polarization indicates how long the recombination took, longer recombination = more Thompson scattering of CMB photons off un-recombined electrons.
-    Lensing by dark matter structures contribute to B-mode polarization of CMB.
-    % This tells us something about dark matter?
-    % "Detecting Dark Matter Annihilation with CMB Polarization : Signatures and Experimental Prospects"
-    % https://arxiv.org/pdf/astro-ph/0503486.pdf
-    %
-    % also https://www.mpifr-bonn.mpg.de/981464/puget.pdf
-    % also https://indico.scc.kit.edu/event/75/contributions/3903/attachments/1925/2608/Talk_Ensslin_Planck.pdf
+    The polarization of CMB photons also incorporates information about dark matter and its properties.
+    The CMB photons come from ambient photons that Thompson-scattered off electrons right before Recombination.
+    Because of this Thompson scattering, the CMB photons inherit both temperature and polarization information.
+    Dark matter annihilations during Recombination may produce standard model particles, which act as an injection of ionization energy, which extends the duration of Recombination.
+    A longer Recombination acts to decrease any CMB temperature fluctuations while increasing CMB polarization fluctions~\cite{cmb_polarization1,cmb_polarization2}.
     
-
-    Deuterium abundance??
-    Baryon and Deuterium populations linked, and Deuterium is low enough that the mass of baryons that go with it is less than the gravitational mass of everything in the universe.
-    Thus baryons can't make up all of mass, most must be non-baryonic.
+    The observed quantities of deuterium in the early universe also hint at dark matter's properties.
+    During Big Bang Nucleosynthesis when the universe was only a few seconds old, protons and neutrons were starting to combine into various isotopes, one of which is deuterium.
+    However, like baryons, the amount of deuterium produced in the early universe is heavily dependent on the initial baryon number density.
+    So, any constraint on the deuterium fraction is also a constraint on the baryon fraction of the universe~\cite{deuterium1,deuterium2}.
+    From the spectrum of deuterium and hydrogen lines from the quasar QSO Q0913+072, the baryon fraction was measured to be $\Omega_{b}h^2 = 0.0224 \pm 0.0005$~\cite{deuterium3}, indicating only 2.24\% of the universe's energy is stored in baryons..
+    This then suggests that the majority of matter in the universe cannot be made of baryons, and that the majority resides in some non-baryonic form.
     
     Another measurement that depends heavily on the presence of dark matter is the rate at which galaxies cluster together.
     In the Sloan Digital Sky Survey (SDSS), the positions of 1.6 million galaxies, quasars, and stars are mapped~\cite{sdss_release}.
-    By simulating the distribution of similar objects as the universe ages, only with a dark matter component does the universe form clumps that match SDSS observations.
+    By simulating the distribution of similar objects as the universe ages, only with extra mass from dark matter does the universe form clumps that match SDSS observations.
     
     
 
@@ -438,23 +435,20 @@
   $\Lambda$CDM models how the universe expanded from the big bang until the present day universe.
   This model predicts the different times particles froze out of the universe, and their resulting distributions.
 
-  Much of $\Lambda$CDM comes from measuring fluctuations in the Cosmic Microwave Background (CMB).
-  In these fluctuations, a snapshot of the universe when it was 380,000 years old is preserved, providing many clues as to the development of the universe, including its age, energy content, structure, and expansion. 
+  Much of $\Lambda$CDM comes from measuring fluctuations in the Cosmic Microwave Background (CMB), discussed in Section~\ref{dm_universe}.
+  In these fluctuations, a snapshot of the universe when it was 380,000 years old is preserved, providing many clues as to the development of the universe, including its age, energy content, particle populations, structure, and expansion. 
   Observations of the CMB indicate that it is close to a blackbody spectrum, and deviations from that spectrum are due to Baryon Acoustic Oscillations.
-  {\color{red}(You should explain what is learned from the CMB and how. -Orel ??)}
-  These oscillations are fitted by a model of $\Lambda$CDM that depend primarily on six free parameters that describe the universe, including:
+  These oscillations are fitted by a model of $\Lambda$CDM that depend primarily on six free parameters that describe the universe~\cite{planck_2013_parameters,planck2015,planck_dm_limit}, including:
   
   \renewcommand{\labelitemi}{}
   \begin{itemize}
-    \item $\Omega_b$   : Fraction of the universe's energy stored in baryons
-    \item $\Omega_c$   : Fraction of the universe's energy stored in (Cold) dark matter
+    \item $\Omega_b$ \;\;: Fraction of the universe's energy stored in baryons
+    \item $\Omega_c$ \;\;: Fraction of the universe's energy stored in (Cold) dark matter
     \item $\theta_{\textrm{MC}}$ : Angular size of the sound horizon at recombination
-    \item $\tau$   : Thompson scattering optical depth due to reionization
-    \item $A_s$  : Initial super-horizon amplitude of curvature perturbations
-    \item $n_s$  : Spectral index of the seed density spectrum in the extremely early universe
+    \item $\tau$   \;\;\;: Thompson scattering optical depth due to reionization
+    \item $A_s$        \;: Initial super-horizon amplitude of curvature perturbations
+    \item $n_s$        \;: Spectral index of the seed density spectrum in the extremely early universe
   \end{itemize}
-    
-  This CMB snapshot also provides hints about the nature of dark matter, including some basic requirements for any potential dark matter candidate particle.
 
   The current paradigm of particle physics is called the Standard Model~\cite{standardmodel}.
   It consists of groups of particles called quarks and leptons, as well as the bosons that mediate interactions between these particles.
