@@ -45,8 +45,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
 
   In averaging the intersection points, weighting for each intersection can be applied based on the angle between the two lines.
   This improves the reconstruction, because the intersection point from two images at \ang{90} angles will be less sensitive to image fluctuations than two images at \ang{160}, as shown in Figure~\ref{fig:largeintersectangle}.
-  Additionally, the disp method described in Section~\ref{subsec:disp} can be utilized to offer improvements at lower telescope elevations.
-  {\color{red}the disp method here is trained with BDTs, but didn't have any effect, though its not the focus of this thesis??}
+  Additionally, the disp method described in Section~\ref{subsec:disp} was explored to provide improvements at lower telescope elevations, though no significant benefit was achieved.
 
   \begin{figure}[ht]
     \centering
@@ -112,7 +111,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
     Once the training is complete, it is tested on a separate set of 17,000 simulated events, which have their true and predicted \disp{}s plotted in Figure~\ref{fig:disptraining}.
     The x axis describes the true \disp{} value for each event, while the y axis describes the \disp{} value estimated by the BDT, with a black $x=y$ line marked, which represents a perfect 1:1 \disp{} reconstruction.
     As events fall on the $x=y$ line, it can be concluded that the BDTs are able to predict the correct \disp{} value for most images.
-    {\color{red} You need to be more precise.  You should show also a one dimenional distribution (or various if you want to divide to True DISP bins) and discuss the resolution obtained?? -Orel}
+    {\color{red} You need to be more precise.  You should show also a one dimensional distribution (or various if you want to divide to True DISP bins) and discuss the resolution obtained?? -Orel}
 
     % made from screenshot of last slide in Dropbox/Presentations/20160719_Group_Meeting.key
     \begin{figure}[ht]
@@ -128,12 +127,11 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
 
     The small improvement in the position reconstruction due to the \disp{} method can be seen in Figure~\ref{fig:disp_event_offset}.
     With the Geometric (red) events, more are concentrated further from the point source, while with the \disp{} method, a few more are concentrated at the source itself.
+    The limited improvement may be due to the use of boosted decision trees, whereas a previous study with this method utilized a lookup table of six parameters\cite{Beilicke2012NIM}.
     
     {\color{red}Again, you need to be more specific. First, it is important to note this is data, it's always good to ''brag`` that your reconstruction method is tested on data.  Second, you need to discuss the actual resolution obtained with both methods and state the improvement achieved with DISP. I think the RMS might be a better test of this and anyway the mean would be too affected by the tail. In fact I think the quantiles are better?? -Orel}
     
-    {\color{red} Mention that from here on in the analysis, the disp method is used! ??}
-  
-    {\color{red}I don't understand why the improvements are so small.  Different ot what I see. -Gernot?? }
+    For the analysis described in Chapter~\ref{chapter:analysis}, the disp method is used when reconstructing gamma-ray events.
 
     \begin{figure}[ht]
       \centering
@@ -160,7 +158,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
 \section{Energy Reconstruction}\label{subsec:enrecon}
   To reconstruct the energy of each shower, a lookup table of simulated showers is built.
 This database includes the width and length of the shower, how far away its core position is, how bright it was, as well as its reconstructed and true energy.
-  By searching through this database for showers that are similar to the one being constructed, the most similar-looking shower then indicates the true energy {\color{red} (is there any interpolation?? -Orel?? ask gernot)}.
+  By searching through this database for showers that are similar to the one being constructed, then interpolating between shower parameters, the shower's true energy can be reconstructed.
 
 
 \section{FITS Conversion for Gammalib and CTOOLs}\label{fitsconversion}
@@ -530,8 +528,6 @@ This database includes the width and length of the shower, how far away its core
     Since this is an effect of the atmosphere's changing depth, it hints that the \textit{gamma-ray} effective areas also change with respect to camera x and camera y.
     And, since different parts of the camera are sensitive to different energies (due to the changing atmosphere), using diffuse simulations in different parts of the camera may improve the accuracy energy dispersion as well.
     This improved energy dispersion could, for example, be used to more precisely determine the falloff energy of a gamma-ray source's energy spectrum, or potentially reduce the systematic uncertainty in the gamma-ray energy reconstruction.
-  
-  {\color{red}(somewhere in thesis cite something from each defense committee member!??)}
   
   \FloatBarrier
 

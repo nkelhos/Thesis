@@ -542,7 +542,6 @@
       Skymap of all events used in this analysis.
       Note that these are in ($\ldet$,$\bdet$) coordinates, not ($\ltrue$,$\btrue$).
       No adjustments are made here for effective area, observation time, or background rate.
-      {\color{red}(change zaxis label 'binsize' to 'bin size'??)}
     }
     \label{fig:gc_counts_skymap}
   \end{figure}
@@ -574,8 +573,9 @@
   The normalization parameter $N_o$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was free to change in the likelihood optimization, while $E_{pivot}$, $E_{cutoff}$, and $\gamma$ were all fixed.
   The normalization $N_o$ was left free to allow for the potential of some mixing between the point source events and any dark matter halo events, i.e. a stronger dark matter halo gamma-ray flux would result in a weaker point source flux.
   
+  The galactic disk also produces its own gamma ray emission, as the protons in the disk act as an interaction target for relativistic protons~\cite{tevgev_gc_diffuse}.
+  However, this emission is not modeled, due to the increased complexity.
   {\color{red}
-  Diffuse emission, eliminated due to complexity??
   Hard cuts may have minimized its effect??
   If diffuse emission really needed to be modeled, it would show up in the profiles along galactic b??
   (because its radial, i probably need to mention why I assume its isotropic??)
@@ -590,7 +590,7 @@
   \end{equation}
   
   In this analysis, an Einasto density profile is used for the spatial component function $M_s$ of the dark matter halo model.
-  See Section~\ref{dm_spatial} for a discussion on this {\color{red} $M_{s,\textrm{halo}}$ (??)} function.
+  See Section~\ref{dm_spatial} for a discussion on the $M_{s,\textrm{halo}}$ function.
   For the spectral component, each dark matter mass tested has its own spectrum function $M_e$ produced with CLUMPY (see Section~\ref{dm_spectral}).
   The parameter $N$ is the magnitude of the halo, which the likelihood engine is free to scale up and down to get the best fit.
 
@@ -679,7 +679,6 @@
       Observed vs modeled counts in a slice of the sky parallel to the galactic $\ldet$ axis at $B=0$.
       Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
-      {\color{red}(Also, I wouldn't write src in the legend, but maybe something like "Point src (non-DM)". To save space you can remove the "Model:" from the legend (everywhere) -Orel ??)}
     }
     \label{fig:gc_profile_gal_l}
   \end{figure}
@@ -718,13 +717,13 @@
     \centering
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_enprofile.pdf}
     \llap{
-      \makebox[10.9cm][l]{ % x position
-        \raisebox{7.15cm}{ % y position
+      \makebox[6.0cm][l]{ % x position
+        \raisebox{5.1cm}{ % y position
           {
             \setlength{\fboxsep }{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
-              \includegraphics[height=2.9cm]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofe_counts.pdf}
+              \includegraphics[height=2.8cm]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofe_counts.pdf}
             }
           }
         }
@@ -734,8 +733,7 @@
       Observed vs modeled counts in a \ang{0.2}$\times$\ang{0.2} square bin centered on Sgr A* at energies from \SIrange{4}{70}{TeV}.
       Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
-      {\color{red}(Is the integral of the data and the sum of models the same? My guess is that it isn't, which would point to a problem in normalization (at least in the cube around the point source). --Orel??)}
-      {\color{red}(npred for all models vs # data events in box??)}
+      }
     }
     \label{fig:gc_profile_energy}
   \end{figure}
