@@ -1,4 +1,5 @@
 \cleartooddpage[\thispagestyle{empty}]
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 \chapter{The Dark Matter Paradigm}\label{ch_dm}
 
   Dark matter makes up 26.5\% of the universe's energy and 81.5\% of its mass~\cite{planck2015}.
@@ -264,7 +265,8 @@
     Another example of using gravitational lensing to measure dark matter mass is with cluster Cl0024+1654.
     This galaxy cluster creates several lensed images of the same background galaxy, which are used to measure the total mass
     The lensing is shown in Figure~\ref{fig:stronglens}, where the blue arcs are the distorted background galaxy images.
-    From all of these lensed images, the best fit amount of dark matter indicates this cluster has a mass-to-light ratio of \SI{230}$\,h_{70}\,$\MLsol, where $h_{70}$ is set to $0.70$~\cite{cluster_strong_lensing_1996, cluster_strong_lensing_1998, cluster_strong_lensing_2010}.
+    From all of these lensed images, the best fit amount of dark matter indicates this cluster has a mass-to-light ratio of \SI{161}{}\MLsol{}\footnote[3]{This measurement scales with the hubble constant, which here is assumed to be \SI{70}{km/s/Mpc}}~\cite{cluster_strong_lensing_1996, cluster_strong_lensing_1998, cluster_strong_lensing_2010}.
+ %assumes a hubble constant of 70\SI{230}$\,h_{70}\,$\MLsol, where $h_{70}$ is set to $0.70$
     
     \begin{figure}
       \centering
@@ -282,9 +284,7 @@
     This is done by assuming the warm gas is in hydrostatic equilibrium, where the force of gravity towards the cluster center is equally balanced by the pressure of the warm gas.
     This implies that when moving outwards from the cluster center, the density and temperature of the gas is predictable.
     From this, the mass-to-light ratio can be inferred at several different radii from the cluster center.
-    Within \SI{20}{$\,h_{70}^{-1}$ kpc} of the center, the ratio is 12 \MLsol, while beyond a radius of \SI{200}{$\,h_{70}^{-1}$ kpc} the ratio rises above 100 \MLsol{}, indicating a high amount of dark matter is present~\cite{cluster_chandra}.
-    {\color{red}(Here we reference 200 $h_{70}^{-1}$ kpc, but in the previous paragraph we reference 230 $h_{70}$, is this consistant? ask orel??)}
-    {\color{red}(Just convert the h_70 values to actual values, and state that its assuming a hubble constant of 70-blah  ??)}
+    Within \SI{28.5}{kpc}\footnote[2]{This scales inversely with the hubble constant, assumed here to be \SI{70}{km/s/Mpc}} of the center, the ratio is 12 \MLsol, while beyond a radius of \SI{286}{kpc}\footnotemark[2] the ratio rises above 100 \MLsol{}, indicating a high amount of dark matter is present~\cite{cluster_chandra}.
     
     These previously mentioned techniques have been combined into an analysis of galaxy cluster 1E 0657-558 to provide a cardinal piece of evidence in favor of particle dark matter.
     Galaxy cluster 1E 0657-558 consists of two subgroups of galaxies, a larger 'target' cluster, and a smaller Bullet cluster.
@@ -475,6 +475,7 @@
   % see table 5, sum m_nu [eV] row, TT, TE, EE+lensing+ext column
   
   
+  % Perkins 2003, section 7.11 is a good source
   Any dark matter candidate particle that meets the cosomological and particle conditions is called a WIMP, or Weakly Interacting Massive Particle.
   A currently favored WIMP candidate is the neutralino, the lightest supersymmetric particle (LSP)~\cite{neutralino1,neutralino2,neutralino3}.
   The standard model has a set of gauge and higgs fields $\left \{ B,W_3,H_1,H_2 \right \}$.

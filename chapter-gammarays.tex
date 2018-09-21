@@ -122,8 +122,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   
   Charged particles can also be accelerated by a pulsar's magnetic fields, in a process called magnetic reconnection, shown in Figure~\ref{fig:magcon}.
   In this mechanism, two oppositely oriented magnetic fields move towards each other at some velocity (Figure~\ref{fig:magcon}.a), due to the field lines being frozen into the local plasma.
-  Because the magnetic field lines merge (Figures \ref{fig:magcon}.b and c), this causes the ambient plasma in the region to move with the magnetic field lines{\color{red}(rewrite to be a little more vague??)}.
-  This moving plasma then creates electric fields (Figure~\ref{fig:magcon}.d) that can accelerate charged particles~\cite{magcon_crab,magcon_schopper,magcon_review,gamma_pwn1,gamma_pwn2}.
+  As the magnetic field lines merge (Figures \ref{fig:magcon}.b and c), induced current flows produce electric fields (Figure~\ref{fig:magcon}.d) that can accelerate charged particles~\cite{magcon_crab,magcon_schopper,magcon_review,gamma_pwn1,gamma_pwn2}.
   
   \begin{figure}[ht]
     \centering
@@ -297,8 +296,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   The $\pi^{0}$ then quickly (\SI{8.5e-17}{s}~\cite{pdg2016}) decays into two gamma rays.
   Because each pion resulting from the original $pp$ interaction tends to receive $\frac{1}{3}$ of the original proton's kinetic energy, and the $\pi^0$ decays into two gamma rays, each gamma ray ends up with \nicetilde$15\%$ of the original proton's kinetic energy.
   In the rest frame, the $\pi^0$ has a mass of \SI{135}{\MeV}~\cite{pdg2016}, so each photon ends up with \SI{67.5}{\MeV}.
-  {\color{red}(what does it say about the photon energy distribution? Can you say something about the photon energy ranges expected, given that the protons are usually of energy this or that?? -orel) (try looking at "Cosmic Gamma Rays" by Stecker, 1971 for an idea of the gamma-ray energy distribution)}
-  {\color{red}(just say, for a given proton energy in earth's rest frame, what would the final photon energy be? I don't need to do the full frame-of-reference-shift calculation to figure out the photon energy distribution.  ??)}
+  This means that in the rest frame, for an example proton with \SI{10}{TeV} of kinetic energy, two \SI{1.5}{TeV} gamma rays are produced.
   
   Much of the diffuse gamma-ray component of the galactic disk is due to extra-galactic high-energy protons colliding with the protons of the galactic plane~\cite{GalacticDiffuseGammaRays,extragalactic_agn}.
   Active galactic nuclei posess particle jets, which can accelerate particles when the jet shocks into the extragalactic medium.
@@ -366,21 +364,18 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   \end{figure}
 
   The mechanism that produces these TeV gamma rays is still under debate.
+  While a dark matter interpretation is intriguing~\cite{gc_pnt_is_dm1,gc_pnt_is_dm2}, there are several non-dark-matter models that might explain the observed features.
   One model that explains possibility is that the supermassive black hole accelerates protons to PeV energies, which then collide with local atoms to produce $\pi^0$s, which then decay into TeV gamma rays~\cite{gc_pevatron}.
-  The second possibility suggests a nearby population of millisecond pulsars may be accelerating electrons, which then upscatter local photons to TeV energies~\cite{gc_pulsars}.
-  {\color{red}(make sure to reference 1506.05104 and 1506.05124 ??)}
+  The second possibility suggests a nearby population of millisecond pulsars may be accelerating electrons, which then upscatter local photons to TeV energies~\cite{gc_pulsars,gc_pnt_is_not_dm2,gc_pnt_is_not_dm3}.
   The debate between these two models is currently ongoing~\cite{gc_pev_or_pwn}.
   Due to their limited angular resolution, the current generation of gamma-ray telescopes can only resolve the Galactic Center's gamma ray emission as a point source~\cite{VeritasGCRidge2015,gc_pointsrc_hess}.
   The Fermi telescope has observed a similar source of GeV gamma rays around the Galactic Center~\cite{gc_fermi_dm}, though both dark matter and millisecond pulsars have varying degrees of success~\cite{fermi_gc_pulsar_vs_dm}.
   
   In addition to this central source, there are also other sources of gamma rays in the vicinity.
-  One of these sources is a disk of dust along the galactic plane, acting as an interaction medium for diffuse proton cosmic rays.
+  One of these sources is a disk of dust along the galactic plane, acting as an interaction medium for proton cosmic rays.
   These proton-proton collisions then produce neutral pions, which decay into gamma rays~\cite{hess_gc_diffuse}.
-  
   Gamma rays around the Galactic Center can also be produced by inverse compton scattering.
-  
-  Supernova remnants can also produce gamma rays, as their expanding shells interact with ambient dust.
-  
+  Supernova remnants can also produce gamma rays, as their expanding shells interact with ambient dust. 
   The extended emission sources (inverse compton, pion decay, and supernovae) are not modeled in this analysis, because atmospheric effects overwhelm any diffuse emission in the residual skymaps\footnote{These residual maps are discussed in Section~\ref{subsec:likemax}.}.
 
 
@@ -526,17 +521,18 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       \label{fig:chichi_spectrum}
     \end{figure}
 
-    These spectra can be combined with the J factor Equation~\ref{eqn:jfactor} to calculate Equation~\ref{eqn:dmflux}: how many gamma rays are produced by the halo\footnote{
+    These spectra can be combined with the J factor Equation~\ref{eqn:jfactor} to calculate Equation~\ref{eqn:dmflux}: the number of gamma rays produced by the halo\footnote{
       These spectra are then used as the spectral component $M_{\textrm{e,halo}}$ for the dark matter halo model in the likelihood analysis in Equation~\ref{eqn:dmmodel}, detailed further in Section~\ref{subsec:dmhalomodel}.
     }.
-    {\color{red}(mention how j factor can have large uncertainties, as discussed in 1506.08209 ??)}
+    It is important to note that mass-to-light ratios, and their derived J factors are usually inferred from measuring star spectra.
+    These measured J factors can suffer from large errors, as it can be difficult to determine which stars are within a target gravitational well, and which ones are fore- or back-ground stars~\cite{segue_jfactor_errors}.
     
     Using some estimated parameters with Equation~\ref{eqn:dmflux}, the flux of gamma rays from a dark matter halo can be estimated to understand how few events a dark matter halo produces.
     For this estimate, the dark matter mass is chosen to be \SI{10}{TeV}, and the velocity-averaged cross section $\left < \sigma v \right >$ is set at the relic cross section.
     Other chosen parameters are specified in Table~\ref{tab:halo_nphotons}, to align with the VERITAS telescope performance, or the parameters of the dark matter analysis performed in later chapters.
     For the table parameters, the dark matter halo would only produce a VERITAS-detectable gamma ray between \SIrange{4}{70}{TeV} every 39 hours.
     This flux $\Phi$ is proportional to the $\sv$, so a factor of $n$ larger particle would produce a factor of $n$ larger photon flux.
-    It is interesting to note that, if the entire VERITAS energy range of \SIrange{1.5}{70} is used, the Integrated Photon Spectrum increases to 0.13 events per annihilation, increasing the observed photon flux by a factor of 26.
+    It is interesting to note that, if the entire VERITAS energy range of \SIrange{1.5}{70}{TeV} is used, the Integrated Photon Spectrum increases to 0.13 events per annihilation, increasing the observed photon flux by a factor of 26.
     
     \begin{table}[]
       \centering
@@ -558,7 +554,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
         One halo photon detected every           & \SI{39}{hours} \\
         \hline
       \end{tabular}
-      \caption{
+      \caption[Halo Model Parameters]{
         Number of Gamma Rays from a Dark Matter Halo.
         Field of view is the radial field of view of VERITAS.
         Observatory Effecitve area is the VERITAS effective area at \ang{28} telescope elevation, \ang{0.5} offset from GC, at the $\log_{10}$ mean energy (\SI{16.7}{TeV})in the selected energy range.
