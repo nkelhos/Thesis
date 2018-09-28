@@ -1,5 +1,6 @@
 \cleartooddpage[\thispagestyle{empty}]
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\thetamc}{\theta_{\textrm{MC}}}
 \chapter{The Dark Matter Paradigm}\label{ch_dm}
 
   Dark matter makes up 26.5\% of the universe's energy and 81.5\% of its mass~\cite{planck2015}.
@@ -354,7 +355,7 @@
     With all the free electrons and protons around, the mean free path of the photon is small, so they are in thermal equilibrium with the electrons and protons.
     Once the universe expands further, enough to cool below the electron-proton binding energy, electrons start being captured by protons in great numbers.
     Since electrons and protons have formed electrically neutral hydrogen atoms (an event called Recombination), the universe becomes transparent to these photons, which are then free to travel the universe~\cite{planck2015,theEarlyUniverse,CMBFundamentals,CMBFlat}.
-    These photons precisely follow a blackbody spectrum, shown in Figure~\ref{fig:cmb_black}, and are called the cosmic micrwave background.
+    These photons precisely follow a blackbody spectrum, shown in Figure~\ref{fig:cmb_black}, and are called the cosmic microwave background.
     
     \begin{figure}[ht]
       \centering
@@ -431,39 +432,63 @@
 
 \section{$\Lambda$CDM Cosmology and the Standard Model}
 
-  At the largest spatial scales, $\Lambda$CDM is the currently accepted model of cosmology.
+  The measurements of the CMB (discussed in Section~\ref{dm_universe}) contribute to the existing theory of how the universe developed after the big bang, called $\Lambda$CDM.
   The $\Lambda$ refers to the density of dark energy, while CDM refers to Cold Dark Matter.
-  $\Lambda$CDM models how the universe expanded from the big bang until the present day universe.
-  This model predicts the different times particles froze out of the universe, and their resulting distributions.
+  This theory predicts the different times particles froze out of the universe, and their resulting distributions.
+  From the CMB correlation spectrum in Figure~\ref{fig:cmb_correlation_spectra}, six parameters that describe the universe can be modelled~\cite{planck_dm_limit,planck_2013_parameters}.
+  These are shown in Table~\ref{tab:six_params}.
 
-  Much of $\Lambda$CDM comes from measuring fluctuations in the Cosmic Microwave Background (CMB), discussed in Section~\ref{dm_universe}.
-  In these fluctuations, a snapshot of the universe when it was 380,000 years old is preserved, providing many clues as to the development of the universe, including its age, energy content, particle populations, structure, and expansion. 
-  Observations of the CMB indicate that it is close to a blackbody spectrum, and deviations from that spectrum are due to Baryon Acoustic Oscillations.
-  These oscillations are fitted by a model of $\Lambda$CDM that depend primarily on six free parameters that describe the universe~\cite{planck_2013_parameters,planck2015,planck_dm_limit}, including:
+  % from planc 2018 results cosmological constants, table 1
+  % hubble constant :
+  %   H_0 = (67.4+-0.5) km/s/Mpc
+  %   h = H_0 / 100 km/s/Mpc = 0.674
+  % \Omega_b h^2 = 0.02233 +- 0.00015
+  %   \Omega_b = 0.02233 / h^2 = 0.02233 / 0.674^2 = 0.04915 -> 4.915 +- 0.033 %
+  % \Omega_c h^2 = 0.1198 +- 0.0012
+  %   \Omega_c = 0.1198  / h^2 = 0.1198  / 0.674^2 = 0.2637  -> 26.37 +- 0.264 %
+  % ln( A_s * 10^10 ) = 3.043 +- 0.014
+  %   A_s = e^(3.043+-0.014) * 10^-10 = (2.097+-0.029)*10^-9
+  %   
   
-  \renewcommand{\labelitemi}{}
-  \begin{itemize}
-    \item $\Omega_b$ \;\;: Fraction of the universe's energy stored in baryons
-    \item $\Omega_c$ \;\;: Fraction of the universe's energy stored in (Cold) dark matter
-    \item $\theta_{\textrm{MC}}$ : Angular size of the sound horizon at recombination
-    \item $\tau$   \;\;\;: Thompson scattering optical depth due to reionization
-    \item $A_s$        \;: Initial super-horizon amplitude of curvature perturbations
-    \item $n_s$        \;: Spectral index of the seed density spectrum in the extremely early universe
-  \end{itemize}
+  \begin{table}[]
+    \centering
+    \caption[6 Cosmological Parameters]{
+      The six cosmological parameters fitted in $\Lambda$CDM, from Ref.~\cite{planck_dm_limit}}
+    \label{tab:six_params}
+    \begin{tabular}{lllll}
+               & \textbf{Value}                 & \textbf{Unit} & \textbf{Description} \\
+    \hline \\
+    $\Omega_b$ & $ 4.915  \pm0.033                 $ & \%   & Fraction of the universe's energy stored in baryons        \\
+    $\Omega_c$ & $ 26.37  \pm0.264                 $ & \%   & Fraction of the universe's energy stored in dark matter    \\
+    $\thetamc$ & $(1.04089\pm0.00031)\times 10^{-2}$ & {\color{red}??}   & Angular size of the sound horizon at recombination         \\
+    $\tau$     & $(5.40   \pm0.74   )\times 10^{-2}$ & {\color{red}??}   & Thompson scattering optical depth due to reionization      \\
+    % arxiv: 0205436 , section II, 3rd paragraph
+    $A_s$      & $(2.097  \pm0.029  )\times 10^{-9}$ & {\color{red}??}   & Amplitude of the seed density spectrum in the early universe \\
+    $n_s$      & $ 0.9652 \pm0.0042                $ &      & Spectral index of the seed density spectrum in the early universe             
+    \end{tabular}
+  \end{table}
+  
+  The parameters $\Omega_b$ and $\Omega_c$ are the fraction of the universe's energy stored in baryons and cold dark matter, respectively.
+  The parameter $\thetamc$ is the angular range that could be influenced during the BAOs produced after recombination.
+  The parameter $\tau$ determines how opaque the universe became to photons during reionization, where the first stars started to reheat atoms and free electrons.
+  The parameters $A_s$ and $n_s$ govern the amplitude and the spectral index of the initial seed perturbations in the early universe.
+  These universe-scale parameters determine how the universe evolved over time.
+  However, dark matter is likely a new, undiscovered particle,  so a discussion of particle physics is necessary to understand what particle properties dark matter would need to possess.
+  
 
   The current paradigm of particle physics is called the Standard Model~\cite{standardmodel}.
   It consists of groups of particles called quarks and leptons, as well as the bosons that mediate interactions between these particles.
   Quarks combine to form hadrons, like protons and neutrons, and mesons, while leptons consist of electrons, muons, tauons, and their neutrino companions.
 
   At the forefront of dark matter search candidates are particles predicted by Supersymmetry~\cite{Jungman:1995df}, (specifically Minimal Supersymmetric Standard Model, or MSSM~\cite{MSSM,supersym1}), an extension to the Standard model.
-  Much like how all particles have an anti-particle, in supersymmetry, each Standard Model quark, lepton, and boson, has a supersymmetric partner particle.
+  Much like how most particles have an anti-particle, in supersymmetry, each Standard Model quark, lepton, and boson has a supersymmetric partner particle.
   Quarks and leptons have squarks and sleptons as their supersymmetric partners, while bosons have partners like photinos, gluinos, and charginos.
   While no evidence of supersymmetry has been discovered to date, it is still preferred due to its ability to predict physics across a large range energy scales, the holy grail of any Grand Unified Theory.
   
 
 \section{Particle Dark Matter}\label{sec_particledm}
 
-  Since none of the Standard Model particles meet the conditions to be a dark matter candidate, theoretically predicted particles are now the focus of most searches.
+  Early in the search for a candidate dark matter particle, Standard Model particles were first considered.
   One recently favored Standard Model dark matter candidate was the neutrino, due to its numerous nature and lack of interaction with the strong and electromagnetic forces.
   This was generally referred to as Hot Dark Matter, as neutrinos travel at relativistic speeds.
   However, it was eventually demonstrated that because of these relativistic speeds, neutrinos would diffuse out of their initial overdensities.
@@ -473,12 +498,39 @@
   % from this discussion: https://physics.stackexchange.com/questions/158319/why-are-neutrinos-ruled-out-as-a-major-or-even-sole-component-of-dark-matter
   In addition, limits on the mass of the neutrino ($\sum{}m_{\nu} = 0.194 \; \textrm{eV}, \; 95\% \; \textrm{C.L.}$) also rule it out since they are not numerous enough~\cite{planck2015}.
   % see table 5, sum m_nu [eV] row, TT, TE, EE+lensing+ext column
+  All other standard model particles have also been ruled out, usually for charge, mass, number density, or cross section reasons.
+  Since none of the Standard Model particles meet the conditions to be a dark matter candidate, theoretically predicted particles are now the focus of most searches.
+  
+  A basic and popular expansion to the standard model is called Supersymmetry, or SUSY.
+  
   
   
   % Perkins 2003, section 7.11 is a good source
   Any dark matter candidate particle that meets the cosomological and particle conditions is called a WIMP, or Weakly Interacting Massive Particle.
   A currently favored WIMP candidate is the neutralino, the lightest supersymmetric particle (LSP)~\cite{neutralino1,neutralino2,neutralino3}.
   
+  %
+  % Hypercharge :
+  %   Y = ( B + S + C + B' + T)
+  %     B  : baryon number
+  %     S  : strangeness
+  %     C  : charm-ness
+  %     B' : bottomness
+  %     T  : topness
+  %   proton : +1
+  %   strong interactions conserve hypercharge,
+  %     weak interactions do not
+  %
+  % Weak Hypercharge :
+  %   Y_W = 2(Q-T_3)
+  %     Q   : electric charge
+  %     T_3 : third component of weak isospin (the SU(2) component)
+  %   For several particles
+  %     leptons : -1
+  %     quarks  : +1/3
+  %     W+-,Z   : 0
+  %     Higgs   : +1
+  %
   % Minimal Supersymmetric Standard Model
   % New features:
   %   R-parity,  P_R = (-1)^{3B+L+2s}
@@ -512,10 +564,14 @@
   %     +Neutralinos
   %       4 different ones
   %         lightest is usually stable
-  %         made from mixtures of Bino, Wino, and 2x Higgsinos
+  %         made from mixtures of:
+  %           Bino, gauge field corresponsing to the weak hypercharge
+  %           Winos, superpartner to W+-0 bosons
+  %           2x Higgsinos (can't have just one higgsino in SUSY)
   %       fermions (majorana, so each is its own anti-particle)
   %       electrically neutral
   %       
+  
   The standard model has a set of gauge and higgs fields $\left \{ B,W_3,H_1,H_2 \right \}$.
   $B$ is the photon, $W_3$ is the weak gauge bosons $W^{\pm}$ and $Z^0$, and $H_1$ and $H_2$ are two higgs fields.
   In supersymmetry, this set has a supersymmetric partner set ${\chi_1,\chi_2,\chi_3,\chi_4}$.
