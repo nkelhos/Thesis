@@ -11,22 +11,21 @@
 
 
 This analysis searches for dark matter using gamma rays, thus a discussion of gamma rays and their properties is necessary.
-In this chapter, three different topics are discussed.
-The first is the astrophysical mechanisms that produce gamma rays.
+In this chapter three different topics are discussed, including background gamma rays, dark matter gamma rays, and detecting gamma rays in general..
+The first is the astrophysical mechanisms that produce gamma rays, a background for detecting dark matter gamma rays..
 The second is how dark matter around the Galactic Center can produce gamma rays.
 The third topic is how gamma rays induce air showers in the Earth's atmosphere.
 
 \section{Production of TeV Gamma Rays}
 
   There are several mechanisms that can produce photons with TeV energies.
-  A gamma ray can start as a low-energy photon, then gain significant energy from electroweak interactions with electrons, referred to as a leptonic production.
-  Alternately, a gamma ray can be created from a high-energy proton colliding with another proton, referred to as hadronic production.
-  The primary mechanism this analysis searches for is the annihilation of two WIMP dark matter particles that either directly or indirectly produce gamma rays, and is discussed in Section~\ref{dm_spectral}.
+  A gamma ray can start as a low-energy photon, then gain significant {\color{red}(please specify how much energy is gained?? -maria)} energy from {\color{red}electroweak interactions (which specific interactions, bremstrahlung?? -maria)} with electrons, referred to as a leptonic production.
+  Alternately, a gamma ray can be created from a high-energy proton colliding with another proton, which produces $\pi^0$'s that decay into gamma rays, referred to as hadronic production.
+  However, leptonic and hadronic production are separate from how gamma rays are produced by dark matter.
+  Instead, two WIMP dark matter paritlces may annihilate (directly or indirectly) into gamma rays, as is discussed in Section~\ref{dm_spectral}.
 
-  In leptonic production, electrons and low-energy photons collide, transferring energy to the photon.
-  This interaction is called upscattering or inverse Compton scattering~\cite{compton_effect}.
-  In inverse Compton scattering, a charged particle interacts with a photon, and some the electron's kinetic energy is transferred to the photon, shifting it to a higher frequency.
-  The feynman diagram for this interaction can be seen in Figure~\ref{fig:inv_compt_feyn}.
+  In leptonic production, electrons and low-energy photons collide, {\color{red}transferring energy (how much energy?? -maria)} to the photon.
+  This interaction is called upscattering or inverse Compton scattering~\cite{compton_effect}, and its feynman diagram is shown in Figure~\ref{fig:inv_compt_feyn}.
   
   \begin{figure}[ht]
     \centering
@@ -42,10 +41,11 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   
   % https://eud.gsfc.nasa.gov/Volker.Beckmann/school/download/Longair_Radiation3.pdf equation 11
   \begin{equation}\label{eqn:inv_compt_en_gain_rate}
-    \frac{dE}{dt} = \frac{4}{3} \: \sigma_{\perp} \: U \: c \: \gamma^2 \: \frac{ v^2 }{ c^2 } \;\; .
+    \frac{dE}{dt} = \frac{4}{3} \: \sigma_{\perp} \: U \: c \: \gamma^2 \: \frac{ v^2 }{ c^2 } \;\; ,
   \end{equation}
 
-  In Equation~\ref{eqn:inv_compt_en_gain_rate}, 
+  where
+  
   \begin{itemize}
     \item $\sigma_{\perp}$ is the perpendicular cross section between the photon and the charged particle, 
     \item $c$ is the speed of light in vaccum,
@@ -54,7 +54,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \item $v$ is the velocity of the electron in the laboratory frame.
   \end{itemize}
 
-  The average energy $E_{up}$ of photons upscattered this way can be calculated with Equation~\ref{eqn:inv_compt_avg_up_en},
+  The average energy $E_{up}$ of photons upscattered this way can be calculated via
   
   % https://eud.gsfc.nasa.gov/Volker.Beckmann/school/download/Longair_Radiation3.pdf equation 15
   \begin{equation}\label{eqn:inv_compt_avg_up_en}
@@ -99,8 +99,8 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   % Eup = (4/3) * 1e12 * 0.35 eV
   % Eup = 4.67e11 eV = 467 GeV
   
-  In Equation~\ref{eqn:inv_compt_avg_up_en}, $E_{0}$ is the energy of the original photon.
-  At Earth, astrophysical electrons are detected at energies of \SI{500}{GeV}~\cite{500GeVElectrons}.
+  The parameter $E_{0}$ is the energy of the original photon.
+  At Earth, astrophysical electrons are detected at energies of \SI{500}{GeV}~\cite{500GeVElectrons,fermi_electron}.
   At these energies, the Lorentz factor is $\gamma = 10^6$.
   With this Lorentz factor, upscattered photons can increase their energy by up to\footnote{This is the maximum average energy gain when the upscattered photon is emitted back along its original trajectory.} $\gamma^{2} = 10^{12}$.
   For example, a green photon ($\lambda_{\textrm{green}}=550\,\textrm{nm}$, $E_{\textrm{green}}=0.3\,\textrm{eV}$) could be upscattered to as high as \SI{467}{GeV}, becoming a gamma ray detectable by VERITAS.
@@ -111,18 +111,33 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   For example, the pulsar at the heart of the Crab nebula has a surface magnetic field strength of \SI{e12}{G}~\cite{pwn_evolution}, much larger than Earth's $\sim$\SI{0.5}{G}~\cite{earth_geomag}.
   These strong magnetic fields provide an environment for producing and accelerating charged particles.
   In these strong magnetic fields, ambient photons can convert into $e^{+}e^{-}$~\cite{pwn_pairprod2,pwn_pairprod3}.
-  The probability $\Upsilon$ (0-1) of a photon pair-converting in a magnetic field is calculated by Equation~\ref{eqn:pwn_pairprod},
+  The probability $\Upsilon$ (0-1) of a photon pair-converting in a magnetic field is calculated by via 
   
   \begin{equation}\label{eqn:pwn_pairprod}
-    \Upsilon = \frac{E}{mc^2} H \frac{e \hbar}{m^2c^3} \;\;,
+    \Upsilon = \frac{E}{mc^2} \frac{H}{c} \frac{e \hbar}{m^2c^2} \;\;,
   \end{equation}
   
   where $E$ is the photon energy, $H$ is the ambient magnetic field strength, $e$ is the electron charge, and $m$ is the mass of the electron~\cite{pwn_pairprod3}.
-  The factor $\frac{e \hbar}{m^2c^3}$ acts as a critical magnetic field strength, which for electrons is $\frac{1}{4.4\times10^{13}\,\textrm{Gauss}}$, similar in scale to the pulsar's surface magnetic field strength.
+  The factor $\frac{e \hbar}{m^2c^2}$ acts as a threshold magnetic field strength, above which the conversion rate becomes significant.
+  For electrons the threshold is $\frac{1}{4.4\times10^{13}\,\textrm{Gauss}}$, similar in scale to the pulsar's surface magnetic field strength.
+  %
+  % paper : https://journals.aps.org/rmp/pdf/10.1103/RevModPhys.38.626
+  % High-Energy Electromagnetic Conversion Processes in Intesnse Magnetic Fields, T. Erber, 1966
+  %    NOTICE: This paper has a mistake in equations 1.1 and 1.1a (a 'c' in 1.1a should be moved to 1.1, thats all)
+  %
+  % e = 1.602e-19 C
+  % hbar = 1.05e-34 J*s
+  % m_electron = 9.11e-31 kg
+  % c = 2.98e8 m/s
+  % 1 Gauss = 1e-4 kg/ A*s^2 = 1e-4 kg C^-1 s^-1
+  % 
+  % factor = e hbar / m^2 c^2
+  %        = 1.602e-19 C * 1.05e-34 J*s / (9.11e-31 kg)^2 (2.98e8 m/s)^2
+  %        = 4.4e13 G
   
   Charged particles can also be accelerated by a pulsar's magnetic fields, in a process called magnetic reconnection, shown in Figure~\ref{fig:magcon}.
-  In this mechanism, two oppositely oriented magnetic fields move towards each other at some velocity (Figure~\ref{fig:magcon}.a), due to the field lines being frozen into the local plasma.
-  As the magnetic field lines merge (Figures \ref{fig:magcon}.b and c), induced current flows produce electric fields (Figure~\ref{fig:magcon}.d) that can accelerate charged particles~\cite{magcon_crab,magcon_schopper,magcon_review,gamma_pwn1,gamma_pwn2}.
+  In this mechanism, two oppositely oriented magnetic fields move towards each other (Figure~\ref{fig:magcon}.a), due to the field lines being frozen into the local plasma.
+  As the magnetic field lines merge (Figures \ref{fig:magcon}.b and c), induced current flows produce electric fields (Figure~\ref{fig:magcon}.d) that {\color{red}can accelerate (what is the mechanism called?? -maria)} charged particles~\cite{magcon_crab,magcon_schopper,magcon_review,gamma_pwn1,gamma_pwn2}.
   
   \begin{figure}[ht]
     \centering
@@ -138,6 +153,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       In (b), reconnection starts to occur.
       In (c), reconnection occurs, and plasma moves outwards along the $y=0$ axis.
       In (d), the resulting electric fields from the moving plasma are shown in this scenario, from Ref.~\cite{magcon_crab}.
+      {\color{red}(What is $\delta$ on the y-axis and $\textrm{L}_{\textrm{x}}$ on the x-axis?? -maria)}
     }
     \label{fig:magcon}
   \end{figure}
@@ -175,8 +191,10 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   %\end{equation}
   %Which doesn't match the plot in Figure~\ref{fig:magcon}.d .
 
-  Another mechanism that produces high-energy charged particles is fermi acceleration\cite{fermi1949,highenergyelectron_snr}.
-  In general, this acceleration imparts energy to charged particles when they are reflected by an oncoming magnetic field.
+  Another mechanism that produces high-energy charged particles is Fermi acceleration\cite{fermi1949,highenergyelectron_snr}.
+  In general, this acceleration {\color{red}imparts energy (how much?? add equation and maybe a figure here -maria)} to charged particles when they are reflected by an oncoming magnetic field.
+  
+  {\color{red}(pause in adding maria's comments, around line 672 ??)}
   
   One environment where this can happen often is in the shockfront of a supernova, where the mechanism is called diffusive shock acceleration~\cite{dsa1,dsa2,dsa3,dsa4,dsa5}.
   During and after a supernova's initial detonation, charged fermions are quickly heated.
