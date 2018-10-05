@@ -19,12 +19,12 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
 \section{Production of TeV Gamma Rays}
 
   There are several mechanisms that can produce photons with TeV energies.
-  A gamma ray can start as a low-energy photon, then gain significant {\color{red}(please specify how much energy is gained?? -maria)} energy from {\color{red}electroweak interactions (which specific interactions, bremstrahlung?? -maria)} with electrons, referred to as a leptonic production.
+  A gamma ray can start as a low-energy photon, then gain significant energy from electroweak interactions with electrons, referred to as a leptonic production.
   Alternately, a gamma ray can be created from a high-energy proton colliding with another proton, which produces $\pi^0$'s that decay into gamma rays, referred to as hadronic production.
   However, leptonic and hadronic production are separate from how gamma rays are produced by dark matter.
   Instead, two WIMP dark matter paritlces may annihilate (directly or indirectly) into gamma rays, as is discussed in Section~\ref{dm_spectral}.
 
-  In leptonic production, electrons and low-energy photons collide, {\color{red}transferring energy (how much energy?? -maria)} to the photon.
+  In leptonic production, electrons and low-energy photons collide, transferring energy to the photon.
   This interaction is called upscattering or inverse Compton scattering~\cite{compton_effect}, and its feynman diagram is shown in Figure~\ref{fig:inv_compt_feyn}.
   
   \begin{figure}[ht]
@@ -137,7 +137,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   
   Charged particles can also be accelerated by a pulsar's magnetic fields, in a process called magnetic reconnection, shown in Figure~\ref{fig:magcon}.
   In this mechanism, two oppositely oriented magnetic fields move towards each other (Figure~\ref{fig:magcon}.a), due to the field lines being frozen into the local plasma.
-  As the magnetic field lines merge (Figures \ref{fig:magcon}.b and c), induced current flows produce electric fields (Figure~\ref{fig:magcon}.d) that {\color{red}can accelerate (what is the mechanism called?? -maria)} charged particles~\cite{magcon_crab,magcon_schopper,magcon_review,gamma_pwn1,gamma_pwn2}.
+  As the magnetic field lines merge (Figures \ref{fig:magcon}.b and c), induced current flows produce electric fields (Figure~\ref{fig:magcon}.d) that {\color{red}can accelerate (what is the mechanism called?? -maria)} charged particles~\cite{magcon_crab,magcon_schopper,magcon_review,gamma_pwn1,gamma_pwn2,magconsim2011,magconsim2014}.
   
   \begin{figure}[ht]
     \centering
@@ -153,7 +153,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       In (b), reconnection starts to occur.
       In (c), reconnection occurs, and plasma moves outwards along the $y=0$ axis.
       In (d), the resulting electric fields from the moving plasma are shown in this scenario, from Ref.~\cite{magcon_crab}.
-      {\color{red}(What is $\delta$ on the y-axis and $\textrm{L}_{\textrm{x}}$ on the x-axis?? -maria)}
+      In these figures, $\delta$ and $\textrm{L}_{\textrm{x}}$ are the distance parameters of the reconnection area.
     }
     \label{fig:magcon}
   \end{figure}
@@ -211,8 +211,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \label{fig:snr_shockfront}
   \end{figure}
   
-  In this situation, particles that cross the shockfront are reflected off the magnetic fields on the other side, gaining a small amount of energy each time.
-  {\color{red}(You need to sort this page. I got a bit confused here. You talk about the moving shockfront and the acceleration of particles with increasing energy in the first paragraph and start again with it on line 679. Is the paragraph of line 679 ff. connected to the previous paragraph or separate??  -maria)}
+  At the shockfront, particles that cross it are reflected off the magnetic fields on the other side, gaining a small amount of energy each time.
   Over many crossings, charged particles can gain high energies, though the higher the energy of the particle, the more likely it can escape the shockfront, since it's gyroradius increases as its energy increases.
   The amount of energy gained is governed by a parameter $\beta$, in Equation~\ref{eqn:snr_beta}, 
   
@@ -297,9 +296,10 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
 
 
   Protons accelerated in this manner form the majority of the showers detected by the VERITAS telescope, forming an irreducible background in the Galactic Center observations.
-  This background is irreducible due to the fact that proton and gamma-ray air showers are very similar, and cannot be classified with perfect accuracy.
+  This background is irreducible due to the fact that proton and gamma-ray air showers are very similar, and cannot be identified with perfect accuracy.
   
-  After either of these processes produce {\color{red}electrons (you jump from 'protons and gamma rays' to 'electrons', needs transition?? -maria)} with high energies, these electrons can then upscatter ambient photons to TeV energies.
+  Both of these processes, magnetic reconnection and diffusive shock acceleration, can accelerate protons, electrons, or any other charged particles.
+  When these processes produce electrons with high energies, these electrons can then upscatter ambient photons to TeV energies.
   Additionally, electrons spiralling through magnetic fields can produce synchrotron photons at X-ray energies, meaning fewer upscatters are needed to reach TeV energies~\cite{self_compton}.
 
   In hadronic processes, protons can be accelerated ($p_{accel}$) by Fermi acceleraton, by a supernova remnant~\cite{proton_snr_accel}, or as part of an active galactic nucleus jet~\cite{hadronic1,hadronic2}.
@@ -367,18 +367,27 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   The Galactic Center is a complex region of space, with many astrophysical sources of gamma rays.
   At its heart is a supermassive black hole around which is gamma-ray emission, though the production mechanism is still under debate.
   There are other gamma-ray sources as well, including dust along the galactic plane, supernova remnants, and inverse compton emission {\color{red}(is there a graphic that illustrates the diversity?? -maria)}.
+  The TeV gamma-ray emission from a few of these sources is visible in Figure~\ref{fig:hess_plane}.
   
-  {\color{red}(Please connect this paragraph to the previous one (??) -maria)}
-  Through kinematic observations of nearby stars, it has been inferred that the Galactic Center is home to a supermassive black hole, with a mass of \SI{4e6}{ \Msol{} }~\cite{sgra_massdist}.
-  The Galactic Center is a source of TeV gamma rays~\cite{gc_pointsrc_hess,gc_pointsource_hess2,gc_veritas_pointsource,gc_magic_pointsource}.
-  The VERITAS signifiance skymap of this source are shown in Figure~\ref{fig:veritas_gc_ridge}.
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.98\textwidth]{images/hess_plane_survey/survey.pdf}
+    \caption[HESS GC Survey]{
+      Signifiance map of the Galactic Center, from the HESS Galactic Plane Survey~\cite{hess_gc_plane}.
+      \CaptionBlankLine
+    }
+    \label{fig:hess_plane}
+  \end{figure}
+  
+  One of the prominent gamma-ray emitters near the Galactic Center~\cite{gc_pointsrc_hess,gc_pointsource_hess2,gc_veritas_pointsource,gc_magic_pointsource} happens to have several stars orbiting it.
+  Through kinematic observations of these nearby stars, it has been inferred that a supermassive black hole is present there, with a mass of \SI{4e6}{ \Msol{} }~\cite{sgra_massdist}.
+  The VERITAS signifiance skymap of this Galactic Center region is shown in Figure~\ref{fig:veritas_gc_ridge}.
   
   \begin{figure}[ht]
     \centering
     \includegraphics[width=0.95\textwidth]{images/veritas_gc_ridge/ridge.pdf}
     \caption[VERITAS View of the Galactic Center Ridge]{
       Galactic Center Ridge, from Ref.~\cite{VeritasGCRidge2015}.
-      {\color{red}(Compared to your status above "There are other gamma-ray sources as well,..." I would have expected more than two objects... (??) -maria)}
       \CaptionBlankLine
     }
     \label{fig:veritas_gc_ridge}
