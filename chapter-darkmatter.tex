@@ -515,18 +515,45 @@
   The Bino is the superpartner of the weak hypercharge, the Wino is the superpartner of the weak bosons, and the two Higgsino fields are superpartners to the Higgs field.
   The lightest of these Neutralinos has some properties that make it an excellent dark matter candidate, and is the WIMP candidate searched for in this thesis.
   Specifically, as it is the lightest Neutralino, other neutralinos will decay into it.
-  If R-parity is conserved, then this Neutralino will also be stable, and not decay into anything else.
-  This means it would be able to exist since the freezout without significant losses to its population~\cite{neutralino1,neutralino2,neutralino3}.
+  If R-parity is conserved, then this Neutralino will also be stable, and not decay into anything else~\cite{neutralino1,neutralino2,neutralino3}.
   
-  This freezout is relevant, since it indicates the self-interacting cross section of the WIMP.
-  Early in the development in the universe, when it was still expanding, its been theorized that WIMPs and SM particles were being created and annihilated very frequently.
+  \subsection{Relic Freezeout and WIMP Miracle}
+  
+  %This means it would be able to exist since the freezeout without significant losses to its population
+  
+  This freezeout is relevant, since it indicates the self-interacting cross section of the WIMP.
+  Early in the development in the universe, when it was still expanding, its been theorized that WIMPs were annihilating into SM particles, and SM particles were interacting and producing WIMPs.
+  The rates of these two types of interactions were such that that the number of WIMPs and SM particles remained constaint; the two particle populations were in equilibrium.
   After the universe expanded enough, the number density of WIMPs dropped, and they stopped running into each other.
-  As they weren't able to collide anymore, new ones stopped being produced, and the population of WIMPs did not change much after that time, hence its called a freezout.
-  The cross section of the WIMP heavily influences the time of the freezout, as well as the final number density.
+  As they weren't able to collide anymore, new ones stopped being produced, and the population of WIMPs did not change much after that time, hence its called a freezeout.
+  The boltzman equation for the abundance of WIMPs is:
+  
+  \begin{equation}\label{eqn:boltzmann_relic}
+  \frac{dn_{\chi}}{dt} + 3 H n_{\chi} = \left \langle \sigma_{A} v \right \rangle \left [ \left ( n^{eq}_{\chi} \right )^2 - \left ( n_{\chi} \right )^2 \right ] \;\;,
+  \end{equation}
+  
+  where $n_\chi$ is the WIMP comoving number density, $H$ is the hubble expansion rate ($\frac{\dot{a}}{a}$), $\left \langle \sigma_{A} v \right \rangle$ is the velocity-averaged cross section for $\chi\chi$ annihliating into lighter particles.
+  The parameter $n^{eq}_{\chi}$ is the equilibrium WIMP comoving number density.
+  This equation is numerically solved, and shown in Figure~\ref{fig:abundance}.
+  
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.75\textwidth]{images/relic_abundance_plot/abundance.pdf}
+    \caption[Relic Abundance vs Time]{
+      The relic abundance of WIMPs as a function of temperature, from Ref.~\cite{Jungman:1995df}.
+      $m$ is the WIMP mass, and $T$ is the universe's temperature, which decreases as the universe expands.
+    }
+    \label{fig:abundance}
+  \end{figure}
+  
+
+  The cross section of the WIMP heavily influences the time of the freezeout, as well as the final number density.
   
   This neutralino would also have a cross section of around \nicetilde{} \SI{3e-26}{ cm${}^2$ }~\cite{Jungman:1995df} {\color{red}(verify this is actually in Jungman 1995??)}.
   
   WIMP Miracle
+  
+  "Exact Cross Sections for the Neutralino WIMP Pair-Annihilation" : arxiv 0202009
   
 
   % Perkins 2003, section 7.11 is a good source
