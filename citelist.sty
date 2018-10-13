@@ -102,7 +102,11 @@
 %
 % These set up the table style to fit current guidelines
 \DeclareCaptionFormat{mtutable}{#1#2\\#3}
-\captionsetup[table]{format=mtutable,labelsep=none,justification=centering}
+\captionsetup[table]{
+  format=mtutable,
+  labelsep=none,
+  justification=raggedright,
+  singlelinecheck=false,}
 
 %
 % Allow for consistent section/subsection spacing. This Forces LaTeX 

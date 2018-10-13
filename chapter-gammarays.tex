@@ -565,7 +565,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     Other chosen parameters are specified in Table~\ref{tab:halo_nphotons}, to align with the VERITAS telescope performance, or the parameters of the dark matter analysis performed in later chapters.
     For the table parameters, the dark matter halo would only produce a VERITAS-detectable gamma ray between \SIrange{4}{70}{TeV} every 39 hours.
     This flux $\Phi$ is proportional to the $\sv$, so a factor of $n$ larger particle cross section would produce a factor of $n$ larger photon flux.
-    It is interesting to note that, if the entire VERITAS energy range of \SIrange{1.5}{70}{TeV} is used, the integrated photon spectrum increases to 0.13 events per annihilation, increasing the observed photon flux by a factor of 26.
+    It is interesting to note that, if the entire VERITAS energy range of \SIrange{1.5}{70}{TeV} is used, the integrated photon spectrum increases the observed photon flux by a factor of 26.
     
     \begin{table}[]
       \centering
@@ -577,7 +577,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
         Field of View                            & \ang{3}              \\
         Detectable Photon Energy Range           & \SIrange{4}{70}{TeV} \\
         Observatory Effective Area               & \SI{287000}{m^2}     \\
-        Annihilation Branch                      & $\chi\chi \rightarrow b\bar{b}$ \\
+        Annihilation Channel                     & $\chi\chi \rightarrow b\bar{b}$ \\
         DM Halo Shape                            & Einasto              \\
         \hline
         \textbf{Derived Values}                  & \\
@@ -588,7 +588,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
         \hline
       \end{tabular}
       \caption[Halo Model Parameters]{
-        Number of Gamma Rays from a Dark Matter Halo.
+        Number of gamma rays from a Dark Matter Halo.
         Field of view is the radial field of view of VERITAS.
         Observatory Effecitve area is the VERITAS effective area at \ang{28} telescope elevation (average elevation of Galactic Center at VERITAS's latitude), \ang{0.5} offset from GC, at the $\log_{10}$ mean energy (\SI{16.7}{TeV}) in the selected energy range.
         The Einasto halo shape parameters are chosen to be the same as in Section~\ref{dm_spatial}.
@@ -617,7 +617,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \label{fig:cherenkovangle}
   \end{figure}
 
-  Cherenkov photons are produced at an angle $\theta$ relative to the charged particle's path, determined by the index of refraction of the medium $n$, the speed of the charged particle $v$, and the speed of light in the medium $c$, as in Equation~\ref{eqn:cherenkovangle}.
+  Cherenkov photons are emitted at an angle $\theta$ relative to the charged particle's path, determined by the index of refraction of the medium $n$, the speed of the charged particle $v$, and the speed of light in the medium $c$, as in Equation~\ref{eqn:cherenkovangle}.
   For the air showers used in this analysis, the Cherenkov angle $\theta$ is \nicetilde\ang{1}.
   % showers are 10km up, light pool on ground is 130m diameter, \theta = ArcSin(130/10000) * 180 / pi = 0.73deg ~ 1deg
 
@@ -634,16 +634,16 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \caption[Chernekov Light Pool]{
       Cherenkov light from a gamma ray shower illuminating the ground.
       Due to the changing atmospheric density, the Cherenkov angle changes as the electromagnetic shower decends (Left), concentrating the emitted light into a ring-like pool (Right).
-      The initial gamma ray had an energy of \SI{1}{\TeV}.
+      The initial gamma ray in this simulated example had an energy of \SI{1}{\TeV}.
       Figure is from Ref.~\cite{Voelk}.
     }
     \label{fig:lightpool}
   \end{figure}
   
-  The spectrum of photons produced by the Cherenkov effect can be calculated with the Frank-Tamm formula~\cite{franktamm1,franktamm2} in Equation~\ref{eqn:franktamm},
+  The spectrum of photons produced by the Cherenkov effect can be calculated with the Frank-Tamm formula~\cite{franktamm1,franktamm2},
   
   \begin{equation}\label{eqn:franktamm}
-    \frac{dE}{dx\,d\omega}=\frac{(ze)^2 \, \omega}{c^2} \left ( 1 - \frac{c^2}{v^2 \;\epsilon(\omega)} \right )
+    \frac{dE}{dx\,d\omega}=\frac{(ze)^2 \, \omega}{c^2} \left ( 1 - \frac{c^2}{v^2 \;\epsilon(\omega)} \right ) \;\;,
   \end{equation}
   
   where $E$ is the energy emitted as Cherenkov radiation, $x$ is the length of the charged particle path, $ze$ is the charge of the particle, $\omega$ is the emitted Cherenkov photon frequency, $c$ is the speed of light (phase velocity) in the medium, $v$ is the speed of the particle, and $\epsilon(\omega)$ is the frequency-dependent permittivity.
@@ -662,20 +662,19 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   These superluminal-in-water electrons then create the blue Cherenkov photons imaged here.
   
   Now that it is understood that Chernekov light is produced by charged particles, the next Section~\ref{sec:atmoshowers} discusses how particles from outer space can produce waves of Cherenkov photons.
-  These UV- and visible-spectrum Cherenkov photons are then imaged and recorded by the VERITAS observatory, discussed in Chapter~\ref{chapter:veritas}.
+  These UV- and visible-spectrum Cherenkov photons are then imaged and recorded by the VERITAS observatory, as discussed in Chapter~\ref{chapter:veritas}.
   {\color{red}(this is a good transition paragraph, add more between the other subsections?? -maria)}
   
     
 \section{Atmospheric Showers}\label{sec:atmoshowers}
 
   When a particle strikes an atom of Earth's atmosphere at GeV or higher energies, it sets off a cascade of energetic particles called an air shower~\cite{Bethe1934,Klein1999}.
-  When the primary particle is composed of one or more hadrons, like a proton or iron atom, it creates a hadronic shower.
+  When the primary particle consists of one or more hadrons, like a proton or iron atom, it creates a hadronic shower.
   When the primary is a gamma ray or a charged lepton, it creates an electromagnetic shower.
   Electromagnetic showers produce a cascade of $e^{\pm}$s and $\gamma$s, where each successive generation of particles tends to have more particles but less energy per particle than the last.
   {\color{red}(did $e^{\pm}$ and $\gamma$ get defined before?? -maria)}
   To start the shower, the primary gamma ray will interact with an atmospheric atom, producing an $e^{-}e^{+}$ pair, each with roughly half the primary gamma ray's energy, as shown in Figure~\ref{fig:emcascade}.
-  The $e^{-}$ and $e^{+}$ emit bremsstrahlung photons, and incite the atmosphere to emit Cherenkov photons.
-  Cherenkov photon production is discussed further in Section~\ref{sec:cherenkov}.
+  The $e^{-}$ and $e^{+}$ emit bremsstrahlung photons, and incite the atmosphere to emit Cherenkov photons, discussed further in Section~\ref{sec:cherenkov}.
   The higher-energy bremsstrahlung photons then produce $e^{-}e^{+}$ pairs, which go on to produce more bremsstrahlung and Cherenkov photons.
   As each newly created particle has less energy than its parent particle, eventually the particles in the shower don't have enough energy to produce additional child-particles.
   When electrons have around \SI{80}{MeV}\footnote{This is the energy where, for an electron, the loss of energy due to ionization is equal to the loss of energy due to bremstrahlung~\cite{tanabashi2018review,berger196410}} or less of kinetic energy, energy losses due to ionization begin to dominate~\cite{pdg_2014}.
@@ -694,16 +693,19 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   Of all detected air showers, \nicetilde{}99\% are due to protons and electrons, rather than gamma rays.
   {\color{red}(why so many more protons and electrons than gamma rays?? -maria)}
   Protons produce hadronic showers which also produce Cherenkov light, like electromagnetic showers.
-  In the initial collision, the astrophysical proton $p_{\textrm{cosmic}}$ interacts with an atmospheric proton $p_{\textrm{atmo}}$.
-  The proton-proton collision then produces a set of pions, as in Equation~\ref{eqn:protoncollision}, as well as other particles (`$...$') whose production rates vary with available interaction energy.
-  These other particles include additional protons, neutrons, and other hyperons, as well as kaons, other mesons, and additional nucleons.
-  These all go on to interact and decay to produce further particles, as part of a hadronic cascade.
+  In the initial collision, the {\color{red}astrophysical (orel says remove??)} proton $p_{\textrm{cosmic}}$ interacts with an atmospheric proton $p_{\textrm{atmo}}$.
+  The proton-proton collision then then may producea set of pions, 
   
   \begin{equation}\label{eqn:protoncollision}
-    p_{\textrm{cosmic}} + p_{\textrm{atmo}} \rightarrow \pi^+ + \pi^+ + \pi^0 + ...
+    p_{\textrm{cosmic}} + p_{\textrm{atmo}} \rightarrow \pi^+ + \pi^+ + \pi^0 + X \;\;,
   \end{equation}
   
-  The cascade also creates electrons, positrons, and photons, so after each generation of the cascade, roughly 1/3 of the hadronic shower's energy is transferred into a new electromagnetic sub-shower.
+  as well as other particles (`$X$') whose production rates vary with available interaction energy.
+  These other particles include additional protons, neutrons, and other hyperons, as well as kaons, other mesons, and additional baryons and nucleons.
+  These all go on to interact and decay to produce further particles, as part of a hadronic cascade.
+  
+  The $\pi^0$ decays into two gamma rays, which produce an electromagnetic cascade of electrons, positrons, and lower-energy photons.
+  After each generation of the hadronic cascade, roughly 1/3 of the shower's energy is transferred into a new electromagnetic sub-shower.
   The interaction produces $\pi^+\pi^+\pi^0$, where each particle receives \nicetilde $\frac{1}{3}$ of the initial proton's energy.
   This $\pi^{0}$ decay is shown in Figure~\ref{fig:feynman_pi0}.
   
@@ -736,13 +738,13 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   The \pip{}'s and \pim{}'s then decay into $\mu^{+}\nu_{\mu}$ and $\mu^{-}\bar{\nu}_{\mu}$ pairs, respectively.
   The \pip{} decay is shown in Figure~\ref{fig:feynman_piplus}.
   The \pio{} quickly decays into pair of gamma rays, each of which then start their own electromagnetic shower.
-  The \pip{} and \pim{} have longer decay times ($\pi^{\pm} \rightarrow $\SI{3e-8}{s} vs $\pi^{0} \rightarrow $\SI{9e-17}{s}~\cite{pdg_2014}), allowing them to carry energy farther away from the central shower axis.
-  Both of these effects create sub-showers farther away from the primary particle axis, which tends to cause hadronic showers (and their resulting Cherenkov images, discussed in Section \ref{sec:cherenkov}) to be wider than a purely electromagnetic shower of the same length. 
+  The \pip{} and \pim{} have longer lifetimes ($\pi^{\pm} \rightarrow $\SI{3e-8}{s} vs $\pi^{0} \rightarrow $\SI{9e-17}{s}~\cite{pdg_2014}), allowing them to carry energy farther away from the central shower axis.
+  Both of these effects create sub-showers farther away from the primary particle axis, which tends to cause hadronic showers, and their resulting Cherenkov images, to be wider than a purely electromagnetic shower of the same length. 
   
   In Figure~\ref{fig:gamma_vs_proton_airshower}, the differences between a gamma-ray shower (left) and a proton shower (right) are shown.
   In the figure, darker areas indicate more Cherenkov photons are produced by charged particles in the shower.
   The gamma-ray shower produces most of its Cherenkov photons along the vertical core of the shower, while the proton shower produces Cherenkov photons spread out in a wider, fan-like shape.
-  The initial energies were chosen as such because a \SI{1}{TeV} proton will on average divest $\frac{1}{3}$ of its energy to the \pio{}.
+  The initial energies were chosen as such because a \SI{1}{TeV} proton will on {\color{red}average divest $\frac{1}{3}$ of its energy to the \pio{} (I don't think that 1/3 of the initial energy goes to one pi0?? -orel)}.
   This means that the gamma-ray and the proton-produced-pion start with the same amount of available energy, and that both showers produce similar amounts of Cherenkov light.
   The \pio{} then decays into the electromagnetic sub-shower in the interior of the proton shower.
   The net effect is that, when compared to a gamma ray, a proton must start with 3 times the energy to produce a similar amount of Cherenkov photons, which are distributed in a wider pattern.
