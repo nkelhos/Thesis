@@ -102,9 +102,11 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   % Eup = 4.67e11 eV = 467 GeV
   
   The parameter $E_{0}$ is the energy of the original photon.
-  At Earth, astrophysical electrons are detected at energies of \SI{500}{GeV}~\cite{500GeVElectrons,fermi_electron}.
-  {\color{red}(I think the latest measurement by HESS went to energies of up to a few TeV. Maybe look at the proceedings from last year's ICRC for that? Would probably not change much the numbers at the rest of the paragraph, but you should take the latest values. ?? -orel)}
-  At these energies, the Lorentz factor is $\gamma = 10^6$.
+  At Earth, astrophysical electrons have been detected at energies of \SI{500}{GeV}~\cite{500GeVElectrons,fermi_electron}, and potentially as high as \SI{20}{TeV}~\cite{hess2017_electronspectrum}.
+  % orel suggests looking at ICRC 2017 HESS electron spectrum up to 20 TeV?
+  %   here: https://indico.snu.ac.kr/indico/event/15/session/5/contribution/694/material/slides/0.pdf
+  %   its just a talk, can't find a proceeding of science for it
+  At energies of \SI{500}{GeV}, the Lorentz factor is $\gamma = 10^6$.
   With this Lorentz factor, upscattered photons can increase their energy by up to\footnote{This is the maximum average energy gain when the upscattered photon is emitted back along its original trajectory.} $\gamma^{2} = 10^{12}$.
   For example, a green photon ($\lambda_{\textrm{green}}=550\,\textrm{nm}$, $E_{\textrm{green}}=0.3\,\textrm{eV}$) could be upscattered to as high as \SI{467}{GeV}, becoming a gamma ray detectable by VERITAS.
   
@@ -298,16 +300,17 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   %   particle tends to escape after (B1-B2)*1/4 crossing cycles
 
 
-  Protons accelerated in this manner form the majority of the showers detected by the VERITAS telescope, forming an irreducible background in the Galactic Center observations.
-  This background is irreducible due to the fact that the Cherenkov images of proton and gamma-ray air showers have many similarities, and cannot be identified with perfect accuracy.
-  {\color{red}(This paragraph looks out-of-place. Did it move by accident?? -orel)}
   
   Both of these processes, magnetic reconnection and diffusive shock acceleration, can accelerate protons, electrons, or any other charged particles.
   When these processes produce electrons with high energies, these electrons can then upscatter ambient photons to TeV energies.
   Additionally, electrons spiralling through magnetic fields can produce synchrotron photons at X-ray energies, meaning fewer upscatters are needed to reach TeV energies~\cite{self_compton}.
 
+  Protons accelerated by these mechanisms form the majority of the showers detected by the VERITAS telescope, forming an irreducible background in the Galactic Center observations.
+  This background is irreducible due to the fact that the Cherenkov images of proton and gamma-ray air showers have many similarities, and cannot be identified with perfect accuracy.
+  {\color{red}(ask orel if this is still out of place?? -orel)}
+
   In hadronic processes, protons can be accelerated ($p_{accel}$) by Fermi acceleraton, by a supernova remnant~\cite{proton_snr_accel}, or as part of an active galactic nucleus jet~\cite{hadronic1,hadronic2}.
-  {\color{red}(Maybe add just one sentence saying that protons can be accelerated in the same way as the electrons you discussed before, just to give it a bit more importance?? maybe just remove 'inverse compton', since this is included in the 'dust along the galactic plane'  -orel)}
+  % orel commented that a sentence should be added saying that protons can be accelerated in the same way as the electrons discussed earlier
   Then, upon striking an ambient proton ($p_{ambient}$), the interaction can, in some cases, produce $\pi^{+}\pi^{+}\pi^{0}$, and other particles $X$~\cite{pp_pion,pp_pion2,pp_pion3}.
   
   \begin{equation}\nonumber
@@ -322,7 +325,8 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   While other products from the $pp$ interaction may also produce gamma rays, the $\pi^0$ decay is the dominant production channel.
   Much of the diffuse gamma-ray component of the galactic disk is due to extra-galactic high-energy protons colliding with the protons of the galactic plane~\cite{GalacticDiffuseGammaRays,extragalactic_agn}.
   %Active galactic nuclei posess particle jets, which can accelerate particles when the jet shocks into the extragalactic medium.
-
+  
+  
   \subsection{Dark Matter Interactions}\label{dmgammaproduction}
     
     The general dark matter particle searched for in this thesis is a WIMP.
@@ -373,8 +377,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   %At its heart is a supermassive black hole around which gamma-ray emission is observed, though the production mechanism is still under debate.
   At its heart, kinematic observations of nearby stars can be used to infer the presence of a supermassive black hole, with a mass of \SI{4e6}{ \Msol{} }~\cite{sgra_massdist}.
   Around this black hole, gamma ray emission is observed~\cite{gc_pointsrc_hess,gc_pointsource_hess2,gc_veritas_pointsource,gc_magic_pointsource}, though the production mechanism is still under debate.
-  There are other gamma-ray sources as well, including dust along the galactic plane, supernova remnants, and inverse compton emission {\color{red}(is there a graphic that illustrates the diversity?? -maria)}.
-  {\color{red}(inverse compton emission is not the same 'class' as dust and supernova remnants.  I would change or remove.  See also comment below about this, maybe change both to the same thing?? -orel)}
+  There are other gamma-ray sources as well, including dust along the galactic plane and supernova remnants {\color{red}(is there a graphic that illustrates the diversity?? -maria)}.
   The TeV gamma-ray emission from a few of these sources is visible in Figure~\ref{fig:hess_plane}.
   
   \begin{figure}[ht]
