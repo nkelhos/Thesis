@@ -398,9 +398,9 @@
     
     \begin{figure}[ht]
       \centering
-      \includegraphics[width=0.85\textwidth]{images/cmb_spectra_planck_2015/cmb_spectra.pdf}
+      \includegraphics[width=0.85\textwidth]{images/cmb_spectra_planck_2018/cmb_spectra.pdf}
       \caption[Cosmic Micrwave Background Correlation Spectrum]{
-        Correlation spectra from CMB temperature measurements with the Planck satellite~\cite{planck2015_cmb_spectra}.
+        Correlation spectra from CMB temperature measurements with the Planck satellite~\cite{planck_dm_limit}.
         The upper plot shows the spectra, the lower panel shows the residuals.
       }
       \label{fig:cmb_correlation_spectra}
@@ -458,12 +458,22 @@
                & \textbf{Value}                 & \textbf{Unit} & \textbf{Description} \\
     \hline 
     $\Omega_b$ & $ 4.915  \pm0.033                 $ & \%   & Universe's fraction of energy in Baryons \\
+
     $\Omega_c$ & $ 26.37  \pm0.264                 $ & \%   & Universe's fraction of energy in Dark Matter \\
-    $\thetamc$ & $(1.04089\pm0.00031)\times 10^{-2}$ & {\color{red}??}   & Angular size of the sound horizon \\
-    $\tau$     & $(5.40   \pm0.74   )\times 10^{-2}$ & {\color{red}??}   & Thompson scattering optical depth \\
+
+    $\thetamc$ & $(1.04089\pm0.00031)\times 10^{-2}$ & Radians & Angular size of the sound horizon \\
+    % its radians: from arxiv 1807.06209, equation 7 and the two lines below that
+    % https://ned.ipac.caltech.edu/level5/Sept02/Reid/Reid5_2.html , equation 46
+
+    $\tau$     & $(5.40   \pm0.74   )\times 10^{-2}$ & unitless  & Optical depth to reionization\\
     % arxiv: 0205436 , section II, 3rd paragraph
-    $A_s$      & $(2.097  \pm0.029  )\times 10^{-9}$ & {\color{red}??}   & Seed density spectrum amplitude \\
-    $n_s$      & $ 0.9652 \pm0.0042                $ &      & Seed density spectrum spectral index \\
+    % reionization optical depth, from https://lambda.gsfc.nasa.gov/education/graphic_history/taureionzation.cfm :
+    %   "the optical depth to reionization, τ, is a unitless quantity which provides a measure of the line-of-sight free-electron opacity to CMB radiation"
+
+    $A_s$      & $(2.097  \pm0.029  )\times 10^{-9}$ & unitless   & Seed density spectrum amplitude \\
+    % A_s is 'dimensionless': https://arxiv.org/pdf/1303.5076.pdf , paragraph above equation 2
+
+    $n_s$      & $ 0.9652 \pm0.0042                $ & unitless   & Seed density spectrum spectral index \\
     \hline 
     \end{tabular}
   \end{table}
@@ -471,6 +481,7 @@
   These are shown in Table~\ref{tab:six_params}.
   The parameters $\Omega_b$ and $\Omega_c$ are the fraction of the universe's energy stored in baryons and cold dark matter, respectively.
   The parameter $\thetamc$ is the angular range that could be influenced during the BAOs produced after recombination.
+  This is the comoving distance a sound wave could have traveled between the beginning of the universe and recombination.
   The parameter $\tau$ describes how opaque the universe became to photons during reionization, where the first stars started to reheat atoms and free electrons.
   The parameters $A_s$ and $n_s$ govern the amplitude and the spectral index of the initial seed perturbations in the early universe.
   These universe-scale parameters determine how the universe evolved over time.
