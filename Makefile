@@ -2,13 +2,13 @@
 PARTS = abstract.tex \
 				acknowledgements.tex \
 				tableofcontents.tex \
-				chapter-intro.tex \
-				chapter-darkmatter.tex \
-				chapter-gammarays.tex \
-				chapter-veritas.tex \
-				chapter-reconstruction.tex \
-				chapter-analysis.tex \
-				chapter-conclusion.tex \
+				chapter-1intro.tex \
+				chapter-2darkmatter.tex \
+				chapter-3gammarays.tex \
+				chapter-4veritas.tex \
+				chapter-5reconstruction.tex \
+				chapter-6analysis.tex \
+				chapter-7conclusion.tex \
 				bibliography.tex \
 				citelist.bib \
 				appendix.tex \

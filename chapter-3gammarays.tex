@@ -11,8 +11,8 @@
 
 
 This analysis searches for dark matter using gamma rays, thus a discussion of gamma rays and their properties is necessary.
-In this chapter three different topics are discussed, including background gamma rays, dark matter gamma rays, and detecting gamma rays in general..
-The first is the astrophysical mechanisms that produce gamma rays, a background for detecting dark matter gamma rays..
+In this chapter three different topics are discussed, including background gamma rays, dark matter gamma rays, and detecting gamma rays in general.
+The first is the astrophysical mechanisms that produce gamma rays, a background for detecting dark matter gamma rays.
 The second is how dark matter around the Galactic Center can produce gamma rays.
 The third topic is how gamma rays induce air showers in the Earth's atmosphere.
 
@@ -324,7 +324,6 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   
   Protons accelerated by these mechanisms form the majority of the showers detected by the VERITAS telescope, forming an irreducible background in the Galactic Center observations.
   This background is irreducible due to the fact that the Cherenkov images of proton and gamma-ray air showers have many similarities, and cannot be identified with perfect accuracy.
-  {\color{red}(ask orel if this is still out of place?? -orel)}
   
   \subsection{Dark Matter Interactions}\label{dmgammaproduction}
     
@@ -337,7 +336,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       \includegraphics[width=0.65\textwidth]{images/3waystodetect/3waystodetect.pdf}
       \caption[Three Search Techniques]{
         The three general search techniques for dark matter.
-        The $\chi$ is a dark matter particle, while $s$ is a standard model particle.
+        The $\chi$ is a dark matter particle, while $S$ is a standard model particle.
       }
       \label{fig:3_searches}
     \end{figure}
@@ -346,8 +345,8 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     %These detectors include scintillation crystals with avalanche photodiodes and silicon strip detectors.
     %Some of these detectors are within magnetic fields that curve charged particles, aiding in their measurement.
     %Since the initial particles are accelerated to known energies, and the output fragment particles are well measured, searching for any break from conservation laws may hint at dark matter particles. 
-    In collider searches, $ss \rightarrow \chi\chi$, missing transverse energy is sought as dark matter particles are not expected to interact with the detector.
-    For direct searches, $\chi s \rightarrow \chi s$, sensitive particle detectors are built deep underground.
+    In collider searches, $SS \rightarrow \chi\chi$, missing transverse energy is sought as dark matter particles are not expected to interact with the detector.
+    For direct searches, $\chi S \rightarrow \chi S$, sensitive particle detectors are built deep underground.
     When a WIMP scatters off of a nucleus within the detector, the nuclear recoil can be observed, through signals such as crystal phonons, excitation and release of photons, or ionization.
     Being underground shields the detectors from cosmic rays, which create background collisions that can mimic WIMP signals.
     For example, in liquid Xenon detectors, WIMP particle collisions in the liquid produce UV photons and electrons, which are used to infer the presence of the WIMPS~\cite{direct_lux,direct_xenon}.
@@ -362,9 +361,10 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     This analysis searches for an excess of gamma rays, as the center of our galaxy is believed to host a dark matter halo.
     This spherical halo would allow for many $\chi\chi$ annihilations, producing gamma rays via: 
     
-    $$\chi\bar{\chi} \rightarrow S\bar{S} \rightarrow \gamma\gamma$$
+    $$\chi\bar{\chi} \rightarrow S\bar{S}$$
 
-    where $S\bar{S}$ can be any quark or lepton particle-antiparticle pair ($t\bar{t}$, $u\bar{u}$, $c\bar{c}$, $s\bar{s}$, $e^{-}e^{+}$, etc).
+    where $S\bar{S}$ can be any particle-antiparticle pair ($t\bar{t}$, $b\bar{b}$, $u\bar{u}$, $s\bar{s}$, $e^{-}e^{+}$, $\nu_{e}\bar{\nu_{e}}$, $\gamma\gamma$, $gg$, $hh$, etc).
+    The particle-antiparticle pairs then annihilate or decay into different spectra of photons ($\gamma$).
     These different annhilation channels can produce different spectra of gamma rays, which will also vary based on the WIMP mass and cross section chosen.
     This is described further in Section \ref{dm_spectral}.
 
@@ -374,7 +374,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   
   The Galactic Center is a complex region of space, with many astrophysical sources of gamma rays.
   %At its heart is a supermassive black hole around which gamma-ray emission is observed, though the production mechanism is still under debate.
-  At its heart, kinematic observations of nearby stars can be used to infer the presence of a supermassive black hole, with a mass of \SI{4e6}{ \Msol{} }~\cite{sgra_massdist}.
+  At its heart, kinematic observations of nearby stars have been used to infer the presence of a supermassive black hole, with a mass of \SI{4e6}{ \Msol{} }~\cite{sgra_massdist}.
   Around this black hole, gamma ray emission is observed~\cite{gc_pointsrc_hess,gc_pointsource_hess2,gc_veritas_pointsource,gc_magic_pointsource}, though the production mechanism is still under debate.
   There are other gamma-ray sources as well, including dust along the galactic plane and supernova remnants {\color{red}(is there a graphic that illustrates the diversity?? -maria)}.
   The TeV gamma-ray emission from a few of these sources is visible in Figure~\ref{fig:hess_plane}.
@@ -431,27 +431,23 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
 
   \subsection{Dark Matter and Gamma Rays}
     Primarily, indirect searches focus on annihilating WIMPs, as the predicted decaying WIMP produces a lower flux of standard model particles than annihilation.
-    WIMPs may annihilate into any standard model particle-antiparticle pair, but most studies examine a WIMP annihilating into a quark-antiquark or gamma-ray photon pair.
-    For example, two annihilating WIMPs may produce a $t\bar{t}$ pair, which then decays into $W^+bW^-\bar{b}$~\cite{pdg2016}.
-    Alternately, other pairs may be produced, like  $b\bar{b}$, $c\bar{c}$, $W^+W^-$, $u^+u^-$, or $\tau^+\tau^-$, though their branching ratios and cross sections are not currently known.
+    WIMPs may annihilate into any standard model particle-antiparticle pair, but most studies examine a WIMP annihilating into a quark-antiquark or gamma-ray photon pair~\cite{pdg2016}.
     These different annihilations produce different spectra of final gamma rays.
     The final spectrum of gamma rays used in this analysis is calculated in Section~\ref{dm_spectral}.
+    After the gamma-ray spectrum is understood, the spatial distribution of the annihilations is also discussed in Section~\ref{dm_spatial}.
+    The expected flux of gamma rays from a halo can then be calculated by combining these spatial and spectral models.
   
   \subsection{Spectrum of Gamma Rays from WIMP Annihilations}\label{dm_spectral}
     
     In order to calculate the gamma-ray brightness of the dark matter halo, the produced spectrum from each WIMP annihilation must be known.
-    The distribution of these annihilations depends on the dark matter density, which is discussed after this in Section~\ref{dm_spatial}.
-    Each WIMP annihilation can have distinct outcomes (each producing different pairs of particles), referred to as annihilation channels.
-    WIMPs may annihilate directly into two gamma rays (the $\gamma\gamma$ channel), or may instead produce a quark-antiquark pair ($b\bar{b}$, $t\bar{t}$, ...), a lepton-antilepton pair, or {\color{red}almost (why almost?? -maria)} any other standard model particle-antiparticle pair.
-
-    {\color{red}(weave these two paragraphs (above and below) into a single coherent paragraph?? -orel)}
-
-    Non-gamma-ray annihilation channels may still indirectly produce gamma rays as the original particle pair decays.
-    {\color{red}Many (why many?? -maria)} standard model interactions also result in a mix of channels, where the same interaction may produce different sets of particles with different probabilities, so WIMP annihilations may also have this feature.
-    {\color{red}(These "mix of channels" are referred to as branching ratios. I am not sure you need the long explanation though. Probably enough to say that you are searching only in the bb channel and whatever you assume the branching ratio for this channel is (what is it actually? 100\% ?? -orel)}
-    For an example set of 100 WIMP annihilation pairs, 80 pairs may annihilate into a $t\hat{t}$ pair, but then another 10 pairs may annihilate into a $b\hat{b}$ pair, and the remaining 10 pairs annihilate into other standard model particles.
-    {\color{red}(where do you get these numbers/probabilities from?? -maria)}
-    However, these mixed-channel searches are beyond the scope of this analysis.
+    The spectrum accounts for the distribution of gamma-ray energies.
+    Different annihilation products, called channels, can produce different spectra.
+    For instance, the $\chi\chi \rightarrow \gamma\gamma$ channel will produce a spectrum with a single spike at the WIMP's mass, while the $\chi\chi \rightarrow b\bar{b}$ channel will produce a curved power law spectrum of photons, shown in Figure~\ref{fig:chichi_spectrum}.
+    As WIMP properties are not well understood, all particle-antiparticle pairs can be considered as possible annihilation channels.
+    In addition, WIMP annihilations may have branching ratios, where a population of WIMPs will annihilate into different channels with different probabilities.
+    As a made up example, for 100 WIMP annihilations, 80 may annihilate into $b\bar{b}$, while the remaining 20 annihilate into a gluon-gluon $gg$ pair.
+    However, branching ratios are beyond the scope of this analysis, so only the $100\% \rightarrow b\bar{b}$ annihilation channel is considered.
+    
     The software package CLUMPY~\cite{CLUMPYcode} is used in this thesis to calculate the gamma-ray spectra for each annihilation channel.
     The spectral models that CLUMPY uses are based on the annihilation spectra in the PPPC 4 DM ID~\cite{pppc4_dm_spectra,pppc4_ewcorrections}.
     These spectra are calculated using monte carlo simulations performed with PYTHIA~\cite{pythia} and HERWIG~\cite{herwig}.
@@ -487,7 +483,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
         \hline
         \textbf{Estimated Parameters}            & \\
         $m_{\chi}$                               & \SI{10}{TeV}         \\
-        relic cross section $\left < \sigma v \right >$        & \SI{3e-26}{cm^3/s}   \\
+        Relic cross section $\left < \sigma v \right >$        & \SI{3e-26}{cm^3/s}   \\
         Field of View                            & \ang{3}              \\
         Detectable Photon Energy Range           & \SIrange{4}{70}{TeV} \\
         Observatory Effective Area               & \SI{287000}{m^2}     \\
@@ -687,7 +683,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   When a particle strikes an atom of Earth's atmosphere at GeV or higher energies, it sets off a cascade of energetic particles called an air shower~\cite{Bethe1934,Klein1999}.
   When the primary particle consists of one or more hadrons, like a proton or iron atom, it creates a hadronic shower.
   When the primary is a gamma ray or a charged lepton, it creates an electromagnetic shower.
-  Electromagnetic showers produce a cascade of $e^{\pm}$s and $\gamma$s, where each successive generation of particles tends to have more particles but less energy per particle than the last.
+  Electromagnetic showers produce a cascade of electrons, positrons ($e^{+}$), and photons, where each successive generation of particles tends to have more particles but less energy per particle than the last.
   {\color{red}(did $e^{\pm}$ and $\gamma$ get defined before?? -maria)}
   To start the shower, the primary gamma ray will interact with an atmospheric atom, producing an $e^{-}e^{+}$ pair, each with roughly half the primary gamma ray's energy, as shown in Figure~\ref{fig:emcascade}.
   The $e^{-}$ and $e^{+}$ emit bremsstrahlung photons, and incite the atmosphere to emit Cherenkov photons, discussed further in Section~\ref{sec:cherenkov}.
@@ -716,7 +712,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     p_{\textrm{cosmic}} + p_{\textrm{atmo}} \rightarrow \pi^+ + \pi^+ + \pi^0 + X \;\;,
   \end{equation}
   
-  {\color{red}(equation should be p + nucleon -> ???)}
+  {\color{red}(remove equation, and replace $p_\textrm{atmo}$ with nucleon N??)}
   
   as well as other particles (`$X$') whose production rates vary with available interaction energy.
   These other particles include additional protons, neutrons, and other hyperons, as well as kaons, other mesons, and additional baryons and nucleons.
