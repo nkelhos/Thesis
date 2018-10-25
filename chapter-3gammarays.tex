@@ -202,9 +202,17 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   One environment where this can happen often is in the shockfront of a supernova, where the mechanism is called diffusive shock acceleration~\cite{dsa1,dsa2,dsa3,dsa4,dsa5}.
   During and after a supernova's initial explosion, charged fermions are quickly heated.
   These heated particles then expand outwards, creating a moving shockfront at the boundary between the expanding particles and the surrounding Inter-Stellar Medium (ISM).
-  These expanding particles {\color{red}bring their own magnetic fields (how do they bring their own magnetic fields??  I think alfven's theorem, but I'm not sure)}, which reflect charged particles.
+  These expanding particles bring their own magnetic fields due to Alfven's theorem~\cite{alfven1,alfven2}, which then reflect other charged particles.
   % MHD for astrophysicists: https://wwwmpa.mpa-garching.mpg.de/~henk/mhd12.pdf
   %    see equation 1.27 and surrounding paragraphs
+  % from wikipedia https://en.wikipedia.org/wiki/Alfv%C3%A9n%27s_theorem
+  %    "For the perpendicular motions of the fluid, the field lines will push the fluid or otherwise they will be dragged with the fluid."
+  % from https://warwick.ac.uk/fac/sci/physics/research/cfsa/people/valery/teaching/khu_mhd/KHU_mhd_handout.pdf , pg 23
+  %   "Consequently, the magnetic field lines are frozen into the plasma: plasma can move freely along field
+  %     lines, but, in motion perpendicular to them, either the field lines are dragged with the plasma or the field
+  %     lines push the plasma."
+  %   However:
+  %     "Alfv´en’s Theorem prohibits reconnection of magnetic field lines."
   As the shockfront expands, it also runs into the ambient magnetic fields in the ISM, which can also reflect charged particles.
   This shockfront is shown in Figure~\ref{fig:snr_shockfront}.
 
@@ -429,8 +437,6 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   Imaging atmospheric Cherenkov telescopes like H.E.S.S., MAGIC, and VERITAS can indirectly search for dark matter.
   In these searches, these observatories detect gamma rays that are emitted when two dark matter particles annihilate.
   Because the rate of annihilation depends on the local dark matter density, the gamma-ray emission rate is affected by the radially-dependent structure of the dark matter halo.
-  %the radially-dependent structure of dark matter halos also affects the gamma-ray emission rate.
-  %{\color{red}(I suggest after the comma "the gamma-ray emission rate is affected by the radially-dependent structure of dark-matter halos." ?? -orel)}
 
   \subsection{Dark Matter and Gamma Rays}
     Primarily, indirect searches focus on annihilating WIMPs, as the predicted decaying WIMP produces a lower flux of standard model particles than annihilation.
@@ -560,7 +566,6 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     When choosing which dark matter target to observe with a gamma-ray observatory, knowing the gamma-ray brightness of different sources can be useful.
     This Einasto density profile can be integrated to calculate the gamma-ray brightness, independent of the WIMP model being searched for.
     For annihilating dark matter, $\rho_{\textrm{DM}}\left(r\right)^2$ must be integrated along the line of sight.
-    %{\color{red}Equation~\ref{eqn:dmflux} can be used to calculate the amount of (orel highlighted this??)} gamma rays produced by these annihilations.
     The flux of gamma rays produced by these annihilations is given by,
     
     \begin{equation}\label{eqn:dmflux}
@@ -679,7 +684,6 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   
   Now that it is understood that Chernekov light is produced by charged particles, the next Section~\ref{sec:atmoshowers} discusses how particles from outer space can produce waves of Cherenkov photons.
   These UV- and visible-spectrum Cherenkov photons are then imaged and recorded by the VERITAS observatory, as discussed in Chapter~\ref{chapter:veritas}.
-  {\color{red}(this is a good transition paragraph, add more between the other subsections?? -maria)}
   
     
 \section{Atmospheric Showers}\label{sec:atmoshowers}
