@@ -504,47 +504,76 @@
   \subsection{Relic Freezeout and WIMP Miracle}
   
   %This means it would be able to exist since the freezeout without significant losses to its population
+  The relic freezeout refers how dark matter may have behaved in the past.
+  A population of dark matter particles existed during the early universe (a relic particle), and that at a later time the universe expanded enough that their numbers stopped changing (the freezeout).
   
-  This freezeout is relevant, since it hints at the self-interacting cross section of the WIMP.
-  Early in the development in the universe, when it was still expanding, its been theorized that WIMPs were annihilating into SM particles (S), and SM particles were interacting and producing WIMPs.
+  This freezeout is relevant because it hints at the self-interacting cross section of the WIMP.
+  Early on when the universe was still expanding, its been theorized that WIMPs were annihilating into SM particles, and SM particles were interacting and producing WIMPs.
   The number density and cross section of these two particle populations were such that that the number of WIMPs and SM particles remained constant; the two particle populations were in thermal equilibrium.
   
-  %\begin{equation}
-    %\chi\chi \rightleftharpoons SS
-  %\end{equation}
-  
-  After the universe expanded enough, the number density of all particles dropped, and they ran into each other less and less.
-  This meant that fewer particles were converted to the opposite population, and the two populations became thermally decoupled.
+  As the universe expanded, both particle groups ran into each other less and less.
+  This meant that fewer particles were converted to the opposite population, meaning temperature changes in one population took longer and longer to propagate to the other population.
+  Eventually the two populations became independent, sometimes called thermal decoupling.
   After this decoupling, WIMPs continued to annihilate occasionally, further reducing their numbers, until there were so few left that they stopped encountering each other.
-  As the population of WIMPs did not change much after that time, it is called a freezeout, and this population is a an abundance of relic particles.
-  The boltzman equation for the abundance of WIMPs is:
+  As the population of WIMPs likely did not change much after that time, it is called a freezeout.
+  
+  The boltzman equation describing how the number of WIMPs evolves through this freezeout is,
   
   \begin{equation}\label{eqn:boltzmann_relic}
-  \frac{dn}{dt} + 3 H n = \left \langle \sigma_{A} v \right \rangle \left [ \left ( n_{eq} \right )^2 - \left ( n \right )^2 \right ] \;\;,
+    \frac{dn}{dt} + 3 H n = \left \langle \sigma_{A} v \right \rangle \left ( n_{eq}^2 - n^2 \right ) \;\;,
   \end{equation}
   
-  where $n$ is the WIMP comoving number density, $H$ is the hubble expansion rate ($\frac{\dot{a}}{a}$), $\left \langle \sigma_{A} v \right \rangle$ is the velocity-averaged cross section for $\chi\chi$ annihliating into lighter particles.
-  The parameter $n^{eq}_{\chi}$ is the equilibrium WIMP comoving number density.
+  where $n$ is the comoving WIMP number density, $H$ is the hubble expansion rate ($\frac{\dot{a}}{a}$), $\left \langle \sigma_{A} v \right \rangle$ is the velocity-averaged cross section for $\chi\chi$ annihliating into lighter particles.
+  The parameter $n_{eq}$ is the equilibrium WIMP comoving number density.
   This equation is numerically solved and shown in Figure~\ref{fig:abundance}.
   
   \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.75\textwidth]{images/relic_abundance_plot/abundance.pdf}
+    \includegraphics[width=0.75\textwidth]{images/relic_abundance_plot/updated.pdf}
     \caption[Relic Abundance vs Time]{
-      The relic abundance of WIMPs as a function of temperature, from Ref.~\cite{Jungman:1995df}.
-      $m$ is the WIMP mass, and $T$ is the universe's temperature, which decreases as the universe expands.
+      The relic abundance of WIMPs as a function of temperature, from Ref.~\cite{updatedWIMPRelicCrossSection}.
+      $m$ is the WIMP mass, $T$ is the universe's temperature, which decreases as the universe expands.
+      $x$ is therefore a proxy for time, increasing as one moves to the right along the x-axis.
+      $n(x)$ is the number of WIMPs in a comoving volume, $n_{\textrm{eq}}(x)$ is the number of WIMPs at equilibrium, and the y values are scaled by $n_{\textrm{eq}}(x=1)$.
+      The weak, electromagnetic (em), and strong cross sections are shown for a \SI{100}{GeV} WIMP, with additional lines for the weak cross section at \SI{1}{GeV} and \SI{e3}{GeV}.
+      The cross sections shown are:
+      \begin{tabular}{ll}
+      $\left \langle \sigma v \right \rangle_{\textrm{strong}}$  & $= 2 \times 10^{-15} \textrm{cm}^3 \textrm{s}^{-1}$ \\
+      $\left \langle \sigma v \right \rangle_{\textrm{em}}    $  & $= 2 \times 10^{-21} \textrm{cm}^3 \textrm{s}^{-1}$ \\
+      $\left \langle \sigma v \right \rangle_{\textrm{weak}}  $  & $= 2 \times 10^{-26} \textrm{cm}^3 \textrm{s}^{-1}$ \\
+      \end{tabular}
     }
     \label{fig:abundance}
   \end{figure}
   
-  The cross section of the WIMP heavily influences the time of the freezeout, as well as the final number density.
+  In this figure, it can be seen how the number of WIMPs evolve as the universe ages, and its temperature decreases.
+  The black equilibrium line indicates the number of WIMPs that would be left if they had a large ($\left \langle \sigma v \right \rangle >> 2 \times 10^{-15} \textrm{cm}^3 \textrm{s}^-1$) cross section.
+  As the cross section decreases, fewer and fewer particles are annihilated, and more of the initial WIMP population survives to freeze out.
+    
+  Weak force cross section
   
-  This neutralino would also have a cross section of around \nicetilde{} \SI{3e-26}{ cm${}^2$ }~\cite{Jungman:1995df} {\color{red}(verify this is actually in Jungman 1995??)}.
+
+  Wimp miracle
+
+  Heavier WIMPs are sought in this thesis, with a mass \SIrange{4}{70}{TeV}.
+  At these masses, the WIMP relic cross section is \nicetilde\SI{2.3e-26}{cm^3 s^{-1}}, and not very dependent on mass~\cite{updatedWIMPRelicCrossSection}.
+  % 2.3e-26 is from Steigman 2012, Figure 5, measuring the value at 4 TeV
+
+
+
   
-  WIMP Miracle
+
+
+
+
+  %The cross section of the WIMP heavily influences the time of the freezeout, as well as the final number density.
   
-  "Exact Cross Sections for the Neutralino WIMP Pair-Annihilation" : arxiv 0202009
-  Steigman 2012 Precise relic WIMP abundance : https://journals.aps.org/prd/abstract/10.1103/PhysRevD.86.023506
+  %This neutralino would also have a cross section of around \nicetilde{} \SI{3e-26}{ cm${}^2$ }~\cite{Jungman:1995df} {\color{red}(verify this is actually in Jungman 1995??)}.
+  
+  %WIMP Miracle
+  
+  %"Exact Cross Sections for the Neutralino WIMP Pair-Annihilation" : arxiv 0202009
+  %Steigman 2012 Precise relic WIMP abundance : https://journals.aps.org/prd/abstract/10.1103/PhysRevD.86.023506
   
 
   % Perkins 2003, section 7.11 is a good source
@@ -552,20 +581,20 @@
   %A currently favored WIMP candidate is the neutralino, the lightest supersymmetric particle (LSP)~\cite{neutralino1,neutralino2,neutralino3}.
 
     % see http://www.damtp.cam.ac.uk/user/db275/Cosmology/Lectures.pdf section 3.3.2
-    After this inflationary period, another important epoch was the WIMP freeze-out, when the universe was roughly 1 second old, though this time can vary by several orders of magnitude..
-    At this point, it is theorized that a population of WIMP dark matter particles were being repeatedly created and annihilated, and were in equilibrium.
-    After the universe expanded some more, the density of these WIMPs decreased to the point where they were no longer running into each other.
-    This increased WIMP transparency froze the number of WIMPs at that time, called the relic density.
-    From the Boltzman Equation~\ref{eqn:boltz_dm}, a relationship can be estabilshed between the WIMP mass, cross section, and how many WIMPs are left over, frozen out (the relic density).
+    %After this inflationary period, another important epoch was the WIMP freeze-out, when the universe was roughly 1 second old, though this time can vary by several orders of magnitude..
+    %At this point, it is theorized that a population of WIMP dark matter particles were being repeatedly created and annihilated, and were in equilibrium.
+    %After the universe expanded some more, the density of these WIMPs decreased to the point where they were no longer running into each other.
+    %This increased WIMP transparency froze the number of WIMPs at that time, called the relic density.
+    %From the Boltzman Equation~\ref{eqn:boltz_dm}, a relationship can be estabilshed between the WIMP mass, cross section, and how many WIMPs are left over, frozen out (the relic density).
     
     % from http://www.damtp.cam.ac.uk/user/db275/Cosmology/Lectures.pdf
-    \begin{equation}\label{eqn:boltz_dm}
-      \frac{dN_\chi}{dt} = -s \left \langle \sigma v \right \rangle \left [ N_\chi^2 - \left ( N_\chi^{eq} \right )^2 \right ]
-    \end{equation}
+    %\begin{equation}\label{eqn:boltz_dm}
+      %\frac{dN_\chi}{dt} = -s \left \langle \sigma v \right \rangle \left [ N_\chi^2 - \left ( N_\chi^{eq} \right )^2 \right ]
+    %\end{equation}
     
-    where $N_\chi$ is the number of WIMPs in a comoving volume, $N_\chi^{eq}$ is the number of WIMPs at equilibrium, $s$ is the Friedmann-Robertson-Walker metric, and $\left \langle \sigma v \right \rangle$ is the velocity-averaged cross section of the WIMP annihilation.
-    After many substitutions and some assumptions\footnote{This derivation is explained more thoroughly in \url{http://www.damtp.cam.ac.uk/user/db275/Cosmology/Lectures.pdf}}, one finds that for a \nicetilde{}GeV WIMP and the observed relic abundance, the WIMP must have a $\left \langle \sigma v \right \rangle$ close to the Weak force cross section for a \nicetilde{}GeV particle.
-    This coincidence between the dark matter abundance and the particle physics cross section is sometimes called \textit{WIMP Miracle}.
+    %where $N_\chi$ is the number of WIMPs in a comoving volume, $N_\chi^{eq}$ is the number of WIMPs at equilibrium, $s$ is the Friedmann-Robertson-Walker metric, and $\left \langle \sigma v \right \rangle$ is the velocity-averaged cross section of the WIMP annihilation.
+    %After many substitutions and some assumptions\footnote{This derivation is explained more thoroughly in \url{http://www.damtp.cam.ac.uk/user/db275/Cosmology/Lectures.pdf}}, one finds that for a \nicetilde{}GeV WIMP and the observed relic abundance, the WIMP must have a $\left \langle \sigma v \right \rangle$ close to the Weak force cross section for a \nicetilde{}GeV particle.
+    %This coincidence between the dark matter abundance and the particle physics cross section is sometimes called \textit{WIMP Miracle}.
     
     % see http://pdg.lbl.gov/2013/reviews/rpp2013-rev-dark-matter.pdf for more basic info
     % see https://arxiv.org/pdf/1603.03797.pdf
