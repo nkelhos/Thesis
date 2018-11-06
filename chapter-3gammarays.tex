@@ -10,7 +10,7 @@
 \chapter{Gamma Rays and Dark Matter}\label{ch_gamma}
 
 
-This analysis searches for dark matter using gamma rays, thus a discussion of gamma rays and their properties is necessary.
+Because analysis searches for dark matter using gamma rays, a discussion of gamma rays and their properties is necessary.
 In this chapter three different topics are discussed, including background gamma rays, dark matter gamma rays, and detecting gamma rays in general.
 The first is the astrophysical mechanisms that produce gamma rays, a background for detecting dark matter gamma rays.
 The second is how dark matter around the Galactic Center can produce gamma rays.
@@ -113,7 +113,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   {\color{red}(green?? -parents)}
   
   In order to efficiently produce gamma rays via this method, a population of high-energy electrons is needed.
-  One environment that produces these electrons is around pulsar wind nebulae.
+  One environment that produces these electrons is pulsar wind nebulae.
   Because pulsars spin rapidly, they produce strong magnetic fields.
   For example, the pulsar at the heart of the Crab nebula has a surface magnetic field strength of \SI{e12}{G}~\cite{pwn_evolution}, much larger than Earth's $\sim$\SI{0.5}{G}~\cite{earth_geomag}.
   These strong magnetic fields provide an environment for producing and accelerating charged particles.
@@ -230,10 +230,10 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   
   At the shockfront, particles that cross it are reflected off the magnetic fields on the other side, gaining a small amount of energy each time.
   Over many crossings, charged particles can gain high energies, though the higher the energy of the particle, the more likely it is to escape the shockfront, since it's gyroradius increases as its energy increases.
-  The amount of energy gained is governed by a parameter $\beta$, in Equation~\ref{eqn:snr_beta}, 
+  The amount of energy gained is governed by a parameter $\beta$, in Equation~\ref{eqn:snr_beta}.
   
   \begin{equation}\label{eqn:snr_beta}
-    \beta = 1 + \frac{v_s}{c} \;\; .
+    \beta = 1 + \frac{v_s}{c}
   \end{equation}
   
   This $\beta$ parameter can be interpreted as the fractional energy gain per crossing, as in Equation~\ref{eqn:snr_beta_en},
@@ -256,7 +256,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \frac{dN}{dE} \approx E^{ \frac{\log P}{\log \beta} - 1 } \;\; .
   \end{equation}
   
-  With Equations~\ref{eqn:snr_prob} and \ref{eqn:snr_beta}, the spectrum from Equation~\ref{eqn:snr_spec} can be simplified with the following substitution:
+  With Equations~\ref{eqn:snr_beta} and \ref{eqn:snr_prob}, the spectrum from Equation~\ref{eqn:snr_spec} can be simplified with the following substitution:
 
   \begin{equation}\label{eqn:snr_simplify}
     \begin{split}
@@ -265,7 +265,9 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \end{split}
   \end{equation}
   
-  With Equation~\ref{eqn:snr_simplify}, equation~\ref{eqn:snr_spec} then simplifies to
+  {\color{red}(check equations are numbered properly??)}
+  
+  With equation~\ref{eqn:snr_simplify}, equation~\ref{eqn:snr_spec} then simplifies to
   
   \begin{equation}\label{eqn:snr_spec_final}
     \begin{split}
@@ -323,11 +325,11 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   % orel commented that a sentence should be added saying that protons can be accelerated in the same way as the electrons discussed earlier
   Then, upon striking an ambient proton ($p_{ambient}$), the interaction can, in some cases, produce $\pi^{+}\pi^{+}\pi^{0}$, and other particles $X$~\cite{pp_pion,pp_pion2,pp_pion3}.
   
-  \begin{equation} %\nonumber
+  \begin{equation}\nonumber
     p_{accel} + p_{ambient} \rightarrow \pi^+ + \pi^+ + \pi^0 + X
   \end{equation}
 
-  The $\pi^{0}$ then quickly (\SI{8.5e-17}{s}~\cite{pdg2016} {\color{red}(seconds?? -parents)}) decays into two gamma rays.
+  The $\pi^{0}$ then quickly (\SI{8.5e-17}{s}~\cite{pdg2016}) decays into two gamma rays.
   Because each pion resulting from the original $pp$ interaction tends to receive roughly $\frac{1}{3}$ of the original proton's kinetic energy, and the $\pi^0$ decays into two gamma rays, each gamma ray ends up with \nicetilde$15\%$ of the original proton's kinetic energy.
   The X ends up possessing only a small amount of energy compared to the mass of the pions.
   %In the rest frame, the $\pi^0$ has a mass of \SI{135}{\MeV}~\cite{pdg2016}, so each photon ends up with \SI{67.5}{\MeV}.
@@ -365,9 +367,10 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     When a WIMP scatters off of a nucleus within the detector, the nuclear recoil can be observed, through signals such as crystal phonons, excitation and release of photons, or ionization.
     Being underground shields the detectors from cosmic rays, which create background collisions that can mimic WIMP signals.
     For example, in liquid xenon detectors, WIMP particle collisions in the liquid produce UV photons and electrons, which are used to infer the presence of the WIMPS~\cite{direct_lux,direct_xenon}.
-    Another type are cryogenic {\color{red}detectors (such as?? -parents)}, which use pucks of germanium and silicon to measure WIMP collisions.
+    Another type are cryogenic, which use pucks of germanium and silicon to measure WIMP collisions.
     These collisions produce detectable ionization and phonon signals, which are used to classify the incident particle~\cite{direct_cdms}.
-    A third example are scintillation detectors, which are built with {\color{red}crystals like titanium-doped sodium iodine (underlines?? -parents)}.
+    A third example are scintillation detectors, which are built with crystals such as titanium-doped sodium iodine.
+    {\color{red}(pause in parents commenting??)}
     When a WIMP collides with one of the nuclei within the crystal, that nucleus becomes excited, and then relaxes by releasing a photon~\cite{direct_dama}.
     However, to date no substantial dark matter signal has been detected with these methods~\cite{direct_dm_detection}.
     
