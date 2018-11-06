@@ -23,10 +23,10 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   Alternately, a gamma ray can be created from a high-energy proton colliding with another proton, which produces neutral pions ($\pi^0$'s) that decay into gamma rays.
   This is referred to as hadronic production.
   However, leptonic and hadronic production are separate from how gamma rays are produced by dark matter.
-  Instead, two WIMP dark matter paritlces may annihilate (directly or indirectly) into gamma rays, as is discussed in Section~\ref{dm_spectral}.
+  Instead, two WIMP dark matter paritlces may annihilate (directly or indirectly) into gamma rays, and this is discussed in Section~\ref{dm_spectral}.
 
   In leptonic production, electrons and low-energy photons collide, transferring energy to the photon.
-  This interaction is called inverse Compton scattering (or occasionally upscattering)~\cite{compton_effect}, and its feynman diagram is shown in Figure~\ref{fig:inv_compt_feyn}.
+  This interaction is called inverse Compton scattering (or occasionally upscattering)~\cite{compton_effect}, and its Feynman diagram is shown in Figure~\ref{fig:inv_compt_feyn}.
   
   \begin{figure}[ht]
     \centering
@@ -54,6 +54,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \item $\gamma$ is the Lorentz factor,
     \item $U$ is the energy density of the photon field in the rest frame of the electron (e.g. $Uc=N\hbar \omega c$), and 
     \item $v$ is the velocity of the electron in the laboratory frame.
+    \item {\color{red}(format for explaining equations needs to be consistant, see equations \ref{eqn:inv_compt_avg_up_en}, \ref{eqn:pwn_pairprod} ??)}
   \end{itemize}
 
   The average energy $E_{up}$ of photons upscattered this way can be calculated via
@@ -102,16 +103,17 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   % Eup = 4.67e11 eV = 467 GeV
   
   The parameter $E_{0}$ is the energy of the original photon.
-  At Earth, astrophysical electrons have been detected at energies of \SI{500}{GeV}~\cite{500GeVElectrons,fermi_electron}, and potentially as high as \SI{20}{TeV}~\cite{hess2017_electronspectrum}.
+  Astrophysical electrons have been detected at Earth at energies of \SI{500}{GeV}~\cite{500GeVElectrons,fermi_electron}, and potentially as high as \SI{20}{TeV}~\cite{hess2017_electronspectrum}.
   % orel suggests looking at ICRC 2017 HESS electron spectrum up to 20 TeV?
   %   here: https://indico.snu.ac.kr/indico/event/15/session/5/contribution/694/material/slides/0.pdf
   %   its just a talk, can't find a proceeding of science for it
   At energies of \SI{500}{GeV}, the Lorentz factor is $\gamma = 10^6$.
   With this Lorentz factor, upscattered photons can increase their energy by up to\footnote{This is the maximum average energy gain when the upscattered photon is emitted back along its original trajectory.} $\gamma^{2} = 10^{12}$.
   For example, a green photon ($\lambda_{\textrm{green}}=550\,\textrm{nm}$, $E_{\textrm{green}}=0.3\,\textrm{eV}$) could be upscattered to as high as \SI{467}{GeV}, becoming a gamma ray detectable by VERITAS.
+  {\color{red}(green?? -parents)}
   
   In order to efficiently produce gamma rays via this method, a population of high-energy electrons is needed.
-  One environment for producing these electrons is around pulsar wind nebulae.
+  One environment that produces these electrons is around pulsar wind nebulae.
   Because pulsars spin rapidly, they produce strong magnetic fields.
   For example, the pulsar at the heart of the Crab nebula has a surface magnetic field strength of \SI{e12}{G}~\cite{pwn_evolution}, much larger than Earth's $\sim$\SI{0.5}{G}~\cite{earth_geomag}.
   These strong magnetic fields provide an environment for producing and accelerating charged particles.
@@ -199,7 +201,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   Another mechanism that produces high-energy charged particles is Fermi acceleration~\cite{fermi1949,highenergyelectron_snr}.
   In general, this acceleration imparts energy to charged particles when they are reflected by an oncoming magnetic field.
   
-  One environment where this can happen often is in the shockfront of a supernova, where the mechanism is called diffusive shock acceleration~\cite{dsa1,dsa2,dsa3,dsa4,dsa5}.
+  One environment where this can happen often is in the shockfront of a supernova, where the process is called diffusive shock acceleration~\cite{dsa1,dsa2,dsa3,dsa4,dsa5}.
   During and after a supernova's initial explosion, charged fermions are quickly heated.
   These heated particles then expand outwards, creating a moving shockfront at the boundary between the expanding particles and the surrounding Inter-Stellar Medium (ISM).
   These expanding particles bring their own magnetic fields due to Alfven's theorem~\cite{alfven1,alfven2}, which then reflect other charged particles.
@@ -227,7 +229,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   \end{figure}
   
   At the shockfront, particles that cross it are reflected off the magnetic fields on the other side, gaining a small amount of energy each time.
-  Over many crossings, charged particles can gain high energies, though the higher the energy of the particle, the more likely it can escape the shockfront, since it's gyroradius increases as its energy increases.
+  Over many crossings, charged particles can gain high energies, though the higher the energy of the particle, the more likely it is to escape the shockfront, since it's gyroradius increases as its energy increases.
   The amount of energy gained is governed by a parameter $\beta$, in Equation~\ref{eqn:snr_beta}, 
   
   \begin{equation}\label{eqn:snr_beta}
@@ -237,33 +239,33 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   This $\beta$ parameter can be interpreted as the fractional energy gain per crossing, as in Equation~\ref{eqn:snr_beta_en},
 
   \begin{equation}\label{eqn:snr_beta_en}
-    E_{i+1} = \beta E_{i} \;\; .
+    E_{i+1} = \beta E_{i} \;\; ,
   \end{equation}
   
-  The $E_i$ parameter is the average energy of a charged particle after it's $i^{\textrm{th}}$ crossing.
+  where the $E_i$ parameter is the average energy of a charged particle after it's $i^{\textrm{th}}$ crossing.
   The energy gain $\beta$ factor influences the energy spectrum of the escaping charged particles, but so too does $P$, the probability that the charged particle remains trapped at the shockfront after each crossing.
   This probability $P$ can be calculated with
   
   \begin{equation}\label{eqn:snr_prob}
-    P = 1 - \frac{v_s}{c}
+    P = 1 - \frac{v_s}{c} \;\; .
   \end{equation}
   
   With this probability $P$ and the energy gain $\beta$, the energy spectrum of particles that permanently escape the shockfront can be calculated by
   
   \begin{equation}\label{eqn:snr_spec}
-    \frac{dN}{dE} \approx E^{ \frac{\log P}{\log \beta} - 1 }
+    \frac{dN}{dE} \approx E^{ \frac{\log P}{\log \beta} - 1 } \;\; .
   \end{equation}
   
-  With Equations~\ref{eqn:snr_prob} and \ref{eqn:snr_beta}, the spectrum from Equation~\ref{eqn:snr_spec} can be simplified.
+  With Equations~\ref{eqn:snr_prob} and \ref{eqn:snr_beta}, the spectrum from Equation~\ref{eqn:snr_spec} can be simplified with the following substitution:
 
   \begin{equation}\label{eqn:snr_simplify}
     \begin{split}
        \log P     & = \log \left ( 1 - \frac{v_s}{c} \right ) \approx - \frac{v_s}{c} \\
-       \log \beta & = \log \left ( 1 + \frac{v_s}{c} \right ) \approx + \frac{v_s}{c} \\
+       \log \beta & = \log \left ( 1 + \frac{v_s}{c} \right ) \approx + \frac{v_s}{c} \;\; .\\
     \end{split}
   \end{equation}
   
-  Equation~\ref{eqn:snr_spec} then simplifies to
+  With Equation~\ref{eqn:snr_simplify}, equation~\ref{eqn:snr_spec} then simplifies to
   
   \begin{equation}\label{eqn:snr_spec_final}
     \begin{split}
@@ -278,7 +280,8 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   From this diffusive shock acceleration, the spectral index of charged particles is approximately -2.
   This is quite close to the observed extragalactic cosmic ray spectral index range of -2.0 to -2.2, but additional effects (discussed in Ref.~\cite{cosmicrayspectrumorigin}) may soften this index to get to the observed galactic cosmic ray spectral index of $\approx{}-3.7$.
   The spectral index's dependence on $P$ and $\beta$ is shown in two plots in Figure~\ref{fig:snr_spectrum}.
-  The top plot in Figure~\ref{fig:snr_spectrum} shows how changing $\beta$, the energy gain per shockfront crossing cycle, and the bottom plot shows the differential spectra with the spectral indicies from the top plot.
+  The top plot in Figure~\ref{fig:snr_spectrum} shows how changing $\beta$, the energy gain per shockfront crossing cycle, affects the escape probability.
+  The bottom plot shows the differential spectra using the spectral indicies from the top plot.
   From these two plots, it can be seen that increasing the energy gain per crossing cycle $\beta$ creates a harder spectrum of particles with more higher energy particles, since they can reach escape energies in fewer cycles.
   It can also be seen that trapping more particles at the shockfront (higher $P$) also creates a harder spectrum of escaping particles, as particles can be contained for more cycles, gaining more energy before escaping~\cite{dsa6}.
 
@@ -290,6 +293,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       The contours for three spectral indicies $\gamma$ are shown.
       For example, at the orange triangle, each crossing cycle increases a particles energy by a factor of 1.10, while it has a 90\% chance of being permanently trapped, which produces particles with a spectral index of $\gamma=-2.1$.
       The bottom plot shows the differential flux produced by power laws with the three spectral indicies shown in the top plot.
+      {\color{red}(power laws produce the flux?? -parents)}
     }\label{fig:snr_spectrum}
   \end{figure}
   
@@ -315,23 +319,23 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   When these processes produce electrons with high energies, these electrons can then upscatter ambient photons to TeV energies.
   Additionally, electrons spiralling through magnetic fields can produce synchrotron photons at X-ray energies, meaning fewer upscatters are needed to reach TeV energies~\cite{self_compton}.
 
-  In hadronic processes, protons can be accelerated ($p_{accel}$) by Fermi acceleraton, by a supernova remnant~\cite{proton_snr_accel}, or as part of an active galactic nucleus jet~\cite{hadronic1,hadronic2}.
+  In hadronic processes, protons can be accelerated ($p_{accel}$) by Fermi acceleration, by a supernova remnant~\cite{proton_snr_accel}, or as part of an active galactic nucleus jet~\cite{hadronic1,hadronic2}.
   % orel commented that a sentence should be added saying that protons can be accelerated in the same way as the electrons discussed earlier
   Then, upon striking an ambient proton ($p_{ambient}$), the interaction can, in some cases, produce $\pi^{+}\pi^{+}\pi^{0}$, and other particles $X$~\cite{pp_pion,pp_pion2,pp_pion3}.
   
-  \begin{equation}\nonumber
+  \begin{equation} %\nonumber
     p_{accel} + p_{ambient} \rightarrow \pi^+ + \pi^+ + \pi^0 + X
   \end{equation}
 
-  The $\pi^{0}$ then quickly (\SI{8.5e-17}{s}~\cite{pdg2016}) decays into two gamma rays.
+  The $\pi^{0}$ then quickly (\SI{8.5e-17}{s}~\cite{pdg2016} {\color{red}(seconds?? -parents)}) decays into two gamma rays.
   Because each pion resulting from the original $pp$ interaction tends to receive roughly $\frac{1}{3}$ of the original proton's kinetic energy, and the $\pi^0$ decays into two gamma rays, each gamma ray ends up with \nicetilde$15\%$ of the original proton's kinetic energy.
-  The X ends up posessing only a small amount of energy compared to the mass of the pions.
+  The X ends up possessing only a small amount of energy compared to the mass of the pions.
   %In the rest frame, the $\pi^0$ has a mass of \SI{135}{\MeV}~\cite{pdg2016}, so each photon ends up with \SI{67.5}{\MeV}.
   %This means that in the rest frame,
   For example, a proton with \SI{10}{TeV} of kinetic energy will eventually produce two \SI{1.5}{TeV} gamma rays.
   While other products from the $pp$ interaction may also produce gamma rays, the $\pi^0$ decay is the dominant production channel.
   Much of the diffuse gamma-ray component of the galactic disk is due to extra-galactic high-energy protons colliding with the protons of the galactic plane~\cite{GalacticDiffuseGammaRays,extragalactic_agn}.
-  %Active galactic nuclei posess particle jets, which can accelerate particles when the jet shocks into the extragalactic medium.
+  %Active galactic nuclei possess particle jets, which can accelerate particles when the jet shocks into the extragalactic medium.
   
   Protons accelerated by these mechanisms form the majority of the showers detected by the VERITAS telescope, forming an irreducible background in the Galactic Center observations.
   This background is irreducible due to the fact that the Cherenkov images of proton and gamma-ray air showers have many similarities, and cannot be identified with perfect accuracy.
@@ -339,7 +343,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   \subsection{Dark Matter Interactions}\label{dmgammaproduction}
     
     The general dark matter particle searched for in this thesis is a WIMP.
-    This WIMP may be detectable by three general search schemes, illustrated in Figure~\ref{fig:3_searches}.
+    WIMPs may be detectable by three general search schemes, illustrated in Figure~\ref{fig:3_searches}.
 
     % add popular figure for the three detection type
     \begin{figure}[ht]
@@ -360,15 +364,15 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     For direct searches, $\chi S \rightarrow \chi S$, sensitive particle detectors are built deep underground.
     When a WIMP scatters off of a nucleus within the detector, the nuclear recoil can be observed, through signals such as crystal phonons, excitation and release of photons, or ionization.
     Being underground shields the detectors from cosmic rays, which create background collisions that can mimic WIMP signals.
-    For example, in liquid Xenon detectors, WIMP particle collisions in the liquid produce UV photons and electrons, which are used to infer the presence of the WIMPS~\cite{direct_lux,direct_xenon}.
-    Another type are cryogenic detectors, which use pucks of germanium and silicon to measure WIMP collisions.
+    For example, in liquid xenon detectors, WIMP particle collisions in the liquid produce UV photons and electrons, which are used to infer the presence of the WIMPS~\cite{direct_lux,direct_xenon}.
+    Another type are cryogenic {\color{red}detectors (such as?? -parents)}, which use pucks of germanium and silicon to measure WIMP collisions.
     These collisions produce detectable ionization and phonon signals, which are used to classify the incident particle~\cite{direct_cdms}.
-    A third example are scintillation detectors, which are built with crystals like titanium-doped sodium iodine.
+    A third example are scintillation detectors, which are built with {\color{red}crystals like titanium-doped sodium iodine (underlines?? -parents)}.
     When a WIMP collides with one of the nuclei within the crystal, that nucleus becomes excited, and then relaxes by releasing a photon~\cite{direct_dama}.
     However, to date no substantial dark matter signal has been detected with these methods~\cite{direct_dm_detection}.
     
     For indirect searches, $\chi\chi \rightarrow ss$, dark matter particles may annihilate or decay into standard model particles.
-    Observatories then search for excesses of these particles, excesses that cannot be explained by known astrophysics.
+    Observatories then search for excesses of these particles, excesses that cannot be explained by currently understood astrophysics.
     This analysis searches for an excess of gamma rays, as the center of our galaxy is believed to host a dark matter halo.
     This spherical halo would allow for many $\chi\chi$ annihilations, producing gamma rays via: 
     
@@ -386,7 +390,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   The Galactic Center is a complex region of space, with many astrophysical sources of gamma rays.
   %At its heart is a supermassive black hole around which gamma-ray emission is observed, though the production mechanism is still under debate.
   At its heart, kinematic observations of nearby stars have been used to infer the presence of a supermassive black hole, with a mass of \SI{4e6}{ \Msol{} }~\cite{sgra_massdist}.
-  Around this black hole, gamma ray emission is observed~\cite{gc_pointsrc_hess,gc_pointsource_hess2,gc_veritas_pointsource,gc_magic_pointsource}, though the production mechanism is still under debate.
+  Around this black hole, gamma ray emission is observed~\cite{gc_pointsrc_hess,gc_pointsource_hess2,gc_veritas_pointsource,gc_magic_pointsource}, though the {\color{red}production mechanism (of what?? -parents)} is still under debate.
   There are other gamma-ray sources as well, including dust along the galactic plane and supernova remnants is there a graphic that illustrates the diversity.
   The TeV gamma-ray emission from a few of these sources is visible in Figure~\ref{fig:hess_plane}.
   
@@ -417,7 +421,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   While a dark matter interpretation of this gamma-ray emission is intriguing~\cite{gc_pnt_is_dm1,gc_pnt_is_dm2}, there are several non-dark-matter models that might explain the observed features.
   One model that explains this TeV emission is that the supermassive black hole accelerates protons to PeV energies, which then collide with local atoms to produce $\pi^0$s, which then decay into TeV gamma rays~\cite{gc_pevatron}.
   The second possibility suggests a nearby population of millisecond pulsars may be accelerating electrons, which then upscatter local photons to TeV energies~\cite{gc_pulsars,gc_pnt_is_not_dm2,gc_pnt_is_not_dm3}.
-  The debate between these two models is currently ongoing~\cite{gc_pev_or_pwn}.
+  The debate between these two models is currently ongoing~\cite{gc_pev_or_pwn} {\color{red}(rewrite?? -parents)}.
   Due to their limited angular resolution, the current generation of gamma-ray telescopes can only resolve the Galactic Center's gamma ray emission as a point source~\cite{VeritasGCRidge2015,gc_pointsrc_hess}.
   The Fermi telescope has observed a similar source of GeV gamma rays around the Galactic Center~\cite{gc_fermi_dm}, though neither the dark matter or millisecond pulsar explainations are completely conclusive~\cite{fermi_gc_pulsar_vs_dm}.
   
@@ -425,24 +429,24 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   One of these sources is a disk of dust along the galactic plane, acting as an interaction medium for proton cosmic rays~\cite{diffusegamma1989}.
   These proton-proton collisions then produce neutral pions, which decay into gamma rays~\cite{hess_gc_diffuse}.
   High energy electrons scattering off of nuclei can also produce gamma rays via Bremsstrahlung.
-  Gamma rays around the Galactic Center can also be produced by inverse compton scattering.
+  Gamma rays around the Galactic Center can also be produced by inverse Compton scattering.
   This occurs due to the upscattering of optical, infrared, and cosmic micrwave background photons.
   These photons are upscattered by electrons accelerated in nearby sources such as pulsar wind nebulae.
   Supernova remnants can also produce gamma rays, as their expanding shells interact with ambient dust. 
-  The extended emission from inverse compton, pion decay, and supernovae processes are not modeled in this analysis, because atmospheric effects overwhelm any diffuse emission in the residual skymaps\footnote{These residual maps are discussed in Section~\ref{subsec:likemax}.}.
+  The extended emission from inverse Compton, pion decay, and supernovae processes are not modeled in this analysis, because atmospheric effects overwhelm any diffuse emission in the residual skymaps\footnote{These residual maps are discussed in Section~\ref{subsec:likemax}.}.
 
 
 \section{Indirect Dark Matter Search}
   For this analysis, it is necessary to understand how a terrestrial telescope can detect the presence of dark matter.
   Imaging atmospheric Cherenkov telescopes like H.E.S.S., MAGIC, and VERITAS can indirectly search for dark matter.
-  In these searches, these observatories detect gamma rays that are emitted when two dark matter particles annihilate.
+  These observatories attempt to detect gamma rays that are emitted when two dark matter particles annihilate.
   Because the rate of annihilation depends on the local dark matter density, the gamma-ray emission rate is affected by the radially-dependent structure of the dark matter halo.
 
   \subsection{Dark Matter and Gamma Rays}
     Primarily, indirect searches focus on annihilating WIMPs, as the predicted decaying WIMP produces a lower flux of standard model particles than annihilation.
     WIMPs may annihilate into any standard model particle-antiparticle pair, but most studies examine a WIMP annihilating into a quark-antiquark or gamma-ray photon pair~\cite{pdg2016}.
     These different annihilations produce different spectra of final gamma rays.
-    The final spectrum of gamma rays used in this analysis is calculated in Section~\ref{dm_spectral}.
+    The final spectrum of gamma rays used in this analysis is calculated in Section~\ref{dm_spectral} {\color{red}(spectra/spectrum?? -parents)}.
     After the gamma-ray spectrum is understood, the spatial distribution of the annihilations is also discussed in Section~\ref{dm_spatial}.
     The expected flux of gamma rays from a halo can then be calculated by combining these spatial and spectral models.
   
@@ -459,7 +463,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     
     The software package CLUMPY~\cite{CLUMPYcode} is used in this thesis to calculate the gamma-ray spectra for each annihilation channel.
     The spectral models that CLUMPY uses are based on the annihilation spectra in the PPPC 4 DM ID~\cite{pppc4_dm_spectra,pppc4_ewcorrections}.
-    These spectra are calculated using monte carlo simulations performed with PYTHIA~\cite{pythia} and HERWIG~\cite{herwig}.
+    These spectra are calculated using Monte Carlo simulations performed with PYTHIA~\cite{pythia} and HERWIG~\cite{herwig}.
     For this analysis, only the $b\bar{b}$ annihilation channel is considered.
     Figure~\ref{fig:chichi_spectrum} shows the resultant spectra from the single annihilation of two WIMPs.
     Each line shows the spectrum from a different initial WIMP mass.
@@ -478,12 +482,13 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     It is important to note that mass-to-light ratios, and their derived J factors are usually inferred from measuring star spectra.
     These measured J factors can therefore suffer from large errors, as it can be difficult to determine which stars are within a target gravitational well, and which ones are foreground or background stars~\cite{segue_jfactor_errors}.
     
-    Using some estimated parameters with Equation~\ref{eqn:dmflux}, the flux of gamma rays from a dark matter halo can be estimated to understand how few events a dark matter halo produces.
+    Using some estimated parameters with Equation~\ref{eqn:dmflux}, the flux of gamma rays from a dark matter halo can be estimated in order to understand how few events a dark matter halo produces.
     The flux of gamma rays from a dark matter halo can be estimated with Equation~\ref{eqn:dmflux} to understand how just how few gamma rays can be observed from a dark matter halo.
     For this estimate, the dark matter mass is chosen to be \SI{10}{TeV}, and the velocity-averaged cross section $\left < \sigma v \right >$ is set at the relic cross section.
     Other chosen parameters are specified in Table~\ref{tab:halo_nphotons}, to align with the VERITAS telescope performance, or the parameters of the dark matter analysis performed in later chapters.
     For the table parameters, the dark matter halo would only produce a VERITAS-detectable gamma ray between \SIrange{4}{70}{TeV} every 39 hours.
     This flux $\Phi$ is proportional to the $\sv$, so a factor of $n$ larger particle cross section would produce a factor of $n$ larger photon flux.
+    {\color{red}(how does feet with thr?? -parents)}
     It is interesting to note that, if the entire VERITAS energy range of \SIrange{1.5}{70}{TeV} is used, the integrated photon spectrum increases the observed photon flux by a factor of 26.
     
     \begin{table}[]
@@ -493,21 +498,21 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
         \textbf{Estimated Parameters}            & \\
         $m_{\chi}$                               & \SI{10}{TeV}         \\
         Relic cross section $\left < \sigma v \right >$        & \SI{3e-26}{cm^3/s}   \\
-        Field of View                            & \ang{3}              \\
-        Detectable Photon Energy Range           & \SIrange{4}{70}{TeV} \\
-        Observatory Effective Area               & \SI{287000}{m^2}     \\
-        Annihilation Channel                     & $\chi\chi \rightarrow b\bar{b}$ \\
-        DM Halo Shape                            & Einasto              \\
+        Field of view                            & \ang{3}              \\
+        Detectable photon energy range           & \SIrange{4}{70}{TeV} \\
+        Observatory effective area               & \SI{287000}{m^2}     \\
+        Annihilation channel                     & $\chi\chi \rightarrow b\bar{b}$ \\
+        DM halo shape                            & Einasto              \\
         \hline
         \textbf{Derived Values}                  & \\
-        Integrated Photon Spectrum : $\int \frac{dN_{\gamma}}{dE} dE$        & 0.00536 photons per $\chi\chi$ annihilation \\
+        Integrated photon spectrum : $\int \frac{dN_{\gamma}}{dE} dE$        & 0.00536 photons per $\chi\chi$ annihilation \\
         J factor :$\int \int \rho^2 dl\,d\Omega$ & \SI{3.88e22}{GeV^2/cm^5}      \\
-        Halo Flux $\Phi$                         & \SI{2.5e-11}{photons/(s*m^2)} \\
+        Halo flux $\Phi$                         & \SI{2.5e-11}{photons/(s*m^2)} \\
         One halo photon detected every           & \SI{39}{hours} \\
         \hline
       \end{tabular}
       \caption[Halo Model Parameters]{
-        Number of gamma rays from a Dark Matter Halo.
+        Number of gamma rays from a dark matter halo.
         Field of view is the radial field of view of VERITAS.
         Observatory Effecitve area is the VERITAS effective area at \ang{28} telescope elevation (average elevation of Galactic Center at VERITAS's latitude), \ang{0.5} offset from GC, at the $\log_{10}$ mean energy (\SI{16.7}{TeV}) in the selected energy range.
         The Einasto halo shape parameters are chosen to be the same as in Section~\ref{dm_spatial}.
@@ -559,9 +564,10 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     Most n-body simulations predict that density profiles steeply rise as $r \rightarrow 0$, forming a peak or 'cusp' at their center.
     However, observations of dwarf galaxies instead have a flat density core within a given radius~\cite{flores1994observational,CoreVsCusp}.
     This may be due to the presence of baryons in this core region, which can diffuse the central cusp of WIMPs into a core-like shape~\cite{corecusp_baryondiffuse1,corecusp_baryondiffuse2}.
-    As this flat core occurs in the innermost region covered by the gamma-ray observations in this analysis, the choice of a cuspy or cored dark matter halo can have a significant impact.
-    Specifically, if the true dark matter halo has a cored profile, but is modeled using a cuspy one, then any derived upper limits on the dark matter cross section would be different.
-    As a basic first step, only a cuspy halo is used in this thesis.
+    As this flat core occurs in the innermost region covered by the gamma-ray observations in this analysis, the choice of a cusped or cored dark matter halo can have a significant impact.
+    Specifically, if the true dark matter halo has a cored profile, but is modeled using a cusped one, then any derived upper limits on the dark matter cross section would be different.
+    {\color{red}(tense is off in the two previous sentences?? -parents)}
+    As a basic first step, only a cusped halo is used in this thesis.
     
     When choosing which dark matter target to observe with a gamma-ray observatory, knowing the gamma-ray brightness of different sources can be useful.
     This Einasto density profile can be integrated to calculate the gamma-ray brightness, independent of the WIMP model being searched for.
@@ -585,6 +591,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     The $J$ factor is used to compare the relative gamma-ray brightness of different dark matter halos, which is a function of both dark matter density and observing distance.
     The Einasto density in Equation~\ref{eqn:einasto} can be integrated to calculate the $J$ factor at various radii, which is shown in Figure~\ref{fig:gchalo_jfactor}.
     In Figure~\ref{fig:gchalo_jfactor}, the profile shown is calculated with Equation~\ref{eqn:jfactor}, where the $d\Omega$ is integrated in bins of \ang{0.01}.
+    {\color{red}(what does this mean?? -parents)}
     This J-factor profile then forms the spatial component of the dark matter halo, $M_{s,\textrm{halo}}$, used in Chapter~\ref{chapter:analysis}.
     This profile is shown in a two-dimensional plot in Figure~\ref{fig:halojfactor}.
     
@@ -623,7 +630,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     
 \section{Cherenkov Photons}\label{sec:cherenkov}
 
-  Because the detection of gamma rays in Section~\ref{sec:atmoshowers} relies heavily on knowledge of Cherenkov light, Cherenkov light and its production is discussed here.
+  Cherenkov light and its production is discussed in this next section, because the detection of gamma rays in Section~\ref{sec:atmoshowers} relies heavily on knowledge of Cherenkov light.
   Within the Earth's atmosphere (or any dielectric medium), the phase velocity of light $c_{atmosphere}$ is slightly slower than in a vacuum.
   Any charged particles travelling at velocity $v > c_{atmosphere}$ will induce the atmosphere to produce Cherenkov photons~\cite{cherenkov}.
   From a single charged particle of constant velocity, Cherenkov photons form a conical wavefront shown in Figure~\ref{fig:cherenkovangle}.
@@ -654,7 +661,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \includegraphics[width=0.85\textwidth]{images/lightpool/lightpool.pdf}
     \caption[Chernekov Light Pool]{
       Cherenkov light from a gamma ray shower illuminating the ground.
-      Due to the changing atmospheric density, the Cherenkov angle changes as the electromagnetic shower decends (Left), concentrating the emitted light into a ring-like pool (Right).
+      Due to the changing atmospheric density, the Cherenkov angle changes as the electromagnetic shower descends (left), concentrating the emitted light into a ring-like pool (right).
       The initial gamma ray in this simulated example had an energy of \SI{1}{\TeV}.
       Figure is from Ref.~\cite{Voelk}.
     }
@@ -684,18 +691,20 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   
   Now that it is understood that Chernekov light is produced by charged particles, the next Section~\ref{sec:atmoshowers} discusses how particles from outer space can produce waves of Cherenkov photons.
   These UV- and visible-spectrum Cherenkov photons are then imaged and recorded by the VERITAS observatory, as discussed in Chapter~\ref{chapter:veritas}.
+  {\color{red}(paragraph needs reworking, comments cut off?? -parents)}
   
     
 \section{Atmospheric Showers}\label{sec:atmoshowers}
 
   When a particle strikes an atom of Earth's atmosphere at GeV or higher energies, it sets off a cascade of energetic particles called an air shower~\cite{Bethe1934,Klein1999}.
   When the primary particle consists of one or more hadrons, like a proton or iron atom, it creates a hadronic shower.
+  {\color{red}(missing comment?? -parents)}
   When the primary is a gamma ray or a charged lepton, it creates an electromagnetic shower.
   Electromagnetic showers produce a cascade of electrons, positrons ($e^{+}$), and photons, where each successive generation of particles tends to have more particles but less energy per particle than the last.
   To start the shower, the primary gamma ray will interact with an atmospheric atom, producing an $e^{-}e^{+}$ pair, each with roughly half the primary gamma ray's energy, as shown in Figure~\ref{fig:emcascade}.
   The $e^{-}$ and $e^{+}$ emit bremsstrahlung photons, and incite the atmosphere to emit Cherenkov photons, discussed further in Section~\ref{sec:cherenkov}.
   The higher-energy bremsstrahlung photons then produce $e^{-}e^{+}$ pairs, which go on to produce more bremsstrahlung and Cherenkov photons.
-  As each newly created particle has less energy than its parent particle, eventually the particles in the shower don't have enough energy to produce additional child-particles.
+  As each newly created particle has less energy than its parent particle, eventually the particles in the shower lack the energy to produce additional child-particles.
   When electrons have around \SI{80}{MeV}\footnote{This is the energy where, for an electron, the loss of energy due to ionization is equal to the loss of energy due to bremstrahlung~\cite{tanabashi2018review,berger196410}} or less of kinetic energy, energy losses due to ionization begin to dominate~\cite{pdg_2014}.
 
   \begin{figure}[ht]
@@ -746,7 +755,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   \end{figure}
   
   % see here for neutron: https://en.wikipedia.org/wiki/Cosmic_ray
-  In hadronic showers, any produced \pip{}'s and \pim{}'s can travel far in the tranverse direction, away from the main axis of the primary particle.
+  In hadronic showers, any produced \pip{}s and \pim{}s can travel far in the tranverse direction, away from the main axis of the primary particle.
   The \pip{}'s and \pim{}'s then decay into $\mu^{+}\nu_{\mu}$ and $\mu^{-}\bar{\nu}_{\mu}$ pairs, respectively.
   The \pip{} decay is shown in Figure~\ref{fig:feynman_piplus}.
   The \pio{} quickly decays into pair of gamma rays, each of which then start their own electromagnetic shower.
@@ -758,7 +767,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   The process of identifying and excluding these hadronic showers is referred to as gamma-hadron separation.
   
   In Figure~\ref{fig:gamma_vs_proton_airshower}, the differences between a gamma-ray shower (left) and a proton shower (right) are shown.
-  In the figure, darker areas indicate more Cherenkov photons are produced by charged particles in the shower.
+  Darker areas indicate more Cherenkov photons are produced by charged particles in the shower.
   The gamma-ray shower produces most of its Cherenkov photons along the central vertical core of the shower, while the proton shower produces Cherenkov photons spread out in a wider, fan-like shape.
   In the proton shower, any produced \pio{}'s decay into electromagnetic sub-showers in the interior of the shower.
   The net effect is that, when compared to a gamma ray, a proton must start with 3 times the energy to produce a similar amount of Cherenkov photons, which are distributed in a wider pattern.
