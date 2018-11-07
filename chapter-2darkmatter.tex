@@ -1,6 +1,7 @@
 \cleartooddpage[\thispagestyle{empty}]
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 \newcommand{\thetamc}{\theta_{\textrm{MC}}}
+\newcommand{\mlratio}{$\left [ \frac{M_\odot}{L_\odot} \right ]$}
 \chapter{The Dark Matter Paradigm}\label{ch_dm}
 
   Dark matter makes up 26.5\% of the universe's energy and 81.5\% of its mass~\cite{planck2015}.
@@ -108,26 +109,18 @@
     
     \begin{table}[]
       \centering
-      \caption[Ratios of $\frac{M_\odot}{L_\odot}$ for Various Dwarf Galaxy Objects]{Ratios of $\frac{M_\odot}{L_\odot}$ for various dwarf galaxy objects~\cite{localdwarfs}.}
+      \caption[Ratios of $\frac{M_\odot}{L_\odot}$ for Various Dwarf Galaxy Objects]{Ratios of $\frac{M_\odot}{L_\odot}$ for various dwarf galaxy objects~\cite{localdwarfs}}
       \label{tab:mlratios:dwarfgals}
-      \begin{tabular}{l r}
-        Object      &  Mass, $\left [ \frac{M_\odot}{L_\odot} \right ]$ \\
+      \begin{tabular}{l r | l r | l r | l r}
+        Object      &  \mlratio{} & Object & \mlratio{} & Object & \mlratio{} & Object & \mlratio{} \\
         \hline
-        IC 10       &  0.1 \\
-        NGC 147     &  7.1 \\
-        NGC 185     &  2.5 \\
-        NGC 205     & 12   \\
-        LGS 3       & 21   \\
-        IC 1613     &  1.4 \\
-        Carina      & 30   \\
-        Antlia      &  7.4 \\
-        Leo I       &  3.1 \\
-        Sextans     & 34   \\
-        Ursa Minor  & 60   \\
-        Draco       & 58   \\
-        Sagittarius & 22   \\
+        IC 10       &  0.1 & NGC 147    &  7.1 & Sagittarius & 22 & Leo I    &  3.1 \\
+        NGC 185     &  2.5 & NGC 205    & 12   & Ursa Minor  & 60 & Fornax   &  4.8 \\
+        LGS 3       & 21   & IC 1613    &  1.4 & Draco       & 58 & Sculptor & 11   \\
+        Carina      & 30   & Antlia     &  7.4 & Sextans     & 34 & GR 8     &  8.3 \\
       \end{tabular}
     \end{table}
+    % from reference \cite{localdwarfs}, table 4, (M/L)_{0,V}^i column
     
     As an additional piece of evidence for dark matter, dwarf galaxies near the Perseus cluster were studied.
     From the gravitational potential of their baryonic mass alone, these dwarf galaxies should be ripped apart by the tidal disruption of the Perseus cluster.
@@ -170,22 +163,19 @@
     
     \begin{table}[]
       \centering
-      \caption[Ratios of $\frac{M_\odot}{L_\odot}$ for Various Galactic-scale Objects]{Ratios of $\frac{M_\odot}{L_\odot}$ for various galactic-scale objects~\cite{faber_ml}.}
+      \caption[Ratios of \mlratio{} for Various Galactic-scale Objects]{Ratios of $\frac{M_\odot}{L_\odot}$ for various galactic-scale objects~\cite{faber_ml}.}
       \label{tab:mlratios}
-      \begin{tabular}{l r}
-        Object      &  Mass, $\left [ \frac{M_\odot}{L_\odot} \right ]$ \\
+      \begin{tabular}{l r | l r}
+        Object      &  \mlratio{} & Object & \mlratio{} \\
         \hline
-        M31 (Andromeda) &  7.6  \\
-        M33             &  4.5  \\
-        M51             &  3.3  \\
-        M81             &  8.5  \\
-        NGC 801         &  2.4  \\
-        NGC 2403        &  5.5  \\
-        NGC 2841        & 10.6  \\
-        NGC 4324        &  5.5  \\
-        NGC 6822        &  0.58 \\
+        M31 (Andromeda) &  7.6  & NGC 801  &  2.4  \\
+        M33             &  4.5  & NGC 2403 &  5.5  \\
+        M51             &  3.3  & NGC 2841 & 10.6  \\
+        M81             &  8.5  & NGC 4324 &  5.5  \\
+        M83             &  2.3  & NGC 6822 &  0.58 \\
       \end{tabular}
     \end{table}
+    % values from Ref. \cite{faber_ml}, Table 1, M/L_B column
       
     A random sample of galaxies from Ref. \cite{faber_ml} are shown alongside their mass-to-light ratios in Table \ref{tab:mlratios}.
     Our own Milky Way galaxy is measured to have a mass to light ratio of \SIrange{1.2}{1.5} $\frac{M_{\odot}}{L_{\odot}}$~\cite{milkyway_ml_ratio}, indicating for every 5 sun-like stars in our galaxy, there are another two stars worth of dark matter.
@@ -228,19 +218,13 @@
       \centering
       \caption[Ratios of \MLsol for Various Galaxy Clusters]{Ratios of \MLsol for various galaxy clusters~\cite{cluster_ml_ratios}.}
       \label{tab:cluster_ml_ratios}
-      \begin{tabular}{l r}
-        Object      &  Mass, \MLsol \\
+      \begin{tabular}{l r | l r | l r}
+        Object & \mlratio{} & Object & \mlratio{} & Object & \mlratio{} \\
         \hline
-        Abell 85   & 445 \\
-        Abell 458  & 401 \\
-        Abell 999  & 100 \\
-        Abell 1228 & 37  \\
-        Abell 2426 & 80  \\
-        Abell 3122 & 960 \\
-        Abell 3126 & 491 \\
-        Abell 3354 & 94  \\
-        Abell 3695 & 180 \\
-        Abell 3921 & 175 \\
+        Abell   85 & 445 & Abell 2426 &  80 & Abell 3695 & 180 \\
+        Abell  458 & 401 & Abell 3122 & 960 & Abell 3921 & 175 \\
+        Abell  999 & 100 & Abell 3126 & 491 & Abell 4008 & 227 \\
+        Abell 1228 &  37 & Abell 3354 &  94 & Abell 4053 & 421 \\
       \end{tabular}
     \end{table}
     
@@ -338,7 +322,7 @@
     Since electrons and protons have formed electrically neutral hydrogen atoms (an event called recombination), the universe becomes transparent to these photons, which are then free to travel the universe~\cite{planck2015,theEarlyUniverse,CMBFundamentals,CMBFlat}.
     The spectrum of these photons follow a blackbody spectrum, shown in Figure~\ref{fig:cmb_black}, and is called the cosmic microwave background.
     
-    \begin{figure}[ht]
+    \begin{figure}[t]
       \centering
       \includegraphics[width=0.85\textwidth]{images/cmb_blackbody/cmb.pdf}
       \caption[Cosmic Microwave Background Blackbody]{
@@ -351,7 +335,7 @@
     However, the CMB spectrum varies a small amount from a pure blackbody spectrum.
     These variations also depend on the region of the sky measured, which is shown in Figure~\ref{fig:cmb}
 
-    \begin{figure}[ht]
+    \begin{figure}[t]
       \centering
       \includegraphics[width=0.95\textwidth]{images/cmb_skymap/cmb_skymap.eps}
       \caption[Cosmic Microwave Background Skymap]{
@@ -377,7 +361,7 @@
     Thus, by measuring the wavelength of the BAOs with the CMB correlations, the amount of dark matter in the universe can be measured.
     The CMB correlation spectrum, measured by Planck, is shown in Figure~\ref{fig:cmb_correlation_spectra}.
     
-    \begin{figure}[ht]
+    \begin{figure}[t]
       \centering
       \includegraphics[width=0.85\textwidth]{images/cmb_spectra_planck_2018/cmb_spectra.pdf}
       \caption[Cosmic Micrwave Background Correlation Spectrum]{
@@ -402,7 +386,9 @@
     During Big Bang Nucleosynthesis when the universe was only a few seconds old, protons and neutrons were starting to combine into various isotopes, one of which is deuterium.
     However, like baryons, the amount of deuterium produced in the early universe is heavily dependent on the initial baryon number density.
     So, any constraint on the deuterium fraction is also a constraint on the baryon fraction of the universe~\cite{deuterium1,deuterium2}.
-    From the spectrum of deuterium and hydrogen lines from the quasar QSO Q0913+072, the baryon fraction was measured to be $\Omega_{b}h^2 = 0.0224 \pm 0.0005$~\cite{deuterium3}, indicating only 2.24\% of the universe's energy is stored in baryons.
+    From the spectrum of deuterium and hydrogen lines from the quasar QSO Q0913+072, the baryon fraction was measured to be $\Omega_{b}h^2 = 0.0224 \pm 0.0005$~\cite{deuterium3}, indicating only 4.93\% of the universe's energy is stored in baryons.
+    % h = 0.674 (see below)
+    % 0.0224 / h^2 = 0.0224 / 0.674^2 = 0.0493 -> 4.93% of universe's energy
     This then suggests that the majority of matter in the universe cannot be made of baryons, and that the majority resides in some non-baryonic form.
     
     Another measurement that depends heavily on the presence of dark matter is the rate at which galaxies cluster together.
@@ -430,16 +416,16 @@
   %   A_s = e^(3.043+-0.014) * 10^-10 = (2.097+-0.029)*10^-9
   %   
   
-  \begin{table}[]
+  \begin{table}[b]
     \centering
     \caption[6 Cosmological Parameters]{
-      The six cosmological parameters fitted in $\Lambda$CDM, from Ref.~\cite{planck_dm_limit}}
+      The best fit values for the six cosmological parameters using CMB measurements, from Ref.~\cite{planck_dm_limit}}
     \label{tab:six_params}
     \begin{tabular}{llcl}
                & \textbf{Value}                 & \textbf{Unit} & \textbf{Description} \\
     \hline 
-    $\Omega_b$ & $ 4.915  \pm0.033                 $ & \%   & Universe's fraction of energy in Baryons \\
-    $\Omega_c$ & $ 26.37  \pm0.264                 $ & \%   & Universe's fraction of energy in Dark Matter \\
+    $\Omega_b$ & $ 4.915  \pm0.033                 $ & \%       & Universe's energy in Baryons \\
+    $\Omega_c$ & $ 26.37  \pm0.264                 $ & \%       & Universe's energy in Dark Matter \\
     $\thetamc$ & $(1.04089\pm0.00031)\times 10^{-2}$ & Radians  & Angular size of the sound horizon \\
     $\tau$     & $(5.40   \pm0.74   )\times 10^{-2}$ & unitless & Thompson scattering optical depth (opacity)\\
     % arxiv: 0205436 , section II, 3rd paragraph
@@ -485,14 +471,21 @@
   Since none of the Standard Model particles meet the conditions to be a dark matter candidate, theoretically predicted particles are now the focus of most searches.
   
   One of the major expansions to the Standard Model that may contain a dark matter candidate is Supersymmetry, or SUSY.
-  There are several SUSY extensions, but the main one discussed here is the Minimal Supersymmetric Standard Model (MSSM)~\cite{MSSM,supersym1}.
+  There are several SUSY extensions, but the main one discussed here is the Minimal Supersymmetric Standard Model (MSSM)~\cite{MSSM,supersym1,schelke_thesis}.
   The basic idea of SUSY is that, just as majorana fermions have a particle-antiparticle reflection, SUSY adds another reflection called R-parity for all particles. 
+  This R-parity is defined as
+
+  \begin{equation}
+    R = (-1)^{3B+L+2S}
+  \end{equation}
+
+  where $B$ is the baryon number, $L$ is the lepton number, and $S$ is the particle spin.
   This creates supersymmetric partner particles (superpartners) for each Standard Model particle, usually denoted by an 's-' prefix or an '-ino' suffix added to a particle name, and \nicetilde{} added atop the particle symbol ($e \rightarrow \tilde{e}$).
   Quarks become squarks, leptons become sleptions, gluons become gluinos.
-  Standard model particles have an R-parity of +1, while superpartners have an R-parity of -1.
+  Standard model particles and fields have an R-parity of +1, while superpartners have an R-parity of -1.
     
   When this SUSY reflection is performed, the superpartners develop some interesting properties.
-  Generally, the superpartners all have their spin reduced by $\frac{1}{2}$, so the fermionic electron with spin $\frac{1}{2}$ becomes a bosonic selectron with spin $0$, and the bosonic photon with spin 1 becomes the fermionic photino with spin $\frac{1}{2}$.
+  The superpartners all have their spin reduced by $\frac{1}{2}$, so the fermionic electron with spin $\frac{1}{2}$ becomes a bosonic selectron with spin $0$, and the bosonic photon with spin 1 becomes the fermionic photino with spin $\frac{1}{2}$.
   When several of the bosons are reflected, a new set of 4 particles called neutralinos may form.
   These neutralinos are made of the Bino, the Wino, and the two Higgsino fields.
   The Bino is the superpartner of the weak hypercharge, the Wino is the superpartner of the weak bosons, and the two Higgsino fields are superpartners to the Higgs field.
@@ -519,11 +512,13 @@
   
   The boltzman equation describing how the number of WIMPs evolves through this freezeout is,
   
+  % some of this derivation is from https://ned.ipac.caltech.edu/level5/March10/Garrett/Garrett7.html
+  %   for example, this is equation 20:
   \begin{equation}\label{eqn:boltzmann_relic}
-    \frac{dn}{dt} + 3 H n = \left \langle \sigma_{A} v \right \rangle \left ( n_{eq}^2 - n^2 \right ) \;\;,
+    \frac{dn}{dt} = - 3 H n \: - \left \langle \sigma_{A} v \right \rangle \left ( n^2 - n_{eq}^2 \right ) \;\;,
   \end{equation}
   
-  where $n$ is the comoving WIMP number density, $H$ is the hubble expansion rate ($\frac{\dot{a}}{a}$), $\left \langle \sigma_{A} v \right \rangle$ is the velocity-averaged cross section for $\chi\chi$ annihliating into lighter particles.
+  where $n$ is the comoving WIMP number density, $H$ is the hubble expansion rate ($\frac{\dot{a}}{a}$), $\left \langle \sigma_{A} v \right \rangle$ is the velocity-averaged cross section for $\chi\chi$ annihliating into lighter particles~\cite{wells_relic}.
   The parameter $n_{eq}$ is the equilibrium WIMP comoving number density.
   This equation is numerically solved and shown in Figure~\ref{fig:abundance}.
   
@@ -538,10 +533,10 @@
       The weak, electromagnetic (em), and strong cross sections are shown for a \SI{100}{GeV} WIMP, with additional lines for the weak cross section at \SI{1}{GeV} and \SI{e3}{GeV}.
       The cross sections shown are:
       \begin{tabular}{ll}
-      $\left \langle \sigma v \right \rangle_{\textrm{strong}}$  & $= 2 \times 10^{-15} \textrm{cm}^3 \textrm{s}^{-1}$ \\
-      $\left \langle \sigma v \right \rangle_{\textrm{em}}    $  & $= 2 \times 10^{-21} \textrm{cm}^3 \textrm{s}^{-1}$ \\
-      $\left \langle \sigma v \right \rangle_{\textrm{weak}}  $  & $= 2 \times 10^{-26} \textrm{cm}^3 \textrm{s}^{-1}$ \\
-      \end{tabular}
+      $\left \langle \sigma v \right \rangle_{\textrm{weak}}  $  & $= 2 \times 10^{-26} \; \textrm{cm}^3 \textrm{s}^{-1}$ \\
+      $\left \langle \sigma v \right \rangle_{\textrm{em}}    $  & $= 2 \times 10^{-21} \; \textrm{cm}^3 \textrm{s}^{-1}$ \\
+      $\left \langle \sigma v \right \rangle_{\textrm{strong}}$  & $= 2 \times 10^{-15} \; \textrm{cm}^3 \textrm{s}^{-1}$ \\
+      \end{tabular} .
     }
     \label{fig:abundance}
   \end{figure}
@@ -549,6 +544,7 @@
   In this figure, it can be seen how the number of WIMPs evolve as the universe ages, and its temperature decreases.
   The black equilibrium line indicates the number of WIMPs that would be left if they had a large ($\left \langle \sigma v \right \rangle >> 2 \times 10^{-15} \textrm{cm}^3 \textrm{s}^-1$) cross section.
   As the cross section decreases, fewer and fewer particles are annihilated, and more of the initial WIMP population survives to freeze out.
+  This freezeout can be thought of as the universe expanding faster than the particles can annihilate.
     
   Weak force cross section
   
