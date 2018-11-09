@@ -10,9 +10,9 @@
 \chapter{Gamma Rays and Dark Matter}\label{ch_gamma}
 
 
-Because analysis searches for dark matter using gamma rays, a discussion of gamma rays and their properties is necessary.
-In this chapter three different topics are discussed, including background gamma rays, dark matter gamma rays, and detecting gamma rays in general.
-The first is the astrophysical mechanisms that produce gamma rays, a background for detecting dark matter gamma rays.
+This thesis searches for evidence of dark matter within gamma ray data, but relationship between these two areas of physics is intricate.
+In this chapter three topics relevant to this relationship are discussed.
+The first is the astrophysical mechanisms that can produce TeV-energy gamma rays, a background for detecting dark matter gamma rays.
 The second is how dark matter around the Galactic Center can produce gamma rays.
 The third topic is how gamma rays induce air showers in the Earth's atmosphere.
 
@@ -54,7 +54,6 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \item $\gamma$ is the Lorentz factor,
     \item $U$ is the energy density of the photon field in the rest frame of the electron (e.g. $Uc=N\hbar \omega c$), and 
     \item $v$ is the velocity of the electron in the laboratory frame.
-    \item {\color{red}(format for explaining equations needs to be consistant, see equations \ref{eqn:inv_compt_avg_up_en}, \ref{eqn:pwn_pairprod} ??)}
   \end{itemize}
 
   The average energy $E_{up}$ of photons upscattered this way can be calculated via
@@ -110,7 +109,6 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   At energies of \SI{500}{GeV}, the Lorentz factor is $\gamma = 10^6$.
   With this Lorentz factor, upscattered photons can increase their energy by up to\footnote{This is the maximum average energy gain when the upscattered photon is emitted back along its original trajectory.} $\gamma^{2} = 10^{12}$.
   For example, a green photon ($\lambda_{\textrm{green}}=550\,\textrm{nm}$, $E_{\textrm{green}}=0.3\,\textrm{eV}$) could be upscattered to as high as \SI{467}{GeV}, becoming a gamma ray detectable by VERITAS.
-  {\color{red}(green?? -parents)}
   
   In order to efficiently produce gamma rays via this method, a population of high-energy electrons is needed.
   One environment that produces these electrons is pulsar wind nebulae.
@@ -265,9 +263,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \end{split}
   \end{equation}
   
-  {\color{red}(check equations are numbered properly??)}
-  
-  With equation~\ref{eqn:snr_simplify}, equation~\ref{eqn:snr_spec} then simplifies to
+  Using equation~\ref{eqn:snr_simplify}, equation~\ref{eqn:snr_spec} can then be simplified to
   
   \begin{equation}\label{eqn:snr_spec_final}
     \begin{split}
@@ -295,7 +291,6 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       The contours for three spectral indicies $\gamma$ are shown.
       For example, at the orange triangle, each crossing cycle increases a particles energy by a factor of 1.10, while it has a 90\% chance of being permanently trapped, which produces particles with a spectral index of $\gamma=-2.1$.
       The bottom plot shows the differential flux produced by power laws with the three spectral indicies shown in the top plot.
-      {\color{red}(power laws produce the flux?? -parents)}
     }\label{fig:snr_spectrum}
   \end{figure}
   
@@ -350,7 +345,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     % add popular figure for the three detection type
     \begin{figure}[ht]
       \centering
-      \includegraphics[width=0.65\textwidth]{images/3waystodetect/3waystodetect.pdf}
+      \includegraphics[width=0.45\textwidth]{images/3waystodetect/3waystodetect.pdf}
       \caption[Three Search Techniques]{
         The three general search techniques for dark matter.
         The $\chi$ is a dark matter particle, while $S$ is a standard model particle.
@@ -489,8 +484,8 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     Other chosen parameters are specified in Table~\ref{tab:halo_nphotons}, to align with the VERITAS telescope performance, or the parameters of the dark matter analysis performed in later chapters.
     For the table parameters, the dark matter halo would only produce a VERITAS-detectable gamma ray between \SIrange{4}{70}{TeV} every 39 hours.
     This flux $\Phi$ is proportional to the $\sv$, so a factor of $n$ larger particle cross section would produce a factor of $n$ larger photon flux.
-    {\color{red}(how does feet with thr?? -parents)}
-    It is interesting to note that, if the entire VERITAS energy range of \SIrange{1.5}{70}{TeV} is used, the integrated photon spectrum increases the observed photon flux by a factor of 26.
+    Another way to increase the observed photon flux is by expanding the observable gamma-ray energy range.
+    If the entire VERITAS energy range of \SIrange{1.5}{70}{TeV} is used, the integrated photon spectrum increases, and the observed halo photon flux also increases by a factor of 26.
     
     \begin{table}[]
       \centering
@@ -567,7 +562,6 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     This may be due to the presence of baryons in this core region, which can diffuse the central cusp of WIMPs into a core-like shape~\cite{corecusp_baryondiffuse1,corecusp_baryondiffuse2}.
     As this flat core occurs in the innermost region covered by the gamma-ray observations in this analysis, the choice of a cusped or cored dark matter halo can have a significant impact.
     Specifically, if the true dark matter halo has a cored profile, but is modeled using a cusped one, then any derived upper limits on the dark matter cross section would be different.
-    {\color{red}(halt parents comments??)}
     As a basic first step, only a cusped halo is used in this thesis.
     
     When choosing which dark matter target to observe with a gamma-ray observatory, knowing the gamma-ray brightness of different sources can be useful.
@@ -591,8 +585,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
 
     The $J$ factor is used to compare the relative gamma-ray brightness of different dark matter halos, which is a function of both dark matter density and observing distance.
     The Einasto density in Equation~\ref{eqn:einasto} can be integrated to calculate the $J$ factor at various radii, which is shown in Figure~\ref{fig:gchalo_jfactor}.
-    In Figure~\ref{fig:gchalo_jfactor}, the profile shown is calculated with Equation~\ref{eqn:jfactor}, where the $d\Omega$ is integrated in bins of \ang{0.01}.
-    {\color{red}(what does this mean?? -parents)}
+    In Figure~\ref{fig:gchalo_jfactor}, the profile shown is calculated with Equation~\ref{eqn:jfactor}, where the $d\Omega$ integration limits span an angle of \ang{0.01}.
     This J-factor profile then forms the spatial component of the dark matter halo, $M_{s,\textrm{halo}}$, used in Chapter~\ref{chapter:analysis}.
     This profile is shown in a two-dimensional plot in Figure~\ref{fig:halojfactor}.
     
@@ -631,7 +624,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     
 \section{Cherenkov Photons}\label{sec:cherenkov}
 
-  Cherenkov light and its production is discussed in this next section, because the detection of gamma rays in Section~\ref{sec:atmoshowers} relies heavily on knowledge of Cherenkov light.
+  Cherenkov light and its production is discussed in this section, because the detection of gamma rays in Section~\ref{sec:atmoshowers} relies heavily on knowledge of Cherenkov light.
   Within the Earth's atmosphere (or any dielectric medium), the phase velocity of light $c_{atmosphere}$ is slightly slower than in a vacuum.
   Any charged particles travelling at velocity $v > c_{atmosphere}$ will induce the atmosphere to produce Cherenkov photons~\cite{cherenkov}.
   From a single charged particle of constant velocity, Cherenkov photons form a conical wavefront shown in Figure~\ref{fig:cherenkovangle}.
@@ -690,17 +683,15 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   Neutrons emitted by the reactor collide with atoms in the water, freeing some electrons with enough kinetic energy to travel faster than the speed of light in water.
   These superluminal-in-water electrons then create the blue Cherenkov photons imaged here.
   
-  Now that it is understood that Chernekov light is produced by charged particles, the next Section~\ref{sec:atmoshowers} discusses how particles from outer space can produce waves of Cherenkov photons.
+  Now that Cherenkov light has been discussed, Section~\ref{sec:atmoshowers} covers how particles from outer space can produce waves of Cherenkov photons.
   These UV- and visible-spectrum Cherenkov photons are then imaged and recorded by the VERITAS observatory, as discussed in Chapter~\ref{chapter:veritas}.
-  {\color{red}(paragraph needs reworking, comments cut off?? -parents)}
   
     
 \section{Atmospheric Showers}\label{sec:atmoshowers}
 
-  When a particle strikes an atom of Earth's atmosphere at GeV or higher energies, it sets off a cascade of energetic particles called an air shower~\cite{Bethe1934,Klein1999}.
+  When a particle (the primary) strikes an atom of Earth's atmosphere at GeV or higher energies, it sets off a cascade of energetic particles called an air shower~\cite{Bethe1934,Klein1999}.
   When the primary particle consists of one or more hadrons, like a proton or iron atom, it creates a hadronic shower.
-  {\color{red}(missing comment?? -parents)}
-  When the primary is a gamma ray or a charged lepton, it creates an electromagnetic shower.
+  When the primary particle is a gamma ray or a charged lepton, it creates an electromagnetic shower.
   Electromagnetic showers produce a cascade of electrons, positrons ($e^{+}$), and photons, where each successive generation of particles tends to have more particles but less energy per particle than the last.
   To start the shower, the primary gamma ray will interact with an atmospheric atom, producing an $e^{-}e^{+}$ pair, each with roughly half the primary gamma ray's energy, as shown in Figure~\ref{fig:emcascade}.
   The $e^{-}$ and $e^{+}$ emit bremsstrahlung photons, and incite the atmosphere to emit Cherenkov photons, discussed further in Section~\ref{sec:cherenkov}.
@@ -757,9 +748,9 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   
   % see here for neutron: https://en.wikipedia.org/wiki/Cosmic_ray
   In hadronic showers, any produced \pip{}s and \pim{}s can travel far in the tranverse direction, away from the main axis of the primary particle.
-  The \pip{}'s and \pim{}'s then decay into $\mu^{+}\nu_{\mu}$ and $\mu^{-}\bar{\nu}_{\mu}$ pairs, respectively.
+  The \pip{}s and \pim{}s then decay into $\mu^{+}\nu_{\mu}$ and $\mu^{-}\bar{\nu}_{\mu}$ pairs, respectively.
   The \pip{} decay is shown in Figure~\ref{fig:feynman_piplus}.
-  The \pio{} quickly decays into pair of gamma rays, each of which then start their own electromagnetic shower.
+  The \pio{} quickly decays into a pair of gamma rays, each of which then start their own electromagnetic shower.
   The \pip{} and \pim{} have longer lifetimes ($\pi^{\pm} \rightarrow $\SI{3e-8}{s} vs $\pi^{0} \rightarrow $\SI{9e-17}{s}~\cite{pdg_2014}), allowing them to carry energy farther away from the central shower axis.
   Both of these effects create sub-showers farther away from the primary particle axis, which tends to cause hadronic showers, and their resulting Cherenkov images, to be wider than a purely electromagnetic shower of the same length. 
 
@@ -771,7 +762,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   Darker areas indicate more Cherenkov photons are produced by charged particles in the shower.
   The gamma-ray shower produces most of its Cherenkov photons along the central vertical core of the shower, while the proton shower produces Cherenkov photons spread out in a wider, fan-like shape.
   In the proton shower, any produced \pio{}'s decay into electromagnetic sub-showers in the interior of the shower.
-  The net effect is that, when compared to a gamma ray, a proton must start with 3 times the energy to produce a similar amount of Cherenkov photons, which are distributed in a wider pattern.
+  The net effect is that, when compared to a gamma ray, a proton must start with \nicetilde{}3 times the energy to produce a similar amount of Cherenkov photons, which are distributed in a wider pattern.
 
   \begin{figure}[ht]
     \centering
