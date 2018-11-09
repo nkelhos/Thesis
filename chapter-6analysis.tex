@@ -343,16 +343,16 @@
   \end{equation}
 
   The sky position of the point source is fixed to the Crab Nebula, $(l_c,b_c) = (\ang{184.557600},\ang{-5.784180})$.
-  The pivot energy $E_o$ of its spectrum is fixed at \SI{16.73}{TeV}, while the normalization $N_o$ and the spectral index $\gamma$ are free to vary during the likelihood optimization.
-  Only events between \SIrange{4}{70}{TeV} are used in this test analysis.
-  At an elevation of \ang{25}, the reconstruction method is able to reconstruct events as low as \SI{1.5}{TeV}.
-  Below \SI{4}{TeV} however, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region may not be accurate.
+  The pivot energy $E_o$ of its spectrum is fixed at \SI{16.73}{\TeV{}}, while the normalization $N_o$ and the spectral index $\gamma$ are free to vary during the likelihood optimization.
+  Only events between \SIrange{4}{70}{\TeV{}} are used in this test analysis.
+  At an elevation of \ang{25}, the reconstruction method is able to reconstruct events as low as \SI{1.5}{\TeV{}}.
+  Below \SI{4}{\TeV{}} however, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region may not be accurate.
   Part of this decrease is explored in Section~\ref{subsec:bkgstructure} (see Figures \ref{fig:bkgvsel_crab} and \ref{fig:bkgvsel_sgra}), but accounting for this requires an unfeasibly large set of simulations.
-  At energies above \SI{200}{TeV}, simulations become too computationally expensive when attempting to calculate IRFs.
-  In order to ensure there are enough simulations to properly populate the high-energy end of the IRFs, the analysis is limited to a maximum event energy of \SI{70}{TeV}.
+  At energies above \SI{200}{\TeV{}}, simulations become too computationally expensive when attempting to calculate IRFs.
+  In order to ensure there are enough simulations to properly populate the high-energy end of the IRFs, the analysis is limited to a maximum event energy of \SI{70}{\TeV{}}.
     
   % values from nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/crab_test/logs/statistics.txt
-  After fitting all model parameters to the events from \SIrange{4}{70}{TeV}, the best fit power law values are $ N_o = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a test statistic of 408.8, corresponding to \nicetilde{}\SI{20.2}{$\sigma$}.
+  After fitting all model parameters to the events from \SIrange{4}{70}{\TeV{}}, the best fit power law values are $ N_o = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a test statistic of 408.8, corresponding to \nicetilde{}\SI{20.2}{$\sigma$}.
   As the alternate Crab Nebula hypothesis has 110 free parameters, and the no-Crab-Nebula (null) hypothesis has 108 free parameters, the test statistic has $ 110 - 108 = 2 $ degrees of freedom.
   
     
@@ -363,7 +363,7 @@
     \caption[Crab Test Spectrum]
     {
       Crab Nebula spectra from various analyses and observatories.
-      The solid red line is the best-fit spectra from the CTOOLS analysis described in this chapter, using only events from \SIrange{4}{70}{TeV}.
+      The solid red line is the best-fit spectra from the CTOOLS analysis described in this chapter, using only events from \SIrange{4}{70}{\TeV{}}.
       The inner red envelope is the statistical fitting error on the solid red line.
       The outer red envelope is the combined statistical+systematic error.
       The dark blue line is the standard VERITAS Eventdisplay spectrum using the same set of observations.
@@ -381,7 +381,7 @@
       \hline
       \textbf{Analysis} & \textbf{Min}    & \textbf{Max}    & \textbf{FOV} & \textbf{PSF} & \textbf{$\sigma$} \\
       \textbf{Method}   & \textbf{Energy} & \textbf{Energy} &  \#          & \#           &                   \\
-                        & TeV             & TeV             &  Events      & Events       &                   \\
+                        & \TeV{}          & \TeV{}          &  Events      & Events       &                   \\
       \hline 
       On/Off Region & 3.16 & 79.4 & 11197 & 145 & 21.3 \\
       Likelihood    & 4.00 & 70.0 & 9319  & 120 & 20.2 \\
@@ -394,9 +394,9 @@
   \end{table}
 
   In the standard VERITAS Eventdisplay analysis, the Crab Nebula is found to have a point source significance of \SI{21.3}{$\sigma$}, shown in Table~\ref{tab:crab_statistics}.
-  However, the energy range of this Eventdisplay analysis was from \SIrange{3.16}{79.4}{TeV}, which contained a total of 11197 events in the field of view.
-  The likelihood analysis was from \SIrange{4}{70}{TeV}, containing only 9319 events, \nicetilde17\% fewer events.
-  This ratio persisted when the events were limited to within \ang{0.18} of the Crab Nebula, the approximate radius of the PSF at \SI{10}{TeV} (145 vs 120 events).
+  However, the energy range of this Eventdisplay analysis was from \SIrange{3.16}{79.4}{\TeV{}}, which contained a total of 11197 events in the field of view.
+  The likelihood analysis was from \SIrange{4}{70}{\TeV{}}, containing only 9319 events, \nicetilde17\% fewer events.
+  This ratio persisted when the events were limited to within \ang{0.18} of the Crab Nebula, the approximate radius of the PSF at \SI{10}{\TeV{}} (145 vs 120 events).
   Thus, with \nicetilde17\% fewer events, the likelihood test detects the Crab Nebula at the same significance level, implying this likelihood method is more sensitive than the standard analysis alone.
   % event display: 3.16 TeV to 79.4 TeV
   % ctools       : 4    TeV to 70   TeV
@@ -529,7 +529,7 @@
   The 108 hours of Galactic Center data used in this analysis is described in Section~\ref{veritasdata}.
   A skymap histogram of all observed events is shown in Figure~\ref{fig:gc_counts_skymap}.
   This skymap is uncorrected for exposure time or effective area; it is only a histogram of event positions.
-  A histogram of all events' energies from \SIrange{4}{70}{TeV} is shown in Figure~\ref{fig:gc_counts_enhist}.
+  A histogram of all events' energies from \SIrange{4}{70}{\TeV{}} is shown in Figure~\ref{fig:gc_counts_enhist}.
   As this histogram is uncorrected for effective area, it does not follow the standard power-law shape.
   Neither of these plots have corrections for observing time or effective area.
   Once the data is reconstructed, the next step is to set up the models.
@@ -618,7 +618,7 @@
     \begin{tabular}{|r|r|}
       \hline
       \textbf{DM Mass} & \textbf{Halo TS} \\
-      \textbf{$m_\chi$} [TeV] & \\
+      \textbf{$m_\chi$} [\TeV{}] & \\
       \hline 
       \input{images/likelihood_analysis/tsvals.tex}
       \hline 
@@ -644,7 +644,7 @@
     \end{tabular}
     \caption[Histogram of Background Model Parameter Values in the Sgr A* Analysis]{
       Histogram of the two free parameters in each of the 948 camera background models.
-      Only the parameters from the $m_\chi\;=\;$\SI{45}{TeV} likelihood fit are shown here.
+      Only the parameters from the $m_\chi\;=\;$\SI{45}{\TeV{}} likelihood fit are shown here.
     }
     \label{fig:param_hist}
   \end{figure}
@@ -732,7 +732,7 @@
       }
     }
     \caption[Galactic Center Profile vs Energy]{
-      Observed vs modeled counts in a \ang{0.2}$\times$\ang{0.2} square bin centered on Sgr A* at energies from \SIrange{4}{70}{TeV}.
+      Observed vs modeled counts in a \ang{0.2}$\times$\ang{0.2} square bin centered on Sgr A* at energies from \SIrange{4}{70}{\TeV{}}.
       Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
       {\color{red}(Also show plot of fitted galactic center point source spectrum??)}
@@ -854,7 +854,7 @@
   This means that the radial camera background models are not accurately fitting the shape of the observed events.
   The direction of the residual gradient aligns with the elevation gradient in the camera, visible in Figures \ref{fig:back_lowelev29}.D and .E, and Figures \ref{fig:back_lowelev26}.D and .E.
   To check that this elevation gradient has a negligible effect on the upper limit result in Figure~\ref{fig:ulim}, the likelihood analysis was redone with an elevation gradient.
-  As this analysis is limited to the energy range \SIrange{4}{70}{TeV}, the elevation gradient will increase the number of events detected at the bottom of the camera, due to the thicker atmosphere providing increased interaction mass.
+  As this analysis is limited to the energy range \SIrange{4}{70}{\TeV{}}, the elevation gradient will increase the number of events detected at the bottom of the camera, due to the thicker atmosphere providing increased interaction mass.
   And, since the Galactic Center is visible almost directly south at an azimuth of \ang{193}, the elevation axis is almost parallel to the Declination axis.
   A gradient of 5\%/degree was chosen due to the relative differences between the total modeled counts and the observed counts in Figures \ref{fig:gc_profile_gal_l} and \ref{fig:gc_profile_gal_b}.
   {\color{red}(Its hard to see how you get 5\% from the plots, from profile plots it looks like 10\%, can a residual plot be made and shown here?? -orel)}
@@ -873,7 +873,7 @@
     \label{fig:bkg_flatvsgrad}
   \end{figure}
   
-  After these were applied to all background models, the likelihood analysis was re-run for the \SI{10}{\TeV} WIMP mass.
+  After these were applied to all background models, the likelihood analysis was re-run for the \SI{10}{\TeV{}} WIMP mass.
   The resulting upper limit with the gradient was only 0.1\% different from the upper limit with radial background models.
   This indicates the upper limits are not very sensitive to the background models.
   % on warp-zeuthen.desy.de:

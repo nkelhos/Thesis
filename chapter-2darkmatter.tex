@@ -310,7 +310,7 @@ This result was improved by combining 72 galaxy cluster collisions, improving th
 At the universe's largest scale, $\nicetilde 10^{26}$m, the Cosmic Microwave Background (CMB) has been used to measure the total amount of dark matter in the universe.
 By looking at the structure of the CMB, the structure of the universe and its particle populations can be studied, including how they developed and changed from the big bang to the present day.
 In order to understand dark matter's place in the evolution of the universe, several important moments must be discussed.
-The first moment of the universe was Inflation, where a singularity with a temperature of $kT=10^{17}\:\textrm{GeV}$ quickly expanded as a quark-gluon plasma and cooled~\cite{inflation0,inflation1,inflation2,inflation3}.
+The first moment of the universe was Inflation, where a singularity with a temperature of $kT=10^{17}\:\textrm{\GeV{}}$ quickly expanded as a quark-gluon plasma and cooled~\cite{inflation0,inflation1,inflation2,inflation3}.
 Once the average temperature had reduced enough, quarks could bind together to form baryons, in a stage known as Baryogenesis.
 The time/temperature that Baryogenesis occurred at has not been determined.
 However, there are several competing theories that may explain how an unequal ratio of baryons to antibaryons were created~\cite{baryogenesis1,baryogenesis2}.
@@ -429,6 +429,8 @@ From the CMB correlation spectrum in Figure~\ref{fig:cmb_correlation_spectra}, s
     $\Omega_b$ & $ 4.915  \pm0.033                 $ & \%       & Universe's energy in Baryons \\
     $\Omega_c$ & $ 26.37  \pm0.264                 $ & \%       & Universe's energy in Dark Matter \\
     $\thetamc$ & $(1.04089\pm0.00031)\times 10^{-2}$ & Radians  & Angular size of the sound horizon \\
+    % from https://github.com/cmbant/CosmoMC/blob/master/paramnames/params_CMB.paramnames :
+    %   "the ratio of the angular diameter distance to the LSS sound horizon"
     $\tau$     & $(5.40   \pm0.74   )\times 10^{-2}$ & unitless & Thompson scattering optical depth (opacity)\\
     % arxiv: 0205436 , section II, 3rd paragraph
     $A_s$      & $(2.097  \pm0.029  )\times 10^{-9}$ & unitless & Seed density spectrum amplitude \\
@@ -476,6 +478,7 @@ This would result in large super-cluster-scale gravitational wells forming first
 When observations are made of earlier times, the opposite is found: galaxy-scale gravitational wells form first, then cluster-scale wells, then super-cluster-scale wells in present times, called bottom-up formation.
 As this is the opposite of what is expected for relativistic dark matter, neutrinos were ruled out as a dark matter candidate~\cite{neutrinoHeirarchical}.
 % from this discussion: https://physics.stackexchange.com/questions/158319/why-are-neutrinos-ruled-out-as-a-major-or-even-sole-component-of-dark-matter
+
 In addition, limits on the mass of the neutrino ($\sum{}m_{\nu} = 0.194 \; \textrm{eV}, \; 95\% \; \textrm{C.L.}$) also rule it out since they are not numerous enough~\cite{planck2015}.
 % see table 5, sum m_nu [eV] row, TT, TE, EE+lensing+ext column
 All other Standard Model particles have also been ruled out, usually for reasons of charge, mass, number density, or cross section.
@@ -540,7 +543,7 @@ The parameter $n_{eq}$ is the equilibrium WIMP comoving number density.
   $m$ is the WIMP mass, $T$ is the universe's temperature, which decreases as the universe expands.
   $x$ is therefore a proxy for time, increasing as one moves to the right along the x-axis.
   $n(x)$ is the number of WIMPs in a comoving volume, $n_{\textrm{eq}}(x)$ is the number of WIMPs at equilibrium, and the y values are scaled by $n_{\textrm{eq}}(x=1)$.
-  The weak, electromagnetic (em), and strong cross sections are shown for a \SI{100}{GeV} WIMP, with additional lines for the weak cross section at \SI{1}{GeV} and \SI{e3}{GeV}.
+  The weak, electromagnetic (em), and strong cross sections are shown for a \SI{100}{\GeV{}} WIMP, with additional lines for the weak cross section at \SI{1}{\GeV{}} and \SI{e3}{\GeV{}}.
   The cross sections shown are:
   \begin{tabular}{ll}
   $\left \langle \sigma v \right \rangle_{\textrm{weak}}  $  & $= 2 \times 10^{-26} \; \textrm{cm}^3 \textrm{s}^{-1}$ \\
@@ -561,9 +564,9 @@ This freezeout can be thought of as the universe expanding faster than the parti
 
 The cross section of WIMPs can then be estimated from this Boltzmann equation.
 If the total amount of dark matter is known, and its mass estimated, this indicates the number density of WIMP particles present in the universe.
-This number density combined with Equation~\ref{eqn:boltzmann_relic} then indicates the cross section of a \SI{100}{GeV} WIMP to be around $\left \langle \sigma_{\chi} v \right \rangle \approx 3 \times 10^{-27} \textrm{cm}^{3}\textrm{s}^{-1}$
+This number density combined with Equation~\ref{eqn:boltzmann_relic} then indicates the cross section of a \SI{100}{\GeV{}} WIMP to be around $\left \langle \sigma_{\chi} v \right \rangle \approx 3 \times 10^{-27} \textrm{cm}^{3}\textrm{s}^{-1}$
 
-An interesting coincidence is that the weak cross section of a \SI{100}{GeV} particle is approximately \SI{e-25}{cm^3s^{-1}}, only two orders of magnitude away from the cross section found from the relic abundance~\cite{Jungman:1995df}.
+An interesting coincidence is that the weak cross section of a \SI{100}{\GeV{}} particle is approximately \SI{e-25}{cm^3s^{-1}}, only two orders of magnitude away from the cross section found from the relic abundance~\cite{Jungman:1995df}.
 This is quite surprising, as the cosmology of the relic abundance and the weak cross section are very independent calculations.
 While this is not conclusive proof of the WIMP's existence, this \textit{WIMP Miracle} does waggle its eyebrows suggestively while gesturing furtively and mouthing `look over there'~\cite{xkcd_causation}.
 

@@ -77,16 +77,16 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
     To better handle these near-parallel image axes at low elevations, the reconstructed position can be determined from more parameters than just the weighted intersection points from the image axes.
     From simulations, the distance between the center of the Hillas shower image and the true position can be calculated, where the angular distance between the two is the \disp{} parameter~\cite{Senturk:2011}, shown in Figure~\ref{fig:dispdiagram}.
     Then, this \disp{} parameter can be provided to a machine learning algorithm~\cite{Beilicke2012NIM}, along with other image parameters like:
-    \begin{description}
-      \item[\textit{width}:] image angular width
-      \item[\textit{length}:] image angular length
-      \item[\textit{wol}:] $\frac{\textrm{width}}{\textrm{length}}$
-      \item[\textit{size}:] total image dc
-      \item[\textit{ntubes}:] number of pixels in the image
-      \item[\textit{loss}:] fraction of image pixels at the edge of the camera
-      \item[\textit{asym}:] distance between image center-of-dc and the pixel with the highest dc
-      \item[\textit{tgrad}:] the slope of the linear time fit to the pixel arrival times
-      \item[\textit{cross}:] angular distance between the image center and the average intersection point of the image axes.
+    \begin{description}[noitemsep]
+      \item [width:] image angular width
+      \item [length:] image angular length
+      \item [wol:] $\frac{\textrm{width}}{\textrm{length}}$
+      \item [size:] total image dc
+      \item [ntubes:] number of pixels in the image
+      \item [loss:] fraction of image pixels at the edge of the camera
+      \item [asym:] distance between image center-of-dc and the pixel with the highest dc
+      \item [tgrad:] the slope of the linear time fit to the pixel arrival times
+      \item [cross:] angular distance between the image center and the average intersection point of the image axes.
     \end{description}
   % list of training parameters: grep "AddVariable" $EVNDISPSYS/src/trainTMVAforAngularReconstruction.cpp
   % how variables are calculated: grep -P "fParGeo.+\=" $EVNDISPSYS/src/VImageParameterCalculation.cpp
@@ -118,12 +118,12 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
       \centering
       \includegraphics[width=0.85\textwidth]{images/disp_training/disp_training.eps}
       \caption[Disp BDT Training]{
-        The true \disp{} vs the BDT-predicted \disp{}, for \nicetilde17,000 gamma-ray event images in T1, from \SI{500}{\GeV} to \SI{200}{\TeV}.
+        The true \disp{} vs the BDT-predicted \disp{}, for \nicetilde17,000 gamma-ray event images in T1, from \SI{500}{\GeV{}} to \SI{200}{\TeV{}}.
       }
       \label{fig:disptraining}
     \end{figure}
     
-    {\color{red} make a profile plot of the true/BDT disp vs true disp, with 68\% containment errorbars, and talk about it in the text! is there a bias? at what disps? }
+    {\color{red} make a profile plot of the true/BDT disp vs true disp, with 68\% containment errorbars, and talk about it in the text! is there a bias? at what disps?? }
 
     The small improvement in the position reconstruction due to the \disp{} method can be seen in Figure~\ref{fig:disp_event_offset}.
     With the Geometric (red) events, more are concentrated further from the point source, while with the \disp{} method, a few more are concentrated at the source itself.
@@ -173,8 +173,8 @@ This database includes the width and length of the shower, how far away its core
   
   During the export, several decisions are baked into the event lists and IRFs.
   As this thesis revolves around an analysis at an elevation of \nicetilde{}\ang{30}, the IRFs may rapidly change.
-  At this elevation, with VERITAS's field of view of \ang{3.5}, the airmass column density ($g/cm^{2}$) is 20\% higher at the bottom of the camera than at the top.
-  Combined with the fact that a observing target can move several degrees over one observation, this means the airmass can change by 10's of percent over a single 30-minute observation.
+  At this elevation, with VERITAS's field of view of \ang{3.5}, the airmass column density ($\textrm{g}/\textrm{cm}^2$) is 20\% higher at the bottom of the camera than at the top.
+  Combined with the fact that a observing target can move several degrees over one \SI{30}{min} observation, this means the airmass can change by 10's of percent over a single 30-minute observation.
   This changing atmosphere would mean the IRFs at the beginning of an observation may be measurably different than at the end of an observation.
 
   To reduce the impact of this, observations are broken up into 8-minute-long parts.
@@ -194,7 +194,7 @@ This database includes the width and length of the shower, how far away its core
     $A=\pi R^2 \frac{N_{\text{survived}}}{N_{\text{simulated}}}$
     where R is the radius of the area within which simulated showers are directed to fall, $N_{\text{simulated}}$ is the number of showers that were initially simulated into the area, and $N_{\text{survived}}$ is the number of simulated showers that pass all cuts.
     This effective area is thus a measure of how much detection area the observatory would have if it had a 100\% detection efficiency, which can then be used in calculating a source's flux.
-    In Figure~\ref{fig:effarea_paramspace} shows how the effective area peaks to \nicetilde{}\SI{3e5}{m${}^2$} for \SI{3}{\TeV} events at the camera center.
+    In Figure~\ref{fig:effarea_paramspace} shows how the effective area peaks to \nicetilde{}\SI{3e5}{m${}^2$} for \SI{3}{\TeV{}} events at the camera center.
 
     \begin{figure}[ht]
       \centering
@@ -226,7 +226,7 @@ This database includes the width and length of the shower, how far away its core
     When reconstructing the source position of each gamma ray, it is necessary to know the uncertainty of the position.
     Primarily, errors in the position come from the randomness of shower images.
     The same gamma ray may develop varying outcomes due to differences in which:
-    \begin{itemize}[label=$\bullet$]
+    \begin{itemize}[label=$\bullet$,noitemsep]
       \item particles early in the shower gaining different amounts of energy
       \item angles shower particles scatter at
       \item Cherenkov photons are absorbed by the atmosphere
@@ -264,7 +264,7 @@ This database includes the width and length of the shower, how far away its core
         The 68\% containment radius for the Energy/Offset parameter space for Sgr A* run 78128. 
         The green points are from data, showing a subset of the event locations from run 78128 in the parameter space.
         The color axis is the containment radius, calculated from simulations.
-        While events from all energies are shown, only events from \SIrange{4}{70}{\TeV} are used (see Section~\ref{sec:crab_analysis}).
+        While events from all energies are shown, only events from \SIrange{4}{70}{\TeV{}} are used (see Section~\ref{sec:crab_analysis}).
       }
       \label{fig:psf_paramspace}
     \end{figure}
@@ -373,7 +373,7 @@ This database includes the width and length of the shower, how far away its core
         
         {\color{red}Need to explain downturn at lowest energies?? -Gernot}
         {\color{red}Explain that downturn is probably due to edge effect, where the large population of true  low energy events have more that fluctuate to higher energies, and get reconstructed at higher energies.  ??}
-        {\color{red}(add grey region describing energies used in analysis (4-70 TeV)   ??)}
+        {\color{red}(add grey region describing energies used in analysis (4-70 \TeV{})   ??)}
         {\color{red}Again, please describe in the text non-trivial features in the plot (the bias at low energy) ?? -orel}
         {\color{red}Add boundary lines in reconstructed energy based on event cuts??}
         {\color{red}Check other thesis for energy migration matrix stuff and explainations??}
@@ -442,7 +442,7 @@ This database includes the width and length of the shower, how far away its core
   
   These effects are also noticeable in the galactic (l,b) event maps.
   In Figure~\ref{fig:bkgvsel_crab}, the top plot shows the positions of all events.
-  The middle histogram shows the distribution of event energies, and the bottom plot shows the positions of events in a limited energy range, \SIrange{1.5}{3.25}{\TeV}.
+  The middle histogram shows the distribution of event energies, and the bottom plot shows the positions of events in a limited energy range, \SIrange{1.5}{3.25}{\TeV{}}.
   The middle plot demonstrates that, as event energy decreases, fewer events are detected.
   When events in this limited energy range are plotted in the bottom plot, a faint deficit appears along the bottom of the camera.
   This faint deficit is due to the \nicetilde20\% higher column density at the low-elevation parts of the camera.
@@ -450,7 +450,7 @@ This database includes the width and length of the shower, how far away its core
 
   When similar plots are made for the Galactic Center in Figure~\ref{fig:bkgvsel_sgra}, the effect is much stronger, and rotated.
   In the top plot, events are radially symmetric around the source position.
-  When only the events from \SIrange{1.5}{3.25}{\TeV} are plotted, a much clearer deficit is visible on the lower right part of the plot.
+  When only the events from \SIrange{1.5}{3.25}{\TeV{}} are plotted, a much clearer deficit is visible on the lower right part of the plot.
   This area corresponds to the deficit at the bottom of the camera in Figures \ref{fig:back_lowelev29}.B and \ref{fig:back_lowelev26}.B.
   This rotation occurs when converting between camera x/y coordinates (Earth Elevation/Azimuth) and Galactic coordinates (l,b).
   The degree of rotation also changes throughout individual runs, which further blurs this effect.
@@ -458,7 +458,7 @@ This database includes the width and length of the shower, how far away its core
   
   This effect is important to the analysis because it implies that, at the lowest energies, the background rate is not radially symmetric.
   Radial backgrounds (sometimes referred to as acceptances) are typically used in VERITAS, as no other camera x/y or energy dependence had been demonstrated until now.
-  As the analysis in this thesis only has a few hours of background observations (see Table \ref{tab:observation_times}), only radially symmetric background templates and models could be constructed, which then required limiting the final analysis to $\geq\SI{4}{\TeV}$.
+  As the analysis in this thesis only has a few hours of background observations (see Table \ref{tab:observation_times}), only radially symmetric background templates and models could be constructed, which then required limiting the final analysis to $\geq\SI{4}{\TeV{}}$.
   
   \begin{figure}[ht]
     \centering
@@ -468,7 +468,7 @@ This database includes the width and length of the shower, how far away its core
       Plots of Crab Nebula observations.
       Top: Skymap of all events.
       Middle: Histogram of all events in energy.
-      Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV}.  
+      Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV{}}.  
       The blue circles centered on the Crab Nebula highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
     }
     \label{fig:bkgvsel_crab}
@@ -482,7 +482,7 @@ This database includes the width and length of the shower, how far away its core
       Plots of Sgr A* observations.
       Top: Skymap of all events.
       Middle: Histogram of all event energies.
-      Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV}.  
+      Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV{}}.  
       The blue circles centered on the Galactic Center highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
     }
     \label{fig:bkgvsel_sgra}
@@ -492,7 +492,7 @@ This database includes the width and length of the shower, how far away its core
 
   \subsection{Diffuse Simulations}\label{subsubsec:diffusesims}
     Diffuse simulations were performed at similar energies and elevations to see if this effect was still present.
-    These consisted of simulating 50,000 gamma rays with CORSIKA~\cite{corsika1998} at 1.4, 1.6, 2, and \SI{5}{\TeV}.
+    These consisted of simulating 50,000 gamma rays with CORSIKA~\cite{corsika1998} at 1.4, 1.6, 2, and \SI{5}{\TeV{}}.
     The telescopes were fixed to an (azimuth,elevation) of (\ang{193}, \ang{28}).
     The events themselves were distributed in a diffuse \ang{2.5}-radius disk.
     To approximate a simple gamma-hadron cut, any events with a mean-scaled-width falling outside the range of -2.0 to 0.5 were removed, which eliminates many of the showers that appear proton-like.
