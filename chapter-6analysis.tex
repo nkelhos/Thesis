@@ -669,7 +669,7 @@
             \setlength{\fboxsep }{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
-              \includegraphics[height=3cm]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofl_counts.pdf}
+              \includegraphics[height=3cm]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofl_counts_rasterized.pdf}
             }
           }
         }
@@ -679,7 +679,6 @@
       Observed vs modeled counts in a slice of the sky parallel to the galactic $\ldet$ axis at $B=0$.
       Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
-      {\color{red}(rasterize inset plot??)}
     }
     \label{fig:gc_profile_gal_l}
   \end{figure}
@@ -697,7 +696,7 @@
             \setlength{\fboxsep }{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
-              \includegraphics[height=3cm]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofb_counts.pdf}
+              \includegraphics[height=3cm]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofb_counts_rasterized.pdf}
             }
           }
         }
@@ -707,7 +706,6 @@
       Observed vs modeled counts in a slice of the sky parallel to the galactic $\bdet$ axis at $L=0$.
       Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
-      {\color{red}(rasterize inset plot??)}
     }
     \label{fig:gc_profile_gal_b}
   \end{figure}
@@ -725,7 +723,7 @@
             \setlength{\fboxsep }{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
-              \includegraphics[height=2.8cm]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofe_counts.pdf}
+              \includegraphics[height=2.8cm]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofe_counts_rasterized.pdf}
             }
           }
         }
@@ -736,11 +734,16 @@
       Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
       {\color{red}(Also show plot of fitted galactic center point source spectrum??)}
-      {\color{red}(rasterize inset plot??)}
       }
     }
     \label{fig:gc_profile_energy}
   \end{figure}
+  
+  To check for any poorly modeled areas of the sky, the significance of each bin's difference between counts and models can be calculated.
+  This significance is derived the following way.
+  Two hypotheses are constructed, the null and the test.
+  The null hypothesis is that the model alone is enough to explain the observed number of events, while the 
+  {\color{red}(add derivation here!??)}
   
   To check for any poorly modeled areas of the sky, a residual skymap is shown in Figure~\ref{fig:gc_resmap}.
   This calculates how significant the difference is between the observed and modeled number of counts.
@@ -752,7 +755,8 @@
   \end{equation}
   
   where D is the number of observed counts, and M is the number of modeled counts.
-  Equation~\ref{eqn:resmap_signif} is derived from the Li and Ma {\color{red}equation ??}. 
+  %Equation~\ref{eqn:resmap_signif} is derived from the Li and Ma {\color{red}equation ??}. 
+  Equation~\ref{eqn:resmap_signif} is derived in the following way.
   In this plot, the deficiency of the radially-symmetric camera background models is apparent.
   Lighter/darker areas indicate places where there were more/less observed counts than the best-fit models predicted.
   
