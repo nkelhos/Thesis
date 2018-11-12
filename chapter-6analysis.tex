@@ -100,7 +100,7 @@
     \Like = \frac{e^{-m} m^n}{n!}
   \end{equation}
   
-  For increased statistical power, the VERITAS data can be split into bins in energy, galactic l and b, and time.
+  For increased statistical power, the VERITAS data can be split into bins in energy, galactic $l$ and $b$, and time.
   When combining multiple bins arbitrarily ordered by index $j$, each bin's likelihood is multiplied together as in Equation~\ref{eqn:simple_like_2}.
   These events could be binned in dimensions of sky position, energy, time, or other event parameters, or any combination of these parameters.
   Future likelihood calculations may also include shower core position on the ground, or distance to the shower, or other observables.
@@ -413,15 +413,15 @@
             \setlength{\fboxsep}{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
-              \includegraphics[height=4.5cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profl_skymap.pdf}
+              \includegraphics[height=4.5cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profl_skymap_rasterized.pdf}
             }
           }
         }
       }
     }
-    \caption[Crab Profile along Galactic l]
+    \caption[Crab Profile along Galactic $l$]
     {
-      The number of counts along a \ang{0.16}-wide-slice \ang{0.5} North of the Crab, along the galactic l axis ($\ldet$ coordinate space).
+      The number of counts along a \ang{0.16}-wide-slice \ang{0.5} North of the Crab, along the galactic $l$ axis ($\ldet$ coordinate space).
       Blue points are the number of observed counts, with poissonian error bars.
       The green histogram bars are the number of counts predicted by all models.
       Purple histogram bars are the number of counts predicted by only the camera-background models.
@@ -440,15 +440,15 @@
             \setlength{\fboxsep}{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
-              \includegraphics[height=4.5cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profb_skymap.pdf}
+              \includegraphics[height=4.5cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profb_skymap_rasterized.pdf}
             }
           }
         }
       }
     }
-    \caption[Crab Profile along Galactic b]
+    \caption[Crab Profile along Galactic $b$]
     {
-      The number of counts along a \ang{0.16}-wide-slice through the Crab along the galactic b axis ($\bdet$ coordinate space).
+      The number of counts along a \ang{0.16}-wide-slice through the Crab along the galactic $b$ axis ($\bdet$ coordinate space).
       Blue points are the number of observed counts, with poissonian error bars.
       The green histogram bars are the number of counts predicted by all models.
       Purple histogram bars are the number of counts predicted by only the camera-background models.
@@ -467,16 +467,16 @@
             \setlength{\fboxsep}{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
-              \includegraphics[height=2.8cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profa_skymap.pdf}
+              \includegraphics[height=2.8cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profa_skymap_rasterized.pdf}
             }
           }
         }
       }
     }
-    \caption[Crab Profile along Galactic l Off Source]
+    \caption[Crab Profile along Galactic $l$ Off Source]
     {
-      The number of counts along a \ang{0.16}-wide-slice along the galactic l axis ($\ldet$ coordinate space).
-      This slice doesn't go through the Crab, but instead \ang{1} higher in galactic b.
+      The number of counts along a \ang{0.16}-wide-slice along the galactic $l$ axis ($\ldet$ coordinate space).
+      This slice doesn't go through the Crab, but instead \ang{1} higher in galactic $b$.
       As this doesn't include the Crab, this plot primarily demonstrates the camera background modeling.
       Blue points are the number of observed counts, with poissonian error bars.
       The green histogram bars are the number of counts predicted by all models.
@@ -497,7 +497,7 @@
             \setlength{\fboxsep}{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
-              \includegraphics[height=2.9cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profe_skymap.pdf}
+              \includegraphics[height=2.9cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profe_skymap_rasterized.pdf}
             }
           }
         }
@@ -516,7 +516,7 @@
     
   The fitted models can also be viewed, as a check that the likelihood engine is fitting the models to the data.
   In Figure~\ref{fig:crab_skymap}, the position of all counts is shown in galactic $\ldet$ and $\bdet$.
-  In Figures \ref{fig:crab_profile_l} and \ref{fig:crab_profile_b}, the counts in the observations and models were integrated along a slice of galactic l and b.
+  In Figures \ref{fig:crab_profile_l} and \ref{fig:crab_profile_b}, the counts in the observations and models were integrated along a slice of galactic $l$ and $b$.
   The counts from only the camera background models is shown in purple, along with the counts from all camera backgrounds plus the point source in green.
   The difference between these two histograms is then the counts from the Crab point source model.
   In Figure~\ref{fig:crab_profile_energy}, a similar plot is made, though integrated in a \ang{0.6}$\times$\ang{0.6} square around the Crab Nebula at different energies.
@@ -577,7 +577,7 @@
   However, this emission is not modeled, due to the increased complexity.
   {\color{red}
   Hard cuts may have minimized its effect??
-  If diffuse emission really needed to be modeled, it would show up in the profiles along galactic b??
+  If diffuse emission really needed to be modeled, it would show up in the profiles along galactic $b$??
   (because its radial, i probably need to mention why I assume its isotropic??)
   }
   
@@ -651,7 +651,7 @@
     
   To check that the other models are fitting the observed events, we can compare the observed vs modeled counts in different slices.
   In Figure~\ref{fig:gc_profile_gal_l}, the observed counts are shown compared to the final, likelihood-optimized modeled counts.
-  The histogram bins are located on \ang{0.22}-wide slice along the galactic l axis, centered on Sgr A*'s galactic b coordinate.
+  The histogram bins are located on \ang{0.22}-wide slice along the galactic $l$ axis, centered on Sgr A*'s galactic $b$ coordinate.
   Purple histogram bins are the modeled counts from only the camera background models.
   Green histogram bins are the total modeled counts from the camera background models, the Galactic Center point source, and the dark matter halo.
   Blue points with error bars are the observed counts in each bin, with poissonian errors.
@@ -712,7 +712,7 @@
     \label{fig:gc_profile_gal_b}
   \end{figure}
 
-  Figure~\ref{fig:gc_profile_energy} shows the same profile, except it is integrated over a \ang{0.2}$\times$\ang{0.2} galactic (l,b) square centered on Sgr A*.
+  Figure~\ref{fig:gc_profile_energy} shows the same profile, except it is integrated over a \ang{0.2}$\times$\ang{0.2} galactic ($l$,$b$) square centered on Sgr A*.
   Again, purple is modeled camera-background counts, green is total modeled counts, and blue is observed counts.
   
   \begin{figure}[h]
