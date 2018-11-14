@@ -28,6 +28,11 @@ On the smallest length scales, concentrations of several thousand stars can be s
 At larger scales the optical light from galaxies, as well as hydrogen lines, can be used to measure the amount of mass and its rotational velocity around the center of galaxies.
 At even larger scales, galaxy velocities can be measured and compared, X-ray telescopes can monitor the amount of hot gas, and mass-heavy areas of space will gravitationally lens background galaxies.
 At the largest scale, the measurement of oscillations in the cosmic microwave background can be used to determine the amount of dark and baryonic matter.
+
+Throughout this chapter, astrophysical objects are measured in units of the Sun's mass $M_\odot$, and the Sun's luminosity $L_\odot$.
+For these conversions, nominal values are $M_\odot =$ \SI{1.9885e30}{kg} and $L_\odot =$ \SI{3.828e26}{W}, though different authors may use slightly different values depending on the year of publication~\cite{iau_solarconstants}.
+The amount of dark matter in an object is then expressed in terms of the ratio $\frac{M_\odot}{L_\odot}$.
+For example, a ratio of \SI{7}{\frac{M_\odot}{L_\odot}} indicates that for every \SI{1}{M_\odot} worth of mass producing light (at a rate similar to the Sun), theres another \SI{6}{M_\odot} of mass in a dark form.
   
 \subsection{Scales of $10^{19}\:\text{m}$ : Dwarf Galaxies}\label{dm_dwarfscale}
 % 10^19m comes from: 
@@ -43,8 +48,7 @@ An example of a dwarf galaxy is shown in Figure~\ref{fig:sculptor}, the Sculptor
   \centering
   \includegraphics[width=0.95\textwidth]{images/sculptor/sculptor.eps}
   \caption[Sculptor Dwarf Galaxy]{
-    The Sculptor Dwarf Galaxy~\cite{sculptor_image}, imaged with the MPG/ESO telescope~\cite{sculptor_paper}.
-    {\color{red}This dwarf galaxy has a $\frac{M_\odot}{L_\odot}$ ratio of $15.3\pm6.9$~\cite{sculptor_ml}. (orel highlighted this??)}
+    The Sculptor Dwarf Galaxy~\cite{sculptor_image}, with a $\frac{M_\odot}{L_\odot}$ ratio of $15.3\pm6.9$~\cite{sculptor_ml}, imaged by the MPG/ESO telescope~\cite{sculptor_paper}.
   }
   \label{fig:sculptor}
 \end{figure}
@@ -53,8 +57,7 @@ An example of a dwarf galaxy is shown in Figure~\ref{fig:sculptor}, the Sculptor
   \centering
   \includegraphics[width=0.95\textwidth]{images/fornax/fornax.pdf}
   \caption[Fornax Dwarf Galaxy]{
-    The Fornax Dwarf Galaxy from the ESO Digitized Sky Survey II~\cite{fornax_image}.
-    {\color{red}This dwarf galaxy has a $\frac{M_\odot}{L_\odot}$ ratio of $8.8\pm3.8$~\cite{sculptor_ml}.  (orel highlighted this??)}
+    The Fornax Dwarf Galaxy, with a $\frac{M_\odot}{L_\odot}$ ratio of $8.8\pm3.8$~\cite{sculptor_ml}, from the ESO Digitized Sky Survey II~\cite{fornax_image}.
   }
   \label{fig:fornax}
 \end{figure}
@@ -63,7 +66,7 @@ Measuring the mass of these dwarf galaxies is done in two ways.
 In the first, telescopes observed the individual spectra of these stars, allowing for their line-of-sight velocity to be calculated~\cite{dwarf_gal_red_giant}.
 The width of the distribution of the velocities is called the velocity dispersion.
 By looking at this velocity dispersion, the total mass of the dwarf galaxy can be inferred~\cite{dwarf_gal_vel_dispersion, dwarf_gal_vel_dispersion2}.
-What makes this possible is that the velocity dispersion of a group of stars is proportional to the total mass of the graviational well.
+What makes this possible is that the velocity dispersion of a group of stars is proportional to the total mass of the gravitational well.
 
 This is derived from the spherical Jean's equation, shown by Equation~\ref{eqn:jeans}~\cite{galactic_dynamics}.
 
@@ -92,7 +95,6 @@ These changes in brightness can be from atmospheric variations during telescope 
 
 The second way to measure galaxy masses is by measuring the total brightness of a galaxy, and divide by the luminosity of the Sun $L_\odot$.
 This then indicates the number of solar masses $M_\odot$ contained in the galaxy, a measure of its baryonic (i.e. 'bright', not dark) mass.
-For these conversions, nominal values are $M_\odot =$ \SI{1.9885e30}{kg} and $L_\odot =$ \SI{3.828e26}{W}, though different authors may use slightly different values depending on the year of publication~\cite{iau_solarconstants}.
 % from https://arxiv.org/pdf/1510.07674.pdf
 % L_\odot from page 3, table "SOLAR CONVERSION CONSTANTS" 
 % M_\odot :
@@ -110,11 +112,6 @@ A random assortment of Local Group dwarf galaxies and their $\frac{M_\odot}{L_\o
     
 \begin{table}[]
   \centering
-  \caption[Ratios of $\frac{M_\odot}{L_\odot}$ for Various Dwarf Galaxy Objects]{
-    Ratios of $\frac{M_\odot}{L_\odot}$ for various dwarf galaxy objects~\cite{localdwarfs}
-    {\color{red}(move caption below table, and have caption start on same line as "Table 2.1." ??)}
-  }
-  \label{tab:mlratios:dwarfgals}
   \begin{tabular}{l r | l r | l r | l r}
     Object      &  \mlratio{} & Object & \mlratio{} & Object & \mlratio{} & Object & \mlratio{} \\
     \hline
@@ -123,6 +120,10 @@ A random assortment of Local Group dwarf galaxies and their $\frac{M_\odot}{L_\o
     LGS 3       & 21   & IC 1613    &  1.4 & Draco       & 58 & Sculptor & 11   \\
     Carina      & 30   & Antlia     &  7.4 & Sextans     & 34 & GR 8     &  8.3 \\
   \end{tabular}
+  \caption[Ratios of $\frac{M_\odot}{L_\odot}$ for Various Dwarf Galaxy Objects]{
+    Ratios of $\frac{M_\odot}{L_\odot}$ for various dwarf galaxy objects~\cite{localdwarfs}.
+  }
+  \label{tab:mlratios:dwarfgals}
 \end{table}
 % from reference \cite{localdwarfs}, table 4, (M/L)_{0,V}^i column
     
@@ -195,22 +196,19 @@ Lensing elliptical galaxies can constrain mass profiles, as the amount of lensin
     Galaxy 0047-281 imaged by the Hubble Space Telescope, from Ref. \cite{weak_lensing_ellipse}.
     Left: Original image.
     Right: Same as Left but with the central foreground galaxy subtracted, leaving behind 4 lensed images A, B, C, and D of a background galaxy.
-    {\color{red}(need to reference this figure in the text??)}
   }
   \label{fig:ellipse}
 \end{figure}
     
-    
-Galaxy lensing can be used to estimate the size of the substructure of a lensing galaxy, based on the {\color{red}4 lensed images of a quasar~\cite{weak_lensing_quasar} (is this a specific example or do you always get 4 images (and I assume it is not always a quasar)??  Need to make it clear if it is a specific example)}.
+Galaxy lensing can be used to estimate the size of the substructure of a lensing galaxy.
+In the case of Galaxy 0047-281 in Figure~\ref{fig:ellipse}, the galaxy's mass bends light from a background quasar.
+This creates 4 images of the background quasar~\cite{weak_lensing_quasar}.
 The spectra of the four lensed images vary in brightness and distortion.
 These variations can be seen by looking at the ratio of the widths of different spectral lines.
 These ratios of different lensed images indicate that there exists variations in the mass density in the lensing galaxy.
 %These variations are best fit by randomly distributing spheres of lensing mass throughout the lensing galaxy, each having a mass of \SI{10^6}{\Msol}.
 These variations are best fit by randomly distributing spheres of lensing mass throughout the lensing galaxy, each having a mass of \SI{e6}{\Msol}.
 Spheres of this mass are consistant with the scale of dark matter substructure predicted by CDM.
-    
-    
-
 
 \subsection{Scales of $10^{23}\:\text{m}$ : Galaxy Clusters}\label{dm_galclusters}
 %
@@ -220,12 +218,12 @@ At scales of $\nicetilde 10^{23}$m, dark matter's effects on galactic clusters b
 In one technique, the mass-to-light ratio can be measured for galaxy clusters.
 This is done the same as with dwarf galaxies; luminous mass is derived from the brightness of the cluster, while total mass is measured from the velocity dispersion of individual galaxies within the cluster.
 From measurements of several hundred galaxy clusters, it was found that galaxy clusters have mass-to-light ratios of \SIrange{10}{1000}{\frac{M_\odot}{L_\odot}}~\cite{cluster_ml_ratios}, indicating a very high amount of dark matter is present in these objects.
+Several galaxy clusters and their $\frac{M_\odot}{L_\odot}$ ratios are shown in Table~\ref{tab:cluster_ml_ratios}.
 
 \begin{table}
   \centering
   \caption[Ratios of \MLsol for Various Galaxy Clusters]{
     Ratios of \MLsol for various galaxy clusters~\cite{cluster_ml_ratios}.
-    {\color{red}(need to reference this table in the text??)}
     }
   \label{tab:cluster_ml_ratios}
   \begin{tabular}{l r | l r | l r}
@@ -395,6 +393,9 @@ Because of this Thompson scattering, the CMB photons inherit both temperature an
 Dark matter annihilations during recombination may produce standard model particles, which act as an injection of ionization energy, extending the duration of recombination.
 A longer recombination acts to decrease any CMB temperature fluctuations while increasing CMB polarization fluctuations~\cite{cmb_polarization1,cmb_polarization2}.
 {\color{red}(this paragraph is missing the result from CMB polarization studies, no?? -orel)}
+% first polarization discovery: 
+%   Detection of polarization in the cosmic microwave background using DASI
+%   http://adsabs.harvard.edu/abs/2002Natur.420..772K
 
 The observed quantities of deuterium in the early universe also hint at dark matter's properties.
 During Big Bang Nucleosynthesis when the universe was only a few seconds old, protons and neutrons were starting to combine into various isotopes, one of which is deuterium.
@@ -434,9 +435,6 @@ From the CMB correlation spectrum in Figure~\ref{fig:cmb_correlation_spectra}, s
 
 \begin{table}[b]
   \centering
-  \caption[6 Cosmological Parameters]{
-    The best fit values for the six cosmological parameters using CMB measurements, from Ref.~\cite{planck_dm_limit}}
-  \label{tab:six_params}
   \begin{tabular}{llcl}
                & \textbf{Value}                 & \textbf{Unit} & \textbf{Description} \\
     \hline 
@@ -451,6 +449,9 @@ From the CMB correlation spectrum in Figure~\ref{fig:cmb_correlation_spectra}, s
     $n_s$      & $ 0.9652 \pm0.0042                $ & unitless & Seed density spectrum spectral index \\
     \hline 
   \end{tabular}
+  \caption[6 Cosmological Parameters]{
+    The best fit values for the six cosmological parameters using CMB measurements, from Ref.~\cite{planck_dm_limit}}
+  \label{tab:six_params}
 \end{table}
 
 These are shown in Table~\ref{tab:six_params}.
@@ -510,7 +511,7 @@ This R-parity is defined as
 
 where $B$ is the baryon number, $L$ is the lepton number, and $S$ is the particle spin.
 This creates supersymmetric partner particles (superpartners) for each Standard Model particle, usually denoted by an 's-' prefix or an '-ino' suffix added to a particle name, and \nicetilde{} added atop the particle symbol ($e \rightarrow \tilde{e}$).
-Quarks become squarks, leptons become sleptions, gluons become gluinos.
+Quarks become squarks, leptons become sleptons, and gluons become gluinos, etc.
 Standard model particles and fields have an R-parity of +1, while superpartners have an R-parity of -1.
 
 When this SUSY reflection is performed, the superpartners develop some interesting properties.
