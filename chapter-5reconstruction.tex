@@ -375,9 +375,9 @@ This database includes the width and length of the shower, how far away its core
         {\color{red}Explain that downturn is probably due to edge effect, where the large population of true  low energy events have more that fluctuate to higher energies, and get reconstructed at higher energies.  ??}
         {\color{red}(add grey region describing energies used in analysis (4-70 \TeV{})   ??)}
         {\color{red}Again, please describe in the text non-trivial features in the plot (the bias at low energy) ?? -orel}
-        {\color{red}Add boundary lines in reconstructed energy based on event cuts??}
         {\color{red}Check other thesis for energy migration matrix stuff and explainations??}
         {\color{red}Check how anasum low-energy limit is calculated, and where it is applied??}
+        {\color{red}(show actual table values, rather than ctools interpolated stuff??)}
       }
       \label{fig:migmatrix}
     \end{figure}
@@ -550,13 +550,14 @@ This database includes the width and length of the shower, how far away its core
     
   \subsection{Effects of Disabled Pixels}
 
+
     % see calculations/disabledpixel_obstime , those 250 crab runs turned into about 13.5 observation hours
-    To examine the effects of disabled pixels, \nicetidle13 hours of Crab observations were reconstructed twice.
+    To examine the effects of disabled pixels, \nicetilde13 hours of Crab observations were reconstructed twice.
     The first analysis was with the default analysis chain settings, and the second time with a single pixel disabled in all four telescopes.
     This mimics the effect of having a star in the field of view that is bright enough to disable a pixel.
+    The purpose of this study is to examine how many events are lost due to a dead pixel.
+    If there are bright stars near the Galactic Center, or a large number of disabled pixels in the data, the telescopes would be less sensitive to any dark matter halo.
 
-    {\color{red}(Justification for this study: because this study shows pixels only reduce the events near the pixels, and the DM upper limits are dominated by events near the center (where the halo is brightest), and there aren't too many dead pixels near the GC (check??), this is why we can safely ignore the effect of dead pixels.)}
-    
     After gamma-hadron cuts are applied to both sets of events, studies can be performed on events that only appeared in one set and not the other.
     Some events may only pass gamma-hadron cuts with the pixel enabled ($P_e$), while others only pass when the pxiel is disabled ($P_d$).
     Events that are present both when the pixel is disabled and enabled can also be tested to see how far their reconstructed position moved in the camera.
@@ -653,23 +654,23 @@ This database includes the width and length of the shower, how far away its core
                         &               & [deg]             &                      \\
         \hline
         Crab Nebula & HIP26451 & 1.13 & 2.97 \\
-        Crab Nebula & HIP25539 & 1.60 & 4.88 \\
-        Crab Nebula & HIP26248 & 2.04 & 5.37 \\
-        Crab Nebula & HIP26072 & 1.55 & 6.19 \\
-        Crab Nebula & HIP26964 & 2.35 & 6.23 \\
-        Crab Nebula & HIP25806 & 0.99 & 6.29 \\
-        Crab Nebula & HIP26853 & 1.86 & 6.35 \\
-        Crab Nebula & HIP26616 & 1.17 & 6.42 \\
+                    & HIP25539 & 1.60 & 4.88 \\
+                    & HIP26248 & 2.04 & 5.37 \\
+                    & HIP26072 & 1.55 & 6.19 \\
+                    & HIP26964 & 2.35 & 6.23 \\
+                    & HIP25806 & 0.99 & 6.29 \\
+                    & HIP26853 & 1.86 & 6.35 \\
+                    & HIP26616 & 1.17 & 6.42 \\
         \hline
         Sgr A* Off  & HIP85423 & 1.18 & 4.28 \\
-        Sgr A* Off  & HIP85084 & 0.87 & 5.30 \\
-        Sgr A* Off  & HIP85442 & 1.12 & 5.98 \\
-        Sgr A* Off  & HIP84445 & 2.08 & 6.20 \\
+                    & HIP85084 & 0.87 & 5.30 \\
+                    & HIP85442 & 1.12 & 5.98 \\
+                    & HIP84445 & 2.08 & 6.20 \\
         \hline
         Sgr A*      & HIP87072 & 1.25 & 4.53 \\
-        Sgr A*      & HIP87836 & 2.60 & 5.76 \\
-        Sgr A*      & HIP87163 & 2.12 & 6.31 \\
-        Sgr A*      & HIP86725 & 1.24 & 6.40 \\
+                    & HIP87836 & 2.60 & 5.76 \\
+                    & HIP87163 & 2.12 & 6.31 \\
+                    & HIP86725 & 1.24 & 6.40 \\
         \hline
       \end{tabular}
     \end{table}
@@ -730,9 +731,14 @@ This database includes the width and length of the shower, how far away its core
     This can have effects on the energy reconstruction.
     Additionally, for CTA and its projected \ang{7} diameter field of view, more stars will be in the field of view, implying there will be more camera pixels affected by their light.
     
-    {\color{red}(There aren't any bright stars or dead pixels in the Galactic Center data? Tie this back to why this dead pixel study is stil relevant. ??)}
-    
     From these studies, it can be seen that the loss of a single pixel does not significantly reduce the overall event rate, but does decrease the event rate by \nicetilde{}3\% near (<\ang{0.3}) the position of stars that are brighter than magntiude 6.5.
+    For the Galactic Center, only 1\% of the pixels are disabled, equivalent to 5 pixels in each telescope on average.
+    % 2320620 disabled pixelseconds out of 214657920 total pixelseconds in the Sgr A* runlist
+    % 2320620 / 214657920 = 0.0108 fraction of time lost
+    % 499 * 0.0108 = 5.38 pixels in each telescope
+    % see $VERIPY/thesis/analysis/find_dead_pixels_near_GC/find.py
+    As this study indicates the number of events lost is small, and there are relatively few dead pixels in the Galactic Center's field of view, the effect of dead pixels can be ignored in the dark matter search.
+
     Future studies could also compare how events move in energy when a pixel is disabled.
     Another study might investigate how the reconstructed shower-telescope distance changes, since a shower with fewer pixels will look further away, and may be reconstructed differently.
     Another possibility is that, for VERITAS or future CTA observations where pixels are disabled (either due to stars or maintainance), customized background models can be constructed that account for the specific configuration of disabled pixels.

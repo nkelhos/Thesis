@@ -5,8 +5,10 @@ from gammalib import GEnergy
 import mpl_toolkits
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-mpl.rcParams['text.usetex'] = True
-mpl.rcParams['text.latex.preamble'] = [r'\usepackage{amsmath}']
+from matplotlib.patches import Polygon
+from matplotlib.collections import PatchCollection
+#mpl.rcParams['text.usetex'] = True
+#mpl.rcParams['text.latex.preamble'] = [r'\usepackage{amsmath}']
 
 fname = 'edisp.png'
 obs = veripy.load_obs_proper( ['VR78128.ReconMethodDisp.Cut-NTel2-ExtendedSource-Hard.chunk1.fits'] )
@@ -72,11 +74,18 @@ shaped_matrix = numpy.ma.masked_array( s_matrix, s_matrix < 0.5 )
 
 fig = plt.figure( figsize=[9,9] )
 ax  = fig.add_subplot( 1, 1, 1, adjustable='box', aspect=1.0 )
-im  = plt.pcolormesh( shaped_emigr, shaped_etrue, shaped_matrix, vmax=30, rasterized=True )
+
+poly = Polygon( [(4,0.3),(4,500),(70,500),(70,0.3),(4,0.3)], facecolor='gray', alpha=0.4 )
+paco = PatchCollection( [ poly ] )
+ax.add_collection( paco )
+
+#im  = plt.pcolormesh( shaped_emigr, shaped_etrue, shaped_matrix, vmax=30, shading='flat', rasterized=True, cmap='rainbow' )
+im  = plt.pcolor( shaped_emigr, shaped_etrue, shaped_matrix, vmax=30, rasterized=True, cmap='rainbow' )
+
 plt.title( r'Energy Migration Matrix for Galactic Center Run 78128 (Offset %.1f${}^{\circ}$)' % (theta*gammalib.rad2deg), fontsize=15 )
 plt.plot( [emin,emax], [emin,emax], 'r--' )
-plt.xlabel( r'E${}_{\text{Reconstructed}}$ [TeV]', fontsize=15 )
-plt.ylabel( r'E${}_{\text{True}}$ [TeV]', fontsize=15 )
+plt.xlabel( r'E${}_{Reconstructed}$ [TeV]', fontsize=15 )
+plt.ylabel( r'E${}_{True}$ [TeV]', fontsize=15 )
 plt.xscale( 'log' )
 plt.yscale( 'log' )
 plt.gca().set_xlim( [ emin, emax ] )
@@ -84,7 +93,7 @@ plt.gca().set_ylim( [ emin, emax ] )
 divider = mpl_toolkits.axes_grid1.make_axes_locatable(ax)
 cax = divider.append_axes('right', size='5%', pad=0.05 )
 cb  = plt.colorbar( im, cax=cax)
-cb.set_label(r"$\frac{\text{\# of Events}}{\text{MeV}}$", fontsize=15)
+cb.set_label(r"$\frac{\# \; of \; Events}{MeV}$", fontsize=15)
 image = 'edisp.pdf' #os.path.join( temp_dir, 'edisp.pdf' )
 plt.tick_params( axis='both', which='major', labelsize=15 )
 plt.savefig( image, bbox_inches='tight', dpi=100 )
