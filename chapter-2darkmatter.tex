@@ -62,6 +62,8 @@ An example of a dwarf galaxy is shown in Figure~\ref{fig:sculptor}, the Sculptor
   \label{fig:fornax}
 \end{figure}
 
+\FloatBarrier
+
 Measuring the mass of these dwarf galaxies is done in two ways.
 In the first, telescopes observed the individual spectra of these stars, allowing for their line-of-sight velocity to be calculated~\cite{dwarf_gal_red_giant}.
 The width of the distribution of the velocities is called the velocity dispersion.
@@ -110,8 +112,12 @@ Dwarf galaxies have mass-to-light ratios of around 5-100 $\frac{M_\odot}{L_\odot
 These high values are considered strong evidence in favor of dark matter.
 A random assortment of Local Group dwarf galaxies and their $\frac{M_\odot}{L_\odot}$ is shown in Table~\ref{tab:mlratios:dwarfgals}.
     
-\begin{table}[]
+\begin{table}[h]
   \centering
+  \caption[Ratios of $\frac{M_\odot}{L_\odot}$ for Various Dwarf Galaxy Objects]{
+    Ratios of $\frac{M_\odot}{L_\odot}$ for various dwarf galaxy objects~\cite{localdwarfs}.
+  }
+  \label{tab:mlratios:dwarfgals}
   \begin{tabular}{l r | l r | l r | l r}
     Object      &  \mlratio{} & Object & \mlratio{} & Object & \mlratio{} & Object & \mlratio{} \\
     \hline
@@ -120,10 +126,6 @@ A random assortment of Local Group dwarf galaxies and their $\frac{M_\odot}{L_\o
     LGS 3       & 21   & IC 1613    &  1.4 & Draco       & 58 & Sculptor & 11   \\
     Carina      & 30   & Antlia     &  7.4 & Sextans     & 34 & GR 8     &  8.3 \\
   \end{tabular}
-  \caption[Ratios of $\frac{M_\odot}{L_\odot}$ for Various Dwarf Galaxy Objects]{
-    Ratios of $\frac{M_\odot}{L_\odot}$ for various dwarf galaxy objects~\cite{localdwarfs}.
-  }
-  \label{tab:mlratios:dwarfgals}
 \end{table}
 % from reference \cite{localdwarfs}, table 4, (M/L)_{0,V}^i column
     
@@ -166,7 +168,7 @@ As these two major components do not combine to form the observed rotation curve
   \label{fig:m33rotcurve}
 \end{figure}
 
-\begin{table}[]
+\begin{table}[h]
   \centering
   \caption[Ratios of \mlratio{} for Various Galactic-scale Objects]{Ratios of $\frac{M_\odot}{L_\odot}$ for various galactic-scale objects~\cite{faber_ml}.}
   \label{tab:mlratios}
@@ -219,7 +221,7 @@ This is done the same as with dwarf galaxies; luminous mass is derived from the 
 From measurements of several hundred galaxy clusters, it was found that galaxy clusters have mass-to-light ratios of \SIrange{10}{1000}{\frac{M_\odot}{L_\odot}}~\cite{cluster_ml_ratios}, indicating a very high amount of dark matter is present in these objects.
 Several galaxy clusters and their $\frac{M_\odot}{L_\odot}$ ratios are shown in Table~\ref{tab:cluster_ml_ratios}.
 
-\begin{table}
+\begin{table}[h]
   \centering
   \caption[Ratios of \MLsol for Various Galaxy Clusters]{
     Ratios of \MLsol for various galaxy clusters~\cite{cluster_ml_ratios}.
@@ -319,7 +321,6 @@ By looking at the structure of the CMB, the structure of the universe and its pa
 In order to understand dark matter's place in the evolution of the universe, several important moments must be discussed.
 
 The first moment of the universe was Inflation, where a singularity with a temperature of $kT=10^{17}\:\textrm{\GeV{}}$ quickly expanded as a quark-gluon plasma and cooled~\cite{inflation0,inflation1,inflation2,inflation3}.
-{\color{red}(switch cite package to convert this to a list??)}
 Once the average temperature had reduced enough, quarks could bind together to form baryons, in a stage known as Baryogenesis.
 The time/temperature that Baryogenesis occurred at has not been determined.
 However, there are several competing theories that may explain how an unequal ratio of baryons to antibaryons were created~\cite{baryogenesis1,baryogenesis2}.
@@ -331,7 +332,7 @@ Once the universe expands further, enough to cool below the electron-proton bind
 Since electrons and protons have formed electrically neutral hydrogen atoms (an event called recombination), the universe becomes transparent to these photons, which are then free to travel the universe~\cite{planck2015,theEarlyUniverse,CMBFundamentals,CMBFlat}.
 The spectrum of these photons follows a blackbody spectrum, shown in Figure~\ref{fig:cmb_black}, and is called the cosmic microwave background.
 
-\begin{figure}[t]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=0.85\textwidth]{images/cmb_blackbody/cmb.pdf}
   \caption[Cosmic Microwave Background Blackbody]{
@@ -342,7 +343,8 @@ The spectrum of these photons follows a blackbody spectrum, shown in Figure~\ref
 \end{figure}
 
 
-\begin{figure}[t]
+
+\begin{figure}[ht]
   \centering
   \includegraphics[width=0.95\textwidth]{images/cmb_skymap/cmb_skymap.eps}
   \caption[Cosmic Microwave Background Skymap]{
@@ -567,7 +569,6 @@ The black equilibrium line indicates the number of WIMPs that would be left if t
 This black line shows how the populations of SM particles annihilating into WIMPs and visa versa balance and replenish each other, forming an equilibrium number density.
 As the cross section decreases, fewer and fewer particles are annihilated, and more of the initial WIMP population survives to freeze out.
 This freezeout can be thought of as the universe expanding faster than the particles can annihilate.
-%, because the particles cover a volume at a rate proportional to $t$, while the universe's expansion adds new space proportional to $a^3 \sim t^3$.
 
 The cross section of WIMPs can then be estimated from this Boltzmann equation.
 If the total amount of dark matter is known, and its mass estimated, this indicates the number density of WIMP particles present in the universe.
@@ -582,141 +583,4 @@ As the motivation for dark matter searches is now understood, a search can be pr
 The next question is ``How does one look for dark matter?''.
 If one has access to a gamma-ray observatory, it turns out dark matter annihilations may produce observable gamma rays.
 So, the next chapter discusses how a cloud of dark matter around the Galactic Center might create an observable spectrum of gamma rays, and how those gamma rays can be detected at Earth.
-
-
-
-
-
-
-
-
-
-
-
-%Heavier WIMPs are sought in this thesis, with a mass \SIrange{4}{70}{TeV}.
-%At these masses, the WIMP relic cross section is \nicetilde\SI{2.3e-26}{cm^3 s^{-1}}, and not very dependent on mass~\cite{updatedWIMPRelicCrossSection}.
-% 2.3e-26 is from Steigman 2012, Figure 5, measuring the value at 4 TeV
-
-%The cross section of the WIMP heavily influences the time of the freezeout, as well as the final number density.
-
-%This neutralino would also have a cross section of around \nicetilde{} \SI{3e-26}{ cm${}^2$ }~\cite{Jungman:1995df} 
-
-%WIMP Miracle
-
-%"Exact Cross Sections for the Neutralino WIMP Pair-Annihilation" : arxiv 0202009
-%Steigman 2012 Precise relic WIMP abundance : https://journals.aps.org/prd/abstract/10.1103/PhysRevD.86.023506
-
-
-% Perkins 2003, section 7.11 is a good source
-%Any dark matter candidate particle that meets the cosomological and particle conditions is called a WIMP, or Weakly Interacting Massive Particle.
-%A currently favored WIMP candidate is the neutralino, the lightest supersymmetric particle (LSP)~\cite{neutralino1,neutralino2,neutralino3}.
-
-% see http://www.damtp.cam.ac.uk/user/db275/Cosmology/Lectures.pdf section 3.3.2
-%After this inflationary period, another important epoch was the WIMP freeze-out, when the universe was roughly 1 second old, though this time can vary by several orders of magnitude..
-%At this point, it is theorized that a population of WIMP dark matter particles were being repeatedly created and annihilated, and were in equilibrium.
-%After the universe expanded some more, the density of these WIMPs decreased to the point where they were no longer running into each other.
-%This increased WIMP transparency froze the number of WIMPs at that time, called the relic density.
-%From the Boltzman Equation~\ref{eqn:boltz_dm}, a relationship can be estabilshed between the WIMP mass, cross section, and how many WIMPs are left over, frozen out (the relic density).
-
-% from http://www.damtp.cam.ac.uk/user/db275/Cosmology/Lectures.pdf
-%\begin{equation}\label{eqn:boltz_dm}
-  %\frac{dN_\chi}{dt} = -s \left \langle \sigma v \right \rangle \left [ N_\chi^2 - \left ( N_\chi^{eq} \right )^2 \right ]
-%\end{equation}
-
-%where $N_\chi$ is the number of WIMPs in a comoving volume, $N_\chi^{eq}$ is the number of WIMPs at equilibrium, $s$ is the Friedmann-Robertson-Walker metric, and $\left \langle \sigma v \right \rangle$ is the velocity-averaged cross section of the WIMP annihilation.
-%After many substitutions and some assumptions\footnote{This derivation is explained more thoroughly in \url{http://www.damtp.cam.ac.uk/user/db275/Cosmology/Lectures.pdf}}, one finds that for a \nicetilde{}GeV WIMP and the observed relic abundance, the WIMP must have a $\left \langle \sigma v \right \rangle$ close to the Weak force cross section for a \nicetilde{}GeV particle.
-%This coincidence between the dark matter abundance and the particle physics cross section is sometimes called \textit{WIMP Miracle}.
-
-% see http://pdg.lbl.gov/2013/reviews/rpp2013-rev-dark-matter.pdf for more basic info
-% see https://arxiv.org/pdf/1603.03797.pdf
-
-
-% Hypercharge :
-%   Y = ( B + S + C + B' + T)
-%     B  : baryon number
-%     S  : strangeness
-%     C  : charm-ness
-%     B' : bottomness
-%     T  : topness
-%   proton : +1
-%   strong interactions conserve hypercharge,
-%     weak interactions do not
-%
-% Weak Hypercharge :
-%   Y_W = 2(Q-T_3)
-%     Q   : electric charge
-%     T_3 : third component of weak isospin (the SU(2) component)
-%   For several particles
-%     leptons : -1
-%     quarks  : +1/3
-%     W+-,Z   : 0
-%     Higgs   : +1
-
-% Minimal Supersymmetric Standard Model
-% New features:
-%   R-parity,  P_R = (-1)^{3B+L+2s}
-%     B : baryon number
-%     L : lepton number
-%     s : spin
-%     Standard model particles have P_R = +1
-%     Supersymmetric partners  have P_R = -1
-%     e.g. 
-%       electron has L=1, s=1/2, so P_R = (-1)^{3*0+1+2*1/2} = (-1)^2 = +1
-%       baryon has B=1, s=1/2  , so P_R = (-1)^{3*1+0+2*1/2} = (-1)^4 = +1
-%     If R-parity is preserved, the lightest supersymmetric particle can't decay,
-%       making it a good candidate for dark matter
-%   New Particles:
-%     Rules:
-%       Supersymmetric partner particles subtract 1/2 from spins:
-%         fermions : (spin 1/2) -> sfermions (spin 0  )
-%         bosons   : (spin 1  ) -> bosinos   (spin 1/2)
-%     +2x Higgsino fields
-%       dsb couple to higgs field, uct couple to higg's complex conjugate
-%         this is not allowed in SUSY, so therefore two higgino fields are needed
-%     +Squarks
-%       superpartners to quarks
-%       3 flavors (sup,scharm,stop,etc)
-%     +Sleptons
-%       superpartner to leptons
-%     +Charginos
-%       fermions, electrically charged
-%     +Gluinos
-%       superpartner to gluon
-%     +Neutralinos
-%       4 different ones
-%         lightest is usually stable
-%         made from mixtures of:
-%           Bino, gauge field corresponsing to the weak hypercharge
-%           Winos, superpartner to W+-0 bosons
-%           2x Higgsinos (can't have just one higgsino in SUSY)
-%       fermions (majorana, so each is its own anti-particle)
-%       electrically neutral
-   
-
-%The standard model has a set of gauge and higgs fields $\left \{ B,W_3,H_1,H_2 \right \}$.
-%$B$ is the photon, $W_3$ is the weak gauge bosons $W^{\pm}$ and $Z^0$, and $H_1$ and $H_2$ are two higgs fields.
-%In supersymmetry, this set has a supersymmetric partner set ${\chi_1,\chi_2,\chi_3,\chi_4}$.
-%The neutralino is $\chi_1$, the lightest of these partner particles.
-%The neutralino is a good candidate as a dark matter particle because it is neutral in charge and color, and being the LSP, all other supersymmetric particles eventually decay/annihilate into the LSP, providing a large population of neutralinos.
-%{\color{red}(why neutralino?, what are its properties?)}
-%One of the major predictions from particle physics and cosmology is referred to as the "WIMP Miracle".
-%In it, particle physics and cosmology separately predict that if dark matter is WIMP, it should have a velocity-averaged cross section of around \SI{ 3e-26 }{ cm$ {}^3 $s$ {}^{-1} $ }, though each field comes to this value by very separate math. {\color{red}(cite?)}
-%{\color{red}(It's not exactly math, there is some physical constraints in it. Can you find a better way of explaining it? -Orel)}
-
-%  Supersymmetry predicts the existence of a WIMP-like particle with a cross section of around \nicetilde{} \SI{3e-26}{ cm${}^2$ }~\cite{Jungman:1995df}.
-%  % $3*{10}^{-26}\ {\textrm{cm}}^{2}$
-%  What made this WIMP particle a more promising candidate is that several cosmological problems can also be solved by a weakly-interacting GeV-TeV mass particle.
-%  {\color{red}What were these cosmological problems that were fixed?}
-%  Thus, two separate fields of physics recognized that they both were looking for a WIMP-like particle within the same mass and cross section range.
-
-%  In $\Delta$CDM cosmology, the relic density is all of the leftover dark matter particles after the universe became too cold to produce more dark matter particles.
-
-%  {\color{red}One or two more sentences on the relic density?}
-%  % see http://www.damtp.cam.ac.uk/user/db275/Cosmology/Lectures.pdf
-
-%  There are other potential dark matter candidates, both as other particle types or as modifications to other areas of physics, but they are not explored in this thesis.
-%  See Ref. \cite{DMPrimer} for more a more detailed discussion.
-
-%  % neutralino as a WIMP: https://arxiv.org/pdf/1707.06277.pdf
-
 
