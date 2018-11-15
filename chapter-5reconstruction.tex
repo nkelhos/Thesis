@@ -637,17 +637,6 @@ This database includes the width and length of the shower, how far away its core
 
     \begin{table}[]
       \centering
-      \caption{
-        A list of nearby stars for each observing source in this analysis.
-        The source column is star's closest source.
-        The 2nd column is the star's Hipparcos catalogue code.
-        The 3rd column is the angular radius between the star and the source, in degrees.
-        The 4th column is the visual magnitude, taken from Ref.~\cite{hipparcos_catalogue}.
-        Rows are sorted by source, then visual magnitude.
-        Only stars brighter than V${}_{mag}=$ 6.5 are shown.
-        % table generated with ~/Dropbox/Research/Thesis/images/disabled_pixel/stars_in_fov/fovstars.py
-      }
-      \label{tab:brightstars}
       \begin{tabular}{|l|l|r|r|}
         \hline
         \textbf{Source} & \textbf{Star} & \textbf{Distance} & \textbf{V${}_{mag}$} \\ 
@@ -673,6 +662,17 @@ This database includes the width and length of the shower, how far away its core
                     & HIP86725 & 1.24 & 6.40 \\
         \hline
       \end{tabular}
+      \caption[Bright Stars in the Fields of View]{
+        A list of nearby stars for each observing source in this analysis.
+        The source column is star's closest source.
+        The 2nd column is the star's Hipparcos catalogue code.
+        The 3rd column is the angular radius between the star and the source, in degrees.
+        The 4th column is the visual magnitude, taken from Ref.~\cite{hipparcos_catalogue}.
+        Rows are sorted by source, then visual magnitude.
+        Only stars brighter than V${}_{mag}=$ 6.5 are shown.
+        % table generated with ~/Dropbox/Research/Thesis/images/disabled_pixel/stars_in_fov/fovstars.py
+      }
+      \label{tab:brightstars}
     \end{table}
 
     In Figure~\ref{fig:dpix_disappear}, the positions of events that were rejected by cuts are shown.
