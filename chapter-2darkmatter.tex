@@ -31,7 +31,7 @@ At the largest scale, the measurement of oscillations in the cosmic microwave ba
 
 Throughout this chapter, astrophysical objects are measured in units of the Sun's mass $M_\odot$, and the Sun's luminosity $L_\odot$.
 For these conversions, nominal values are $M_\odot =$ \SI{1.9885e30}{kg} and $L_\odot =$ \SI{3.828e26}{W}, though different authors may use slightly different values depending on the year of publication~\cite{iau_solarconstants}.
-The amount of dark matter in an object is then expressed in terms of the ratio $\frac{M_\odot}{L_\odot}$.
+The amount of dark matter in an object is then expressed in terms of the ratio $\frac{\textrm{M}_\odot}{\textrm{L}_\odot}$.
 For example, a ratio of \SI{7}{\frac{M_\odot}{L_\odot}} indicates that for every \SI{1}{M_\odot} worth of mass producing light (at a rate similar to the Sun), theres another \SI{6}{M_\odot} of mass in a dark form.
   
 \subsection{Scales of $10^{19}\:\text{m}$ : Dwarf Galaxies}\label{dm_dwarfscale}
@@ -44,25 +44,23 @@ At scales of $\nicetilde 10^{19}$m, groups of thousands stars, called satellite 
 These dwarf galaxies are strong evidence for dark matter because their luminous matter is not enough to gravitationally bind them.
 An example of a dwarf galaxy is shown in Figure~\ref{fig:sculptor}, the Sculptor dwarf galaxy, imaged in the optical frequencies by the MPG/ESO Telescope.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.95\textwidth]{images/sculptor/sculptor.eps}
+  \includegraphics[width=0.8\textwidth]{images/sculptor/sculptor.eps}
   \caption[Sculptor Dwarf Galaxy]{
     The Sculptor Dwarf Galaxy~\cite{sculptor_image}, with a $\frac{M_\odot}{L_\odot}$ ratio of $15.3\pm6.9$~\cite{sculptor_ml}, imaged by the MPG/ESO telescope~\cite{sculptor_paper}.
   }
   \label{fig:sculptor}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.95\textwidth]{images/fornax/fornax.pdf}
+  \includegraphics[width=0.8\textwidth]{images/fornax/fornax.pdf}
   \caption[Fornax Dwarf Galaxy]{
     The Fornax Dwarf Galaxy, with a $\frac{M_\odot}{L_\odot}$ ratio of $8.8\pm3.8$~\cite{sculptor_ml}, from the ESO Digitized Sky Survey II~\cite{fornax_image}.
   }
   \label{fig:fornax}
 \end{figure}
-
-\FloatBarrier
 
 Measuring the mass of these dwarf galaxies is done in two ways.
 In the first, telescopes observed the individual spectra of these stars, allowing for their line-of-sight velocity to be calculated~\cite{dwarf_gal_red_giant}.
@@ -158,8 +156,9 @@ If the galaxy was only made of stars, then the rotation curve would follow the s
 If the galaxy was only made of gas, then the rotation curve would instead follow the long dashed line.
 As these two major components do not combine to form the observed rotation curve, the presence of dark matter can account for the difference, shown as the dashed-dotted line~\cite{m33rotcurve}.
     
-\begin{figure}[ht]
-  \includegraphics[width=0.9\textwidth]{images/m33rotcurve/m33rotcurve.eps}
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/m33rotcurve/m33rotcurve.eps}
   \caption[M33 Rotation Curve]{
     The rotation curve from M33~\cite{m33rotcurve}.
     The solid line is the best fitting model to the observed velocity measurments.
@@ -190,9 +189,9 @@ Our own Milky Way galaxy is measured to have a mass to light ratio of \SIrange{1
 Further evidence of dark matter can be deduced through additional weak gravitational lensing~\cite{weak_lensing_2001}.
 Lensing elliptical galaxies can constrain mass profiles, as the amount of lensing indicates the total amount of mass, which in turn limits the amount of dark matter present at different radii~\cite{weak_lensing_ellipse}.
 
-\begin{figure}
+\begin{figure}[!b]
   \centering
-  \includegraphics[width=0.95\textwidth]{images/weak_lensing_ellipse/weak_lensing.pdf}
+  \includegraphics[width=0.8\textwidth]{images/weak_lensing_ellipse/weak_lensing.pdf}
   \caption[Weak Lensing with an Ellipse Galaxy]{
     Galaxy 0047-281 imaged by the Hubble Space Telescope, from Ref. \cite{weak_lensing_ellipse}.
     Left: Original image.
@@ -245,9 +244,9 @@ This was used with galaxy clusters Abell 370 and CL 2244-02 to estimate the amou
 Lensing cluster Abell 370 and several distorted background galaxies are shown in Figure~\ref{fig:abell370}.
 This technique found that for both Abell 370 and CL 2244-02, a large amount of dark matter is required to fit the observed arcs, within the range of 200-1000 \MLsol.
     
-\begin{figure}
+\begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.95\textwidth]{images/abell370/abell370_cropped.pdf}
+  \includegraphics[width=0.8\textwidth]{images/abell370/abell370_cropped.pdf}
   \caption[Gravitational Lensing in Abell 370]{
     Galaxy cluster Abell 370 is shown here, along with many gravitationally lensed background galaxies.
     The large arc marked by the green lines is the distorted background galaxy image used to calculate the cluster's total mass~\cite{cluster_lensing}.
@@ -262,9 +261,9 @@ The lensing is shown in Figure~\ref{fig:stronglens}, where the blue arcs are the
 From all of these lensed images, the best fit amount of dark matter indicates this cluster has a mass-to-light ratio of \SI{161}{}\MLsol{}\footnote[3]{This measurement scales with the hubble constant, which here is assumed to be \SI{70}{km/s/Mpc}}~\cite{cluster_strong_lensing_1996, cluster_strong_lensing_1998, cluster_strong_lensing_2010}.
 %assumes a hubble constant of 70\SI{230}$\,h_{70}\,$\MLsol, where $h_{70}$ is set to $0.70$
     
-\begin{figure}
+\begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.95\textwidth]{images/cluster_strong_lensing_8/stronglensing2.pdf}
+  \includegraphics[width=0.8\textwidth]{images/cluster_strong_lensing_8/stronglensing2.pdf}
   \caption[Gravitational Lensing in Cl0024+1654]{
     Strong lensing of a blue background galaxy by galaxy cluster Cl0024+1654 into multiple blue distorted images~\cite{cluster_strong_lensing_1996}.
   }
@@ -289,7 +288,7 @@ In this pair of clusters, the Bullet cluster has fallen through the target clust
 However, the two clouds of the Bullet cluster dragged on the clouds of the target cluster, and dragged at different rates.
 This difference in drag over time resulted in a separation between the Bullet cluster's baryonic and dark matter clouds, visible in Figure~\ref{fig:bullet}.
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=0.95\textwidth]{images/bulletcluster/bulletcluster_cropped.pdf}
   \caption[The Bullet Cluster]{
@@ -313,20 +312,20 @@ This contraint is shown in Equation~\ref{eqn:bullet}, where $\sigma_{\chi}$ is t
 Further work on this combined 72 galaxy cluster collisions, improving the limit in Equation~\ref{eqn:bullet} to \SI{0.47}{cm^2 g^{-1}}~\cite{cluster_72}.
 
 
-\subsection{Scales of $10^{26}\:\text{m}$ : The Observable Universe}\label{dm_universe}
+\subsection{Scales of $10^{26}\:\text{m}$ : The Observable Universe and $\Lambda$CDM Cosmology}\label{dm_universe}
 %\subsection{Inter-Cluster Scale}
 % age of universe (13.82*10^9 years * speed of light) = 1.307*10^26m
 At the universe's largest scale, $\nicetilde 10^{26}$m, the Cosmic Microwave Background (CMB) has been used to measure the total amount of dark matter in the universe.
 By looking at the structure of the CMB, the structure of the universe and its particle populations can be studied, including how they developed and changed from the big bang to the present day.
 In order to understand dark matter's place in the evolution of the universe, several important moments must be discussed.
 
-The first moment of the universe was Inflation, where a singularity with a temperature of $kT=10^{17}\:\textrm{\GeV{}}$ quickly expanded as a quark-gluon plasma and cooled~\cite{inflation0,inflation1,inflation2,inflation3}.
+The first moment of the universe was Inflation, where a singularity with a temperature of $kT=10^{17}\:\textrm{GeV}$ quickly expanded as a quark-gluon plasma and cooled~\cite{inflation0,inflation1,inflation2,inflation3}.
 Once the average temperature had reduced enough, quarks could bind together to form baryons, in a stage known as Baryogenesis.
 The time/temperature that Baryogenesis occurred at has not been determined.
 However, there are several competing theories that may explain how an unequal ratio of baryons to antibaryons were created~\cite{baryogenesis1,baryogenesis2}.
 
 Later on when the universe is around \nicetilde380,000 years old and has expanded enough to cool to \nicetilde\SI{3000}{K}, another phase change can occur.
-Here, the universe is a sea of photons ($\gamma$) and free electrons and protons.
+Here, the universe is a sea of photons ($\gamma$), electrons, and protons.
 With all the free electrons and protons around, the mean free path of the photon is small, so they are in thermal equilibrium with the electrons and protons.
 Once the universe expands further, enough to cool below the electron-proton binding energy, electrons start being captured by protons in great numbers.
 Since electrons and protons have formed electrically neutral hydrogen atoms (an event called recombination), the universe becomes transparent to these photons, which are then free to travel the universe~\cite{planck2015,theEarlyUniverse,CMBFundamentals,CMBFlat}.
@@ -341,8 +340,6 @@ The spectrum of these photons follows a blackbody spectrum, shown in Figure~\ref
   }
   \label{fig:cmb_black}
 \end{figure}
-
-
 
 \begin{figure}[ht]
   \centering
@@ -399,25 +396,6 @@ A longer recombination acts to decrease any CMB temperature fluctuations while i
 %   Detection of polarization in the cosmic microwave background using DASI
 %   http://adsabs.harvard.edu/abs/2002Natur.420..772K
 
-The observed quantities of deuterium in the early universe also hint at dark matter's properties.
-During Big Bang Nucleosynthesis when the universe was only a few seconds old, protons and neutrons were starting to combine into various isotopes, one of which is deuterium.
-However, like baryons, the amount of deuterium produced in the early universe is heavily dependent on the initial baryon number density.
-So, any constraint on the deuterium fraction is also a constraint on the baryon fraction of the universe~\cite{deuterium1,deuterium2}.
-From the spectrum of deuterium and hydrogen lines from the quasar QSO Q0913+072, the baryon fraction was measured to be $\Omega_{b}h^2 = 0.0224 \pm 0.0005$~\cite{deuterium3}, indicating only 4.93\% of the universe's energy is stored in baryons.
-% h = 0.674 (see below)
-% 0.0224 / h^2 = 0.0224 / 0.674^2 = 0.0493 -> 4.93% of universe's energy
-This suggests that only a small amount of matter in the universe can be made of baryons, and the rest must instead reside in some non-baryonic form.
-{\color{red}(not sure I understood where dark matter comes into play here.  Is it the density I marked?? Can this be clarified without adding too much? -orel)}
-
-Another measurement that depends heavily on the presence of dark matter is the rate at which galaxies cluster together.
-In the Sloan Digital Sky Survey (SDSS), the positions of 1.6 million galaxies, quasars, and stars are mapped~\cite{sdss_release}.
-By simulating the distribution of similar objects as the universe ages, only with extra mass from dark matter does the universe form clumps that match SDSS observations.
-
-
-
-\section{$\Lambda$CDM Cosmology and the Standard Model}
-
-{\color{red}(These first two paragraphs should go next to the CMB BAO figure, they explain the results you showed there and fit much better. ?? --orel)}
 The measurements of the CMB contribute to the existing theory of how the universe developed after the big bang, called $\Lambda$CDM.
 The $\Lambda$ refers to the density of dark energy, while CDM refers to Cold Dark Matter.
 This theory predicts the different times particles froze out of the universe, and their resulting distributions.
@@ -435,7 +413,7 @@ From the CMB correlation spectrum in Figure~\ref{fig:cmb_correlation_spectra}, s
 %   A_s = e^(3.043+-0.014) * 10^-10 = (2.097+-0.029)*10^-9
 %   
 
-\begin{table}[b]
+\begin{table}[t]
   \centering
   \begin{tabular}{llcl}
                & \textbf{Value}                 & \textbf{Unit} & \textbf{Description} \\
@@ -463,9 +441,24 @@ This is the comoving distance a sound wave could have traveled between the begin
 The parameter $\tau$ describes how opaque the universe became to photons during reionization, where the first stars started to reheat atoms and free electrons.
 The parameters $A_s$ and $n_s$ govern the amplitude and the spectral index of the initial seed perturbations in the early universe.
 These universe-scale parameters determine how the universe evolved over time.
-However, dark matter is likely a new, undiscovered particle,  so a discussion of particle physics is necessary to understand what particle properties it may possess.
-{\color{red}(Why is this ``However''? The two sentences are not really connected.  I suggest to move the first two paragraphs above and start directly from the standard model discussion. ?? -orel)}
 
+The observed quantities of deuterium in the early universe also hint at dark matter's properties.
+During Big Bang Nucleosynthesis when the universe was only a few seconds old, protons and neutrons were starting to combine into various isotopes, one of which is deuterium.
+However, like baryons, the amount of deuterium produced in the early universe is heavily dependent on the initial baryon number density.
+So, any constraint on the deuterium fraction is also a constraint on the baryon fraction of the universe~\cite{deuterium1,deuterium2}.
+From the spectrum of deuterium and hydrogen lines from the quasar QSO Q0913+072, the baryon fraction was measured to be $\Omega_{b}h^2 = 0.0224 \pm 0.0005$~\cite{deuterium3}, indicating only 4.93\% of the universe's energy is stored in baryons.
+% h = 0.674 (see below)
+% 0.0224 / h^2 = 0.0224 / 0.674^2 = 0.0493 -> 4.93% of universe's energy
+This suggests that only a small amount of matter in the universe can be made of baryons, and the rest must instead reside in some non-baryonic form.
+{\color{red}(not sure I understood where dark matter comes into play here.  Is it the density I marked?? Can this be clarified without adding too much? -orel)}
+
+Another measurement that depends heavily on the presence of dark matter is the rate at which galaxies cluster together.
+In the Sloan Digital Sky Survey (SDSS), the positions of 1.6 million galaxies, quasars, and stars are mapped~\cite{sdss_release}.
+By simulating the distribution of similar objects as the universe ages, only with extra mass from dark matter does the universe form clumps that match SDSS observations.
+
+Because dark matter is likely a new, undiscovered particle, a discussion of particle physics and the Standard Model is necessary to understand what properties a new dark particle may possess.
+
+\section{The Standard Model}
 
 The current paradigm of particle physics is called the Standard Model~\cite{standardmodel}.
 It consists of groups of particles called quarks and leptons, as well as the bosons that mediate interactions between these particles.
@@ -477,7 +470,7 @@ Quarks and leptons have squarks and sleptons as their supersymmetric partners, w
 While no evidence of supersymmetry has been discovered to date, it is still preferred due to its ability to predict physics across a large range energy scales, the holy grail of any Grand Unified Theory.
 
 
-\section{Particle Dark Matter}\label{sec_particledm}
+\subsection{Particle Dark Matter}\label{sec_particledm}
 
 Early in the search for a candidate dark matter particle, Standard Model (SM) particles were first considered.
 One dark matter candidate was the neutrino, due to how many there are in the universe and their lack of interaction with the strong and electromagnetic forces.
@@ -544,23 +537,23 @@ The Boltzman equation describing how the number of WIMPs evolves through this fr
 where $n$ is the comoving WIMP number density, $H$ is the hubble expansion rate ($\frac{\dot{a}}{a}$), $\left \langle \sigma_{A} v \right \rangle$ is the effective velocity-averaged cross section for $\chi\chi$ annihilating into standard model particles~\cite{wells_relic}.
 The parameter $n_{eq}$ is the equilibrium WIMP comoving number density.
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.75\textwidth]{images/relic_abundance_plot/updated.pdf}
-\caption[Relic Abundance vs Time]{
-  The relic abundance of WIMPs as a function of temperature, from Ref.~\cite{updatedWIMPRelicCrossSection}, where $m$ is the WIMP mass.
-  The universe's temperature is $T$, which decreases as the universe expands.
-  Therefore $x$ is a proxy for time, increasing as one moves to the right along the x-axis.
-  The number of WIMPs in a comoving volume is $n(x)$, $n_{\textrm{eq}}(x)$ is the number of WIMPs at equilibrium, and the y values are scaled by $n_{\textrm{eq}}(x=1)$.
-  The weak, electromagnetic (em), and strong cross sections are shown for a \SI{100}{\GeV{}} WIMP, with additional lines for the weak cross section at \SI{1}{\GeV{}} and \SI{e3}{\GeV{}}.
-  The cross sections shown are:
-  \begin{tabular}{ll}
-  $\left \langle \sigma v \right \rangle_{\textrm{weak}}  $  & $= 2 \times 10^{-26} \; \textrm{cm}^3 \textrm{s}^{-1}$ \\
-  $\left \langle \sigma v \right \rangle_{\textrm{em}}    $  & $= 2 \times 10^{-21} \; \textrm{cm}^3 \textrm{s}^{-1}$ \\
-  $\left \langle \sigma v \right \rangle_{\textrm{strong}}$  & $= 2 \times 10^{-15} \; \textrm{cm}^3 \textrm{s}^{-1}$ \\
-  \end{tabular} .
-}
-\label{fig:abundance}
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.75\textwidth]{images/relic_abundance_plot/updated.pdf}
+  \caption[Relic Abundance vs Time]{
+    The relic abundance of WIMPs as a function of temperature, from Ref.~\cite{updatedWIMPRelicCrossSection}, where $m$ is the WIMP mass.
+    The universe's temperature is $T$, which decreases as the universe expands.
+    Therefore $x$ is a proxy for time, increasing as one moves to the right along the x-axis.
+    The number of WIMPs in a comoving volume is $n(x)$, $n_{\textrm{eq}}(x)$ is the number of WIMPs at equilibrium, and the y values are scaled by $n_{\textrm{eq}}(x=1)$.
+    The weak, electromagnetic (em), and strong cross sections are shown for a \SI{100}{\GeV{}} WIMP, with additional lines for the weak cross section at \SI{1}{\GeV{}} and \SI{e3}{\GeV{}}.
+    The cross sections shown are:
+    \begin{tabular}{ll}
+    $\left \langle \sigma v \right \rangle_{\textrm{weak}}  $  & $= 2 \times 10^{-26} \; \textrm{cm}^3 \textrm{s}^{-1}$ \\
+    $\left \langle \sigma v \right \rangle_{\textrm{em}}    $  & $= 2 \times 10^{-21} \; \textrm{cm}^3 \textrm{s}^{-1}$ \\
+    $\left \langle \sigma v \right \rangle_{\textrm{strong}}$  & $= 2 \times 10^{-15} \; \textrm{cm}^3 \textrm{s}^{-1}$ \\
+    \end{tabular} .
+  }
+  \label{fig:abundance}
 \end{figure}
 
 Equation~\ref{eqn:boltzmann_relic} is numerically solved and shown in Figure~\ref{fig:abundance}.

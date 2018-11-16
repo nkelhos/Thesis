@@ -28,9 +28,9 @@
   The Galactic Center and Sgr A* Off observation regions are shown in Figure~\ref{fig:gcfieldsofview}.
   To quantify the detector efficiency, observations are taken at \ang{0.5} or \ang{0.7} offsets from each observing target, in four different directions (wobbles) along right ascension/declination axes.
 
-  \begin{figure}[ht]
+  \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/skypointings/plot.pdf}
+    \includegraphics[width=0.85\textwidth]{images/skypointings/plot.pdf}
     \caption[VERITAS Galactic Center Pointings]{
       Fields of view for Galactic Center observations.
       Each circle marks the detection area of one telescope pointing.
@@ -44,7 +44,7 @@
   All used data was taken from April 2010 to June 2016.
   The specific VERITAS data run numbers are listed in Appendix~\ref{app:runlists}.
 
-  \begin{table}[]
+  \begin{table}[!ht]
     \centering
     \caption{Hours of observations taken at each source/epoch combination.}
     \label{tab:observation_times}
@@ -58,7 +58,7 @@
   \end{table}
 
 
-  \begin{figure}[ht]
+  \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.95\textwidth]{images/data_elevation_plots/plot.pdf}
     \caption[VERITAS Data Elevation Exposure]{
@@ -215,7 +215,7 @@
   This dispersion is illustrated in Figure~\ref{fig:responsedispersion}.
   Similarly, energy dispersion will diffuse events out among neighboring energy bins as well.
   
-  \begin{figure}[h]
+  \begin{figure}[!t]
     \centering
     \includegraphics[width=0.85\textwidth]{images/responsefunction/responsefunction.pdf}
     \caption[Response Function Dispersion]
@@ -324,9 +324,9 @@
   To uncover any low-elevation effects, time cuts were applied to this data to restrict the telescope pointing elevations to \SIrange{27.5}{32.5}{\degree}, similar to the Galactic Center data later on (see Figure~\ref{fig:datapointingelevations}).
   This resulted in \SI{3.3}{hours} of V5 and \SI{5.5}{hours} of V6 epoch data (see Table \ref{tab:observation_times}).
     
-  \begin{figure}[h]
+  \begin{figure}[!t]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_skymap.pdf}
+    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_skymap.pdf}
     \caption[Crab Counts Skymap]
     {
       Skymap of event positions, ($\ldet$,$\bdet$).
@@ -343,7 +343,10 @@
     M(\xtrue) = M_{s,\textrm{powerlaw}}(\xtrue) * M_{e,\textrm{point}}(\xtrue) = N_o \left ( \frac{\Etrue}{E_o} \right )^{-\gamma} * \lim_{a\to\infty} \frac{1}{ \abs{a} \sqrt{\pi} } e^{ - \left ( \sqrt{ (\ltrue-l_c)^2 + (\btrue-b_c)^2 }/a \right )^2 }
   \end{equation}
 
-  The sky position of the point source is fixed to the Crab Nebula, $(l_c,b_c) = (\ang{184.557600},\ang{-5.784180})$.
+  The sky position of the point source is fixed to the Crab Nebula, at
+
+  $$(l_c,b_c) = (\ang{184.557600},\ang{-5.784180}) \;\;.$$
+
   The pivot energy $E_o$ of its spectrum is fixed at \SI{16.73}{\TeV{}}, while the normalization $N_o$ and the spectral index $\gamma$ are free to vary during the likelihood optimization.
   Only events between \SIrange{4}{70}{\TeV{}} are used in this test analysis.
   At an elevation of \ang{25}, the reconstruction method is able to reconstruct events as low as \SI{1.5}{\TeV{}}.
@@ -356,9 +359,7 @@
   After fitting all model parameters to the events from \SIrange{4}{70}{\TeV{}}, the best fit power law values are $ N_o = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a test statistic of 408.8, corresponding to \nicetilde{}\SI{20.2}{$\sigma$}.
   As the alternate Crab Nebula hypothesis has 110 free parameters, and the no-Crab-Nebula (null) hypothesis has 108 free parameters, the test statistic has $ 110 - 108 = 2 $ degrees of freedom.
   
-    
-    
-  \begin{figure}[h]
+  \begin{figure}[!t]
     \centering
     \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall.pdf}
     \caption[Crab Test Spectrum]
@@ -376,13 +377,13 @@
     \label{fig:crab_test_spectra}
   \end{figure}
     
-  \begin{table}
+  \begin{table}[!t]
     \centering
     \begin{tabular}{|r|c|c|c|c|c|}
       \hline
       \textbf{Analysis} & \textbf{Min}    & \textbf{Max}    & \textbf{FOV} & \textbf{PSF} & \textbf{$\sigma$} \\
       \textbf{Method}   & \textbf{Energy} & \textbf{Energy} &  \#          & \#           &                   \\
-                        & \TeV{}          & \TeV{}          &  Events      & Events       &                   \\
+                        & TeV             & TeV             &  Events      & Events       &                   \\
       \hline 
       On/Off Region & 3.16 & 79.4 & 11197 & 145 & 21.3 \\
       Likelihood    & 4.00 & 70.0 & 9319  & 120 & 20.2 \\
@@ -404,9 +405,9 @@
   % from nkelhos@warp-zeuthen.desy.de:~/dm_halo_testing/veripy/thesis/analysis/crab_test/energy_range_event_count_difference.py
   In Figure~\ref{fig:crab_test_spectra}, the fitted Crab Nebula spectra is shown, along with literature results from earlier VERITAS, HESS, and MAGIC observations of the Crab.
   
-  \begin{figure}[h]
+  \begin{figure}[!t]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spl.pdf}
+    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spl.pdf}
     \llap{
       \makebox[13.75cm][l]{ % x position
         \raisebox{5cm}{     % y position
@@ -431,9 +432,9 @@
     \label{fig:crab_profile_l}
   \end{figure}
 
-  \begin{figure}[h]
+  \begin{figure}[!t]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spb.pdf}
+    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spb.pdf}
     \llap{
       \makebox[13.75cm][l]{ % x position
         \raisebox{5cm}{     % y position
@@ -458,9 +459,9 @@
     \label{fig:crab_profile_b}
   \end{figure}
     
-  \begin{figure}[h]
+  \begin{figure}[!t]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_splalt.pdf}
+    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_splalt.pdf}
     \llap{
       \makebox[13.85cm][l]{ % x position
         \raisebox{7.3cm}{  % y position
@@ -536,7 +537,7 @@
   Once the data is reconstructed, the next step is to set up the models.
   These include the camera background models, similar to the Crab Nebula analysis, as well as a point source at the Galactic Center, and a dark matter halo.
   
-  \begin{figure}[ht]
+  \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.65\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_counts.pdf}
     \caption[Galactic Center Counts Skymap]{
@@ -547,7 +548,7 @@
     \label{fig:gc_counts_skymap}
   \end{figure}
   
-  \begin{figure}[h]
+  \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.65\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_enhist.pdf}
     \caption[Galactic Center Counts Energy Histogram]{
@@ -612,23 +613,19 @@
   Using Wilk's theorem~\cite{wilks1938} with one free parameter, a TS value greater than 20 would hint at the presence of a dark matter halo.
   The fact that all of these are less than zero shows that the null (no dark matter) hypothesis is statistically favored.
 
-  \FloatBarrier
-  
-  \begin{table}
+  \begin{table}[!t]
     \centering
     \begin{tabular}{|r|r|}
       \hline
-      \textbf{DM Mass} & \textbf{Halo TS} \\
-      \textbf{$m_\chi$} [\TeV{}] & \\
+      \textbf{DM Mass}        & \textbf{Halo TS} \\
+      \textbf{$m_\chi$} [TeV] &                  \\
       \hline 
       \input{images/likelihood_analysis/tsvals.tex}
       \hline 
     \end{tabular}
     \caption[DM Halo TS Values]{
       TS values for each DM Halo Model likelihood ratio maximization fit.
-
       {\color{red}(Why is the 66.5 TeV one have -5.8 TS??)}
-      
       {\color{red}(Comment on why they're all negative?? (the crab TS was positive!))}
     }
     \label{tab:tsvals}

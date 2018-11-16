@@ -47,7 +47,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
   This improves the reconstruction, because the intersection point from two images at \ang{90} angles will be less sensitive to image fluctuations than two images at \ang{160}, as shown in Figure~\ref{fig:largeintersectangle}.
   Additionally, the disp method described in Section~\ref{subsec:disp} was explored to provide improvements at lower telescope elevations, though no significant benefit was achieved.
 
-  \begin{figure}[ht]
+  \begin{figure}[!h]
     \centering
     \includegraphics[width=0.95\textwidth]{images/large_angle_image_intersection_error/laiie_cropped.pdf}
     \caption[Large Image Intersection Angles]{
@@ -64,7 +64,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
     These two closer telescopes then have very short, almost circular images, which increases the sensitivity of those two image axes to noisy pixels or shower fluctuations, as shown in Figure~\ref{fig:showerhighlowelev}.
     This also causes the remaining telescope images to have large intersection angles, which also reduces the accuracy of the position reconstruction.
 
-    \begin{figure}[ht]
+    \begin{figure}[!t]
       \centering
       \includegraphics[width=0.75\textwidth]{images/high_elevation_vs_low_shower_images_cropped.eps}
       \caption[Shower Images at High and Low Elevations]{
@@ -75,8 +75,8 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
     \end{figure}
 
     To better handle these near-parallel image axes at low elevations, the reconstructed position can be determined from more parameters than just the weighted intersection points from the image axes.
-    From simulations, the distance between the center of the Hillas shower image and the true position can be calculated, where the angular distance between the two is the \disp{} parameter~\cite{Senturk:2011}, shown in Figure~\ref{fig:dispdiagram}.
-    Then, this \disp{} parameter can be provided to a machine learning algorithm~\cite{Beilicke2012NIM}, along with other image parameters like:
+    From simulations, the distance between the center of the Hillas shower image and the true position can be calculated, where the angular distance between the two is the disp parameter~\cite{Senturk:2011}, shown in Figure~\ref{fig:dispdiagram}.
+    Then, this disp parameter can be provided to a machine learning algorithm~\cite{Beilicke2012NIM}, along with other image parameters like:
     \begin{description}[noitemsep]
       \item [width:] image angular width
       \item [length:] image angular length
@@ -94,48 +94,48 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
   % Once trained on these parameters, the machine learning algorithm can construct a boosted decision tree for determining any new image's \textit{disp}, which can then be used with the image axes intersections to improve the gamma-ray reconstructed positions.
 
 
-    \begin{figure}[ht]
+    \begin{figure}[!t]
       \centering
       \includegraphics[width=0.5\textwidth]{images/disp_parameter/disp_parameter.pdf}
       \caption[Angular Reconstruction Disp]{
-        The \disp{} parameter is the angular distance between the center (red dot) of a Hillas image (blue oval) and the true sky position (green dot).
-        Generally, longer shower images have a larger \disp{} angle.
+        The disp parameter is the angular distance between the center (red dot) of a Hillas image (blue oval) and the true sky position (green dot).
+        Generally, longer shower images have a larger disp angle.
       }
       \label{fig:dispdiagram}
     \end{figure}
 
     % https://veritas.sao.arizona.edu/wiki/index.php/BDT_Angular_reconstruction
-    These parameters for thousands of simulated showers can then be used to train boosted decision trees (BDTs) that estimate the \disp{} for a new shower's images.
-    This estimated \disp{} can then be used with the image axes intersection points to more accurately reconstruct the original gamma-ray point of origin.
+    These parameters for thousands of simulated showers can then be used to train boosted decision trees (BDTs) that estimate the disp for a new shower's images.
+    This estimated disp can then be used with the image axes intersection points to more accurately reconstruct the original gamma-ray point of origin.
     
-    Once the training is complete, it is tested on a separate set of 17,000 simulated events, which have their true and predicted \disp{}s plotted in Figure~\ref{fig:disptraining}.
-    The x axis describes the true \disp{} value for each event, while the y axis describes the \disp{} value estimated by the BDT, with a black $x=y$ line marked, which represents a perfect 1:1 \disp{} reconstruction.
-    As events fall on the $x=y$ line, it can be concluded that the BDTs are able to predict the correct \disp{} value for most images.
+    Once the training is complete, it is tested on a separate set of 17,000 simulated events, which have their true and predicted disps plotted in Figure~\ref{fig:disptraining}.
+    The x axis describes the true disp value for each event, while the y axis describes the disp value estimated by the BDT, with a black $x=y$ line marked, which represents a perfect 1:1 disp reconstruction.
+    As events fall on the $x=y$ line, it can be concluded that the BDTs are able to predict the correct disp value for most images.
     {\color{red} You need to be more precise.  You should show also a one dimensional distribution (or various if you want to divide to True DISP bins) and discuss the resolution obtained?? -Orel}
 
     % made from screenshot of last slide in Dropbox/Presentations/20160719_Group_Meeting.key
-    \begin{figure}[ht]
+    \begin{figure}[!t]
       \centering
       \includegraphics[width=0.85\textwidth]{images/disp_training/disp_training.eps}
       \caption[Disp BDT Training]{
-        The true \disp{} vs the BDT-predicted \disp{}, for \nicetilde17,000 gamma-ray event images in T1, from \SI{500}{\GeV{}} to \SI{200}{\TeV{}}.
+        The true disp vs the BDT-predicted disp, for \nicetilde17,000 gamma-ray event images in T1, from \SI{500}{\GeV{}} to \SI{200}{\TeV{}}.
       }
       \label{fig:disptraining}
     \end{figure}
     
     {\color{red} make a profile plot of the true/BDT disp vs true disp, with 68\% containment errorbars, and talk about it in the text! is there a bias? at what disps?? }
 
-    The small improvement in the position reconstruction due to the \disp{} method can be seen in Figure~\ref{fig:disp_event_offset}.
-    With the Geometric (red) events, more are concentrated further from the point source, while with the \disp{} method, a few more are concentrated at the source itself.
+    The small improvement in the position reconstruction due to the disp method can be seen in Figure~\ref{fig:disp_event_offset}.
+    With the Geometric (red) events, more are concentrated further from the point source, while with the disp method, a few more are concentrated at the source itself.
     The limited improvement may be due to the use of boosted decision trees, whereas a previous study with this method utilized a lookup table of six parameters\cite{Beilicke2012NIM}.
     
     {\color{red}Again, you need to be more specific. First, it is important to note this is data, it's always good to ''brag`` that your reconstruction method is tested on data.  Second, you need to discuss the actual resolution obtained with both methods and state the improvement achieved with DISP. I think the RMS might be a better test of this and anyway the mean would be too affected by the tail. In fact I think the quantiles are better?? -Orel}
     
     For the analysis described in Chapter~\ref{chapter:analysis}, the disp method is used when reconstructing gamma-ray events.
 
-    \begin{figure}[ht]
+    \begin{figure}[!p]
       \centering
-      \includegraphics[width=0.85\textwidth]{images/disp_event_offset_hists/dispgeom_comparison.eps}
+      \includegraphics[width=0.75\textwidth]{images/disp_event_offset_hists/dispgeom_comparison.eps}
       \caption[DISP Offset Improvement]{
         The fraction of events at different angular offsets from the Crab and the Galactic Center per solid angle, with Geometric (intersection only) and Disp reconstruction methods.
         Data elevations are the same as in Figure~\ref{fig:datapointingelevations}, while training events were simulated at only \ang{28}.
@@ -196,7 +196,7 @@ This database includes the width and length of the shower, how far away its core
     This effective area is thus a measure of how much detection area the observatory would have if it had a 100\% detection efficiency, which can then be used in calculating a source's flux.
     In Figure~\ref{fig:effarea_paramspace} shows how the effective area peaks to \nicetilde{}\SI{3e5}{m${}^2$} for \SI{3}{\TeV{}} events at the camera center.
 
-    \begin{figure}[ht]
+    \begin{figure}[!t]
       \centering
       \includegraphics[width=0.85\textwidth]{images/effarea_plots/effarea_space.pdf}
       \caption[Effective Area Parameter Space]{
@@ -209,7 +209,7 @@ This database includes the width and length of the shower, how far away its core
 
     For the test analyses of the Crab Nebula and the Galactic Center Point Source, the effective areas of all events are shown in Figure~\ref{fig:effarea_usage}.
 
-    \begin{figure}[ht]
+    \begin{figure}[!t]
       \centering
       \includegraphics[width=0.85\textwidth]{images/effarea_plots/effarea_events.pdf}
       \caption[Effective Areas Used]{
@@ -257,7 +257,7 @@ This database includes the width and length of the shower, how far away its core
     Other runs, which have different elevations, azimuths and NSB noise levels will have different values at each point in the energy/offset parameter space.
 
     % plot of psfs from chunkplot
-    \begin{figure}[ht]
+    \begin{figure}[!ht]
       \centering
       \includegraphics[width=0.85\textwidth]{images/psf_king_plots/psf_parameter_space.pdf}
       \caption[PSF Parameter Space]{
@@ -271,7 +271,7 @@ This database includes the width and length of the shower, how far away its core
 
     For the Galactic Center and the Crab analyses, the distribution of 68\% containment radii for all events is shown in Figure~\ref{fig:gc_psf_hist}.
 
-    \begin{figure}[ht]
+    \begin{figure}[!hb]
       \centering
       \includegraphics[width=0.85\textwidth]{images/psf_gc_eventhist/eventpsf.pdf}
       \caption[Crab and Galactic Center Event PSFs]{
@@ -300,7 +300,7 @@ This database includes the width and length of the shower, how far away its core
     This spectral function can be seen in Figure~\ref{fig:background_profile}.
     The radial function at two different energies is shown in Figure~\ref{fig:background_radial}.
 
-    \begin{figure}[ht]
+    \begin{figure}[!ht]
       \centering
       \includegraphics[width=0.65\textwidth]{images/ctools_background/background_construction.eps}
       \caption[CTOOLS Background Fine Energy Bins]{
@@ -312,7 +312,7 @@ This database includes the width and length of the shower, how far away its core
       \label{fig:background_profile}
     \end{figure}
 
-    \begin{figure}[ht]
+    \begin{figure}[!hb]
       \centering
       \includegraphics[width=0.65\textwidth]{images/ctools_background/radial_profiles.eps}
       \caption[CTOOLS Radial Background Profiles]{
@@ -373,7 +373,7 @@ This database includes the width and length of the shower, how far away its core
         
         {\color{red}Need to explain downturn at lowest energies?? -Gernot}
         {\color{red}Explain that downturn is probably due to edge effect, where the large population of true  low energy events have more that fluctuate to higher energies, and get reconstructed at higher energies.  ??}
-        {\color{red}(add grey region describing energies used in analysis (4-70 \TeV{})   ??)}
+        {\color{red}(add grey region describing energies used in analysis (4-70 TeV)   ??)}
         {\color{red}Again, please describe in the text non-trivial features in the plot (the bias at low energy) ?? -orel}
         {\color{red}Check other thesis for energy migration matrix stuff and explainations??}
         {\color{red}Check how anasum low-energy limit is calculated, and where it is applied??}
