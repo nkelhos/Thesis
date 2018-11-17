@@ -358,26 +358,18 @@ This database includes the width and length of the shower, how far away its core
     When not accounted for, this has the effect that the energy dispersion will harden observed astrophysical spectra.
     In Figure~\ref{fig:migmatrix}, a migration matrix is shown.
 
-    \begin{figure}[ht]
+    \begin{figure}[!th]
       \centering
       \includegraphics[width=0.85\textwidth]{images/edisp_plots/edisp.pdf}
       \caption[Energy Migration Matrix]{
         An energy migration matrix used with Sgr A* run 82288.
         The reconstructed energy is on the x axis, and the true energy is on the y axis.
-        The z (color) axis denotes the number of simulated events that passed all cuts.
+        The z (color) axis denotes the interpolated number of simulated events that passed all cuts.
         Events at a given \ETrue{} are reconstructed at a spread of \EReco{}.
         This spread is due to the variability in how air showers develop in the atmosphere.
-        Small variations early in the shower can have a large impact on the shower's cherenkov image, meaning the shower can look like it was from a higher- or lower-energy gamma ray.
-        At the lowest \ETrue{} energies, events are reconstructed at higher \EReco{} energies.
-        This is due to ??.
-        
-        {\color{red}Need to explain downturn at lowest energies?? -Gernot}
-        {\color{red}Explain that downturn is probably due to edge effect, where the large population of true  low energy events have more that fluctuate to higher energies, and get reconstructed at higher energies.  ??}
-        {\color{red}(add grey region describing energies used in analysis (4-70 TeV)   ??)}
-        {\color{red}Again, please describe in the text non-trivial features in the plot (the bias at low energy) ?? -orel}
-        {\color{red}Check other thesis for energy migration matrix stuff and explainations??}
-        {\color{red}Check how anasum low-energy limit is calculated, and where it is applied??}
-        {\color{red}(show actual table values, rather than ctools interpolated stuff??)}
+        Small variations early in the shower can have a large impact on the shower's cherenkov image, meaning the shower can appear as though it was from a higher- or lower-energy gamma ray.
+        At the lowest \ETrue{} energies, some showers fluctuate upwards to produce higher amounts of Cherenkov light get reconstructed to higher \EReco{} energies.
+        At the highest \ETrue{} energies, showers may be so large that they fill the entire camera, leading to lost photons past the edge of the camera, causing the shower's energy to be reconstructed lower than it actually is.
       }
       \label{fig:migmatrix}
     \end{figure}
