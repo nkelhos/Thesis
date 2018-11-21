@@ -5,9 +5,8 @@
 \chapter{The Dark Matter Paradigm}\label{ch_dm}
 
 Dark matter makes up 26.5\% of the universe's energy and 81.5\% of its mass~\cite{planck2015}.
-It has had a significant impact on the development of the universe, shaping its present day distribution.
-This chapter discusses the main features of dark matter physics.
-These include the astrophysical evidence for the existence of dark matter, an outline of the current cosmological paradigm of $\Lambda$CDM and the Standard Model, as well as arguments for why dark matter may be in the form of a new, unknown particle.
+It has had a {\color{red}significant impact (which impact?? -maria)} on the development of the universe, shaping its present day distribution.
+This chapter discusses the astrophysical evidence for the existence of dark matter, an outline of the current cosmological paradigm of $\Lambda$CDM and the Standard Model, as well as arguments for why dark matter may be in the form of a new, unknown particle.
 
 %From: https://arxiv.org/abs/1502.01589 , Table 3, column [4] :
 %  omega_b h^2 = 0.02225
@@ -22,12 +21,12 @@ These include the astrophysical evidence for the existence of dark matter, an ou
 \section{Astrophysical Evidence for Dark Matter}
   
 The current effects attributed to dark matter can be grouped into four different length scales.
-These effects include observations of gravity pulling on electromagnetic emitters, gravity bending background light, and the universe's total energy budget.
 On the smallest length scales, groups of several thousand stars can be seen revolving around their center of mass.
 By measuring the doppler-shift of their spectral lines, they are observed to be moving at wider distribution of speeds than one would expect from the existing visible amount of matter.
 At larger scales the optical light from galaxies, as well as hydrogen lines, can be used to measure the amount of mass and its rotational velocity around the center of galaxies.
 At even larger scales, galaxy velocities can be measured and compared, X-ray telescopes can monitor the amount of hot gas, and mass-heavy areas of space will gravitationally lens background galaxies.
 At the largest scale, the measurement of oscillations in the cosmic microwave background can be used to determine the amount of dark and baryonic matter.
+These effects can all be generalized to observations of gravity pulling on electromagnetic emitters, gravity bending background light, and the universe's total energy budget.
 
 Throughout this chapter, astrophysical objects are measured in units of the Sun's mass $M_\odot$, and the Sun's luminosity $L_\odot$.
 For these conversions, nominal values are $M_\odot =$ \SI{1.9885e30}{kg} and $L_\odot =$ \SI{3.828e26}{W}, though different authors may use slightly different values depending on the year of publication~\cite{iau_solarconstants}.
@@ -42,13 +41,14 @@ For example, a ratio of \SI{7}{\frac{M_\odot}{L_\odot}} indicates that for every
 %    140kpc * Tan(15') = 0.6kpc = 1.8*10^19m ~ 10^19m
 At scales of $\nicetilde 10^{19}$m, groups of thousands stars, called satellite galaxies or dwarf galaxies, lie at the edge of full size galaxies like our own.
 These dwarf galaxies are strong evidence for dark matter because their luminous matter is not enough to gravitationally bind them.
-An example of a dwarf galaxy is shown in Figure~\ref{fig:sculptor}, the Sculptor dwarf galaxy, imaged in the optical frequencies by the MPG/ESO Telescope.
+An example of two dwarf galaxies are shown in Figures~\ref{fig:sculptor} and \ref{fig:fornax}.
+Figure~\ref{fig:sculptor} is the Sculptor dwarf galaxy, imaged in the optical frequencies by the MPG/ESO Telescope, while Figure~\ref{fig:fornax} is the Fornax dwarf galaxy, from the ESO Digitized Sky Survey II~\cite{fornax_image}.
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.8\textwidth]{images/sculptor/sculptor.eps}
   \caption[Sculptor Dwarf Galaxy]{
-    The Sculptor Dwarf Galaxy~\cite{sculptor_image}, with a $\frac{M_\odot}{L_\odot}$ ratio of $15.3\pm6.9$~\cite{sculptor_ml}, imaged by the MPG/ESO telescope~\cite{sculptor_paper}.
+    The Sculptor dwarf galaxy~\cite{sculptor_image}, with a $\frac{M_\odot}{L_\odot}$ ratio of $15.3\pm6.9$~\cite{sculptor_ml}, imaged by the MPG/ESO telescope~\cite{sculptor_paper}.
   }
   \label{fig:sculptor}
 \end{figure}
@@ -57,7 +57,7 @@ An example of a dwarf galaxy is shown in Figure~\ref{fig:sculptor}, the Sculptor
   \centering
   \includegraphics[width=0.8\textwidth]{images/fornax/fornax.pdf}
   \caption[Fornax Dwarf Galaxy]{
-    The Fornax Dwarf Galaxy, with a $\frac{M_\odot}{L_\odot}$ ratio of $8.8\pm3.8$~\cite{sculptor_ml}, from the ESO Digitized Sky Survey II~\cite{fornax_image}.
+    The Fornax dwarf galaxy, with a $\frac{M_\odot}{L_\odot}$ ratio of $8.8\pm3.8$~\cite{sculptor_ml}, from the ESO Digitized Sky Survey II~\cite{fornax_image}.
   }
   \label{fig:fornax}
 \end{figure}
@@ -68,10 +68,10 @@ The width of the distribution of the velocities is called the velocity dispersio
 By looking at this velocity dispersion, the total mass of the dwarf galaxy can be inferred~\cite{dwarf_gal_vel_dispersion, dwarf_gal_vel_dispersion2}.
 What makes this possible is that the velocity dispersion of a group of stars is proportional to the total mass of the gravitational well.
 
-This is derived from the spherical Jean's equation, shown by Equation~\ref{eqn:jeans}~\cite{galactic_dynamics}.
+This is derived from the spherical Jean's equation, shown by Equation~\ref{eqn:jeans}~\cite{galactic_dynamics},
 
 \begin{equation}\label{eqn:jeans}
-  \frac{d}{dr} \left ( v \sigma_r^2\right) + \frac{2 \beta}{r}v \sigma_r^2 + v \frac{d \Phi}{dr}=0
+  \frac{d}{dr} \left ( v \sigma_r^2\right) + \frac{2 \beta}{r}v \sigma_r^2 + v \frac{d \Phi}{dr}=0 \;\; ,
 \end{equation}
 
 where $r$ is the distance from the center of mass, $v(r)$ is a 3D distribution of stars, $\Phi(r)$ is a gravitational potential, $\sigma_r(r)$ is the distribution of radial velocities, and $\sigma_\theta(r)$ is the distribution of velocities orthogonal to the $r$ direction.
@@ -137,7 +137,7 @@ Instead, observations of these dwarf galaxies indicate they remain intact, leadi
 %
 % galaxy rotation curve wiki page, M33 has curve measurements out to 50,000ly
 %   50,000ly = 4.7*10^20m ~ 10^20m
-At scales of $\nicetilde 10^{20}$m, the effects of dark matter on galaxies are observable.
+At scales of $\nicetilde 10^{20}$m, some effects of dark matter on galaxies are also observable.
 Within galaxies, the amount of light observed in a sector predicts a lower amount of mass, while observing the line-of-sight velocity predicts a higher amount of mass.
 
 In the first prediction technique, the total amount of light produced by a quadrant of a galaxy is measured with optical telescopes.
@@ -279,7 +279,7 @@ This implies that when moving outwards from the cluster center, the density and 
 From this, the mass-to-light ratio can be inferred at several different radii from the cluster center.
 Within \SI{28.5}{kpc}\footnote[2]{This scales inversely with the hubble constant, assumed here to be \SI{70}{km/s/Mpc}} of the center, the ratio is 12 \MLsol, while beyond a radius of \SI{286}{kpc}\footnotemark[2] the ratio rises above 100 \MLsol{}, indicating a high amount of dark matter is present~\cite{cluster_chandra}.
 
-These previously mentioned techniques have been combined into an analysis of galaxy cluster 1E 0657-558 to provide a cardinal piece of evidence in favor of particle dark matter.
+These previously mentioned techniques have been combined into an analysis of galaxy cluster {\color{red}1E 0657-558 (maria highlited this??)} to provide a cardinal piece of evidence in favor of particle dark matter.
 This cluster consists of two subgroups of galaxies, a larger 'target' cluster, and a smaller Bullet cluster.
 Each cluster's mass is contained in two clouds; gas and stars that form the baryonic cloud, and the much more massive dark matter cloud.
 The baryonic cloud is visible through Chandra X-ray observations, which is able to image the warm ($kT\simeq\,$\SI{10}{keV}) gas and infer its density.
@@ -316,7 +316,7 @@ Further work on this combined 72 galaxy cluster collisions, improving the limit 
 %\subsection{Inter-Cluster Scale}
 % age of universe (13.82*10^9 years * speed of light) = 1.307*10^26m
 At the universe's largest scale, $\nicetilde 10^{26}$m, the Cosmic Microwave Background (CMB) has been used to measure the total amount of dark matter in the universe.
-By looking at the structure of the CMB, the structure of the universe and its particle populations can be studied, including how they developed and changed from the big bang to the present day.
+By looking at the structure of the CMB, the structure of the universe and its particle populations can be studied, including how they developed and changed from the Big Bang to the present day.
 In order to understand dark matter's place in the evolution of the universe, several important moments must be discussed.
 
 The first moment of the universe was Inflation, where a singularity with a temperature of $kT=10^{17}\:\textrm{GeV}$ quickly expanded as a quark-gluon plasma and cooled~\cite{inflation0,inflation1,inflation2,inflation3}.
@@ -396,10 +396,9 @@ A longer recombination acts to decrease any CMB temperature fluctuations while i
 %   Detection of polarization in the cosmic microwave background using DASI
 %   http://adsabs.harvard.edu/abs/2002Natur.420..772K
 
-The measurements of the CMB contribute to the existing theory of how the universe developed after the big bang, called $\Lambda$CDM.
+The measurements of the CMB contribute to the existing theory of how the universe developed after the Big Bang, called $\Lambda$CDM.
 The $\Lambda$ refers to the density of dark energy, while CDM refers to Cold Dark Matter.
 This theory predicts the different times particles froze out of the universe, and their resulting distributions.
-From the CMB correlation spectrum in Figure~\ref{fig:cmb_correlation_spectra}, six parameters that describe the universe can be modelled~\cite{planck_dm_limit,planck_2013_parameters}.
 
 % from planc 2018 results cosmological constants, table 1
 % hubble constant :
@@ -434,6 +433,7 @@ From the CMB correlation spectrum in Figure~\ref{fig:cmb_correlation_spectra}, s
   \label{tab:six_params}
 \end{table}
 
+From the CMB correlation spectrum in Figure~\ref{fig:cmb_correlation_spectra}, six parameters that describe the universe can be modelled~\cite{planck_dm_limit,planck_2013_parameters}.
 These are shown in Table~\ref{tab:six_params}.
 The parameters $\Omega_b$ and $\Omega_c$ are the fraction of the universe's energy stored in baryons and cold dark matter, respectively.
 The parameter $\thetamc$ is the angular range that could be influenced during the BAOs produced after recombination.
@@ -454,7 +454,8 @@ This suggests that only a small amount of matter in the universe can be made of 
 
 Another measurement that depends heavily on the presence of dark matter is the rate at which galaxies cluster together.
 In the Sloan Digital Sky Survey (SDSS), the positions of 1.6 million galaxies, quasars, and stars are mapped~\cite{sdss_release}.
-By simulating the distribution of similar objects as the universe ages, only with extra mass from dark matter does the universe form clumps that match SDSS observations.
+By simulating the distribution of similar objects as the universe ages, the rate that galaxies cluster together can be measured, which depends on the total mass of all objects in the field of view.
+Only with extra mass from dark matter does the universe form clumps that match SDSS observations.
 
 Because dark matter is likely a new, undiscovered particle, a discussion of particle physics and the Standard Model is necessary to understand what properties a new dark particle may possess.
 
@@ -563,7 +564,7 @@ This black line shows how the populations of SM particles annihilating into WIMP
 As the cross section decreases, fewer and fewer particles are annihilated, and more of the initial WIMP population survives to freeze out.
 This freezeout can be thought of as the universe expanding faster than the particles can annihilate.
 
-The cross section of WIMPs can then be estimated from this Boltzmann equation.
+The cross section of WIMPs can then be estimated from Equation~\ref{eqn:boltzmann_relic}.
 If the total amount of dark matter is known, and its mass estimated, this indicates the number density of WIMP particles present in the universe.
 This number density combined with Equation~\ref{eqn:boltzmann_relic} then indicates the cross section of a \SI{100}{\GeV{}} WIMP to be around $\left \langle \sigma_{\chi} v \right \rangle \approx 3 \times 10^{-27} \textrm{cm}^{3}\textrm{s}^{-1}$
 
