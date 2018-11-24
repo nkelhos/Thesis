@@ -47,7 +47,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
   This improves the reconstruction, because the intersection point from two images at \ang{90} angles will be less sensitive to image fluctuations than two images at \ang{160}, as shown in Figure~\ref{fig:largeintersectangle}.
   Additionally, the disp method described in Section~\ref{subsec:disp} was explored to provide improvements at lower telescope elevations, though no significant benefit was achieved.
 
-  \begin{figure}[!h]
+  \begin{figure}[!t]
     \centering
     \includegraphics[width=0.95\textwidth]{images/large_angle_image_intersection_error/laiie_cropped.pdf}
     \caption[Large Image Intersection Angles]{
@@ -137,7 +137,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
       \centering
       \includegraphics[width=0.75\textwidth]{images/disp_event_offset_hists/dispgeom_comparison.eps}
       \caption[DISP Offset Improvement]{
-        The fraction of events at different angular offsets from the Crab and the Galactic Center per solid angle, with Geometric (intersection only) and Disp reconstruction methods.
+        The fraction of events at different angular offsets from the Crab Nebula and the Galactic Center per solid angle, with Geometric (intersection only) and Disp reconstruction methods.
         Data elevations are the same as in Figure~\ref{fig:datapointingelevations}, while training events were simulated at only \ang{28}.
         {\color{red}(Where is the disp improvement???)}
         {\color{red}(Why is the containment radius worse for disp??)}
@@ -269,7 +269,7 @@ This database includes the width and length of the shower, how far away its core
       \label{fig:psf_paramspace}
     \end{figure}
 
-    For the Galactic Center and the Crab analyses, the distribution of 68\% containment radii for all events is shown in Figure~\ref{fig:gc_psf_hist}.
+    For the Galactic Center and the Crab Nebula analyses, the distribution of 68\% containment radii for all events is shown in Figure~\ref{fig:gc_psf_hist}.
 
     \begin{figure}[!hb]
       \centering
@@ -300,9 +300,9 @@ This database includes the width and length of the shower, how far away its core
     This spectral function can be seen in Figure~\ref{fig:background_profile}.
     The radial function at two different energies is shown in Figure~\ref{fig:background_radial}.
 
-    \begin{figure}[!ht]
+    \begin{figure}[!p]
       \centering
-      \includegraphics[width=0.65\textwidth]{images/ctools_background/background_construction.eps}
+      \includegraphics[width=0.6\textwidth]{images/ctools_background/background_construction.eps}
       \caption[CTOOLS Background Fine Energy Bins]{
         The V5 Background's fine energy bins.
         The top plot shows the number of events in each fine energy bin from all background runs.
@@ -314,7 +314,7 @@ This database includes the width and length of the shower, how far away its core
 
     \begin{figure}[!hb]
       \centering
-      \includegraphics[width=0.65\textwidth]{images/ctools_background/radial_profiles.eps}
+      \includegraphics[width=0.5\textwidth]{images/ctools_background/radial_profiles.eps}
       \caption[CTOOLS Radial Background Profiles]{
         Radial bin profiles for the V5 background's two large-scale energy bins.
         The blue points are the counts per bin area, while the purple line is a spline interpolation with a 3rd order polynomial.
@@ -365,6 +365,7 @@ This database includes the width and length of the shower, how far away its core
         An energy migration matrix used with Sgr A* run 82288.
         The reconstructed energy is on the x axis, and the true energy is on the y axis.
         The z (color) axis denotes the interpolated number of simulated events that passed all cuts.
+        The dark-blue region from \SIrange{4}{70}{TeV} \EReco{} is the range of energies used in this analysis.
         Events at a given \ETrue{} are reconstructed at a spread of \EReco{}.
         This spread is due to the variability in how air showers develop in the atmosphere.
         Small variations early in the shower can have a large impact on the shower's cherenkov image, meaning the shower can appear as though it was from a higher- or lower-energy gamma ray.
@@ -397,7 +398,7 @@ This database includes the width and length of the shower, how far away its core
     However, structures start to break the radial symmetry at low energies and elevations.
     The cause of these structures is explored in Section~\ref{subsubsec:diffusesims}.
 
-    \begin{figure}[ht]
+    \begin{figure}[!ht]
       \centering
       \includegraphics[width=\textwidth]{images/ctools/backgrounds_highelev.eps}
       \caption[FITS Background at \ang{50} Elevation]{
@@ -412,7 +413,7 @@ This database includes the width and length of the shower, how far away its core
     See Section~\ref{background_production}, Figure~\ref{fig:gcfieldsofview}, and Section~\ref{sec:bkgmodels} for more discussion.
     It can be seen that in different energy bins, the background possesses different shapes.
 
-    \begin{figure}[ht]
+    \begin{figure}[!ht]
       \centering
       \includegraphics[width=\textwidth]{images/ctools/backgrounds_lowelev29.eps}
       \caption[CTOOLS Background at \ang{29} Elevation]{
@@ -423,7 +424,7 @@ This database includes the width and length of the shower, how far away its core
       \label{fig:back_lowelev29}
     \end{figure}
 
-    \begin{figure}[ht]
+    \begin{figure}[!ht]
       \centering
       \includegraphics[width=\textwidth]{images/ctools/backgrounds_lowelev26.eps}
       \caption[CTOOLS Background at \ang{26} Elevation]{
@@ -452,10 +453,10 @@ This database includes the width and length of the shower, how far away its core
   Radial backgrounds (sometimes referred to as acceptances) are typically used in VERITAS, as no other camera x/y or energy dependence had been demonstrated until now.
   As the analysis in this thesis only has a few hours of background observations (see Table \ref{tab:observation_times}), only radially symmetric background templates and models could be constructed, which then required limiting the final analysis to $\geq\SI{4}{\TeV{}}$.
   
-  \begin{figure}[ht]
+  \begin{figure}[!p]
     \centering
-    \includegraphics[height=0.9\textheight]{images/background_vs_elevation/background_vs_elevation_srccrab.eps}
-    \caption[Background Vs Elevation Crab]
+    \includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_srccrab.eps}
+    \caption[Background Vs Elevation Crab Nebula]
     {\small 
       Plots of Crab Nebula observations.
       Top: Skymap of all events.
@@ -466,9 +467,9 @@ This database includes the width and length of the shower, how far away its core
     \label{fig:bkgvsel_crab}
   \end{figure}
 
-  \begin{figure}[ht]
+  \begin{figure}[!p]
     \centering
-    \includegraphics[height=0.9\textheight]{images/background_vs_elevation/background_vs_elevation_srcsgra.eps}
+    \includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_srcsgra.eps}
     \caption[Background Vs Elevation Sgr A*]
     {\small 
       Plots of Sgr A* observations.
@@ -490,7 +491,7 @@ This database includes the width and length of the shower, how far away its core
     To approximate a simple gamma-hadron cut, any events with a mean-scaled-width falling outside the range of -2.0 to 0.5 were removed, which eliminates many of the showers that appear proton-like.
     These remaining 'gamma-like' events are then binned in camera coordinates in Figure~\ref{fig:back_simdiffuse}.
 
-    \begin{figure}[ht]
+    \begin{figure}[!ht]
       \centering
       \includegraphics[width=\textwidth]{images/backgrounds_diffuse_vs_data/backgrounds_sims/backgrounds_sims.eps}
       \caption[Diffuse Simulated Backgrounds]{
@@ -544,7 +545,7 @@ This database includes the width and length of the shower, how far away its core
 
 
     % see calculations/disabledpixel_obstime , those 250 crab runs turned into about 13.5 observation hours
-    To examine the effects of disabled pixels, \nicetilde13 hours of Crab observations were reconstructed twice.
+    To examine the effects of disabled pixels, \nicetilde13 hours of Crab Nebula observations were reconstructed twice.
     The first analysis was with the default analysis chain settings, and the second time with a single pixel disabled in all four telescopes.
     This mimics the effect of having a star in the field of view that is bright enough to disable a pixel.
     The purpose of this study is to examine how many events are lost due to a dead pixel.
@@ -559,7 +560,7 @@ This database includes the width and length of the shower, how far away its core
     Then, for each camera coordinate bin, the ratio of the number of events $\frac{P_d}{P_e}$ is calculated.
     It can be seen that there is a loss of events near the disabled pixel (the black circle), with a rate closer to 100\% the farther one goes from the disabled pixel.
 
-    \begin{figure}[ht]
+    \begin{figure}[!ht]
       \centering
       \includegraphics[width=0.8\textwidth]{images/disabled_pixel/relativerate_camera}
       \caption[Relative Event Rate After Disabling Camera Pixels]{
@@ -574,7 +575,7 @@ This database includes the width and length of the shower, how far away its core
     From a area-weighted average of all bins within \ang{0.33} of a pixel, the average event rate is approximately 3.1\% lower than when the pixel is enabled.
     Over the entire field of view, disabling one pixel in all four telescopes resulted in 0.7\% fewer events (14900 events vs 15010 per average \SI{20}{minute} observation).
     
-    \begin{figure}[ht]
+    \begin{figure}[!ht]
       \centering
       \includegraphics[width=0.8\textwidth]{images/disabled_pixel/relativerate_radial.pdf}
       \caption[Relative Event Rate After Disabling Camera Pixels]{
@@ -627,7 +628,7 @@ This database includes the width and length of the shower, how far away its core
     Another reason these disabled pixels are not accounted for is discussed in Chapter~\ref{chapter:analysis}, where small disabled-pixel effect is dwarfed by the problems with modeling how the background rate is affected by the atmospheric gradient.
     Future analyses may be able to account for these effects in their models of the background rates and effective areas.
 
-    \begin{table}[]
+    \begin{table}[t]
       \centering
       \begin{tabular}{|l|l|r|r|}
         \hline
@@ -671,7 +672,7 @@ This database includes the width and length of the shower, how far away its core
     The white area indicates many events are lost in the area of the disabled pixel.
     These events would have smaller images, and would be much more susceptable to being cut.
 
-    \begin{figure}[ht]
+    \begin{figure}[!ht]
       \centering
       \includegraphics[width=0.8\textwidth]{images/disabled_pixel/disappearing_events}
       \caption[Events That Disappear when Disabling Camera Pixels]{
@@ -691,7 +692,7 @@ This database includes the width and length of the shower, how far away its core
     A thinner image will look more gamma-like, making it more likely to pass cuts.
     On the other hand, a wider image looks more hadron-like, and is less likely to pass cuts, causing some events to disappear.
 
-    \begin{figure}[ht]
+    \begin{figure}[!ht]
       \centering
       \includegraphics[width=0.8\textwidth]{images/disabled_pixel/appearing_events}
       \caption[New Events that Appear when Disabling Camera Pixels]{
@@ -709,9 +710,9 @@ This database includes the width and length of the shower, how far away its core
     Though, interestingly, disabled pixels have an impact on events' reconstructed positions, even from halfway across the camera.
     This may imply that the gamma-ray PSF is, to second order, dependent on the number of disabled pixels, though no studies were done to confirm this.
 
-    \begin{figure}[ht]
+    \begin{figure}[!ht]
       \centering
-      \includegraphics[width=0.8\textwidth]{images/disabled_pixel/moving_events}
+      \includegraphics[width=0.7\textwidth]{images/disabled_pixel/moving_events}
       \caption[Event Movement After Disabling Camera Pixels]{
         Positions of events that moved when pixel 115 (denoted by the red circle) was disabled in all four telescopes.  
         Arrows point from the pixel-enabled position to the pixel-disabled position.

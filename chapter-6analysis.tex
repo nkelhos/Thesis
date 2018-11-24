@@ -50,9 +50,9 @@
     \label{tab:observation_times}
     \begin{tabular}{|l|l|l|l|}
       \hline
-      \textbf{Epoch} & \textbf{Crab} & \textbf{Sgr A*} & \textbf{Sgr A* Off} \\ \hline
-      V5             & 3.3           & 46.3            & 13.0                \\ \hline
-      V6             & 5.5           & 62.7            & 4.7                 \\ \hline
+      \textbf{Epoch} & \textbf{Crab Nebula} & \textbf{Sgr A*} & \textbf{Sgr A* Off} \\ \hline
+      V5             & 3.3                  & 46.3            & 13.0                \\ \hline
+      V6             & 5.5                  & 62.7            & 4.7                 \\ \hline
       % times calculated with $VERIPY/thesis/plots/obs_times.py
     \end{tabular}
   \end{table}
@@ -70,7 +70,7 @@
   \end{figure}
 
   There are comparativly fewer Sgr A* Off observations because this source is only used for background estimation, and telescope time is in high demand.
-  There are also fewer Crab observations, as the majority of its data is taken at higher elevations, where the telescope has increased sensitivity to lower energies.
+  There are also fewer Crab Nebula observations, as the majority of its data is taken at higher elevations, where the telescope has increased sensitivity to lower energies.
   
   For all of these observations, quality cuts were applied.
   This includes monitoring the telescope hardware and cloud ceiling in the field of view.
@@ -319,7 +319,7 @@
 \section{Crab Nebula Likelihood Analysis}\label{sec:crab_analysis}
   To verify that the likelihood method is physically correct, the Crab Nebula was analyzed first, before any dark matter analysis was performed.
   As the Crab Nebula is the brightest gamma ray emitter in the sky, it has been observed extensively by VERITAS and other gamma ray telescopes.
-  After searching for low-elevation Crab observations, a total of 17.1 hours of data were selected from the VERITAS data archives.
+  After searching for low-elevation Crab Nebula observations, a total of 17.1 hours of data were selected from the VERITAS data archives.
   Since the Galactic Center only rises to around \ang{30} elevation, elevation effects would also need to be searched for.
   To uncover any low-elevation effects, time cuts were applied to this data to restrict the telescope pointing elevations to \SIrange{27.5}{32.5}{\degree}, similar to the Galactic Center data later on (see Figure~\ref{fig:datapointingelevations}).
   This resulted in \SI{3.3}{hours} of V5 and \SI{5.5}{hours} of V6 epoch data (see Table \ref{tab:observation_times}).
@@ -327,16 +327,15 @@
   \begin{figure}[!t]
     \centering
     \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_skymap.pdf}
-    \caption[Crab Counts Skymap]
+    \caption[Crab Nebula Counts Skymap]
     {
       Skymap of event positions, ($\ldet$,$\bdet$).
       No corrections are made for observing time or effective area.
-      {\color{red}(axis labels l and b should be italics??)}
     }
     \label{fig:crab_skymap}
   \end{figure}
   
-  The Crab is modeled by a point source with the simple power law spectrum in Equation~\ref{eqn:crab_model}.
+  The Crab Nebula is modeled by a point source with the simple power law spectrum in Equation~\ref{eqn:crab_model}.
   These spatial and spectral shapes are both discussed in Section~\ref{subsec:likemax}.
 
   \begin{equation}\label{eqn:crab_model}
@@ -362,7 +361,7 @@
   \begin{figure}[!t]
     \centering
     \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall.pdf}
-    \caption[Crab Test Spectrum]
+    \caption[Crab Nebula Test Spectrum]
     {
       Crab Nebula spectra from various analyses and observatories.
       The solid red line is the best-fit spectra from the CTOOLS analysis described in this chapter, using only events from \SIrange{4}{70}{\TeV{}}.
@@ -403,15 +402,15 @@
   % event display: 3.16 TeV to 79.4 TeV
   % ctools       : 4    TeV to 70   TeV
   % from nkelhos@warp-zeuthen.desy.de:~/dm_halo_testing/veripy/thesis/analysis/crab_test/energy_range_event_count_difference.py
-  In Figure~\ref{fig:crab_test_spectra}, the fitted Crab Nebula spectra is shown, along with literature results from earlier VERITAS, HESS, and MAGIC observations of the Crab.
+  In Figure~\ref{fig:crab_test_spectra}, the fitted Crab Nebula spectra is shown, along with literature results from earlier VERITAS, HESS, and MAGIC observations of the Crab Nebula.
   
   \begin{figure}[!t]
     \centering
     %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spl.pdf}
     \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_spl_niceprofile.pdf}
     \llap{
-      \makebox[12.5cm][l]{ % x position
-        \raisebox{5cm}{     % y position
+      \makebox[13cm][l]{ % x position
+        \raisebox{5.2cm}{     % y position
           {
             \setlength{\fboxsep}{0pt}
             \setlength{\fboxrule}{1pt}
@@ -422,14 +421,16 @@
         }
       }
     }
-    \caption[Crab Profile along Galactic $l$]
+    \caption[Crab Nebula Profile along Galactic $l$]
     {
-      The number of counts along a \ang{0.16}-wide-slice \ang{0.5} North of the Crab, along the galactic $l$ axis ($\ldet$ coordinate space).
+      The number of counts along a \ang{0.15}-wide-slice the Crab Nebula, along the galactic $l$ axis ($\ldet$ coordinate space).
       Blue points are the number of observed counts, with poissonian error bars.
       The green histogram bars are the number of counts predicted by all models.
-      Purple histogram bars are the number of counts predicted by only the camera-background models.
+      Yellow histogram bars are the number of counts predicted by only the camera-background models.
+      The red arrow indicates the position of the Crab Nebula.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
-      {\color{red}(fix inset and have someone check residual??)}
+      {\color{red}(discuss residual plot??)}
+      {\color{red}(have someone check residual??)}
     }
     \label{fig:crab_profile_l}
   \end{figure}
@@ -439,8 +440,8 @@
     %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spb.pdf}
     \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_spb_niceprofile.pdf}
     \llap{
-      \makebox[12.5cm][l]{ % x position
-        \raisebox{5cm}{  % y position
+      \makebox[13cm][l]{ % x position
+        \raisebox{5.2cm}{  % y position
           {
             \setlength{\fboxsep}{0pt}
             \setlength{\fboxrule}{1pt}
@@ -451,25 +452,27 @@
         }
       }
     }
-    \caption[Crab Profile along Galactic $b$]
+    \caption[Crab Nebula Profile along Galactic $b$]
     {
-      The number of counts along a \ang{0.16}-wide-slice through the Crab along the galactic $b$ axis ($\bdet$ coordinate space).
+      The number of counts along a \ang{0.15}-wide-slice through the Crab Nebula along the galactic $b$ axis ($\bdet$ coordinate space).
       Blue points are the number of observed counts, with poissonian error bars.
       The green histogram bars are the number of counts predicted by all models.
-      Purple histogram bars are the number of counts predicted by only the camera-background models.
+      Yellow histogram bars are the number of counts predicted by only the camera-background models.
+      The red arrow indicates the position of the Crab Nebula.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
-      {\color{red}(fix inset and have someone check residual??)}
+      {\color{red}(discuss residual plot??)}
+      {\color{red}(have someone check residual??)}
     }
     \label{fig:crab_profile_b}
   \end{figure}
     
-  \begin{figure}[!t]
+  \begin{figure}[!ht]
     \centering
     %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_splalt.pdf}
     \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_splalt_niceprofile.pdf}
     \llap{
-      \makebox[12.5cm][l]{ % x position
-        \raisebox{6.6cm}{  % y position
+      \makebox[13.2cm][l]{ % x position
+        \raisebox{6.8cm}{  % y position
           {
             \setlength{\fboxsep}{0pt}
             \setlength{\fboxrule}{1pt}
@@ -480,24 +483,26 @@
         }
       }
     }
-    \caption[Crab Profile along Galactic $l$ Off Source]
+    \caption[Crab Nebula Profile along Galactic $l$ Off Source]
     {
-      The number of counts along a \ang{0.16}-wide-slice along the galactic $l$ axis ($\ldet$ coordinate space).
-      This slice doesn't go through the Crab, but instead \ang{1} higher in galactic $b$.
-      As this doesn't include the Crab, this plot primarily demonstrates the camera background modeling.
+      The number of counts along a \ang{0.15}-wide-slice along the galactic $l$ axis ($\ldet$ coordinate space).
+      This slice doesn't go through the Crab Nebula, but instead \ang{1} higher in galactic $b$.
+      As this doesn't include the Crab Nebula, this plot primarily demonstrates the camera background modeling.
       Blue points are the number of observed counts, with poissonian error bars.
       The green histogram bars are the number of counts predicted by all models.
-      As the Crab Nebula doesn't contribute any events \ang{1} to the North, the green histogram bars are identical (and behind) the purple histogram bars.
-      Purple histogram bars are the number of counts predicted by only the camera-background models.
+      The red arrow indicates the position of the Crab Nebula.
+      As the Crab Nebula doesn't contribute any events \ang{1} to the North, the green histogram bars are identical (and behind) the yellow histogram bars.
+      Yellow histogram bars are the number of counts predicted by only the camera-background models.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
-      {\color{red}(fix inset and have someone check residual??)}
+      {\color{red}(discuss residual plot??)}
+      {\color{red}(have someone check residual??)}
     }
     \label{fig:crab_profile_l_off}
   \end{figure}
 
-  \begin{figure}[h]
+  \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_ep.pdf}
+    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_ep.pdf}
     \llap{
       \makebox[11.35cm][l]{  % x position
         \raisebox{7.15cm}{ % y position
@@ -511,13 +516,14 @@
         }
       }
     }
-    \caption[Crab Profile in Energy]
+    \caption[Crab Nebula Profile in Energy]
     {
-      The number of counts in a \ang{0.6} x \ang{0.6} square centered on the Crab, vs energy ($\Edet$ space).
+      The number of counts in a \ang{0.6} x \ang{0.6} square centered on the Crab Nebula, vs energy ($\Edet$ space).
       Blue points are the number of observed counts, with poissonian error bars.
       The green histogram bars are the number of counts predicted by all models.
       Purple histogram bars are the number of counts predicted by only the camera-background models.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with a blue square showing the profile bin location.
+      {\color{red}(change plot colors to match spatial profiles and change caption text color??)}
     }
     \label{fig:crab_profile_energy}
   \end{figure}
@@ -525,8 +531,8 @@
   The fitted models can also be viewed, as a check that the likelihood engine is fitting the models to the data.
   In Figure~\ref{fig:crab_skymap}, the position of all counts is shown in galactic $\ldet$ and $\bdet$.
   In Figures \ref{fig:crab_profile_l} and \ref{fig:crab_profile_b}, the counts in the observations and models were integrated along a slice of galactic $l$ and $b$.
-  The counts from only the camera background models is shown in purple, along with the counts from all camera backgrounds plus the point source in green.
-  The difference between these two histograms is then the counts from the Crab point source model.
+  The counts from only the camera background models is shown in purple{\color{red}(change this color??)}, along with the counts from all camera backgrounds plus the point source in green.
+  The difference between these two histograms is then the counts from the Crab Nebula point source model.
   In Figure~\ref{fig:crab_profile_energy}, a similar plot is made, though integrated in a \ang{0.6}$\times$\ang{0.6} square around the Crab Nebula at different energies.
 
   \FloatBarrier
@@ -632,7 +638,7 @@
     \caption[DM Halo TS Values]{
       TS values for each DM Halo Model likelihood ratio maximization fit.
       {\color{red}(Why is the 66.5 TeV one have -5.8 TS??)}
-      {\color{red}(Comment on why they're all negative?? (the crab TS was positive!))}
+      {\color{red}(Comment on why they're all negative?? (the crab Nebula TS was positive!))}
     }
     \label{tab:tsvals}
   \end{table}
@@ -688,7 +694,7 @@
     \label{fig:gc_profile_gal_l}
   \end{figure}
 
-  Figure~\ref{fig:gc_profile_gal_b} is similar to Figure~\ref{fig:gc_profile_gal_l}, except it slices through Sgr A* along the galactic b axis,
+  Figure~\ref{fig:gc_profile_gal_b} is similar to Figure~\ref{fig:gc_profile_gal_l}, except it slices through Sgr A* along the galactic $b$ axis,
   The feature in which the observed counts are higher on the left and lower on the right is also visible here.
 
   \begin{figure}[h]
@@ -771,14 +777,32 @@
   
   Then a test statistic is calculated with these two likelihood hypotheses.
   
+  % had to break this equation up, since it was overlapping the page number at the bottom of the page
+  %\begin{equation}
+  %  \begin{split}
+  %    \textrm{TS} & = 2 \: \textrm{ln} \left ( \frac{ L_{\textrm{test}} }{ L_{\textrm{null}}    } \right ) \\
+  %                & = 2 \: \textrm{ln} \left ( \frac{ P_{\textrm{test}} }{ P_{\textrm{null}}    } \right ) \\
+  %                & = 2 \: \textrm{ln} \left ( \frac{D^D e^{-D}}{D!} \times \frac{D!}{M^D e^{-M}} \right ) \\
+  %                & = 2 \: \textrm{ln} \left ( D^D e^{-D} M^{-D} e^M                              \right ) \\
+  %                & = 2 \: \left (      \textrm{ln} \left ( D^D M^{-D} \right ) + \textrm{ln} \left ( e^{-D} \right ) + \textrm{ln} \left ( e^M  \right )\right ) \\
+  %                & = 2 \: \left (      \textrm{ln} \left (  \frac{D^D}{M^D} \right ) -D + M \right ) \\
+  %    \textrm{TS} & = 2 \: \left ( D \: \textrm{ln} \left (  \frac{D  }{M  } \right ) -D + M \right )
+  %  \end{split}
+  %\end{equation}
+
   \begin{equation}
     \begin{split}
       \textrm{TS} & = 2 \: \textrm{ln} \left ( \frac{ L_{\textrm{test}} }{ L_{\textrm{null}}    } \right ) \\
-                  & = 2 \: \textrm{ln} \left ( \frac{ P_{\textrm{test}} }{ P_{\textrm{null}}    } \right ) \\
-                  & = 2 \: \textrm{ln} \left ( \frac{D^D e^{-D}}{D!} \times \frac{D!}{M^D e^{-M}} \right ) \\
-                  & = 2 \: \textrm{ln} \left ( D^D e^{-D} M^{-D} e^M                              \right ) \\
-                  & = 2 \: \left (      \textrm{ln} \left ( D^D M^{-D} \right ) + \textrm{ln} \left ( e^{-D} \right ) + \textrm{ln} \left ( e^M  \right )\right ) \\
-                  & = 2 \: \left (      \textrm{ln} \left (  \frac{D^D}{M^D} \right ) -D + M \right ) \\
+      \textrm{TS} & = 2 \: \textrm{ln} \left ( \frac{ P_{\textrm{test}} }{ P_{\textrm{null}}    } \right ) \\
+      \textrm{TS} & = 2 \: \textrm{ln} \left ( \frac{D^D e^{-D}}{D!} \times \frac{D!}{M^D e^{-M}} \right ) \\
+    \end{split}
+  \end{equation}
+  
+  \begin{equation}
+    \begin{split}
+      \textrm{TS} & = 2 \: \textrm{ln} \left ( D^D e^{-D} M^{-D} e^M                              \right ) \\
+      \textrm{TS} & = 2 \: \left (      \textrm{ln} \left ( D^D M^{-D} \right ) + \textrm{ln} \left ( e^{-D} \right ) + \textrm{ln} \left ( e^M  \right )\right ) \\
+      \textrm{TS} & = 2 \: \left (      \textrm{ln} \left (  \frac{D^D}{M^D} \right ) -D + M \right ) \\
       \textrm{TS} & = 2 \: \left ( D \: \textrm{ln} \left (  \frac{D  }{M  } \right ) -D + M \right )
     \end{split}
   \end{equation}
