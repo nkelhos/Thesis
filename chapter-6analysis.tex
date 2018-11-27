@@ -423,13 +423,13 @@
     }
     \caption[Crab Nebula Profile along Galactic $l$]
     {
-      The number of counts along a \ang{0.15}-wide-slice the Crab Nebula, along the galactic $l$ axis ($\ldet$ coordinate space).
+      The top plot shows the number of counts along a \ang{0.15}-wide-slice the Crab Nebula, along the galactic $l$ axis ($\ldet$ coordinate space).
       Blue points are the number of observed counts, with poissonian error bars.
       The green histogram bars are the number of counts predicted by all models.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
       The red arrow indicates the position of the Crab Nebula.
+      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as a green line, with the same blue poissonian error bars from the top plot.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
-      {\color{red}(discuss residual plot??)}
       {\color{red}(have someone check residual??)}
     }
     \label{fig:crab_profile_l}
@@ -454,13 +454,13 @@
     }
     \caption[Crab Nebula Profile along Galactic $b$]
     {
-      The number of counts along a \ang{0.15}-wide-slice through the Crab Nebula along the galactic $b$ axis ($\bdet$ coordinate space).
+      The top plot shows the number of counts along a \ang{0.15}-wide-slice through the Crab Nebula along the galactic $b$ axis ($\bdet$ coordinate space).
       Blue points are the number of observed counts, with poissonian error bars.
       The green histogram bars are the number of counts predicted by all models.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
       The red arrow indicates the position of the Crab Nebula.
+      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as a green line, with the same blue poissonian error bars from the top plot.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
-      {\color{red}(discuss residual plot??)}
       {\color{red}(have someone check residual??)}
     }
     \label{fig:crab_profile_b}
@@ -485,7 +485,7 @@
     }
     \caption[Crab Nebula Profile along Galactic $l$ Off Source]
     {
-      The number of counts along a \ang{0.15}-wide-slice along the galactic $l$ axis ($\ldet$ coordinate space).
+      The top plot shows the number of counts along a \ang{0.15}-wide-slice along the galactic $l$ axis ($\ldet$ coordinate space).
       This slice doesn't go through the Crab Nebula, but instead \ang{1} higher in galactic $b$.
       As this doesn't include the Crab Nebula, this plot primarily demonstrates the camera background modeling.
       Blue points are the number of observed counts, with poissonian error bars.
@@ -493,8 +493,8 @@
       The red arrow indicates the position of the Crab Nebula.
       As the Crab Nebula doesn't contribute any events \ang{1} to the North, the green histogram bars are identical (and behind) the yellow histogram bars.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
+      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as a green line, with the same blue poissonian error bars from the top plot.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
-      {\color{red}(discuss residual plot??)}
       {\color{red}(have someone check residual??)}
     }
     \label{fig:crab_profile_l_off}
@@ -502,15 +502,16 @@
 
   \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_ep.pdf}
+    %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_ep.pdf}
+    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_en_niceprofile.pdf}
     \llap{
-      \makebox[11.35cm][l]{  % x position
-        \raisebox{7.15cm}{ % y position
+      \makebox[9.7cm][l]{  % x position
+        \raisebox{5.6cm}{ % y position
           {
             \setlength{\fboxsep}{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
-              \includegraphics[height=2.9cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profe_skymap_rasterized.pdf}
+              \includegraphics[height=3.7cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profe_skymap_rasterized.pdf}
             }
           }
         }
@@ -518,12 +519,13 @@
     }
     \caption[Crab Nebula Profile in Energy]
     {
-      The number of counts in a \ang{0.6} x \ang{0.6} square centered on the Crab Nebula, vs energy ($\Edet$ space).
+      The top plot shows number of counts in a \ang{0.6} x \ang{0.6} square centered on the Crab Nebula, vs energy ($\Edet$ space).
       Blue points are the number of observed counts, with poissonian error bars.
       The green histogram bars are the number of counts predicted by all models.
-      Purple histogram bars are the number of counts predicted by only the camera-background models.
+      Yellow histogram bars are the number of counts predicted by only the camera-background models.
+      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as a green line, with the same blue poissonian error bars from the top plot.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with a blue square showing the profile bin location.
-      {\color{red}(change plot colors to match spatial profiles and change caption text color??)}
+      {\color{red}(have someone check residual??)}
     }
     \label{fig:crab_profile_energy}
   \end{figure}
