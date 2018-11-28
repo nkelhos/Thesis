@@ -430,7 +430,7 @@
       The red arrow indicates the position of the Crab Nebula.
       The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as a green line, with the same blue poissonian error bars from the top plot.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
-      {\color{red}(have someone check residual??)}
+      {\color{red}(redo residual to move errorbars to model line, convert model line to points, propagate error (data+-sqrt(data), and model+-sqrt(model))with orel's pdf??, theres also established binomial errors for zero data or zero model events??)}
     }
     \label{fig:crab_profile_l}
   \end{figure}
@@ -795,16 +795,11 @@
   \begin{equation}
     \begin{split}
       \textrm{TS} & = 2 \: \textrm{ln} \left ( \frac{ L_{\textrm{test}} }{ L_{\textrm{null}}    } \right ) \\
-      \textrm{TS} & = 2 \: \textrm{ln} \left ( \frac{ P_{\textrm{test}} }{ P_{\textrm{null}}    } \right ) \\
-      \textrm{TS} & = 2 \: \textrm{ln} \left ( \frac{D^D e^{-D}}{D!} \times \frac{D!}{M^D e^{-M}} \right ) \\
-    \end{split}
-  \end{equation}
-  
-  \begin{equation}
-    \begin{split}
-      \textrm{TS} & = 2 \: \textrm{ln} \left ( D^D e^{-D} M^{-D} e^M                              \right ) \\
-      \textrm{TS} & = 2 \: \left (      \textrm{ln} \left ( D^D M^{-D} \right ) + \textrm{ln} \left ( e^{-D} \right ) + \textrm{ln} \left ( e^M  \right )\right ) \\
-      \textrm{TS} & = 2 \: \left (      \textrm{ln} \left (  \frac{D^D}{M^D} \right ) -D + M \right ) \\
+                  & = 2 \: \textrm{ln} \left ( \frac{ P_{\textrm{test}} }{ P_{\textrm{null}}    } \right ) \\
+                  & = 2 \: \textrm{ln} \left ( \frac{D^D e^{-D}}{D!} \times \frac{D!}{M^D e^{-M}} \right ) \\
+                  & = 2 \: \textrm{ln} \left ( D^D e^{-D} M^{-D} e^M                              \right ) \\
+                  & = 2 \: \left (      \textrm{ln} \left ( D^D M^{-D} \right ) + \textrm{ln} \left ( e^{-D} \right ) + \textrm{ln} \left ( e^M  \right )\right ) \\
+                  & = 2 \: \left (      \textrm{ln} \left (  \frac{D^D}{M^D} \right ) -D + M \right ) \\
       \textrm{TS} & = 2 \: \left ( D \: \textrm{ln} \left (  \frac{D  }{M  } \right ) -D + M \right )
     \end{split}
   \end{equation}

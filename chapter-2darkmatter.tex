@@ -1,12 +1,15 @@
 \cleartooddpage[\thispagestyle{empty}]
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 \newcommand{\thetamc}{\theta_{\textrm{MC}}}
-\newcommand{\mlratio}{$\left [ \frac{M_\odot}{L_\odot} \right ]$}
+\newcommand{\mlratio}{$\left [ \frac{\textrm{M}_\odot}{\textrm{L}_\odot} \right ]$}
 \chapter{The Dark Matter Paradigm}\label{ch_dm}
 
 Dark matter makes up 26.5\% of the universe's energy and 81.5\% of its mass~\cite{planck2015}.
-It has had a {\color{red}significant impact (which impact?? -maria)} on the development of the universe, shaping its present day distribution.
-This chapter discusses the astrophysical evidence for the existence of dark matter, an outline of the current cosmological paradigm of $\Lambda$CDM and the Standard Model, as well as arguments for why dark matter may be in the form of a new, unknown particle.
+It has had a significant impact on the development of the universe, shaping its present day distribution.
+This, as well as the astrophysical evidence for dark matter, will be discussed in this chapter.
+In addition, an outline will be given of the current cosmological paradigm of $\Lambda$CDM and the Standard Model, as well as arguments for why dark matter may be in the form of a new, unknown particle.
+
+%This, chapter discusses the astrophysical evidence for the existence of dark matter, an outline of the current cosmological paradigm of $\Lambda$CDM and the Standard Model, as well as arguments for why dark matter may be in the form of a new, unknown particle.
 
 %From: https://arxiv.org/abs/1502.01589 , Table 3, column [4] :
 %  omega_b h^2 = 0.02225
@@ -28,10 +31,10 @@ At even larger scales, galaxy velocities can be measured and compared, X-ray tel
 At the largest scale, the measurement of oscillations in the cosmic microwave background can be used to determine the amount of dark and baryonic matter.
 These effects can all be generalized to observations of gravity pulling on electromagnetic emitters, gravity bending background light, and the universe's total energy budget.
 
-Throughout this chapter, astrophysical objects are measured in units of the Sun's mass $M_\odot$, and the Sun's luminosity $L_\odot$.
-For these conversions, nominal values are $M_\odot =$ \SI{1.9885e30}{kg} and $L_\odot =$ \SI{3.828e26}{W}, though different authors may use slightly different values depending on the year of publication~\cite{iau_solarconstants}.
+Throughout this chapter, astrophysical objects are measured in units of the Sun's mass $\textrm{M}_\odot$, and the Sun's luminosity $\textrm{L}_\odot$.
+For these conversions, nominal values are $\textrm{M}_\odot =$ \SI{1.9885e30}{kg} and $\textrm{L}_\odot =$ \SI{3.828e26}{W}, though different authors may use slightly different values depending on the year of publication~\cite{iau_solarconstants}.
 The amount of dark matter in an object is then expressed in terms of the ratio $\frac{\textrm{M}_\odot}{\textrm{L}_\odot}$.
-For example, a ratio of \SI{7}{\frac{M_\odot}{L_\odot}} indicates that for every \SI{1}{M_\odot} worth of mass producing light (at a rate similar to the Sun), theres another \SI{6}{M_\odot} of mass in a dark form.
+For example, a ratio of \SI{7}{\frac{M_\odot}{L_\odot}} indicates that for every \SI{1}{M_\odot} worth of mass producing light (at a rate similar to the Sun), there is another \SI{6}{M_\odot} of mass in a dark form.
   
 \subsection{Scales of $10^{19}\:\text{m}$ : Dwarf Galaxies}\label{dm_dwarfscale}
 % 10^19m comes from: 
@@ -48,7 +51,7 @@ Figure~\ref{fig:sculptor} is the Sculptor dwarf galaxy, imaged in the optical fr
   \centering
   \includegraphics[width=0.8\textwidth]{images/sculptor/sculptor.eps}
   \caption[Sculptor Dwarf Galaxy]{
-    The Sculptor dwarf galaxy~\cite{sculptor_image}, with a $\frac{M_\odot}{L_\odot}$ ratio of $15.3\pm6.9$~\cite{sculptor_ml}, imaged by the MPG/ESO telescope~\cite{sculptor_paper}.
+    The Sculptor dwarf galaxy~\cite{sculptor_image}, with a $\frac{\textrm{M}_\odot}{\textrm{L}_\odot}$ ratio of $15.3\pm6.9$~\cite{sculptor_ml}, imaged by the MPG/ESO telescope~\cite{sculptor_paper}.
   }
   \label{fig:sculptor}
 \end{figure}
@@ -57,7 +60,7 @@ Figure~\ref{fig:sculptor} is the Sculptor dwarf galaxy, imaged in the optical fr
   \centering
   \includegraphics[width=0.8\textwidth]{images/fornax/fornax.pdf}
   \caption[Fornax Dwarf Galaxy]{
-    The Fornax dwarf galaxy, with a $\frac{M_\odot}{L_\odot}$ ratio of $8.8\pm3.8$~\cite{sculptor_ml}, from the ESO Digitized Sky Survey II~\cite{fornax_image}.
+    The Fornax dwarf galaxy, with a $\frac{\textrm{M}_\odot}{\textrm{L}_\odot}$ ratio of $8.8\pm3.8$~\cite{sculptor_ml}, from the ESO Digitized Sky Survey II~\cite{fornax_image}.
   }
   \label{fig:fornax}
 \end{figure}
@@ -88,7 +91,6 @@ with
   f(r) = f_{r'} \exp \left [ \int_{r'}^r \frac{2 \beta(t) }{t} \; dt \right ] \;\; .
 \end{equation}
 
-{\color{red}(where does this f(r) come in?? -parents)}
 In Equations~\ref{eqn:los_velocity_dist} and \ref{eqn:los_velocity_dist2}, $I(R)$ is the surface brightness of the dwarf galaxy, $v(s)$ is the density profile of its luminous component, $M(s)=4\pi \int_0^s \rho_{\textrm{DM}}(r) r^2 \; dr$ the enclosed dark matter mass, and $\beta(r)$ velocity anisotropy profile.
 The calculated $\sigma_{\mathrm{los}}(r)$ velocity distribution in Equation~\ref{eqn:los_velocity_dist} can then be compared to the radial velocity measurements of stars within dwarf galaxies to estimate the total mass (dark + baryonic)~\cite{dwarf_gal_vel_dispersion,dwarf_gal_vel_dispersion_a,dwarf_jfactors_no_priors}.
 As stellar velocity measurements rely on doppler-shifted spectral lines, and not the star's absolute brightness, any derived mass estimates are fairly robust with respect to changes in observed brightness.
@@ -113,7 +115,7 @@ A random assortment of Local Group dwarf galaxies and their $\frac{M_\odot}{L_\o
     
 \begin{table}[h]
   \centering
-  \caption[Ratios of $\frac{M_\odot}{L_\odot}$ for Various Dwarf Galaxy Objects]{
+  \caption[Ratios of $\frac{\textrm{M}_\odot}{\textrm{L}_\odot}$ for Various Dwarf Galaxy Objects]{
     Ratios of $\frac{M_\odot}{L_\odot}$ for various dwarf galaxy objects~\cite{localdwarfs}.
   }
   \label{tab:mlratios:dwarfgals}
@@ -170,7 +172,7 @@ If the galaxy was only made of gas, then the rotation curve would instead follow
 
 \begin{table}[h]
   \centering
-  \caption[Ratios of \mlratio{} for Various Galactic-scale Objects]{Ratios of $\frac{M_\odot}{L_\odot}$ for various galactic-scale objects~\cite{faber_ml}.}
+  \caption[Ratios of $\frac{\textrm{M}_\odot}{\textrm{L}_\odot}$ for Various Galactic-scale Objects]{Ratios of $\frac{M_\odot}{L_\odot}$ for various galactic-scale objects~\cite{faber_ml}.}
   \label{tab:mlratios}
   \begin{tabular}{l r | l r}
     Object      &  \mlratio{} & Object & \mlratio{} \\
@@ -185,7 +187,7 @@ If the galaxy was only made of gas, then the rotation curve would instead follow
 % values from Ref. \cite{faber_ml}, Table 1, M/L_B column
       
 A random sample of galaxies from Ref. \cite{faber_ml} are shown alongside their mass-to-light ratios in Table \ref{tab:mlratios}.
-Our own Milky Way galaxy is measured to have a mass to light ratio of \SIrange{1.2}{1.5}{\frac{M_\odot}{L_\odot}}~\cite{milkyway_ml_ratio} {\color{red}(orel would remove this whole sentence??)}.
+Our own Milky Way galaxy is measured to have a mass to light ratio of \SIrange{1.2}{1.5}{\frac{M_\odot}{L_\odot}}~\cite{milkyway_ml_ratio}.
 
 Further evidence of dark matter can be deduced through additional weak gravitational lensing~\cite{weak_lensing_2001}.
 {\color{red}Lensing (new word?? -parents)} elliptical galaxies can constrain mass profiles, as the amount of lensing indicates the total amount of mass, which in turn limits the amount of dark matter present at different radii~\cite{weak_lensing_ellipse}.
@@ -218,12 +220,12 @@ At scales of $\nicetilde 10^{23}$m, dark matter's effects on galactic clusters b
 In one technique, the mass-to-light ratio can be measured for galaxy clusters.
 This is done in the same way as with dwarf galaxies; luminous mass is derived from the brightness of the cluster, while total mass is measured from the velocity dispersion of individual galaxies within the cluster.
 From measurements of several hundred galaxy clusters, it was found that galaxy clusters have mass-to-light ratios of \SIrange{10}{1000}{\frac{M_\odot}{L_\odot}}~\cite{cluster_ml_ratios}, indicating a very high amount of dark matter is present in these objects.
-Several galaxy clusters and their $\frac{M_\odot}{L_\odot}$ ratios are shown in Table~\ref{tab:cluster_ml_ratios}.
+Several galaxy clusters and their $\frac{\textrm{M}_\odot}{\textrm{L}_\odot}$ ratios are shown in Table~\ref{tab:cluster_ml_ratios}.
 
 \begin{table}[h]
   \centering
-  \caption[Ratios of \MLsol for Various Galaxy Clusters]{
-    Ratios of \MLsol for various galaxy clusters~\cite{cluster_ml_ratios}.
+  \caption[Ratios of $\frac{\textrm{M}_\odot}{\textrm{L}_\odot}$ for Various Galaxy Clusters]{
+    Ratios of $\frac{\textrm{M}_\odot}{\textrm{L}_\odot}$ for various galaxy clusters~\cite{cluster_ml_ratios}.
     }
   \label{tab:cluster_ml_ratios}
   \begin{tabular}{l r | l r | l r}
@@ -242,8 +244,7 @@ The shape of the distorted image can then be used to infer the amount of total m
 Then comparing this total mass to the luminous mass provides an estimate for the amount of dark matter contained in the galaxy cluster.
 This was used with galaxy clusters Abell 370 and CL 2244-02 to estimate the amount of dark matter in each~\cite{cluster_lensing}.
 Lensing cluster Abell 370 and several distorted background galaxies are shown in Figure~\ref{fig:abell370}.
-This technique found that for both Abell 370 and CL 2244-02, a large amount of dark matter is required to fit the observed arcs, within the range of \SIrange{200}{1000}{\textrm{M}_{\odot} \per \textrm{L}_{\odot} }.
-{\color{red}(fix this unit??)}
+This technique found that for both Abell 370 and CL 2244-02, a large amount of dark matter is required to fit the observed arcs, within the range of \SIrange{200}{1000}{\frac{ M_{\odot} }{ L_{\odot} } }.
     
 \begin{figure}[!ht]
   \centering
@@ -260,7 +261,7 @@ Another example of using gravitational lensing to measure dark matter mass is us
 This galaxy cluster produces several lensed images of the same background galaxy, which are used to measure the total mass.
 This lensing is shown in Figure~\ref{fig:stronglens}, where the blue arcs are the distorted background galaxy images.
 From all of these lensed images, the best fit amount of dark matter indicates this cluster has a mass-to-light ratio of $161 \frac{\textrm{M}_{\odot}}{\textrm{L}_{\odot}}$\footnote[3]{This measurement scales with the Hubble constant, which here is assumed to be \SI{70}{km/s/Mpc}}~\cite{cluster_strong_lensing_1996, cluster_strong_lensing_1998, cluster_strong_lensing_2010}.
-%assumes a hubble constant of 70\SI{230}$\,h_{70}\,$\MLsol, where $h_{70}$ is set to $0.70$
+%assumes a hubble constant of 70\SI{230}$\,h_{70}\,$\M_\odot / L_\odot, where $h_{70}$ is set to $0.70$
     
 \begin{figure}[!ht]
   \centering
@@ -278,9 +279,9 @@ By measuring the X-ray flux at the center of the galaxy cluster Abell 2029, the 
 This is done by assuming the warm gas is in hydrostatic equilibrium, where the force of gravity towards the cluster center is equally balanced by the pressure of the warm gas.
 This implies that when moving outwards from the cluster center, the density and temperature of the gas is predictable.
 From this, the mass-to-light ratio can be inferred at several different radii from the cluster center.
-Within \SI{28.5}{kpc}\footnote[2]{This scales inversely with the hubble constant, assumed here to be \SI{70}{km/s/Mpc}} of the center, the ratio is 12 \MLsol, while beyond a radius of \SI{286}{kpc}\footnotemark[2] the ratio rises above 100 \MLsol{}, indicating a high amount of dark matter is present~\cite{cluster_chandra} {\color{red}(fix units in this sentence!??)}.
+Within \SI{28.5}{kpc}\footnote[2]{This scales inversely with the hubble constant, assumed here to be \SI{70}{km/s/Mpc}} of the center, the ratio is \SI{12}{\frac{M_\odot}{L_\odot}}, while beyond a radius of \SI{286}{kpc}\footnotemark[2] the ratio rises above \SI{100}{\frac{M_\odot}{L_\odot}}, indicating a high amount of dark matter is present~\cite{cluster_chandra} {\color{red}(fix units in this sentence!??)}.
 
-These previously mentioned techniques have been combined into an analysis of galaxy cluster {\color{red}1E 0657-558 (maria highlited this??)} to provide a cardinal piece of evidence in favor of particle dark matter.
+These previously mentioned techniques have been combined into an analysis of galaxy cluster \mbox{1E 0657-558} to provide a cardinal piece of evidence in favor of particle dark matter.
 This cluster consists of two subgroups of galaxies, a larger 'target' cluster, and a smaller Bullet cluster {\color{red}(type Name one spec cluster?? -parents)}.
 Each cluster's mass is contained in two clouds; gas and stars that form the baryonic cloud, and the much more massive dark matter cloud.
 The baryonic cloud is visible through Chandra X-ray observations, which {\color{red}is (tense?? -parents)} able to image the warm ($kT\simeq\,$\SI{10}{keV}) gas and infer its density.
@@ -371,7 +372,7 @@ These higher and lower temperatures account for the spectrum of variations in th
 Since the CMB is emitted by scattering off of the baryons, the CMB spectrum only depends on the baryon temperature.
 However, since the baryons were pulled into the high density areas by gravity, the presence of dark matter increases the wavelength of these density ripples.
 This is similar to a simple spring pendulum, in that adding an extra (dark) mass to an existing (baryonic) mass will decrease the oscillation frequency ($\omega = \sqrt{\frac{k}{m}}$), resulting in BAOs with longer wavelengths.
-Thus, measurement of the wavelength of the BAOs with the CMB correlations, the amount of dark matter in the universe can be estimated {\color{red}(rewrite?? -parents)}.
+In this way, the amount of dark matter in the universe can be estimated from BAOs within the CMB correlations.
 The CMB correlation spectrum, measured by Planck, is shown in Figure~\ref{fig:cmb_correlation_spectra}.
 
 \begin{figure}[t]
@@ -389,19 +390,18 @@ The CMB correlation spectrum, measured by Planck, is shown in Figure~\ref{fig:cm
 Another 4.9\% of the universe's energy is stored in baryonic matter, like protons and neutrons.
 The remaining 26.5\% of the universe's energy is contained in dark matter~\cite{planck2015}.
 
-The polarization of CMB photons also incorporates information about dark matter and its properties.
-The CMB photons come from ambient photons that Thompson-scattered off electrons right before recombination.
-Because of this Thompson scattering, the CMB photons inherit both temperature and polarization information.
-Dark matter annihilations during recombination may produce standard model particles, which act as an injection of ionization energy, extending the duration of recombination.
-A longer recombination acts to decrease any CMB temperature fluctuations while increasing CMB polarization fluctuations~\cite{cmb_polarization1,cmb_polarization2}.
-{\color{red}(this paragraph is missing the result from CMB polarization studies, no?? -orel)}
+%The polarization of CMB photons also incorporates information about dark matter and its properties.
+%The CMB photons come from ambient photons that Thompson-scattered off electrons right before recombination.
+%Because of this Thompson scattering, the CMB photons inherit both temperature and polarization information.
+%Dark matter annihilations during recombination may produce standard model particles, which act as an injection of ionization energy, extending the duration of recombination.
+%A longer recombination acts to decrease any CMB temperature fluctuations while increasing CMB polarization fluctuations~\cite{cmb_polarization1,cmb_polarization2}.
 % first polarization discovery: 
 %   Detection of polarization in the cosmic microwave background using DASI
 %   http://adsabs.harvard.edu/abs/2002Natur.420..772K
 
 The measurements of the CMB contribute to the existing theory of how the universe developed after the Big Bang, called $\Lambda$CDM {\color{red}(s$\Lambda$CDM is stuck onto the end, needs to be integrated into the sentence better?? -parents)}.
 The $\Lambda$ refers to the density of dark energy, while CDM refers to Cold Dark Matter.
-This theory predicts the different times particles {\color{red}froze out (meaning?? -parents)} of the universe, and their resulting distributions.
+This theory predicts how different particles fell out of their creation-annihilation equilibrium due to the expansion of space, leaving behind fixed or ``frozen'' particle populations.
 
 % from planc 2018 results cosmological constants, table 1
 % hubble constant :
@@ -454,7 +454,6 @@ From the spectrum of deuterium and hydrogen lines from the quasar QSO Q0913+072,
 % h = 0.674 (see below)
 % 0.0224 / h^2 = 0.0224 / 0.674^2 = 0.0493 -> 4.93% of universe's energy
 This suggests that only a small amount of matter in the universe can be made of baryons, and the rest must instead reside in some non-baryonic form.
-{\color{red}(not sure I understood where dark matter comes into play here.  Is it the density I marked?? Can this be clarified without adding too much? -orel)}
 
 Another measurement that depends heavily on the presence of dark matter is the rate at which galaxies cluster together.
 In the Sloan Digital Sky Survey (SDSS), the positions of 1.6 million galaxies, quasars, and stars are mapped~\cite{sdss_release}.
@@ -522,22 +521,20 @@ These two features would give the neutralino the stability to exist until the pr
 \subsection{Relic Freezeout and WIMP Miracle}
 
 %This means it would be able to exist since the freezeout without significant losses to its population
-The relic freeze-out refers to how dark matter may have behaved in the past.
-A population of dark matter particles existed during the early universe (a relic particle), and that at a later time the universe expanded enough that their numbers stopped changing (the freezeout).
+The relic freeze-out refers to how dark matter may have behaved in the past {\color{red}(this sentence needs rephrasing?? -parents)}.
+A population of dark matter particles (relic particles) existed during the early universe, and at a later time the universe expanded enough that their numbers stopped changing (the freeze-out).
 
-{\color{red}(parent corrections stopped here??)}
-
-This freezeout is relevant because it hints at the self-interacting cross section of the WIMP.
-Early on when the universe was still expanding, its been theorized that WIMPs were annihilating into SM particles, and SM particles were interacting and producing WIMPs.
+This freeze-out is relevant because it hints at the self-interacting cross section of the WIMP.
+It has been theorized that early on when the universe was still expanding, WIMPs were annihilating into SM particles, and SM particles were interacting and producing WIMPs.
 The number density and cross section of these two particle populations were such that that the number of WIMPs and SM particles remained constant; the two particle populations were in thermal equilibrium.
 
-As the universe expanded, both particle groups ran into each other less and less.
+As the universe expanded, both particle groups collided less and less.
 This meant that fewer particles were converted to the opposite population, meaning temperature changes in one population took longer and longer to propagate to the other population.
 Eventually the two populations became independent, sometimes called thermal decoupling.
 After this decoupling, WIMPs continued to annihilate occasionally, further reducing their numbers, until there were so few left that they stopped encountering each other.
-As the population of WIMPs likely did not change much after that time, it is called a freezeout.
+As the population of WIMPs likely did not change much after that time, this transition is called a freeze-out.
 
-The Boltzman equation describing how the number of WIMPs evolves through this freezeout is,
+The Boltzman equation describing how the number of WIMPs evolves through this freeze-out is,
 
 % some of this derivation is from https://ned.ipac.caltech.edu/level5/March10/Garrett/Garrett7.html
 %   for example, this is equation 20:
@@ -545,7 +542,7 @@ The Boltzman equation describing how the number of WIMPs evolves through this fr
   \frac{dn}{dt} = - 3 H n \: - \left \langle \sigma_{A} v \right \rangle \left ( n^2 - n_{eq}^2 \right ) \;\;,
 \end{equation}
 
-where $n$ is the comoving WIMP number density, $H$ is the hubble expansion rate ($\frac{\dot{a}}{a}$), $\left \langle \sigma_{A} v \right \rangle$ is the effective velocity-averaged cross section for $\chi\chi$ annihilating into standard model particles~\cite{wells_relic}.
+where $n$ is the comoving WIMP number density, $H$ is the Hubble expansion rate ($\frac{\dot{a}}{a}$), $\left \langle \sigma_{A} v \right \rangle$ is the effective velocity-averaged cross section for $\chi\chi$ annihilating into standard model particles~\cite{wells_relic}.
 The parameter $n_{eq}$ is the equilibrium WIMP comoving number density.
 
 \begin{figure}[!ht]
@@ -558,33 +555,36 @@ The parameter $n_{eq}$ is the equilibrium WIMP comoving number density.
     The number of WIMPs in a comoving volume is $n(x)$, $n_{\textrm{eq}}(x)$ is the number of WIMPs at equilibrium, and the y values are scaled by $n_{\textrm{eq}}(x=1)$.
     The weak, electromagnetic (em), and strong cross sections are shown for a \SI{100}{\GeV{}} WIMP, with additional lines for the weak cross section at \SI{1}{\GeV{}} and \SI{e3}{\GeV{}}.
     The cross sections shown are:
-    \begin{tabular}{ll}
-    $\left \langle \sigma v \right \rangle_{\textrm{weak}}  $  & $= 2 \times 10^{-26} \; \textrm{cm}^3 \textrm{s}^{-1}$ \\
-    $\left \langle \sigma v \right \rangle_{\textrm{em}}    $  & $= 2 \times 10^{-21} \; \textrm{cm}^3 \textrm{s}^{-1}$ \\
-    $\left \langle \sigma v \right \rangle_{\textrm{strong}}$  & $= 2 \times 10^{-15} \; \textrm{cm}^3 \textrm{s}^{-1}$ \\
-    \end{tabular} .
+    {
+      \rule{0pt}{5.5ex} % extra vertical space
+      \begin{tabular}{ll}
+      $\left \langle \sigma v \right \rangle_{\textrm{weak}}  $  & $= 2 \times 10^{-26} \; \textrm{cm}^3 \textrm{s}^{-1}$ \\
+      $\left \langle \sigma v \right \rangle_{\textrm{em}}    $  & $= 2 \times 10^{-21} \; \textrm{cm}^3 \textrm{s}^{-1}$ \\
+      $\left \langle \sigma v \right \rangle_{\textrm{strong}}$  & $= 2 \times 10^{-15} \; \textrm{cm}^3 \textrm{s}^{-1}$ \\
+      \end{tabular} .
+    }
   }
   \label{fig:abundance}
 \end{figure}
 
 Equation~\ref{eqn:boltzmann_relic} is numerically solved and shown in Figure~\ref{fig:abundance}.
 It shows how the number of WIMPs evolve as the universe ages, and its temperature decreases.
-The black equilibrium line indicates the number of WIMPs that would be left if they had a large ($\left \langle \sigma v \right \rangle >> 2 \times 10^{-15} \textrm{cm}^3 \textrm{s}^-1$) cross section.
+The black equilibrium line indicates the number of WIMPs that would be left if they had a large ($\left \langle \sigma v \right \rangle \gg 2 \times 10^{-15} \textrm{cm}^3 \textrm{s}^-1$) cross section.
 This black line shows how the populations of SM particles annihilating into WIMPs and visa versa balance and replenish each other, forming an equilibrium number density.
 As the cross section decreases, fewer and fewer particles are annihilated, and more of the initial WIMP population survives to freeze out.
 This freezeout can be thought of as the universe expanding faster than the particles can annihilate.
 
 The cross section of WIMPs can then be estimated from Equation~\ref{eqn:boltzmann_relic}.
 If the total amount of dark matter is known, and its mass estimated, this indicates the number density of WIMP particles present in the universe.
-This number density combined with Equation~\ref{eqn:boltzmann_relic} then indicates the cross section of a \SI{100}{\GeV{}} WIMP to be around $\left \langle \sigma_{\chi} v \right \rangle \approx 3 \times 10^{-27} \textrm{cm}^{3}\textrm{s}^{-1}$
+This number density combined with Equation~\ref{eqn:boltzmann_relic} then indicates the cross section of a \SI{100}{\GeV{}} WIMP to be around $\left \langle \sigma_{\chi} v \right \rangle \approx 2 \times 10^{-26} \textrm{cm}^{3}\textrm{s}^{-1}$~\cite{updatedWIMPRelicCrossSection}.
 
-An interesting coincidence is that the weak cross section of a \SI{100}{\GeV{}} particle is approximately \SI{e-25}{cm^3s^{-1}}, only two orders of magnitude away from the cross section found from the relic abundance~\cite{Jungman:1995df}.
-{\color{red}(As far as I remember, and a quick Wikipedia search confirms (not the best source, I know), the cross-section for both WIMP and weak interaction 100 GeV particle is ~$10^{-26}$. So they are much closer than the two orders of magnitude you discuss here. Am I remembering it wrong?? -orel)}
+An interesting coincidence is that the weak cross section of a \SI{100}{\GeV{}} particle is approximately \SI{e-25}{cm^3s^{-1}}, only one order of magnitude away from the cross section found from the relic abundance~\cite{Jungman:1995df}.
 This is quite surprising, as the cosmology of the relic abundance and the weak cross section come from very different physics.
 While this is not conclusive proof of the WIMP's existence, this \textit{WIMP Miracle} is intruiging physics to search for.
 
-As the motivation for dark matter searches is now understood, a search can be prepared.
-The next question is ``How does one look for dark matter?''.
+Now that the motivation for dark matter searches is understood, a search can be prepared.
+The next question is ``How does one search for dark matter?''.
+{\color{red}(2nd part does not follow ls 1st part of sentence?? -parents)}
 If one has access to a gamma-ray observatory, it turns out dark matter annihilations may produce observable gamma rays.
-So, the next chapter discusses how a cloud of dark matter around the Galactic Center might create an observable spectrum of gamma rays, and how those gamma rays can be detected at Earth.
+The next chapter discusses how a cloud of dark matter around the Galactic Center might create an observable spectrum of gamma rays, and how those gamma rays can be detected at Earth.
 
