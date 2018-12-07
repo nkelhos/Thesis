@@ -407,7 +407,8 @@
   \begin{figure}[!t]
     \centering
     %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spl.pdf}
-    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_spl_niceprofile.pdf}
+    %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_spl_niceprofile.pdf}
+    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_profiledata_spatiall_json.pdf}
     \llap{
       \makebox[13cm][l]{ % x position
         \raisebox{5.2cm}{     % y position
@@ -424,13 +425,12 @@
     \caption[Crab Nebula Profile along Galactic $l$]
     {
       The top plot shows the number of counts along a \ang{0.15}-wide-slice the Crab Nebula, along the galactic $l$ axis ($\ldet$ coordinate space).
-      Blue points are the number of observed counts, with poissonian error bars.
+      Blue points are the number of observed counts, with poissonian error bars~\cite{poissonfrequentistinterval}.
       The green histogram bars are the number of counts predicted by all models.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
       The red arrow indicates the position of the Crab Nebula.
-      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as a green line, with the same blue poissonian error bars from the top plot.
+      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points, with the same blue poissonian error bars from the top plot.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
-      {\color{red}(redo residual to move errorbars to model line, convert model line to points, propagate error (data+-sqrt(data), and model+-sqrt(model))with orel's pdf??, theres also established binomial errors for zero data or zero model events??)}
     }
     \label{fig:crab_profile_l}
   \end{figure}
@@ -438,7 +438,8 @@
   \begin{figure}[!t]
     \centering
     %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spb.pdf}
-    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_spb_niceprofile.pdf}
+    %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_spb_niceprofile.pdf}
+    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_profiledata_spatialb_json.pdf}
     \llap{
       \makebox[13cm][l]{ % x position
         \raisebox{5.2cm}{  % y position
@@ -455,13 +456,12 @@
     \caption[Crab Nebula Profile along Galactic $b$]
     {
       The top plot shows the number of counts along a \ang{0.15}-wide-slice through the Crab Nebula along the galactic $b$ axis ($\bdet$ coordinate space).
-      Blue points are the number of observed counts, with poissonian error bars.
+      Blue points are the number of observed counts, with poissonian error bars~\cite{poissonfrequentistinterval}.
       The green histogram bars are the number of counts predicted by all models.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
       The red arrow indicates the position of the Crab Nebula.
-      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as a green line, with the same blue poissonian error bars from the top plot.
+      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points, with the same blue poissonian error bars from the top plot.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
-      {\color{red}(have someone check residual??)}
     }
     \label{fig:crab_profile_b}
   \end{figure}
@@ -469,7 +469,8 @@
   \begin{figure}[!ht]
     \centering
     %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_splalt.pdf}
-    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_splalt_niceprofile.pdf}
+    %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_splalt_niceprofile.pdf}
+    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_profiledata_spatiallalt_json.pdf}
     \llap{
       \makebox[13.2cm][l]{ % x position
         \raisebox{6.8cm}{  % y position
@@ -477,7 +478,7 @@
             \setlength{\fboxsep}{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
-              \includegraphics[height=2.5cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profa_skymap_rasterized.pdf}
+              \includegraphics[height=2.4cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profa_skymap_rasterized.pdf}
             }
           }
         }
@@ -488,14 +489,13 @@
       The top plot shows the number of counts along a \ang{0.15}-wide-slice along the galactic $l$ axis ($\ldet$ coordinate space).
       This slice doesn't go through the Crab Nebula, but instead \ang{1} higher in galactic $b$.
       As this doesn't include the Crab Nebula, this plot primarily demonstrates the camera background modeling.
-      Blue points are the number of observed counts, with poissonian error bars.
+      Blue points are the number of observed counts, with poissonian error bars~\cite{poissonfrequentistinterval}.
       The green histogram bars are the number of counts predicted by all models.
       The red arrow indicates the position of the Crab Nebula.
       As the Crab Nebula doesn't contribute any events \ang{1} to the North, the green histogram bars are identical (and behind) the yellow histogram bars.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
-      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as a green line, with the same blue poissonian error bars from the top plot.
+      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points, with the same blue poissonian error bars from the top plot.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
-      {\color{red}(have someone check residual??)}
     }
     \label{fig:crab_profile_l_off}
   \end{figure}
@@ -503,10 +503,11 @@
   \begin{figure}[!ht]
     \centering
     %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_ep.pdf}
-    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_en_niceprofile.pdf}
+    %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_en_niceprofile.pdf}
+    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_profiledata_energy_json.pdf}
     \llap{
-      \makebox[9.7cm][l]{  % x position
-        \raisebox{5.6cm}{ % y position
+      \makebox[9.9cm][l]{  % x position
+        \raisebox{5.4cm}{ % y position
           {
             \setlength{\fboxsep}{0pt}
             \setlength{\fboxrule}{1pt}
@@ -520,12 +521,11 @@
     \caption[Crab Nebula Profile in Energy]
     {
       The top plot shows number of counts in a \ang{0.6} x \ang{0.6} square centered on the Crab Nebula, vs energy ($\Edet$ space).
-      Blue points are the number of observed counts, with poissonian error bars.
+      Blue points are the number of observed counts, with poissonian error bars~\cite{poissonfrequentistinterval}.
       The green histogram bars are the number of counts predicted by all models.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
-      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as a green line, with the same blue poissonian error bars from the top plot.
+      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points, with the same blue poissonian error bars from the top plot.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with a blue square showing the profile bin location.
-      {\color{red}(have someone check residual??)}
     }
     \label{fig:crab_profile_energy}
   \end{figure}
@@ -533,7 +533,7 @@
   The fitted models can also be viewed, as a check that the likelihood engine is fitting the models to the data.
   In Figure~\ref{fig:crab_skymap}, the position of all counts is shown in galactic $\ldet$ and $\bdet$.
   In Figures \ref{fig:crab_profile_l} and \ref{fig:crab_profile_b}, the counts in the observations and models were integrated along a slice of galactic $l$ and $b$.
-  The counts from only the camera background models is shown in purple{\color{red}(change this color??)}, along with the counts from all camera backgrounds plus the point source in green.
+  The counts from only the camera background models is shown in yellow, along with the counts from all camera backgrounds plus the point source in green.
   The difference between these two histograms is then the counts from the Crab Nebula point source model.
   In Figure~\ref{fig:crab_profile_energy}, a similar plot is made, though integrated in a \ang{0.6}$\times$\ang{0.6} square around the Crab Nebula at different energies.
 
@@ -879,8 +879,9 @@
     L_{\textrm{ul}} = L_{\textrm{max}} - \left ( \textrm{erf}^{-1} \left ( \alpha \right ) \right )^2
   \end{equation}
   {\color{red}(where does this equation come from? find ctulimit's source??)}
-  {\color{red}(Where indeed does it come from? What is erf?? -Orel)}
+  {\color{red}(Where indeed does it come from?? -Orel)}
 
+  The erf function is the error function.
   A 95\% confidence interval is desired, so $\alpha$ is set to 0.95 for the upper limit calculation in this section.
   In this procedure, the dark matter halo model's flux $\Phi$ is fixed at one magnitude, and then the likelihood method finds the best fit values for the remaining free parameters.
   This is repeated for various $\Phi$ until the the likelihood is found to be within a certain tolerance of $L_{\textrm{ul}}$.
@@ -956,8 +957,6 @@
   % [1.6280879530415155e-24, 'cm^3/s']
   This likely stems from the fact that the test statistic is a ratio of the likelihoods of two model groups, both of which contain the background models.
   Thus, the likelihoods from both model groups changed by a similar amount, and in the same direction, partially cancelling out.
-  
-  {\color{red}(talk about how effective area might be affected by elevation??)}
 
 \section{Systematic Uncertainties}  
 
