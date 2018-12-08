@@ -590,20 +590,27 @@
     \textrm{Significance} = \textrm{sign}(D-M) \times \sqrt{ 2 \left ( D \: \textrm{ln} \left ( \frac{D}{M} \right ) + M - D \right ) }
   \end{equation}
   
-  For the Crab Nebula, two skymaps are shown in Figure~\ref{fig:crab_signif_skymaps}.
-  
   
   \begin{figure}[t]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/crab_signif_joined.pdf}
+    \includegraphics[width=0.55\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_mapresiduals_coarse.pdf}
     \caption{
-      Skymaps showing how significantly the models differ from the observations in each bin.
-      The left plot uses \ang{0.23}-wide bins, while the right uses \ang{0.029}-wide bins.}
-    \label{fig:crab_signif_skymaps}
+      Skymap showing how significantly the models differ from the observations in each bin.
+      This plot uses \ang{0.23}-wide bins.}
+    \label{fig:crab_signif_skymap_coarse}
+  \end{figure}
+  
+  \begin{figure}[b]
+    \centering
+    \includegraphics[width=0.55\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_mapresiduals_fine.pdf}
+    \caption{
+      Skymap showing how significantly the models differ from the observations in each bin.
+      This plot uses \ang{0.029}-wide bins.}
+    \label{fig:crab_signif_skymap_fine}
   \end{figure}
 
-  However, due to the low number of counts in each bin, the significance distribution that would be formed is not gaussian, and thus unlikely to be a true significance.
-  When a significance distribution is made of Figure~\ref{fig:crab_signif_skymaps}'s fine-binned plot, it is seen to be quite erratically shaped in Figure~\ref{fig:crab_signif_distribution}.
+  For the Crab Nebula, two skymaps of the significances are shown in Figures~\ref{fig:crab_signif_skymap_coarse} and \ref{fig:crab_signif_skymap_fine}.
+  When a significance distribution is made of Figure~\ref{fig:crab_signif_skymap_fine}'s fine-binned pixels, it is seen in Figure~\ref{fig:crab_signif_distribution} to be not gaussian and quite erratically shaped.
   Simulations are shown in red using the best-fit models, and the $\frac{\textrm{Simulated Models}}{\textrm{Data}}$ residual is shown in the bottom plot.
   Since most bins in the residual overlap 1, it can be concluded that the models are not deficient in any particular areas.
   
@@ -611,7 +618,7 @@
     \centering
     \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_mapresiduals_fine_hist.pdf}
     \caption{
-      Data and simulated significance distributions from the fine-binned significance skymap in Figure~\ref{fig:crab_signif_skymaps}.
+      Data and simulated significance distributions from the fine-binned significance skymap in Figure~\ref{fig:crab_signif_skymap_fine}.
       In the top plot, the black histogram bars indicate the data's significance distribution.
       The red bars indicate the range of simulated significances, centered on the mean, and extending up and down by one standard deviation.
       The bottom plot shows the $\textrm{Simulated}/\textrm{Data}$ residual.
@@ -799,8 +806,10 @@
 
   Figure~\ref{fig:gc_profile_gal_b} is similar to Figure~\ref{fig:gc_profile_gal_l}, except it slices through Sgr A* along the galactic $b$ axis,
   The feature in which the observed counts are higher on the left and lower on the right is also visible here.
+  Figure~\ref{fig:gc_profile_energy} shows the same profile, except it is integrated over a \ang{0.2}$\times$\ang{0.2} galactic ($l$,$b$) square centered on Sgr A*.
+  Again, purple {\color{red}(change the colors here when plots are updated??)} is modeled camera-background counts, green is total modeled counts, and blue is observed counts.
 
-  \begin{figure}[h]
+  \begin{figure}[t]
     \centering
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_showclean_b_sprof.pdf}
     \llap{
@@ -826,8 +835,6 @@
     \label{fig:gc_profile_gal_b}
   \end{figure}
 
-  Figure~\ref{fig:gc_profile_energy} shows the same profile, except it is integrated over a \ang{0.2}$\times$\ang{0.2} galactic ($l$,$b$) square centered on Sgr A*.
-  Again, purple is modeled camera-background counts, green is total modeled counts, and blue is observed counts.
   
   \begin{figure}[h]
     \centering
@@ -849,80 +856,13 @@
       Observed vs modeled counts in a \ang{0.2}$\times$\ang{0.2} square bin centered on Sgr A* at energies from \SIrange{4}{70}{\TeV{}}.
       Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
-      {\color{red}(Also show plot of fitted Galactic Center point source spectrum??)}
       {\color{red}(redo plot in new style with residual??)}
       }
     %}
     \label{fig:gc_profile_energy}
   \end{figure}
   
-  {\color{red}(remove this, its discussed in the crab analysis??)}
   To check for any poorly modeled areas of the sky, the difference between the observed counts and models can be examined.
-  However, while a simple residual may provide some insight, it is far better to calculate how significantly the observed counts ($D$) and modeled counts ($M$) differ in different parts of the sky.
-  This significance is derived through a likelihood calculation.
-  Two hypotheses are constructed, the null and the test.
-  The null hypothesis is that the model alone is enough to explain the number of observed events.
-  The test hypothesis is that the number of observed events is from the model plus an unknown component.
-  For each bin, the probability of each hypothesis is calculated with poissonian statistics in Equation~\ref{eqn:sig_hypo}.
-
-  \begin{equation}\label{eqn:sig_hypo}
-    \begin{split}
-      P_{\textrm{null}} & = \frac{M^{D} e^{-M}}{D!} \\
-      P_{\textrm{test}} & = \frac{D^{D} e^{-D}}{D!} \\
-    \end{split}
-  \end{equation}
-  
-  As this is for a single bin, the likelihood of each hypothesis is just these probabilities.
-  
-  \begin{equation}
-    \begin{split}
-      L_{\textrm{null}} & = P_{\textrm{null}} \\
-      L_{\textrm{test}} & = P_{\textrm{test}} \\
-    \end{split}
-  \end{equation}
-  
-  Then a test statistic is calculated with these two likelihood hypotheses.
-  
-  % had to break this equation up, since it was overlapping the page number at the bottom of the page
-  %\begin{equation}
-  %  \begin{split}
-  %    \textrm{TS} & = 2 \: \textrm{ln} \left ( \frac{ L_{\textrm{test}} }{ L_{\textrm{null}}    } \right ) \\
-  %                & = 2 \: \textrm{ln} \left ( \frac{ P_{\textrm{test}} }{ P_{\textrm{null}}    } \right ) \\
-  %                & = 2 \: \textrm{ln} \left ( \frac{D^D e^{-D}}{D!} \times \frac{D!}{M^D e^{-M}} \right ) \\
-  %                & = 2 \: \textrm{ln} \left ( D^D e^{-D} M^{-D} e^M                              \right ) \\
-  %                & = 2 \: \left (      \textrm{ln} \left ( D^D M^{-D} \right ) + \textrm{ln} \left ( e^{-D} \right ) + \textrm{ln} \left ( e^M  \right )\right ) \\
-  %                & = 2 \: \left (      \textrm{ln} \left (  \frac{D^D}{M^D} \right ) -D + M \right ) \\
-  %    \textrm{TS} & = 2 \: \left ( D \: \textrm{ln} \left (  \frac{D  }{M  } \right ) -D + M \right )
-  %  \end{split}
-  %\end{equation}
-
-  \begin{equation}
-    \begin{split}
-      \textrm{TS} & = 2 \: \textrm{ln} \left ( \frac{ L_{\textrm{test}} }{ L_{\textrm{null}}    } \right ) \\
-                  & = 2 \: \textrm{ln} \left ( \frac{ P_{\textrm{test}} }{ P_{\textrm{null}}    } \right ) \\
-                  & = 2 \: \textrm{ln} \left ( \frac{D^D e^{-D}}{D!} \times \frac{D!}{M^D e^{-M}} \right ) \\
-                  & = 2 \: \textrm{ln} \left ( D^D e^{-D} M^{-D} e^M                              \right ) \\
-                  & = 2 \: \left (      \textrm{ln} \left ( D^D M^{-D} \right ) + \textrm{ln} \left ( e^{-D} \right ) + \textrm{ln} \left ( e^M  \right )\right ) \\
-                  & = 2 \: \left (      \textrm{ln} \left (  \frac{D^D}{M^D} \right ) -D + M \right ) \\
-      \textrm{TS} & = 2 \: \left ( D \: \textrm{ln} \left (  \frac{D  }{M  } \right ) -D + M \right )
-    \end{split}
-  \end{equation}
-  
-  Then by utilizing Wilk's theorem~\cite{wilks1938} with one extra degree of freedom, and accounting for the sign, the significance can be calculated.
-    
-  \begin{equation}
-    \begin{split}
-      \textrm{Significance} = \sqrt{\textrm{TS}} \times \textrm{sign} \left ( D - M \right )
-    \end{split}
-  \end{equation}
-  
-  This leads to Equation~\ref{eqn:resmap_signif}.
-  
-  % see http://cta.irap.omp.eu/ctools/users/reference_manual/csresmap.html
-  \begin{equation}\label{eqn:resmap_signif}
-    \textrm{Significance} = \textrm{sign}(D-M) \times \sqrt{ 2 \left ( D \: \textrm{ln} \left ( \frac{D}{M} \right ) + M - D \right ) }
-  \end{equation}
-
   The observed counts and models in this Galactic Center analysis are broken up into individual skymap bins, and each bin's significance is calculated with Equation~\ref{eqn:resmap_signif} and shown in Figure~\ref{fig:gc_resmap}.
   This highlights how the models poorly match the observations in some areas of the sky.
   In this plot, the deficiency of the radially-symmetric camera background models is apparent.

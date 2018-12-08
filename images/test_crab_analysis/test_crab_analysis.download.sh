@@ -33,5 +33,5 @@ for f in "${fff[@]}" ; do
   convert "$s1" "$s2"
 done
 
-montage -mode concatenate -border 10x10 -bordercolor White -tile x1 plot_elev27_5_32_5deg_4_70TeV_mapresiduals_coarse.pdf plot_elev27_5_32_5deg_4_70TeV_mapresiduals_fine.pdf crab_signif_joined.pdf
+#montage -mode concatenate -density 110 -border 10x10 -bordercolor White -tile x1 plot_elev27_5_32_5deg_4_70TeV_mapresiduals_coarse.pdf plot_elev27_5_32_5deg_4_70TeV_mapresiduals_fine.pdf crab_signif_joined.pdf
 
