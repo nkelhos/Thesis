@@ -385,10 +385,63 @@ This database includes the width and length of the shower, how far away its core
   \subsection{Background Structure at the Low Energy Threshold}\label{subsec:bkgstructure}
     To produce background models, events were binned according to their energy, elevation, and camera x and y coordinates.
     As a result of this detailed binning, some new effects were noted.
+    First, Sgr A* Off data was reconstructed, which has no known gamma-ray source in its field of view.
+    The time spent at each telescope elevation is shown in Figure~\ref{fig:back_elevhist}.
+    To reduce the effect of the varying telescope elevation, time cuts were applied to select data between \ang{28.5} and \ang{29.5} telescope elevations.
+    Note that this is a cut on the telescope pointing, not on the actual event elevations.
+
+    \begin{figure}[bt]
+      \centering
+      \includegraphics[width=0.6\textwidth]{images/background_gradient_replot/sgraoff_23_hist_elev.pdf}
+      \caption[Elevation Slice of Sgr A* Off data]{
+        Time spent pointing the observatory at each elevation.
+        Blue is all Sgr A* Off data, while green is the selected pointing elevations used in Figure~\ref{fig:background_grid}.
+      }
+      \label{fig:back_elevhist}
+    \end{figure}
+    
+    Gamma-like events were then selected from this data, and binned in energy in Figure~\ref{fig:background_grid}.
+    The left histograms show the number of events at each energy, with the expected higher number of events at lower energies.
+    For each row, a different energy range is selected, shown in green in the left plot.
+    The cuts to pointing-elevation  and energy are applied, the surviving events are then histogrammed in the right-hand plots according to their azimuth and elevation in the camera.
+    These 2D histograms are almost identical to the camera backgrounds described in Section~\ref{background_production}.
+    
+    \begin{figure}[p]
+      \centering
+      \begin{tabular}{rl}
+        \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_23_hist_energy.pdf}} & 
+        \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_23_cam.pdf}}         \\
+        \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_24_hist_energy.pdf}} & 
+        \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_24_cam.pdf}}         \\
+        \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_25_hist_energy.pdf}} & 
+        \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_25_cam.pdf}}         \\
+        \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_26_hist_energy.pdf}} & 
+        \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_26_cam.pdf}} 
+      \end{tabular}
+      \caption{
+        Event energies and camera backgrounds after the pointing elevation cut shown in Figure~\ref{fig:back_elevhist}.
+        In the left histograms, blue is all events while green is events in the selected energy range.
+        Right is a 2D histogram of the azimuth and elevation of selected events from the histogram to its left.
+      }
+      \label{fig:background_grid}
+    \end{figure}
+    
+    It can be seen in Figure~\ref{fig:background_grid} that at the lowest energies, events are reconstructed and pass cuts only in the top half of the camera.
+    This physically makes sense, because at this low \ang{29} elevation, the atmospheric column density is \nicetilde20\% lower at the top of the camera than at the bottom.
+    This allows lower-energy gamma rays and their shower's Cherenkov light to get closer to the observatory.
+    Below this energy, gamma rays do not produce enough Cherenkov light for even a handful of Chernekov photons to reach the observatory.
+    The bottom of the camera has more atmosphere however, and is considered opaque to gamma rays \SI{2.5}{TeV} and lower.
+    At higher energies a similar effect is also noted, where the events cluster in the bottom half of the camera more than the top half.
+    As there is more atmosphere in that part of the camera, higher energy showers may be created further away, where the observatories can view a much larger volume of the atmosphere, detecting more showers.
+    
+    
+    {\color{red}(break break break??)}
+    
     First, a series of gamma-like events were selected from observations with no known gamma-ray sources.
     These events were then divided into equal-statistics energy bins.
     For each bin, all the contained events were then binned in camera x and y.
 
+  
     For a set of high-elevation observations, these backgrounds are shown in Figure~\ref{fig:back_highelev}.
     It can be seen that all events are divided up into 3 equal-statistics energy bins in Figure~\ref{fig:back_highelev}.A.
     Each energy bin is then binned in camera x and y in Figures \ref{fig:back_highelev} B, C, and D.
