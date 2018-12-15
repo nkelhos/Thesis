@@ -1,0 +1,9 @@
+sgraoff.23.hist.elev.pdf
+sgraoff.23.cam.pdf
+sgraoff.23.hist.energy.pdf
+sgraoff.24.cam.pdf
+sgraoff.24.hist.energy.pdf
+sgraoff.25.cam.pdf
+sgraoff.25.hist.energy.pdf
+sgraoff.26.cam.pdf
+sgraoff.26.hist.energy.pdf
