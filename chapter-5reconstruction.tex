@@ -392,7 +392,7 @@ This database includes the width and length of the shower, how far away its core
 
     \begin{figure}[bt]
       \centering
-      \includegraphics[width=0.6\textwidth]{images/background_gradient_replot/sgraoff_23_hist_elev.pdf}
+      \includegraphics[width=0.6\textwidth]{images/background_gradient_replot/sgraoff_1_hist_elev.pdf}
       \caption[Elevation Slice of Sgr A* Off data]{
         Time spent pointing the observatory at each elevation.
         Blue is all Sgr A* Off data, while green is the selected pointing elevations used in Figure~\ref{fig:background_grid}.
@@ -409,19 +409,22 @@ This database includes the width and length of the shower, how far away its core
     \begin{figure}[p]
       \centering
       \begin{tabular}{rl}
-        \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_23_hist_energy.pdf}} & 
-        \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_23_cam.pdf}}         \\
-        \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_24_hist_energy.pdf}} & 
-        \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_24_cam.pdf}}         \\
-        \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_25_hist_energy.pdf}} & 
-        \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_25_cam.pdf}}         \\
-        \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_26_hist_energy.pdf}} & 
-        \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_26_cam.pdf}} 
+        \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_1_hist_energy.pdf}} & 
+        \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_1_cam.pdf}}         \\
+        \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_2_hist_energy.pdf}} & 
+        \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_2_cam.pdf}}         \\
+        \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_3_hist_energy.pdf}} & 
+        \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_3_cam.pdf}}         \\
+        \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_4_hist_energy.pdf}} & 
+        \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_4_cam.pdf}} 
       \end{tabular}
       \caption{
         Event energies and camera backgrounds after the pointing elevation cut shown in Figure~\ref{fig:back_elevhist}.
         In the left histograms, blue is all events while green is events in the selected energy range.
-        Right is a 2D histogram of the azimuth and elevation of selected events from the histogram to its left.
+        The right shows 2D histograms, made from the camera azimuths and elevations using the events selected in the histogram to its left.
+        The orange dot and circle denote the average event position, and 68\% containment radius for the events in the plot.
+        The \SIrange{1.8}{3.2}{TeV} energy range shows events are detected more in the upper half of the camera.
+        From \SIrange{4}{6}{TeV}, events are more in the bottom half of the camera, while from \SIrange{6}{70}{TeV} events are closer to the camera center.
       }
       \label{fig:background_grid}
     \end{figure}
@@ -596,7 +599,6 @@ This database includes the width and length of the shower, how far away its core
     In the following section, the effects of disabled camera pixels are studied.
     
   \subsection{Effects of Disabled Pixels}
-
 
     % see calculations/disabledpixel_obstime , those 250 crab runs turned into about 13.5 observation hours
     To examine the effects of disabled pixels, \nicetilde13 hours of Crab Nebula observations were reconstructed twice.
