@@ -383,7 +383,7 @@ This database includes the width and length of the shower, how far away its core
   In order to better understand the camera's behavior in the reconstruction method, several studies were performed.
 
   \subsection{Background Structure at the Low Energy Threshold}\label{subsec:bkgstructure}
-    To produce background models, events were binned according to their energy, elevation, and camera x and y coordinates.
+    To produce background models, events were binned according to their energy, telescope pointing elevation, and elevation and azimuth about the camera center.
     As a result of this detailed binning, some new effects were noted.
     First, Sgr A* Off data was reconstructed, which has no known gamma-ray source in its field of view.
     The time spent at each telescope elevation is shown in Figure~\ref{fig:back_elevhist}.
@@ -401,10 +401,10 @@ This database includes the width and length of the shower, how far away its core
     \end{figure}
     
     Gamma-like events were then selected from this data, and binned in energy in Figure~\ref{fig:background_grid}.
-    The left histograms show the number of events at each energy, with the expected higher number of events at lower energies.
+    The left histograms show the number of events at each energy, with the expected more events at lower energies.
     For each row, a different energy range is selected, shown in green in the left plot.
     The cuts to pointing-elevation  and energy are applied, the surviving events are then histogrammed in the right-hand plots according to their azimuth and elevation in the camera.
-    These 2D histograms are almost identical to the camera backgrounds described in Section~\ref{background_production}.
+    These 2D histograms are almost identical to the camera backgrounds described in Section~\ref{background_production}, differing only by dividing by the bin size in energy, time, and solid angle.
     
     \begin{figure}[p]
       \centering
@@ -429,159 +429,63 @@ This database includes the width and length of the shower, how far away its core
       \label{fig:background_grid}
     \end{figure}
     
+    As a measure of how far the events deviate from the camera center, an orange dot and circle are also plotted.
+    These indicate the average event position, and the 68\% containment radius around that position.
     It can be seen in Figure~\ref{fig:background_grid} that at the lowest energies, events are reconstructed and pass cuts only in the top half of the camera.
     This physically makes sense, because at this low \ang{29} elevation, the atmospheric column density is \nicetilde20\% lower at the top of the camera than at the bottom.
-    This allows lower-energy gamma rays and their shower's Cherenkov light to get closer to the observatory.
-    Below this energy, gamma rays do not produce enough Cherenkov light for even a handful of Chernekov photons to reach the observatory.
-    The bottom of the camera has more atmosphere however, and is considered opaque to gamma rays \SI{2.5}{TeV} and lower.
+    This allows lower-energy gamma rays and their shower's Cherenkov photons to get closer to the observatory.
+    Below this energy, gamma rays do not produce enough Cherenkov photons to survive past the atmospheric scattering and PMT quantum efficiency.
+    The bottom of the camera has more atmosphere however, and can be considered opaque to gamma rays \SI{2.5}{TeV} and lower.
     At higher energies a similar effect is also noted, where the events cluster in the bottom half of the camera more than the top half.
     As there is more atmosphere in that part of the camera, higher energy showers may be created further away, where the observatories can view a much larger volume of the atmosphere, detecting more showers.
     
+    These effects are visible in the galactic ($l$,$b$) event maps from data.
+    In Figure~\ref{fig:bkgvsel_crab}, the top plot shows the positions of all events from several hours of Crab Nebula data.
+    The middle histogram shows the distribution of event energies, and the bottom plot shows the positions of events in a limited energy range, \SIrange{1.5}{3.25}{\TeV{}}.
+    The middle plot indicates a specific energy range used in the bottom plot.
+    When events in this limited energy range are plotted in the bottom plot, a faint deficit appears along the bottom of the camera.
     
-    {\color{red}(break break break??)}
+    \begin{figure}[!p]
+      \centering
+      \includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_srccrab.eps}
+      \caption[Background Vs Elevation Crab Nebula]
+      {\small 
+        Plots of Crab Nebula observations.
+        Top: Skymap of all events.
+        Middle: Histogram of all events in energy.
+        Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV{}}.  
+        The blue circles centered on the Crab Nebula highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
+      }
+      \label{fig:bkgvsel_crab}
+    \end{figure}
     
-    First, a series of gamma-like events were selected from observations with no known gamma-ray sources.
-    These events were then divided into equal-statistics energy bins.
-    For each bin, all the contained events were then binned in camera x and y.
-
-  
-    For a set of high-elevation observations, these backgrounds are shown in Figure~\ref{fig:back_highelev}.
-    It can be seen that all events are divided up into 3 equal-statistics energy bins in Figure~\ref{fig:back_highelev}.A.
-    Each energy bin is then binned in camera x and y in Figures \ref{fig:back_highelev} B, C, and D.
-    At these high elevations, the distribution of events in each energy bin is radially symmetric about the camera center.
-    This happens because the gamma ray's point of origin, and its shower image in the camera, are usually several tenths of a degree away from each other.
-    In addition, the atmospheric column density is similar in all parts of the camera.
-    However, structures start to break the radial symmetry at low energies and elevations.
-    The cause of these structures is explored in Section~\ref{subsubsec:diffusesims}.
-
-    \begin{figure}[!ht]
+    \begin{figure}[!p]
       \centering
-      \includegraphics[width=\textwidth]{images/ctools/backgrounds_highelev.eps}
-      \caption[FITS Background at \ang{50} Elevation]{
-        Gamma-like events from 52 observations (approximately \nicetilde20 hours) of M82, between \ang{50} and \ang{52} elevations.
-        Events in Figure A are divided into 3 equal-statistics energy bins, and binned in Camera Coordinates in Figures B, C, and D.
-        Notice the left-most bin (2\%-34\%) overlaps the histogram peak (at -0.5) in the energy histogram by \nicetilde 30\% of its width, unlike in Figure~\ref{fig:back_lowelev29}.
+      \includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_srcsgra.eps}
+      \caption[Background Vs Elevation Sgr A*]
+      {\small 
+        Plots of Sgr A* observations.
+        Top: Skymap of all events.
+        Middle: Histogram of all event energies.
+        Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV{}}.  
+        The blue circles centered on the Galactic Center highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
       }
-      \label{fig:back_highelev}
+      \label{fig:bkgvsel_sgra}
     \end{figure}
-
-    In Figures \ref{fig:back_lowelev29} and \ref{fig:back_lowelev26}, the same plots are constructed for a set of low-elevation (\nicetilde{}\ang{29} and \nicetilde{}\ang{26} respectivly) observations, using dark observations.
-    See Section~\ref{background_production}, Figure~\ref{fig:gcfieldsofview}, and Section~\ref{sec:bkgmodels} for more discussion.
-    It can be seen that in different energy bins, the background possesses different shapes.
-
-    \begin{figure}[!ht]
-      \centering
-      \includegraphics[width=\textwidth]{images/ctools/backgrounds_lowelev29.eps}
-      \caption[CTOOLS Background at \ang{29} Elevation]{
-        15 Sagittarius A* Off runs (\nicetilde7.5 observation hours), between elevations $ \ang{27.5} $ and $ \ang{30} $.
-        Events are divided into 6 equal-statistics energy bins, of which four are binned in Camera Coordinates in Figures B, C, D, and E.
-        Notice the left-most bin (from 2\% to 17\%) does not overlap the peak (at $\textrm{log}_{10}\left ( \textrm{TeV} \right ) \approx 0.3$, unlike in Figure~\ref{fig:back_highelev}.
-      }
-      \label{fig:back_lowelev29}
-    \end{figure}
-
-    \begin{figure}[!ht]
-      \centering
-      \includegraphics[width=\textwidth]{images/ctools/backgrounds_lowelev26.eps}
-      \caption[CTOOLS Background at \ang{26} Elevation]{
-        10 Sagittarius A* Off runs (\nicetilde5 observation hours), between elevations \ang{24} and \ang{27.5}. 
-      }
-      \label{fig:back_lowelev26}
-    \end{figure}
-  
-  These effects are also noticeable in the galactic ($l$,$b$) event maps.
-  In Figure~\ref{fig:bkgvsel_crab}, the top plot shows the positions of all events.
-  The middle histogram shows the distribution of event energies, and the bottom plot shows the positions of events in a limited energy range, \SIrange{1.5}{3.25}{\TeV{}}.
-  The middle plot demonstrates that, as event energy decreases, fewer events are detected.
-  When events in this limited energy range are plotted in the bottom plot, a faint deficit appears along the bottom of the camera.
-  This faint deficit is due to the \nicetilde20\% higher column density at the low-elevation parts of the camera.
-  This higher column density causes air showers to start farther away from the telescopes, where more Cherenkov photons are absorbed, resulting in fewer events being detectable in the lower half of the camera.
-
-  When similar plots are made for the Galactic Center in Figure~\ref{fig:bkgvsel_sgra}, the effect is much stronger, and rotated.
-  In the top plot, events are radially symmetric around the source position.
-  When only the events from \SIrange{1.5}{3.25}{\TeV{}} are plotted, a much clearer deficit is visible on the lower right part of the plot.
-  This area corresponds to the deficit at the bottom of the camera in Figures \ref{fig:back_lowelev29}.B and \ref{fig:back_lowelev26}.B.
-  This rotation occurs when converting between camera x/y coordinates (Earth Elevation/Azimuth) and Galactic coordinates ($l$,$b$).
-  The degree of rotation also changes throughout individual runs, which further blurs this effect.
-  For the Crab plots in Figure~\ref{fig:bkgvsel_crab}, the rotation is only a few degrees, while for Sgr A* in Figure~\ref{fig:bkgvsel_sgra}, it is closer to \ang{70}.
-  
-  This effect is important to the analysis because it implies that, at the lowest energies, the background rate is not radially symmetric.
-  Radial backgrounds (sometimes referred to as acceptances) are typically used in VERITAS, as no other camera x/y or energy dependence had been demonstrated until now.
-  As the analysis in this thesis only has a few hours of background observations (see Table \ref{tab:observation_times}), only radially symmetric background templates and models could be constructed, which then required limiting the final analysis to $\geq\SI{4}{\TeV{}}$.
-  
-  \begin{figure}[!p]
-    \centering
-    \includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_srccrab.eps}
-    \caption[Background Vs Elevation Crab Nebula]
-    {\small 
-      Plots of Crab Nebula observations.
-      Top: Skymap of all events.
-      Middle: Histogram of all events in energy.
-      Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV{}}.  
-      The blue circles centered on the Crab Nebula highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
-    }
-    \label{fig:bkgvsel_crab}
-  \end{figure}
-
-  \begin{figure}[!p]
-    \centering
-    \includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_srcsgra.eps}
-    \caption[Background Vs Elevation Sgr A*]
-    {\small 
-      Plots of Sgr A* observations.
-      Top: Skymap of all events.
-      Middle: Histogram of all event energies.
-      Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV{}}.  
-      The blue circles centered on the Galactic Center highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
-    }
-    \label{fig:bkgvsel_sgra}
-  \end{figure}
-  
-  \FloatBarrier
-
-  \subsection{Diffuse Simulations}\label{subsubsec:diffusesims}
-    Diffuse simulations were performed at similar energies and elevations to see if this effect was still present.
-    These consisted of simulating 50,000 gamma rays with CORSIKA~\cite{corsika1998} at 1.4, 1.6, 2, and \SI{5}{\TeV{}}.
-    The telescopes were fixed to an (azimuth,elevation) of (\ang{193}, \ang{28}).
-    The events themselves were distributed in a diffuse \ang{2.5}-radius disk.
-    To approximate a simple gamma-hadron cut, any events with a mean-scaled-width falling outside the range of -2.0 to 0.5 were removed, which eliminates many of the showers that appear proton-like.
-    These remaining 'gamma-like' events are then binned in camera coordinates in Figure~\ref{fig:back_simdiffuse}.
-
-    \begin{figure}[!ht]
-      \centering
-      \includegraphics[width=\textwidth]{images/backgrounds_diffuse_vs_data/backgrounds_sims/backgrounds_sims.eps}
-      \caption[Diffuse Simulated Backgrounds]{
-        The reconstructed positions of diffuse simulated gamma-like events.
-        These were all simulated at an elevation of \ang{28}, where each plot uses one of four different initial energies.
-        % look for keyword 'crescent' in warp-zeuthen, like: /afs/ifh.de/group/cta/scratch/nkelhos/veripyctools/recon.sim.reproduce_crescent for how those plots are made
-      }
-      \label{fig:back_simdiffuse}
-    \end{figure}
-
-    The ring and crescent structures persist in these diffuse simulations, implying these are physical effects of the atmosphere and camera, rather than a problem with the reconstruction method.
-    {\color{red}(But what is the effect? I remember Gernot mentioning something about an edge effect? You should explain it here. --Orel??)}
-    {\color{red}(The top-of-camera vs bottom-of-camera differences are due to the atmosphere, but I'm not sure what causes the deficit in the middle at the lower energies... ??)}
-    {\color{red}(I am not sure what is the reason for the deficit in the middle. Are simulations always with a wobble? Maybe the showers are very small and always at some distance from the centre of the camera?? -Orel)}
-    {\color{red}(Consider playing with the distribution of disps and the radial areas??)}
-
-    This striking effect can be seen in the Galactic Center data in Figure~\ref{fig:bkgvsel_sgra}.
-    These structures, and their strong dependency on both the energy and elevation of the telescopes may be a large factor in why the low-energy threshold regime of gamma-ray telescopes is poorly understood.
-    Incorporating this effect into the instrument response functions would require creating another batch of diffuse simulations with elevation increments smaller than \ang{5}, and calculating instrument IRFs at these finer elevation increments, and at different camera x, camera y, and energy points in the parameter space, all of which are computationally expensive.
-    An alternative solution might be to assemble templates for the camera backgrounds.
-    These templates can utilize observations at different elevations to quantify how the template shape changes, and can be built for custom time windows, including accounting for the effects of stars and disabled pixels, which are discussed in the next subsection.
-    However, due to time constraints these templates were not constructed.
     
-    A secondary effect of the previously mentioned diffuse simulations may be that the effective area and energy dispersion IRFs may become more accurate.
-    Currently, IRFs are calculated by simulating gamma rays in the atmosphere at a single elevation and azimuth, and then wobbling the cameras away from these events by a fixed angle $W$, typically from \SIrange{0.25}{2.0}\degree.
-    This wobbling is done randomly, to sample various parts of the camera evenly.
-    This means that the calculated effective area and energy dispersion are averages over a ring of radius $W$ around the camera center.
-    The above affect in the previous paragraphs shows that at a fixed elevation, different parts of the camera possess different background rates.
-    This implies that the effective areas of the background protons and electrons change with respect to camera x and camera y.
-    Since this is an effect of the atmosphere's changing depth, it hints that the \textit{gamma-ray} effective areas also change with respect to camera x and camera y.
-    And, since different parts of the camera are sensitive to different energies (due to the changing atmosphere), using diffuse simulations in different parts of the camera may improve the accuracy energy dispersion as well.
-    This improved energy dispersion could, for example, be used to more precisely determine the falloff energy of a gamma-ray source's energy spectrum, or potentially reduce the systematic uncertainty in the gamma-ray energy reconstruction.
-  
-  \FloatBarrier
+    When similar plots are made for the Galactic Center in Figure~\ref{fig:bkgvsel_sgra}, the effect is much stronger, and rotated.
+    In the top plot, events are radially symmetric around the source position.
+    When only the events from \SIrange{1.5}{3.25}{\TeV{}} are plotted, a much clearer deficit is visible on the lower right part of the plot.
+    This area corresponds to the deficit at the bottom of the low-energy camera plots in Figure \ref{fig:background_grid}.
+    This rotation occurs when converting between camera x/y coordinates (Earth Elevation/Azimuth) and Galactic coordinates ($l$,$b$).
+    The degree of rotation also changes from run to run, which further blurs this effect.
+    For the Crab Nebula plots in Figure~\ref{fig:bkgvsel_crab}, the rotation is only a few degrees, while for Sgr A* in Figure~\ref{fig:bkgvsel_sgra}, it is closer to \ang{70}.
+    
+    This effect is important to the analysis because it implies that, at the lowest energies, the background rate is not radially symmetric.
+    Radial backgrounds (sometimes referred to as acceptances) are typically used in VERITAS, as no other camera x/y or energy dependence had been demonstrated until now.
+    As the analysis in this thesis only has a few hours of background observations (see Table \ref{tab:observation_times}), only radially symmetric background templates and models could be constructed, which then required limiting the final analysis to $\geq\SI{4}{\TeV{}}$.
+    
+    \FloatBarrier
 
   \subsection{Effect of Stars}
     Understanding the camera's background is important for accurately modeling extended sources like dark matter halos.
