@@ -361,8 +361,9 @@
   
   \begin{figure}[!t]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall.pdf}
-    \caption[Crab Nebula Test Spectrum]
+    %\includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall.pdf}
+    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_spectra.pdf}
+    \caption[Crab Nebula Spectrum]
     {
       Crab Nebula spectra from various analyses and observatories.
       The solid red line is the best-fit spectra from the CTOOLS analysis described in this chapter, using only events from \SIrange{4}{70}{\TeV{}}.
@@ -373,6 +374,7 @@
       Light blue is a Crab Nebula spectrum from HESS~\cite{hess2006crab}.
       Purple is a previously published spectrum from VERITAS~\cite{veritas2015crab}.
       Orange is a spectrum from MAGIC~\cite{magic2015crab}.
+      {\color{red}(ask orel about errobar calculation??)}
     }
     \label{fig:crab_test_spectra}
   \end{figure}
@@ -897,7 +899,19 @@
     \label{fig:gc_resmap_sighist}
   \end{figure}
 
-  {\color{red}Plot of point source spectra as cross-check??}
+  The Galactic Center point source spectrum can be plotted as a check of the likelihood fitting.
+  This spectrum is shown in Figure~\ref{}.
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_phist_ALGOSIGNIFICANCE_resmap.pdf}
+    \caption[Galactic Center Point Source Spectrum]
+    {
+      {\color{red}Plot of point source spectra here??}
+      Point Source Spectrum.
+    }
+    \label{fig:gc_pntsrc_spectrum}
+  \end{figure}
+  
   
 \section{Upper Limit}\label{upper_limit}
   From the dark matter flux Equation~\ref{eqn:dmflux}, an upper limit on the observed gamma-ray flux can be derived.
