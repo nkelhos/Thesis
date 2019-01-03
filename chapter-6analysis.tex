@@ -980,7 +980,15 @@
   As this analysis is limited to the energy range \SIrange{4}{70}{\TeV{}}, the elevation gradient will increase the number of events detected at the bottom of the camera, due to the thicker atmosphere providing increased interaction mass.
   And, since the Galactic Center is visible almost directly south at an azimuth of \ang{193}, the elevation axis is almost parallel to the Declination axis.
   A gradient of 5\%/degree was chosen due to the relative differences between the total modeled counts and the observed counts in Figures \ref{fig:gc_profile_gal_l} and \ref{fig:gc_profile_gal_b}.
-  {\color{red}(Its hard to see how you get 5\% from the plots, from profile plots it looks like 10\%, can a residual plot be made and shown here?? -orel)}
+  % diffuse simulations produced here:
+  %   /afs/ifh.de/group/cta/scratch/nkelhos/veripyctools/recon.sim.reproduce_crescent/sim.py
+  % gradient chosen using
+  % /afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/elevation_gradient/measure_existing_gradient/plot.py
+  % when run, pgrad slope indicates event efficiency changes at rate of 1.5% per degree of elevation (at 4 TeV)
+  %   also look at plot energy_elevation_gradients.png to see diffuse simulated gradient
+  % looking at counts in figure suggests a higher value, around 10%/deg?
+  % I think I picked halfway between these two numbers, 5%/deg
+  {\color{red}(Its hard to see how you get 5\% from the plots, from profile plots it looks like 10\%, can a residual plot be made and shown here?? (show orel the energy\_elevation\_gradients.png plot)-orel)}
   An example background is shown in Figure~\ref{fig:bkg_flatvsgrad}, before and after the gradient is applied.
   
   \begin{figure}[ht]
