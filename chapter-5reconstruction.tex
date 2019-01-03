@@ -192,6 +192,11 @@ This database includes the width and length of the shower, how far away its core
     % see $VERITAS_USER_DATA_DIR/figure_out_number_of_simulated_showers/read.py
     % run read.py, number of packets is roughly the number of showers, after core 
     % rescattering and offset wobbling for one point in the parameter space
+    % # of points:
+    %   10 elevations
+    %    2 atmospheres
+    %    9 wobbles
+    %    9 noises (care only, grisu doesn't simulate noise)
     This is done in the shower plane, the plane perpendicular to the line drawn between a pointing target and the center of the observatory.
     The effective area is then calculated via:
     $A=\pi R^2 \frac{N_{\text{survived}}}{N_{\text{simulated}}}$
