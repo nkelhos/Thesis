@@ -327,7 +327,8 @@
     
   \begin{figure}[!t]
     \centering
-    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_skymap.pdf}
+    %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_skymap.pdf}
+    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapcounts.pdf}
     \caption[Crab Nebula Counts Skymap]
     {
       Skymap of event positions, ($\ldet$,$\bdet$).
@@ -362,7 +363,8 @@
   \begin{figure}[!t]
     \centering
     %\includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall.pdf}
-    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_spectra.pdf}
+    %\includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_spectra.pdf}
+    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_spectra.pdf}
     \caption[Crab Nebula Spectrum]
     {
       Crab Nebula spectra from various analyses and observatories.
@@ -375,6 +377,8 @@
       Purple is a previously published spectrum from VERITAS~\cite{veritas2015crab}.
       Orange is a spectrum from MAGIC~\cite{magic2015crab}.
       {\color{red}(ask orel about errobar calculation??)}
+      {\color{red}(need to fix error calc, get slides from orel??)}
+      {\color{red}(check that errorbars are now sane-ly sized, in crab and gc plots??)}
     }
     \label{fig:crab_test_spectra}
   \end{figure}
@@ -409,9 +413,7 @@
   
   \begin{figure}[p]
     \centering
-    %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spl.pdf}
-    %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_spl_niceprofile.pdf}
-    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_profiledata_spatiall_json.pdf}
+    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_profiledata_spatiall_json.pdf}
     \llap{
       \makebox[13cm][l]{ % x position
         \raisebox{5.2cm}{     % y position
@@ -419,7 +421,7 @@
             \setlength{\fboxsep}{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
-              \includegraphics[height=4cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profl_skymap_rasterized.pdf}
+              \includegraphics[height=4cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_profl_skymap_rasterized.pdf}
             }
           }
         }
@@ -440,9 +442,7 @@
 
   \begin{figure}[p]
     \centering
-    %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_spb.pdf}
-    %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_spb_niceprofile.pdf}
-    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_profiledata_spatialb_json.pdf}
+    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_profiledata_spatialb_json.pdf}
     \llap{
       \makebox[13cm][l]{ % x position
         \raisebox{5.2cm}{  % y position
@@ -450,7 +450,7 @@
             \setlength{\fboxsep}{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
-              \includegraphics[height=4cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profb_skymap_rasterized.pdf}
+              \includegraphics[height=4cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_profb_skymap_rasterized.pdf}
             }
           }
         }
@@ -471,9 +471,7 @@
     
   \begin{figure}[p]
     \centering
-    %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_showclean_splalt.pdf}
-    %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_splalt_niceprofile.pdf}
-    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_profiledata_spatiallalt_json.pdf}
+    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_profiledata_spatiallalt_json.pdf}
     \llap{
       \makebox[13.2cm][l]{ % x position
         \raisebox{6.8cm}{  % y position
@@ -481,7 +479,7 @@
             \setlength{\fboxsep}{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
-              \includegraphics[height=2.4cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profa_skymap_rasterized.pdf}
+              \includegraphics[height=2.4cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_profa_skymap_rasterized.pdf}
             }
           }
         }
@@ -505,9 +503,7 @@
 
   \begin{figure}[p]
     \centering
-    %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_ep.pdf}
-    %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_en_niceprofile.pdf}
-    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_profiledata_energy_json.pdf}
+    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_profiledata_energy_json.pdf}
     \llap{
       \makebox[9.9cm][l]{  % x position
         \raisebox{5.4cm}{ % y position
@@ -515,7 +511,7 @@
             \setlength{\fboxsep}{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
-              \includegraphics[height=3.7cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profe_skymap_rasterized.pdf}
+              \includegraphics[height=3.7cm]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_profe_skymap_rasterized.pdf}
             }
           }
         }
@@ -529,6 +525,8 @@
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
       The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points, with the same blue poissonian error bars from the top plot.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with a blue square showing the profile bin location.
+      {\color{red}(finish re-adding crab plots??)}
+      {\color{red}(double-check profile plot residual errorbars, theyre using sqrt(n)??)}
     }
     \label{fig:crab_profile_energy}
   \end{figure}
@@ -745,7 +743,7 @@
     \end{tabular}
     \caption[DM Halo TS Values]{
       TS values for each DM Halo Model likelihood ratio maximization fit.
-      {\color{red}(Why is the 66.5 TeV one have -5.8 TS??)}
+      % think about later, or speed up simulations
     }
     \label{tab:tsvals}
   \end{table}
@@ -934,8 +932,12 @@
   \end{equation}
   {\color{red}(where does this equation come from? find ctulimit's source??)}
   {\color{red}(Where indeed does it come from?? -Orel)}
+  % some discussion on likelihood upper limits here:
+  % https://fermi.gsfc.nasa.gov/science/mtgs/summerschool/2013/week1/ML_intro.pdf
+  % maybe also this rolke paper: Rolke, et al., NIM A, 551, 493 (2005)
+  % see bookmark in Geln Cowan Statistical Data Analysis
 
-  The erf function is the error function.
+  The $erf^{-1}$ is the inverse error function.
   A 95\% confidence interval is desired, so $\alpha$ is set to 0.95 for the upper limit calculation in this section.
   In this procedure, the dark matter halo model's flux $\Phi$ is fixed at one magnitude, and then the likelihood method finds the best fit values for the remaining free parameters.
   This is repeated for various $\Phi$ until the the likelihood is found to be within a certain tolerance of $L_{\textrm{ul}}$.
@@ -989,6 +991,7 @@
   % looking at counts in figure suggests a higher value, around 10%/deg?
   % I think I picked halfway between these two numbers, 5%/deg
   {\color{red}(Its hard to see how you get 5\% from the plots, from profile plots it looks like 10\%, can a residual plot be made and shown here?? (show orel the energy\_elevation\_gradients.png plot)-orel)}
+  {\color{red}(check that the residuals in those justification figures don't explicitly show 10\%, so 5\% is a little more justified??)}
   An example background is shown in Figure~\ref{fig:bkg_flatvsgrad}, before and after the gradient is applied.
   
   \begin{figure}[ht]

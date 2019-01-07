@@ -3,8 +3,10 @@
 rm *.{png,eps,pdf}
 
 #scp nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/crab_test/plots/*png .
-scp nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/crab_test/plots/*pdf .
-scp nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/crab_test/replot/*pdf .
+#scp nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/crab_test/plots/*pdf .
+#scp nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/crab_test/replot/*pdf .
+scp nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/crab_test/refined_analysis/output/*nfits165*pdf .
+
 
 for f in `ls -1 *pdf` ; do
   echo $f
@@ -17,10 +19,10 @@ for f in `ls -1 *pdf` ; do
 done
 
 fff=(
-plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profa_skymap.pdf
-plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profb_skymap.pdf
-plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profe_skymap.pdf
-plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_profl_skymap.pdf
+plot_elev27_5_32_5deg_4_70TeV_nfits165_profa_skymap.pdf
+plot_elev27_5_32_5deg_4_70TeV_nfits165_profl_skymap.pdf
+plot_elev27_5_32_5deg_4_70TeV_nfits165_profb_skymap.pdf
+plot_elev27_5_32_5deg_4_70TeV_nfits165_profe_skymap.pdf
 )
 
 for f in "${fff[@]}" ; do
