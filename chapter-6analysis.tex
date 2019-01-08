@@ -365,7 +365,7 @@
     %\includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall.pdf}
     %\includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_spectra.pdf}
     \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_spectra.pdf}
-    \caption[Crab Nebula Spectrum]
+    \caption[Crab Nebula Spectra]
     {
       Crab Nebula spectra from various analyses and observatories.
       The solid red line is the best-fit spectra from the CTOOLS analysis described in this chapter, using only events from \SIrange{4}{70}{\TeV{}}.
@@ -376,9 +376,6 @@
       Light blue is a Crab Nebula spectrum from HESS~\cite{hess2006crab}.
       Purple is a previously published spectrum from VERITAS~\cite{veritas2015crab}.
       Orange is a spectrum from MAGIC~\cite{magic2015crab}.
-      {\color{red}(ask orel about errobar calculation??)}
-      {\color{red}(need to fix error calc, get slides from orel??)}
-      {\color{red}(check that errorbars are now sane-ly sized, in crab and gc plots??)}
     }
     \label{fig:crab_test_spectra}
   \end{figure}
@@ -525,8 +522,6 @@
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
       The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points, with the same blue poissonian error bars from the top plot.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with a blue square showing the profile bin location.
-      {\color{red}(finish re-adding crab plots??)}
-      {\color{red}(double-check profile plot residual errorbars, theyre using sqrt(n)??)}
     }
     \label{fig:crab_profile_energy}
   \end{figure}
@@ -594,8 +589,8 @@
   
   \begin{figure}[t]
     \centering
-    \includegraphics[width=0.55\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_mapresiduals_coarse.pdf}
-    \caption{
+    \includegraphics[width=0.55\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapresiduals_coarse.pdf}
+    \caption[Crab Residual Skymap Coarse Binning]{
       Skymap showing how significantly the models differ from the observations in each bin.
       This plot uses \ang{0.23}-wide bins.}
     \label{fig:crab_signif_skymap_coarse}
@@ -603,8 +598,8 @@
   
   \begin{figure}[b]
     \centering
-    \includegraphics[width=0.55\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_mapresiduals_fine.pdf}
-    \caption{
+    \includegraphics[width=0.55\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapresiduals_fine.pdf}
+    \caption[Crab Residual Skymap Fine Binning]{
       Skymap showing how significantly the models differ from the observations in each bin.
       This plot uses \ang{0.029}-wide bins.}
     \label{fig:crab_signif_skymap_fine}
@@ -617,8 +612,8 @@
   
   \begin{figure}[h]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_mapresiduals_fine_hist.pdf}
-    \caption{
+    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapresiduals_fine_hist.pdf}
+    \caption[Crab Residual Bin Distribution]{
       Data and simulated significance distributions from the fine-binned significance skymap in Figure~\ref{fig:crab_signif_skymap_fine}.
       In the top plot, the black histogram bars indicate the data's significance distribution.
       The red bars indicate the range of simulated significances, centered on the mean, and extending up and down by one standard deviation.
@@ -636,8 +631,9 @@
   
   \begin{figure}[h]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/random_sigdists.pdf}
-    \caption{
+    %\includegraphics[width=0.95\textwidth]{images/test_crab_analysis/random_sigdists.pdf}
+    \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_random_sigdists.pdf}
+    \caption[4 Simulated Significance Distributions]{
       Simulated significance distributions for four different average models.
       The significance here is calculated wtih Equation~\ref{eqn:resmap_signif}.
       % plot generated with $VERIPY/thesis/analysis/crab_test/replot.py
@@ -903,7 +899,7 @@
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_phist_ALGOSIGNIFICANCE_resmap.pdf}
     \caption[Galactic Center Point Source Spectrum]
     {
-      {\color{red}Plot of point source spectra here??}
+      {\color{red}Plot of point source spectra here (check errorbars)??}
       Point Source Spectrum.
     }
     \label{fig:gc_pntsrc_spectrum}
