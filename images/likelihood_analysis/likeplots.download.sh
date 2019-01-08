@@ -2,7 +2,8 @@
 
 rm *png *pdf
 
-scp nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/dm_plus_pnt/logs/*45.0TeV.nfits1000.*pdf .
+#scp nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/dm_plus_pnt/logs/*45.0TeV.nfits1000.*pdf .
+scp nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/dm_plus_pnt/refined_analysis/ultrapure_analysis/output/nfits8/*45.00TeV.*pdf .
 
 for f in $( ls -1 *pdf) ; do
   TARG=$(echo ${f%%.pdf} | tr '.' '_' ).pdf
@@ -13,9 +14,9 @@ done
   
 
 fff=(
-plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofb_counts.pdf
-plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofe_counts.pdf
-plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofl_counts.pdf
+plot_brbbbar_45_00TeV_profile_baxis_json_minimap.pdf
+plot_brbbbar_45_00TeV_profile_laxis_json_minimap.pdf
+plot_brbbbar_45_00TeV_profile_energy_json_minimap.pdf
 )
 
 for f in "${fff[@]}" ; do
@@ -28,7 +29,7 @@ for f in "${fff[@]}" ; do
   convert "$s1" "$s2"
 done
 
-scp nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/dm_plus_pnt/paramhists/plot*pdf .
+#scp nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/dm_plus_pnt/paramhists/plot*pdf .
+#mv plot.pref.pdf plot_pref.pdf
+#mv plot.indx.pdf plot_indx.pdf
 
-mv plot.pref.pdf plot_pref.pdf
-mv plot.indx.pdf plot_indx.pdf

@@ -655,9 +655,9 @@
   Once the data is reconstructed, the next step is to set up the models.
   These include the camera background models, similar to the Crab Nebula analysis, as well as a point source at the Galactic Center, and a dark matter halo.
   
-  \begin{figure}[!hb]
+  \begin{figure}[bt]
     \centering
-    \includegraphics[width=0.65\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_counts.pdf}
+    \includegraphics[width=0.65\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_counts_skymap.pdf}
     \caption[Galactic Center Counts Skymap]{
       Skymap of all events used in this analysis.
       Note that these are in ($\ldet$,$\bdet$) coordinates, not ($\ltrue$,$\btrue$).
@@ -666,9 +666,9 @@
     \label{fig:gc_counts_skymap}
   \end{figure}
   
-  \begin{figure}[!ht]
+  \begin{figure}[tb]
     \centering
-    \includegraphics[width=0.65\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_enhist.pdf}
+    \includegraphics[width=0.65\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_enhist.pdf}
     \caption[Galactic Center Counts Energy Histogram]{
       Histogram of all event energies ($\Edet$) used in this analysis.
       No adjustments are made here for effective area, observation time, or background rate.
@@ -734,7 +734,22 @@
       \textbf{DM Mass}        & \textbf{Halo TS} \\
       \textbf{$m_\chi$} [TeV] &                  \\
       \hline 
-      \input{images/likelihood_analysis/tsvals.tex}
+      %\input{images/likelihood_analysis/tsvals.tex}
+      % taken from /afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/dm_plus_pnt/latextables/tsvals.tex
+      % which is generated from the dm_ts values in:
+      %   /afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/dm_plus_pnt/logs/info*nfits1000*withpntsrc.json
+      % except the 45TeV which is from:
+      %   /afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/dm_plus_pnt/refined_analysis/ultrapure_analysis/output/brbbbar.45.00TeV.nfits1000.ctlike.results.json
+       4.250 & -0.034 \\
+       6.500 & -0.184 \\
+      10.000 & -0.457 \\
+      14.300 & -0.055 \\
+      20.512 & -0.044 \\
+      30.400 & -0.009 \\
+      45.000 & -0.743 \\
+      66.500 & -5.894 \\
+      98.000 & -0.026 \\
+
       \hline 
     \end{tabular}
     \caption[DM Halo TS Values]{
@@ -748,10 +763,11 @@
   The spectral index distribution is centered on zero because the power law is applied to an existing (non-power-law) background shape.
   This means that on average the background models required little spectral hardening or softening.
   
-  \begin{figure}[h]
+  \begin{figure}[bt]
     \begin{tabular}{ll}
-      \includegraphics[scale=0.425]{images/likelihood_analysis/plot_pref.pdf} &
-      \includegraphics[scale=0.425]{images/likelihood_analysis/plot_indx.pdf}
+      \includegraphics[scale=0.425]{images/likelihood_analysis/plot_brbbbar_45_00TeV_paramhist_pref.pdf} &
+      \includegraphics[scale=0.425]{images/likelihood_analysis/plot_brbbbar_45_00TeV_paramhist_indx.pdf}
+      %\includegraphics[scale=0.425]{images/likelihood_analysis/plot_indx.pdf}
     \end{tabular}
     \caption[Histogram of Background Model Parameter Values in the Sgr A* Analysis]{
       Histogram of the two free parameters in each of the 948 camera background models.
@@ -770,9 +786,10 @@
   This is likely due to unaccounted-for elevation effects in the camera background models.
   The impact of this elevation effect is tested later in Section~\ref{sec:elevgradient}.
   
-  \begin{figure}[h]
+  \begin{figure}[t]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_showclean_l_sprof.pdf}
+    %\includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_showclean_l_sprof.pdf}
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_profile_laxis_json.pdf}
     \llap{
       \makebox[13.75cm][l]{ % x position
         \raisebox{7cm}{     % y position
@@ -780,14 +797,15 @@
             \setlength{\fboxsep }{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
-              \includegraphics[height=3cm]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofl_counts_rasterized.pdf}
+              %\includegraphics[height=3cm]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofl_counts_rasterized.pdf}
+              \includegraphics[height=3cm]{images/likelihood_analysis/plot_brbbbar_45_00TeV_profile_laxis_json_minimap_rasterized.png}
             }
           }
         }
       }
     }
     \caption[Galactic Center Profile vs Galactic $l$]{
-      Observed vs modeled counts in a slice of the sky parallel to the galactic $l$ axis at $b=0$.
+      Observed vs modeled counts in a slice of the sky parallel to the galactic $l$ axis at $b=-0.046{}^{\circ}$.
       Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
       {\color{red}(galacitic l and b need to be consistantly lowercase and italics in plot??)}
@@ -803,7 +821,8 @@
 
   \begin{figure}[t]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_showclean_b_sprof.pdf}
+    %\includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_showclean_b_sprof.pdf}
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_profile_baxis_json.pdf}
     \llap{
       \makebox[13.75cm][l]{ % x position
         \raisebox{7cm}{   % y position
@@ -811,7 +830,8 @@
             \setlength{\fboxsep }{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
-              \includegraphics[height=3cm]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofb_counts_rasterized.pdf}
+              %\includegraphics[height=3cm]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofb_counts_rasterized.pdf}
+              \includegraphics[height=3cm]{images/likelihood_analysis/plot_brbbbar_45_00TeV_profile_baxis_json_minimap_rasterized.pdf}
             }
           }
         }
@@ -828,9 +848,10 @@
   \end{figure}
 
   
-  \begin{figure}[h]
+  \begin{figure}[t]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_enprofile.pdf}
+    %\includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_enprofile.pdf}
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_profile_energy_json.pdf}
     \llap{
       \makebox[6.0cm][l]{ % x position
         \raisebox{5.1cm}{ % y position
@@ -838,7 +859,8 @@
             \setlength{\fboxsep }{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
-              \includegraphics[height=2.8cm]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofe_counts_rasterized.pdf}
+              %\includegraphics[height=2.8cm]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofe_counts_rasterized.pdf}
+              \includegraphics[height=2.8cm]{images/likelihood_analysis/plot_brbbbar_45_00TeV_profile_energy_json_minimap_rasterized.pdf}
             }
           }
         }
@@ -862,8 +884,23 @@
   
   \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_ALGOSIGNIFICANCE_withoutobradius_resmap.pdf}
-    \caption[Galactic Center Residual Map]
+    %\includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_ALGOSIGNIFICANCE_withoutobradius_resmap.pdf}
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_coarse.pdf}
+    \caption[Galactic Center Residual Map Coarse Binning]
+    {
+      Significance of each skymap bin's residual counts.
+      See Equation~\ref{eqn:resmap_signif} for details.
+      The dark upper-left and lighter lower-right areas are due to the the radially-symmetric background, whereas a non-radially symmetric one would have been more ideal.
+      {\color{red}(change Sgr A* label and circle color to something else??)}
+    }
+    \label{fig:gc_resmap}
+  \end{figure}
+  
+  \begin{figure}[ht]
+    \centering
+    %\includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_ALGOSIGNIFICANCE_withoutobradius_resmap.pdf}
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_fine.pdf}
+    \caption[Galactic Center Residual Map Fine Binning]
     {
       Significance of each skymap bin's residual counts.
       See Equation~\ref{eqn:resmap_signif} for details.
@@ -881,7 +918,8 @@
   
   \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_phist_ALGOSIGNIFICANCE_resmap.pdf}
+    %\includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_phist_ALGOSIGNIFICANCE_resmap.pdf}
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_fine_hist.pdf}
     \caption[Galactic Center Residual Histogram]
     {
       Histogram of the residual skymap bin significances from Figure~\ref{fig:gc_resmap}, calculated with Equation~\ref{eqn:resmap_signif}.
@@ -896,7 +934,7 @@
   This spectrum is shown in Figure~\ref{}.
   \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_phist_ALGOSIGNIFICANCE_resmap.pdf}
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_spectrum.pdf}
     \caption[Galactic Center Point Source Spectrum]
     {
       {\color{red}Plot of point source spectra here (check errorbars)??}
