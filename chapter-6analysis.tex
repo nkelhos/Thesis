@@ -959,7 +959,7 @@
   \end{equation}
   
   When calculating the upper limit with a log-likelihood ratio test, the confidence interval is used to calculate a likelihood upper limit, $L_{\textrm{ul}}$.
-  This likelihood upper limit is calculated in Equation~\ref{eqn:ulim_deltaL}, where $\alpha$ is the confidence interval as a fraction of 1.
+  This likelihood upper limit is calculated in Equation~\ref{eqn:ulim_deltaL}, where $\alpha$ is the confidence interval as a fraction of 1 (i.e. 95\% : $\alpha=0.95$).
 
   \begin{equation}\label{eqn:ulim_deltaL}
     L_{\textrm{ul}} = L_{\textrm{max}} - \left ( \textrm{erf}^{-1} \left ( \alpha \right ) \right )^2
@@ -971,7 +971,7 @@
   % maybe also this rolke paper: Rolke, et al., NIM A, 551, 493 (2005)
   % see bookmark in Geln Cowan Statistical Data Analysis
 
-  The $erf^{-1}$ is the inverse error function.
+  The $\textrm{erf}^{-1}$ is the inverse error function.
   A 95\% confidence interval is desired, so $\alpha$ is set to 0.95 for the upper limit calculation in this section.
   In this procedure, the dark matter halo model's flux $\Phi$ is fixed at one magnitude, and then the likelihood method finds the best fit values for the remaining free parameters.
   This is repeated for various $\Phi$ until the the likelihood is found to be within a certain tolerance of $L_{\textrm{ul}}$.
@@ -1005,7 +1005,14 @@
   These limits were calculated using a simple WIMP model, one that does not include the effect of Sommerfeld Enhancement~\cite{sommerfeld}.
   If Sommerfeld Enhancement were included in the dark matter halo model, stronger limits would naively be expected.
   
-\FloatBarrier
+  Around the dark blue upper limit line from this work, a light-blue systematic error band is also shown.
+  For VERITAS, uncertainties in the energy reconstruction propagate into uncertainties on the flux measurements.
+  This results in a \nicetilde{}20\% systematic uncertainty on the flux.
+  While no dark matter was detected in this thesis, the upper limit calculation is influenced by this systematic uncertainty.
+  This can be envisioned as a dark matter signal could have been brighter than the upper limits in Figure~\ref{fig:ulim}, but then fluctuated downwards by 20\% of its flux.
+  Conversely, a dim dark matter signal below the upper limit could also be enhanced by 20\% instead.
+  
+  \FloatBarrier
 
 \section{Impact of Elevation Gradient}\label{sec:elevgradient}
 
@@ -1057,10 +1064,5 @@
   This likely stems from the fact that the test statistic is a ratio of the likelihoods of two model groups, both of which contain the background models.
   Thus, the likelihoods from both model groups changed by a similar amount, and in the same direction, partially cancelling out.
 
-\section{Systematic Uncertainties}  
-
-Stuff?
-
-{\color{red}(discuss with gernot, check henrike or moritz's thesis??)}
 
 
