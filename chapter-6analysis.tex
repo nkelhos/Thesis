@@ -919,7 +919,7 @@
   \begin{figure}[ht]
     \centering
     %\includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_phist_ALGOSIGNIFICANCE_resmap.pdf}
-    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_fine_hist.pdf}
+    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_fine_pdf_json_hist.pdf}
     \caption[Galactic Center Residual Histogram]
     {
       Histogram of the residual skymap bin significances from Figure~\ref{fig:gc_resmap}, calculated with Equation~\ref{eqn:resmap_signif}.
@@ -959,13 +959,11 @@
   \end{equation}
   
   When calculating the upper limit with a log-likelihood ratio test, the confidence interval is used to calculate a likelihood upper limit, $L_{\textrm{ul}}$.
-  This likelihood upper limit is calculated in Equation~\ref{eqn:ulim_deltaL}, where $\alpha$ is the confidence interval as a fraction of 1 (i.e. 95\% : $\alpha=0.95$).
+  This likelihood upper limit is calculated in Equation~\ref{eqn:ulim_deltaL}, where $\alpha$ is the confidence interval as a fraction of 1 (i.e. 95\% : $\alpha=0.95$)~\cite{wilks1938,cash1979}.
 
   \begin{equation}\label{eqn:ulim_deltaL}
     L_{\textrm{ul}} = L_{\textrm{max}} - \left ( \textrm{erf}^{-1} \left ( \alpha \right ) \right )^2
   \end{equation}
-  {\color{red}(where does this equation come from? find ctulimit's source??)}
-  {\color{red}(Where indeed does it come from?? -Orel)}
   % some discussion on likelihood upper limits here:
   % https://fermi.gsfc.nasa.gov/science/mtgs/summerschool/2013/week1/ML_intro.pdf
   % maybe also this rolke paper: Rolke, et al., NIM A, 551, 493 (2005)
