@@ -110,11 +110,12 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
     
     Once the training is complete, it is tested on a separate set of 17,000 simulated events, which have their true and predicted disps plotted in Figure~\ref{fig:disptraining}.
     The x axis describes the true disp value for each event, while the y axis describes the disp value estimated by the BDT, with a black $x=y$ line marked, which represents a perfect 1:1 disp reconstruction.
-    As events fall on the $x=y$ line, it can be concluded that the BDTs are able to predict the correct disp value for most images.
-    {\color{red} You need to be more precise.  You should show also a one dimensional distribution (or various if you want to divide to True DISP bins) and discuss the resolution obtained?? -Orel}
+    To examine how close the predicted disp is to the true disp, a residual plot is shown in Figure~\ref{fig:dispresidual}.
+    It shows the $\frac{\textrm{Predicted disp}}{\textrm{True disp}}$ for each true disp bin, including $\pm$ 1 standard deviation errorbars.
+    From this residual plot, it can be seen that in nearly all bins the predicted disp is consistant with the true disp.
 
     % made from screenshot of last slide in Dropbox/Presentations/20160719_Group_Meeting.key
-    \begin{figure}[!t]
+    \begin{figure}[b]
       \centering
       \includegraphics[width=0.85\textwidth]{images/disp_training/disp_training.eps}
       \caption[Disp BDT Training]{
@@ -123,7 +124,16 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
       \label{fig:disptraining}
     \end{figure}
     
-    {\color{red}(Make a profile plot of the true/BDT disp vs true disp, with 68\% containment errorbars, and talk about it in the text! is there a bias? at what disps??)}
+    \begin{figure}[t]
+      \centering
+      \includegraphics[width=0.85\textwidth]{images/disp_training/improved_disp_plot/plot.pdf}
+      \caption[Disp BDT Residual]{
+        The predicted/true disp residual, from the bins in Figure~\ref{fig:disptraining}.
+        The errorbars represent 1 standard deviation.
+        The graph is split at $x=0.75^{\circ}$ to keep the errorbars visible.
+      }
+      \label{fig:dispresidual}
+    \end{figure}
 
     The small improvement in the position reconstruction due to the disp method can be seen in Figure~\ref{fig:disp_event_offset}.
     With the Geometric (red) events, more are concentrated further from the point source, while with the disp method, a few more are concentrated at the source itself.

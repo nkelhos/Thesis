@@ -22,6 +22,7 @@ yw = ys[1] - ys[0]
 ny = []
 for i in range(n) :
   ny += [ ( y[i] + x[i] ) / x[i] ]
+  #ny += [  y[i] / x[i] ]
 
 xs = sorted(list(set(x)))
 print('xs:',xs)
@@ -49,11 +50,55 @@ for xi in xs :
   print( '%6.3f %3d %f %f' % ( xi, xi_cts, xi_mean, xi_std) )
     
 
-fig = plt.figure( figsize=[9,7] )
-fax = fig.add_subplot(111)
+nsplit = 10
+xsplit = 0.75
+xf     = 0.25
+xl, xr = 0.05, 0.95
+yb, yt = 0.05, 0.92
 
-fax.errorbar( xbars, [a[0] for a in ybars], yerr=[a[1] for a in ybars], fmt='o' )
-fax.plot( [min(xbars),max(xbars)], [1,1], color='k', linestyle='-', linewidth=1) 
+fig = plt.figure( figsize=[7,3] )
 
-for ext in [ 'png','pdf' ] :
-  plt.savefig( 'plot.'+ext, bbox_inces='tight' )
+frame1 = fig.add_axes( ( xl, yb, xf-xl, yt-yb ) )
+kwa = {}
+kwa['fmt'       ] = '.'
+kwa['yerr'      ] = [a[1] for a in ybars][:nsplit]
+kwa['markersize'] = 2
+kwa['linewidth' ] = 0.5
+frame1.errorbar( xbars[:nsplit], [a[0] for a in ybars][:nsplit], **kwa )
+kwa = {}
+kwa['color'    ] = 'gray'
+kwa['linestyle'] = '--'
+kwa['linewidth'] = 0.4
+kwa['zorder'   ] = -3
+frame1.plot( [ 0, xsplit ], [1,1], **kwa )
+frame1.set_xlim( [ 0, xsplit ] )
+frame1.set_ylabel( r'$\frac{\mathrm{Predicted\;Disp}}{\mathrm{True\;Disp}}$ Residual' )
+
+frame2 = fig.add_axes( ( xf, yb, xr-xf, yt-yb ) )
+kwa = {}
+kwa['fmt'       ] = '.'
+kwa['yerr'      ] = [a[1] for a in ybars][nsplit:]
+kwa['markersize'] = 2
+kwa['linewidth' ] = 0.5
+frame2.errorbar( xbars[nsplit:], [a[0] for a in ybars][nsplit:], **kwa )
+kwa = {}
+kwa['color'    ] = 'gray'
+kwa['linestyle'] = '--'
+kwa['linewidth'] = 0.4
+kwa['zorder'   ] = -3
+frame2.plot( [xsplit,3.5], [1,1], **kwa )
+frame2.yaxis.tick_right()
+frame2.yaxis.set_label_position('right')
+frame2.set_ylabel(   r'$\frac{\mathrm{Predicted\;Disp}}{\mathrm{True\;Disp}}$ Residual' )
+frame2.set_xlim([xsplit,3.5])
+frame2.set_xlabel(   'True Disp (${}^{\circ}$)', horizontalalignment='right')
+
+fig.suptitle( 'Disp Residual' )
+kwa = {}
+kwa['bbox_inches'] = 'tight'
+kwa['pad_inches' ] = 0
+kwa['dpi'        ] = 400
+plt.savefig( 'plot.pdf', **kwa )
+
+plt.close(fig)
+
