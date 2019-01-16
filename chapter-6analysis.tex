@@ -779,7 +779,7 @@
   To check that the other models are fitting the observed events, we can compare the observed vs modeled counts in different slices.
   In Figure~\ref{fig:gc_profile_gal_l}, the observed counts are shown compared to the final, likelihood-optimized modeled counts.
   The histogram bins are located on \ang{0.22}-wide slice along the galactic $l$ axis, centered on Sgr A*'s galactic $b$ coordinate.
-  Purple histogram bins are the modeled counts from only the camera background models.
+  Yellow histogram bins are the modeled counts from only the camera background models.
   Green histogram bins are the total modeled counts from the camera background models, the Galactic Center point source, and the dark matter halo.
   Blue points with error bars are the observed counts in each bin, with poissonian errors.
   The observed counts are higher on the left and lower on the right than the modeled histogram.
@@ -791,8 +791,8 @@
     %\includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_showclean_l_sprof.pdf}
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_profile_laxis_json.pdf}
     \llap{
-      \makebox[13.75cm][l]{ % x position
-        \raisebox{7cm}{     % y position
+      \makebox[14.4cm][l]{ % x position
+        \raisebox{7.3cm}{     % y position
           {
             \setlength{\fboxsep }{0pt}
             \setlength{\fboxrule}{1pt}
@@ -806,10 +806,8 @@
     }
     \caption[Galactic Center Profile vs Galactic $l$]{
       Observed vs modeled counts in a slice of the sky parallel to the galactic $l$ axis at $b=-0.046{}^{\circ}$.
-      Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
+      Modeled counts from camera background models are shown in yellow, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
-      {\color{red}(galacitic l and b need to be consistantly lowercase and italics in plot??)}
-      {\color{red}(redo plot in new style with residual??)}
     }
     \label{fig:gc_profile_gal_l}
   \end{figure}
@@ -817,15 +815,15 @@
   Figure~\ref{fig:gc_profile_gal_b} is similar to Figure~\ref{fig:gc_profile_gal_l}, except it slices through Sgr A* along the galactic $b$ axis,
   The feature in which the observed counts are higher on the left and lower on the right is also visible here.
   Figure~\ref{fig:gc_profile_energy} shows the same profile, except it is integrated over a \ang{0.2}$\times$\ang{0.2} galactic ($l$,$b$) square centered on Sgr A*.
-  Again, purple {\color{red}(change the colors here when plots are updated??)} is modeled camera-background counts, green is total modeled counts, and blue is observed counts.
+  Again, yellow is modeled camera-background counts, green is total modeled counts, and blue is observed counts.
 
   \begin{figure}[t]
     \centering
     %\includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_showclean_b_sprof.pdf}
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_profile_baxis_json.pdf}
     \llap{
-      \makebox[13.75cm][l]{ % x position
-        \raisebox{7cm}{   % y position
+      \makebox[14.4cm][l]{ % x position
+        \raisebox{7.3cm}{   % y position
           {
             \setlength{\fboxsep }{0pt}
             \setlength{\fboxrule}{1pt}
@@ -839,10 +837,8 @@
     }
     \caption[Galactic Center Profile vs Galactic $b$]{
       Observed vs modeled counts in a slice of the sky parallel to the galactic $b$ axis at $l=0$.
-      Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
+      Modeled counts from camera background models are shown in yellow, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
-      {\color{red}(galacitic l and b need to be consistantly lowercase and italics in plot??)}
-      {\color{red}(redo plot in new style with residual??)}
     }
     \label{fig:gc_profile_gal_b}
   \end{figure}
@@ -853,14 +849,14 @@
     %\includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_enprofile.pdf}
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_profile_energy_json.pdf}
     \llap{
-      \makebox[6.0cm][l]{ % x position
-        \raisebox{5.1cm}{ % y position
+      \makebox[6.2cm][l]{ % x position
+        \raisebox{5.4cm}{ % y position
           {
             \setlength{\fboxsep }{0pt}
             \setlength{\fboxrule}{1pt}
             \fbox{
               %\includegraphics[height=2.8cm]{images/likelihood_analysis/plot_brbbbar_45_0TeV_nfits1000_withpntsrc_regionprofe_counts_rasterized.pdf}
-              \includegraphics[height=2.8cm]{images/likelihood_analysis/plot_brbbbar_45_00TeV_profile_energy_json_minimap_rasterized.pdf}
+              \includegraphics[height=3.6cm]{images/likelihood_analysis/plot_brbbbar_45_00TeV_profile_energy_json_minimap_rasterized.pdf}
             }
           }
         }
@@ -868,9 +864,8 @@
     }
     \caption[Galactic Center Profile vs Energy]{
       Observed vs modeled counts in a \ang{0.2}$\times$\ang{0.2} square bin centered on Sgr A* at energies from \SIrange{4}{70}{\TeV{}}.
-      Modeled counts from camera background models are shown in purple, total modeled counts are shown in green.
+      Modeled counts from camera background models are shown in yellow, total modeled counts are shown in green.
       Observed counts with poissonian errors are shown in blue.
-      {\color{red}(redo plot in new style with residual??)}
       }
     %}
     \label{fig:gc_profile_energy}
@@ -891,7 +886,6 @@
       Significance of each skymap bin's residual counts.
       See Equation~\ref{eqn:resmap_signif} for details.
       The dark upper-left and lighter lower-right areas are due to the the radially-symmetric background, whereas a non-radially symmetric one would have been more ideal.
-      {\color{red}(change Sgr A* label and circle color to something else??)}
     }
     \label{fig:gc_resmap}
   \end{figure}
@@ -905,16 +899,12 @@
       Significance of each skymap bin's residual counts.
       See Equation~\ref{eqn:resmap_signif} for details.
       The dark upper-left and lighter lower-right areas are due to the the radially-symmetric background, whereas a non-radially symmetric one would have been more ideal.
-      {\color{red}(change Sgr A* label and circle color to something else??)}
     }
-    \label{fig:gc_resmap}
+    \label{fig:gc_resmap_fine}
   \end{figure}
   
-  If the source and background models were perfectly known, there would still be statistical fluctuations in the observed counts, and the residual significances would form a Gaussian distribution, shown as the green line in Figure~\ref{fig:gc_resmap_sighist}.
-  However, the distribution of the pixel significances from Figure~\ref{fig:gc_resmap} is also shown in Figure~\ref{fig:gc_resmap_sighist}, and is qualitatively not Gaussian shaped {\color{red}(??)}.
-  {\color{red}?? How well does it fit, and quantitatively how bad does it fit??}
-  {\color{red}(do a Gaussian fit of the data, and report the p-value of the fit?? -Orel)}
-  As a large number of bins are clustered around +2 and -2 significance, this hints that the residuals in Figure~\ref{fig:gc_resmap} are not solely due to statistical noise, and that the background modeling could be improved.
+  If the source and background models were perfectly known, there would still be statistical fluctuations in the observed counts.
+  The distribution of the pixel significances from Figure~\ref{fig:gc_resmap_fine} is also shown in grey in Figure~\ref{fig:gc_resmap_sighist}, along with a set of 150 simulated distributions in red.
   
   \begin{figure}[ht]
     \centering
@@ -925,20 +915,24 @@
       Histogram of the residual skymap bin significances from Figure~\ref{fig:gc_resmap}, calculated with Equation~\ref{eqn:resmap_signif}.
       Only skymap bins within Sgr A*'s region of interest are histogrammed.
       If all astrophysical sources were modeled correctly, the differences in the residual skymap would only be due to noise, and would follow a Gaussian distribution, the green line.
-      {\color{red}(calculate chi squared, where the number of degrees of freedom is the number of histogram bins??)}
     }
     \label{fig:gc_resmap_sighist}
   \end{figure}
 
+
   The Galactic Center point source spectrum can be plotted as a check of the likelihood fitting.
-  This spectrum is shown in Figure~\ref{}.
+  This spectrum is shown in Figure~\ref{fig:gc_pntsrc_spectrum}.
+  This point source was detected with a Test Statistic of 224.25 (with one degree of freedom), with a normalization of $(4.764\pm0.402)\times 10^{-18} \frac{\textrm{photons}}{\textrm{cm}^2\;\textrm{s}\;\textrm{MeV}}$.
+  
+
   \begin{figure}[ht]
     \centering
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_spectrum.pdf}
     \caption[Galactic Center Point Source Spectrum]
     {
-      {\color{red}Plot of point source spectra here (check errorbars)??}
-      Point Source Spectrum.
+      The spectrum of the fitted galactic center point source is shown in red, with statistical and combined statistical+systematic error sheaths.
+      Only the normalization was free in the likelihood fit.
+      The original VERITAS spectrum is shown in purple, from Ref.~\cite{VeritasGCRidge2015}.
     }
     \label{fig:gc_pntsrc_spectrum}
   \end{figure}
@@ -981,7 +975,7 @@
   The green upper limit is from 254 hours of H.E.S.S. observations of the Galactic Center~\cite{hessgcul}.
   The yellow upper limit is from a combined Fermi-MAGIC likelihood analysis using observations from several dwarf satellite galaxies~\cite{fermagicul}.
   Fermi and MAGIC spent a total of 6 years and 158 hours observing these galaxies, respectively.
-  The light blue line is the relic cross section~\cite{updatedWIMPRelicCrossSection}.
+  The light blue dashed line is the relic cross section~\cite{updatedWIMPRelicCrossSection}.
   
   \begin{figure}[ht]
     \centering
@@ -994,7 +988,7 @@
       Purple is from a HAWC~\cite{hawc_dm_limit} analysis of dwarf spheroidal galaxies.
       Red is from a joint Fermi-MAGIC~\cite{fermagicul} analysis.
       Bright green is from Planck measurements of the CMB~\cite{planck_dm_limit}.
-      The light blue line is the relic cross section~\cite{updatedWIMPRelicCrossSection}.
+      The light blue dashed line is the relic cross section~\cite{updatedWIMPRelicCrossSection}.
       Data values from this work's upper limits are in Appendix Table \ref{tab:ulimvals}.
     }
     \label{fig:ulim}
@@ -1004,8 +998,7 @@
   If Sommerfeld Enhancement were included in the dark matter halo model, stronger limits would naively be expected.
   
   Around the dark blue upper limit line from this work, a light-blue systematic error band is also shown.
-  For VERITAS, uncertainties in the energy reconstruction propagate into uncertainties on the flux measurements.
-  This results in a \nicetilde{}20\% systematic uncertainty on the flux.
+  For VERITAS, uncertainties in the energy reconstruction contribute a \nicetilde{}20\% systematic uncertainty on the flux.
   While no dark matter was detected in this thesis, the upper limit calculation is influenced by this systematic uncertainty.
   This can be envisioned as a dark matter signal could have been brighter than the upper limits in Figure~\ref{fig:ulim}, but then fluctuated downwards by 20\% of its flux.
   Conversely, a dim dark matter signal below the upper limit could also be enhanced by 20\% instead.
@@ -1029,8 +1022,6 @@
   %   also look at plot energy_elevation_gradients.png to see diffuse simulated gradient
   % looking at counts in figure suggests a higher value, around 10%/deg?
   % I think I picked halfway between these two numbers, 5%/deg
-  {\color{red}(Its hard to see how you get 5\% from the plots, from profile plots it looks like 10\%, can a residual plot be made and shown here?? (show orel the energy\_elevation\_gradients.png plot)-orel)}
-  {\color{red}(check that the residuals in those justification figures don't explicitly show 10\%, so 5\% is a little more justified??)}
   An example background is shown in Figure~\ref{fig:bkg_flatvsgrad}, before and after the gradient is applied.
   
   \begin{figure}[ht]
