@@ -94,7 +94,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
   % Once trained on these parameters, the machine learning algorithm can construct a boosted decision tree for determining any new image's \textit{disp}, which can then be used with the image axes intersections to improve the gamma-ray reconstructed positions.
 
 
-    \begin{figure}[!t]
+    \begin{figure}[t]
       \centering
       \includegraphics[width=0.5\textwidth]{images/disp_parameter/disp_parameter.pdf}
       \caption[Angular Reconstruction Disp]{
@@ -135,35 +135,30 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
       \label{fig:dispresidual}
     \end{figure}
 
-    To examine the effect this has on an analysis, data events from the Crab Nebula and the Galactic Center are reconstructed with this disp method.
-    The events are then histogrammed by their distance from their source, which are shown in Figure~\ref{fig:disp_event_offset}..
-    With the Disp (green) events, the 68\% containment radius actually increases compared to the Geometic events.
-    However, this may be due to the Disp method successfully reconstructing a few more events at the edge of the camera, which can be seen in the $\frac{\textrm{Disp}}{\textrm{Geom}}$ residual plots in Figure~\ref{fig:disp_event_offset}.
-    Within \ang{2} of the camera center, the disp method appears to have no effect.
+    To examine the effect this has on an analysis, the point spread functions (PSFs) can be compared.
+    The PSF describes how much a group of events from the same source are spread out due to being imperfectly reconstructed.
+    In general, PSFs are quantified by their 68\% containment radius, the anglular radius around a point source  which contains 68\% of the reconstructed events.
+    This PSF is discussed further in Section~\ref{subsec:psf}.
+    The PSF containment radius is calculated from simulations, with both the disp reconstruction method and the regular geometric reconstruction method.
+    The ratio of the $\frac{\textrm{disp PSF radius}}{\textrm{geometric PSF radius}}$ is shown in Figure~\ref{fig:disp_psf_comparison}.
+    Because the PSF changes with elevation, azimuth, and several other factors, the average PSF at each gamma-ray energy is shown.
+    This PSF is calculated by a time-weighted averaging over all PSFs used in the Crab Nebula and Galactic Center analyses, described further in Chapter~\ref{chapter:analysis}.
+    The average PSF for the Crab Nebula data is shown by a green line and a green 1-standard-deviation error sheath, and similarly the Galactic Center is shown in blue.
+    
+    In the figure, the disp method does offer a minor improvement at low energies, but is also worse at higher energies, though both are within the statistical error bars.
     The lack of improvement may be due to the use of boosted decision trees, whereas a previous study with this method utilized a lookup table of six parameters\cite{Beilicke2012NIM}.
-    
-    {\color{red}Again, you need to be more specific. you need to discuss the actual resolution obtained with both methods and state the improvement achieved with DISP. I think the RMS might be a better test of this and anyway the mean would be too affected by the tail. In fact I think the quantiles are better?? -Orel}
-    
     For the analysis described in Chapter~\ref{chapter:analysis}, the disp method is used when reconstructing gamma-ray events.
-
-    \begin{figure}[!p]
+    
+    \begin{figure}[b]
       \centering
-      \includegraphics[width=0.75\textwidth]{images/disp_event_offset_hists/dispgeom_comparison.eps}
-      \caption[DISP Offset Improvement]{
-        The fraction of events at different angular offsets from the Crab Nebula and the Galactic Center per solid angle, with Geometric (intersection only) and Disp reconstruction methods.
-        Data elevations are the same as in Figure~\ref{fig:datapointingelevations}, while training events were simulated at only \ang{28}.
-        {\color{red}(Where is the disp improvement???)}
-        {\color{red}(Why is the containment radius worse for disp??)}
-        {\color{red}(change y axis label to Disp/Geometric! ??)}
-        {\color{red}(Rerun this histogram for different energies, better to say this had some improvements at some energies or offsets than on average it had no effect.)}
+      \includegraphics[width=0.95\textwidth]{images/disp_event_offset_hists/plot_offset0_50.pdf}
+      \caption[DISP Point Spread Function Comparison]{
+        Comparison between disp and geometric point spread function 68\% containment radii.
+        Green is from the Crab Nebula data, and blue is from the Galactic Center data.
+        The average PSF shown is at a \ang{0.5} offset from the camera center.
       }
-      \label{fig:disp_event_offset}
+      \label{fig:disp_psf_comparison}
     \end{figure}
-  
-  {\color{red}(Find some part of the phase space where DISP offers an improvement, and make plots showing that low energy performance is better, though tradeoff is high energy performance is worse. see https://www.dropbox.com/sh/3w93xgr9g072y2x/AADbIXJZwHFXz40lzslP\_DFVa?dl=0 for the specific plots to remake (??))}
-  
-  {\color{red}(Also include dispgeom\_comparison\_psftable.crab.png in \$V/thesis/plots , but only focus on my energy range, and switch it to be distributions at each energy)}
-
   
   \FloatBarrier
 
@@ -178,7 +173,7 @@ This database includes the width and length of the shower, how far away its core
   This involves converting the event list and instrument response functions (IRFs) to a FITS file format.
   These IRFs consist of the effective areas, the point spread functions, the background models, and the energy dispersion.
   The effective area quantifies the total gamma-ray collection area of the observatory, needed for spectral measurements, and is described in Section~\ref{subsec:effarea}.
-  The point spread function (PSF) quantifies the distribution of reconstructed positions for a given true position, which is needed for modeling point sources and extended spatial structures.
+  The point spread function quantifies the distribution of reconstructed positions for a given true position, which is needed for modeling point sources and extended spatial structures.
   This is described further in Section~\ref{subsec:psf}.
   The background models measure the relative number of observed events in different parts of the camera, and their construction is described in Section~\ref{background_production}.
   The energy dispersion quantifies the distribution of reconstructed energies for a given true energy, and is discussed in Section~\ref{subsec:edisp}.
