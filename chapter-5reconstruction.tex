@@ -135,11 +135,14 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
       \label{fig:dispresidual}
     \end{figure}
 
-    The small improvement in the position reconstruction due to the disp method can be seen in Figure~\ref{fig:disp_event_offset}.
-    With the Geometric (red) events, more are concentrated further from the point source, while with the disp method, a few more are concentrated at the source itself.
-    The limited improvement may be due to the use of boosted decision trees, whereas a previous study with this method utilized a lookup table of six parameters\cite{Beilicke2012NIM}.
+    To examine the effect this has on an analysis, data events from the Crab Nebula and the Galactic Center are reconstructed with this disp method.
+    The events are then histogrammed by their distance from their source, which are shown in Figure~\ref{fig:disp_event_offset}..
+    With the Disp (green) events, the 68\% containment radius actually increases compared to the Geometic events.
+    However, this may be due to the Disp method successfully reconstructing a few more events at the edge of the camera, which can be seen in the $\frac{\textrm{Disp}}{\textrm{Geom}}$ residual plots in Figure~\ref{fig:disp_event_offset}.
+    Within \ang{2} of the camera center, the disp method appears to have no effect.
+    The lack of improvement may be due to the use of boosted decision trees, whereas a previous study with this method utilized a lookup table of six parameters\cite{Beilicke2012NIM}.
     
-    {\color{red}Again, you need to be more specific. First, it is important to note this is data, it's always good to ''brag`` that your reconstruction method is tested on data.  Second, you need to discuss the actual resolution obtained with both methods and state the improvement achieved with DISP. I think the RMS might be a better test of this and anyway the mean would be too affected by the tail. In fact I think the quantiles are better?? -Orel}
+    {\color{red}Again, you need to be more specific. you need to discuss the actual resolution obtained with both methods and state the improvement achieved with DISP. I think the RMS might be a better test of this and anyway the mean would be too affected by the tail. In fact I think the quantiles are better?? -Orel}
     
     For the analysis described in Chapter~\ref{chapter:analysis}, the disp method is used when reconstructing gamma-ray events.
 
@@ -151,7 +154,6 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
         Data elevations are the same as in Figure~\ref{fig:datapointingelevations}, while training events were simulated at only \ang{28}.
         {\color{red}(Where is the disp improvement???)}
         {\color{red}(Why is the containment radius worse for disp??)}
-        {\color{red}(Redo disp training with 5x events! ??)}
         {\color{red}(change y axis label to Disp/Geometric! ??)}
         {\color{red}(Rerun this histogram for different energies, better to say this had some improvements at some energies or offsets than on average it had no effect.)}
       }
