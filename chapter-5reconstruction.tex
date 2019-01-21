@@ -2,24 +2,26 @@
 \newcommand{\EReco}{$\textrm{E}_{\textrm{Reconstructed}}$}
 \newcommand{\ETrue}{$\textrm{E}_{\textrm{True}}$}
 
-\chapter{Gamma Ray Reconstruction Methods}\label{ch:grrecon}
+\chapter{Gamma-Ray Reconstruction Methods}\label{ch:grrecon}
 
 In Chapter \ref{chapter:veritas}, it was explained how the trigger system initializes the readout of PMT voltage traces.
-To reconstruct gamma rays, the voltage traces induced by Cherenkov photons must be identified and combined to form an image of the original Cherenkov shower.
+This chapter describes how gamma rays are reconstructed.
+In gamma-ray reconstruction, voltage traces induced by Cherenkov photons must be identified and combined to form an image of the original Cherenkov shower.
 Then the shower images from multiple telescopes can be used to reconstruct the original gamma ray's energy and direction.
 
 \section{Pedestal Variation}
   Before reconstructing any events, the pedestal and pedestal variations must be calculated.
   This is done by artificially triggering all pixels once per second during observations, in order to record events that contain only noise.
   The average of the digital counts (dc) of all noise events for each pixel is then the pedestal.
-  From this pedestal, the pedestal variations are then calculated for each pixel as the rms of all the dc counts in all noise events, which can be visualized as the distribution of dc around the mean dc.
+  From this pedestal, the pedestal variations are then calculated for each pixel as the root mean square of all the dc counts in all noise events, which can be visualized as the distribution of dc around the mean dc.
   In this context, noise events can be due to night-sky-background photons, or from electronic noise.
 
 \section{Pixel Identification}
-  The first step is to determine which pixels are part of a shower image.
+  The first step to reconstruct events is to determine which pixels are part of a shower image.
   This is done by subtracting the dc pedestal from the entire trace, and then summing all trace bins within a fixed window, called the integration length, to get the total dc.
 
   Most voltage traces have the same general shape: a quickly rising start of the pulse, followed by a longer, slowly falling tail.
+  This hape can be seen in Figure~\ref{fig:pmt_pulse_widths} in the previous chapter.
   To act as a point of reference in each voltage pulse, the time when the voltage trace is at half of its maximum value is called $T_{0}$.
   The trace is then integrated a second time using a smaller 14 or \SI{24}{ns}-wide time window, starting at $T_0 - 30\%$, to reduce the inclusion of dc from NSB photons and electronic noise.
   This integration is the first of two passes, usually referred to as the double-pass method~\cite{doublepass}.
@@ -28,7 +30,7 @@ Then the shower images from multiple telescopes can be used to reconstruct the o
 
   Once all pixels have been classified, isolated border pixels that have no neighboring image pixel are removed from the image, as they are more likely to be due to noise than Cherenkov photons.
   Then, the time gradient from the image and border pixels can be found by performing a linear fit of the $T_{0}$ times.
-  This time gradient can then be used to place a third integration window for a 
+  This time gradient can then be used to place a third integration window 
 with 30\% of the window before each pixel's $T_{0}$, to more accurately measure the charge due to Cherenkov photons in the pixel.
   This third integration window is the second pass in the double-pass method.
 
@@ -37,15 +39,18 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
   The center of charge is the charge-weighted average of all image and border pixel positions.
   The angle of the shower determines how the image's major axis is oriented in the camera.
   The shower length and width are determined by the rms of the shower image along its major and minor axes, respectively.
+  {\color{red}(find/make a diagram showing shower parameters??)}
 
 \section{Position Reconstruction}\label{subsec:posrecon}
   By examining the images from multiple telescopes, the initial position of the event can be determined.
   This is done by overlapping all telescope images in a single camera coordinate system, and projecting each image's major axis backward in time.
-  These axes should intersect very close together, and the average of the intersection points determines the event's initial direction.
+  These axes should intersect {\color{red}very close together (why not exactly?? -maria)}, and the average of the intersection points determines the event's initial direction.
 
   In averaging the intersection points, weighting for each intersection can be applied based on the angle between the two lines.
   This improves the reconstruction, because the intersection point from two images at \ang{90} angles will be less sensitive to image fluctuations than two images at \ang{160}, as shown in Figure~\ref{fig:largeintersectangle}.
-  Additionally, the disp method described in Section~\ref{subsec:disp} was explored to provide improvements at lower telescope elevations, though no significant benefit was achieved.
+  Additionally, the disp method described in Section~\ref{subsec:disp} was explored to provide improvements at lower telescope elevations.
+  This would be beneficial as the Galactic Center is at a low (<\ang{50}) telescope elevation (see Figure~\ref{fig;datapointingelevations}).
+  However, {\color{red}no significant benefit was achieved (why mention it here?? now there isn't much motivation to read further)}.
 
   \begin{figure}[!t]
     \centering
@@ -59,7 +64,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
   \FloatBarrier
 
   \subsection{Angular Reconstruction with Boosted Decision Trees}\label{subsec:disp}
-    At high elevations, shower images often form small intesection angles, because the telescopes are spread out in two dimensions, relative to the shower in the atmosphere.
+    At high elevations, shower images often form small intersection angles, because the telescopes are spread out in two dimensions, relative to the shower in the atmosphere.
     At low elevations near the Galactic Center, however, the telescope array flattens into one dimension, which makes the shower's impact parameter (the shortest distance between the telescope and the shower core axis) smaller for two of the telescopes.
     These two closer telescopes then have very short, almost circular images, which increases the sensitivity of those two image axes to noisy pixels or shower fluctuations, as shown in Figure~\ref{fig:showerhighlowelev}.
     This also causes the remaining telescope images to have large intersection angles, which also reduces the accuracy of the position reconstruction.
@@ -106,10 +111,10 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
 
     % https://veritas.sao.arizona.edu/wiki/index.php/BDT_Angular_reconstruction
     These parameters for thousands of simulated showers can then be used to train boosted decision trees (BDTs) that estimate the disp for a new shower's images.
-    This estimated disp can then be used with the image axes intersection points to more accurately reconstruct the original gamma-ray point of origin.
+    This estimated disp can then be combined with the image axes intersection points to more accurately reconstruct the original gamma-ray point of origin.
     
-    Once the training is complete, it is tested on a separate set of 17,000 simulated events, which have their true and predicted disps plotted in Figure~\ref{fig:disptraining}.
-    The x axis describes the true disp value for each event, while the y axis describes the disp value estimated by the BDT, with a black $x=y$ line marked, which represents a perfect 1:1 disp reconstruction.
+    Once the training is complete, it is tested on a separate set of {\color{red}17,000 (why this many?? -maria)}simulated events, which have their true and predicted disps plotted in Figure~\ref{fig:disptraining}.
+    The x-axis describes the true disp value for each event, while the y-axis describes the disp value estimated by the BDT, with a black $x=y$ line marked, which represents a perfect 1:1 disp reconstruction.
     To examine how close the predicted disp is to the true disp, a residual plot is shown in Figure~\ref{fig:dispresidual}.
     It shows the $\frac{\textrm{Predicted disp}}{\textrm{True disp}}$ for each true disp bin, including $\pm$ 1 standard deviation errorbars.
     From this residual plot, it can be seen that in nearly all bins the predicted disp is consistant with the true disp.
@@ -141,12 +146,12 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
     This PSF is discussed further in Section~\ref{subsec:psf}.
     The PSF containment radius is calculated from simulations, with both the disp reconstruction method and the regular geometric reconstruction method.
     The ratio of the $\frac{\textrm{disp PSF radius}}{\textrm{geometric PSF radius}}$ is shown in Figure~\ref{fig:disp_psf_comparison}.
-    Because the PSF changes with elevation, azimuth, and several other factors, the average PSF at each gamma-ray energy is shown.
-    This PSF is calculated by a time-weighted averaging over all PSFs used in the Crab Nebula and Galactic Center analyses, described further in Chapter~\ref{chapter:analysis}.
+    Because the PSF changes with telescope elevation, telescope azimuth, and night sky background noise, atmosphere, and offset from the camera center, the average PSF at each gamma-ray energy is shown.
+    This PSF is calculated by a time-weighted averaging over all PSFs used in the two datasets used in this analysis, the Crab Nebula and the Galactic Center, described further in Chapter~\ref{chapter:analysis}.
     The average PSF for the Crab Nebula data is shown by a green line and a green 1-standard-deviation error sheath, and similarly the Galactic Center is shown in blue.
     
     In the figure, the disp method does offer a minor improvement at low energies, but is also worse at higher energies, though both are within the statistical error bars.
-    The lack of improvement may be due to the use of boosted decision trees, whereas a previous study with this method utilized a lookup table of six parameters\cite{Beilicke2012NIM}.
+    The lack of improvement may be due to the use of boosted decision trees, whereas a previous study with this method utilized a lookup table of six parameters, described in Ref.~\cite{Beilicke2012NIM}.
     For the analysis described in Chapter~\ref{chapter:analysis}, the disp method is used when reconstructing gamma-ray events.
     
     \begin{figure}[b]
@@ -165,11 +170,15 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
 \section{Energy Reconstruction}\label{subsec:enrecon}
   To reconstruct the energy of each shower, a lookup table of simulated showers is built.
 This database includes the width and length of the shower, how far away its core position is, how bright it was, as well as its reconstructed and true energy.
-  By searching through this database for showers that are similar to the one being constructed, then interpolating between shower parameters, the shower's true energy can be reconstructed.
+  By searching through this {\color{red}database (do you have a plot of this database?? -maria)} for showers that are similar to the one being constructed, then interpolating between shower parameters, the shower's true energy can be reconstructed.
 
+\section{Gamma-Hadron Separation}
+
+{\color{red}(talk about this for a few sentences??)}
 
 \section{FITS Conversion for Gammalib and CTOOLs}\label{fitsconversion}
   Once gamma rays have been reconstructed with Eventdisplay, they must be exported to Gammalib and CTOOLS~\cite{gammalibctools}.
+  Gammalib and CTOOLS are software that perform the likelihood calculation, which is described further in Section~\ref{sec:likeratio}.
   This involves converting the event list and instrument response functions (IRFs) to a FITS file format.
   These IRFs consist of the effective areas, the point spread functions, the background models, and the energy dispersion.
   The effective area quantifies the total gamma-ray collection area of the observatory, needed for spectral measurements, and is described in Section~\ref{subsec:effarea}.
@@ -178,6 +187,7 @@ This database includes the width and length of the shower, how far away its core
   The background models measure the relative number of observed events in different parts of the camera, and their construction is described in Section~\ref{background_production}.
   The energy dispersion quantifies the distribution of reconstructed energies for a given true energy, and is discussed in Section~\ref{subsec:edisp}.
   
+  {\color{red}(move the next two paragraphs up, to after the "Gammalib and CTOOLS are software"??)}
   During the export, several decisions are baked into the event lists and IRFs.
   As this thesis revolves around an analysis at an elevation of \nicetilde{}\ang{30}, the IRFs may rapidly change.
   At this elevation, with VERITAS's field of view of \ang{3.5}, the airmass column density ($\textrm{g}/\textrm{cm}^2$) is 20\% higher at the bottom of the camera than at the top.
@@ -194,7 +204,7 @@ This database includes the width and length of the shower, how far away its core
     % use effective area as a casual noun!
     % plot of effective area vs energy
     Effective area is the measure of how large an observatory's collection area is, which determines how many gamma rays can be detected per unit time, solid angle, and energy.
-    The effective areas are calculated with \nicetilde 25 million Monte Carlo gamma ray shower simulations for each point in the (atmosphere, elevation, noise, offset) parameter space.
+    The effective areas are calculated with \nicetilde 25 million Monte Carlo gamma-ray shower simulations for each point in the (atmosphere, elevation, noise, offset) parameter space.
     % where $VERITAS_USER_DATA_DIR = /lustre/fs19/group/cta/users/nkelhos/VERITAS/
     % see $VERITAS_USER_DATA_DIR/figure_out_number_of_simulated_showers/read.py
     % run read.py, number of packets is roughly the number of showers, after core 
@@ -209,13 +219,13 @@ This database includes the width and length of the shower, how far away its core
     $A=\pi R^2 \frac{N_{\text{survived}}}{N_{\text{simulated}}}$
     where R is the radius of the area within which simulated showers are directed to fall, $N_{\text{simulated}}$ is the number of showers that were initially simulated into the area, and $N_{\text{survived}}$ is the number of simulated showers that pass all cuts.
     This effective area is thus a measure of how much detection area the observatory would have if it had a 100\% detection efficiency, which can then be used in calculating a source's flux.
-    In Figure~\ref{fig:effarea_paramspace} shows how the effective area peaks to \nicetilde{}\SI{3e5}{m${}^2$} for \SI{3}{\TeV{}} events at the camera center.
+    Figure~\ref{fig:effarea_paramspace} shows how the effective area peaks to \nicetilde{}\SI{3e5}{m${}^2$} for \SI{3}{\TeV{}} events at the camera center.
 
     \begin{figure}[!t]
       \centering
       \includegraphics[width=0.85\textwidth]{images/effarea_plots/effarea_space.pdf}
       \caption[Effective Area Parameter Space]{
-        Effective areas at different points in the Energy and Camera Offset parameter space for run 78128.
+        Effective areas at different points in the energy and camera offset parameter space for run 78128.
         Data is shown as the black points, indicating the position of some events from that run in the parameter space.
         The color axis indicates the Effective Area, calculated from simulations, at different gamma-ray energies and distances from the camera center.
       }
@@ -223,6 +233,7 @@ This database includes the width and length of the shower, how far away its core
     \end{figure}
 
     For the test analyses of the Crab Nebula and the Galactic Center Point Source, the effective areas of all events are shown in Figure~\ref{fig:effarea_usage}.
+    {\color{red}(as can be seen, the distribution fo effective areas is very similar. Thus the Crab Nebula can be used as a test source... add something like this?? -maria)}
 
     \begin{figure}[!t]
       \centering
@@ -251,20 +262,20 @@ This database includes the width and length of the shower, how far away its core
     In the image and position reconstruction, these all means that the same initial gamma ray can develop into a distribution of camera images and reconstructed positions.
     Inversely, a single reconstructed position can come from a distribution of true gamma-ray positions.
 
-    This distribution of reconstructed positions, called the point spread function (PSF), primarily affects the reconstructed shape of gamma-ray emission structures in the sky.
+    This distribution of reconstructed positions is called the point spread function, and primarily affects the reconstructed shape of gamma-ray emission structures in the sky.
     A singular point source, nominally shaped by a Dirac function, is instead distributed out according to the PSF.
     When searching for an extended source, like a dark matter halo, understanding the distribution of reconstructed positions is important.
     A large PSF on all events, for instance, will artificially expand the observed dark matter halo.
 
     For VERITAS, the PSF is estimated by simulating many gamma rays, then measuring the distribution of true positions for each reconstructed position.
-    The distribution of event positions are fitted with a King function~\cite{king1962} (see Equation~\ref{eqn:king}), as the H.E.S.S. collaboration has noted that the King function better models the longer PSF tails at lower elevations (Section 5.2.2 in Ref. \cite{Mayer2015}).
+    The distribution of event positions are fitted with a King function~\cite{king1962} (see Equation~\ref{eqn:king}), as this better models the longer PSF tails at lower elevations (Section 5.2.2 in Ref. \cite{Mayer2015}).
     The radially-normalized King probability density function is defined as
 
     \begin{equation} \label{eqn:king}
     \text{PSF}_{king}(r) = \frac{1}{2 \pi \sigma^{2} } \left( 1 - \frac{1}{\gamma} \right) \left( 1 + \frac{ r^{2} }{ 2 \gamma \sigma^{2} } \right)^{-\gamma}
     \end{equation}
 
-    where $r$ is the angular distance from the reconstructed position, $\sigma$ is similar to the width of a gaussian, and $\gamma$ governs how long the tails are.
+    where $r$ is the angular distance from the reconstructed position, $\sigma$ is analogous to the width of a gaussian, and $\gamma$ governs how long the tails are.
     A King function fitting algorithm was added to Eventdisplay, that fits the $\gamma$ and $\sigma$ parameters to a set of simulated gamma rays.
     This fits well over almost all of the parameter space.
     In Figure~\ref{fig:psf_paramspace}, the PSF is shown for one Sgr A* run.
@@ -291,7 +302,7 @@ This database includes the width and length of the shower, how far away its core
       \includegraphics[width=0.85\textwidth]{images/psf_gc_eventhist/eventpsf.pdf}
       \caption[Crab and Galactic Center Event PSFs]{
         The 68\% containment radius for all Galactic Center and Crab Nebula events used in this analysis.
-        The odd structure is due to the varying effective area at different offsets and energies, which changes the distribution of events in the PSF table, which already has varying.
+        The asymmetric structure is due to the varying effective area at different offsets and energies, which changes the distribution of events in the PSF table.
         The long tails are likely due to events at the edge of the observable energy and offset ranges, where the PSF gets worse.
       }
       \label{fig:gc_psf_hist}
@@ -301,7 +312,7 @@ This database includes the width and length of the shower, how far away its core
   
   \subsection{Background Models}\label{background_production}
   
-    A background model is a 3 dimensional function in camera x (in angle, parallel to azimuth), camera y (in angle, parallel to elevation), and energy.
+    A background model is a three-dimensional function in camera x (in angle, parallel to azimuth), camera y (in angle, parallel to elevation), and energy.
     Each background model is constructed from one of two templates, and the templates are built from dark run observations (see Figure~\ref{fig:gcfieldsofview}).
     These background models calculate the number of expected events in the camera, per unit solid angle, unit time, and unit energy.
     This is used to quantify how many counts are expected in different parts of the camera when observing any target.
@@ -310,7 +321,7 @@ This database includes the width and length of the shower, how far away its core
     Background models with more than three dimensions are also possible, but require many more simulations, and are beyond the scope of this thesis.
     
     The background models used in this analysis are made from two background templates, one for each of the V5/V6 epochs (see Section~\ref{sec:epochs}).
-    The templates are constructed from dark observations, detailed in \ref{veritasdata}.
+    The templates are constructed from dark observations, detailed later in \ref{veritasdata}.
     Each template is made by binning all background events radially by camera position and by their energy, to produce a spectral function.
     This spectral function can be seen in Figure~\ref{fig:background_profile}.
     The radial function at two different energies is shown in Figure~\ref{fig:background_radial}.
@@ -319,7 +330,7 @@ This database includes the width and length of the shower, how far away its core
       \centering
       \includegraphics[width=0.6\textwidth]{images/ctools_background/background_construction.eps}
       \caption[CTOOLS Background Fine Energy Bins]{
-        The V5 Background's fine energy bins.
+        The V5 {\color{red}Background's (?? -maria)} fine energy bins.
         The top plot shows the number of events in each fine energy bin from all background runs.
         The bottom plot shows the background rate, the number of background events divided by the observation time, solid angle, and energy span.
         The black lines show the background rate in each energy bin, while the blue line shows the used background rate after interpolation is applied.
@@ -377,8 +388,8 @@ This database includes the width and length of the shower, how far away its core
       \centering
       \includegraphics[width=0.85\textwidth]{images/edisp_plots/edisp.pdf}
       \caption[Energy Migration Matrix]{
-        An energy migration matrix used with Sgr A* run 82288.
-        The reconstructed energy is on the x axis, and the true energy is on the y axis.
+        An energy migration matrix used with {\color{red}Sgr A* (sometimes I use Sgr A*, sometimes Galactic Center, I should be consistant?? -maria)} run 82288.
+        The reconstructed energy is on the x-axis, and the true energy is on the y-axis.
         The z (color) axis denotes the interpolated number of simulated events that passed all cuts.
         The dark-blue region from \SIrange{4}{70}{TeV} \EReco{} is the range of energies used in this analysis.
         Events at a given \ETrue{} are reconstructed at a spread of \EReco{}.
@@ -403,6 +414,7 @@ This database includes the width and length of the shower, how far away its core
     First, Sgr A* Off data was reconstructed, which has no known gamma-ray source in its field of view.
     The time spent at each telescope elevation is shown in Figure~\ref{fig:back_elevhist}.
     To reduce the effect of the varying telescope elevation, time cuts were applied to select data between \ang{28.5} and \ang{29.5} telescope elevations.
+    This was done to reduce any effects of a large range of telescope elevations, which observe a large range of atmosphere depths {\color{red}(is this better?? -maria)}.
     Note that this is a cut on the telescope pointing, not on the actual event elevations.
 
     \begin{figure}[bt]
@@ -436,7 +448,7 @@ This database includes the width and length of the shower, how far away its core
       \caption[Atmospheric Gradient in the VERITAS Camera]{
         Event energies and camera backgrounds after the pointing elevation cut shown in Figure~\ref{fig:back_elevhist}.
         In the left histograms, blue is all events while green is events in the selected energy range.
-        The right shows 2D histograms, made from the camera azimuths and elevations using the events selected in the histogram to its left.
+        The right shows 2D histograms, made from the camera azimuths and elevations using the green events selected in the histogram to its left.
         The orange dot and circle denote the average event position, and 68\% containment radius for the events in the plot.
         The \SIrange{1.8}{3.2}{TeV} energy range shows events are detected more in the upper half of the camera.
         From \SIrange{4}{6}{TeV}, events are more in the bottom half of the camera, while from \SIrange{6}{70}{TeV} events are closer to the camera center.
@@ -498,7 +510,7 @@ This database includes the width and length of the shower, how far away its core
     
     This effect is important to the analysis because it implies that, at the lowest energies, the background rate is not radially symmetric.
     Radial backgrounds (sometimes referred to as acceptances) are typically used in VERITAS, as no other camera x/y or energy dependence had been demonstrated until now.
-    As the analysis in this thesis only has a few hours of background observations (see Table \ref{tab:observation_times}), only radially symmetric background templates and models could be constructed, which then required limiting the final analysis to $\geq\SI{4}{\TeV{}}$.
+    As the analysis in this thesis only has a few hours of background observations (see Table \ref{tab:observation_times}), {\color{red}only radially symmetric background templates and models could be constructed (first you say the background is not radially symmetric and then you say you only use these ones?? -maria)}, which then required limiting the final analysis to $\geq\SI{4}{\TeV{}}$.
     
     \FloatBarrier
 
@@ -527,7 +539,7 @@ This database includes the width and length of the shower, how far away its core
     If there are bright stars near the Galactic Center, or a large number of disabled pixels in the data, the telescopes would be less sensitive to any dark matter halo.
 
     After gamma-hadron cuts are applied to both sets of events, studies can be performed on events that only appeared in one set and not the other.
-    Some events may only pass gamma-hadron cuts with the pixel enabled ($P_e$), while others only pass when the pxiel is disabled ($P_d$).
+    Some events may only pass gamma-hadron cuts with the pixel enabled ($P_e$), while others only pass when the pixel is disabled ($P_d$).
     Events that are present both when the pixel is disabled and enabled can also be tested to see how far their reconstructed position moved in the camera.
 
     In Figure~\ref{fig:dpix_rel_camera}, the relative event rate in the camera is plotted when pixel 115 is disabled in all four telescopes.
@@ -539,7 +551,7 @@ This database includes the width and length of the shower, how far away its core
       \centering
       \includegraphics[width=0.8\textwidth]{images/disabled_pixel/relativerate_camera}
       \caption[Relative Event Rate After Disabling Camera Pixels]{
-        Event rate in the camera with pixel 115 disabled (denoted by the black circle) in all four telescopes, relative to having all pixels enabled.
+        Event rate in the camera with pixel 115 disabled (denoted by the {\color{red}black circle (is the circle just pixel 115 or the surrounding pixels too?? -maria)}) in all four telescopes, relative to having all pixels enabled.
         Camera coordinate axes are parallel to azimuth and elevation.
       }
       \label{fig:dpix_rel_camera}
@@ -555,7 +567,7 @@ This database includes the width and length of the shower, how far away its core
       \includegraphics[width=0.8\textwidth]{images/disabled_pixel/relativerate_radial.pdf}
       \caption[Relative Event Rate After Disabling Camera Pixels]{
         Event rate in the camera with pixel 115 disabled (denoted by the black circle) in all four telescopes, relative to having all pixels enabled.
-        X axis shows the angular distance from the disabled pixel.
+        The x-axis shows the angular distance from the disabled pixel.
       }
       \label{fig:dpix_rel_radial}
     \end{figure}
@@ -584,7 +596,7 @@ This database includes the width and length of the shower, how far away its core
     % Sgr A*     runs: 127611pixmin/14553421pixmin = 0.877% 
     % Sgr A* Off runs:  28813pixmin/ 2458631pixmin = 1.172%
     
-    While this single-pixel loss-of-events effect was notable, it was not incorporated into the main analysis of this thesis.
+    {\color{red}While this single-pixel loss-of-events effect was notable, it was not incorporated into the main analysis of this thesis (Then I would write something like "The effect is very small and thus negligible, and move it to the end, as it somehow demotivates to read further as it is not needed for your analysis.)}.
     This was because for the Galactic Center analyzed in this thesis, there are relatively few disabled pixels.
     For the three observing targets described in Chapter~\ref{chapter:analysis}, the amount of time pixels spend disabled was calculated.
     The Crab Nebula observations had a total of 2,245,377 pixel-minutes, while 37,701 pixel-minutes were lost due to pixels being disabled, about 1.68\%.
@@ -600,14 +612,15 @@ This database includes the width and length of the shower, how far away its core
     Note however, that the majority of these event losses are not gamma rays from the observing target, but are instead lost background events near (<\ang{0.5}) the position of the stars that disabled pixels.
     A gamma-ray source that also emitted optical photons, or a gamma-ray source transiting across an optical one, or visa versa, would all be susceptible to having its flux underestimated due to this effect.
     Due to the scarcity of bright ($V_{mag}<3$) visible stars and bright gamma-ray sources, this syzygy is extremely rare.
-    Another reason these disabled pixels are not accounted for is discussed in Chapter~\ref{chapter:analysis}, where small disabled-pixel effect is dwarfed by the problems with modeling how the background rate is affected by the atmospheric gradient.
+    {\color{red}Another reason these disabled pixels are not accounted for is discussed in Chapter~\ref{chapter:analysis}, where small disabled-pixel effect is dwarfed by the problems with modeling how the background rate is affected by the atmospheric gradient.
     Future analyses may be able to account for these effects in their models of the background rates and effective areas.
+    (Please move to a later stage and/or conclusion/outlook?? -maria)}
 
     \begin{table}[t]
       \centering
       \begin{tabular}{|l|l|r|r|}
         \hline
-        \textbf{Source} & \textbf{Star} & \textbf{Distance} & \textbf{V${}_{mag}$} \\ 
+        \textbf{Source} & \textbf{Star} & \textbf{Angle} & \textbf{V${}_{mag}$} \\ 
                         &               & [deg]             &                      \\
         \hline
         Crab Nebula & HIP26451 & 1.13 & 2.97 \\
@@ -634,7 +647,7 @@ This database includes the width and length of the shower, how far away its core
         A list of nearby stars for each observing source in this analysis.
         The source column is star's closest source.
         The 2nd column is the star's Hipparcos catalogue code.
-        The 3rd column is the angular radius between the star and the source, in degrees.
+        The 3rd column is the angle between the star and the source, in degrees.
         The 4th column is the visual magnitude, taken from Ref.~\cite{hipparcos_catalogue}.
         Rows are sorted by source, then visual magnitude.
         Only stars brighter than V${}_{mag}=$ 6.5 are shown.
@@ -672,6 +685,7 @@ This database includes the width and length of the shower, how far away its core
       \includegraphics[width=0.8\textwidth]{images/disabled_pixel/appearing_events}
       \caption[New Events that Appear when Disabling Camera Pixels]{
         Positions of new events that appeared when pixel 115 was disabled in all four telescopes.
+        {\color{red}(why are there pixels at the pixel location or is this the dark spot there meaning 0 events?? -maria)}
         Positions are from their pixel-disabled reconstructed position.
       }
       \label{fig:dpix_appear}
@@ -682,7 +696,7 @@ This database includes the width and length of the shower, how far away its core
     It should be noted that relatively few (0.7\%, or 117 out of the 15010 events in an average 20-minute long Crab Nebula run) move more than this, and the events that do move are mostly ones with non-compact image shapes that are amputated when a pixel is disabled.
 
     What can be learned from this is that a negligbly small number of events' positions depend on a given pixel.
-    Though, interestingly, disabled pixels have an impact on events' reconstructed positions, even from halfway across the camera.
+    Though, interestingly{\color{red}(?? -maria)}, disabled pixels have an impact on events' reconstructed positions, even from halfway across the camera.
     This may imply that the gamma-ray PSF is, to second order, dependent on the number of disabled pixels, though no studies were done to confirm this.
 
     \begin{figure}[!ht]
@@ -710,7 +724,7 @@ This database includes the width and length of the shower, how far away its core
     Future studies could also compare how events move in energy when a pixel is disabled.
     Another study might investigate how the reconstructed shower-telescope distance changes, since a shower with fewer pixels will look further away, and may be reconstructed differently.
     Another possibility is that, for VERITAS or future CTA observations where pixels are disabled (either due to stars or maintainance), customized background models can be constructed that account for the specific configuration of disabled pixels.
-    Since the disabled pixel information (which pixels and the disable/enable times) is saved as part of regular obseravtion monitoring, this can be used to apply gaussian event-rate penalties to any background models.
+    Since the disabled pixel information (which pixels and the disable/enable times) is saved as part of regular observation monitoring, this can be used to apply gaussian event-rate penalties to any background models.
     In general, when a pixel is disabled, it is expected that lower energy events and showers further away will be more vulnerable, and will show stronger differences than higher energy events or closer showers.
 
 
