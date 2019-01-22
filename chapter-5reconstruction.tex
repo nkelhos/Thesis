@@ -200,7 +200,7 @@ Then for each shower, a Mean Scaled Length (MSCW) and Mean Scaled Width (MSCW) c
 \end{equation}
 
 Gamma-ray showers and proton showers have different distributions of MSCW and MSCL (proton showers tend to be wider), so cuts are applied on these two parameters to partially filter out the proton showers.
-{\color{red}(talk about this for a few sentences??)}
+{\color{red}(is this better??)}
 
 \section{FITS Conversion for Gammalib and CTOOLs}\label{fitsconversion}
   Once gamma rays have been reconstructed with Eventdisplay, they must be exported to Gammalib and CTOOLS~\cite{gammalibctools}.
@@ -440,7 +440,8 @@ Gamma-ray showers and proton showers have different distributions of MSCW and MS
     First, Sgr A* Off data was reconstructed, which has no known gamma-ray source in its field of view.
     The time spent at each telescope elevation is shown in Figure~\ref{fig:back_elevhist}.
     To reduce the effect of the varying telescope elevation, time cuts were applied to select data between \ang{28.5} and \ang{29.5} telescope elevations.
-    This was done to reduce any effects of a large range of telescope elevations, which observe a large range of atmosphere depths {\color{red}(is this better?? -maria)}.
+    This was done to reduce any effects of a large range of telescope elevations.
+    As the shape of the atmospheric interaction volume strongly depends on the telescope elevation, a small elevation range helps isolate atmosphere-dependent effects {\color{red}(is this better?? -maria)}.
     Note that this is a cut on the telescope pointing, not on the actual event elevations.
 
     \begin{figure}[bt]
