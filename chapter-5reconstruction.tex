@@ -38,8 +38,21 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
   These parameters include the shower size in photoelectrons (or equivalent units), center of charge, angle, length, and width.
   The center of charge is the charge-weighted average of all image and border pixel positions.
   The angle of the shower determines how the image's major axis is oriented in the camera.
-  The shower length and width are determined by the rms of the shower image along its major and minor axes, respectively.
-  {\color{red}(find/make a diagram showing shower parameters??)}
+  The shower length and width are determined by the rms of the shower image along its major and minor axes, respectively, as shown in Figure~\ref{fig:shower_param}.
+  
+  \begin{figure}[b]
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/shower_parameter_diagram/diagram.pdf}
+    \caption[Basic Shower Diagram]{
+      An example shower image in one VERITAS camera.
+      The grey circles are the locations of PMTs.
+      Red circles are PMTs that have detected Cherenkov photons.
+    }
+    \label{fig:shower_param}
+  \end{figure}
+  \FloatBarrier
+  
+  
 
 \section{Position Reconstruction}\label{subsec:posrecon}
   By examining the images from multiple telescopes, the initial position of the event can be determined.
@@ -49,7 +62,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
   In averaging the intersection points, weighting for each intersection can be applied based on the angle between the two lines.
   This improves the reconstruction, because the intersection point from two images at \ang{90} angles will be less sensitive to image fluctuations than two images at \ang{160}, as shown in Figure~\ref{fig:largeintersectangle}.
   Additionally, the disp method described in Section~\ref{subsec:disp} was explored to provide improvements at lower telescope elevations.
-  This would be beneficial as the Galactic Center is at a low (<\ang{50}) telescope elevation (see Figure~\ref{fig;datapointingelevations}).
+  This would be beneficial as the Galactic Center is at a low (<\ang{50}) telescope elevation (see Figure~\ref{fig:datapointingelevations}).
   However, {\color{red}no significant benefit was achieved (why mention it here?? now there isn't much motivation to read further)}.
 
   \begin{figure}[!t]
@@ -174,6 +187,19 @@ This database includes the width and length of the shower, how far away its core
 
 \section{Gamma-Hadron Separation}
 
+After characterizing the parameters of each shower, the gamma-ray showers must be selected, and the proton showers filtered out.
+Monte Carlo simulations of gamma-ray showers are performed at many energies, impact parameters (distance from the core position on the ground and the array center), shower directions, and night sky background levels.
+At each point in this parameter space, the distribution of shower lengths and widths are measured, and the median length ($l_{\textrm{median}}$) and width ($w_{\textrm{median}}$) plus the 90\%-distribution-spread for the lengths and widths ($l_{\textrm{spread}}$, $w_{\textrm{spread}}$) are saved to a table.
+Then for each shower, a Mean Scaled Length (MSCW) and Mean Scaled Width (MSCW) can be calculated with Equation~\ref{eqn:mscwl}.
+
+\begin{equation}\label{eqn:mscwl}
+  \begin{split}
+    \textrm{MSCW}_{\textrm{shower}} & = \frac{w_{\textrm{shower}}-w_{\textrm{median}}}{w_{\textrm{spread}}} \\
+    \textrm{MSCL}_{\textrm{shower}} & = \frac{l_{\textrm{shower}}-l_{\textrm{median}}}{l_{\textrm{spread}}}
+  \end{split}
+\end{equation}
+
+Gamma-ray showers and proton showers have different distributions of MSCW and MSCL (proton showers tend to be wider), so cuts are applied on these two parameters to partially filter out the proton showers.
 {\color{red}(talk about this for a few sentences??)}
 
 \section{FITS Conversion for Gammalib and CTOOLs}\label{fitsconversion}
