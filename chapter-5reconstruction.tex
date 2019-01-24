@@ -266,10 +266,9 @@ See Ref.~\cite{Krause2017} for a more thorough discussion on gamma-hadron separa
       \label{fig:effarea_paramspace}
     \end{figure}
 
-    For the test analyses of the Crab Nebula and the Galactic Center Point Source, the effective areas of all events are shown in Figure~\ref{fig:effarea_usage}.
-    {\color{red}(as can be seen, the distribution fo effective areas is very similar. Thus the Crab Nebula can be used as a test source... add something like this?? -maria)}
-    {\color{red}(explain that the Crab Nebula analysis is a test for the main GC analysis??)}
-
+    For the the Crab Nebula and Sgr A* data, the effective areas of all events are shown in Figure~\ref{fig:effarea_usage}.
+    The Crab Nebula acts as a known \textit{standard candle} source to test out the analysis, before attempting to search for dark matter within the Sgr A* data.
+    
     \begin{figure}[!t]
       \centering
       \begin{tabular}{c}
@@ -515,7 +514,7 @@ See Ref.~\cite{Krause2017} for a more thorough discussion on gamma-hadron separa
     The middle plot indicates a specific energy range used in the bottom plot.
     When events in this limited energy range are plotted in the bottom plot, a faint deficit appears along the bottom of the camera.
     
-    \begin{figure}[!p]
+    \begin{figure}[p]
       \centering
       \includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_srccrab.eps}
       \caption[Background Vs Elevation Crab Nebula]
@@ -529,7 +528,7 @@ See Ref.~\cite{Krause2017} for a more thorough discussion on gamma-hadron separa
       \label{fig:bkgvsel_crab}
     \end{figure}
     
-    \begin{figure}[!p]
+    \begin{figure}[p]
       \centering
       \includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_srcsgra.eps}
       \caption[Background Vs Elevation Sgr A*]
@@ -553,11 +552,12 @@ See Ref.~\cite{Krause2017} for a more thorough discussion on gamma-hadron separa
     
     This effect is important to the analysis because it implies that, at the lowest energies, the background rate is not radially symmetric.
     Radial backgrounds (sometimes referred to as acceptances) are typically used in VERITAS, as no other camera x/y or energy dependence had been demonstrated until now.
-    As the analysis in this thesis only has a few hours of background observations (see Table \ref{tab:observation_times}), {\color{red}only radially symmetric background templates and models could be constructed (first you say the background is not radially symmetric and then you say you only use these ones?? -maria)}, which then required limiting the final analysis to $\geq\SI{4}{\TeV{}}$.
-    {\color{red}(explain that this atmospheric gradient is not negligible, and was not handles due to time constratins.  Future analyses of GC should properly handle this??)}
+    Due to a limited amount of background data (see Table~\ref{tab:observation_times}), only radially-dependent backgrounds are used in this analysis.
+    To attempt to reduce the effect of the non-uniform atmosphere, the event energies were limited to \SIrange{4}{70}{TeV}.
+    Even with this limited energy range, the atmospheric effect is still prominant, and studied further in Section~\ref{sec:elevgradient}.
     
     Additional studies were performed to test if bright stars near the Galactic Center might affect a dark matter search, and are detailed in Appendix~\ref{app:starpixels}.
-    Bright stars were found to have a negligible effect, and were not included in the analysis.
+    Bright stars were found to have a negligible effect, and were ignored in this analysis.
     
     \FloatBarrier
 
