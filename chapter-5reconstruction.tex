@@ -201,23 +201,21 @@ Then for each shower, a Mean Scaled Length (MSCW) and Mean Scaled Width (MSCW) c
 \end{equation}
 
 Gamma-ray showers and proton showers have different distributions of MSCW and MSCL (proton showers tend to be wider), so cuts are applied on these two parameters to partially filter out the proton showers.
-{\color{red}(add reference to maria's thesis (maybe henrikes to) for more detailed??)}
+See Ref.~\cite{Krause2017} for a more thorough discussion on gamma-hadron separation.
 
 \section{FITS Conversion for Gammalib and CTOOLs}\label{fitsconversion}
   Once gamma rays have been reconstructed with Eventdisplay, they must be exported to Gammalib and CTOOLS~\cite{gammalibctools}.
   Gammalib and CTOOLS are software that perform the likelihood calculation, which is described further in Section~\ref{sec:likeratio}.
-  {\color{red}(explain why its beneficial to use gammalib/ctools (automatic model convolution, easy comparison with hess/magic, easier integration into future cta analyses??)}
-  This involves converting the event list and instrument response functions (IRFs) to a FITS file format.
-  
-  {\color{red}(move all the section references in this paragraph to the end of this section??)}
-  These IRFs consist of the effective areas, the point spread functions, the background models, and the energy dispersion.
-  The effective area quantifies the total gamma-ray collection area of the observatory, needed for spectral measurements, and is described in Section~\ref{subsec:effarea}.
+  This software posesses several useful features, including automatic model convolution with instrument response functions (IRFs) and easier comparison with results from other gamma-ray telescopes like H.E.S.S. and MAGIC.
+  This software is also one of the main high-level analysis tools to be used by the Cherenkov Telescope Array (CTA), making it and easier to include VERITAS data into future CTA analyses.
+
+  Exporting gamma-ray data to this software involves converting the event list and IRFs to a FITS file format.
+  The IRFs consist of the effective areas, the point spread functions, the background models, and the energy dispersion.
+  The effective area quantifies the total gamma-ray collection area of the observatory, used in spectral measurements.
   The point spread function quantifies the distribution of reconstructed positions for a given true position, which is needed for modeling point sources and extended spatial structures.
-  This is described further in Section~\ref{subsec:psf}.
-  The background models measure the relative number of observed events in different parts of the camera, and their construction is described in Section~\ref{background_production}.
-  The energy dispersion quantifies the distribution of reconstructed energies for a given true energy, and is discussed in Section~\ref{subsec:edisp}.
+  The background models measure the relative number of observed events in different parts of the camera.
+  The energy dispersion quantifies the distribution of reconstructed energies for a given true energy.
   
-  {\color{red}(move the next two paragraphs up, to after the "Gammalib and CTOOLS are software"??)}
   During the export, several decisions are baked into the event lists and IRFs.
   As this thesis revolves around an analysis at an elevation of \nicetilde{}\ang{30}, the IRFs may rapidly change.
   At this elevation, with VERITAS's field of view of \ang{3.5}, the airmass column density ($\textrm{g}/\textrm{cm}^2$) is 20\% higher at the bottom of the camera than at the top.
@@ -227,6 +225,9 @@ Gamma-ray showers and proton showers have different distributions of MSCW and MS
   To reduce the impact of this, observations are broken up into 8-minute-long parts.
   For each of these 8 minute parts, IRFs are exported alongside the observation.
   A part's average elevation, azimuth, and night sky background rate are used to select the best-matching IRFs for that part.
+  
+  The next subsections discuss each IRF individually.
+  The effective areas are described in Section~\ref{subsec:effarea}, the point spread function in Section~\ref{subsec:psf}, the background models in Section~\ref{background_production}, and the energy dispersion in Section~\ref{subsec:edisp}.
 
   \FloatBarrier
   
@@ -257,18 +258,21 @@ Gamma-ray showers and proton showers have different distributions of MSCW and MS
       \caption[Effective Area Parameter Space]{
         Effective areas at different points in the energy and camera offset parameter space for run 78128.
         Data is shown as the black points, indicating the position of some events from that run in the parameter space.
-        The color axis indicates the Effective Area, calculated from simulations, at different gamma-ray energies and distances from the camera center.
+        The color axis indicates the effective area, calculated from simulations, at different gamma-ray energies and distances from the camera center.
       }
       \label{fig:effarea_paramspace}
     \end{figure}
 
     For the test analyses of the Crab Nebula and the Galactic Center Point Source, the effective areas of all events are shown in Figure~\ref{fig:effarea_usage}.
     {\color{red}(as can be seen, the distribution fo effective areas is very similar. Thus the Crab Nebula can be used as a test source... add something like this?? -maria)}
-    {\color{red}(explain that the Crab Nebula analysis is a test for the main GC analysis??)
+    {\color{red}(explain that the Crab Nebula analysis is a test for the main GC analysis??)}
 
     \begin{figure}[!t]
       \centering
-      \includegraphics[width=0.85\textwidth]{images/effarea_plots/effarea_events.pdf}
+      \begin{tabular}{c}
+        \includegraphics[width=0.85\textwidth]{images/effarea_plots/effarea_events_crab.pdf} \\
+        \includegraphics[width=0.85\textwidth]{images/effarea_plots/effarea_events_sgra.pdf}
+      \end{tabular}
       \caption[Effective Areas Used]{
       Illustration of the effective areas used by all events in each analysis.
       From these plots, it is easy to check for events with anomalously high (>\SI{400000}{m${}^2$}) or low (\nicetilde\SI{0}{m${}^2$}) effective areas.
@@ -316,10 +320,10 @@ Gamma-ray showers and proton showers have different distributions of MSCW and MS
     % plot of psfs from chunkplot
     \begin{figure}[!ht]
       \centering
-      \includegraphics[width=0.85\textwidth]{images/psf_king_plots/psf_parameter_space.pdf}
+      \includegraphics[width=0.95\textwidth]{images/psf_king_plots/psf_parameter_space.pdf}
       \caption[PSF Parameter Space]{
-        The 68\% containment radius for the Energy/Offset parameter space for Sgr A* run 78128. 
-        The green points are from data, showing a subset of the event locations from run 78128 in the parameter space.
+        The 68\% containment radius for the energy/offset parameter space for Sgr A* run 78128. 
+        The black points are from data, showing a subset of the event locations from run 78128 in the parameter space.
         The color axis is the containment radius, calculated from simulations.
         While events from all energies are shown, only events from \SIrange{4}{70}{\TeV{}} are used (see Section~\ref{sec:crab_analysis}).
       }
@@ -330,9 +334,13 @@ Gamma-ray showers and proton showers have different distributions of MSCW and MS
 
     \begin{figure}[!hb]
       \centering
-      \includegraphics[width=0.85\textwidth]{images/psf_gc_eventhist/eventpsf.pdf}
+      \begin{tabular}{c}
+        \includegraphics[width=0.85\textwidth]{images/psf_gc_eventhist/eventpsf_crab.pdf} \\
+        \includegraphics[width=0.85\textwidth]{images/psf_gc_eventhist/eventpsf_sgra.pdf}
+      \end{tabular}
+      %\includegraphics[width=0.85\textwidth]{images/psf_gc_eventhist/eventpsf.pdf}
       \caption[Crab and Galactic Center Event PSFs]{
-        The 68\% containment radius for all Galactic Center and Crab Nebula events used in this analysis.
+        The 68\% containment radius for all Crab Nebula and Sgr A* events used in this analysis.
         The asymmetric structure is due to the varying effective area at different offsets and energies, which changes the distribution of events in the PSF table.
         The long tails are likely due to events at the edge of the observable energy and offset ranges, where the PSF gets worse.
       }
@@ -419,7 +427,7 @@ Gamma-ray showers and proton showers have different distributions of MSCW and MS
       \centering
       \includegraphics[width=0.85\textwidth]{images/edisp_plots/edisp.pdf}
       \caption[Energy Migration Matrix]{
-        An energy migration matrix used with {\color{red}Sgr A* (sometimes I use Sgr A*, sometimes Galactic Center, I should be consistant?? -maria)} run 82288.
+        An energy migration matrix used with Sgr A* run 82288.
         {\color{red}(change plot title GC-> Sgr A*, and add clarifying sentence early in thesis about difference between GC and Sgr A* ??)}
         The reconstructed energy is on the x-axis, and the true energy is on the y-axis.
         The z (color) axis denotes the interpolated number of simulated events that passed all cuts.

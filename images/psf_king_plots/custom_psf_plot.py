@@ -51,7 +51,7 @@ cb  = fig.colorbar( im )
 
 # label things
 cb.set_label(r'%.0f%% Containment Radius [${}^{\circ}$]' % (frac*100.0)    )
-plt.title(   'PSF %d%% Containment Radius for Galactic Center Run %d' % ( int(frac*100.0), runnumber ), fontsize=15 )
+plt.title(   'PSF %d%% Containment Radius for Sgr A* Run %d' % ( int(frac*100.0), runnumber ), fontsize=15 )
 plt.xlabel(  r'Event Energy [TeV]', fontsize=15 )
 plt.ylabel(  r'Angle from Camera Center [${}^{\circ}$]', fontsize=15 )
 plt.tick_params(axis='both', which='major', labelsize=15 )
@@ -83,5 +83,5 @@ plt.gca().set_xlim([enmin.log10TeV()+(endelta*0.5), enmax.log10TeV()-(endelta*0.
 plt.gca().set_ylim([thmin           +(thdelta*0.5), thmax           -(thdelta*0.5)])
   
 plt.savefig( fname , bbox_inches='tight', dpi=300 )
-plt.savefig( os.path.splitext(fname)[0]+'.png' , bbox_inches='tight', dpi=300 )
+#plt.savefig( os.path.splitext(fname)[0]+'.png' , bbox_inches='tight', dpi=300 )
 
