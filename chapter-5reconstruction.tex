@@ -57,13 +57,13 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
 \section{Position Reconstruction}\label{subsec:posrecon}
   By examining the images from multiple telescopes, the initial position of the event can be determined.
   This is done by overlapping all telescope images in a single camera coordinate system, and projecting each image's major axis backward in time.
-  These axes should intersect {\color{red}very close together (why not exactly?? -maria)}, and the average of the intersection points determines the event's initial direction.
-
+  These axes should intersect very close together, and the average of the intersection points determines the event's initial direction.
+  The axes tend to not intersect perfectly, as atmospheric absorption and night sky background photons can add and remove photons from the shower image.
+  
   In averaging the intersection points, weighting for each intersection can be applied based on the angle between the two lines.
   This improves the reconstruction, because the intersection point from two images at \ang{90} angles will be less sensitive to image fluctuations than two images at \ang{160}, as shown in Figure~\ref{fig:largeintersectangle}.
   Additionally, the disp method described in Section~\ref{subsec:disp} was explored to provide improvements at lower telescope elevations.
   This would be beneficial as the Galactic Center is at a low (<\ang{50}) telescope elevation (see Figure~\ref{fig:datapointingelevations}).
-  However, {\color{red}no significant benefit was achieved (why mention it here?? now there isn't much motivation to read further)}.
 
   \begin{figure}[!t]
     \centering
@@ -126,7 +126,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
     These parameters for thousands of simulated showers can then be used to train boosted decision trees (BDTs) that estimate the disp for a new shower's images.
     This estimated disp can then be combined with the image axes intersection points to more accurately reconstruct the original gamma-ray point of origin.
     
-    Once the training is complete, it is tested on a separate set of {\color{red}17,000 (why this many?? -maria)}simulated events, which have their true and predicted disps plotted in Figure~\ref{fig:disptraining}.
+    Once the training is complete, it is tested on a separate set of 17,000 simulated events, which have their true and predicted disps plotted in Figure~\ref{fig:disptraining}.
     The x-axis describes the true disp value for each event, while the y-axis describes the disp value estimated by the BDT, with a black $x=y$ line marked, which represents a perfect 1:1 disp reconstruction.
     To examine how close the predicted disp is to the true disp, a residual plot is shown in Figure~\ref{fig:dispresidual}.
     It shows the $\frac{\textrm{Predicted disp}}{\textrm{True disp}}$ for each true disp bin, including $\pm$ 1 standard deviation errorbars.
@@ -184,6 +184,7 @@ with 30\% of the window before each pixel's $T_{0}$, to more accurately measure 
   To reconstruct the energy of each shower, a lookup table of simulated showers is built.
 This database includes the width and length of the shower, how far away its core position is, how bright it was, as well as its reconstructed and true energy.
   By searching through this {\color{red}database (do you have a plot of this database?? -maria)} for showers that are similar to the one being constructed, then interpolating between shower parameters, the shower's true energy can be reconstructed.
+  {\color{red}(add two plots from the lookup tables, see heike/henrike/moritz/maria theses for example plots??)}
 
 \section{Gamma-Hadron Separation}
 
@@ -200,12 +201,15 @@ Then for each shower, a Mean Scaled Length (MSCW) and Mean Scaled Width (MSCW) c
 \end{equation}
 
 Gamma-ray showers and proton showers have different distributions of MSCW and MSCL (proton showers tend to be wider), so cuts are applied on these two parameters to partially filter out the proton showers.
-{\color{red}(is this better??)}
+{\color{red}(add reference to maria's thesis (maybe henrikes to) for more detailed??)}
 
 \section{FITS Conversion for Gammalib and CTOOLs}\label{fitsconversion}
   Once gamma rays have been reconstructed with Eventdisplay, they must be exported to Gammalib and CTOOLS~\cite{gammalibctools}.
   Gammalib and CTOOLS are software that perform the likelihood calculation, which is described further in Section~\ref{sec:likeratio}.
+  {\color{red}(explain why its beneficial to use gammalib/ctools (automatic model convolution, easy comparison with hess/magic, easier integration into future cta analyses??)}
   This involves converting the event list and instrument response functions (IRFs) to a FITS file format.
+  
+  {\color{red}(move all the section references in this paragraph to the end of this section??)}
   These IRFs consist of the effective areas, the point spread functions, the background models, and the energy dispersion.
   The effective area quantifies the total gamma-ray collection area of the observatory, needed for spectral measurements, and is described in Section~\ref{subsec:effarea}.
   The point spread function quantifies the distribution of reconstructed positions for a given true position, which is needed for modeling point sources and extended spatial structures.
@@ -260,6 +264,7 @@ Gamma-ray showers and proton showers have different distributions of MSCW and MS
 
     For the test analyses of the Crab Nebula and the Galactic Center Point Source, the effective areas of all events are shown in Figure~\ref{fig:effarea_usage}.
     {\color{red}(as can be seen, the distribution fo effective areas is very similar. Thus the Crab Nebula can be used as a test source... add something like this?? -maria)}
+    {\color{red}(explain that the Crab Nebula analysis is a test for the main GC analysis??)
 
     \begin{figure}[!t]
       \centering
@@ -356,7 +361,7 @@ Gamma-ray showers and proton showers have different distributions of MSCW and MS
       \centering
       \includegraphics[width=0.6\textwidth]{images/ctools_background/background_construction.eps}
       \caption[CTOOLS Background Fine Energy Bins]{
-        The V5 {\color{red}Background's (?? -maria)} fine energy bins.
+        The V5 background's fine energy bins.
         The top plot shows the number of events in each fine energy bin from all background runs.
         The bottom plot shows the background rate, the number of background events divided by the observation time, solid angle, and energy span.
         The black lines show the background rate in each energy bin, while the blue line shows the used background rate after interpolation is applied.
@@ -415,6 +420,7 @@ Gamma-ray showers and proton showers have different distributions of MSCW and MS
       \includegraphics[width=0.85\textwidth]{images/edisp_plots/edisp.pdf}
       \caption[Energy Migration Matrix]{
         An energy migration matrix used with {\color{red}Sgr A* (sometimes I use Sgr A*, sometimes Galactic Center, I should be consistant?? -maria)} run 82288.
+        {\color{red}(change plot title GC-> Sgr A*, and add clarifying sentence early in thesis about difference between GC and Sgr A* ??)}
         The reconstructed energy is on the x-axis, and the true energy is on the y-axis.
         The z (color) axis denotes the interpolated number of simulated events that passed all cuts.
         The dark-blue region from \SIrange{4}{70}{TeV} \EReco{} is the range of energies used in this analysis.
@@ -441,7 +447,7 @@ Gamma-ray showers and proton showers have different distributions of MSCW and MS
     The time spent at each telescope elevation is shown in Figure~\ref{fig:back_elevhist}.
     To reduce the effect of the varying telescope elevation, time cuts were applied to select data between \ang{28.5} and \ang{29.5} telescope elevations.
     This was done to reduce any effects of a large range of telescope elevations.
-    As the shape of the atmospheric interaction volume strongly depends on the telescope elevation, a small elevation range helps isolate atmosphere-dependent effects {\color{red}(is this better?? -maria)}.
+    Because the shape of the atmospheric interaction volume strongly depends on the telescope elevation, a small elevation range helps isolate atmosphere-dependent effects.
     Note that this is a cut on the telescope pointing, not on the actual event elevations.
 
     \begin{figure}[bt]
@@ -538,10 +544,12 @@ Gamma-ray showers and proton showers have different distributions of MSCW and MS
     This effect is important to the analysis because it implies that, at the lowest energies, the background rate is not radially symmetric.
     Radial backgrounds (sometimes referred to as acceptances) are typically used in VERITAS, as no other camera x/y or energy dependence had been demonstrated until now.
     As the analysis in this thesis only has a few hours of background observations (see Table \ref{tab:observation_times}), {\color{red}only radially symmetric background templates and models could be constructed (first you say the background is not radially symmetric and then you say you only use these ones?? -maria)}, which then required limiting the final analysis to $\geq\SI{4}{\TeV{}}$.
+    {\color{red}(explain that this atmospheric gradient is not negligible, and was not handles due to time constratins.  Future analyses of GC should properly handle this??)}
     
     \FloatBarrier
 
   \subsection{Effect of Stars}
+    {\color{red}(consider moving this stuff to the appendix??)}
     Understanding the camera's background is important for accurately modeling extended sources like dark matter halos.
     The camera's background shape is due to the performance of many individual camera pixels working together.
     VERITAS onsite operators had, in the past, noted that for apparent visible magnitude $m_V :$ 6-8 stars, the camera pixels they illuminated would have a higher average current.
@@ -580,6 +588,7 @@ Gamma-ray showers and proton showers have different distributions of MSCW and MS
       \caption[Relative Event Rate After Disabling Camera Pixels]{
         Event rate in the camera with pixel 115 disabled (denoted by the {\color{red}black circle (is the circle just pixel 115 or the surrounding pixels too?? -maria)}) in all four telescopes, relative to having all pixels enabled.
         Camera coordinate axes are parallel to azimuth and elevation.
+        {\color{red}(explain these are reconstructed positions, separate from pixel positions??)}
       }
       \label{fig:dpix_rel_camera}
     \end{figure}
@@ -623,7 +632,8 @@ Gamma-ray showers and proton showers have different distributions of MSCW and MS
     % Sgr A*     runs: 127611pixmin/14553421pixmin = 0.877% 
     % Sgr A* Off runs:  28813pixmin/ 2458631pixmin = 1.172%
     
-    {\color{red}While this single-pixel loss-of-events effect was notable, it was not incorporated into the main analysis of this thesis (Then I would write something like "The effect is very small and thus negligible, and move it to the end, as it somehow demotivates to read further as it is not needed for your analysis.)}.
+    {\color{red}While this single-pixel loss-of-events effect was notable, it was not incorporated into the main analysis of this thesis (Then I would write something like "The effect is very small and thus negligible, and move it to the end, as it somehow demotivates to read further as it is not needed for your analysis. ??)}.
+    {\color{red}(move to appendix!??)}
     This was because for the Galactic Center analyzed in this thesis, there are relatively few disabled pixels.
     For the three observing targets described in Chapter~\ref{chapter:analysis}, the amount of time pixels spend disabled was calculated.
     The Crab Nebula observations had a total of 2,245,377 pixel-minutes, while 37,701 pixel-minutes were lost due to pixels being disabled, about 1.68\%.
@@ -713,6 +723,7 @@ Gamma-ray showers and proton showers have different distributions of MSCW and MS
       \caption[New Events that Appear when Disabling Camera Pixels]{
         Positions of new events that appeared when pixel 115 was disabled in all four telescopes.
         {\color{red}(why are there pixels at the pixel location or is this the dark spot there meaning 0 events?? -maria)}
+        {\color{red}(clearer recon pixel vs pmt pixel??)}
         Positions are from their pixel-disabled reconstructed position.
       }
       \label{fig:dpix_appear}
@@ -724,6 +735,7 @@ Gamma-ray showers and proton showers have different distributions of MSCW and MS
 
     What can be learned from this is that a negligbly small number of events' positions depend on a given pixel.
     Though, interestingly{\color{red}(?? -maria)}, disabled pixels have an impact on events' reconstructed positions, even from halfway across the camera.
+    {\color{red}(unexpectedly??, and add sentence about this at end of section (mini-conclusion for appendix??))}
     This may imply that the gamma-ray PSF is, to second order, dependent on the number of disabled pixels, though no studies were done to confirm this.
 
     \begin{figure}[!ht]
