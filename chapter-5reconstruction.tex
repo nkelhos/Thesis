@@ -26,7 +26,7 @@ The first step to reconstruct events is to determine which pixels are part of a 
 This is done by subtracting the dc pedestal from the entire trace, and then summing all trace bins within a fixed window, called the integration length, to get the total dc.
 
 Most voltage traces have the same general shape: a quickly rising start of the pulse, followed by a longer, slowly falling tail.
-This hape can be seen in Figure~\ref{fig:pmt_pulse_widths} in the previous chapter.
+This can be seen in Figure~\ref{fig:pmt_pulse_widths} in the previous chapter.
 To act as a point of reference in each voltage pulse, the time when the voltage trace is at half of its maximum value is called $T_{0}$.
 The trace is then integrated a second time using a smaller 14- or 24-ns-wide time window, starting at $T_0 - 30\%$, to reduce the inclusion of dc from NSB photons and electronic noise.
 This integration is the first of two passes, usually referred to as the double-pass method~\cite{doublepass}.
@@ -43,7 +43,7 @@ From the image pixels, border pixels, and time gradient, the shower's Hillas par
 These parameters include the shower size in photoelectrons (or equivalent units), center of charge, angle, length, and width.
 The center of charge is the charge-weighted average of all image and border pixel positions.
 The angle of the shower determines how the image's major axis is oriented in the camera.
-The shower length and width are determined by the rms of the shower image along its major and minor axes, respectively, as shown in Figure~\ref{fig:shower_param}.
+The shower length and width are determined by the root mean square of the shower image along its major and minor axes, respectively, as shown in Figure~\ref{fig:shower_param}.
   
 \begin{figure}[t]
   \centering
@@ -58,13 +58,12 @@ The shower length and width are determined by the rms of the shower image along 
 \FloatBarrier
 
 \section{Position Reconstruction}\label{subsec:posrecon}
-{\color{red}(location vs position vs direction?? -parents)}
-By examining the images from multiple telescopes, the initial position of the event can be determined.
+By examining the images from multiple telescopes, the initial direction of the event can be determined.
 This is done by overlapping all telescope images in a single camera coordinate system, and projecting each image's major axis backward in time.
 These axes should intersect very close together, and the average of the intersection points determines the event's initial direction.
 The axes tend to not intersect perfectly, as atmospheric absorption and night sky background photons can add and remove photons from the shower image.
 
-In averaging the intersection points, weighting for each intersection can be applied based on the angle between the two lines.
+When averaging the intersection points, weights can be applied to each intersection based on the angle between the two lines.
 This improves the reconstruction, because the intersection point from two images at \ang{90} angles will be less sensitive to image fluctuations than two images at \ang{160}, as shown in Figure~\ref{fig:largeintersectangle}.
 Additionally, the \textit{disp} method is explored in Section~\ref{subsec:disp} to provide improvements at lower telescope elevations.
 This would be beneficial as the Galactic Center is at a low (<\ang{50}) telescope elevation (see Figure~\ref{fig:datapointingelevations}).
@@ -96,8 +95,7 @@ This also causes the remaining telescope images to have large intersection angle
   \label{fig:showerhighlowelev}
 \end{figure}
 
-To better handle these near-parallel image axes at low elevations, the reconstructed position can be determined from more parameters than just the weighted intersection points from the image axes.
-{\color{red}(first sentence awkward?? -parents)}
+To better handle these near-parallel image axes at low elevations, the reconstructed position can be determined from more parameters than just the weighted image axes intersection points.
 From simulations, the distance between the center of the Hillas shower image and the true position can be calculated, where the angular distance between the two is the disp parameter~\cite{Senturk:2011}, shown in Figure~\ref{fig:dispdiagram}.
 Then, this disp parameter can be provided to a machine learning algorithm~\cite{Beilicke2012NIM}, along with other image parameters like:
 \begin{quote}
@@ -133,8 +131,7 @@ Then, this disp parameter can be provided to a machine learning algorithm~\cite{
 These parameters for thousands of simulated showers can then be used to train boosted decision trees (BDTs) that estimate the disp for a new shower's images.
 This estimated disp can then be combined with the image axes intersection points to more accurately reconstruct the original gamma-ray point of origin.
 
-Once the training is complete, it is tested on a separate set of 17,000 simulated events, which have their true and predicted disps plotted in Figure~\ref{fig:disptraining}.
-{\color{red}(have -> singular?? -parents)}
+Once the training is complete, it is tested on a separate set of 17,000 simulated events, whose true and predicted disps plotted in Figure~\ref{fig:disptraining}.
 The x-axis describes the true disp value for each event, while the y-axis describes the disp value estimated by the BDT, with a black $x=y$ line marked, which represents a perfect 1:1 disp reconstruction.
 To examine how close the predicted disp is to the true disp, a residual plot is shown in Figure~\ref{fig:dispresidual}.
 It shows the $\frac{\textrm{Predicted disp}}{\textrm{True disp}}$ for each true disp bin, including $\pm$ 1 standard deviation errorbars.
@@ -161,7 +158,7 @@ From this residual plot, it can be seen that in nearly all bins the predicted di
   \label{fig:dispresidual}
 \end{figure}
 
-To examine the effect this has on an analysis, the point spread functions (PSFs) are compared.
+To examine the effect this disp method has on an analysis, the point spread functions (PSFs) are compared.
 The PSF describes how much a group of events from the same source are spread out due to being imperfectly reconstructed.
 In general, PSFs are quantified by their 68\% containment radius, the anglular radius around a point source which contains 68\% of the reconstructed events.
 PSFs are discussed further in Section~\ref{subsec:psf}.
@@ -171,7 +168,7 @@ Because the PSF changes with telescope elevation, telescope azimuth, and night s
 This PSF is calculated by a time-weighted averaging over all PSFs used in the two datasets used in this analysis, the Crab Nebula and the Galactic Center, described further in Chapter~\ref{chapter:analysis}.
 The average PSF for the Crab Nebula data is shown by a green line and a green 1-standard-deviation error sheath, and similarly the Galactic Center is shown in blue.
     
-In the figure, the disp method does offer a minor improvement at low energies, but is also worse at higher energies, though both are within the statistical error bars.
+In Figure~\ref{fig:disp_psf_comparison}, the disp method does offer a minor improvement at low energies, but is worse at higher energies, though both are within the statistical error bars.
 The lack of improvement may be due to the use of boosted decision trees, whereas a previous study with this method utilized a lookup table of six parameters, described in Ref.~\cite{Beilicke2012NIM}.
 For the analysis described in Chapter~\ref{chapter:analysis}, the disp method is used when reconstructing gamma-ray events.
     
@@ -179,7 +176,8 @@ For the analysis described in Chapter~\ref{chapter:analysis}, the disp method is
   \centering
   \includegraphics[width=0.95\textwidth]{images/disp_event_offset_hists/plot_offset0_50.pdf}
   \caption[DISP Point Spread Function Comparison]{
-    Comparison between the average disp and average geometric point spread function 68\% containment radii.
+    Comparison between the disp and geometric point spread function 68\% containment radii.
+    The lines represent the average ratio, with a 1 standard deviation error sheath.
     Green is from the Crab Nebula data, and blue is from the Galactic Center data.
     The average PSF shown is at a \ang{0.5} offset from the camera center.
   }
@@ -218,7 +216,7 @@ This software is also one of the main high-level analysis tools to be used by th
 
 Exporting gamma-ray data to this software involves converting the event list and IRFs to a FITS file format.
 The IRFs consist of the effective areas, the point spread functions, the background models, and the energy dispersion.
-The effective area quantifies the total gamma-ray collection area of the observatory, used in spectral measurements.
+The effective area quantifies the total gamma-ray collection area of the observatory, which is needed for spectral measurements.
 The point spread function quantifies the distribution of reconstructed positions for a given true position, which is needed for modeling point sources and extended spatial structures.
 The background models measure the relative number of observed events in different parts of the camera.
 The energy dispersion quantifies the distribution of reconstructed energies for a given true energy.
@@ -242,7 +240,7 @@ The effective areas are described in Section~\ref{subsec:effarea}, the point spr
 % use effective area as a casual noun!
 % plot of effective area vs energy
 Effective area is the measure of how large an observatory's collection area is, which determines how many gamma rays can be detected per unit time, solid angle, and energy.
-The effective areas are calculated with \nicetilde 25 million Monte Carlo gamma-ray shower simulations for each point in the (atmosphere composition, telescope elevation, NSB noise level, angular offset from camera center) parameter space.
+The effective areas are calculated with \nicetilde 25 million Monte Carlo gamma-ray shower simulations for each point in the atmosphere/elevation/noise/offset parameter space.
 % where $VERITAS_USER_DATA_DIR = /lustre/fs19/group/cta/users/nkelhos/VERITAS/
 % see $VERITAS_USER_DATA_DIR/figure_out_number_of_simulated_showers/read.py
 % run read.py, number of packets is roughly the number of showers, after core 
@@ -291,7 +289,7 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
   \subsection{Point Spread Function}\label{subsec:psf}
 
     When reconstructing the source position of each gamma ray, it is necessary to know the uncertainty of the position.
-    Primarily, errors in the position come from the randomness of shower images.
+    Errors in the position primarily come from the randomness of shower images.
     The same gamma ray may develop varying outcomes due to differences in which:
     \begin{itemize}[label=$\bullet$,noitemsep]
       \item particles early in the shower gaining different amounts of energy
