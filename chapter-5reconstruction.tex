@@ -164,7 +164,7 @@ In general, PSFs are quantified by their 68\% containment radius, the anglular r
 PSFs are discussed further in Section~\ref{subsec:psf}.
 The PSF containment radius is calculated from simulations, with both the disp reconstruction method and the regular geometric reconstruction method.
 The ratio of the $\frac{\textrm{disp PSF radius}}{\textrm{geometric PSF radius}}$ is shown in Figure~\ref{fig:disp_psf_comparison}.
-Because the PSF changes with telescope elevation, telescope azimuth, and night sky background noise, atmosphere, and offset from the camera center, the average PSF at each gamma-ray energy is shown.
+Because the PSF changes with telescope elevation, telescope azimuth and zenith, night sky background noise, atmosphere, and offset from the camera center, the average PSF at each gamma-ray energy is shown.
 This PSF is calculated by a time-weighted averaging over all PSFs used in the two datasets used in this analysis, the Crab Nebula and the Galactic Center, described further in Chapter~\ref{chapter:analysis}.
 The average PSF for the Crab Nebula data is shown by a green line and a green 1-standard-deviation error sheath, and similarly the Galactic Center is shown in blue.
     
@@ -187,15 +187,53 @@ For the analysis described in Chapter~\ref{chapter:analysis}, the disp method is
 \FloatBarrier
 
 \section{Energy Reconstruction}\label{subsec:enrecon}
-To reconstruct the energy of each shower, a lookup table of simulated showers is built.
-This database includes the width and length of the shower, how far away its core position is, how bright it was, as well as its reconstructed and true energy.
-By searching through this {\color{red}database (do you have a plot of this database?? -maria)} for showers that are similar to the one being constructed, then interpolating between shower parameters, the shower's true energy can be reconstructed.
-{\color{red}(add two plots from the lookup tables, see heike/henrike/moritz/maria theses for example plots??)}
+
+To reconstruct the energy of each shower, a lookup table of simulated showers is assembled.
+This database includes the width and length of the shower, how far away its core position is from the telescopes, how bright it is, as well as its reconstructed and true energy.
+These parameters all change with each telescope, noise level, azimuth and zenith angle, offset from camera center, and epoch.
+At each point in the (core position, brightness, telescope, noise level, azimuth and zenith angle, camera offset, epoch) parameter space, the shower lengths and widths form a gaussian distribution.
+If the parameter space points were combined, they would result in a non-gaussian shape.
+The table therefore tracks (at each point in the parameters space) the median and spread of each distribution of shower length and width.
+
+One point in the parameter space of this database is shown in Figure~\ref{fig:energy_params}.
+In the left plot, the median shower width is shown at at several shower core distances and image sizes.
+In the right plot, the spread in the width distribution is shown at the same distances and sizes.
+By searching through this database for showers that are similar to the one being reconstructed, then interpolating between shower parameters, the shower's true energy can be reconstructed.
+
+\begin{figure}[bh]
+  \centering
+  \includegraphics[width=\textwidth]{images/energy_table_plots/energy.pdf} &
+  \caption[Energy Table Parameters]{
+    Plots of the energy table parameters.
+    The median shower energy is shown in the left plot, at several shower core distances and image sizes.
+    The right plot shows the $2\sigma$ spread in energy at the same parameter space points.
+    {\color{red}(ask gernot if median or mean is better??)}
+  }
+  \label{fig:energy_params}
+\end{figure}
+
 
 \section{Gamma-Hadron Separation}
+
 After characterizing the parameters of each shower, the gamma-ray showers must be selected, and the proton showers filtered out.
 Monte Carlo simulations of gamma-ray showers are performed at many energies, impact parameters (distance from the core position on the ground and the array center), shower directions, and night sky background levels.
 At each point in this parameter space, the distribution of shower lengths and widths are measured, and the median length ($l_{\textrm{median}}$) and width ($w_{\textrm{median}}$) plus the 90\%-distribution-spread for the lengths and widths ($l_{\textrm{spread}}$, $w_{\textrm{spread}}$) are saved to a table.
+{\color{red}(ask gernot about 90\% distribution spread??)}
+{\color{red}(double check that this paragraph flows correctly??)}
+These measured lengths and width are shown in Figure~\ref{fig:mscw_params}.
+
+\begin{figure}[bh]
+  \centering
+  \includegraphics[width=\textwidth]{images/mscw_table_plots/mscw.pdf} &
+  \caption[Mean Scaled Width Table Parameters]{
+    Plots of the shower width table parameters.
+    The median shower width is shown in the left plot, at several shower core distances and image sizes.
+    The right plot shows the $2\sigma$ spread at the same parameter space points.
+    {\color{red}(ask gernot if median or mean is better??)}
+  }
+  \label{fig:mscw_params}
+\end{figure}
+
 Then for each shower, a Mean Scaled Length (MSCW) and Mean Scaled Width (MSCW) can be calculated with Equation~\ref{eqn:mscwl}.
 
 \begin{equation}\label{eqn:mscwl}
@@ -204,6 +242,7 @@ Then for each shower, a Mean Scaled Length (MSCW) and Mean Scaled Width (MSCW) c
     \textrm{MSCL}_{\textrm{shower}} & = \frac{l_{\textrm{shower}}-l_{\textrm{median}}}{l_{\textrm{spread}}}
   \end{split}
 \end{equation}
+
 
 Gamma-ray showers and proton showers have different distributions of MSCW and MSCL (proton showers tend to be wider), so cuts are applied on these two parameters to partially filter out the proton showers.
 See Ref.~\cite{Krause2017} for a more thorough discussion on gamma-hadron separation.
