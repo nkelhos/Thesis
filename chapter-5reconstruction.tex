@@ -189,63 +189,72 @@ For the analysis described in Chapter~\ref{chapter:analysis}, the disp method is
 \section{Energy Reconstruction}\label{subsec:enrecon}
 
 To reconstruct the energy of each shower, a lookup table of simulated showers is assembled.
-This database includes the width and length of the shower, how far away its core position is from the telescopes, how bright it is, as well as its reconstructed and true energy.
-These parameters all change with each telescope, noise level, azimuth and zenith angle, offset from camera center, and epoch.
-At each point in the (core position, brightness, telescope, noise level, azimuth and zenith angle, camera offset, epoch) parameter space, the shower lengths and widths form a gaussian distribution.
-If the parameter space points were combined, they would result in a non-gaussian shape.
-The table therefore tracks (at each point in the parameters space) the median and spread of each distribution of shower length and width.
+This database stores the median energy of the showers, as well as the spread of the distribution of shower energies.
+However, a shower's energy is strongly corellated with two measured parameters.
+The first is the shower's \textit{image size}, the number of observed cherenkov photons.
+The second is the \textit{core distance}, the distance between the VERITAS array center and where the central shower axis intersects the ground.
+Showers are therefore divided into subgroups based on this size and distance, then the median energy and energy spread of each subgroup are stored in the lookup table.
 
-One point in the parameter space of this database is shown in Figure~\ref{fig:energy_params}.
-In the left plot, the median shower width is shown at at several shower core distances and image sizes.
-In the right plot, the spread in the width distribution is shown at the same distances and sizes.
-By searching through this database for showers that are similar to the one being reconstructed, then interpolating between shower parameters, the shower's true energy can be reconstructed.
+The medians and spreads also vary based on the telescope, noise level, telescope azimuth and zenith angle, offset from camera center, and epoch, so additional showers are simulated at a variety of these parameters, and added to the lookup table.
+If any of these parameter space points were partially or completely combined, they would result in a larger error on the reconstructed energy.
+
+One point in the parameter space of this lookup table is shown in Figure~\ref{fig:energy_params}.
+In the left plot, the median energy is shown at at several shower core distances and image sizes.
+In the right plot, the spread in the energy distribution is shown at the same distances and sizes.
+By looking up a shower's size and distance in this table, the shower's true energy can be reconstructed.
 
 \begin{figure}[bh]
   \centering
   \includegraphics[width=\textwidth]{images/energy_table_plots/energy.pdf} &
   \caption[Energy Table Parameters]{
-    Plots of the energy table parameters.
-    The median shower energy is shown in the left plot, at several shower core distances and image sizes.
-    The right plot shows the $2\sigma$ spread in energy at the same parameter space points.
-    {\color{red}(ask gernot if median or mean is better??)}
+    The median shower energy, and spread in energy, for several image sizes and core distances.
+    The median shower energy is shown in the left plot, the right plot shows the $2\sigma$ spread in energy at the same parameter space points.
   }
   \label{fig:energy_params}
 \end{figure}
 
+Once an energy has been estimated for each telescope's shower image, they are combined with the weighted average in Equation~\ref{eqn:en_avg}, where $E_i$ is the $i^{\textrm{th}}$ telescope's energy and $\sigma_x$ is the $x^{\textrm{th}}$ telescopes energy distribution.
+
+\begin{equation}\label{eqn:en_avg}
+  E = \frac{ \sum_{i=1}^{N} \frac{E_i}{ \sigma_{i}^2} }{ \sum_{j=1}^N \frac{1}{ \sigma_{j}^2 } }
+\end{equation}
+
 
 \section{Gamma-Hadron Separation}
 
-After characterizing the parameters of each shower, the gamma-ray showers must be selected, and the proton showers filtered out.
-Monte Carlo simulations of gamma-ray showers are performed at many energies, impact parameters (distance from the core position on the ground and the array center), shower directions, and night sky background levels.
-At each point in this parameter space, the distribution of shower lengths and widths are measured, and the median length ($l_{\textrm{median}}$) and width ($w_{\textrm{median}}$) plus the 90\%-distribution-spread for the lengths and widths ($l_{\textrm{spread}}$, $w_{\textrm{spread}}$) are saved to a table.
-{\color{red}(ask gernot about 90\% distribution spread??)}
-{\color{red}(double check that this paragraph flows correctly??)}
-These measured lengths and width are shown in Figure~\ref{fig:mscw_params}.
+After characterizing the direction and energy of each shower, the next step is to remove the considerable fraction (\nicetilde1000:1) of showers that were induced by protons.
+This process is often referred to as Gamma-Hadron separation.
+When the lookup table in Section~\ref{subsec:enrecon} is constructed, the medians and spreads of the showers' lengths and widths are stored alongside the energies.
+A group of these median widths and spreads-in-width are shown in Figure~\ref{fig:mscw_params}.
+These show how the shower width varies with core distance and image size.
 
 \begin{figure}[bh]
   \centering
   \includegraphics[width=\textwidth]{images/mscw_table_plots/mscw.pdf} &
-  \caption[Mean Scaled Width Table Parameters]{
-    Plots of the shower width table parameters.
+  \caption[Shower Width Median and Spread]{
+    Plots of the shower widths from the lookup table.
     The median shower width is shown in the left plot, at several shower core distances and image sizes.
     The right plot shows the $2\sigma$ spread at the same parameter space points.
-    {\color{red}(ask gernot if median or mean is better??)}
   }
   \label{fig:mscw_params}
 \end{figure}
 
-Then for each shower, a Mean Scaled Length (MSCW) and Mean Scaled Width (MSCW) can be calculated with Equation~\ref{eqn:mscwl}.
+These stored lengths and widths can then be used to create new variables \textit{mean scaled length} (MSCL) and \textit{mean scaled width} (MSCW), calculated with Equation~\ref{eqn:mscwl}.
+In this equation, $l_{\textrm{shower}}$ and $w_{\textrm{shower}}$ are each observed shower's length and width.
+The parameters $l_{\textrm{median}}$ and $w_{\textrm{median}}$ are the median length and width from the lookup table.
+The parameters $l_{\textrm{spread}}$ and $w_{\textrm{spread}}$ are the spread in length and width distributions, also from the lookup table.
+Gamma-ray showers and proton showers have different distributions of MSCW and MSCL (proton showers tend to be wider at a given length), so cuts can be applied based these two parameters to partially filter out the proton showers.
+See Ref.~\cite{Krause2017} for a more thorough discussion on gamma-hadron separation.
+{\color{red}(ask gernot about 90\% distribution spread??)}
 
 \begin{equation}\label{eqn:mscwl}
   \begin{split}
+    \textrm{MSCL}_{\textrm{shower}} & = \frac{l_{\textrm{shower}}-l_{\textrm{median}}}{l_{\textrm{spread}}} \\
     \textrm{MSCW}_{\textrm{shower}} & = \frac{w_{\textrm{shower}}-w_{\textrm{median}}}{w_{\textrm{spread}}} \\
-    \textrm{MSCL}_{\textrm{shower}} & = \frac{l_{\textrm{shower}}-l_{\textrm{median}}}{l_{\textrm{spread}}}
   \end{split}
 \end{equation}
 
-
-Gamma-ray showers and proton showers have different distributions of MSCW and MSCL (proton showers tend to be wider), so cuts are applied on these two parameters to partially filter out the proton showers.
-See Ref.~\cite{Krause2017} for a more thorough discussion on gamma-hadron separation.
+{\color{red}(add gamma vs proton mscw histograms??)}
 
 \section{FITS Conversion for Gammalib and CTOOLs}\label{fitsconversion}
 Once gamma rays have been reconstructed with Eventdisplay, they must be exported to Gammalib and CTOOLS~\cite{gammalibctools}.
