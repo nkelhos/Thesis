@@ -254,17 +254,25 @@ The parameters $l_{\textrm{median}}$ and $w_{\textrm{median}}$ are the median le
 The parameters $l_{\textrm{spread}}$ and $w_{\textrm{spread}}$ are the spread in length and width distributions, also from the lookup table.
 The parameter $N_{\textrm{images}}$ is the number of triggered telescope images.
 Gamma-ray showers and proton showers have different distributions of MRSL and MRSW (proton showers tend to be wider at a given length), so cuts can be applied based these two parameters to partially filter out the proton showers.
+
+These two distributions can be seen in Figure~\ref{fig:mscw_crab}.
+In it, the MRSWs of events near the Crab Nebula are shown as a green histogram.
+The red histogram shows the MRSWs of events in several nearby regions which don't have any sources of gamma rays.
+The excess of green events between -2<MRSW<0 are the gamma-ray-like events from the Crab Nebula.
 See Ref.~\cite{Krause2017} for a more thorough discussion on gamma-hadron separation.
 
-\begin{figure}[b]
+\begin{figure}[th]
   \centering
   \includegraphics[width=0.5\textwidth]{images/mscw_table_plots/mrsw_crab.pdf} &
   \caption[Crab Nebula Mean Reduced Scaled Width]{
-    Plots of the MRSWs for events in the Crab Nebula analysis described further in Section~\ref{}.
-    and in several off regions around the Crab Nebula.
-    The median shower width is shown at several shower core distances and image sizes.
+    Plots of the MRSWs for events in the Crab Nebula analysis described further in Section~\ref{sec:crab_analysis}.
+    The green histogram is the MRSWs for events within \ang{0.25} of the Crab Nebula, and should contain many gamma-ray events.
+    The red histogram is the MRSWs for events in several off regions, which should only contain proton-induced showers.
+    These off regions are the same size as the on region, and are scattered around the camera center.
+    The red histogram events are weighted by the number of off regions, so that both red and green distributions are scaled to the area of a single region.
+    {\color{red}(double check this plot with someone else??)}
   }
-  \label{fig:mscw_params}
+  \label{fig:mscw_crab}
 \end{figure}
 
 
