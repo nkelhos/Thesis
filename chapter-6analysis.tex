@@ -75,7 +75,7 @@
   
   For all of these observations, quality cuts were applied.
   This includes monitoring the telescope hardware and cloud ceiling in the field of view.
-  Two far-infrared Pyrometers are used to measure the cloud ceiling height, by measuring the temperature of the sky.
+  Two far-infrared pyrometers are used to measure the cloud ceiling height, by measuring the temperature of the sky.
   With the pyrometer, clouds (\nicetilde\ang{-5}C) are significantly warmer than clear sky (\nicetilde\ang{-50}C).
   Low-quality segments of data, where there are large (>20\%) and/or rapid (<=\SI{30}{s}) changes in the L3 trigger rate or cloud ceiling height, are removed from the analysis~\cite{bird_weather}.
   % see Bird 2015 thesis pg 55
@@ -110,11 +110,8 @@
     \Like = \prod_j \frac{ e^{-m_j} \; m_{j}^{n_j}}{n_{j}!}
   \end{equation}
   
-  {\color{red}(why?? -dad)}
-
   Equation~\ref{eqn:simple_like_2} is a general formula for calculating a binned likelihood of Poissonian events.
   As events are grouped by bins, some information is lost, which generally results in a less powerful ratio test.
-  {\color{red}(less powerful, some information lost?? dad)}
   The result in Equation~\ref{eqn:simple_like_2} can be expanded into an unbinned likelihood through the following derivation.
   First, Equation~\ref{eqn:simple_like_2} can be rearranged:
   
@@ -177,7 +174,6 @@
   
   Models are used in a likelihood analysis to predict the number of events that a particular source deposits into a particular bin.
   In a likelihood analysis, each source of events gets its own model.
-  {\color{red}(each source of events... a single gamma ray?? -dad)}
   Each model is described by a function $M$, and different sources will have different $M$ functions.
   The function $M$ has dimensional units of $\frac{\textrm{counts}}{\textrm{energy}\times\textrm{solid angle}\times\textrm{area}\times\textrm{time}}$.
   This function can be integrated over the energy, sky, and time region covered by a bin to calcuate the number of events predicted in that bin, as shown by Equation~\ref{eqn:model_int}.
@@ -192,9 +188,6 @@
   \begin{equation}\label{eqn:modelparts}
     M(l,b,E,t) = M_s(l,b,E,t) \; \; M_e(l,b,E,t) \; \; M_t(l,b,E,t)
   \end{equation}
-  
-  {\color{red}(arrows at $M_s$, $M_e$, $M_t$?? -dad)}
-  {\color{red}(where do these substitution equations come from?? -dad)}
   
   For this thesis, the sources being modeled are either constant in flux, or in equilibrium, so time-dependent effects are ignored by setting $M_{t}(l,b,E,t) = 1$.
 
@@ -257,13 +250,13 @@
 
   The Crab Nebula point source in Section~\ref{sec:crab_analysis}, the Galactic Center point source in Section~\ref{subsec:gcpointsrc}, and the dark matter halo model in Section~\ref{subsec:dmhalomodel} all have this folding applied to the number of events they predict.
   An important distinction is that this folding is only applied to these astrophysical models, and not to the camera background models.
+  {\color{red}(interesting?? -dad)}
   This is because the background models are created with data from actual observations, which have the folding already applied, and thus are already in $\xdet$ space.
   
   \subsection{Combining Models into Hypotheses}\label{subsec:hypotheses}
   
   When calculating the likelihood of a bin in Equation~\ref{eqn:simple_like}, the predicted number of counts in a bin may come from a combination of sources.
-  Some fraction may come from a background model, another fraction from a specific source model, and still others from other models.
-  {\color{red}(illegible comment from dad??)}
+  Some fraction may come from a background model, another fraction from a specific source model, and still other portions from other models.
   So in order to account for these multiple models, their predicted counts in a bin must be summed first, as in Equation~\ref{eqn:combinemodels}, before being used in Equation~\ref{eqn:simple_like_8}.
   
   \begin{equation}\label{eqn:combinemodels}
@@ -304,8 +297,6 @@
   \begin{equation}\label{eqn:tscalc}
     \textrm{TS} = - 2 \; \textrm{log} \left (  \frac{ \LogLikeMax( \Mnull ) }{ \LogLikeMax( \Malt ) } \right )
   \end{equation}
-    
-  {\color{red}(where did this equation come from?? -dad)}
   
   With Wilk's theorem~\cite{wilks1938}, the events can be repeatedly simulated using the null hypothesis probability density function.
   For each simulation, a TS can be calculated.
@@ -314,7 +305,6 @@
   In situations where there is only one or two degrees of freedom, the significance of a specific model can be calculated as $\sqrt{\textrm{TS}}$.
   Due to time constraints, the p-value of this test statistic was not calculated.
   % http://pulsar.sternwarte.uni-erlangen.de/black-hole/2ndschool/talks/likelihood_1.pdf
-  {\color{red}(illegible comment from dad??)}
   
 
 \section{Background Models}\label{sec:bkgmodels}
@@ -329,7 +319,8 @@
   This can be done because the templates are made from Sgr A* Off, which has no sources of gamma-rays, so only the detectable events are due to background protons.
 
 \section{Crab Nebula Likelihood Analysis}\label{sec:crab_analysis}
-  To verify that the likelihood method is physically correct, the Crab Nebula was analyzed first, before any dark matter analysis was performed.
+  {\color{red}(talk about this more with dad??)}
+  To verify the likelihood method is physically correct, the Crab Nebula was analyzed first, before any dark matter analysis was performed.
   As the Crab Nebula is the brightest gamma ray emitter in the sky, it has been observed extensively by VERITAS and other gamma ray telescopes.
   After searching for low-elevation Crab Nebula observations, a total of 17.1 hours of data were selected from the VERITAS data archives.
   Since the Galactic Center only rises to around \ang{30} elevation, elevation effects would also need to be searched for.
@@ -358,6 +349,8 @@
   The sky position of the point source is fixed to the Crab Nebula, at
 
   $$(l_c,b_c) = (\ang{184.557600},\ang{-5.784180}) \;\;.$$
+  
+  {\color{red}(what epoch is this coordinate?? J2000?)}
 
   The pivot energy $E_o$ of its spectrum is fixed at \SI{16.73}{\TeV{}}, while the normalization $N_o$ and the spectral index $\gamma$ are free to vary during the likelihood optimization.
   Only events between \SIrange{4}{70}{\TeV{}} are used in this test analysis.
