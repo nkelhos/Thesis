@@ -75,8 +75,8 @@
   
   For all of these observations, quality cuts were applied.
   This includes monitoring the telescope hardware and cloud ceiling in the field of view.
-  Two far-infrared Pyropemeters are used to measure the cloud ceiling height, by measuring the temperature of the sky.
-  With the pyrometer, clouds are significantly warmer (\nicetilde\ang{50} C) than clear sky.
+  Two far-infrared Pyrometers are used to measure the cloud ceiling height, by measuring the temperature of the sky.
+  With the pyrometer, clouds (\nicetilde\ang{-5}C) are significantly warmer than clear sky (\nicetilde\ang{-50}C).
   Low-quality segments of data, where there are large (>20\%) and/or rapid (<=\SI{30}{s}) changes in the L3 trigger rate or cloud ceiling height, are removed from the analysis~\cite{bird_weather}.
   % see Bird 2015 thesis pg 55
 
@@ -94,7 +94,7 @@
   \subsection{Likelihood Calculation}
   At its heart, a likelihood is a product of probabilities.
   With two events, the likelihood is $(\textrm{probability that event 1 happens})\times(\textrm{probability that event 2 happens})$.
-  In a counting experiment like VERITAS, the likelihood $\Like$ is determined via poissonian statistics, shown in Equation~~\ref{eqn:simple_like}.
+  In a counting experiment like VERITAS, the likelihood $\Like$ is determined via Poissonian statistics, shown in Equation~~\ref{eqn:simple_like}.
   In this equation, $n$ is the number of observed events, and $m$ is the average number of events predicted by a model group.
   
   \begin{equation}\label{eqn:simple_like}
@@ -109,9 +109,12 @@
   \begin{equation}\label{eqn:simple_like_2}
     \Like = \prod_j \frac{ e^{-m_j} \; m_{j}^{n_j}}{n_{j}!}
   \end{equation}
+  
+  {\color{red}(why?? -dad)}
 
-  Equation~\ref{eqn:simple_like_2} is a general formula for calculating a binned likelihood of poissonian events.
+  Equation~\ref{eqn:simple_like_2} is a general formula for calculating a binned likelihood of Poissonian events.
   As events are grouped by bins, some information is lost, which generally results in a less powerful ratio test.
+  {\color{red}(less powerful, some information lost?? dad)}
   The result in Equation~\ref{eqn:simple_like_2} can be expanded into an unbinned likelihood through the following derivation.
   First, Equation~\ref{eqn:simple_like_2} can be rearranged:
   
@@ -174,6 +177,7 @@
   
   Models are used in a likelihood analysis to predict the number of events that a particular source deposits into a particular bin.
   In a likelihood analysis, each source of events gets its own model.
+  {\color{red}(each source of events... a single gamma ray?? -dad)}
   Each model is described by a function $M$, and different sources will have different $M$ functions.
   The function $M$ has dimensional units of $\frac{\textrm{counts}}{\textrm{energy}\times\textrm{solid angle}\times\textrm{area}\times\textrm{time}}$.
   This function can be integrated over the energy, sky, and time region covered by a bin to calcuate the number of events predicted in that bin, as shown by Equation~\ref{eqn:model_int}.
@@ -188,6 +192,9 @@
   \begin{equation}\label{eqn:modelparts}
     M(l,b,E,t) = M_s(l,b,E,t) \; \; M_e(l,b,E,t) \; \; M_t(l,b,E,t)
   \end{equation}
+  
+  {\color{red}(arrows at $M_s$, $M_e$, $M_t$?? -dad)}
+  {\color{red}(where do these substitution equations come from?? -dad)}
   
   For this thesis, the sources being modeled are either constant in flux, or in equilibrium, so time-dependent effects are ignored by setting $M_{t}(l,b,E,t) = 1$.
 
@@ -212,7 +219,7 @@
   \subsection{Instrument Response Function Folding}\label{subsec:folding}
   The average number of counts predicted by a model is calculated by integrating over the entire energy, sky, and time regions in the analysis.
   Because the reconstruction method is not perfect, all events from the astrophysical models are diffused according to the PSF and Energy Dispersion.
-  Another way of understanding this is that if a source is located in some sky bin $j$, events from that source can be reconstructed in neighboring bins $j+1$ and $j-1$, increasing the predicted number of events in those bins and decreasing the number of events in bin $j$, as determined by the PSF.
+  Another way of understanding this is if a source is located in some sky bin $j$, events from that source can be reconstructed in neighboring bins $j+1$ and $j-1$, increasing the predicted number of events in those bins and decreasing the number of events in bin $j$, as determined by the PSF.
   This dispersion is illustrated in Figure~\ref{fig:responsedispersion}.
   Similarly, energy dispersion will diffuse events out among neighboring energy bins as well.
   
@@ -256,6 +263,7 @@
   
   When calculating the likelihood of a bin in Equation~\ref{eqn:simple_like}, the predicted number of counts in a bin may come from a combination of sources.
   Some fraction may come from a background model, another fraction from a specific source model, and still others from other models.
+  {\color{red}(illegible comment from dad??)}
   So in order to account for these multiple models, their predicted counts in a bin must be summed first, as in Equation~\ref{eqn:combinemodels}, before being used in Equation~\ref{eqn:simple_like_8}.
   
   \begin{equation}\label{eqn:combinemodels}
@@ -271,7 +279,7 @@
   Each observation would get its own camera background model, and then any additional astrophysical models are added separately.
   For example, if one has three observations of the Crab Nebula, this would mean there are three camera background models, plus a point source model for the Crab Nebula.
   The null hypothesis would be just the camera background models, while the alternate hypothesis would be the camera backgrounds plus the Crab Nebula model.
-  Once these two hypotheses for an analysis are assembled, then their maximum likelihood can be searched for.
+  Once these two hypotheses are assembled for an analysis, their maximum likelihood can then be sought.
   
   \subsection{Likelihood Maximization}\label{subsec:likemax}
   This maximum likelihood is found by iteratively changing the parameters of a hypothesis's component models in directions that increase the likelihood.
@@ -296,6 +304,8 @@
   \begin{equation}\label{eqn:tscalc}
     \textrm{TS} = - 2 \; \textrm{log} \left (  \frac{ \LogLikeMax( \Mnull ) }{ \LogLikeMax( \Malt ) } \right )
   \end{equation}
+    
+  {\color{red}(where did this equation come from?? -dad)}
   
   With Wilk's theorem~\cite{wilks1938}, the events can be repeatedly simulated using the null hypothesis probability density function.
   For each simulation, a TS can be calculated.
@@ -304,10 +314,11 @@
   In situations where there is only one or two degrees of freedom, the significance of a specific model can be calculated as $\sqrt{\textrm{TS}}$.
   Due to time constraints, the p-value of this test statistic was not calculated.
   % http://pulsar.sternwarte.uni-erlangen.de/black-hole/2ndschool/talks/likelihood_1.pdf
+  {\color{red}(illegible comment from dad??)}
   
 
 \section{Background Models}\label{sec:bkgmodels}
-  The background models predict the amount of background counts produced by a sky without gamma rays.
+  The background models predict the number of background counts produced by a sky without gamma rays.
   This is used to model the probability density function of the background (primarily proton) events, which are several orders of magnitude more populous than the gamma rays.
   Background models are produced by binning observation sources with weak or no gamma-ray emission.
   For this low-elevation analysis the observations of the dark region Sgr A* Off, described in Section~\ref{veritasdata}, were used to build these backgrounds.
@@ -427,11 +438,11 @@
     \caption[Crab Nebula Profile along Galactic $l$]
     {
       The top plot shows the number of counts along a \ang{0.15}-wide-slice the Crab Nebula, along the galactic $l$ axis ($\ldet$ coordinate space).
-      Blue points are the number of observed counts, with poissonian error bars~\cite{poissonfrequentistinterval}.
+      Blue points are the number of observed counts, with Poissonian error bars~\cite{poissonfrequentistinterval}.
       The green histogram bars are the number of counts predicted by all models.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
       The red arrow indicates the position of the Crab Nebula.
-      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points, with the same blue poissonian error bars from the top plot.
+      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points, with the same blue Poissonian error bars from the top plot.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
     }
     \label{fig:crab_profile_l}
@@ -456,11 +467,11 @@
     \caption[Crab Nebula Profile along Galactic $b$]
     {
       The top plot shows the number of counts along a \ang{0.15}-wide-slice through the Crab Nebula along the galactic $b$ axis ($\bdet$ coordinate space).
-      Blue points are the number of observed counts, with poissonian error bars~\cite{poissonfrequentistinterval}.
+      Blue points are the number of observed counts, with Poissonian error bars~\cite{poissonfrequentistinterval}.
       The green histogram bars are the number of counts predicted by all models.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
       The red arrow indicates the position of the Crab Nebula.
-      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points, with the same blue poissonian error bars from the top plot.
+      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points, with the same blue Poissonian error bars from the top plot.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
     }
     \label{fig:crab_profile_b}
@@ -487,12 +498,12 @@
       The top plot shows the number of counts along a \ang{0.15}-wide-slice along the galactic $l$ axis ($\ldet$ coordinate space).
       This slice doesn't go through the Crab Nebula, but instead \ang{1} higher in galactic $b$.
       As this doesn't include the Crab Nebula, this plot primarily demonstrates the camera background modeling.
-      Blue points are the number of observed counts, with poissonian error bars~\cite{poissonfrequentistinterval}.
+      Blue points are the number of observed counts, with Poissonian error bars~\cite{poissonfrequentistinterval}.
       The green histogram bars are the number of counts predicted by all models.
       The red arrow indicates the position of the Crab Nebula.
       As the Crab Nebula doesn't contribute any events \ang{1} to the North, the green histogram bars are identical (and behind) the yellow histogram bars.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
-      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points, with the same blue poissonian error bars from the top plot.
+      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points, with the same blue Poissonian error bars from the top plot.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
     }
     \label{fig:crab_profile_l_off}
@@ -517,10 +528,10 @@
     \caption[Crab Nebula Profile in Energy]
     {
       The top plot shows number of counts in a \ang{0.6} x \ang{0.6} square centered on the Crab Nebula, vs energy ($\Edet$ space).
-      Blue points are the number of observed counts, with poissonian error bars~\cite{poissonfrequentistinterval}.
+      Blue points are the number of observed counts, with Poissonian error bars~\cite{poissonfrequentistinterval}.
       The green histogram bars are the number of counts predicted by all models.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
-      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points, with the same blue poissonian error bars from the top plot.
+      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points, with the same blue Poissonian error bars from the top plot.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with a blue square showing the profile bin location.
     }
     \label{fig:crab_profile_energy}
@@ -539,7 +550,7 @@
   Two hypotheses are constructed, the null and the test.
   The null hypothesis is that the model alone is enough to explain the number of observed events.
   The test hypothesis is that the number of observed events is from the model plus an unknown component.
-  For each bin, the probability of each hypothesis is calculated with poissonian statistics in Equation~\ref{eqn:sig_hypo}.
+  For each bin, the probability of each hypothesis is calculated with Poissonian statistics in Equation~\ref{eqn:sig_hypo}.
 
   \begin{equation}\label{eqn:sig_hypo}
     \begin{split}
@@ -626,7 +637,7 @@
   If the average modeled number of counts is low (i.e. $<50$), the distribution drifts away from a gaussian shape.
   This as shown in Figure~\ref{fig:various_sig_dists}, where four models with different average number of events per bin are simulated.
   Each of the four models is sampled in \SI{1000000} bins, where the model is randomly varied uniformly in each bin by $\pm 75\%$.
-  What is learned from this is that, the significance calculation does follow a true significance distribution when the average number of events in each bin is high.
+  What is learned from this is the significance calculation does follow a true significance distribution when the average number of events in each bin is high.
   At lower average counts per bin however, simulations must be used with a residual to see if any areas in the skymap show significant difference between data and models.
   
   \begin{figure}[h]
@@ -635,7 +646,7 @@
     \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_random_sigdists.pdf}
     \caption[4 Simulated Significance Distributions]{
       Simulated significance distributions for four different average models.
-      The significance here is calculated wtih Equation~\ref{eqn:resmap_signif}.
+      The significance here is calculated with Equation~\ref{eqn:resmap_signif}.
       % plot generated with $VERIPY/thesis/analysis/crab_test/replot.py
     }
     \label{fig:various_sig_dists}
@@ -781,7 +792,7 @@
   The histogram bins are located on \ang{0.22}-wide slice along the galactic $l$ axis, centered on Sgr A*'s galactic $b$ coordinate.
   Yellow histogram bins are the modeled counts from only the camera background models.
   Green histogram bins are the total modeled counts from the camera background models, the Galactic Center point source, and the dark matter halo.
-  Blue points with error bars are the observed counts in each bin, with poissonian errors.
+  Blue points with error bars are the observed counts in each bin, with Poissonian errors.
   The observed counts are higher on the left and lower on the right than the modeled histogram.
   This is likely due to unaccounted-for elevation effects in the camera background models.
   The impact of this elevation effect is tested later in Section~\ref{sec:elevgradient}.
@@ -807,7 +818,7 @@
     \caption[Galactic Center Profile vs Galactic $l$]{
       Observed vs modeled counts in a slice of the sky parallel to the galactic $l$ axis at $b=-0.046{}^{\circ}$.
       Modeled counts from camera background models are shown in yellow, total modeled counts are shown in green.
-      Observed counts with poissonian errors are shown in blue.
+      Observed counts with Poissonian errors are shown in blue.
     }
     \label{fig:gc_profile_gal_l}
   \end{figure}
@@ -838,7 +849,7 @@
     \caption[Galactic Center Profile vs Galactic $b$]{
       Observed vs modeled counts in a slice of the sky parallel to the galactic $b$ axis at $l=0$.
       Modeled counts from camera background models are shown in yellow, total modeled counts are shown in green.
-      Observed counts with poissonian errors are shown in blue.
+      Observed counts with Poissonian errors are shown in blue.
     }
     \label{fig:gc_profile_gal_b}
   \end{figure}
@@ -865,7 +876,7 @@
     \caption[Galactic Center Profile vs Energy]{
       Observed vs modeled counts in a \ang{0.2}$\times$\ang{0.2} square bin centered on Sgr A* at energies from \SIrange{4}{70}{\TeV{}}.
       Modeled counts from camera background models are shown in yellow, total modeled counts are shown in green.
-      Observed counts with poissonian errors are shown in blue.
+      Observed counts with Poissonian errors are shown in blue.
       }
     %}
     \label{fig:gc_profile_energy}
@@ -914,7 +925,7 @@
     {
       Histogram of the residual skymap bin significances from Figure~\ref{fig:gc_resmap}, calculated with Equation~\ref{eqn:resmap_signif}.
       Only skymap bins within Sgr A*'s region of interest are histogrammed.
-      If all astrophysical sources were modeled correctly, the differences in the residual skymap would only be due to noise, and would follow a Gaussian distribution, the green line.
+      If all astrophysical sources were modeled correctly, the differences in the residual skymap would only be due to noise, and would follow a Gaussian distribution.
     }
     \label{fig:gc_resmap_sighist}
   \end{figure}
@@ -996,11 +1007,13 @@
   
   These limits were calculated using a simple WIMP model, one that does not include the effect of Sommerfeld Enhancement~\cite{sommerfeld}.
   If Sommerfeld Enhancement were included in the dark matter halo model, stronger limits would naively be expected.
+  {\color{red}(not sure I understand naively?? -dad)}
   
   Around the dark blue upper limit line from this work, a light-blue systematic error band is also shown.
   For VERITAS, uncertainties in the energy reconstruction contribute a \nicetilde{}20\% systematic uncertainty on the flux.
   While no dark matter was detected in this thesis, the upper limit calculation is influenced by this systematic uncertainty.
-  This can be envisioned as a dark matter signal could have been brighter than the upper limits in Figure~\ref{fig:ulim}, but then fluctuated downwards by 20\% of its flux.
+  This can be envisioned as a dark matter signal that was brighter than the upper limits in Figure~\ref{fig:ulim}, but then fluctuated downwards by 20\% of its flux.
+  {\color{red}(awkward sentence, restate?? -dad)}
   Conversely, a dim dark matter signal below the upper limit could also be enhanced by 20\% instead.
   
   \FloatBarrier
