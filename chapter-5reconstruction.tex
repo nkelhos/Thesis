@@ -225,34 +225,48 @@ Once an energy has been estimated for each telescope's shower image, they are co
 After characterizing the direction and energy of each shower, the next step is to remove the considerable fraction (\nicetilde1000:1) of showers that were induced by protons.
 This process is often referred to as Gamma-Hadron separation.
 When the lookup table in Section~\ref{subsec:enrecon} is constructed, the medians and spreads of the showers' lengths and widths are stored alongside the energies.
-A group of these median widths and spreads-in-width are shown in Figure~\ref{fig:mscw_params}.
+The length and width of one shower image are described in Figure~\ref{fig:shower_param}.
+A group of these median widths are shown in Figure~\ref{fig:mscw_params}.
 These show how the shower width varies with core distance and image size.
 
-\begin{figure}[bh]
+\begin{figure}[b]
   \centering
-  \includegraphics[width=\textwidth]{images/mscw_table_plots/mscw.pdf} &
-  \caption[Shower Width Median and Spread]{
+  \includegraphics[width=0.5\textwidth]{images/mscw_table_plots/mscw.pdf} &
+  \caption[Shower Median Width]{
     Plots of the shower widths from the lookup table.
-    The median shower width is shown in the left plot, at several shower core distances and image sizes.
-    The right plot shows the $2\sigma$ spread at the same parameter space points.
+    The median shower width is shown at several shower core distances and image sizes.
   }
   \label{fig:mscw_params}
 \end{figure}
 
-These stored lengths and widths can then be used to create new variables \textit{mean scaled length} (MSCL) and \textit{mean scaled width} (MSCW), calculated with Equation~\ref{eqn:mscwl}.
-In this equation, $l_{\textrm{shower}}$ and $w_{\textrm{shower}}$ are each observed shower's length and width.
-The parameters $l_{\textrm{median}}$ and $w_{\textrm{median}}$ are the median length and width from the lookup table.
-The parameters $l_{\textrm{spread}}$ and $w_{\textrm{spread}}$ are the spread in length and width distributions, also from the lookup table.
-Gamma-ray showers and proton showers have different distributions of MSCW and MSCL (proton showers tend to be wider at a given length), so cuts can be applied based these two parameters to partially filter out the proton showers.
-See Ref.~\cite{Krause2017} for a more thorough discussion on gamma-hadron separation.
-{\color{red}(ask gernot about 90\% distribution spread??)}
+These stored lengths and widths can then be used to create new parameters \textit{mean reduced scaled length} (MRSL) and \textit{mean reduced scaled width} (MRSW), calculated with Equation~\ref{eqn:mscwl}.
 
 \begin{equation}\label{eqn:mscwl}
   \begin{split}
-    \textrm{MSCL}_{\textrm{shower}} & = \frac{l_{\textrm{shower}}-l_{\textrm{median}}}{l_{\textrm{spread}}} \\
-    \textrm{MSCW}_{\textrm{shower}} & = \frac{w_{\textrm{shower}}-w_{\textrm{median}}}{w_{\textrm{spread}}} \\
+    \textrm{MRSL}_{\textrm{shower}} & = \frac{1}{N_{\textrm{images}}} \sum_{i}^{N_{\textrm{images}}} \frac{l_{i}-l_{\textrm{median}}}{l_{\textrm{spread}}} \\
+    \textrm{MRSW}_{\textrm{shower}} & = \frac{1}{N_{\textrm{images}}} \sum_{i}^{N_{\textrm{images}}} \frac{w_{i}-w_{\textrm{median}}}{w_{\textrm{spread}}} \\
   \end{split}
 \end{equation}
+
+In this equation, $l_{\textrm{image}}$ and $w_{\textrm{image}}$ are each observed image's length and width.
+Multiple images of the same shower can be combined to calculate the $MRSL_{\textrm{shower}}$ and $MRSW_{\textrm{shower}}$ for each shower.
+The parameters $l_{\textrm{median}}$ and $w_{\textrm{median}}$ are the median length and width from the lookup table.
+The parameters $l_{\textrm{spread}}$ and $w_{\textrm{spread}}$ are the spread in length and width distributions, also from the lookup table.
+The parameter $N_{\textrm{images}}$ is the number of triggered telescope images.
+Gamma-ray showers and proton showers have different distributions of MRSL and MRSW (proton showers tend to be wider at a given length), so cuts can be applied based these two parameters to partially filter out the proton showers.
+See Ref.~\cite{Krause2017} for a more thorough discussion on gamma-hadron separation.
+
+\begin{figure}[b]
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/mscw_table_plots/mrsw_crab.pdf} &
+  \caption[Crab Nebula Mean Reduced Scaled Width]{
+    Plots of the MRSWs for events in the Crab Nebula analysis described further in Section~\ref{}.
+    and in several off regions around the Crab Nebula.
+    The median shower width is shown at several shower core distances and image sizes.
+  }
+  \label{fig:mscw_params}
+\end{figure}
+
 
 {\color{red}(add gamma vs proton mscw histograms??)}
 
