@@ -18,7 +18,7 @@ VERITAS data observations that cover this point source are also referred to as \
 Before reconstructing any events, the pedestal and pedestal variations must be calculated.
 This is done by artificially triggering all pixels once per second during observations, in order to record events that contain only noise.
 The \textit{pedestal} is the average of the digital counts (dc) of all noise events for each pixel.
-From this pedestal, the pedestal variations are then calculated for each pixel as the root mean square of all the dc counts in all noise events, which can be visualized as the distribution of dc around the mean dc.
+From this pedestal, the pedestal variations are then calculated for each pixel as the root mean square of all the dc counts in all noise events, {\color{red}(halt sentence here?? -orel)} which can be visualized as the distribution of dc around the mean dc.
 In this context, noise events can be due to night-sky-background photons, or from electronic noise.
 
 \section{Pixel Identification}
@@ -39,7 +39,7 @@ This time gradient can then be used to place a third integration window
 with 30\% of the window before each pixel's $T_{0}$, to more accurately measure the charge due to Cherenkov photons in the pixel.
 This third integration window is the second pass in the double-pass method.
 
-From the image pixels, border pixels, and time gradient, the shower's Hillas parameters~\cite{hillas_params} can be calculated.
+From the image pixels, border pixels, and time gradient {\color{red}(is the time gradient actually used for the hillas parameters?? -orel)}, the shower's Hillas parameters~\cite{hillas_params} can be calculated.
 These parameters include the shower size in photoelectrons (or equivalent units), center of charge, angle, length, and width.
 The center of charge is the charge-weighted average of all image and border pixel positions.
 The angle of the shower determines how the image's major axis is oriented in the camera.
@@ -72,7 +72,7 @@ This would be beneficial as the Galactic Center is at a low (<\ang{50}) telescop
   \centering
   \includegraphics[width=0.95\textwidth]{images/large_angle_image_intersection_error/laiie_cropped.pdf}
   \caption[Large Image Intersection Angles]{
-    In diagram (a), when a noisy pixel is added to an image, the reconstructed position is only moved a small distance (the purple arrow).
+    In diagram (a), when a noisy pixel is added to an image, the reconstructed position is only moved a small distance (the orange arrow).
     In diagram (b), due to the large angle between images, the error in the reconstructed position is much larger.
   }
   \label{fig:largeintersectangle}
@@ -87,7 +87,7 @@ This also causes the remaining telescope images to have large intersection angle
 
 \begin{figure}[!t]
   \centering
-  \includegraphics[width=0.75\textwidth]{images/high_elevation_vs_low_shower_images_cropped.eps}
+  \includegraphics[width=0.55\textwidth]{images/high_elevation_vs_low_shower_images_cropped.eps}
   \caption[Shower Images at High and Low Elevations]{
     In Figure (a), high elevation showers produce long images in all four telescopes.
     In Figure (b), lower elevation showers produce shortened images in two telescopes, and the remaining images form large angle intersection.
@@ -100,14 +100,14 @@ From simulations, the distance between the center of the Hillas shower image and
 Then, this disp parameter can be provided to a machine learning algorithm~\cite{Beilicke2012NIM}, along with other image parameters like:
 \begin{quote}
   \begin{description}[noitemsep]
-    \item [width:] image angular width
-    \item [length:] image angular length
-    \item [wol:] $\frac{\textrm{width}}{\textrm{length}}$
-    \item [size:] total image dc
-    \item [ntubes:] number of pixels in the image
-    \item [loss:] fraction of image pixels at the edge of the camera
-    \item [asym:] distance between image center-of-dc and the pixel with the highest dc
-    \item [tgrad:] the slope of the linear time fit to the pixel arrival times
+    \item [width:] image angular width;
+    \item [length:] image angular length;
+    \item [wol:] $\frac{\textrm{width}}{\textrm{length}}$;
+    \item [size:] total image dc;
+    \item [ntubes:] number of pixels in the image;
+    \item [loss:] fraction of image pixels at the edge of the camera;
+    \item [asym:] distance between image center-of-dc and the pixel with the highest dc;
+    \item [tgrad:] the slope of the linear time fit to the pixel arrival times;
     \item [cross:] angular distance between the image center and the average intersection point of the image axes.
   \end{description}
 \end{quote}
@@ -119,7 +119,7 @@ Then, this disp parameter can be provided to a machine learning algorithm~\cite{
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.5\textwidth]{images/disp_parameter/disp_parameter.pdf}
+  \includegraphics[width=0.4\textwidth]{images/disp_parameter/disp_parameter.pdf}
   \caption[Angular Reconstruction Disp]{
     The disp parameter is the angular distance between the center (red dot) of a Hillas image (blue oval) and the true sky position (green dot).
     Generally, longer shower images have a larger disp angle.
@@ -128,7 +128,7 @@ Then, this disp parameter can be provided to a machine learning algorithm~\cite{
 \end{figure}
 
 % https://veritas.sao.arizona.edu/wiki/index.php/BDT_Angular_reconstruction
-These parameters for thousands of simulated showers can then be used to train boosted decision trees (BDTs) that estimate the disp for a new shower's images.
+These parameters for 17,000 simulated showers were used to train boosted decision trees (BDTs) that estimate the disp for a new shower's images.
 This estimated disp can then be combined with the image axes intersection points to more accurately reconstruct the original gamma-ray point of origin.
 
 Once the training is complete, it is tested on a separate set of 17,000 simulated events, whose true and predicted disps plotted in Figure~\ref{fig:disptraining}.
@@ -159,18 +159,20 @@ From this residual plot, it can be seen that in nearly all bins the predicted di
 \end{figure}
 
 To examine the effect this disp method has on an analysis, the point spread functions (PSFs) are compared.
-The PSF describes how much a group of events from the same source are spread out due to being imperfectly reconstructed.
+The PSF describes how much a group of events from the same point source are spread out due to being imperfectly reconstructed.
 In general, PSFs are quantified by their 68\% containment radius, the anglular radius around a point source which contains 68\% of the reconstructed events.
 PSFs are discussed further in Section~\ref{subsec:psf}.
 The PSF containment radius is calculated from simulations, with both the disp reconstruction method and the regular geometric reconstruction method.
 The ratio of the $\frac{\textrm{disp PSF radius}}{\textrm{geometric PSF radius}}$ is shown in Figure~\ref{fig:disp_psf_comparison}.
 Because the PSF changes with telescope elevation, telescope azimuth and zenith, night sky background noise, atmosphere, and offset from the camera center, the average PSF at each gamma-ray energy is shown.
-This PSF is calculated by a time-weighted averaging over all PSFs used in the two datasets used in this analysis, the Crab Nebula and the Galactic Center, described further in Chapter~\ref{chapter:analysis}.
+This PSF is the average over the two datasets used in this analysis, the Crab Nebula and the Galactic Center, described further in Chapter~\ref{chapter:analysis}.
+{\color{red}(is this clearer for orel??)}
 The average PSF for the Crab Nebula data is shown by a green line and a green 1-standard-deviation error sheath, and similarly the Galactic Center is shown in blue.
     
 In Figure~\ref{fig:disp_psf_comparison}, the disp method does offer a minor improvement at low energies, but is worse at higher energies, though both are within the statistical error bars.
 The lack of improvement may be due to the use of boosted decision trees, whereas a previous study with this method utilized a lookup table of six parameters, described in Ref.~\cite{Beilicke2012NIM}.
 For the analysis described in Chapter~\ref{chapter:analysis}, the disp method is used when reconstructing gamma-ray events.
+{\color{red}(This explaination for the lack of improvement sounds a little weird and unlikely.  It also does not really excuse you using it in the end. Maybe you can explain the issue and we can find better wording?? Did you talk to gernot about it? -orel)}
     
 \begin{figure}[b]
   \centering
@@ -283,16 +285,16 @@ This software posesses several useful features, including automatic model convol
 This software is also one of the main high-level analysis tools to be used by the Cherenkov Telescope Array (CTA), making it and easier to include VERITAS data into future CTA analyses.
 
 Exporting gamma-ray data to this software involves converting the event list and IRFs to a FITS file format.
-The IRFs consist of the effective areas, the point spread functions, the background models, and the energy dispersion.
-The effective area quantifies the total gamma-ray collection area of the observatory, which is needed for spectral measurements.
-The point spread function quantifies the distribution of reconstructed positions for a given true position, which is needed for modeling point sources and extended spatial structures.
-The background models measure the relative number of observed events in different parts of the camera.
-The energy dispersion quantifies the distribution of reconstructed energies for a given true energy.
-
+The IRFs consist of the effective areas, the point spread functions, the background models, and the energy dispersion, defined in Sections~\ref{subsec:effarea}-\ref{subsec:edisp}.
+%The effective area quantifies the total gamma-ray collection area of the observatory, which is needed for spectral measurements.
+%The point spread function quantifies the distribution of reconstructed positions for a given true position, which is needed for modeling point sources and extended spatial structures.
+%The background models measure the relative number of observed events in different parts of the camera.
+%The energy dispersion quantifies the distribution of reconstructed energies for a given true energy.
 During the export, several decisions are baked into the event lists and IRFs.
-As this thesis revolves around an analysis at an elevation of \nicetilde{}\ang{30}, the IRFs may rapidly change.
+As this thesis revolves around an analysis at an elevation of \nicetilde{}\ang{30}, the IRFs may rapidly change with time.
 At this elevation, with VERITAS's field of view of \ang{3.5}, the airmass column density ($\textrm{g}/\textrm{cm}^2$) is 20\% higher at the bottom of the camera than at the top.
-Combined with the fact that an observing target can move several degrees over one \SI{30}{min} observation, this means the airmass can change by 10's of percent over a single 30-minute observation.
+Combined with the fact that an observing target can move several degrees over one \SI{30}{min} observation, this means the airmass can change by tens of percent over a single 30-minute observation.
+{\color{red}(tens of percents??)}
 This changing atmosphere would mean the IRFs at the beginning of an observation may be measurably different than at the end of an observation.
 
 To reduce the impact of this, observations are broken up into 8-minute-long parts.
@@ -323,7 +325,7 @@ The effective area is then calculated via:
 $A=\pi R^2 \frac{N_{\text{survived}}}{N_{\text{simulated}}}$
 where R is the radius of the area within which simulated showers are directed to fall, $N_{\text{simulated}}$ is the number of showers that were initially simulated into the area, and $N_{\text{survived}}$ is the number of simulated showers that pass all cuts.
 This effective area is thus a measure of how much detection area the observatory would have if it had a 100\% detection efficiency, which can then be used in calculating a source's flux.
-Figure~\ref{fig:effarea_paramspace} shows how the effective area peaks to \nicetilde{}\SI{3e5}{m${}^2$} for \SI{3}{\TeV{}} events at the camera center.
+Figure~\ref{fig:effarea_paramspace} shows how the effective area peaks at \nicetilde{}\SI{3e5}{m${}^2$} for \SI{3}{\TeV{}} events at the camera center.
 
 \begin{figure}[!t]
   \centering
@@ -348,6 +350,7 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
       \caption[Effective Areas Used]{
       Illustration of the effective areas used by all events in each analysis.
       From these plots, it is easy to check for events with anomalously high (>\SI{400000}{m${}^2$}) or low (\nicetilde\SI{0}{m${}^2$}) effective areas.
+      {\color{red}(Its not really an illustration though, no? These are the actual effective areas used, no?? -orel)}
       }
       \label{fig:effarea_usage}
     \end{figure}
@@ -358,15 +361,17 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
 
     When reconstructing the source position of each gamma ray, it is necessary to know the uncertainty of the position.
     Errors in the position primarily come from the randomness of shower images.
-    The same gamma ray may develop varying outcomes due to differences in which:
+    The same gamma ray may be reconstructed to come have different energies or come from different directions, for several reasons.
+    These include:
     \begin{itemize}[label=$\bullet$,noitemsep]
-      \item particles early in the shower gaining different amounts of energy
-      \item angles shower particles scatter at
-      \item Cherenkov photons are absorbed by the atmosphere
-      \item Cherenkov photons are reflected by the mirrors
-      \item Cherenkov photons are converted into PMT photoelectrons
+      \item different particles early in the shower get different amounts of energy
+      \item different shower particles scatter at different angles
+      \item different Cherenkov photons are absorbed by the atmosphere
+      \item different Cherenkov photons are reflected by the mirrors
+      \item different Cherenkov photons are converted into PMT photoelectrons
     \end{itemize}
-    In the image and position reconstruction, these all means that the same initial gamma ray can develop into a distribution of camera images and reconstructed positions.
+    
+    In the image and position reconstruction, these all cause the same initial gamma ray to develop into a distribution of camera images and reconstructed positions.
     Inversely, a single reconstructed position can come from a distribution of true gamma-ray positions.
 
     This distribution of reconstructed positions is called the point spread function, and primarily affects the reconstructed shape of gamma-ray emission structures in the sky.
@@ -379,7 +384,7 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     The radially-normalized King probability density function is defined as
 
     \begin{equation} \label{eqn:king}
-    \text{PSF}_{king}(r) = \frac{1}{2 \pi \sigma^{2} } \left( 1 - \frac{1}{\gamma} \right) \left( 1 + \frac{ r^{2} }{ 2 \gamma \sigma^{2} } \right)^{-\gamma}
+    \text{PSF}_{king}(r) = \frac{1}{2 \pi \sigma^{2} } \left( 1 - \frac{1}{\gamma} \right) \left( 1 + \frac{ r^{2} }{ 2 \gamma \sigma^{2} } \right)^{-\gamma} \;\;,
     \end{equation}
 
     where $r$ is the angular distance from the reconstructed position, $\sigma$ is analogous to the width of a gaussian, and $\gamma$ governs how long the tails are.
@@ -403,6 +408,8 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     \end{figure}
 
     For the Galactic Center and the Crab Nebula analyses, the distribution of 68\% containment radii for all events is shown in Figure~\ref{fig:gc_psf_hist}.
+    The asymmetric structure is due to the varying effective area at different offsets and energies, which changes the distribution of events in the PSF table.
+    The long tails are likely due to events at the edge of the observable energy and offset ranges, where the PSF gets worse.
 
     \begin{figure}[!hb]
       \centering
@@ -413,8 +420,6 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
       %\includegraphics[width=0.85\textwidth]{images/psf_gc_eventhist/eventpsf.pdf}
       \caption[Crab and Galactic Center Event PSFs]{
         The 68\% containment radius for all Crab Nebula and Sgr A* events used in this analysis.
-        The asymmetric structure is due to the varying effective area at different offsets and energies, which changes the distribution of events in the PSF table.
-        The long tails are likely due to events at the edge of the observable energy and offset ranges, where the PSF gets worse.
       }
       \label{fig:gc_psf_hist}
     \end{figure}
@@ -423,13 +428,12 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
   
   \subsection{Background Models}\label{background_production}
   
-    A background model is a three-dimensional function in camera x (in angle, parallel to azimuth), camera y (in angle, parallel to elevation), and energy.
+    A background model is a three-dimensional function in camera $x$ (in angle, parallel to azimuth), camera $y$ (in angle, parallel to elevation), and energy.
     Each background model is constructed from one of two templates, and the templates are built from dark run observations (see Figure~\ref{fig:gcfieldsofview}).
     These background models calculate the number of expected events in the camera, per unit solid angle, unit time, and unit energy.
     This is used to quantify how many counts are expected in different parts of the camera when observing any target.
     Understanding the background shape of the camera is crucial for properly studying extended sources, like dark matter halos, which may extend several degrees from the Galactic Center.
     Improperly estimating background models can result in fake structures appearing around an astrophysical target.
-    Background models with more than three dimensions are also possible, but require many more simulations, and are beyond the scope of this thesis.
     
     The background models used in this analysis are made from two background templates, one for each of the V5/V6 epochs (see Section~\ref{sec:epochs}).
     The templates are constructed from dark observations, detailed later in \ref{veritasdata}.
@@ -437,47 +441,51 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     This spectral function can be seen in Figure~\ref{fig:background_profile}.
     The radial function at two different energies is shown in Figure~\ref{fig:background_radial}.
 
-    \begin{figure}[!p]
+    \begin{figure}[p]
       \centering
       \includegraphics[width=0.6\textwidth]{images/ctools_background/background_construction.eps}
       \caption[CTOOLS Background Fine Energy Bins]{
         The V5 background's fine energy bins.
-        The top plot shows the number of events in each fine energy bin from all background runs.
+        The top plot shows the number of events in each energy bin from all background runs.
         The bottom plot shows the background rate, the number of background events divided by the observation time, solid angle, and energy span.
-        The black lines show the background rate in each energy bin, while the blue line shows the used background rate after interpolation is applied.
+        The black points show the background rate in each energy bin, while the blue line shows the interpolated background rate.
       }
       \label{fig:background_profile}
     \end{figure}
 
-    \begin{figure}[!hb]
+    \begin{figure}[hb]
       \centering
       \includegraphics[width=0.5\textwidth]{images/ctools_background/radial_profiles.eps}
       \caption[CTOOLS Radial Background Profiles]{
-        Radial bin profiles for the V5 background's two large-scale energy bins.
+        Radial bin profiles for the V5 backgrounds for low and high energies, to show how the shape varies with energy.
         The blue points are the counts per bin area, while the purple line is a spline interpolation with a 3rd order polynomial.
         The peak and plateau at \ang{0}-\ang{1} is due to the background events not being radially symmetric in the camera, due to the changing atmospheric depth across the camera's field of view.
-        For fitting the interpolated curve, the bin values at angles less than \ang{0} and greater than \ang{2.5} are copied from the \ang{0} and \ang{2.5} bins, respectively.
+        For fitting the interpolated curve, the bin values at angles less than \ang{0} are copied from the \ang{0} bin.
+        The same is done for bins beyond \ang{2.5}, which are copies of the \ang{2.5} bin value.
         }
       \label{fig:background_radial}
     \end{figure}
     
-    Finally, the spatial and spectral functions $M_{s} \left ( e \right )$ and $M_e \left(x,y,e \right )$ are multiplied together in Equation~\ref{eqn:bck_template}.
+    Finally, the spatial and spectral functions $M_{s} \left ( e \right )$ and $M_e \left(x,y,e \right )$ are multiplied together in Equation~\ref{eqn:bck_template},
     
     \begin{equation}\label{eqn:bck_template}
-      f(e,x,y) = A \, \times \, M_{e} \left ( e \right ) \, \times \, M_{s} \left ( x, y, e \right )
+      f(e,x,y) = A \, \times \, M_{e} \left ( e \right ) \, \times \, M_{s} \left ( x, y, e \right ) \;\;.
     \end{equation} 
     
     The function $f(e,x,a)$ has units of $\frac{\textrm{Number of Counts}}{ \textrm{MeV} \times \textrm{s} \times \textrm{sr} }$.
-    The multiplied functions are then scaled with a constant $A$ such that the total integral of the template (integrating across camera x, camera y, and energy) is equal to the original number of counts in the dark runs, as in Equation~\ref{eqn:background_template_function}.
+    The function $M_{e}(e)$ is a spectral function power law.
+    The function $M_{s}(x,y,e)$ is a spatial template that varies with camera $x$, camera $y$, and energy $e$, built from Sgr A* Off data described in Section~\ref{veritasdata}.
+    The multiplied functions are then scaled with a constant $A$ such that the total integral of the template (integrating across camera x, camera y, and energy) is equal to the original number of counts in the Sgr A* Off runs, as in Equation~\ref{eqn:background_template_function}.
+    {\color{red}(its confusing to refer to an equation just below.  It also makes the equation stand alone and not as part of the sentence?? -orel)}
     
     \begin{equation}\label{eqn:background_template_function}
       \textrm{Number of Background Events} = A \, \int \, M_{e} \left ( e \right ) \, \times \, M_{s} \left ( x, y, e \right ) \; dx \: dy \: de
     \end{equation}
 
-    This function $f(e,x,y)$ is the background template in camera x/y, which due to its radial symmetry can then immediatly be used as a CTOOLS background model in RA/Dec.
+    This function $f(e,x,y)$ is the background template in camera $x$ and $y$.
     Each background template is used in the likelihood analysis as a model multiplied by two free parameters, a normalization factor, and the event energy exponentiated by the spectral index.
     This lets the likelihood fitter scale each run's background model up or down to best match the number of observed events.
-    This means the background's absolute value is less important than the relative values in different parts of the camera background or at different energies.
+    This means the analysis is less dependent on the background's absolute value, and more dependent on the relative values in different parts of the camera background or at different energies.
   
   \FloatBarrier
 
@@ -485,6 +493,7 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     As events are reconstructed imperfectly, it is important to understand what the distribution of reconstructed energies are for a given true energy.
     This \textit{dispersion in energy} is quantified by an energy migration matrix $E_{i,j}$, where $i$ denotes the $i^{\text{th}}$ reconstructed energy bin, and $j$ denotes the $j^{\text{th}}$ true energy bin.
     The energy migration matrix can be used to account for two significant effects.
+    
     The first is that the reconstruction method introduces biases in the event energy, meaning an event at a given true energy can be reconstructed on average at a higher or lower energy.
     The second effect that is accounted for is the dispersion in the reconstructed energies.
     Gamma rays with the same energy will have their energies reconstructed as a distribution close to the true energy.
@@ -492,8 +501,14 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     This has the effect of distributing events in each energy bin of a spectra.
     In the gamma-ray spectra of astrophysical sources, which often follow a power law, lower energy bins tend to have more events than higher energy bins.
     This results in lower-energy dispersion contributing more to the higher-energy bins than the higher-energy dispersion contributes to the lower-energy bins.
-    When not accounted for, this has the effect that the energy dispersion will harden observed astrophysical spectra.
+    When not accounted for, this energy dispersion will harden observed astrophysical spectra.
+    
     In Figure~\ref{fig:migmatrix}, a migration matrix is shown.
+    Events at a given \ETrue{} are reconstructed at a spread of \EReco{}.
+    This spread is due to the variability in how air showers develop in the atmosphere.
+    Small variations early in the shower can have a large impact on the shower's cherenkov image, meaning the shower can appear as though it was from a higher- or lower-energy gamma ray.
+    At the lowest \ETrue{} energies, some showers fluctuate upwards to produce higher amounts of Cherenkov light get reconstructed to higher \EReco{} energies.
+    At the highest \ETrue{} energies, showers may be so large that they fill the entire camera, leading to lost photons past the edge of the camera, causing the shower's energy to be reconstructed lower than it actually is.
 
     \begin{figure}[!th]
       \centering
@@ -501,13 +516,8 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
       \caption[Energy Migration Matrix]{
         An energy migration matrix used with Sgr A* run 82288.
         The reconstructed energy is on the x-axis, and the true energy is on the y-axis.
-        The z (color) axis denotes the interpolated number of simulated events that passed all cuts.
+        The z (color) axis denotes the interpolated {\color{red}(interpolated?? -orel)} number of simulated events that passed all cuts.
         The dark-blue region from \SIrange{4}{70}{TeV} \EReco{} is the range of energies used in this analysis.
-        Events at a given \ETrue{} are reconstructed at a spread of \EReco{}.
-        This spread is due to the variability in how air showers develop in the atmosphere.
-        Small variations early in the shower can have a large impact on the shower's cherenkov image, meaning the shower can appear as though it was from a higher- or lower-energy gamma ray.
-        At the lowest \ETrue{} energies, some showers fluctuate upwards to produce higher amounts of Cherenkov light get reconstructed to higher \EReco{} energies.
-        At the highest \ETrue{} energies, showers may be so large that they fill the entire camera, leading to lost photons past the edge of the camera, causing the shower's energy to be reconstructed lower than it actually is.
       }
       \label{fig:migmatrix}
     \end{figure}
@@ -523,6 +533,7 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     To produce background models, events were binned according to their energy, telescope pointing elevation, and elevation and azimuth about the camera center.
     As a result of this detailed binning, some new effects were noted.
     First, Sgr A* Off data was reconstructed, which has no known gamma-ray source in its field of view.
+    {\color{red}(was reconstructed, which has?? -orel)}
     The time spent at each telescope elevation is shown in Figure~\ref{fig:back_elevhist}.
     To reduce the effect of the varying telescope elevation, time cuts were applied to select data between \ang{28.5} and \ang{29.5} telescope elevations.
     This was done to reduce any effects of a large range of telescope elevations.
@@ -540,10 +551,11 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     \end{figure}
     
     Gamma-like events were then selected from this data, and binned in energy in Figure~\ref{fig:background_grid}.
-    The left histograms show the number of events at each energy, with the expected more events at lower energies.
+    The left histograms show the number of events at each energy.
     For each row, a different energy range is selected, shown in green in the left plot.
     The cuts to pointing-elevation  and energy are applied, the surviving events are then histogrammed in the right-hand plots according to their azimuth and elevation in the camera.
     These 2D histograms are almost identical to the camera backgrounds described in Section~\ref{background_production}, differing only by dividing by the bin size in energy, time, and solid angle.
+    {\color{red}(I dont understand this sentence?? -orel)}
     
     \begin{figure}[p]
       \centering
@@ -571,18 +583,20 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     As a measure of how far the events deviate from the camera center, an orange dot and circle are also plotted.
     These indicate the average event position, and the 68\% containment radius around that position.
     It can be seen in Figure~\ref{fig:background_grid} that at the lowest energies, events are reconstructed and pass cuts only in the top half of the camera.
-    This physically makes sense, because at this low \ang{29} elevation, the atmospheric column density is \nicetilde20\% lower at the top of the camera than at the bottom.
-    This allows lower-energy gamma rays and their shower's Cherenkov photons to get closer to the observatory.
+    This is because at this low \ang{29} elevation, the atmospheric column density is \nicetilde20\% lower at the top of the camera than at the bottom.
+    This allows lower-energy gamma rays and their shower's Cherenkov photons to get closer to the observatory, making them easier to detect.
     Below this energy, gamma rays do not produce enough Cherenkov photons to survive past the atmospheric scattering and PMT quantum efficiency.
     The bottom of the camera has more atmosphere however, and can be considered opaque to gamma rays \SI{2.5}{TeV} and lower.
     At higher energies a similar effect is also noted, where the events cluster in the bottom half of the camera more than the top half.
-    As there is more atmosphere in that part of the camera, higher energy showers may be created further away, where the observatories can view a much larger volume of the atmosphere, detecting more showers.
+    As there is more atmosphere in that part of the camera, higher energy showers may be created further away, where the observatory's fixed-angle opening views a much larger volume of the atmosphere, detecting more showers.
+    {\color{red}(can this be clarified a bit?? -orel)}
     
     These effects are visible in the galactic ($l$,$b$) event maps from data.
     In Figure~\ref{fig:bkgvsel_crab}, the top plot shows the positions of all events from several hours of Crab Nebula data.
     The middle histogram shows the distribution of event energies, and the bottom plot shows the positions of events in a limited energy range, \SIrange{1.5}{3.25}{\TeV{}}.
     The middle plot indicates a specific energy range used in the bottom plot.
     When events in this limited energy range are plotted in the bottom plot, a faint deficit appears along the bottom of the camera.
+    {\color{red}(problematic, either you quantify the trend/deficit or you find a more obvious example??)}
     
     \begin{figure}[p]
       \centering
@@ -614,7 +628,7 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     
     When similar plots are made for the Galactic Center in Figure~\ref{fig:bkgvsel_sgra}, the effect is much stronger, and rotated.
     In the top plot, events are radially symmetric around the source position.
-    When only the events from \SIrange{1.5}{3.25}{\TeV{}} are plotted, a much clearer deficit is visible on the lower right part of the plot.
+    When only the events from \SIrange{1.5}{3.25}{\TeV{}} are plotted, a deficit is visible on the lower right part of the plot.
     This area corresponds to the deficit at the bottom of the low-energy camera plots in Figure \ref{fig:background_grid}.
     This rotation occurs when converting between camera x/y coordinates (Earth Elevation/Azimuth) and Galactic coordinates ($l$,$b$).
     The degree of rotation also changes from run to run, which further blurs this effect.
