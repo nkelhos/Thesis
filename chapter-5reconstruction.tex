@@ -365,18 +365,18 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     The same gamma ray may be reconstructed to come have different energies or come from different directions, for several reasons.
     These include:
     \begin{itemize}[label=$\bullet$,noitemsep]
-      \item different particles early in the shower get different amounts of energy
-      \item different shower particles scatter at different angles
-      \item different Cherenkov photons are absorbed by the atmosphere
-      \item different Cherenkov photons are reflected by the mirrors
-      \item different Cherenkov photons are converted into PMT photoelectrons
+      \item different particles early in the shower get different amounts of energy;
+      \item different shower particles scatter at different angles;
+      \item different Cherenkov photons are absorbed by the atmosphere;
+      \item different Cherenkov photons are reflected by the mirrors;
+      \item different Cherenkov photons are converted into PMT photoelectrons.
     \end{itemize}
     
     In the image and position reconstruction, these all cause the same initial gamma ray to develop into a distribution of camera images and reconstructed positions.
-    Inversely, a single reconstructed position can come from a distribution of true gamma-ray positions.
+    This also means a single reconstructed gamma ray can come from a distribution of true gamma-ray positions.
 
     This distribution of reconstructed positions is called the point spread function, and primarily affects the reconstructed shape of gamma-ray emission structures in the sky.
-    A singular point source, nominally shaped by a Dirac function, is instead distributed out according to the PSF.
+    A singular point source, nominally shaped by a Dirac function, is instead distributed according to the PSF.
     When searching for an extended source, like a dark matter halo, understanding the distribution of reconstructed positions is important.
     A large PSF on all events, for instance, will artificially expand the observed dark matter halo.
 
@@ -388,7 +388,7 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     \text{PSF}_{king}(r) = \frac{1}{2 \pi \sigma^{2} } \left( 1 - \frac{1}{\gamma} \right) \left( 1 + \frac{ r^{2} }{ 2 \gamma \sigma^{2} } \right)^{-\gamma} \;\;,
     \end{equation}
 
-    where $r$ is the angular distance from the reconstructed position, $\sigma$ is analogous to the width of a gaussian, and $\gamma$ governs how long the tails are.
+    where $r$ is the angular distance from the reconstructed position, $\sigma$ is analogous to the width of a Gaussian function, and $\gamma$ governs how long the tails are.
     A King function fitting algorithm was added to Eventdisplay, that fits the $\gamma$ and $\sigma$ parameters to a set of simulated gamma rays.
     This fits well over almost all of the parameter space.
     In Figure~\ref{fig:psf_paramspace}, the PSF is shown for one Sgr A* run.
@@ -507,8 +507,8 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     In Figure~\ref{fig:migmatrix}, a migration matrix is shown.
     Events at a given \ETrue{} are reconstructed at a spread of \EReco{}.
     This spread is due to the variability in how air showers develop in the atmosphere.
-    Small variations early in the shower can have a large impact on the shower's cherenkov image, meaning the shower can appear as though it was from a higher- or lower-energy gamma ray.
-    At the lowest \ETrue{} energies, some showers fluctuate upwards to produce higher amounts of Cherenkov light get reconstructed to higher \EReco{} energies.
+    Small variations early in the shower can have a large impact on the shower's Cherenkov image, meaning the shower can appear as though it was from a higher- or lower-energy gamma ray.
+    At the lowest \ETrue{} energies some showers fluctuate upwards to produce more Cherenkov light, and consequently get reconstructed to higher \EReco{} energies.
     At the highest \ETrue{} energies, showers may be so large that they fill the entire camera, leading to lost photons past the edge of the camera, causing the shower's energy to be reconstructed lower than it actually is.
 
     \begin{figure}[!th]
@@ -526,71 +526,71 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
   \FloatBarrier
 
 \section{Camera Studies}
-  The objective of this thesis is search for dark matter via the existence of a gamma-ray halo that is both extended and faint.
-  The extension and faintness of the halo, plus the relativly large amount of noise near the Galactic Center, make it a priority for understanding how the VERITAS camera behaves in high-noise conditions.
-  In order to better understand the camera's behavior in the reconstruction method, several studies were performed.
+The objective of this thesis is to search for dark matter via the existence of a gamma-ray halo that is both extended and faint.
+The extension and faintness of the halo, plus the relatively large amount of noise near the Galactic Center, prioritize understanding how the VERITAS camera behaves in high-noise conditions.
+In order to better understand the camera's behavior in the reconstruction method, several studies were performed.
 
-  \subsection{Background Structure at the Low Energy Threshold}\label{subsec:bkgstructure}
-    To produce background models, events were binned according to their energy, telescope pointing elevation, and elevation and azimuth about the camera center.
-    As a result of this detailed binning, some new effects were noted.
-    First, Sgr A* Off data was reconstructed, which has no known gamma-ray source in its field of view.
-    {\color{red}(was reconstructed, which has?? -orel)}
-    The time spent at each telescope elevation is shown in Figure~\ref{fig:back_elevhist}.
-    To reduce the effect of the varying telescope elevation, time cuts were applied to select data between \ang{28.5} and \ang{29.5} telescope elevations.
-    This was done to reduce any effects of a large range of telescope elevations.
-    Because the shape of the atmospheric interaction volume strongly depends on the telescope elevation, a small elevation range helps isolate atmosphere-dependent effects.
-    Note that this is a cut on the telescope pointing, not on the actual event elevations.
+\subsection{Background Structure at the Low Energy Threshold}\label{subsec:bkgstructure}
+To produce background models, events were binned according to their energy, telescope pointing elevation, and elevation and azimuth about the camera center.
+As a result of this detailed binning, some new effects were noted.
+First, Sgr A* Off data was reconstructed, which has no known gamma-ray source in its field of view.
+{\color{red}(was reconstructed, which has?? -orel)}
+The time spent at each telescope elevation is shown in Figure~\ref{fig:back_elevhist}.
+To reduce the effect of the varying telescope elevation, time cuts were applied to select data between \ang{28.5} and \ang{29.5} telescope elevations.
+This was done to reduce any effects of a large range of telescope elevations.
+Because the shape of the atmospheric interaction volume strongly depends on the telescope elevation, a small elevation range helps isolate atmosphere-dependent effects.
+Note that this is a cut on the telescope pointing, not on the actual event elevations.
 
-    \begin{figure}[bt]
-      \centering
-      \includegraphics[width=0.6\textwidth]{images/background_gradient_replot/sgraoff_1_hist_elev.pdf}
-      \caption[Elevation Slice of Sgr A* Off data]{
-        Time spent pointing the observatory at each elevation.
-        Blue is all Sgr A* Off data, while green is the selected pointing elevations used in Figure~\ref{fig:background_grid}.
-      }
-      \label{fig:back_elevhist}
-    \end{figure}
+\begin{figure}[bt]
+  \centering
+  \includegraphics[width=0.6\textwidth]{images/background_gradient_replot/sgraoff_1_hist_elev.pdf}
+  \caption[Elevation Slice of Sgr A* Off data]{
+    Time spent pointing the observatory at each elevation.
+    Blue is all Sgr A* Off data, while green is the selected pointing elevations used in Figure~\ref{fig:background_grid}.
+  }
+  \label{fig:back_elevhist}
+\end{figure}
     
-    Gamma-like events were then selected from this data, and binned in energy in Figure~\ref{fig:background_grid}.
-    The left histograms show the number of events at each energy.
-    For each row, a different energy range is selected, shown in green in the left plot.
-    The cuts to pointing-elevation  and energy are applied, the surviving events are then histogrammed in the right-hand plots according to their azimuth and elevation in the camera.
-    These 2D histograms are almost identical to the camera backgrounds described in Section~\ref{background_production}, differing only by dividing by the bin size in energy, time, and solid angle.
-    {\color{red}(I dont understand this sentence?? -orel)}
+Gamma-like events were then selected from this data, and binned in energy in Figure~\ref{fig:background_grid}.
+The left histograms show the number of events at each energy.
+For each row, a different energy range is selected, shown in green in the left plot.
+The cuts to pointing-elevation and energy are applied, and the surviving events are then histogrammed in the right-hand plots according to their azimuth and elevation in the camera.
+These 2D histograms are almost identical to the camera backgrounds described in Section~\ref{background_production}, missing only a division by the bin size in energy, time, and solid angle.
+{\color{red}(I dont understand this sentence?? -orel)}
     
-    \begin{figure}[p]
-      \centering
-      \begin{tabular}{rl}
-        \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_1_hist_energy.pdf}} & 
-        \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_1_cam.pdf}}         \\
-        \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_2_hist_energy.pdf}} & 
-        \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_2_cam.pdf}}         \\
-        \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_3_hist_energy.pdf}} & 
-        \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_3_cam.pdf}}         \\
-        \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_4_hist_energy.pdf}} & 
-        \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_4_cam.pdf}} 
-      \end{tabular}
-      \caption[Atmospheric Gradient in the VERITAS Camera]{
-        Event energies and camera backgrounds after the pointing elevation cut shown in Figure~\ref{fig:back_elevhist}.
-        In the left histograms, blue is all events while green is events in the selected energy range.
-        The right shows 2D histograms, made from the camera azimuths and elevations using the green events selected in the histogram to its left.
-        The orange dot and circle denote the average event position, and 68\% containment radius for the events in the plot.
-        The \SIrange{1.8}{3.2}{TeV} energy range shows events are detected more in the upper half of the camera.
-        From \SIrange{4}{6}{TeV}, events are more in the bottom half of the camera, while from \SIrange{6}{70}{TeV} events are closer to the camera center.
-      }
-      \label{fig:background_grid}
-    \end{figure}
+\begin{figure}[p]
+  \centering
+  \begin{tabular}{rl}
+    \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_1_hist_energy.pdf}} & 
+    \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_1_cam.pdf}}         \\
+    \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_2_hist_energy.pdf}} & 
+    \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_2_cam.pdf}}         \\
+    \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_3_hist_energy.pdf}} & 
+    \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_3_cam.pdf}}         \\
+    \subfloat{\includegraphics[width=7.5cm]{images/background_gradient_replot/sgraoff_4_hist_energy.pdf}} & 
+    \subfloat{\includegraphics[width=4.5cm]{images/background_gradient_replot/sgraoff_4_cam.pdf}} 
+  \end{tabular}
+  \caption[Atmospheric Gradient in the VERITAS Camera]{
+    Event energies and camera backgrounds after the pointing elevation cut shown in Figure~\ref{fig:back_elevhist}.
+    In the left histograms, blue is all events while green is events in the selected energy range.
+    The right shows 2D histograms, made from the camera azimuths and elevations using the green events selected in the histogram to its left.
+    The orange dot and circle denote the average event position, and 68\% containment radius for the events in the plot.
+    The \SIrange{1.8}{3.2}{TeV} energy range shows events are detected more in the upper half of the camera.
+    From \SIrange{4}{6}{TeV}, events are more in the bottom half of the camera, while from \SIrange{6}{70}{TeV} events are closer to the camera center.
+  }
+  \label{fig:background_grid}
+\end{figure}
     
-    As a measure of how far the events deviate from the camera center, an orange dot and circle are also plotted.
-    These indicate the average event position, and the 68\% containment radius around that position.
-    It can be seen in Figure~\ref{fig:background_grid} that at the lowest energies, events are reconstructed and pass cuts only in the top half of the camera.
-    This is because at this low \ang{29} elevation, the atmospheric column density is \nicetilde20\% lower at the top of the camera than at the bottom.
-    This allows lower-energy gamma rays and their shower's Cherenkov photons to get closer to the observatory, making them easier to detect.
-    Below this energy, gamma rays do not produce enough Cherenkov photons to survive past the atmospheric scattering and PMT quantum efficiency.
-    The bottom of the camera has more atmosphere however, and can be considered opaque to gamma rays \SI{2.5}{TeV} and lower.
-    At higher energies a similar effect is also noted, where the events cluster in the bottom half of the camera more than the top half.
-    As there is more atmosphere in that part of the camera, higher energy showers may be created further away, where the observatory's fixed-angle opening views a much larger volume of the atmosphere, detecting more showers.
-    {\color{red}(can this be clarified a bit?? -orel)}
+As a measure of how far the events deviate from the camera center, an orange dot and circle are also plotted.
+These indicate the average event position, and the 68\% containment radius around that position.
+Figure~\ref{fig:background_grid} shows that at the lowest energies, events are reconstructed and pass cuts only in the top half of the camera.
+This is because at this low \ang{29} elevation, the atmospheric column density is \nicetilde20\% lower at the top of the camera than at the bottom.
+This allows lower-energy gamma rays and their showers' Cherenkov photons to get closer to the observatory, making them easier to detect.
+Below this energy, gamma rays do not produce enough Cherenkov photons to survive past the atmospheric scattering and PMT quantum efficiency.
+The bottom of the camera has more atmosphere however, and can be considered opaque to gamma rays \SI{2.5}{TeV} and lower.
+At higher energies a similar effect is also noted, where the events cluster in the bottom half of the camera more than the top half.
+As there is more atmosphere in that part of the camera, higher energy showers may be created further away, where the observatory's fixed-angle opening views a much larger volume of the atmosphere, detecting more showers.
+{\color{red}(can this be clarified a bit?? -orel)}
     
     These effects are visible in the galactic ($l$,$b$) event maps from data.
     In Figure~\ref{fig:bkgvsel_crab}, the top plot shows the positions of all events from several hours of Crab Nebula data.
