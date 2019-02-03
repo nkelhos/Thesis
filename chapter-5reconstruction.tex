@@ -598,16 +598,36 @@ As there is more atmosphere in that part of the camera, higher energy showers ma
     The middle plot indicates a specific energy range used in the bottom plot.
     When events in this limited energy range are plotted in the bottom plot, a faint deficit appears along the bottom of the camera.
     {\color{red}(problematic, either you quantify the trend/deficit or you find a more obvious example??)}
+    {\color{red}(calc how far the center-of-events moves between all energies and low energies??)}
     
+    % plots produced by $V/thesis/plots/background_vs_elevation/background_vs_elevation.py
+    % filters events between telescope pointing elevations 28.5 and 29.5
+    % 
+    % text output from background_vs_elevations.py :
+    % Crab, 165 fits
+    % 26766 raw events
+    % 2400 elev events
+    % Crab at: lb: 184.5576 -5.7842 deg
+    % Crab 1.0-200.0TeV avg lb: 184.5865 -5.7486 deg  frac=0.6827 containment radius:1.4210
+    % Crab 1.5-3.2TeV   avg lb: 184.6435 -5.4282 deg  frac=0.6827 containment radius:1.3104
+    %
+    % Sgr A*, 969 fits
+    % 160924 raw events
+    % 90896 elev events
+    % Sgr A* at:  lb: 359.9442 -0.0460 deg
+    % Sgr A* 1.0-200.0TeV avg lb: 359.9102 -0.0584 deg  frac=0.6827 containment radius:1.4710
+    % Sgr A* 1.5-3.2TeV   avg lb: 0.2546    0.1457 deg  frac=0.6827 containment radius:1.4139
     \begin{figure}[p]
       \centering
-      \includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_srccrab.eps}
+      %\includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_srccrab.eps}
+      \includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_crab.pdf}
       \caption[Background Vs Elevation Crab Nebula]
       {\small 
         Plots of Crab Nebula observations.
         Top: Skymap of all events.
         Middle: Histogram of all events in energy.
         Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV{}}.  
+        Data is first filtered so that the telescope pointing is between elevations of \ang{28.5} and \ang{29.5}.
         The blue circles centered on the Crab Nebula highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
       }
       \label{fig:bkgvsel_crab}
@@ -615,13 +635,15 @@ As there is more atmosphere in that part of the camera, higher energy showers ma
     
     \begin{figure}[p]
       \centering
-      \includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_srcsgra.eps}
+      %\includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_srcsgra.eps}
+      \includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_sgra.pdf}
       \caption[Background Vs Elevation Sgr A*]
       {\small 
         Plots of Sgr A* observations.
         Top: Skymap of all events.
         Middle: Histogram of all event energies.
         Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV{}}.  
+        Data is first filtered so that the telescope pointing is between elevations of \ang{28.5} and \ang{29.5}.
         The blue circles centered on the Galactic Center highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
       }
       \label{fig:bkgvsel_sgra}
