@@ -589,82 +589,81 @@ This allows lower-energy gamma rays and their showers' Cherenkov photons to get 
 Below this energy, gamma rays do not produce enough Cherenkov photons to survive past the atmospheric scattering and PMT quantum efficiency.
 The bottom of the camera has more atmosphere however, and can be considered opaque to gamma rays \SI{2.5}{TeV} and lower.
 At higher energies a similar effect is also noted, where the events cluster in the bottom half of the camera more than the top half.
-As there is more atmosphere in that part of the camera, higher energy showers may be created further away, where the observatory's fixed-angle opening views a much larger volume of the atmosphere, detecting more showers.
+As atmospheric column density is higher in that part of the camera, higher energy showers may be created further away, where the observatory's fixed-angle opening views a much larger volume of the atmosphere, detecting more showers.
 {\color{red}(can this be clarified a bit?? -orel)}
     
-    These effects are visible in the galactic ($l$,$b$) event maps from data.
-    In Figure~\ref{fig:bkgvsel_crab}, the top plot shows the positions of all events from several hours of Crab Nebula data.
-    The middle histogram shows the distribution of event energies, and the bottom plot shows the positions of events in a limited energy range, \SIrange{1.5}{3.25}{\TeV{}}.
-    The middle plot indicates a specific energy range used in the bottom plot.
-    When events in this limited energy range are plotted in the bottom plot, a faint deficit appears along the bottom of the camera.
-    {\color{red}(problematic, either you quantify the trend/deficit or you find a more obvious example??)}
-    {\color{red}(calc how far the center-of-events moves between all energies and low energies??)}
+These effects are visible in the galactic ($l$,$b$) event maps from data.
+In Figure~\ref{fig:bkgvsel_crab}, the top plot shows the positions of all events from several hours of Crab Nebula data.
+The location of the Crab Nebula is marked in blue, while the red circle and point indicate the average event position and radius containing 68\% of the events.
+The middle histogram shows the distribution of event energies, and the bottom plot shows the positions of events in a limited energy range, \SIrange{1.5}{3.25}{\TeV{}}.
+The middle plot indicates a specific energy range used in the bottom plot.
+When events in this limited energy range are plotted in the bottom plot, the average event position (the red dot) shifts upwards by \ang{0.32}.
+This is due to fewer events appearing in the bottom of the camera, due to the thicker atmosphere there.
     
-    % plots produced by $V/thesis/plots/background_vs_elevation/background_vs_elevation.py
-    % filters events between telescope pointing elevations 28.5 and 29.5
-    % 
-    % text output from background_vs_elevations.py :
-    % Crab, 165 fits
-    % 26766 raw events
-    % 2400 elev events
-    % Crab at: lb: 184.5576 -5.7842 deg
-    % Crab 1.0-200.0TeV avg lb: 184.5865 -5.7486 deg  frac=0.6827 containment radius:1.4210
-    % Crab 1.5-3.2TeV   avg lb: 184.6435 -5.4282 deg  frac=0.6827 containment radius:1.3104
-    %
-    % Sgr A*, 969 fits
-    % 160924 raw events
-    % 90896 elev events
-    % Sgr A* at:  lb: 359.9442 -0.0460 deg
-    % Sgr A* 1.0-200.0TeV avg lb: 359.9102 -0.0584 deg  frac=0.6827 containment radius:1.4710
-    % Sgr A* 1.5-3.2TeV   avg lb: 0.2546    0.1457 deg  frac=0.6827 containment radius:1.4139
-    \begin{figure}[p]
-      \centering
-      %\includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_srccrab.eps}
-      \includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_crab.pdf}
-      \caption[Background Vs Elevation Crab Nebula]
-      {\small 
-        Plots of Crab Nebula observations.
-        Top: Skymap of all events.
-        Middle: Histogram of all events in energy.
-        Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV{}}.  
-        Data is first filtered so that the telescope pointing is between elevations of \ang{28.5} and \ang{29.5}.
-        The blue circles centered on the Crab Nebula highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
-      }
-      \label{fig:bkgvsel_crab}
-    \end{figure}
+% plots produced by $V/thesis/plots/background_vs_elevation/background_vs_elevation.py
+% filters events between telescope pointing elevations 28.5 and 29.5
+% 
+% text output from background_vs_elevations.py :
+% Crab, 165 fits
+% 26766 raw events
+% 2400 elev events
+% Crab at: lb: 184.5576 -5.7842 deg
+% Crab 1.0-200.0TeV avg lb: 184.5865 -5.7486 deg  frac=0.6827 containment radius:1.4210
+% Crab 1.5-3.2TeV   avg lb: 184.6435 -5.4282 deg  frac=0.6827 containment radius:1.3104
+%
+% Sgr A*, 969 fits
+% 160924 raw events
+% 90896 elev events
+% Sgr A* at:  lb: 359.9442 -0.0460 deg
+% Sgr A* 1.0-200.0TeV avg lb: 359.9102 -0.0584 deg  frac=0.6827 containment radius:1.4710
+% Sgr A* 1.5-3.2TeV   avg lb: 0.2546    0.1457 deg  frac=0.6827 containment radius:1.4139
+\begin{figure}[p]
+  \centering
+  %\includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_srccrab.eps}
+  \includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_crab.pdf}
+  \caption[Background Vs Elevation Crab Nebula]
+  {\small 
+    Plots of Crab Nebula observations.
+    Top: Skymap of all events.
+    Middle: Histogram of all events in energy.
+    Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV{}}.  
+    Data is first filtered so that the telescope pointing is between elevations of \ang{28.5} and \ang{29.5}.
+  }
+  \label{fig:bkgvsel_crab}
+\end{figure}
     
-    \begin{figure}[p]
-      \centering
-      %\includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_srcsgra.eps}
-      \includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_sgra.pdf}
-      \caption[Background Vs Elevation Sgr A*]
-      {\small 
-        Plots of Sgr A* observations.
-        Top: Skymap of all events.
-        Middle: Histogram of all event energies.
-        Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV{}}.  
-        Data is first filtered so that the telescope pointing is between elevations of \ang{28.5} and \ang{29.5}.
-        The blue circles centered on the Galactic Center highlight the radial symmetry of the top plot, and the lack of radial symmetry in the bottom plot.
-      }
-      \label{fig:bkgvsel_sgra}
-    \end{figure}
+\begin{figure}[p]
+  \centering
+  %\includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_srcsgra.eps}
+  \includegraphics[height=0.85\textheight]{images/background_vs_elevation/background_vs_elevation_sgra.pdf}
+  \caption[Background Vs Elevation Sgr A*]
+  {\small 
+    Plots of Sgr A* observations.
+    Top: Skymap of all events.
+    Middle: Histogram of all event energies.
+    Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV{}}.  
+    Data is first filtered so that the telescope pointing is between elevations of \ang{28.5} and \ang{29.5}.
+  }
+  \label{fig:bkgvsel_sgra}
+\end{figure}
+
+When similar plots are made for the Galactic Center in Figure~\ref{fig:bkgvsel_sgra}, the effect is much stronger, and rotated.
+In the top plot, events are radially symmetric around the source position.
+The red dot and circle are the average event position and the 68\% containment radius.
+When only the events from \SIrange{1.5}{3.25}{\TeV{}} are plotted, the average event position moves by \ang{0.4}, due to a deficit in the lower right part of the plot.
+This area corresponds to the bottom of the low-energy camera plots in Figure \ref{fig:background_grid}.
+The rotation occurs when converting between camera x/y coordinates (Earth Elevation/Azimuth) and Galactic coordinates ($l$,$b$).
+The degree of rotation also changes from run to run, which further blurs this effect.
+For the Crab Nebula plots in Figure~\ref{fig:bkgvsel_crab}, the rotation is only a few degrees, while for Sgr A* in Figure~\ref{fig:bkgvsel_sgra}, it is closer to \ang{70}.
     
-    When similar plots are made for the Galactic Center in Figure~\ref{fig:bkgvsel_sgra}, the effect is much stronger, and rotated.
-    In the top plot, events are radially symmetric around the source position.
-    When only the events from \SIrange{1.5}{3.25}{\TeV{}} are plotted, a deficit is visible on the lower right part of the plot.
-    This area corresponds to the deficit at the bottom of the low-energy camera plots in Figure \ref{fig:background_grid}.
-    This rotation occurs when converting between camera x/y coordinates (Earth Elevation/Azimuth) and Galactic coordinates ($l$,$b$).
-    The degree of rotation also changes from run to run, which further blurs this effect.
-    For the Crab Nebula plots in Figure~\ref{fig:bkgvsel_crab}, the rotation is only a few degrees, while for Sgr A* in Figure~\ref{fig:bkgvsel_sgra}, it is closer to \ang{70}.
-    
-    This effect is important to the analysis because it implies that, at the lowest energies, the background rate is not radially symmetric.
-    Radial backgrounds (sometimes referred to as acceptances) are typically used in VERITAS, as no other camera x/y or energy dependence had been demonstrated until now.
-    Due to a limited amount of background data (see Table~\ref{tab:observation_times}), only radially-dependent backgrounds are used in this analysis.
-    To attempt to reduce the effect of the non-uniform atmosphere, the event energies were limited to \SIrange{4}{70}{TeV}.
-    Even with this limited energy range, the atmospheric effect is still prominant, and studied further in Section~\ref{sec:elevgradient}.
-    
-    Additional studies were performed to test if bright stars near the Galactic Center might affect a dark matter search, and are detailed in Appendix~\ref{app:starpixels}.
-    Bright stars were found to have a negligible effect, and were ignored in this analysis.
-    
-    \FloatBarrier
+This effect is important to the analysis because it implies that, at the lowest energies, the background rate is not radially symmetric.
+Radial backgrounds (sometimes referred to as acceptances) are typically used in VERITAS, as no other camera x/y or energy dependence had been demonstrated until now.
+Due to a limited amount of background data (see Table~\ref{tab:observation_times}), only radially-dependent backgrounds are used in this analysis.
+To attempt to reduce the effect of the non-uniform atmosphere, the event energies were limited to \SIrange{4}{70}{TeV}.
+Even with this limited energy range, the atmospheric effect is still prominant, and studied further in Section~\ref{sec:elevgradient}.
+
+Additional studies were performed to test if bright stars near the Galactic Center might affect a dark matter search, and are detailed in Appendix~\ref{app:starpixels}.
+Bright stars were found to have a negligible effect, and were ignored in this analysis.
+
+\FloatBarrier
 

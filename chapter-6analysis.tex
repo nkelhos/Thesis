@@ -347,9 +347,7 @@
 
   The sky position of the point source is fixed to the Crab Nebula, at
 
-  $$(l_c,b_c) = (\ang{184.557600},\ang{-5.784180}) \;\;.$$
-  
-  {\color{red}(what epoch is this coordinate?? J2000?)}
+  $$(l_c,b_c)_{\textrm{J2000}} = (\ang{184.557600},\ang{-5.784180}) \;\;.$$
 
   The pivot energy $E_o$ of its spectrum is fixed at \SI{16.73}{\TeV{}}, while the normalization $N_o$ and the spectral index $\gamma$ are free to vary during the likelihood optimization.
   Only events between \SIrange{4}{70}{\TeV{}} are used in this test analysis.
@@ -682,7 +680,10 @@
   \FloatBarrier
 
   \subsection{Non-Dark Astrophysical Models}\label{subsec:gcpointsrc}
-  For this analysis, a point source model was added at the position of Sgr A*.
+  For this analysis, a point source model was added at the position of Sgr A*:
+  
+  $$(l,b)_{\textrm{J2000}} = (\ang{359.944212}, \ang{-0.046013}) \;\; . $$
+  
   This was done because other studies have indicated that the gamma-ray excess at Sgr A* is not consistant with a dark matter halo~\cite{gc_pnt_is_not_dm1, gc_pnt_is_not_dm2, gc_pnt_is_not_dm3}.
   Instead, a point source with the broken power law spectrum in Equation~\ref{eqn:brokenplaw} was added to the list of models.
   This is chosen because, in a previous VERITAS analysis of the Galactic Center, a broken power law was found to be a better fit than a simple power law~\cite{VeritasGCRidge2015}.
