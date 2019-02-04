@@ -18,7 +18,7 @@ VERITAS data observations that cover this point source are also referred to as \
 Before reconstructing any events, the pedestal and pedestal variations must be calculated.
 This is done by artificially triggering all pixels once per second during observations, in order to record events that contain only noise.
 The \textit{pedestal} is the average of the digital counts (dc) of all noise events for each pixel.
-From this pedestal, the pedestal variations are then calculated for each pixel as the root mean square of all the dc counts in all noise events, {\color{red}(halt sentence here?? -orel)} which can be visualized as the distribution of dc around the mean dc.
+From this pedestal, the pedestal variations are then calculated for each pixel as the root mean square of all the dc counts in all noise events.
 In this context, noise events can be due to night-sky-background photons, or from electronic noise.
 
 \section{Pixel Identification}
@@ -241,7 +241,7 @@ These show how the shower width varies with core distance and image size.
   \label{fig:mscw_params}
 \end{figure}
 
-These stored lengths and widths can then be used to create new parameters \textit{mean reduced scaled length} (MRSL) and \textit{mean reduced scaled width} (MRSW), calculated with Equation~\ref{eqn:mscwl}.
+These stored lengths and widths can then be used to create new parameters \textit{mean reduced scaled length} (MRSL) and \textit{mean reduced scaled width} (MRSW), calculated with Equation~\ref{eqn:mscwl}~\cite{mrswl_technique}.
 {\color{red}(cite https://arxiv.org/pdf/astro-ph/0604508.pdf ??)}
 
 \begin{equation}\label{eqn:mscwl}
@@ -312,6 +312,7 @@ The effective areas are described in Section~\ref{subsec:effarea}, the point spr
 % plot of effective area vs energy
 Effective area is the measure of how large an observatory's collection area is, which determines how many gamma rays can be detected per unit time, solid angle, and energy.
 The effective areas are calculated with \nicetilde 25 million Monte Carlo gamma-ray shower simulations for each point in the atmosphere/elevation/noise/offset parameter space.
+These simulations are created using the CORSIKA package~\cite{corsika1998}.
 % where $VERITAS_USER_DATA_DIR = /lustre/fs19/group/cta/users/nkelhos/VERITAS/
 % see $VERITAS_USER_DATA_DIR/figure_out_number_of_simulated_showers/read.py
 % run read.py, number of packets is roughly the number of showers, after core 
