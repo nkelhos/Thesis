@@ -90,6 +90,7 @@ This alignment is measured and adjusted at regular intervals, using background s
 
 \subsection{Star Point Spread Function}
 
+{\color{red}(the DC design delivers are notable PSF even with perfect mirrors - it is in the optics design -gernot ??)}
 Due to minor imperfections in the surface of the mirrors, dust, and small mirror misalignments, the photons that bounce off the mirrors are not reflected perfectly.
 Instead, a single point-like light source appears blurred out on the focal plane.
 This blurring is quantified by a fitted gaussian function, usually called the Optical Point Spread Function\footnote{Please note that this is different from the PSF described in Chapter \ref{ch:grrecon}, which quantifies the spread in the reconstructed gamma-ray positions.  The OPSF instead describes the spread of UV-Optical photons.} (OPSF).
@@ -171,7 +172,7 @@ To operate, the PMTs are connected to high voltage, typically \SIrange{900}{1200
 % 472                      
 % 340 X                      149
 % mean voltage = 1054, standev = 162, approximate as 1050+-150 = rane of 900-1200
-The PMTs' output signals are first sent through an amplifier, before travelling down a \nicetilde{}\SI{45}{m} cable to trigger and digitization electronics stationed near the telescope.
+The PMTs' output signals are first sent through an amplifier, before travelling down a \nicetilde{}\SI{40}{m} cable to trigger and digitization electronics stationed near the telescope~\cite{firstVeritas}.
 
 The first circuit that the signal passes through is a Constant Fraction Discriminator (CFD) circuit~\cite{cfd_behavior}.
 This circuit's behavior, shown in Figure~\ref{fig:cfd_operation}, duplicates the signal voltage pulse from the PMTs, inverts and delays the duplicate pulse, and adds it back to the original pulse.
@@ -208,6 +209,7 @@ This FADC circuit then, for each 2-nanosecond time bin, measures how large the v
 % time bin = 2ns, stored in an 8-bit int, so 256 possible values, or 255 values + a 0 value
 The highest threshold that is crossed in a single time bin then determines the digital voltage value that is saved to the FADC buffer for that time bin.
 
+{\color{red}(following is not correct: the low-gain FADC signal is always in the signal chain; but delayed by a fixed time offset. When the low-gain switch is set, the readout system simply reads out later -gernot ?? )}
 If the low-gain trigger pulse was also received by the FADC, then the signal is sent to a separate low-gain circuit.
 This low-gain circuit does not amplify the signal as much before digitizing it.
 The high-gain trigger can only detect signals with at most 120 photoelectrons, while the low-gain trigger can detect signals up to 750 photoelectrons.
@@ -228,7 +230,7 @@ These shorter voltage pulses allow for easier discrimination between NSB fluctua
   \caption[Pulse Shapes]{
     Pulse shapes of the old XP2970 PMTs (red circles) and the new R10560 PMTs (blue triangles).
     Plots are the average of many afterpulses, normalized to the maximum amplitude.
-    Pulses shown include dispersion due to a \nicetilde{}\SI{55}{m} coaxial cable between the PMTs and the digitizer boards.~\cite{pmtmodels}}
+    Pulses shown include dispersion due to a \nicetilde{}\SI{40}{m} coaxial cable between the PMTs and the digitizer boards.~\cite{pmtmodels}}
   \label{fig:pmt_pulse_widths}
 \end{figure}
 
