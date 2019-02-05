@@ -361,18 +361,18 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
 
     When reconstructing the source position of each gamma ray, it is necessary to know the uncertainty of the position.
     Errors in the position primarily come from the randomness of shower images.
-    The same gamma ray may be reconstructed to come have different energies or come from different directions, for several reasons.
-    These include:
+    The same gamma ray may be reconstructed to have different energies or come from different directions, due to the following:
+    
     \begin{itemize}[label=$\bullet$,noitemsep]
-      \item different particles early in the shower get different amounts of energy;
-      \item different shower particles scatter at different angles;
-      \item different Cherenkov photons are absorbed by the atmosphere;
+      \item particles early in the shower receive different amounts of energy;
+      \item shower particles scatter at different angles;
+      \item different Cherenkov photons are scattered or absorbed by the atmosphere;
       \item different Cherenkov photons are reflected by the mirrors;
       \item different Cherenkov photons are converted into PMT photoelectrons.
     \end{itemize}
     
     In the image and position reconstruction, these all cause the same initial gamma ray to develop into a distribution of camera images and reconstructed positions.
-    This also means a single reconstructed gamma ray can come from a distribution of true gamma-ray positions.
+    Inversely, this also means a single reconstructed gamma ray can come from a distribution of true gamma-ray positions.
 
     This distribution of reconstructed positions is called the point spread function, and primarily affects the reconstructed shape of gamma-ray emission structures in the sky.
     A singular point source, nominally shaped by a Dirac function, is instead distributed according to the PSF.
@@ -386,7 +386,6 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     \begin{equation} \label{eqn:king}
     \text{PSF}_{king}(r) = \frac{1}{2 \pi \sigma^{2} } \left( 1 - \frac{1}{\gamma} \right) \left( 1 + \frac{ r^{2} }{ 2 \gamma \sigma^{2} } \right)^{-\gamma} \;\;,
     \end{equation}
-
     where $r$ is the angular distance from the reconstructed position, $\sigma$ is analogous to the width of a Gaussian function, and $\gamma$ governs how long the tails are.
     A King function fitting algorithm was added to Eventdisplay, that fits the $\gamma$ and $\sigma$ parameters to a set of simulated gamma rays.
     This fits well over almost all of the parameter space.
@@ -402,7 +401,7 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
         The 68\% containment radius for the energy/offset parameter space for Sgr A* run 78128. 
         The black points are from data, showing a subset of the event locations from run 78128 in the parameter space.
         The color axis is the containment radius, calculated from simulations.
-        While events from all energies are shown, only events from \SIrange{4}{70}{\TeV{}} are used (see Section~\ref{sec:crab_analysis}).
+        While events from all energies are shown in this figure, only events from \SIrange{4}{70}{\TeV{}} are used in the analysis (see Section~\ref{sec:crab_analysis}).
       }
       \label{fig:psf_paramspace}
     \end{figure}
@@ -428,7 +427,7 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
   
   \subsection{Background Models}\label{background_production}
   
-    A background model is a three-dimensional function in camera $x$ (in angle, parallel to azimuth), camera $y$ (in angle, parallel to elevation), and energy.
+    A background model is a three-dimensional function in camera $x$ (a horizontal angle, parallel to azimuth), camera $y$ (a vertical angle, parallel to elevation), and energy.
     Each background model is constructed from one of two templates, and the templates are built from dark run observations (see Figure~\ref{fig:gcfieldsofview}).
     These background models calculate the number of expected events in the camera, per unit solid angle, unit time, and unit energy.
     This is used to quantify how many counts are expected in different parts of the camera when observing any target.
@@ -508,7 +507,7 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     This spread is due to the variability in how air showers develop in the atmosphere.
     Small variations early in the shower can have a large impact on the shower's Cherenkov image, meaning the shower can appear as though it was from a higher- or lower-energy gamma ray.
     At the lowest \ETrue{} energies some showers fluctuate upwards to produce more Cherenkov light, and consequently get reconstructed to higher \EReco{} energies.
-    At the highest \ETrue{} energies, showers may be so large that they fill the entire camera, leading to lost photons past the edge of the camera, causing the shower's energy to be reconstructed lower than it actually is.
+    At the highest \ETrue{} energies, showers may be so large that they fill the entire camera, leading to lost photons past the edge of the camera, which cause the shower's energy to be reconstructed lower than it actually is.
 
     \begin{figure}[!th]
       \centering
@@ -558,7 +557,6 @@ The cuts to pointing-elevation and energy are applied, and the surviving events 
 As a measure of how far the events deviate from the camera center, an orange dot and circle are also plotted.
 These indicate the average event position, and the 68\% containment radius around that position.
 Figure~\ref{fig:background_grid} shows that at the lowest energies, events are reconstructed and pass cuts only in the top half of the camera.
-{\color{red}(cant read comment about figure?? -parents)}
 This is because at this low \ang{29} elevation, the atmospheric column density is \nicetilde20\% lower at the top of the camera than at the bottom.
 This allows lower-energy gamma rays and their showers' Cherenkov photons to get closer to the observatory, making them easier to detect.
 Below this energy, gamma rays do not produce enough Cherenkov photons to survive past the atmospheric scattering and PMT quantum efficiency.
@@ -657,7 +655,6 @@ For the Crab Nebula plots in Figure~\ref{fig:bkgvsel_crab}, the rotation is only
     
 This effect is important to the analysis because it implies that, at the lowest energies, the background rate is not radially symmetric.
 Radial backgrounds (sometimes referred to as acceptances) are typically used in VERITAS, as no other camera $x$/$y$ or energy dependence had been demonstrated until now.
-{\color{red}(previous sentence has ?? -parents)}
 Due to a limited amount of background data (see Table~\ref{tab:observation_times}), only radially-dependent backgrounds are used in this analysis.
 To attempt to reduce the effect of the non-uniform atmosphere, the event energies were limited to \SIrange{4}{70}{TeV}.
 Even with this limited energy range, the atmospheric effect is still prominant, and studied further in Section~\ref{sec:elevgradient}.

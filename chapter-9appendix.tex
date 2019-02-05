@@ -21,8 +21,7 @@
 
   Understanding the camera's background is important for accurately modeling extended sources like dark matter halos.
   The camera's background shape is due to the performance of many individual camera pixels working together.
-  VERITAS onsite operators had, in the past, noted that for apparent visible magnitude $m_V :$ 6-8 stars, the camera pixels they illuminated would have a higher average current.
-  {\color{red}(why magnitude gets a colon?? -parents)}
+  VERITAS onsite operators had, in the past, noted that for apparent visible magnitude \SIrange{6}{8} stars, the camera pixels they illuminated would have a higher average current.
   This causes higher pedestal variations in the affected pixels, which decrease how often the pixel participated in shower images.
   In addition, if a star with $m_V < 6$ was in the field of view, it would cause a high enough current in the pixel to trigger a safety system that lowers its voltage to zero, to prevent it from being damaged.
   For particularly bright stars, such as $m_V \leq 3$, several pixels can be disabled at any given time.
@@ -50,8 +49,7 @@ Events that are present when the pixel is both enabled and disabled can also be 
 In Figure~\ref{fig:dpix_rel_camera}, the relative event rate in the camera is plotted when pixel 115 is disabled in all four telescopes.
 This relative event rate is calculated by binning all $P_d$ and $P_e$ events by their reconstructed position in camera coordinates.
 Then, for each camera coordinate bin, the ratio of the number of events $\frac{P_d}{P_e}$ is calculated.
-This shows there is a loss of events near the disabled pixel (the black circle), with a rate closer to 100\% the farther one goes from the disabled pixel.
-{\color{red}(last sentence a little weird?? -parents)}
+As seen in Figure~\ref{fig:dpix_rel_camera}, there is a loss of events near the disabled pixel (the black circle), with a rate closer to 100\% the farther one goes from the disabled pixel.
 
 \begin{figure}[!ht]
   \centering
@@ -117,7 +115,12 @@ While the Crab Nebula has several bright stars including HIP26451 with V${}_{mag
 Since one pixel disabled in all telescopes resulted in 0.7\% fewer events, and the Sgr A* observations in this analysis have \nicetilde{}4.4 pixels disabled, a rough estimate for the events lost due to stars near Sgr A* is approximately 3\%.
 Crab Nebula observations, with 8.4 lost pixels, lose approximately 5.9\% of its events.
 Note however, that the majority of these event losses are not gamma rays from the observing target, but are instead lost background events near (<\ang{0.5}) the position of the stars that disabled pixels.
-A gamma-ray source that also emitted optical photons, or a gamma-ray source transiting across an optical one, or visa versa, would all be susceptible to having its flux underestimated due to this effect.
+There are several situations where a gamma ray source's flux could be underestimated due to this effect.
+These include:
+\begin{itemize}[label=$\bullet$,noitemsep]
+  \item when a gamma-ray source transits near a visible-spectrum star, or visa versa;
+  \item when a gamma-ray source also emits visible-spectrum photons.
+\end{itemize}
 Due to the scarcity of bright ($V_{mag}<3$) visible stars and bright gamma-ray sources, this syzygy is extremely rare.
 
 \begin{table}[t]
@@ -228,8 +231,8 @@ For the Galactic Center, only 1\% of the pixels are disabled, equivalent to 5 pi
 As this study indicates the number of events lost is small and there are relatively few dead pixels in the Galactic Center's field of view, the effect of dead pixels was ignored in the dark matter search.
 {\color{red}(last sentence needs a rewrite?? -parents)}
 
-Another reason these disabled pixels are not accounted for is discussed in Chapter~\ref{chapter:analysis}, where small disabled-pixel effect is dwarfed by the problems with modeling how the background rate is affected by the atmospheric gradient.
-{\color{red}(previous sentence is a bit of a run-on?? -parents)}
+Another reason these disabled pixels are not accounted for is discussed in Chapter~\ref{chapter:analysis}.
+The small disabled-pixel effect is dwarfed by the problems with how the atmospheric gradient affects the background rate.
 Future analyses may be able to account for these effects in their models of the background rates and effective areas.
 
 Future studies could also compare how events move in energy when a pixel is disabled.
