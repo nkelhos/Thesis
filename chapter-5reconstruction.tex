@@ -558,7 +558,20 @@ For each row, a different energy range is selected, shown in green in the left p
 The cuts to pointing-elevation and energy are applied, and the surviving events are then histogrammed in the right-hand plots according to their azimuth and elevation in the camera.
 These 2D histograms are almost identical to the camera backgrounds described in Section~\ref{background_production}, missing only a division by the bin size in energy, time, and solid angle.
 {\color{red}(I dont understand this sentence?? -orel)}
+{\color{red}(last sentence needs rewrite, doesnt work well with first part of sentence?? -parents)}
     
+As a measure of how far the events deviate from the camera center, an orange dot and circle are also plotted.
+These indicate the average event position, and the 68\% containment radius around that position.
+Figure~\ref{fig:background_grid} shows that at the lowest energies, events are reconstructed and pass cuts only in the top half of the camera.
+{\color{red}(cant read comment about figure?? -parents)}
+This is because at this low \ang{29} elevation, the atmospheric column density is \nicetilde20\% lower at the top of the camera than at the bottom.
+This allows lower-energy gamma rays and their showers' Cherenkov photons to get closer to the observatory, making them easier to detect.
+Below this energy, gamma rays do not produce enough Cherenkov photons to survive past the atmospheric scattering and PMT quantum efficiency.
+The bottom of the camera has more atmosphere, however, and can be considered opaque to gamma rays \SI{2.5}{TeV} and lower.
+At higher energies a similar effect is also noted, where the events cluster in the bottom half of the camera more than the top half.
+As atmospheric column density is higher in that part of the camera, higher energy showers may be created farther away, where the observatory's fixed-angle opening views a much larger volume of the atmosphere, detecting more showers.
+{\color{red}(can this be clarified a bit?? -orel)}
+
 \begin{figure}[p]
   \centering
   \begin{tabular}{rl}
@@ -581,17 +594,6 @@ These 2D histograms are almost identical to the camera backgrounds described in 
   }
   \label{fig:background_grid}
 \end{figure}
-    
-As a measure of how far the events deviate from the camera center, an orange dot and circle are also plotted.
-These indicate the average event position, and the 68\% containment radius around that position.
-Figure~\ref{fig:background_grid} shows that at the lowest energies, events are reconstructed and pass cuts only in the top half of the camera.
-This is because at this low \ang{29} elevation, the atmospheric column density is \nicetilde20\% lower at the top of the camera than at the bottom.
-This allows lower-energy gamma rays and their showers' Cherenkov photons to get closer to the observatory, making them easier to detect.
-Below this energy, gamma rays do not produce enough Cherenkov photons to survive past the atmospheric scattering and PMT quantum efficiency.
-The bottom of the camera has more atmosphere however, and can be considered opaque to gamma rays \SI{2.5}{TeV} and lower.
-At higher energies a similar effect is also noted, where the events cluster in the bottom half of the camera more than the top half.
-As atmospheric column density is higher in that part of the camera, higher energy showers may be created further away, where the observatory's fixed-angle opening views a much larger volume of the atmosphere, detecting more showers.
-{\color{red}(can this be clarified a bit?? -orel)}
     
 These effects are visible in the galactic ($l$,$b$) event maps from data.
 In Figure~\ref{fig:bkgvsel_crab}, the top plot shows the positions of all events from several hours of Crab Nebula data.
@@ -658,7 +660,8 @@ The degree of rotation also changes from run to run, which further blurs this ef
 For the Crab Nebula plots in Figure~\ref{fig:bkgvsel_crab}, the rotation is only a few degrees, while for Sgr A* in Figure~\ref{fig:bkgvsel_sgra}, it is closer to \ang{70}.
     
 This effect is important to the analysis because it implies that, at the lowest energies, the background rate is not radially symmetric.
-Radial backgrounds (sometimes referred to as acceptances) are typically used in VERITAS, as no other camera x/y or energy dependence had been demonstrated until now.
+Radial backgrounds (sometimes referred to as acceptances) are typically used in VERITAS, as no other camera $x$/$y$ or energy dependence had been demonstrated until now.
+{\color{red}(previous sentence has ?? -parents)}
 Due to a limited amount of background data (see Table~\ref{tab:observation_times}), only radially-dependent backgrounds are used in this analysis.
 To attempt to reduce the effect of the non-uniform atmosphere, the event energies were limited to \SIrange{4}{70}{TeV}.
 Even with this limited energy range, the atmospheric effect is still prominant, and studied further in Section~\ref{sec:elevgradient}.

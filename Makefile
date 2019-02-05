@@ -9,9 +9,9 @@ PARTS = abstract.tex \
 				chapter-5reconstruction.tex \
 				chapter-6analysis.tex \
 				chapter-7conclusion.tex \
-				bibliography.tex \
+				chapter-8bibliography.tex \
 				citelist.bib \
-				appendix.tex \
+				chapter-9appendix.tex \
 				
 	
 
