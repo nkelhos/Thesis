@@ -241,7 +241,6 @@ These show how the shower width varies with core distance and image size.
 \end{figure}
 
 These stored lengths and widths can then be used to create new parameters \textit{mean reduced scaled length} (MRSL) and \textit{mean reduced scaled width} (MRSW), calculated with Equation~\ref{eqn:mscwl}~\cite{mrswl_technique}.
-{\color{red}(cite https://arxiv.org/pdf/astro-ph/0604508.pdf ??)}
 
 \begin{equation}\label{eqn:mscwl}
   \begin{split}
@@ -292,9 +291,9 @@ The IRFs consist of the effective areas, the point spread functions, the backgro
 %The energy dispersion quantifies the distribution of reconstructed energies for a given true energy.
 During the export, several decisions are baked into the event lists and IRFs.
 As this thesis revolves around an analysis at an elevation of \nicetilde{}\ang{30}, the IRFs may rapidly change with time.
-At this elevation, with VERITAS's field of view of \ang{3.5}, the airmass column density ($\textrm{g}/\textrm{cm}^2$) is 20\% higher at the bottom of the camera than at the top.
-Combined with the fact that an observing target can move several degrees over one \SI{30}{min} observation, this means the airmass can change by tens of percent over a single 30-minute observation.
-{\color{red}(tens of percents??)}
+At this elevation, with VERITAS's field of view of \ang{3.5}, the airmass column density ($\textrm{g}/\textrm{cm}^2$) is 12\% higher at the bottom of the camera than at the top.
+% see veripy.atmo_column_density() for 12% calculation
+Combined with the fact that an observing target can move several degrees over one \SI{30}{min} observation, this means the airmass can change by several percent over a single 30-minute observation.
 This changing atmosphere would mean the IRFs at the beginning of an observation may be measurably different than at the end of an observation.
 
 To reduce the impact of this, observations are broken up into 8-minute-long parts.
@@ -557,7 +556,8 @@ The cuts to pointing-elevation and energy are applied, and the surviving events 
 As a measure of how far the events deviate from the camera center, an orange dot and circle are also plotted.
 These indicate the average event position, and the 68\% containment radius around that position.
 Figure~\ref{fig:background_grid} shows that at the lowest energies, events are reconstructed and pass cuts only in the top half of the camera.
-This is because at this low \ang{29} elevation, the atmospheric column density is \nicetilde20\% lower at the top of the camera than at the bottom.
+This is because at this low \ang{29} elevation, the atmospheric column density is \nicetilde13\% lower at the top of the camera than at the bottom.
+% see veripy.atmo_column_density()
 This allows lower-energy gamma rays and their showers' Cherenkov photons to get closer to the observatory, making them easier to detect.
 Below this energy, gamma rays do not produce enough Cherenkov photons to survive past the atmospheric scattering and PMT quantum efficiency.
 The bottom of the camera has more atmosphere, however, and can be considered opaque to gamma rays \SI{2.5}{TeV} and lower.
