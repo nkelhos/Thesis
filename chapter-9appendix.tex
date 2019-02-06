@@ -201,11 +201,9 @@ In Figure~\ref{fig:dpix_move}, the movement of gamma-like events is shown, when 
 Only events which moved more than 10\% of the PSF are shown.
 It should be noted that relatively few (0.7\%, or 117 out of the 15010 events in an average 20-minute long Crab Nebula run) move more than this, and the events that do move are mostly ones with non-compact image shapes that are amputated when a pixel is disabled.
 
-What can be learned from this is that a negligbly small number of events' positions depend on a given pixel.
-Though, unexpectedly, disabled pixels have an impact on events' reconstructed positions, even on the other side of the camera.
-{\color{red}(needs rewrite?? -parents)}
-This may imply that the gamma-ray PSF is, to second order, dependent on the number and pattern of disabled pixels, though no studies were done to confirm this.
-{\color{red}(meaning of 'to second order' ?? -parents)}
+What can be learned from this is that a negligbly small number of events disappear when a pixel is disabled.
+Unexpectedly, disabled pixels also have an impact on events' reconstructed positions, even on the far side of the camera.
+This may imply that the gamma-ray PSF depends, at least to second order, on the number and pattern of disabled pixels, though no studies were done to confirm this.
 
 \begin{figure}[!ht]
   \centering
@@ -228,11 +226,11 @@ For the Galactic Center, only 1\% of the pixels are disabled, equivalent to 5 pi
 % 2320620 / 214657920 = 0.0108 fraction of time lost
 % 499 * 0.0108 = 5.38 pixels in each telescope
 % see $VERIPY/thesis/analysis/find_dead_pixels_near_GC/find.py
-As this study indicates the number of events lost is small and there are relatively few dead pixels in the Galactic Center's field of view, the effect of dead pixels was ignored in the dark matter search.
-{\color{red}(last sentence needs a rewrite?? -parents)}
+Because this study indicates the number of events lost is small, and there are relatively few dead pixels in the Galactic Center's field of view, the effect of dead pixels was ignored in the dark matter search.
 
-Another reason these disabled pixels are not accounted for is discussed in Chapter~\ref{chapter:analysis}.
-The small disabled-pixel effect is dwarfed by the problems with how the atmospheric gradient affects the background rate.
+Another reason these disabled pixels are not accounted for is that they are dwarfed by a much larger issue.
+The atmospheric gradient has a much larger effect on the background than the disabled-pixel effect.
+This is discussed further in Chapter~\ref{chapter:analysis}.
 Future analyses may be able to account for these effects in their models of the background rates and effective areas.
 
 Future studies could also compare how events move in energy when a pixel is disabled.
