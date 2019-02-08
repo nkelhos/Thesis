@@ -90,10 +90,14 @@ This alignment is measured and adjusted at regular intervals, using background s
 
 \subsection{Star Point Spread Function}
 
-{\color{red}(the DC design delivers are notable PSF even with perfect mirrors - it is in the optics design -gernot ??)}
-Due to minor imperfections in the surface of the mirrors, dust, and small mirror misalignments, the photons that bounce off the mirrors are not reflected perfectly.
-Instead, a single point-like light source appears blurred out on the focal plane.
-This blurring is quantified by a fitted gaussian function, usually called the Optical Point Spread Function\footnote{Please note that this is different from the PSF described in Chapter \ref{ch:grrecon}, which quantifies the spread in the reconstructed gamma-ray positions.  The OPSF instead describes the spread of UV-Optical photons.} (OPSF).
+Photons that bounce off the mirrors are not reflected perfectly due to the Davies-Cotton design.
+This is because of how the mirrors are aligned with the focal point.
+When the mirrors' centers are aligned towards a focal point, the edges of these mirrors are inherently not aligned with the focal point~\cite{daviscotton_optical}.
+% also see internal VERITAS memo "Optical ray-tracing for VERITAS by Stephen Fega and Vladimir Vassiliev 2005
+The result is that a single point-like light source will appear blurred out on the focal plane.
+Minor imperfections in the surface of the mirrors, dust, and small mirror misalignments also contribute to this blurring.
+
+This blurring is quantified by a fitted Gaussian function, usually called the Optical Point Spread Function\footnote{Please note that this is different from the PSF described in Chapter \ref{ch:grrecon}, which quantifies the spread in the reconstructed gamma-ray positions.  The OPSF instead describes the spread of UV-Optical photons.} (OPSF).
 The OPSF is measured monthly by pointing a telescope at different stars and pointing CCDs at the focal plane.
 Figure~\ref{fig:mirrorpolaris} shows a calibration image from the first VERITAS telescope.
 The OPSF is roughly gaussian-shaped but with longer tails and a $ \ang{0.06} $ full width half maximum~\cite{Veritas_Detector}.
@@ -210,6 +214,7 @@ This FADC circuit then, for each 2-nanosecond time bin, measures how large the v
 The highest threshold that is crossed in a single time bin then determines the digital voltage value that is saved to the FADC buffer for that time bin.
 
 {\color{red}(following is not correct: the low-gain FADC signal is always in the signal chain; but delayed by a fixed time offset. When the low-gain switch is set, the readout system simply reads out later -gernot ?? )}
+{\color{red}(the fadc puts both high/low gain signals in the same buffer, the high/lowgain bit then decides which time window to read out from that buffer??)}
 If the low-gain trigger pulse was also received by the FADC, then the signal is sent to a separate low-gain circuit.
 This low-gain circuit does not amplify the signal as much before digitizing it.
 The high-gain trigger can only detect signals with at most 120 photoelectrons, while the low-gain trigger can detect signals up to 750 photoelectrons.
