@@ -489,8 +489,14 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
   \subsection{Energy Dispersion}\label{subsec:edisp}
     As events are reconstructed imperfectly, it is important to understand what the distribution of reconstructed energies are for a given true energy.
     This \textit{dispersion in energy} is quantified by an energy migration matrix $E_{i,j}$, where $i$ denotes the $i^{\text{th}}$ reconstructed energy bin, and $j$ denotes the $j^{\text{th}}$ true energy bin.
-    {\color{red}(add a sentence mentioning the interpolation ctools does in order to make it continuous to get Figure~\ref{fig:migmatrix} ??)}
-    The energy migration matrix can be used to account for two significant effects.
+    A migration matrix is created by simulating many showers at a variety of true energies and binning them based on their true and reconstructed energies.
+    Several matricies are then created, by grouping showers into bins based on their distance from the camera center.
+    
+    Because simulations are computationally expensive, only a limited number can be produced for each migration matrix.
+    At some places in the matrix, low simulation statistics can artificially alter the shape of the matrix.
+    To reduce the effect of this, interpolation is applied to the matrix.
+    The number of events at a particular place in the matrix is then found by interpolating from neighboring true energy, reconstructed energy, and angular offset bins in this table.
+    This interpolated  energy migration matrix can be used to account for two significant effects.
     
     The first is that the reconstruction method introduces biases in the event energy, meaning an event at a given true energy can be reconstructed on average at a higher or lower energy.
     The second effect that is accounted for is the dispersion in the reconstructed energies.
@@ -501,7 +507,7 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     This results in lower-energy dispersion contributing more to the higher-energy bins than the higher-energy dispersion contributes to the lower-energy bins.
     When not accounted for, this energy dispersion will harden observed astrophysical spectra.
     
-    In Figure~\ref{fig:migmatrix}, a migration matrix is shown.
+    In Figure~\ref{fig:migmatrix}, an interpolated migration matrix is shown.
     Events at a given \ETrue{} are reconstructed at a spread of \EReco{}.
     This spread is due to the variability in how air showers develop in the atmosphere.
     Small variations early in the shower can have a large impact on the shower's Cherenkov image, meaning the shower can appear as though it was from a higher- or lower-energy gamma ray.
