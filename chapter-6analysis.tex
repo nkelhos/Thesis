@@ -15,13 +15,13 @@
 \newcommand{\Aeff }{A_\textrm{eff }}
 \newcommand{\Edisp}{E_\textrm{disp}}
 \newcommand{\Mnull}{M_\textrm{null}}
-\newcommand{\Malt }{M_\textrm{alt }}
+\newcommand{\Malt }{M_\textrm{alt}}
 
 \chapter{A Likelihood Search for Dark Matter}\label{chapter:analysis}
 
 \section{Veritas Data}\label{veritasdata}
   The analysis in this thesis relies on three sets of VERITAS data.
-  One set contains observations of the Crab Nebula, and another of the Galactic Center.
+  One set contains observations of the Crab Nebula, and a second of the Galactic Center.
   A third set contains observations of a dark region \nicetilde\ang{5} away from the Galactic Center.
   This dark region is referred to as  Sgr A* Off, and is located at (l,b)=(\ang{357.3396}, \ang{3.9984}).
   Sgr A* Off is located a few degrees away to avoid the bright diffuse gamma-ray emission caused by the galactic plane.
@@ -60,17 +60,16 @@
 
   \begin{figure}[!ht]
     \centering
-    %\includegraphics[width=0.95\textwidth]{images/data_elevation_plots/plot.pdf}
     \includegraphics[width=0.95\textwidth]{images/elevation_hist/elevhist.pdf}
     \caption[VERITAS Data Elevation Exposure]{
       Camera center elevation for the three sets of data.
       The three peaks in the Sgr A* data are from the 4 wobble positions being at different elevations.
-      The North wobble observations peak at elevation \nicetilde\ang{29.75}, East and West wobbles observations at \nicetilde\ang{29.25}, and South wobble observations at \nicetilde\ang{28.75}.
+      The north wobble observations peak at elevation \nicetilde\ang{29.75}, east and west wobbles observations at \nicetilde\ang{29.25}, and south wobble observations at \nicetilde\ang{28.75}.
     }
     \label{fig:datapointingelevations}
   \end{figure}
 
-  There are comparativly fewer Sgr A* Off observations because this source is only used for background estimation, and telescope time is in high demand.
+  There are comparatively fewer Sgr A* Off observations because this source is only used for background estimation, and telescope time is in high demand.
   There are also fewer Crab Nebula observations, as the majority of its data is taken at higher elevations, where the telescope has increased sensitivity to lower energies.
   
   For all of these observations, quality cuts were applied.
@@ -80,7 +79,7 @@
   Low-quality segments of data, where there are large (>20\%) and/or rapid (<=\SI{30}{s}) changes in the L3 trigger rate or cloud ceiling height, are removed from the analysis~\cite{bird_weather}.
   % see Bird 2015 thesis pg 55
 
-  Because each VERITAS epoch has a different hardware configuration, they also each have their own separate set of effective areas, point spread functions, energy migration matricies, and camera background models.
+  Because each VERITAS epoch has a different hardware configuration, they also each have their own separate set of effective areas, point spread functions, energy migration matrices, and camera background models.
   In addition, specific IRFs were calculated for additional data dimensions, including the frequency of night sky background photons in the camera, the telescope elevation, the event energy, and each event's distance from the camera center.
   
   After this data is collected, it is used in a likelihood analysis, detailed in the next section.
@@ -93,7 +92,7 @@
   
   \subsection{Likelihood Calculation}
   At its heart, a likelihood is a product of probabilities.
-  With two events, the likelihood is $(\textrm{probability that event 1 happens})\times(\textrm{probability that event 2 happens})$.
+  With two events, the likelihood is $(\textrm{probability that event one happens})\times(\textrm{probability that event two happens})$.
   In a counting experiment like VERITAS, the likelihood $\Like$ is determined via Poissonian statistics, shown in Equation~~\ref{eqn:simple_like}.
   In this equation, $n$ is the number of observed events, and $m$ is the average number of events predicted by a model group.
   
@@ -102,8 +101,10 @@
   \end{equation}
   
   For increased statistical power, the VERITAS data can be split into bins in energy, galactic $l$ and $b$, and time.
+  {\color{red}(binned in?? binned by?? -parents)}
   When combining multiple bins arbitrarily ordered by index $j$, each bin's likelihood is multiplied together as in Equation~\ref{eqn:simple_like_2}.
   These events could be binned in dimensions of sky position, energy, time, or other event parameters, or any combination of these parameters.
+  {\color{red}(binned?? -parents)}
   Future likelihood calculations may also include shower core position on the ground, or distance to the shower, or other observables.
   
   \begin{equation}\label{eqn:simple_like_2}
@@ -125,6 +126,7 @@
   
   Then, the size of each bin can be shrunk until there are only 1 or 0 events in each bin.
   For empty bins (where $n=0$), the product in Equation~\ref{eqn:simple_like_4} becomes
+  {\color{red}(indents = new paragraph?? -parents)}
   
   \begin{equation}\label{eqn:simple_like_4a}
     n=0 \rightarrow \frac{m_j^{n_j}}{n_j!} = \frac{m_j^{0}}{0!} = \frac{1}{1} = 1 .
@@ -137,13 +139,14 @@
   \end{equation}
 
   where $i$ is the $i^{\textrm{th}}$ event, and $m_i$ is the number of predicted events at event $i$'s sky position, energy, and time.
-  In this derivation, $m_j$ converts to $m_i$, because all the $n=0$ bins are now 1 and can be ignored, so a loop over the $j$ bins becomes a loop over the $i$ events.
+  In this derivation, $m_j$ converts to $m_i$, because all the $n=0$ bins are now 1 and can be ignored, and thus a loop over the $j$ bins becomes a loop over the $i$ events.
   Then Equation~\ref{eqn:simple_like_4} becomes Equation~\ref{eqn:simple_like_5}.
   
   \begin{equation}\label{eqn:simple_like_5}
     \Like = e^{- \sum_j m_j} \prod_i m_i
   \end{equation}
   
+  {\color{red}(new paragraphs?? -parents)}
   In Equation~\ref{eqn:simple_like_5}, $\prod_i m_i$ encodes the data events, while $\sum_j$ encodes the model information.
   When calculating $\Like$, certain computational problems can arise.
   Calculating the product of many small probabilities can result in extremely small numbers, beyond the binary storage limit of common variable types.
@@ -153,7 +156,7 @@
     \LogLike = \textrm{log} \left ( \Like \right ) 
   \end{equation}
   
-  This is possible because both $\Like$ and $\LogLike$ are both strictly increasing functions, so the maximum of both will be at the same position in the parameter space.
+  This is possible because both $\Like$ and $\LogLike$ are strictly increasing functions, so the maximum of both will be at the same position in the parameter space.
   The log-likelihood for a group of bins is then:
   
   \begin{equation}\label{eqn:simple_like_7}
@@ -168,7 +171,7 @@
   
   The unbinned Equation~\ref{eqn:simple_like_8} shows how the log-likelihood is calculated in this analysis.
   The $\sum_{j} m_{j}$ term can be interpreted as the total number of events predicted by all models, sometimes referred to as $N_{pred}$.
-  Please note however, that while a binned likelihood calculation scales with the number of bins (and some lost information), the unbinned likelihood calculation scales with the number of events, which can lead to large likelihood maximization times (see later in this section).
+  Please note however, that while a binned likelihood calculation scales with the number of bins (and some lost information), the unbinned likelihood calculation scales with the number of events, which can lead to large likelihood maximization times (see later in this section {\color{red}(section name or link?? -parents)}).
   
   \subsection{Models}\label{sec:model_irf_folding}
   
@@ -189,7 +192,7 @@
     M(l,b,E,t) = M_s(l,b,E,t) \; \; M_e(l,b,E,t) \; \; M_t(l,b,E,t)
   \end{equation}
   
-  For this thesis, the sources being modeled are either constant in flux, or in equilibrium, so time-dependent effects are ignored by setting $M_{t}(l,b,E,t) = 1$.
+  For this thesis, the sources being modeled are either constant in flux or in equilibrium, so time-dependent effects are ignored by setting $M_{t}(l,b,E,t) = 1$.
 
   For a basic point source, the spatial model function $M_s$ is shown in Equation~\ref{eqn:pntsrc_Ms}.
 
@@ -197,8 +200,8 @@
     M_{s,\textrm{point}}(l,b,E,t) = \lim_{a\to\infty} \frac{1}{ \abs{a} \sqrt{\pi} } e^{ - \left ( \sqrt{ (l-l_o)^2 + (b-b_o)^2 }/a \right )^2 }
   \end{equation}
   
-  In this equation, $l_o$ and $b_o$ specify the position of the point source in Galactic sky coordinates, which can be model parameters.
-  More complex $M_s$ functions may also have the spatial structure depend on energy $E$ or time $t$, or may take on other spatial shapes like an ellipse or a radially-symmetric profile.
+  In this equation, $l_o$ and $b_o$ specify the position of the point source in galactic sky coordinates, which can be model parameters.
+  More complex $M_s$ functions may also have the spatial structure depend on energy $E$ or time $t$, or may take on other spatial shapes like an ellipse or a radially-symmetric profile {\color{red}(reword sentence?? -parents)}.
   The energy spectrum can be similarly modeled by a basic power law.
   This basic power law is defined by the model function $M_e$, and is shown in Equation~\ref{eqn:powerlaw_Me}.
   
@@ -211,8 +214,8 @@
   
   \subsection{Instrument Response Function Folding}\label{subsec:folding}
   The average number of counts predicted by a model is calculated by integrating over the entire energy, sky, and time regions in the analysis.
-  Because the reconstruction method is not perfect, all events from the astrophysical models are diffused according to the PSF and Energy Dispersion.
-  Another way of understanding this is if a source is located in some sky bin $j$, events from that source can be reconstructed in neighboring bins $j+1$ and $j-1$, increasing the predicted number of events in those bins and decreasing the number of events in bin $j$, as determined by the PSF.
+  Because the reconstruction method is not perfect, all events from the astrophysical models are diffused according to the PSF and energy dispersion.
+  Another way of understanding this is if a source is located in some sky bin $j$, events from that source can be reconstructed in neighboring bins $j+1$ and $j-1$, increasing the predicted number of events in those bins and decreasing the number of events in bin $j$, as determined by the PSF {\color{red}(long sentence?? -parents)}.
   This dispersion is illustrated in Figure~\ref{fig:responsedispersion}.
   Similarly, energy dispersion will diffuse events out among neighboring energy bins as well.
   
@@ -228,9 +231,9 @@
   \end{figure}
   
   This leads to the need to define two distinct coordinate systems, $\xtrue$ and $\xdet$.
-  $\xtrue$ is a coordinate in true space (galactic $\ltrue$ and $\btrue$, energy $\Etrue$, and time $\ttrue$) space, \textit{before} folding is applied.
+  $\xtrue$ is a coordinate in true space (galactic $\ltrue$ and $\btrue$, energy $\Etrue$, and time $\ttrue$), \textit{before} folding is applied.
   Alternatively, $\xdet$ is the coordinate in reconstructed detector space ($\ldet$ and $\bdet$, $\Edet$, and $\tdet$), \textit{after} folding is applied.
-  Another way this can be thought of is that $\xtrue$ is the physical coordinates for events \textit{before} they reach Earth's atmosphere, and $\xdet$ is \textit{after} the events have been reconstructed.
+  Another way this can be thought of is that $\xtrue$ is the physical coordinate for events \textit{before} they reach Earth's atmosphere, and $\xdet$ is \textit{after} the events have been reconstructed.
   Equation~\ref{eqn:folding} shows this integration.
   
   \begin{equation}\label{eqn:folding}
@@ -240,7 +243,7 @@
   Here, $P_i \left( \xdet \right )$ is the probability of detecting an event at detector coordinates $\xdet = \left ( \ldet, \bdet, \Edet, \tdet \right )$.
   The integration $\int_\xtrue$ takes place over the entire true space, time, and energy regions being studied.
   The function $M\left ( \xtrue \right )$ is the number of counts predicted by the astrophysical models at coordinate $\xtrue$, and $R \left ( \xdet, \xtrue \right )$ is the dispersion at $\xdet$ due to $\xtrue$.
-  The function $R$ (the instrument Response function) incorporates the Effective Area, PSF, and Energy Dispersion information as shown in Equation~\ref{eqn:foldingR}, and is discussed further in Sections \ref{subsec:effarea}, \ref{subsec:psf}, and \ref{subsec:edisp}.
+  The function $R$ (the instrument response function) incorporates the effective area, PSF, and energy dispersion information as shown in Equation~\ref{eqn:foldingR}, and is discussed further in Sections \ref{subsec:effarea}, \ref{subsec:psf}, and \ref{subsec:edisp}.
   
   \begin{equation}\label{eqn:foldingR}
     R(\xdet,\xtrue) = \Aeff(\xtrue) * PSF(\xdet,\xtrue) * \Edisp(\Edet,\xtrue)
@@ -255,7 +258,7 @@
   \subsection{Combining Models into Hypotheses}\label{subsec:hypotheses}
   
   When calculating the likelihood of a bin in Equation~\ref{eqn:simple_like}, the predicted number of counts in a bin may come from a combination of sources.
-  Some fraction may come from a background model, another fraction from a specific source model, and still other portions from other models.
+  Some fraction may come from a background model, another fraction from a specific source model, and some from other models.
   So in order to account for these multiple models, their predicted counts in a bin must be summed first, as in Equation~\ref{eqn:combinemodels}, before being used in Equation~\ref{eqn:simple_like_8}.
   
   \begin{equation}\label{eqn:combinemodels}
@@ -266,7 +269,7 @@
   The factor $m_k$ represents the number of counts predicted by model $k$, at the position of event $i$ or bin $j$.
   
   In order to calculate a test statistic, the models must be grouped into two sets, called hypotheses.
-  For a basic analysis, the null hypothesis consists of all models, except the one in particular being searched for, called here $\Mnull$.
+  For a basic analysis, the null hypothesis consists of all models, except the specific one being searched for, called here $\Mnull$.
   The second hypothesis, called the alternate hypothesis, consists of all the models in the null hypothesis, plus the model being searched for, called here $\Malt$.
   Each observation would get its own camera background model, and then any additional astrophysical models are added separately.
   For example, if one has three observations of the Crab Nebula, this would mean there are three camera background models, plus a point source model for the Crab Nebula.
@@ -274,7 +277,7 @@
   Once these two hypotheses are assembled for an analysis, their maximum likelihood can then be sought.
   
   \subsection{Likelihood Maximization}\label{subsec:likemax}
-  This maximum likelihood is found by iteratively changing the parameters of a hypothesis's component models in directions that increase the likelihood.
+  The maximum likelihood is found by iteratively changing the parameters of a hypothesis's component models in directions that increase the likelihood.
   For example, take the alternate hypothesis used in Section~\ref{subsec:hypotheses}, with three camera background models and one Crab Nebula point source.
   Each camera background model has a base template multiplied by a power law.
   Each power law has two parameters, a normalization and a spectral index, so the background camera models have the parameters $N_1$, $N_2$, $N_3$, $\gamma_1$, $\gamma_2$, and $\gamma_3$.
@@ -490,7 +493,7 @@
       Blue points are the number of observed counts, with Poissonian error bars~\cite{poissonfrequentistinterval}.
       The green histogram bars are the number of counts predicted by all models.
       The red arrow indicates the position of the Crab Nebula.
-      As the Crab Nebula doesn't contribute any events \ang{1} to the North, the green histogram bars are identical (and behind) the yellow histogram bars.
+      As the Crab Nebula doesn't contribute any events \ang{1} to the north, the green histogram bars are identical (and behind) the yellow histogram bars.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
       The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points, with the same blue Poissonian error bars from the top plot.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
