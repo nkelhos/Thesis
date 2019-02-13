@@ -71,27 +71,27 @@ The width of the distribution of the velocities is called the velocity dispersio
 By looking at this velocity dispersion, the total mass of the dwarf galaxy can be inferred~\cite{dwarf_gal_vel_dispersion, dwarf_gal_vel_dispersion2}.
 What makes this possible is that the velocity dispersion of a group of stars is proportional to the total mass of the gravitational well.
 
-This proportionality comes from the spherical Jean's equation, shown by Equation~\ref{eqn:jeans}~\cite{galactic_dynamics},
+This proportionality comes from the spherical Jean's equation~\cite{galactic_dynamics},
 
 \begin{equation}\label{eqn:jeans}
-  \frac{d}{dr} \left ( v \sigma_r^2\right) + \frac{2 \beta}{r}v \sigma_r^2 + v \frac{d \Phi}{dr}=0 \;\; ,
+  \frac{d}{dr} \left ( v \sigma_r^2\right) + \frac{2 \beta}{r}v \sigma_r^2 + v \frac{d \Phi}{dr}=0 \,,
 \end{equation}
 
 where $r$ is the distance from the center of mass, $v(r)$ is a 3D distribution of stars, $\Phi(r)$ is a gravitational potential, $\sigma_r(r)$ is the distribution of radial velocities, and $\sigma_\theta(r)$ is the distribution of velocities orthogonal to the $r$ direction.
 The parameter $\beta = 1 - \frac{\sigma_{\theta}^2}{\sigma_r^2}$ characterizes how different the two velocity distributions ($\sigma_r(r)$ and $\sigma_{\theta}(r)$) are.
-A solution to this equation can be used to calculate the measurable line-of-sight velocity distribution $\sigma_{\mathrm{los}}$ as a function of the projected angle from the center-of-mass of the dwarf $R$, shown in Equation~\ref{eqn:los_velocity_dist},
+A solution to this equation can be used to calculate the measurable line-of-sight velocity distribution $\sigma_{\mathrm{los}}$ as a function of the projected angle from the center-of-mass of the dwarf $R$, 
 
 \begin{equation}\label{eqn:los_velocity_dist}
-  \sigma_{\mathrm{los}}^2 \left ( R \right ) = \frac{2}{I(R)} \int_R^{\infty} \left ( 1 - \beta(r) \frac{R^2}{r^2}) \right ) \frac{r}{\sqrt{r^2-R^2}} \frac{1}{f(r)} \int_r^\infty f(s) \frac{v(s)GM(s)}{s^2} \; ds\; dr \;\; ,
+  \sigma_{\mathrm{los}}^2 \left ( R \right ) = \frac{2}{I(R)} \int_R^{\infty} \left ( 1 - \beta(r) \frac{R^2}{r^2}) \right ) \frac{r}{\sqrt{r^2-R^2}} \frac{1}{f(r)} \int_r^\infty f(s) \frac{v(s)GM(s)}{s^2} \; ds\; dr \,,
 \end{equation}
 
 with
 
 \begin{equation}\label{eqn:los_velocity_dist2}
-  f(r) = f_{r'} \exp \left [ \int_{r'}^r \frac{2 \beta(t) }{t} \; dt \right ] \;\; .
+  f(r) = f_{r'} \exp \left [ \int_{r'}^r \frac{2 \beta(t) }{t} \; dt \right ] \, .
 \end{equation}
 
-In Equations~\ref{eqn:los_velocity_dist} and \ref{eqn:los_velocity_dist2}, $I(R)$ is the surface brightness of the dwarf galaxy, $v(s)$ is the density profile of its luminous component, $M(s)=4\pi \int_0^s \rho_{\textrm{DM}}(r) r^2 \; dr$ the enclosed dark matter mass, and $\beta(r)$ velocity anisotropy profile.
+In these two equations, $I(R)$ is the surface brightness of the dwarf galaxy, $v(s)$ is the density profile of its luminous component, $M(s)=4\pi \int_0^s \rho_{\textrm{DM}}(r) r^2 \; dr$ the enclosed dark matter mass, and $\beta(r)$ velocity anisotropy profile.
 The calculated $\sigma_{\mathrm{los}}(r)$ velocity distribution in Equation~\ref{eqn:los_velocity_dist} can then be compared to the radial velocity measurements of stars within dwarf galaxies to estimate the total mass (dark + baryonic)~\cite{dwarf_gal_vel_dispersion,dwarf_gal_vel_dispersion_a,dwarf_jfactors_no_priors}.
 As stellar velocity measurements rely on doppler-shifted spectral lines, and not the star's absolute brightness, any derived mass estimates are fairly robust with respect to changes in observed brightness.
 These changes in brightness can be from atmospheric variations during telescope observations or changes in the amount of light-absorbing dust in the line-of-sight.
@@ -304,17 +304,18 @@ This difference in drag over time resulted in a separation between the Bullet cl
 The pink clouds are X-ray observations of the cluster's warm gas, while the blue clouds are the weak lensing mass.
 The red triangle and blue oval show the approximate centers of mass of the Bullet cluster's two clouds.
 The difference in position between the two centers of mass allows for a constraint to be put on the dark matter particle's mass and cross section.
-This contraint is shown in Equation~\ref{eqn:bullet}, where $\sigma_{\chi}$ is the dark matter particle cross section, and $m_{\chi}$ is the dark matter particle mass~\cite{bullet_cluster,bullet_cluster2},
+This constraint is shown by
 
 \begin{equation}\label{eqn:bullet}
-  \frac{\sigma_{\chi}}{m_{\chi}} < 1 \, \textrm{cm}^2 \, \textrm{g}^{-1} \;\; .
+  \frac{\sigma_{\chi}}{m_{\chi}} < 1 \, \textrm{cm}^2 \, \textrm{g}^{-1} \,,
 \end{equation}
-
+where $\sigma_{\chi}$ is the dark matter particle cross section, and $m_{\chi}$ is the dark matter particle mass~\cite{bullet_cluster,bullet_cluster2},
 %This result was improved by combining 72 galaxy cluster collisions, improving the limit in Equation~\ref{eqn:bullet} to \SI{0.47}{cm^{2} g^{-1}}~\cite{cluster_72}.
 Further work on this combined 72 galaxy cluster collisions, improving the limit in Equation~\ref{eqn:bullet} to \SI{0.47}{cm^2 g^{-1}}~\cite{cluster_72}.
 
 
 \subsection{Scales of $10^{26}\:\text{m}$ : The Observable Universe and $\Lambda$CDM Cosmology}\label{dm_universe}
+{\color{red}(bold $10^{26}$ as well, in all section titles??)}
 %\subsection{Inter-Cluster Scale}
 % age of universe (13.82*10^9 years * speed of light) = 1.307*10^26m
 At the Universe's largest scale, $\nicetilde 10^{26}$m, the Cosmic Microwave Background (CMB) has been used to measure the total amount of dark matter in the Universe.
@@ -481,10 +482,10 @@ The basic idea of SUSY is that, just as Majorana fermions have a particle-antipa
 This R-parity is defined as
 
 \begin{equation}
-  R = (-1)^{3B+L+2S}
+  R = (-1)^{3B+L+2S} \,,
 \end{equation}
-
 where $B$ is the baryon number, $L$ is the lepton number, and $S$ is the particle spin.
+
 This creates supersymmetric partner particles (superpartners) for each Standard Model particle, usually denoted by an 's-' prefix or an '-ino' suffix added to a particle name, and \nicetilde{} added atop the particle symbol ($e \rightarrow \tilde{e}$).
 Quarks become squarks, leptons become sleptons, and gluons become gluinos, etc.
 Standard model particles and fields have an R-parity of +1, while superpartners have an R-parity of -1.
@@ -515,14 +516,13 @@ Eventually the two populations became independent, sometimes called thermal deco
 After this decoupling, WIMPs continued to annihilate occasionally, further reducing their numbers, until there were so few left that they stopped encountering each other.
 As the population of WIMPs likely did not change much after that time, this transition is called a freeze-out.
 
-The Boltzman equation describing how the number of WIMPs evolves through this freeze-out is,
+The Boltzman equation describing how the number of WIMPs evolves through this freeze-out is 
 
 % some of this derivation is from https://ned.ipac.caltech.edu/level5/March10/Garrett/Garrett7.html
 %   for example, this is equation 20:
 \begin{equation}\label{eqn:boltzmann_relic}
-  \frac{dn}{dt} = - 3 H n \: - \left \langle \sigma_{A} v \right \rangle \left ( n^2 - n_{eq}^2 \right ) \;\;,
+  \frac{dn}{dt} = - 3 H n \: - \left \langle \sigma_{A} v \right \rangle \left ( n^2 - n_{eq}^2 \right ) \,,
 \end{equation}
-
 where $n$ is the comoving WIMP number density, $H$ is the Hubble expansion rate ($\frac{\dot{a}}{a}$), $\left \langle \sigma_{A} v \right \rangle$ is the effective velocity-averaged cross section for $\chi\chi$ annihilating into standard model particles~\cite{wells_relic}.
 The parameter $n_{eq}$ is the equilibrium WIMP comoving number density.
 

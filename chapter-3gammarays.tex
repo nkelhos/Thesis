@@ -38,13 +38,12 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   \end{figure}
   \FloatBarrier
   
-  In inverse Compton scattering, a field of photons with an electron present will gain energy according to Equation~\ref{eqn:inv_compt_en_gain_rate}~\cite{inv_compt1,inv_compt2},
+  In inverse Compton scattering~\cite{inv_compt1,inv_compt2}, a field of photons with an electron present will gain energy according to 
   
   % https://eud.gsfc.nasa.gov/Volker.Beckmann/school/download/Longair_Radiation3.pdf equation 11
   \begin{equation}\label{eqn:inv_compt_en_gain_rate}
     \frac{dE}{dt} = \frac{4}{3} \: \sigma_{t} \: U \: c \: \gamma^2 \: \frac{ v^2 }{ c^2 } \;\; ,
   \end{equation}
-
   where
   
   \begin{itemize}
@@ -55,13 +54,13 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \item $U$ is the energy density of the photon field in the rest frame of the electron (e.g. $Uc=N\hbar \omega c$), and 
     \item $v$ is the velocity of the electron in the laboratory frame.
   \end{itemize}
-
   The average energy $E_{up}$ of photons upscattered this way can be calculated via
   
   % https://eud.gsfc.nasa.gov/Volker.Beckmann/school/download/Longair_Radiation3.pdf equation 15
   \begin{equation}\label{eqn:inv_compt_avg_up_en}
-    E_{up} = \frac{4}{3} \: \gamma^2 \: E_{0} \;\;.
+    E_{up} = \frac{4}{3} \: \gamma^2 \: E_{0} \,,
   \end{equation}
+  where the parameter $E_{0}$ is the energy of the original photon.
   
   % me = 5e5 eV (mass of electron)
   
@@ -101,7 +100,6 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   % Eup = (4/3) * 1e12 * 0.35 eV
   % Eup = 4.67e11 eV = 467 GeV
   
-  The parameter $E_{0}$ is the energy of the original photon.
   Astrophysical electrons have been detected at Earth at energies of \SI{500}{\GeV{}}~\cite{500GeVElectrons,fermi_electron}, and potentially as high as \SI{20}{\TeV{}}~\cite{hess2017_electronspectrum}.
   At energies of \SI{500}{\GeV{}}, the Lorentz factor is $\gamma = 10^6$.
   With this Lorentz factor, upscattered photons can increase their energy by up to\footnote{This is the maximum average energy gain when the upscattered photon is emitted back along its original trajectory.} $\gamma^{2} = 10^{12}$.
@@ -116,9 +114,8 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   The probability $\Upsilon$ (0-1) of a photon pair-converting in a magnetic field is calculated by via 
   
   \begin{equation}\label{eqn:pwn_pairprod}
-    \Upsilon = \frac{E}{mc^2} \frac{H}{c} \frac{e \hbar}{m^2c^2} \;\;,
+    \Upsilon = \frac{E}{mc^2} \frac{H}{c} \frac{e \hbar}{m^2c^2} \,,
   \end{equation}
-  
   where $E$ is the photon energy, $H$ is the ambient magnetic field strength, $e$ is the electron charge, and $m$ is the mass of the electron~\cite{pwn_pairprod3}.
   The factor $\frac{e \hbar}{m^2c^2}$ acts as a threshold magnetic field strength, above which the conversion rate becomes significant.
   For electrons the threshold is $\frac{1}{4.4\times10^{13}\,\textrm{Gauss}}$, similar in scale to the pulsar's surface magnetic field strength.
@@ -225,32 +222,29 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   
   At the shockfront, particles that cross it are reflected off the magnetic fields on the other side, gaining a small amount of energy each time.
   Over many crossings, charged particles can gain high energies, though the higher the energy of the particle, the more likely it is to escape the shockfront, since it's gyroradius increases as its energy increases.
-  The amount of energy gained is governed by a parameter $\beta$, in Equation~\ref{eqn:snr_beta}.
+  The amount of energy gained is governed by a parameter $\beta$, in the equation
   
   \begin{equation}\label{eqn:snr_beta}
-    \beta = 1 + \frac{v_s}{c}
+    \beta = 1 + \frac{v_s}{c} \,.
   \end{equation}
-  
-  This $\beta$ parameter can be interpreted as the fractional energy gain per crossing, as in Equation~\ref{eqn:snr_beta_en},
+  This $\beta$ parameter can be interpreted as the fractional energy gain per crossing, as in
 
   \begin{equation}\label{eqn:snr_beta_en}
-    E_{i+1} = \beta E_{i} \;\; ,
+    E_{i+1} = \beta E_{i} \,,
   \end{equation}
-  
   where the $E_i$ parameter is the average energy of a charged particle after it's $i^{\textrm{th}}$ crossing.
   The energy gain $\beta$ factor influences the energy spectrum of the escaping charged particles, but so too does $P$, the probability that the charged particle remains trapped at the shockfront after each crossing.
   This probability $P$ can be calculated with
   
   \begin{equation}\label{eqn:snr_prob}
-    P = 1 - \frac{v_s}{c} \;\; .
+    P = 1 - \frac{v_s}{c} \,.
   \end{equation}
-  
+
   With this probability $P$ and the energy gain $\beta$, the energy spectrum of particles that permanently escape the shockfront can be calculated by
   
   \begin{equation}\label{eqn:snr_spec}
-    \frac{dN}{dE} \approx E^{ \frac{\log P}{\log \beta} - 1 } \;\; .
+    \frac{dN}{dE} \approx E^{ \frac{\log P}{\log \beta} - 1 } \,.
   \end{equation}
-  
   With Equations~\ref{eqn:snr_beta} and \ref{eqn:snr_prob}, the spectrum from Equation~\ref{eqn:snr_spec} can be simplified with the following substitution:
 
   \begin{equation}\label{eqn:snr_simplify}
@@ -259,7 +253,6 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
        \log \beta & = \log \left ( 1 + \frac{v_s}{c} \right ) \approx + \frac{v_s}{c} \;\; .\\
     \end{split}
   \end{equation}
-  
   Using Equation~\ref{eqn:snr_simplify}, Equation~\ref{eqn:snr_spec} can then be simplified to
   
   \begin{equation}\label{eqn:snr_spec_final}
@@ -315,16 +308,16 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
 
   In hadronic processes, protons can be accelerated ($p_{accel}$) by Fermi acceleration, by a supernova remnant~\cite{proton_snr_accel}, or as part of an active galactic nucleus jet~\cite{hadronic1,hadronic2}.
   % orel commented that a sentence should be added saying that protons can be accelerated in the same way as the electrons discussed earlier
-  Then, upon striking an ambient proton ($p_{ambient}$), the interaction can, in some cases, produce $\pi^{+}\pi^{+}\pi^{0}$, and other particles $X$~\cite{pp_pion,pp_pion2,pp_pion3}.
+  Then, upon striking an ambient proton ($p_{ambient}$), the interaction can, in some cases, produce $\pi^{+}\pi^{+}\pi^{0}$, and other particles $X$~\cite{pp_pion,pp_pion2,pp_pion3}:
   
   %\begin{equation}\nonumber
     $$ p_{accel} + p_{ambient} \rightarrow \pi^+ + \pi^+ + \pi^0 + X $$
   %\end{equation}
-
   The $\pi^{0}$ then quickly (\SI{8.5e-17}{s}~\cite{pdg2016}) decays into two gamma rays.
   Because each pion resulting from the original $pp$ interaction tends to receive roughly $\frac{1}{3}$ of the original proton's kinetic energy, and the $\pi^0$ decays into two gamma rays, each gamma ray ends up with \nicetilde$15\%$ of the original proton's kinetic energy.
   The X ends up possessing only a small amount of energy compared to the mass of the pions.
   For example, a proton with \SI{10}{\TeV{}} of kinetic energy will eventually produce two \SI{1.5}{\TeV{}} gamma rays.
+  
   While other products from the $pp$ interaction may also produce gamma rays, the $\pi^0$ decay is the dominant production channel.
   Much of the diffuse gamma-ray component of the galactic disk is due to extra-galactic high-energy protons colliding with the protons of the galactic plane~\cite{GalacticDiffuseGammaRays,extragalactic_agn}.
   
@@ -516,15 +509,15 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     Observations allow most galactic dark matter halos to be modeled using a class of similar density profiles.
     A currently favored profile is the Einasto profile~\cite{einastoprofile1,einastoprofile2}.
     This profile describes the mass-density of dark matter at a distance $r$ from the halo center, $\rho(r)$.
-    The Einasto profile is described by,
+    The Einasto profile is described by
 
     \begin{equation} \label{eqn:einasto}
-      \rho_{\textrm{DM}} \left( r \right) = \rho_{s} Exp \left( - \frac{2}{\alpha} \left( {\left( \frac{r}{r_s} \right)}^{\alpha} - 1 \right) \right) \;\; ,
+      \rho_{\textrm{DM}} \left( r \right) = \rho_{s} Exp \left( - \frac{2}{\alpha} \left( {\left( \frac{r}{r_s} \right)}^{\alpha} - 1 \right) \right) \,,
     \end{equation}
-    
     where $r_s$ is the scale radius of the halo, which specifies how wide the dark matter halo is.
     The parameter $\rho_s$ is the scale density, which is the dark matter density at the scale radius.
     The parameter $\alpha$ is the power of the density profile's slope.
+    
     A larger $\alpha$ reduces the dark matter densities above and below the scale radius $r_s$.
     Both $\alpha$ and $r_s$ are from the best fit values of the Aq-A-1 simulation in Table 2 of Ref.~\cite{mw_halo_params}.
     The $r_s$ parameter is calculated via $r_s=r_{-2}=15.14\:\textrm{kpc}$, where $r_{-2}=\frac{11.05}{h_{73}}\:\textrm{kpc}$ (in Ref.~\cite{mw_halo_params}, Table 2) and $h_{73}=0.73$ from Section 2.1 in Ref.~\cite{mw_halo_params}.
@@ -557,12 +550,12 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     When choosing which dark matter target to observe with a gamma-ray observatory, knowing the gamma-ray brightness of different sources can be useful.
     This Einasto density profile can be integrated to calculate the gamma-ray brightness, independent of the WIMP model being searched for.
     For annihilating dark matter, $\rho_{\textrm{DM}}\left(r\right)^2$ must be integrated along the line of sight.
-    The flux of gamma rays produced by these annihilations is given by,
+    
+    The flux of gamma rays produced by these annihilations is given by
     
     \begin{equation}\label{eqn:dmflux}
-      \frac{ d\Phi }{ dE d \Omega } = \frac{ \left \langle \sigma v \right \rangle }{8 \pi m_\chi^2} \frac{dN_{\gamma}}{dE} \int \rho^2 dl \;\; ,
+      \frac{ d\Phi }{ dE d \Omega } = \frac{ \left \langle \sigma v \right \rangle }{8 \pi m_\chi^2} \frac{dN_{\gamma}}{dE} \int \rho^2 dl \, ,
     \end{equation}
-    
     where the photon flux $\Phi$ is the number of gamma rays detected per $\textrm{area}\times\textrm{time}$.
     The velocity-averaged cross section of the dark matter candidate is $\left \langle \sigma v \right \rangle$.
     Velocity-averaging is used because the cross section is velocity dependent, and the WIMPs that pass through a volume of space will have a distribution of velocities~\cite{wimp_veldist}.
@@ -629,11 +622,11 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     \label{fig:cherenkovangle}
   \end{figure}
 
-  Cherenkov photons are emitted at an angle $\theta$ relative to the charged particle's path, determined by the index of refraction of the medium $n$, the speed of the charged particle $v$, and the speed of light in the medium $c$.
+  Cherenkov photons are emitted at an angle $\theta$ relative to the charged particle's path, determined by the index of refraction of the medium $n$, the speed of the charged particle $v$, and the speed of light in the medium $c$:
   % showers are 10km up, light pool on ground is 130m diameter, \theta = ArcSin(130/10000) * 180 / pi = 0.73deg ~ 1deg
 
   \begin{equation}\label{eqn:cherenkovangle}
-    \theta = ArcCos \left ( \frac{c}{n \; v} \right )
+    \theta = ArcCos \left ( \frac{c}{n \; v} \right ) \,.
   \end{equation}
   
   For the air showers used in this analysis, the Cherenkov angle $\theta$ is \nicetilde\ang{1}.
@@ -655,9 +648,8 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   The spectrum of photons produced by the Cherenkov effect can be calculated with the Frank-Tamm formula~\cite{franktamm1,franktamm2},
   
   \begin{equation}\label{eqn:franktamm}
-    \frac{dE}{dx\,d\omega}=\frac{(ze)^2 \, \omega}{c^2} \left ( 1 - \frac{c^2}{v^2 \;\epsilon(\omega)} \right ) \;\;,
+    \frac{dE}{dx\,d\omega}=\frac{(ze)^2 \, \omega}{c^2} \left ( 1 - \frac{c^2}{v^2 \;\epsilon(\omega)} \right ) \,,
   \end{equation}
-  
   where $E$ is the energy emitted as Cherenkov radiation, $x$ is the length of the charged particle path, $ze$ is the charge of the particle, $\omega$ is the emitted Cherenkov photon frequency, $c$ is the speed of light (phase velocity) in the medium, $v$ is the speed of the particle, and $\epsilon(\omega)$ is the frequency-dependent permittivity.
   
   \begin{figure}[!t]
