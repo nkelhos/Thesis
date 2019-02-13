@@ -2,16 +2,16 @@
 \newcommand{\Like}{L}
 \newcommand{\LogLike}{\mathcal{L}}
 \newcommand{\LogLikeMax}{\LogLike_{\textrm{max}}}
-\newcommand{\xtrue}{\mathbf{x }}
-\newcommand{\xdet }{\mathbf{x'}}
-\newcommand{\ltrue}{\mathbf{l }}
-\newcommand{\ldet }{\mathbf{l'}}
-\newcommand{\btrue}{\mathbf{b }}
-\newcommand{\bdet }{\mathbf{b'}}
-\newcommand{\Etrue}{\mathbf{E }}
-\newcommand{\Edet }{\mathbf{E'}}
-\newcommand{\ttrue}{\mathbf{t }}
-\newcommand{\tdet }{\mathbf{t'}}
+\newcommand{\xtrue}{x}
+\newcommand{\xdet }{x'}
+\newcommand{\ltrue}{l}
+\newcommand{\ldet }{l'}
+\newcommand{\btrue}{b}
+\newcommand{\bdet }{b'}
+\newcommand{\Etrue}{E}
+\newcommand{\Edet }{E'}
+\newcommand{\ttrue}{t}
+\newcommand{\tdet }{t'}
 \newcommand{\Aeff }{A_\textrm{eff }}
 \newcommand{\Edisp}{E_\textrm{disp}}
 \newcommand{\Mnull}{M_\textrm{null}}
@@ -40,7 +40,7 @@
     \label{fig:gcfieldsofview}
   \end{figure}
 
-  All three sets of data include observations from both the V5 and V6 epochs (see Section~\ref{sec:epochs}).
+  All three sets of data include observations from both the V5 and V6 epochs (see Section~\ref{sec:epochs}), where the number of hours are shown in Table~\ref{tab:observation_times}.
   All used data was taken from April 2010 to June 2016.
   The specific VERITAS data run numbers are listed in Appendix~\ref{app:runlists}.
 
@@ -57,17 +57,6 @@
     \end{tabular}
   \end{table}
 
-
-  \begin{figure}[!ht]
-    \centering
-    \includegraphics[width=0.95\textwidth]{images/elevation_hist/elevhist.pdf}
-    \caption[VERITAS Data Elevation Exposure]{
-      Camera center elevation for the three sets of data.
-      The three peaks in the Sgr A* data are from the 4 wobble positions being at different elevations.
-      The north wobble observations peak at elevation \nicetilde\ang{29.75}, east and west wobbles observations at \nicetilde\ang{29.25}, and south wobble observations at \nicetilde\ang{28.75}.
-    }
-    \label{fig:datapointingelevations}
-  \end{figure}
 
   There are comparatively fewer Sgr A* Off observations because this source is only used for background estimation, and telescope time is in high demand.
   There are also fewer Crab Nebula observations, as the majority of its data is taken at higher elevations, where the telescope has increased sensitivity to lower energies.
@@ -231,7 +220,6 @@
   \begin{equation}\label{eqn:folding}
     P_i \left( \xdet \right ) = \int_\xtrue R \left ( \xdet, \xtrue \right ) * M \left ( \xtrue \right ) d\xtrue \,.
   \end{equation}
-  {\color{red}(why in this section you switch notation to bold text?? better stick to one notation (the previous one) -orel)}
   Here, $P_i \left( \xdet \right )$ is the probability of detecting an event at detector coordinates $\xdet = \left ( \ldet, \bdet, \Edet, \tdet \right )$.
   The integration $\int_\xtrue$ takes place over the entire true space, time, and energy regions being studied.
   The function $M\left ( \xtrue \right )$ is the number of counts predicted by the astrophysical models at coordinate $\xtrue$, and $R \left ( \xdet, \xtrue \right )$ is the dispersion at $\xdet$ due to $\xtrue$ {\color{red}(its not the dispersion at x' due to x ?? -orel)}.
@@ -321,15 +309,29 @@
   To verify the likelihood method is physically correct, the Crab Nebula was analyzed first, before any dark matter analysis was performed.
   As the Crab Nebula is the brightest gamma ray emitter in the sky, it has been observed extensively by VERITAS and other gamma ray telescopes.
   After {\color{red}searching for (selecting low-elevation, not searching for?? -orel)} low-elevation Crab Nebula observations, a total of 17.1 hours of data were selected from the VERITAS data archives.
+  
   Since the Galactic Center only rises to around \ang{30} elevation, elevation effects would also need to be searched for.
-  To uncover any low-elevation effects, time cuts were applied to this data to restrict the telescope pointing elevations to \SIrange{27.5}{32.5}{\degree}, similar to the elevation of the Galactic Center data later on (see Figure~\ref{fig:datapointingelevations}).
+  A plot of the telescope pointing elevation for the Crab Nebula, Galactic Center, and Galactic Center off data is shown in Figure~\ref{fig:datapointingelevations}.
+  To uncover any low-elevation effects, time cuts were applied to this data to restrict the telescope pointing elevations to \SIrange{27.5}{32.5}{\degree}, similar to the elevation of the Galactic Center data later on.
   This resulted in \SI{3.3}{hours} of V5 and \SI{5.5}{hours} of V6 epoch data (see Table \ref{tab:observation_times}).
-  {\color{red}(why is figure \ref{fig:datapointingelevations} and table \ref{tab:observation_times} so far back?? -orel)}
+  In Figure~\ref{fig:crab_skymap}, the position of all counts is shown in galactic $\ldet$ and $\bdet$.
+
+  \begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.75\textwidth]{images/elevation_hist/elevhist.pdf}
+    \caption[VERITAS Data Elevation Exposure]{
+      Camera center elevation for the three sets of data.
+      The three peaks in the Sgr A* data are from the 4 wobble positions being at different elevations.
+      The north wobble observations peak at elevation \nicetilde\ang{29.75}, east and west wobbles observations at \nicetilde\ang{29.25}, and south wobble observations at \nicetilde\ang{28.75}.
+    }
+    \label{fig:datapointingelevations}
+  \end{figure}
+
     
-  \begin{figure}[!t]
+  \begin{figure}[tb]
     \centering
     %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_skymap.pdf}
-    \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapcounts.pdf}
+    \includegraphics[width=0.75\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapcounts.pdf}
     \caption[Crab Nebula Counts Skymap]
     {
       Skymap of event positions, ($\ldet$,$\bdet$).
@@ -532,7 +534,6 @@
   \end{figure}
     
   The fitted models can also be viewed, as a check that the likelihood engine is fitting the models to the data.
-  In Figure~\ref{fig:crab_skymap} {\color{red}(refer to figure \ref{fig:crab_skymap} before figure \ref{fig:crab_test_spectra}, either move the sentence or the figure ?? -orel)}, the position of all counts is shown in galactic $\ldet$ and $\bdet$ {\color{red}(dont bold these?? -orel)}.
   In Figures \ref{fig:crab_profile_l} and \ref{fig:crab_profile_b}, the counts in the observations and models were integrated along a slice of galactic $l$ and $b$.
   The counts from only the camera background models is shown in yellow, along with the counts from all camera backgrounds plus the point source in green.
   The difference between these two histograms is then the counts from the Crab Nebula point source model.
@@ -661,7 +662,7 @@
     \includegraphics[width=0.65\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_counts_skymap.pdf}
     \caption[Galactic Center Counts Skymap]{
       Skymap of all events used in this analysis.
-      Note that these are in ($\ldet$,$\bdet$) coordinates, not ($\ltrue$,$\btrue$ {\color{red}(do you really need to mention this?? notice the bold notation here while before was the math mode notation?? -orel)}).
+      Note that these are in ($\ldet$,$\bdet$) coordinates, not ($\ltrue$,$\btrue$ {\color{red}(do you really need to mention this?? -orel)}).
       No adjustments are made here for effective area, observation time, or background rate.
     }
     \label{fig:gc_counts_skymap}
@@ -705,6 +706,7 @@
   
   \subsection{Dark Matter Models}\label{subsec:dmhalomodel}
   Dark matter halos are modeled by a spherically-symmetric mass-per-volume density profile, combined with an annihilation spectrum.
+  {\color{red}(why does the equation stick out over the line edge??)}
   This is assembled with a simplified version of Equation~\ref{eqn:dmflux} {\color{red}(its a bit confusing mentioning an old equation here, just show \ref{eqn:dmflux} and explain it?? -orel)}:
   
   \begin{equation}\label{eqn:dmmodel}
@@ -816,7 +818,8 @@
       Observed vs modeled counts in a slice of the sky parallel to the galactic $l$ axis at $b=-0.046{}^{\circ}$ {\color{red}(why is it not zero?? -orel)}.
       Modeled counts from camera background models are shown in yellow, total modeled counts are shown in green.
       Observed counts with Poissonian errors are shown in blue.
-      {\color{red}(missing description of the bottom panel, copy from above?? -orel)}
+      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points.
+      The inset plot shows the counts map from Figure~\ref{fig:gc_counts_skymap}, with blue squares showing the profile bin locations.
     }
     \label{fig:gc_profile_gal_l}
   \end{figure}
@@ -847,7 +850,8 @@
       Observed vs modeled counts in a slice of the sky parallel to the galactic $b$ axis at $l=0${\color{red}(is it actually 0??)}.
       Modeled counts from camera background models are shown in yellow, total modeled counts are shown in green.
       Observed counts with Poissonian errors are shown in blue.
-      {\color{red}(missing description of bottom panel, copy from above?? -orel)}
+      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points.
+      The inset plot shows the counts map from Figure~\ref{fig:gc_counts_skymap}, with blue squares showing the profile bin locations.
     }
     \label{fig:gc_profile_gal_b}
   \end{figure}
@@ -875,7 +879,8 @@
       Observed vs modeled counts in a \ang{0.2}$\times$\ang{0.2} square bin centered on Sgr A* at energies from \SIrange{4}{70}{\TeV{}}.
       Modeled counts from camera background models are shown in yellow, total modeled counts are shown in green.
       Observed counts with Poissonian errors are shown in blue.
-      {\color{red}(missing description of bottom panel, copy from above?? -orel)}
+      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points.
+      The inset plot shows the counts map from Figure~\ref{fig:gc_counts_skymap}, with a blue square showing the profile location.
       }
     %}
     \label{fig:gc_profile_energy}
@@ -886,6 +891,7 @@
   This highlights how the models poorly match the observations in some areas of the sky.
   In this plot, the deficiency of the radially-symmetric camera background models is apparent.
   Lighter/darker areas indicate places where there were more/less observed counts than the best-fit models predicted.
+  The dark upper-left and lighter lower-right areas are due to the the radially-symmetric background, which poorly models the not-radially-symmetric atmosphere {\color{red}(should be rephrased as well (and honestly I would like to understand the problem again) ?? -orel)}.
   
   \begin{figure}[ht]
     \centering
@@ -895,7 +901,6 @@
     {
       Significance of each skymap bin's residual counts.
       See Equation~\ref{eqn:resmap_signif} for details.
-      The dark upper-left and lighter lower-right areas are due to the the radially-symmetric background, whereas a non-radially symmetric one would have been more ideal {\color{red}(move this sentence to the text.  should be rephrased as well(and honestly I would like to understand the problem again) ?? -orel)}.
     }
     \label{fig:gc_resmap}
   \end{figure}
@@ -1029,6 +1034,7 @@
   This means that the radial camera background models are not accurately fitting the shape of the observed events.
   The direction of the residual gradient aligns with the elevation gradient in the camera, visible in Figure \ref{fig:background_grid}.
   To check that this elevation gradient has a negligible effect on the upper limit result in Figure~\ref{fig:ulim}, the likelihood analysis was redone with an elevation gradient.
+  
   As this analysis is limited to the energy range \SIrange{4}{70}{\TeV{}}, the elevation gradient will increase the number of events detected at the bottom of the camera, due to the thicker atmosphere providing increased interaction mass.
   And, since the Galactic Center is visible almost directly south at an azimuth of \ang{193}, the elevation axis is almost parallel to the Declination axis.
   A gradient of 5\%/degree was chosen due to the relative differences between the total modeled counts and the observed counts in Figures \ref{fig:gc_profile_gal_l} and \ref{fig:gc_profile_gal_b}.
@@ -1041,6 +1047,8 @@
   % looking at counts in figure suggests a higher value, around 10%/deg?
   % I think I picked halfway between these two numbers, 5%/deg
   An example background is shown in Figure~\ref{fig:bkg_flatvsgrad}, before and after the gradient is applied.
+  While faint, the difference between the two can be seen in the central dark-red ring.
+  In the left, the ring is symmetric, while in the right, the ring is darker at the bottom than at the top.
   
   \begin{figure}[ht]
     \centering
@@ -1049,9 +1057,6 @@
       The background models for run 68348, minutes 16-24.
       Left is the original radial background, centered \ang{0.5} north of the Galactic Center.
       Right is the same background, after applying the 5\%/degree gradient along the elevation axis.
-      While faint, the difference between the two can be seen in the central dark-red ring.
-      In the left, the ring is symmetric, while in the right, the ring is darker at the bottom than at the top.
-      {\color{red}(move the last two sentences to the text?? -orel)}
     }
     \label{fig:bkg_flatvsgrad}
   \end{figure}
