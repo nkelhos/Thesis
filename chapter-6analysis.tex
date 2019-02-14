@@ -132,7 +132,7 @@
   
   When calculating $\Like$, certain computational problems can arise.
   Calculating the product of many small probabilities can result in extremely small numbers, beyond the binary storage limit of common variable types.
-  Calculating derivatives of some of these numbers is computationally expensive, so to solve these two problems, the a logarithm is applied to get the log-likelihood:
+  Calculating derivatives of some of these numbers is also computationally expensive, so to solve these two problems, the a logarithm is applied to get the log-likelihood:
   
   \begin{equation}\label{eqn:simple_like_6}
     \LogLike = \textrm{log} \left ( \Like \right )  \,.
@@ -154,18 +154,15 @@
   
   \subsection{Models}\label{sec:model_irf_folding}
   
-  {\color{red}(I dont understand, why do you discuss bins again here if you claimed before that you do an ubinned analysis?? is it a two step process I dont understand or did you choose to explain with bins cause its easier?? -orel)}
-  
-  Models are used in a likelihood analysis to predict the number of events that a particular source deposits into a particular bin.
+  Models are used in a likelihood analysis to predict the number of events that a particular source deposits into some bin $j$.
   In a likelihood analysis, each source of events gets its own model.
   Each model is described by a function $M$, and different sources will have different $M$ functions.
   The function $M$ has dimensional units of $\frac{\textrm{counts}}{\textrm{energy}\times\textrm{solid angle}\times\textrm{area}\times\textrm{time}}$ {\color{red}(use math notation, letters instead of words?? -orel)}.
-  This function can be integrated over the energy, sky, and time region covered by a bin to calcuate the number of events predicted in that bin, as shown by 
+  This function can be integrated over the energy, sky, and time region covered by a bin $j$ to calcuate the number of events predicted in that bin, as shown by 
   
   \begin{equation}\label{eqn:model_int}
-    m_{i \, \textrm{or} \, j} = \int_{t\,\textrm{bin}} \int_{E\,\textrm{bin}} \int_{b\,\textrm{bin}} \int_{l\,\textrm{bin}} M(l,b,E,t)\; dl \; db \; dE \; dt \,.
+    m_{j} = \int_{t\,\textrm{bin}} \int_{E\,\textrm{bin}} \int_{b\,\textrm{bin}} \int_{l\,\textrm{bin}} M(l,b,E,t)\; dl \; db \; dE \; dt \,.
   \end{equation}
-  {\color{red}(why i or j in the equation?? does it help the reader understand?? -orel)}
   Here, $l$ and $b$ are sky coordinates, $E$ is energy, and $t$ is time.
   The basic models used in this analysis can be broken apart into their spatial, spectral, and temporal components, as in
 
@@ -243,12 +240,11 @@
   So in order to account for these multiple models, their predicted counts in a bin must be summed first, as in 
   
   \begin{equation}\label{eqn:combinemodels}
-    m_{i\,\textrm{or}\,j} = \sum_k m_k(i\,\textrm{or}\,j) \,,
+    m_{j} = \sum_k m_{k,j} \,,
   \end{equation}
   before being used in Equation~\ref{eqn:simple_like_8}.
-  Here, index $k$ loops over the various models that contribute events to a particular bin.
-  The factor $m_k$ represents the number of counts predicted by model $k$, at the position of event $i$ or bin $j$.
-  {\color{red}(it is confusing to discuss both options everywhere, you use unbinned analysis, explain just that ?? -orel)}
+  Here, index $k$ loops over the various models that contribute events at a position in the parameter space.
+  The factor $m_{k,j}$ represents the number of counts predicted by model $k$, at the position of bin $j$.
   
   In order to calculate the test statistic, the models must be grouped into two sets, called hypotheses.
   For a basic analysis, the null hypothesis consists of all models, except the specific one being searched for, called here {\color{red} $\Mnull$ (how about H instead so not to confuse with the models before?? -orel)}.
@@ -683,8 +679,10 @@
   For this analysis, a point source model was added at the position of Sgr A*, at
   
   $$(l,b)_{\textrm{J2000}} = (\ang{359.944212}, \ang{-0.046013}) \,. $$
-  This was done because other studies have indicated that the gamma-ray excess at Sgr A* is not consistant with a dark matter halo~\cite{gc_pnt_is_not_dm1, gc_pnt_is_not_dm2, gc_pnt_is_not_dm3} {\color{red}(the order is probably different. An excess was detected, looked like a point source, not consistant with a dark matter halo.  VERITAS found the best fit is obtained with a broken power law (not in comparison with power law) ?? -orel)}.
-  Instead, a point source with the broken power law spectrum 
+  This was done because previous studies had detected a gamma-ray excess at Sgr A*, and it was found to be point-like.
+  It was later found to not be consistant with a dark matter halo~\cite{gc_pnt_is_not_dm1, gc_pnt_is_not_dm2, gc_pnt_is_not_dm3}.
+  %This was done because other studies have indicated that the gamma-ray excess at Sgr A* is not consistant with a dark matter halo~\cite{gc_pnt_is_not_dm1, gc_pnt_is_not_dm2, gc_pnt_is_not_dm3} {\color{red}(the order is probably different. An excess was detected, looked like a point source, not consistant with a dark matter halo.  VERITAS found the best fit is obtained with a broken power law (not in comparison with power law) ?? -orel)}.
+  To model this, a point source with the broken power law spectrum 
 
   \begin{equation}\label{eqn:brokenplaw}
     M_e(\xtrue) = M_e(\Etrue) = N_o * { \left ( \frac{\Etrue}{E_{\textrm{pivot}}} \right ) }^{\gamma} {e}^{-\frac{E}{E_{\textrm{cutoff}}}}
@@ -693,7 +691,7 @@
   This was chosen because, in a previous VERITAS analysis of the Galactic Center, a broken power law was found to be a better fit than a simple power law~\cite{VeritasGCRidge2015}.
   
   Several parameters are fixed in the likelhiood optimization.
-  The values used in Equation~\ref{eqn:brokenplaw} are from Ref. \cite{VeritasGCRidge2015}, where the specific values are $E_{\textrm{pivot}}=\SI{1}{TeV}$, $E_{\textrm{cutoff}}=\SI{12.8}{TeV}$, and $\gamma=-2.1$.
+  The values used in Equation~\ref{eqn:brokenplaw} are from Ref. \cite{VeritasGCRidge2015}, where $E_{\textrm{pivot}}=\SI{1}{TeV}$, $E_{\textrm{cutoff}}=\SI{12.8}{TeV}$, and $\gamma=-2.1$.
   % theres also the 2016 paper http://iopscience.iop.org/article/10.3847/0004-637X/821/2/129/meta
   The normalization parameter $N_o$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was free to change in the likelihood optimization, while $E_{\textrm{pivot}}$, $E_{\textrm{cutoff}}$, and $\gamma$ were all fixed.
   The normalization $N_o$ was left free to allow for the potential of some mixing between the point source events and any dark matter halo events, i.e. a stronger dark matter halo gamma-ray flux would result in a weaker point source flux.
@@ -712,8 +710,21 @@
   In this analysis, an Einasto density profile is used for the spatial component function $M_s$ of the dark matter halo model.
   See Section~\ref{dm_spatial} for a discussion on the $M_{s,\textrm{halo}}$ function.
   
-  For the spectral component, each dark matter mass tested has its own spectrum function {\color{red}(which spectrum?? the photon spectrum shown as a function of the DM mass?? -orel)} $M_e$ produced with CLUMPY (see Section~\ref{dm_spectral}).
-  The parameter $N$ is the magnitude of the halo, which the likelihood engine {\color{red}(better write 'left free in the likelihood fit' rather than mention something like 'likelihood engine' ?? -orel)} is free to scale up and down to get the best fit.
+  For the spectral component, each of the 9 dark matter masses tested has their own spectrum function $M_e$ produced with CLUMPY.
+  These spectra are shown in Figure~\ref{fig:chichi_spectrum2}, and are discussed further in Section~\ref{dm_spectral}.
+  The parameter $N$ is the magnitude of the halo, which was left free in the likelihood fit.
+
+  \begin{figure}[bt]
+    \centering
+    \includegraphics[width=0.55\textwidth]{images/spectra/chichi_spectrum.pdf}
+    \caption[Single Annihilation Spectra]{
+      Resultant photon spectra from the annihilation of two WIMP particles purely into the $b\bar{b}$ channel.
+      Each colored line represents a different WIMP mass.
+    }
+    \label{fig:chichi_spectrum2}
+  \end{figure}
+
+  \FloatBarrier
 
   \subsection{Likelihood Maximization Results}\label{like_results}
 
@@ -987,7 +998,7 @@
   The $\textrm{erf}^{-1}$ is the inverse error function.
   A 95\% confidence interval is desired, so $\alpha$ is set to 0.95 for the upper limit calculation in this section.
   
-  In this procedure, the dark matter halo model's flux $\Phi$ is fixed at one magnitude, and then the likelihood method finds the best fit values for the remaining free parameters.
+  In this procedure, the dark matter halo model's flux $\Phi$ is fixed at one magnitude, and then the likelihood optimization finds the best fit values for the remaining free parameters.
   This is repeated for various $\Phi$ until the the likelihood is found to be within a certain tolerance of $L_{\textrm{ul}}$.
   Once the upper limit model flux $\Phi$ is found and combined with Equation~\ref{eqn:ulim}, the cross section upper limit can be calculated.
   {\color{red}(this whole explaination for how to get the ul could be improved. cant tell you how without rewriting it myself though ?? -orel)}
@@ -1025,7 +1036,7 @@
   While no dark matter was detected in this thesis, the upper limit calculation is influenced by this systematic uncertainty.
   This can be envisioned as a dark matter signal that was brighter than the upper limit in Figure~\ref{fig:ulim}, but then fluctuated downwards by 20\% of its flux.
   Conversely, a dim dark matter signal below the upper limit could be enhanced by 20\% instead.
-  {\color{red}(maybe to close out this section add one more sentence like 'these systematic uncertainties are reflected by the band' or whatever ?? -orel)}
+  These uncertainties are reflected by the blue band.
   
   \FloatBarrier
 
