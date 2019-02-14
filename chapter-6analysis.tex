@@ -64,8 +64,7 @@
   For all of these observations, quality cuts are applied.
   This includes monitoring the telescope hardware and cloud ceiling in the field of view.
   Two far-infrared pyrometers are used to measure the cloud ceiling height, by measuring the temperature of the sky.
-  With the pyrometer, clouds (\nicetilde\ang{-5}C) are significantly warmer than clear sky (\nicetilde\ang{-50}C).
-  {\color{red}(its not with the pyrometer that the clouds are warmer?? sounds strange?? -orel)}
+  With the pyrometer, clouds (\nicetilde\ang{-5}C) are measured to be significantly warmer than clear sky (\nicetilde\ang{-50}C).
   Low-quality segments of data, where there are large (>20\%) and/or rapid (<=\SI{30}{s}) changes in the L3 trigger rate or cloud ceiling height, are removed from the analysis~\cite{bird_weather}.
   % see Bird 2015 thesis pg 55
 
@@ -74,9 +73,10 @@
   After this data is collected, it is used in a likelihood analysis, detailed in the next section.
 
 \section{Likelihood Ratio Test}\label{sec:likeratio}
-  A likelihood ratio test determines which of two model groups is a statistically better fit to a set of data.
-  {\color{red}(Formally a likelihood analysis is frequentist in nature, which means it tests the likelihood of teh data given a model (I wrote it the other way around), a statistics pedant on the committee my jump at this?? -orel)}
-  It is performed by calculating, for a group of events, the likelihood of detecting that group of events for each of two model groups.
+  A likelihood ratio test determines the likelihood of getting the observed data from two separate model groups.
+  % Formally a likelihood analysis is frequentist in nature, 
+  % which means it tests the likelihood of the data given a model
+  %It is performed by calculating, for a group of events, the likelihood of detecting that group of events for each of two model groups.
   Once the likelhood is calculated, then the parameters of the model are varied until the maximum likelihood is found for each model.
   These two maximum likelihoods can then be used to calculate the test statistic (TS), which determines which model is statistically favored, and to what degree it is favored.
   
@@ -84,20 +84,19 @@
   At its heart, a likelihood is a product of probabilities.
   With two events, the likelihood is $(\textrm{probability that event one happens})\times(\textrm{probability that event two happens})$.
   In a counting experiment like VERITAS, the likelihood $\Like$ is determined via Poissonian statistics with
+
   \begin{equation}\label{eqn:simple_like}
     \Like = \frac{e^{-m} m^n}{n!} \,.
   \end{equation}
   In this equation, $n$ is the number of observed events, and $m$ is the average number of events predicted by a model group.
   
-  For increased statistical power, the VERITAS data can be split into bins in energy, galactic $l$ and $b$, and time.
-  {\color{red}(binned in?? binned by?? -parents)}
-  When combining multiple bins arbitrarily ordered by index $j$ {\color{red}(remove arbitrarily phrase?? -orel)}, each bin's likelihood is multiplied together as in Equation~\ref{eqn:simple_like_2}.
-  These events could be binned in dimensions of sky position, energy, time, or other event parameters, or any combination of these parameters.
-  {\color{red}(binned?? -parents)}
+  For increased statistical power, the VERITAS data can be split into bins of energy, galactic $l$ and $b$, and time.
+  When combining multiple bins with index $j$, each bin's likelihood is multiplied together as in Equation~\ref{eqn:simple_like_2}.
   Future likelihood calculations may also include shower core position on the ground, or distance to the shower, or other observables.
   
   %Equation~\ref{eqn:simple_like_2} is a general formula for calculating a binned likelihood of Poissonian events.
   The general formula for calculating a binned likelihood of Poissonian events is
+  
   \begin{equation}\label{eqn:simple_like_2}
     \Like = \prod_j \frac{ e^{-m_j} \; m_{j}^{n_j}}{n_{j}!} \,.
   \end{equation}
@@ -181,22 +180,22 @@
     M_{s,\textrm{point}}(l,b) = \lim_{a\to\infty} \frac{1}{ \abs{a} \sqrt{\pi} } e^{ - \left ( \sqrt{ (l-l_o)^2 + (b-b_o)^2 }/a \right )^2 } \,.
   \end{equation}
   In this equation, $l_o$ and $b_o$ specify the position of the point source in galactic sky coordinates, which can be model parameters.
-  More complex $M_s$ functions may also have the spatial structure depend on energy $E$ or time $t$, or may take on other spatial shapes like an ellipse or a radially-symmetric profile {\color{red}(reword sentence?? -parents)}.
-  {\color{red}(isnt the above equation radially symmetric?? -orel)}
+  More complex $M_s$ functions may also depend on energy $E$ or time $t$, or may take on other shapes like an ellipse, a ring, or any other two-dimensional function.
   The energy spectrum can be similarly modeled by a basic power law.
   This basic power law is defined by the model function
   
   \begin{equation}\label{eqn:powerlaw_Me}
     M_{e,\textrm{powerlaw}}(E) = N_o \left ( \frac{E}{E_o} \right )^{-\gamma} \,.
   \end{equation}
-  Here, $N_o$ is the flux normalization, $E_o$ is the pivot energy, and $\gamma$ is the spectral index, which can {\color{red}(can?? -orel)} all be model parameters.
+  Here, $N_o$ is the flux normalization, $E_o$ is the pivot energy, and $\gamma$ is the spectral index, which are all be model parameters.
 
   
   \subsection{Instrument Response Function Folding}\label{subsec:folding}
   The average number of counts predicted by a model is calculated by integrating over the entire energy, sky, and time regions in the analysis.
   Because the reconstruction method is not perfect, all events from the astrophysical models are diffused according to the PSF and energy dispersion.
-  Another way of understanding this is if a source is located in some sky bin $j$, events from that source can be reconstructed in neighboring bins $j+1$ and $j-1$, increasing the predicted number of events in those bins and decreasing the number of events in bin $j$, as determined by the PSF {\color{red}(long sentence?? -parents)}.
-  {\color{red}('as determined by the PSF' is not well connected to the beginning of the sentence?? -orel)}
+  Another way of understanding this is if a source is located in some sky bin $j$, events from that source can be reconstructed in neighboring bins $j+1$ and $j-1$.
+  This increases the predicted number of events in those bins and decreases the number of events in bin $j$.
+  The PSF is then a function that describes how many and how far events are diffused away from a sky position.
   This dispersion is illustrated in Figure~\ref{fig:responsedispersion}.
   Similarly, energy dispersion will diffuse events out among neighboring energy bins.
   
@@ -282,9 +281,9 @@
     \textrm{TS} = - 2 \; \textrm{log} \left (  \frac{ \LogLikeMax( \Mnull ) }{ \LogLikeMax( \Malt ) } \right ) \,.
   \end{equation}
   
-  With Wilk's theorem~\cite{wilks1938}, the events can be repeatedly simulated using the null hypothesis probability density function {\color{red}(this is written as if wilks theorem is what allows you to repeatedly simulate events?? -orel)}.
-  For each simulation, a TS can be calculated.
-  After many simulations, the resulting TS's will form a $\chi^2$ distribution with $n$ degrees of freedom, where $n$ is the difference in number of free parameters between the two hypotheses.
+  To convert this TS into a p-value, events can be repeatedly simulated using the null hypothesis probability density function.
+  Then for each simulation, the TS is calculated.
+  After many simulations, Wilk's theorem~\cite{wilks1938} says the resulting TS's will form a $\chi^2$ distribution with $n$ degrees of freedom, where $n$ is the difference in number of free parameters between the two hypotheses.
   From this simulated TS distribution, an actual TS can be converted into a p-value.
   In situations where there is only one or two degrees of freedom, the significance of a specific model can be calculated as $\sqrt{\textrm{TS}}$.
   Due to time constraints, the p-value of this test statistic was not calculated.
@@ -295,10 +294,12 @@
 \section{Background Models}\label{sec:bkgmodels}
   The background models predict the number of background counts produced by a sky without gamma rays.
   This is used to model the probability density function of the background (primarily proton) events, which are several orders of magnitude more populous than the gamma rays.
-  Background models are produced by {\color{red}binning observation sources (what do you mean?? -orel)} with weak or no gamma-ray emission.
+  %Background models are produced by {\color{red}binning observation sources (what do you mean?? -orel)} with weak or no gamma-ray emission.
+  Background models are produced by binning events from observations of sky positions that have with weak or no gamma-ray emission.
+  This results in a template of how the gamma-like background proton events are distributed in the camera.
+  The construction of these models is described further in Section~\ref{background_production}.
   For this low-elevation analysis the observations of the dark region Sgr A* Off, described in Section~\ref{veritasdata}, were used to build these backgrounds.
-  These dark region events were then binned into background models, using the method described in Section~\ref{background_production}.
-  {\color{red}(wasnt all this explained already?? -orel)}
+  
   To account for the difference between the V5 and V6 observatory configurations, the background observations are divided up based on their VERITAS hardware epoch, producing a unique background template for each epoch.
   These background templates only depend on the radial distance from the camera center and the event energy.
   These background templates are used in both the Crab Nebula analysis and the Galactic Center analysis.
@@ -308,7 +309,7 @@
 \section{Crab Nebula Likelihood Analysis}\label{sec:crab_analysis}
   To verify the likelihood method is physically correct, the Crab Nebula was analyzed first, before any dark matter analysis was performed.
   As the Crab Nebula is the brightest gamma ray emitter in the sky, it has been observed extensively by VERITAS and other gamma ray telescopes.
-  After {\color{red}searching for (selecting low-elevation, not searching for?? -orel)} low-elevation Crab Nebula observations, a total of 17.1 hours of data were selected from the VERITAS data archives.
+  After searching for low-elevation Crab Nebula observations, a total of 17.1 hours of data were selected from the VERITAS data archives.
   
   Since the Galactic Center only rises to around \ang{30} elevation, elevation effects would also need to be searched for.
   A plot of the telescope pointing elevation for the Crab Nebula, Galactic Center, and Galactic Center off data is shown in Figure~\ref{fig:datapointingelevations}.
@@ -357,9 +358,7 @@
   At an elevation of \ang{25}, the reconstruction method is able to reconstruct events as low as \SI{1.5}{\TeV{}}.
   Below \SI{4}{\TeV{}} however, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region may not be accurate.
   Part of this decrease is explored in Section~\ref{subsec:bkgstructure} (see Figures \ref{fig:bkgvsel_crab} and \ref{fig:bkgvsel_sgra}).
-  At energies above \SI{200}{\TeV{}}, simulations become too computationally expensive when attempting to calculate IRFs.
-  In order to ensure there are enough simulations to properly populate the high-energy end of the IRFs, the analysis is limited to a maximum event energy of \SI{70}{\TeV{}}.
-  {\color{red}(invert the argument.  You limited the analysis to a range in which accurate IRFs are available. no need to mention computational stuff ?? -orel)}
+  The analysis range was limited to \SI{70}{\TeV{}} due to only having accurate IRFs up to that energy.
     
   % values from nkelhos@warp-zeuthen.desy.de:/afs/ifh.de/group/cta/scratch/nkelhos/dm_halo_testing/veripy/thesis/analysis/crab_test/logs/statistics.txt
   After fitting all model parameters to the events from \SIrange{4}{70}{\TeV{}}, the best fit power law values are $ N_o = \left(3.90\pm0.71\right)*10^{-20} \frac{\textrm{photons}}{\textrm{cm}^{2} \; \textrm{s} \; \textrm{MeV} } $, $ \gamma = 2.31 \pm 0.17 $, with a test statistic of 408.8, corresponding to \nicetilde{}\SI{20.2}{$\sigma$}.
@@ -433,7 +432,7 @@
     }
     \caption[Crab Nebula Profile along Galactic $l$]
     {
-      The top plot shows the number of counts along a \ang{0.15}-wide-slice the Crab Nebula, along the galactic $l$ axis ($\ldet$ coordinate space {\color{red}(why do you mention this?? -orel)}).
+      The top plot shows the number of counts along a \ang{0.15}-wide-slice the Crab Nebula, along the galactic $l$ axis.
       Blue points are the number of observed counts, with Poissonian error bars~\cite{poissonfrequentistinterval}.
       The green histogram bars are the number of counts predicted by all models.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
@@ -462,7 +461,7 @@
     }
     \caption[Crab Nebula Profile along Galactic $b$]
     {
-      The top plot shows the number of counts along a \ang{0.15}-wide-slice through the Crab Nebula along the galactic $b$ axis ($\bdet$ coordinate space {\color{red}(why mention this?? -orel)}).
+      The top plot shows the number of counts along a \ang{0.15}-wide-slice through the Crab Nebula along the galactic $b$ axis.
       Blue points are the number of observed counts, with Poissonian error bars~\cite{poissonfrequentistinterval}.
       The green histogram bars are the number of counts predicted by all models.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
@@ -491,7 +490,7 @@
     }
     \caption[Crab Nebula Profile along Galactic $l$ Off Source]
     {
-      The top plot shows the number of counts along a \ang{0.15}-wide-slice along the galactic $l$ axis ($\ldet$ coordinate space {\color{red}(why mention this?? -orel)}).
+      The top plot shows the number of counts along a \ang{0.15}-wide-slice along the galactic $l$ axis.
       This slice doesn't go through the Crab Nebula, but instead \ang{1} higher in galactic $b$.
       As this doesn't include the Crab Nebula, this plot primarily demonstrates the camera background modeling.
       Blue points are the number of observed counts, with Poissonian error bars~\cite{poissonfrequentistinterval}.
@@ -523,7 +522,7 @@
     }
     \caption[Crab Nebula Profile in Energy]
     {
-      The top plot shows number of counts in a \ang{0.6} x \ang{0.6} square centered on the Crab Nebula, vs energy ($\Edet$ space {\color{red}(why mention this?? -orel)}).
+      The top plot shows number of counts in a \ang{0.6} x \ang{0.6} square centered on the Crab Nebula, vs energy.
       Blue points are the number of observed counts, with Poissonian error bars~\cite{poissonfrequentistinterval}.
       The green histogram bars are the number of counts predicted by all models.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
@@ -537,8 +536,9 @@
   In Figures \ref{fig:crab_profile_l} and \ref{fig:crab_profile_b}, the counts in the observations and models were integrated along a slice of galactic $l$ and $b$.
   The counts from only the camera background models is shown in yellow, along with the counts from all camera backgrounds plus the point source in green.
   The difference between these two histograms is then the counts from the Crab Nebula point source model.
+  In Figure~\ref{fig:crab_profile_l_off}, a profile is made at \ang{1} north of the Crab Nebula in Galactic $b$.
+  This shows how when no source is present, the background is still well modeled by the background models.
   In Figure~\ref{fig:crab_profile_energy}, a similar plot is made, though integrated in a \ang{0.6}$\times$\ang{0.6} square around the Crab Nebula at different energies.
-  {\color{red}(need to mention figure \ref{fig:crab_profile_l_off} somewhere?? -orel)}
   
   {\color{red}(i dont understand the part from here to the end of the subsection.  even though we discussed it once, i cant follow the description nor do I understand the results you show ?? -orel)}
   To check for any poorly modeled areas of the sky, the difference between the observed counts and models can be examined.
@@ -688,16 +688,15 @@
   Instead, a point source with the broken power law spectrum 
 
   \begin{equation}\label{eqn:brokenplaw}
-    M_e(\xtrue) = M_e(\Etrue) = N_o * { \left ( \frac{\Etrue}{E_{pivot}} \right ) }^{\gamma} {e}^{-\frac{E}{E_{cutoff}}}
+    M_e(\xtrue) = M_e(\Etrue) = N_o * { \left ( \frac{\Etrue}{E_{\textrm{pivot}}} \right ) }^{\gamma} {e}^{-\frac{E}{E_{\textrm{cutoff}}}}
   \end{equation}
-  {\color{red}(l,b,E,t notation?? -orel)}
-  {\color{red}(pivot and cutoff in text mode?? -orel)}
   was added to the list of models.
   This was chosen because, in a previous VERITAS analysis of the Galactic Center, a broken power law was found to be a better fit than a simple power law~\cite{VeritasGCRidge2015}.
   
-  The {\color{red}initial values (it is an initial value only for the normalization, for the rest those are fixed values?? -orel )} used in Equation~\ref{eqn:brokenplaw} are from Ref. \cite{VeritasGCRidge2015}, where the specific values are $E_{pivot}=\SI{1}{TeV}$, $E_{cutoff}=\SI{12.8}{TeV}$, and $\gamma=-2.1$.
+  Several parameters are fixed in the likelhiood optimization.
+  The values used in Equation~\ref{eqn:brokenplaw} are from Ref. \cite{VeritasGCRidge2015}, where the specific values are $E_{\textrm{pivot}}=\SI{1}{TeV}$, $E_{\textrm{cutoff}}=\SI{12.8}{TeV}$, and $\gamma=-2.1$.
   % theres also the 2016 paper http://iopscience.iop.org/article/10.3847/0004-637X/821/2/129/meta
-  The normalization parameter $N_o$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was free to change in the likelihood optimization, while $E_{pivot}$, $E_{cutoff}$, and $\gamma$ were all fixed.
+  The normalization parameter $N_o$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was free to change in the likelihood optimization, while $E_{\textrm{pivot}}$, $E_{\textrm{cutoff}}$, and $\gamma$ were all fixed.
   The normalization $N_o$ was left free to allow for the potential of some mixing between the point source events and any dark matter halo events, i.e. a stronger dark matter halo gamma-ray flux would result in a weaker point source flux.
   
   The galactic disk also produces its own gamma ray emission, as the protons in the disk act as an interaction target for relativistic protons~\cite{tevgev_gc_diffuse}.
@@ -706,8 +705,7 @@
   
   \subsection{Dark Matter Models}\label{subsec:dmhalomodel}
   Dark matter halos are modeled by a spherically-symmetric mass-per-volume density profile, combined with an annihilation spectrum.
-  {\color{red}(why does the equation stick out over the line edge??)}
-  This is assembled with a simplified version of Equation~\ref{eqn:dmflux} {\color{red}(its a bit confusing mentioning an old equation here, just show \ref{eqn:dmflux} and explain it?? -orel)}:
+  This is assembled with a simplified version of Equation \ref{eqn:dmflux}:
   
   \begin{equation}\label{eqn:dmmodel}
     M_{\textrm{dm}} = N \times M_{\textrm{e,halo}} \times M_{\textrm{s,halo}} \,.
@@ -722,7 +720,8 @@
 
   The fully assembled likelihood analysis is as follows.
   108 hours of VERITAS data have been organized into 948 observations.
-  Each observation has a camera background model, with two free parameters, a normalization $N_o$ and a spectral index $\gamma_o$ {\color{red}(why does it have a spectral index?? -orel)}.
+  Each observation has a camera background model, with two free parameters, a normalization $N_o$ and a spectral index $\gamma_o$.
+  The backgrounds are a template multiplied by a power law, to allow for changes in the spectrum due to the low elevation of the observations.
   A point source has been added at the Galactic Center with a broken power law spectrum, where only its normalization $N_o$ is a free parameter.
   The last model is then one of 9 dark matter halo models, each with a cuspy Einasto spatial profile.
   The spectrum of this halo is from two WIMPs of mass $m_{\chi}$ annihilating into a $b\bar{b}$ pair.
@@ -734,7 +733,9 @@
   In Table \ref{tab:tsvals}, the TS values from each dark matter mass are shown.
   Using Wilk's theorem~\cite{wilks1938} with one free parameter, a TS value greater than 20 would hint at the presence of a dark matter halo.
   The fact that all of these are less than zero shows that the null (no dark matter) hypothesis is statistically favored.
-  {\color{red}(maybe add a reference to the upper limit section here?? or divide or rearrange the section here?? its just that the results of no DM are lost by the time the reader gets to the upper limit section?? -orel)}
+  The next steps are to examine what dark matter cross sections were ruled out with an upper limit calculation.
+  This is done in Section~\ref{upper_limit}.
+  Before these upper limits are calculated, some verification can be done to check that the analysis was modeling the data properly.
 
   \begin{table}[!t]
     \centering
@@ -824,9 +825,9 @@
     \label{fig:gc_profile_gal_l}
   \end{figure}
 
-  Figure~\ref{fig:gc_profile_gal_b} is similar to Figure~\ref{fig:gc_profile_gal_l}, except it slices through Sgr A* along the galactic $b$ axis,
+  Figure~\ref{fig:gc_profile_gal_b} is similar to Figure~\ref{fig:gc_profile_gal_l}, except it slices through Sgr A* along the galactic $b$ axis.
   The feature in which the observed counts are higher on the left and lower on the right is also visible here.
-  Figure~\ref{fig:gc_profile_energy} shows the same profile {\color{red}(can I say its a similar profile?? -orel)}, except it is integrated over a \ang{0.2}$\times$\ang{0.2} galactic ($l$,$b$) square centered on Sgr A*.
+  Figure~\ref{fig:gc_profile_energy} shows a similar profile, except it is integrated over a \ang{0.2}$\times$\ang{0.2} galactic ($l$,$b$) square centered on Sgr A*.
 
   \begin{figure}[t]
     \centering
@@ -891,7 +892,8 @@
   This highlights how the models poorly match the observations in some areas of the sky.
   In this plot, the deficiency of the radially-symmetric camera background models is apparent.
   Lighter/darker areas indicate places where there were more/less observed counts than the best-fit models predicted.
-  The dark upper-left and lighter lower-right areas are due to the the radially-symmetric background, which poorly models the not-radially-symmetric atmosphere {\color{red}(should be rephrased as well (and honestly I would like to understand the problem again) ?? -orel)}.
+  The dark upper-left and lighter lower-right areas are due to the gradient in the atmosphere.
+  This creates a gradient in the background that is not radially symmetric, which the radially-symmetric background models cannot properly fit.
   
   \begin{figure}[ht]
     \centering
