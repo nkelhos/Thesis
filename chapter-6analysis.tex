@@ -19,7 +19,7 @@
 
 \chapter{A Likelihood Search for Dark Matter}\label{chapter:analysis}
 
-\section{Veritas Data}\label{veritasdata}
+\section{VERITAS Data}\label{veritasdata}
   The analysis in this thesis relies on three sets of VERITAS data.
   One set contains observations of the Crab Nebula, and a second of the Galactic Center.
   A third set contains observations of a dark region \nicetilde\ang{5} away from the Galactic Center.
@@ -158,7 +158,7 @@
   In a likelihood analysis, each source of events gets its own model.
   Each model is described by a function $M$, and different sources will have different $M$ functions.
   The function $M$ has dimensional units of $\frac{\textrm{counts}}{\textrm{energy}\times\textrm{solid angle}\times\textrm{area}\times\textrm{time}}$ {\color{red}(use math notation, letters instead of words?? -orel)}.
-  This function can be integrated over the energy, sky, and time region covered by a bin $j$ to calcuate the number of events predicted in that bin, as shown by 
+  This function can be integrated over the energy, sky, and time region covered by a bin $j$ to calculate the number of events predicted in that bin, as shown by 
   
   \begin{equation}\label{eqn:model_int}
     m_{j} = \int_{t\,\textrm{bin}} \int_{E\,\textrm{bin}} \int_{b\,\textrm{bin}} \int_{l\,\textrm{bin}} M(l,b,E,t)\; dl \; db \; dE \; dt \,.
@@ -331,9 +331,9 @@
     \centering
     %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_skymap.pdf}
     \includegraphics[width=0.75\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapcounts.pdf}
-    \caption[Crab Nebula Counts Skymap]
+    \caption[Crab Nebula Counts Sky Map]
     {
-      Skymap of event positions, ($\ldet$,$\bdet$).
+      Sky map of event positions, ($\ldet$,$\bdet$).
       No corrections are made for observing time or effective area.
     }
     \label{fig:crab_skymap}
@@ -375,7 +375,7 @@
       The inner red envelope is the statistical fitting error on the solid red line.
       The outer red envelope is the combined statistical+systematic uncertainty.
       The dark blue line is the standard VERITAS Eventdisplay spectrum using the same set of observations.
-      The dark blue datapoints are flux points for specific energy bins, from Eventdisplay.
+      The dark blue data points are flux points for specific energy bins, from Eventdisplay.
       Light blue is a Crab Nebula spectrum from HESS~\cite{hess2006crab}.
       Purple is a previously published spectrum from VERITAS~\cite{veritas2015crab}.
       Orange is a spectrum from MAGIC~\cite{magic2015crab}.
@@ -589,8 +589,8 @@
   \begin{figure}[t]
     \centering
     \includegraphics[width=0.55\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapresiduals_coarse.pdf}
-    \caption[Crab Residual Skymap Coarse Binning]{
-      Skymap showing how significantly the models differ from the observations in each bin.
+    \caption[Crab Residual Sky Map Coarse Binning]{
+      Sky map showing how significantly the models differ from the observations in each bin.
       This plot uses \ang{0.23}-wide bins.}
     \label{fig:crab_signif_skymap_coarse}
   \end{figure}
@@ -598,14 +598,14 @@
   \begin{figure}[b]
     \centering
     \includegraphics[width=0.55\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapresiduals_fine.pdf}
-    \caption[Crab Residual Skymap Fine Binning]{
-      Skymap showing how significantly the models differ from the observations in each bin.
+    \caption[Crab Residual Sky Map Fine Binning]{
+      Sky map showing how significantly the models differ from the observations in each bin.
       This plot uses \ang{0.029}-wide bins.}
     \label{fig:crab_signif_skymap_fine}
   \end{figure}
 
-  For the Crab Nebula, two skymaps of the significances are shown in Figures~\ref{fig:crab_signif_skymap_coarse} and \ref{fig:crab_signif_skymap_fine}.
-  When a significance distribution is made of Figure~\ref{fig:crab_signif_skymap_fine}'s fine-binned pixels, it is seen in Figure~\ref{fig:crab_signif_distribution} to be not gaussian and quite erratically shaped.
+  For the Crab Nebula, two sky maps of the significances are shown in Figures~\ref{fig:crab_signif_skymap_coarse} and \ref{fig:crab_signif_skymap_fine}.
+  When a significance distribution is made of Figure~\ref{fig:crab_signif_skymap_fine}'s fine-binned pixels, it is seen in Figure~\ref{fig:crab_signif_distribution} to be not Gaussian and quite erratically shaped.
   Simulations are shown in red using the best-fit models, and the $\frac{\textrm{Simulated Models}}{\textrm{Data}}$ residual is shown in the bottom plot.
   Since most bins in the residual overlap 1, it can be concluded that the models are not deficient in any particular areas.
   
@@ -613,7 +613,7 @@
     \centering
     \includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapresiduals_fine_hist.pdf}
     \caption[Crab Residual Bin Distribution]{
-      Data and simulated significance distributions from the fine-binned significance skymap in Figure~\ref{fig:crab_signif_skymap_fine}.
+      Data and simulated significance distributions from the fine-binned significance sky map in Figure~\ref{fig:crab_signif_skymap_fine}.
       In the top plot, the black histogram bars indicate the data's significance distribution.
       The red bars indicate the range of simulated significances, centered on the mean, and extending up and down by one standard deviation.
       The bottom plot shows the $\textrm{Simulated}/\textrm{Data}$ residual.
@@ -621,12 +621,12 @@
     \label{fig:crab_signif_distribution}
   \end{figure}
   
-  This strange structuring occurs because a gaussian is symmetric about the mean, while the Poisson probability distribution is not symmetric about the mean at low averages.
-  If the average modeled number of counts is low (i.e. $<50$), the distribution drifts away from a gaussian shape.
+  This strange structuring occurs because a Gaussian is symmetric about the mean, while the Poisson probability distribution is not symmetric about the mean at low averages.
+  If the average modeled number of counts is low (i.e. $<50$), the distribution drifts away from a Gaussian shape.
   This as shown in Figure~\ref{fig:various_sig_dists}, where four models with different average number of events per bin are simulated.
   Each of the four models is sampled in \SI{1000000} bins, where the model is randomly varied uniformly in each bin by $\pm 75\%$.
   What is learned from this is the significance calculation does follow a true significance distribution when the average number of events in each bin is high.
-  At lower average counts per bin however, simulations must be used with a residual to see if any areas in the skymap show significant difference between data and models.
+  At lower average counts per bin however, simulations must be used with a residual to see if any areas in the sky map show significant difference between data and models.
   
   \begin{figure}[h]
     \centering
@@ -644,10 +644,10 @@
 
 \section{Dark Matter Likelihood Analysis}\label{sec:dmlike}
   
-  Since the test analysis on the Crab Nebula data shows results consistant with other VERITAS, H.E.S.S., and MAGIC studies, the main dark matter analysis can begin in earnest.
+  Since the test analysis on the Crab Nebula data shows results consistent with other VERITAS, H.E.S.S., and MAGIC studies, the main dark matter analysis can begin in earnest.
   The 108 hours of Galactic Center data used in this analysis is described in Section~\ref{veritasdata}.
-  A skymap histogram of all observed events is shown in Figure~\ref{fig:gc_counts_skymap}.
-  This skymap is uncorrected for exposure time or effective area; it is only a histogram of event positions.
+  A sky-map histogram of all observed events is shown in Figure~\ref{fig:gc_counts_skymap}.
+  This sky map is uncorrected for exposure time or effective area; it is only a histogram of event positions.
   A histogram of all events' energies from \SIrange{4}{70}{\TeV{}} is shown in Figure~\ref{fig:gc_counts_enhist}.
   As this histogram is uncorrected for effective area, it does not follow the standard power-law shape.
   Once the data is reconstructed, the next step is to set up the models.
@@ -656,8 +656,8 @@
   \begin{figure}[bt]
     \centering
     \includegraphics[width=0.65\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_counts_skymap.pdf}
-    \caption[Galactic Center Counts Skymap]{
-      Skymap of all events used in this analysis.
+    \caption[Galactic Center Counts Sky Map]{
+      Sky map of all events used in this analysis.
       No adjustments are made here for effective area, observation time, or background rate.
     }
     \label{fig:gc_counts_skymap}
@@ -680,7 +680,7 @@
   
   $$(l,b)_{\textrm{J2000}} = (\ang{359.944212}, \ang{-0.046013}) \,. $$
   This was done because previous studies had detected a gamma-ray excess at Sgr A*, and it was found to be point-like.
-  It was later found to not be consistant with a dark matter halo~\cite{gc_pnt_is_not_dm1, gc_pnt_is_not_dm2, gc_pnt_is_not_dm3}.
+  It was later found to not be consistent with a dark matter halo~\cite{gc_pnt_is_not_dm1, gc_pnt_is_not_dm2, gc_pnt_is_not_dm3}.
   %This was done because other studies have indicated that the gamma-ray excess at Sgr A* is not consistant with a dark matter halo~\cite{gc_pnt_is_not_dm1, gc_pnt_is_not_dm2, gc_pnt_is_not_dm3} {\color{red}(the order is probably different. An excess was detected, looked like a point source, not consistant with a dark matter halo.  VERITAS found the best fit is obtained with a broken power law (not in comparison with power law) ?? -orel)}.
   To model this, a point source with the broken power law spectrum 
 
@@ -690,7 +690,7 @@
   was added to the list of models.
   This was chosen because, in a previous VERITAS analysis of the Galactic Center, a broken power law was found to be a better fit than a simple power law~\cite{VeritasGCRidge2015}.
   
-  Several parameters are fixed in the likelhiood optimization.
+  Several parameters are fixed in the likelihood optimization.
   The values used in Equation~\ref{eqn:brokenplaw} are from Ref. \cite{VeritasGCRidge2015}, where $E_{\textrm{pivot}}=\SI{1}{TeV}$, $E_{\textrm{cutoff}}=\SI{12.8}{TeV}$, and $\gamma=-2.1$.
   % theres also the 2016 paper http://iopscience.iop.org/article/10.3847/0004-637X/821/2/129/meta
   The normalization parameter $N_o$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was free to change in the likelihood optimization, while $E_{\textrm{pivot}}$, $E_{\textrm{cutoff}}$, and $\gamma$ were all fixed.
@@ -898,7 +898,7 @@
   \end{figure}
   
   To check for any poorly modeled areas of the sky, the difference between the observed counts and models can be examined.
-  The observed counts and models in this Galactic Center analysis are broken up into individual skymap bins, and each bin's significance is calculated with Equation~\ref{eqn:resmap_signif} and shown in Figure~\ref{fig:gc_resmap}.
+  The observed counts and models in this Galactic Center analysis are broken up into individual sky-map bins, and each bin's significance is calculated with Equation~\ref{eqn:resmap_signif} and shown in Figure~\ref{fig:gc_resmap}.
   This highlights how the models poorly match the observations in some areas of the sky.
   In this plot, the deficiency of the radially-symmetric camera background models is apparent.
   Lighter/darker areas indicate places where there were more/less observed counts than the best-fit models predicted.
@@ -911,7 +911,7 @@
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_coarse.pdf}
     \caption[Galactic Center Residual Map Coarse Binning]
     {
-      Significance of each skymap bin's residual counts.
+      Significance of each sky-map bin's residual counts.
       See Equation~\ref{eqn:resmap_signif} for details.
     }
     \label{fig:gc_resmap}
@@ -923,7 +923,7 @@
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_fine.pdf}
     \caption[Galactic Center Residual Map Fine Binning]
     {
-      Significance of each skymap bin's residual counts.
+      Significance of each sky-map bin's residual counts.
       See Equation~\ref{eqn:resmap_signif} for details.
       The dark upper-left and lighter lower-right areas are due to the the radially-symmetric background, whereas a non-radially symmetric one would have been more ideal.
       {\color{red}(dark and light areas barely seen here (why do we need this plot??) -orel)}
@@ -932,7 +932,7 @@
   \end{figure}
   
   If the source and background models were perfectly known, there would still be statistical fluctuations in the observed counts.
-  The distribution of the pixel significances from Figure~\ref{fig:gc_resmap_fine} is also shown in grey in Figure~\ref{fig:gc_resmap_sighist}, along with a set of 150 simulated distributions in red.
+  The distribution of the pixel significances from Figure~\ref{fig:gc_resmap_fine} is also shown in gray in Figure~\ref{fig:gc_resmap_sighist}, along with a set of 150 simulated distributions in red.
   {\color{red}(same as for the crab, I dont really understand this.  why do you do it from fig \ref{fig:gc_resmap_sighist}, and not fig \ref{fig:gc_resmap}?? -orel)}
   
   \begin{figure}[ht]
@@ -941,8 +941,8 @@
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_fine_pdf_json_hist.pdf}
     \caption[Galactic Center Residual Histogram]
     {
-      Histogram of the residual skymap bin significances from Figure~\ref{fig:gc_resmap}, calculated with Equation~\ref{eqn:resmap_signif}.
-      Only skymap bins within Sgr A*'s region of interest are histogrammed.
+      Histogram of the residual sky-map bin significances from Figure~\ref{fig:gc_resmap}, calculated with Equation~\ref{eqn:resmap_signif}.
+      Only sky-map bins within Sgr A*'s region of interest are histogrammed.
       {\color{red}(need to talk about this whole thing, but if this stays, what is the discontinuity at zero?? -orel)}
     }
     \label{fig:gc_resmap_sighist}
@@ -1075,7 +1075,7 @@
   \end{figure}
   
   After these were applied to all background models, the likelihood analysis was re-run for the \SI{10}{\TeV{}} WIMP mass.
-  {\color{red}(why just this mass?? does the statistics you have depend on the mass? one my worry that the effect is small for this mass, where your upper limits are not competative anyway, but might be big for large masses where you are competative?? -orel)}
+  {\color{red}(why just this mass?? does the statistics you have depend on the mass? one my worry that the effect is small for this mass, where your upper limits are not competitive anyway, but might be big for large masses where you are competitive?? -orel)}
   The resulting upper limit with the gradient was only 0.1\% different from the upper limit with radial background models.
   This indicates the upper limits are not very sensitive to the background models.
   % on warp-zeuthen.desy.de:
