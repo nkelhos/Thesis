@@ -59,9 +59,10 @@ The shower length and width are determined by the root mean square of the shower
 
 \section{Position Reconstruction}\label{subsec:posrecon}
 By examining the images from multiple telescopes, the initial direction of the event can be determined.
-This is done by overlapping all telescope images in a single camera coordinate system, and projecting each image's major axis backward in time.
+This is done by overlapping all telescope images in a single sky coordinate system, and projecting each image's major axis backward in time.
 These axes should intersect very close together, and the average of the intersection points determines the event's initial direction.
-The axes tend to not intersect perfectly, as atmospheric absorption and night sky background photons can add and remove photons from the shower image.
+The axes tend to not intersect perfectly due to the finite resolution of the camera pixels.
+Additionally, night sky background photons and atmospheric absorption can add and remove photons from the shower image.
 
 When averaging the intersection points, weights can be applied to each intersection based on the angle between the two lines.
 This improves the reconstruction, because the intersection point from two images at \ang{90} angles will be less sensitive to image fluctuations than two images at \ang{160}, as shown in Figure~\ref{fig:largeintersectangle}.
@@ -160,7 +161,7 @@ From this residual plot, it can be seen that in nearly all bins the predicted di
 
 To examine the effect this disp method has on an analysis, the point spread functions (PSFs) are compared.
 The PSF describes how much a group of events from the same point source are spread out due to being imperfectly reconstructed.
-In general, PSFs are quantified by their 68\% containment radius, the anglular radius around a point source which contains 68\% of the reconstructed events.
+In general, PSFs are quantified by their 68\% containment radius, the angular radius around a point source which contains 68\% of the reconstructed events.
 PSFs are discussed further in Section~\ref{subsec:psf}.
 The PSF containment radius is calculated from simulations, with both the disp reconstruction method and the regular geometric reconstruction method.
 The ratio of the $\frac{\textrm{disp PSF radius}}{\textrm{geometric PSF radius}}$ is shown in Figure~\ref{fig:disp_psf_comparison}.
