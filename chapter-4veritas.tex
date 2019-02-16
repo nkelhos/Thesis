@@ -11,8 +11,8 @@
 
 VERITAS, or Very Energetic Radiation Imaging Telescope Array System pictured in Figure~\ref{fig:veritasarray}, is a gamma-ray observatory operating in Arizona, USA, and is capable of detecting gamma rays with energies from \SI{100}{\GeV{}} to \SI{70}{\TeV{}}.
 The observatory consists of an array of four Imaging Atmospheric Cherenkov Telescopes (IACTs), spaced \nicetilde{}\SI{90}{m} apart.
-Each telescope carries an array of 345 mirrors, and a 499 Photomultiplier Tube (PMT) camera on a set of struts.
-When a gamma ray produces an air shower in the atmosphere, the shower emits blue-UV Cherenkov photons over a timespan of nanoseconds.
+Each telescope carries an array of 345 mirrors, and a 499 photomultiplier tube (PMT) camera on a set of struts.
+When a gamma ray produces an air shower in the atmosphere, the shower emits blue-UV Cherenkov photons over a time span of nanoseconds.
 By focusing these photons onto the PMT camera with the mirrors, images of the shower can be taken, in which each pixel of the image consists of analog voltage pulses from each PMT.
 
 
@@ -29,7 +29,7 @@ Section~\ref{sec:epochs} discusses the different observatory epochs, as over tim
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.95\textwidth]{images/single_telescope}
-  \caption[Single Veritas Telescope]{
+  \caption[Single VERITAS Telescope]{
     View of the 345 mirrors, the camera support structure, and the PMT camera housing at the end of the four supporting arms.}
   \label{fig:davcottel}
 \end{figure}
@@ -100,7 +100,7 @@ Minor imperfections in the surface of the mirrors, dust, and small mirror misali
 This blurring is quantified by a fitted Gaussian function, usually called the Optical Point Spread Function\footnote{Please note that this is different from the PSF described in Chapter \ref{ch:grrecon}, which quantifies the spread in the reconstructed gamma-ray positions.  The OPSF instead describes the spread of UV-Optical photons.} (OPSF).
 The OPSF is measured monthly by pointing a telescope at different stars and pointing CCDs at the focal plane.
 Figure~\ref{fig:mirrorpolaris} shows a calibration image from the first VERITAS telescope.
-The OPSF is roughly gaussian-shaped but with longer tails and a $ \ang{0.06} $ full width half maximum~\cite{Veritas_Detector}.
+The OPSF is roughly Gaussian-shaped but with longer tails and a $ \ang{0.06} $ full width half maximum~\cite{Veritas_Detector}.
 
 \begin{figure}[ht]
   \centering
@@ -217,13 +217,13 @@ This FADC circuit then, for each 2-nanosecond time bin, measures how large the v
 The highest threshold that is crossed in a single time bin then determines the digital voltage value that is saved to the FADC buffer for that time bin.
 
 For each voltage pulse, both the high-gain- and low-gain-amplified signals are digitized and saved to a single rolling buffer, with one at a delayed time in the buffer.
-Then, the FADC waits for higher level triggers to read out its buffers into a datafile.
+Then, the FADC waits for higher level triggers to read out its buffers into a data file.
 If the low-gain trigger pulse was received by the FADC, then the segment of the buffer containing low-gain amplified signal is read out, otherwise the high-gain segment is read out instead~\cite{Veritas_Detector,veritas_FADC}.
 
 \subsection{PMT Upgrade}
 In summer of 2012, all PMTs in the telescopes were replaced with improved PMTs.
 Specifically, the original Photonis XP2970 models were replaced with the Hamamatsu R10560-100-20 MOD.
-This was done because the R10560 collects 23\% of incident Chernekov photons, 35\% more than the the XP2970.
+This was done because the R10560 collects 23\% of incident Cherenkov photons, 35\% more than the the XP2970.
 This higher collection rate means more photons from a shower are detected by the PMT, which makes VERITAS more sensitive to lower energy gamma rays.
 In addition, single-photoelectron studies indicate the R10560's voltage pulse's full duration at half maximum time is \nicetilde{}40\% shorter than the XP2970, as shown in Figure~\ref{fig:pmt_pulse_widths}.
 These shorter voltage pulses allow for easier discrimination between NSB fluctuations and Cherenkov signals~\cite{pmtmodels}.
@@ -264,8 +264,8 @@ These calibration techniques are further detailed in Ref.~\cite{calib_techniques
 \section{Trigger System}\label{sec:trig}
 
 The operation of VERITAS requires digitizing voltage pulses with voltage samples roughly once per two nanoseconds, per photomultiplier tube.
-This means that with 255 voltage levels, 1 second of all voltage measurements would require 1 Terabyte of harddrive space.
-Since this is unfeasable with today's computing systems, only subsets of the raw pixel voltages are saved when certain trigger conditions are met.
+This means that with 255 voltage levels, 1 second of all voltage measurements would require 1 Terabyte of hard drive space.
+Since this is unfeasible with today's computing systems, only subsets of the raw pixel voltages are saved when certain trigger conditions are met.
 To complicate matters, photons from atmospheric muons and the night sky background can also cause voltage pulses similar to a gamma-ray shower's Cherenkov photons.
 Thus, VERITAS has a system of triggers that reduces the amount of raw data that is saved, while also partially filtering out non-gamma-ray events.
 
@@ -292,19 +292,19 @@ These pixel voltages can then be processed by the analysis software to reconstru
 
 
 
-\subsection{Deadtime}
+\subsection{Dead Time}
 When the L3 trigger is invoked and the buffers are being read out, the FADCs are unable to store new PMT voltages in the buffers.
 Being unable to store new PMT voltages effectively reduces the amount of time spent observing gamma rays.
-This lost time is usually referred to as deadtime.
-Since the deadtime is a fixed time loss per event, the percent of time lost due to event readout rises the more frequently events are read out.
+This lost time is usually referred to as dead time.
+Since the dead time is a fixed time loss per event, the percent of time lost due to event readout rises the more frequently events are read out.
 For an L3 trigger rate of \nicetilde{}\SI{300}{Hz}, approximately 12\% of the time is lost due to buffer readouts.
-Since the L3 rate varies over the course of a single 30 minute run, the deadtime also varies, and is accounted for in the analysis in Chapter~\ref{chapter:analysis}.
+Since the L3 rate varies over the course of a single 30 minute run, the dead time also varies, and is accounted for in the analysis in Chapter~\ref{chapter:analysis}.
 
 \subsection{Time Zero Calibration}
 Because all PMTs and signal cables are not identical, there are differences in how long a voltage pulse takes to travel.
 More specifically, the time between a) when the photon strikes the PMT's photocathode and b) when the voltage pulse sets off its L1 trigger, can vary from pixel to pixel.
 This is usually measured by looking at the average arrival time of many events over all camera pixels.
-By looking at the average arrival time, pixels that are consistantly early or late are accounted for, improving image identification.
+By looking at the average arrival time, pixels that are consistently early or late are accounted for, improving image identification.
 
 \section{Epochs}\label{sec:epochs}
 Since it was completed in 2007, VERITAS has evolved over several years as collaboration members have upgraded it to improve its performance.

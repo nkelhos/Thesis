@@ -50,7 +50,7 @@ The shower length and width are determined by the root mean square of the shower
   \includegraphics[width=0.45\textwidth]{images/shower_parameter_diagram/diagram.pdf}
   \caption[Basic Shower Diagram]{
     An example shower image in one VERITAS camera.
-    The grey circles are the locations of PMTs.
+    The gray circles are the locations of PMTs.
     Red circles are PMTs that have detected Cherenkov photons.
   }
   \label{fig:shower_param}
@@ -135,8 +135,8 @@ This estimated disp can then be combined with the image axes intersection points
 Once the training is complete, it is tested on a separate set of 17,000 simulated events, whose true and predicted disps plotted in Figure~\ref{fig:disptraining}.
 The x-axis describes the true disp value for each event, while the y-axis describes the disp value estimated by the BDT, with a black $x=y$ line marked, which represents a perfect 1:1 disp reconstruction.
 To examine how close the predicted disp is to the true disp, a residual plot is shown in Figure~\ref{fig:dispresidual}.
-It shows the $\frac{\textrm{Predicted disp}}{\textrm{True disp}}$ for each true disp bin, including $\pm$ 1 standard deviation errorbars.
-From this residual plot, it can be seen that in nearly all bins the predicted disp is consistant with the true disp.
+It shows the $\frac{\textrm{Predicted disp}}{\textrm{True disp}}$ for each true disp bin, including $\pm$ 1 standard deviation error bars.
+From this residual plot, it can be seen that in nearly all bins the predicted disp is consistent with the true disp.
 
 % made from screenshot of last slide in Dropbox/Presentations/20160719_Group_Meeting.key
 \begin{figure}[b]
@@ -153,8 +153,8 @@ From this residual plot, it can be seen that in nearly all bins the predicted di
   \includegraphics[width=0.85\textwidth]{images/disp_training/improved_disp_plot/plot.pdf}
   \caption[Disp BDT Residual]{
     The predicted/true disp residual, from the bins in Figure~\ref{fig:disptraining}.
-    The errorbars represent 1 standard deviation.
-    The graph is split at $x=0.75^{\circ}$ to keep the errorbars visible.
+    The error bars represent 1 standard deviation.
+    The graph is split at $x=0.75^{\circ}$ to keep the error bars visible.
   }
   \label{fig:dispresidual}
 \end{figure}
@@ -166,7 +166,7 @@ PSFs are discussed further in Section~\ref{subsec:psf}.
 The PSF containment radius is calculated from simulations, with both the disp reconstruction method and the regular geometric reconstruction method.
 The ratio of the $\frac{\textrm{disp PSF radius}}{\textrm{geometric PSF radius}}$ is shown in Figure~\ref{fig:disp_psf_comparison}.
 Because the PSF changes with telescope elevation, telescope azimuth and zenith, night sky background noise, atmosphere, and offset from the camera center, the average PSF at each gamma-ray energy is shown.
-This PSF is the average over the two datasets used in this analysis, the Crab Nebula and the Galactic Center, described further in Chapter~\ref{chapter:analysis}.
+This PSF is the average over the two data sets used in this analysis, the Crab Nebula and the Galactic Center, described further in Chapter~\ref{chapter:analysis}.
 The average PSF for the Crab Nebula data is shown by a green line and a green 1-standard-deviation error sheath, and similarly the Galactic Center is shown in blue.
     
 Figure~\ref{fig:disp_psf_comparison} shows the disp method does offer a minor improvement at low energies, but is worse at higher energies, though both are within the statistical uncertainties.
@@ -192,8 +192,8 @@ Nevertheless, the analysis described in Chapter~\ref{chapter:analysis} utilizes 
 
 To reconstruct the energy of each shower, a lookup table of simulated showers is assembled.
 This database stores the median energy of the showers, as well as the spread of the distribution of shower energies.
-However, a shower's energy is strongly corellated with two measured parameters.
-The first is the shower's \textit{image size}, the number of observed cherenkov photons.
+However, a shower's energy is strongly correlated with two measured parameters.
+The first is the shower's \textit{image size}, the number of observed Cherenkov photons.
 The second is the \textit{core distance}, the distance between the VERITAS array center and where the central shower axis intersects the ground.
 Showers are therefore divided into subgroups based on this size and distance, then the median energy and energy spread of each subgroup are stored in the lookup table.
 
@@ -278,10 +278,10 @@ See Ref.~\cite{Krause2017} for a more thorough discussion on gamma-hadron separa
 \end{figure}
 
 
-\section{FITS Conversion for Gammalib and CTOOLs}\label{fitsconversion}
-Once gamma rays have been reconstructed with Eventdisplay, they must be exported to Gammalib and CTOOLS~\cite{gammalibctools}.
-Gammalib and CTOOLS are software that perform the likelihood calculation, which is described further in Section~\ref{sec:likeratio}.
-This software posesses several useful features, including automatic model convolution with instrument response functions (IRFs) and easier comparison with results from other gamma-ray telescopes like H.E.S.S. and MAGIC.
+\section{FITS Conversion for GammaLib and ctools}\label{fitsconversion}
+Once gamma rays have been reconstructed with Eventdisplay, they must be exported to GammaLib and CTOOLS~\cite{gammalibctools}.
+GammaLib and CTOOLS are software that perform the likelihood calculation, which is described further in Section~\ref{sec:likeratio}.
+This software possesses several useful features, including automatic model convolution with instrument response functions (IRFs) and easier comparison with results from other gamma-ray telescopes like H.E.S.S. and MAGIC.
 This software is also one of the main high-level analysis tools to be used by the Cherenkov Telescope Array (CTA), making it and easier to include VERITAS data into future CTA analyses.
 
 Exporting gamma-ray data to this software involves converting the event list and IRFs to a FITS file format.
@@ -292,9 +292,9 @@ The IRFs consist of the effective areas, the point spread functions, the backgro
 %The energy dispersion quantifies the distribution of reconstructed energies for a given true energy.
 During the export, several decisions are baked into the event lists and IRFs.
 As this thesis revolves around an analysis at an elevation of \nicetilde{}\ang{30}, the IRFs may rapidly change with time.
-At this elevation, with VERITAS's field of view of \ang{3.5}, the airmass column density ($\textrm{g}/\textrm{cm}^2$) is 12\% higher at the bottom of the camera than at the top.
+At this elevation, with VERITAS's field of view of \ang{3.5}, the air mass column density ($\textrm{g}/\textrm{cm}^2$) is 12\% higher at the bottom of the camera than at the top.
 % see veripy.atmo_column_density() for 12% calculation
-Combined with the fact that an observing target can move several degrees over one \SI{30}{min} observation, this means the airmass can change by several percent over a single 30-minute observation.
+Combined with the fact that an observing target can move several degrees over one \SI{30}{min} observation, this means the air mass can change by several percent over a single 30-minute observation.
 This changing atmosphere would mean the IRFs at the beginning of an observation may be measurably different than at the end of an observation.
 
 To reduce the impact of this, observations are broken up into 8-minute-long parts.
@@ -491,7 +491,7 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     As events are reconstructed imperfectly, it is important to understand what the distribution of reconstructed energies are for a given true energy.
     This \textit{dispersion in energy} is quantified by an energy migration matrix $E_{i,j}$, where $i$ denotes the $i^{\text{th}}$ reconstructed energy bin, and $j$ denotes the $j^{\text{th}}$ true energy bin.
     A migration matrix is created by simulating many showers at a variety of true energies and binning them based on their true and reconstructed energies.
-    Several matricies are then created, by grouping showers into bins based on their distance from the camera center.
+    Several matrices are then created, by grouping showers into bins based on their distance from the camera center.
     
     Because simulations are computationally expensive, only a limited number can be produced for each migration matrix.
     At some places in the matrix, low simulation statistics can artificially alter the shape of the matrix.
@@ -626,9 +626,9 @@ This is due to fewer events appearing in the bottom of the camera, due to the th
   \caption[Background Vs Elevation Crab Nebula]
   {\small 
     Plots of Crab Nebula observations.
-    Top: Skymap of all events.
+    Top: Sky map of all events.
     Middle: Histogram of all events in energy.
-    Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV{}}.  
+    Bottom: Sky map of events from \SIrange{1.5}{3.25}{\TeV{}}.  
     Data is first filtered so that the telescope pointing is between elevations of \ang{28.5} and \ang{29.5}.
     Red dots and circles are the average event positions and the 68\% containment radii.
   }
@@ -642,9 +642,9 @@ This is due to fewer events appearing in the bottom of the camera, due to the th
   \caption[Background Vs Elevation Sgr A*]
   {\small 
     Plots of Sgr A* observations.
-    Top: Skymap of all events.
+    Top: Sky map of all events.
     Middle: Histogram of all event energies.
-    Bottom: Skymap of events from \SIrange{1.5}{3.25}{\TeV{}}.  
+    Bottom: Sky map of events from \SIrange{1.5}{3.25}{\TeV{}}.  
     Data is first filtered so that the telescope pointing is between elevations of \ang{28.5} and \ang{29.5}.
     Red dots and circles are the average event positions and the 68\% containment radii.
   }
@@ -664,7 +664,7 @@ This effect is important to the analysis because it implies that, at the lowest 
 Radial backgrounds (sometimes referred to as acceptances) are typically used in VERITAS, as no other camera $x$/$y$ or energy dependence had been demonstrated until now.
 Due to a limited amount of background data (see Table~\ref{tab:observation_times}), only radially-dependent backgrounds are used in this analysis.
 To attempt to reduce the effect of the non-uniform atmosphere, the event energies were limited to \SIrange{4}{70}{TeV}.
-Even with this limited energy range, the atmospheric effect is still prominant, and studied further in Section~\ref{sec:elevgradient}.
+Even with this limited energy range, the atmospheric effect is still prominent, and studied further in Section~\ref{sec:elevgradient}.
 
 Additional studies were performed to test if bright stars near the Galactic Center might affect a dark matter search, and are detailed in Appendix~\ref{app:starpixels}.
 Bright stars were found to have a negligible effect, and were ignored in this analysis.
