@@ -299,9 +299,9 @@
   For this low-elevation analysis the observations of the dark region Sgr A* Off, described in Section~\ref{veritasdata}, were used to build these backgrounds.
   
   To account for the difference between the V5 and V6 observatory configurations, the background observations are divided up based on their VERITAS hardware epoch, producing a unique background template for each epoch.
-  These background templates only depend on the radial distance from the camera center and the event energy.
-  These background templates are used in both the Crab Nebula analysis and the Galactic Center analysis.
-  This can be done because the templates are made from Sgr A* Off, which has no sources of gamma-rays, so the only detectable events are due to background protons{\color{red}(qualify this statement?? -orel)}.
+  These background templates depend on the event's position in the camera and the event energy.
+  They are used in both the Crab Nebula analysis and the Galactic Center analysis.
+  Because the templates are made from Sgr A* Off, which has no sources of gamma-rays, the only detectable events are due to background protons{\color{red}(qualify this statement?? -orel)}.
   {\color{red}(what about electrons or heavier elements?? -orel)}
 
 \section{Crab Nebula Likelihood Analysis}\label{sec:crab_analysis}
@@ -309,9 +309,9 @@
   As the Crab Nebula is the brightest gamma ray emitter in the sky, it has been observed extensively by VERITAS and other gamma ray telescopes.
   After searching for low-elevation Crab Nebula observations, a total of 17.1 hours of data were selected from the VERITAS data archives.
   
-  Since the Galactic Center only rises to around \ang{30} elevation, elevation effects would also need to be searched for.
+  Since the Galactic Center only rises to around \ang{30} elevation, low-elevation effects should be investigated.
   A plot of the telescope pointing elevation for the Crab Nebula, Galactic Center, and Galactic Center off data is shown in Figure~\ref{fig:datapointingelevations}.
-  To uncover any low-elevation effects, time cuts were applied to this data to restrict the telescope pointing elevations to \SIrange{27.5}{32.5}{\degree}, similar to the elevation of the Galactic Center data later on.
+  To uncover any low-elevation effects, time cuts were applied to this data to restrict the telescope pointing elevations to \SIrange{27.5}{32.5}{\degree}, similar to the elevation of the later Galactic Center data.
   This resulted in \SI{3.3}{hours} of V5 and \SI{5.5}{hours} of V6 epoch data (see Table \ref{tab:observation_times}).
   In Figure~\ref{fig:crab_skymap}, the position of all counts is shown in galactic $\ldet$ and $\bdet$.
 
@@ -327,10 +327,10 @@
   \end{figure}
 
     
-  \begin{figure}[tb]
+  \begin{figure}[bt]
     \centering
     %\includegraphics[width=0.85\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_wobbleall_Epochall_skymap.pdf}
-    \includegraphics[width=0.75\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapcounts.pdf}
+    \includegraphics[width=0.65\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapcounts.pdf}
     \caption[Crab Nebula Counts Sky Map]
     {
       Sky map of event positions, ($\ldet$,$\bdet$).
@@ -344,7 +344,6 @@
   \begin{equation}\label{eqn:crab_model}
     M(\xtrue) = M_{s,\textrm{powerlaw}}(\xtrue) * M_{e,\textrm{point}}(\xtrue) = N_o \left ( \frac{\Etrue}{E_o} \right )^{-\gamma} * \lim_{a\to\infty} \frac{1}{ \abs{a} \sqrt{\pi} } e^{ - \left ( \sqrt{ (\ltrue-l_c)^2 + (\btrue-b_c)^2 }/a \right )^2 } \,.
   \end{equation}
-
   {\color{red}(why?? the crab has a log parabola spectrum?? -orel)}
   These spatial and spectral shapes are both discussed in Section~\ref{subsec:likemax}.
   The sky position of the point source is fixed to the Crab Nebula, at
@@ -354,7 +353,7 @@
   
   Only events between \SIrange{4}{70}{\TeV{}} are used in this test analysis.
   At an elevation of \ang{25}, the reconstruction method is able to reconstruct events as low as \SI{1.5}{\TeV{}}.
-  Below \SI{4}{\TeV{}} however, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region may not be accurate.
+  Below \SI{4}{\TeV{}}, however, the camera sensitivity starts to decrease in a poorly understood way, and IRFs in this region may not be accurate.
   Part of this decrease is explored in Section~\ref{subsec:bkgstructure} (see Figures \ref{fig:bkgvsel_crab} and \ref{fig:bkgvsel_sgra}).
   The analysis range was limited to \SI{70}{\TeV{}} due to only having accurate IRFs up to that energy.
     
@@ -396,7 +395,7 @@
       \hline 
     \end{tabular}
     \caption[Analysis Comparison]{
-      Comparison between the two different Crab Nebula analyses, using the On/Off regions in Eventdisplay, and the Likelihood analysis in ctools.
+      Comparison between the two different Crab Nebula analyses, using the ON/OFF regions in Eventdisplay, and the Likelihood analysis in ctools.
     }
     \label{tab:crab_statistics}
   \end{table}
@@ -528,8 +527,8 @@
     \label{fig:crab_profile_energy}
   \end{figure}
     
-  The fitted models can also be viewed, as a check that the likelihood engine is fitting the models to the data.
-  In Figures \ref{fig:crab_profile_l} and \ref{fig:crab_profile_b}, the counts in the observations and models were integrated along a slice of galactic $l$ and $b$.
+  The fitted models can also be viewed as a check that the likelihood engine is fitting the models to the data.
+  In Figures \ref{fig:crab_profile_l} and \ref{fig:crab_profile_b}, the counts from the observations and models were integrated along a slice of galactic $l$ and $b$.
   The counts from only the camera background models is shown in yellow, along with the counts from all camera backgrounds plus the point source in green.
   The difference between these two histograms is then the counts from the Crab Nebula point source model.
   In Figure~\ref{fig:crab_profile_l_off}, a profile is made at \ang{1} north of the Crab Nebula in Galactic $b$.
@@ -573,7 +572,7 @@
     \end{split}
   \end{equation}
   
-  Then by utilizing Wilk's theorem~\cite{wilks1938} with one extra degree of freedom, and accounting for the sign, the significance can be calculated with
+  Then, by utilizing Wilk's theorem~\cite{wilks1938} with one extra degree of freedom, and accounting for the sign, the significance can be calculated with
     
   \begin{equation}
     \textrm{Significance} = \sqrt{\textrm{TS}} \times \textrm{sign} \left ( D - M \right ) \,.
@@ -625,8 +624,8 @@
   If the average modeled number of counts is low (i.e. $<50$), the distribution drifts away from a Gaussian shape.
   This as shown in Figure~\ref{fig:various_sig_dists}, where four models with different average number of events per bin are simulated.
   Each of the four models is sampled in \SI{1000000} bins, where the model is randomly varied uniformly in each bin by $\pm 75\%$.
-  What is learned from this is the significance calculation does follow a true significance distribution when the average number of events in each bin is high.
-  At lower average counts per bin however, simulations must be used with a residual to see if any areas in the sky map show significant difference between data and models.
+  This shows that the significance calculation does follow a true significance distribution when the average number of events in each bin is high.
+  At lower average counts per bin, however, simulations must be used with a residual to see if any areas in the sky map show significant difference between data and models.
   
   \begin{figure}[h]
     \centering
@@ -826,7 +825,7 @@
       }
     }
     \caption[Galactic Center Profile vs Galactic $l$]{
-      Observed vs modeled counts in a slice of the sky parallel to the galactic $l$ axis at $b=-0.046{}^{\circ}$ {\color{red}(why is it not zero?? -orel)}.
+      Observed vs modeled counts in a slice of the sky parallel to the galactic $l$ axis at $b=-0.046{}^{\circ}$.
       Modeled counts from camera background models are shown in yellow, total modeled counts are shown in green.
       Observed counts with Poissonian errors are shown in blue.
       The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points.
@@ -858,7 +857,7 @@
       }
     }
     \caption[Galactic Center Profile vs Galactic $b$]{
-      Observed vs modeled counts in a slice of the sky parallel to the galactic $b$ axis at $l=0${\color{red}(is it actually 0??)}.
+      Observed vs modeled counts in a slice of the sky parallel to the galactic $b$ axis at $l=359.944^{\circ}$.
       Modeled counts from camera background models are shown in yellow, total modeled counts are shown in green.
       Observed counts with Poissonian errors are shown in blue.
       The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points.
