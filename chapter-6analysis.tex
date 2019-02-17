@@ -430,11 +430,11 @@
     }
     \caption[Crab Nebula Profile along Galactic $l$]
     {
-      The top plot shows the number of counts along a \ang{0.15}-wide-slice the Crab Nebula, along the galactic $l$ axis.
+      The top plot shows the number of counts along a \ang{0.15}-wide-slice through Crab Nebula, along the galactic $l$ axis.
       Blue points are the number of observed counts, with Poissonian error bars~\cite{poissonfrequentistinterval}.
       The green histogram bars are the number of counts predicted by all models.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
-      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points.
+      The bottom plot shows the $\frac{\mathrm{all\:models}}{\mathrm{data}}$ residual as green points.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
     }
     \label{fig:crab_profile_l}
@@ -462,7 +462,7 @@
       Blue points are the number of observed counts, with Poissonian error bars~\cite{poissonfrequentistinterval}.
       The green histogram bars are the number of counts predicted by all models.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
-      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points.
+      The bottom plot shows the $\frac{\mathrm{all\:models}}{\mathrm{data}}$ residual as green points.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
     }
     \label{fig:crab_profile_b}
@@ -493,7 +493,7 @@
       The green histogram bars are the number of counts predicted by all models.
       As the Crab Nebula doesn't contribute any events \ang{1} to the north, the green histogram bars are identical (and behind) the yellow histogram bars.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
-      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points.
+      The bottom plot shows the $\frac{\mathrm{all\:models}}{\mathrm{data}}$ residual as green points.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with blue squares showing the profile bin locations.
     }
     \label{fig:crab_profile_l_off}
@@ -517,11 +517,11 @@
     }
     \caption[Crab Nebula Profile in Energy]
     {
-      The top plot shows number of counts in a \ang{0.6} x \ang{0.6} square centered on the Crab Nebula, vs energy.
+      The top plot shows the number of counts in a \ang{0.6} x \ang{0.6} square centered on the Crab Nebula, vs energy.
       Blue points are the number of observed counts, with Poissonian error bars~\cite{poissonfrequentistinterval}.
       The green histogram bars are the number of counts predicted by all models.
       Yellow histogram bars are the number of counts predicted by only the camera-background models.
-      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points.
+      The bottom plot shows the $\frac{\mathrm{all\:models}}{\mathrm{data}}$ residual as green points.
       The inset plot shows the counts map from Figure~\ref{fig:crab_skymap}, with a blue square showing the profile bin location.
     }
     \label{fig:crab_profile_energy}
@@ -615,7 +615,7 @@
       Data and simulated significance distributions from the fine-binned significance sky map in Figure~\ref{fig:crab_signif_skymap_fine}.
       In the top plot, the black histogram bars indicate the data's significance distribution.
       The red bars indicate the range of simulated significances, centered on the mean, and extending up and down by one standard deviation.
-      The bottom plot shows the $\textrm{Simulated}/\textrm{Data}$ residual.
+      The bottom plot shows the $\frac{\textrm{simulated}}{\textrm{data}}$ residual.
     }
     \label{fig:crab_signif_distribution}
   \end{figure}
@@ -633,7 +633,7 @@
     \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_random_sigdists.pdf}
     \caption[4 Simulated Significance Distributions]{
       Simulated significance distributions for four different average models.
-      The significance here is calculated with Equation~\ref{eqn:resmap_signif}.
+      The significance here is calculated using Equation~\ref{eqn:resmap_signif}.
       % plot generated with $VERIPY/thesis/analysis/crab_test/replot.py
     }
     \label{fig:various_sig_dists}
@@ -693,10 +693,11 @@
   The values used in Equation~\ref{eqn:brokenplaw} are from Ref. \cite{VeritasGCRidge2015}, where $E_{\textrm{pivot}}=\SI{1}{TeV}$, $E_{\textrm{cutoff}}=\SI{12.8}{TeV}$, and $\gamma=-2.1$.
   % theres also the 2016 paper http://iopscience.iop.org/article/10.3847/0004-637X/821/2/129/meta
   The normalization parameter $N_o$ was initially set to $2.8*{10}^{-12}\,\text{cm}^{-2}\,\text{s}^{-1}\,\text{TeV}^{-1}$, but was free to change in the likelihood optimization, while $E_{\textrm{pivot}}$, $E_{\textrm{cutoff}}$, and $\gamma$ were all fixed.
-  The normalization $N_o$ was left free to allow for the potential of some mixing between the point source events and any dark matter halo events, i.e. a stronger dark matter halo gamma-ray flux would result in a weaker point source flux.
+  The normalization $N_o$ was left free to allow for the potential of some mixing between the point source events and any dark matter halo events.
+  For example, a stronger dark matter halo gamma-ray flux would result in a weaker point source flux.
   
-  The galactic disk also produces its own gamma ray emission, as the protons in the disk act as an interaction target for relativistic protons~\cite{tevgev_gc_diffuse}.
-  However, this emission is not modeled, as any difference due to the missing diffuse model is overwhelmed by the effect of the atmospheric gradient on the background models {\color{red}(dont understand this?? -orel)}.
+  The galactic disk also produces its own gamma-ray emission, as the protons in the disk act as an interaction target for relativistic protons~\cite{tevgev_gc_diffuse}.
+  However, this emission is not modeled, as any difference due to the missing diffuse model would be overwhelmed by the effect of the atmospheric gradient on the background models {\color{red}(dont understand this?? -orel)}.
   This gradient is further discussed in Section~\ref{sec:elevgradient}.
   
   \subsection{Dark Matter Models}\label{subsec:dmhalomodel}
@@ -727,7 +728,7 @@
 
   \subsection{Likelihood Maximization Results}\label{like_results}
 
-  The fully assembled likelihood analysis is as follows.
+  The fully assembled likelihood analysis is described in the following section.
   108 hours of VERITAS data have been organized into 948 observations.
   Each observation has a camera background model, with two free parameters, a normalization $N_o$ and a spectral index $\gamma_o$.
   The backgrounds are a template multiplied by a power law, to allow for changes in the spectrum due to the low elevation of the observations.
@@ -828,7 +829,7 @@
       Observed vs modeled counts in a slice of the sky parallel to the galactic $l$ axis at $b=-0.046{}^{\circ}$.
       Modeled counts from camera background models are shown in yellow, total modeled counts are shown in green.
       Observed counts with Poissonian errors are shown in blue.
-      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points.
+      The bottom plot shows the $\frac{\mathrm{all\:models}}{\mathrm{data}}$ residual as green points.
       The inset plot shows the counts map from Figure~\ref{fig:gc_counts_skymap}, with blue squares showing the profile bin locations.
     }
     \label{fig:gc_profile_gal_l}
@@ -860,7 +861,7 @@
       Observed vs modeled counts in a slice of the sky parallel to the galactic $b$ axis at $l=359.944^{\circ}$.
       Modeled counts from camera background models are shown in yellow, total modeled counts are shown in green.
       Observed counts with Poissonian errors are shown in blue.
-      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points.
+      The bottom plot shows the $\frac{\mathrm{all\:models}}{\mathrm{data}}$ residual as green points.
       The inset plot shows the counts map from Figure~\ref{fig:gc_counts_skymap}, with blue squares showing the profile bin locations.
     }
     \label{fig:gc_profile_gal_b}
@@ -889,7 +890,7 @@
       Observed vs modeled counts in a \ang{0.2}$\times$\ang{0.2} square bin centered on Sgr A* at energies from \SIrange{4}{70}{\TeV{}}.
       Modeled counts from camera background models are shown in yellow, total modeled counts are shown in green.
       Observed counts with Poissonian errors are shown in blue.
-      The bottom plot shows the $\mathrm{All\,Models}/\mathrm{Data}$ residual as green points.
+      The bottom plot shows the $\frac{\mathrm{all\:models}}{\mathrm{data}}$ residual as green points.
       The inset plot shows the counts map from Figure~\ref{fig:gc_counts_skymap}, with a blue square showing the profile location.
       }
     %}
@@ -901,7 +902,7 @@
   This highlights how the models poorly match the observations in some areas of the sky.
   In this plot, the deficiency of the radially-symmetric camera background models is apparent.
   Lighter/darker areas indicate places where there were more/less observed counts than the best-fit models predicted.
-  The dark upper-left and lighter lower-right areas are due to the gradient in the atmosphere.
+  The dark upper-left and lighter lower-right areas are due to the gradient in the atmospheric air mass.
   This creates a gradient in the background that is not radially symmetric, which the radially-symmetric background models cannot properly fit.
   
   \begin{figure}[ht]
@@ -924,7 +925,6 @@
     {
       Significance of each sky-map bin's residual counts.
       See Equation~\ref{eqn:resmap_signif} for details.
-      The dark upper-left and lighter lower-right areas are due to the the radially-symmetric background, whereas a non-radially symmetric one would have been more ideal.
       {\color{red}(dark and light areas barely seen here (why do we need this plot??) -orel)}
     }
     \label{fig:gc_resmap_fine}
@@ -950,7 +950,7 @@
 
   The Galactic Center point source spectrum can be plotted as a check of the likelihood fitting.
   This spectrum is shown in Figure~\ref{fig:gc_pntsrc_spectrum}.
-  This point source was detected with a Test Statistic of 224.25 (with one degree of freedom), with a normalization of $(4.764\pm0.402)\times 10^{-18} \frac{\textrm{photons}}{\textrm{cm}^2\;\textrm{s}\;\textrm{MeV}}$.
+  This point source was detected with a test statistic of 224.25 (with one degree of freedom), with a normalization of $(4.764\pm0.402)\times 10^{-18} \frac{\textrm{photons}}{\textrm{cm}^2\;\textrm{s}\;\textrm{MeV}}$.
   
 
   \begin{figure}[ht]
@@ -993,7 +993,6 @@
   % https://fermi.gsfc.nasa.gov/science/mtgs/summerschool/2013/week1/ML_intro.pdf
   % maybe also this rolke paper: Rolke, et al., NIM A, 551, 493 (2005)
   % see bookmark in Geln Cowan Statistical Data Analysis
-
   where $\alpha$ is the confidence interval as a fraction of 1 (i.e. 95\% : $\alpha=0.95$)~\cite{wilks1938,cash1979}.
   The $\textrm{erf}^{-1}$ is the inverse error function.
   A 95\% confidence interval is desired, so $\alpha$ is set to 0.95 for the upper limit calculation in this section.
@@ -1005,9 +1004,9 @@
 
   From the 9 WIMP masses tested in Section~\ref{sec:dmlike}, the calculated upper limits are shown in Figure~\ref{fig:ulim}.
   Several other upper limits from previous studies are also shown for comparison.
-  The pink upper limit is from 216 hours of VERITAS observations of several dwarf spheroidal galaxies, stacked into a single likelihood analysis~\cite{verdsphul}.
-  The green upper limit is from 254 hours of H.E.S.S. observations of the Galactic Center~\cite{hessgcul}.
-  The yellow upper limit is from a combined Fermi-MAGIC likelihood analysis using observations from several dwarf satellite galaxies~\cite{fermagicul}.
+  The orange upper limit is from 216 hours of VERITAS observations of several dwarf spheroidal galaxies, stacked into a single likelihood analysis~\cite{verdsphul}.
+  The dark green upper limit is from 254 hours of H.E.S.S. observations of the Galactic Center~\cite{hessgcul}.
+  The red upper limit is from a combined Fermi-MAGIC likelihood analysis using observations from several dwarf satellite galaxies~\cite{fermagicul}.
   Fermi and MAGIC spent a total of 6 years and 158 hours observing these galaxies, respectively.
   The light blue dashed line is the relic cross section~\cite{updatedWIMPRelicCrossSection}.
   
@@ -1018,7 +1017,7 @@
       Dark matter upper limits on velocity-averaged cross sections.
       The results from this work are in dark blue.
       Orange is from a VERITAS~\cite{veritas_dm_limit} analysis of dwarf spheroidal galaxies.
-      Green is from a H.E.S.S.~\cite{hess_dm_limit} analysis of the Galactic Center.
+      Dark green is from a H.E.S.S.~\cite{hess_dm_limit} analysis of the Galactic Center.
       Purple is from a HAWC~\cite{hawc_dm_limit} analysis of dwarf spheroidal galaxies.
       Red is from a joint Fermi-MAGIC~\cite{fermagicul} analysis.
       Bright green is from Planck measurements of the CMB~\cite{planck_dm_limit}.
@@ -1029,8 +1028,8 @@
     \label{fig:ulim}
   \end{figure}
   
-  These limits were calculated using a simple WIMP model, one that does not include the effect of Sommerfeld Enhancement~\cite{sommerfeld}.
-  If Sommerfeld Enhancement were included in the dark matter halo model, stronger limits would naively be expected.
+  These limits were calculated using a simple WIMP model, one that does not include the effect of Sommerfeld enhancement~\cite{sommerfeld}.
+  If Sommerfeld enhancement were included in the dark matter halo model, stronger limits would naively be expected.
   
   Around the dark blue upper limit line from this work, a light-blue systematic uncertainty band is also shown.
   For VERITAS, uncertainties in the energy reconstruction contribute a \nicetilde{}20\% systematic uncertainty on the flux.
@@ -1049,7 +1048,7 @@
   To check that this elevation gradient has a negligible effect on the upper limit result in Figure~\ref{fig:ulim}, the likelihood analysis was redone with an elevation gradient.
   
   As this analysis is limited to the energy range \SIrange{4}{70}{\TeV{}}, the elevation gradient will increase the number of events detected at the bottom of the camera, due to the thicker atmosphere providing increased interaction mass.
-  And, since the Galactic Center is visible almost directly south at an azimuth of \ang{193}, the elevation axis is almost parallel to the Declination axis.
+  And, since the Galactic Center is visible almost directly south at an azimuth of \ang{193}, the elevation axis is almost parallel to the declination axis.
   A gradient of 5\%/degree was chosen due to the relative differences between the total modeled counts and the observed counts in Figures \ref{fig:gc_profile_gal_l} and \ref{fig:gc_profile_gal_b}.
   % diffuse simulations produced here:
   %   /afs/ifh.de/group/cta/scratch/nkelhos/veripyctools/recon.sim.reproduce_crescent/sim.py
