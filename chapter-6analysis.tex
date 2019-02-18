@@ -220,7 +220,7 @@
   \end{equation}
   Here, $P_i \left( \xdet \right )$ is the probability of detecting an event at detector coordinates $\xdet = \left ( \ldet, \bdet, \Edet, \tdet \right )$.
   The integration $\int_\xtrue$ takes place over the entire true space, time, and energy regions being studied.
-  The function $M\left ( \xtrue \right )$ is the number of counts predicted by the astrophysical models at coordinate $\xtrue$, and $R \left ( \xdet, \xtrue \right )$ is the dispersion at $\xdet$ due to $\xtrue$ {\color{red}(its not the dispersion at x' due to x ?? -orel)}.
+  The function $M\left ( \xtrue \right )$ is the number of counts predicted by the astrophysical models at coordinate $\xtrue$. %, and $R \left ( \xdet, \xtrue \right )$ is the dispersion at $\xdet$ due to $\xtrue$ {\color{red}(its not the dispersion at x' due to x ?? -orel)}.
   The function
   
   \begin{equation}\label{eqn:foldingR}
@@ -249,7 +249,7 @@
   In order to calculate the test statistic, the models must be grouped into two sets, called hypotheses.
   For a basic analysis, the null hypothesis consists of all models, except the specific one being searched for, called here {\color{red} $\Mnull$ (how about H instead so not to confuse with the models before?? -orel)}.
   The second hypothesis, called the alternate hypothesis, consists of all the models in the null hypothesis, plus the model being searched for, called here $\Malt$.
-  Each observation would get its own camera background model, and then any additional astrophysical models are added separately {\color{red}(this is true only for three observations with different conditions though?? -orel)}.
+  Each observation would get its own camera background model, and then any additional astrophysical models are added separately.
   For example, if one has three observations of the Crab Nebula, this would mean there are three camera background models, plus a point source model for the Crab Nebula.
   The null hypothesis would be just the camera background models, while the alternate hypothesis would be the camera backgrounds plus the Crab Nebula model.
   Once these two hypotheses are assembled for an analysis, their maximum likelihood can then be sought.
@@ -258,6 +258,7 @@
   The maximum likelihood is found by iteratively changing the parameters of a hypothesis's component models in directions that increase the likelihood.
   For example, take the alternate hypothesis used in Section~\ref{subsec:hypotheses}, with three camera background models and one Crab Nebula point source.
   Each camera background model has a base template multiplied by a power law.
+  {\color{red}(the camera models only need to naively fit the normalization, but the effect of using templates from one elevation with data at another elevation was uncertain, so the spectral index was also allowed to change ??)}
   The power law was added to allow some flexibility in the template, as the atmosphere may change rapidly during low elevation observations.
   Each power law has two parameters, a normalization and a spectral index, so the background camera models have the parameters $N_1$, $N_2$, $N_3$, $\gamma_1$, $\gamma_2$, and $\gamma_3$.
   The Crab Nebula point source power law {\color{red}(the crab nebula is described by a log parabola, not a power law?? -orel)}also has normalization and spectral index parameters $N_c$ and $\gamma_c$.
@@ -285,7 +286,6 @@
   From this simulated TS distribution, an actual TS can be converted into a p-value.
   In situations where there is only one or two degrees of freedom, the significance of a specific model can be calculated as $\sqrt{\textrm{TS}}$.
   Due to time constraints, the p-value of this test statistic was not calculated.
-  {\color{red}(where would you need the p-value?? can we talk about this sentence/point?? -orel)}
   % http://pulsar.sternwarte.uni-erlangen.de/black-hole/2ndschool/talks/likelihood_1.pdf
   
 
@@ -301,8 +301,7 @@
   To account for the difference between the V5 and V6 observatory configurations, the background observations are divided up based on their VERITAS hardware epoch, producing a unique background template for each epoch.
   These background templates depend on the event's position in the camera and the event energy.
   They are used in both the Crab Nebula analysis and the Galactic Center analysis.
-  Because the templates are made from Sgr A* Off, which has no sources of gamma-rays, the only detectable events are due to background protons{\color{red}(qualify this statement?? -orel)}.
-  {\color{red}(what about electrons or heavier elements?? -orel)}
+  Because the templates are made from Sgr A* Off, which has no sources of gamma-rays, the only expected detectable events are due to background cosmic rays.
 
 \section{Crab Nebula Likelihood Analysis}\label{sec:crab_analysis}
   To verify the likelihood method is physically correct, the Crab Nebula was analyzed first, before any dark matter analysis was performed.
@@ -697,7 +696,9 @@
   For example, a stronger dark matter halo gamma-ray flux would result in a weaker point source flux.
   
   The galactic disk also produces its own gamma-ray emission, as the protons in the disk act as an interaction target for relativistic protons~\cite{tevgev_gc_diffuse}.
-  However, this emission is not modeled, as any difference due to the missing diffuse model would be overwhelmed by the effect of the atmospheric gradient on the background models {\color{red}(dont understand this?? -orel)}.
+  %However, this emission is not modeled, as any difference due to the missing diffuse model would be overwhelmed by the effect of the atmospheric gradient on the background models {\color{red}(dont understand this?? -orel)}.
+  At these high energies, the contribution from the galactic diffuse emission is negligible compare to atmospheric effects discussed in Section~\ref{sec:elevgradient}.
+  
   This gradient is further discussed in Section~\ref{sec:elevgradient}.
   
   \subsection{Dark Matter Models}\label{subsec:dmhalomodel}
@@ -731,7 +732,7 @@
   The fully assembled likelihood analysis is described in the following section.
   108 hours of VERITAS data have been organized into 948 observations.
   Each observation has a camera background model, with two free parameters, a normalization $N_o$ and a spectral index $\gamma_o$.
-  The backgrounds are a template multiplied by a power law, to allow for changes in the spectrum due to the low elevation of the observations.
+  In this analysis as well, the backgrounds are a template multiplied by a power law, in case the spectrum changes due to the changing elevation of the observations.
   A point source has been added at the Galactic Center with a broken power law spectrum, where only its normalization $N_o$ is a free parameter.
   The last model is then one of 9 dark matter halo models, each with a cuspy Einasto spatial profile.
   The spectrum of this halo is from two WIMPs of mass $m_{\chi}$ annihilating into a $b\bar{b}$ pair.
@@ -780,6 +781,7 @@
   \end{table}
 
   As there are 948 camera background models in each likelihood analysis, each with a free normalization and spectral index, these are histogrammed as a sanity check in Figure~\ref{fig:param_hist}.
+  {\color{red}(mention here that since the spectral index is centered on zero, and is comparable to the statistical uncertainty on the crab spectrum fit (0.17??), this confirms that just having a free normalizatio is enough ??)}
   The spectral index distribution is centered on zero because the power law is applied to an existing (non-power-law) background shape.
   This means that on average the background models required little spectral hardening or softening.
   {\color{red}(this exactly reflects my question of why even assume a power law and include an index?? -orel)}
@@ -913,6 +915,7 @@
     {
       Significance of each sky-map bin's residual counts.
       See Equation~\ref{eqn:resmap_signif} for details.
+      {\color{red}(make significance distribution histogram from this larger plot, move distribution studies to appendix??)}
     }
     \label{fig:gc_resmap}
   \end{figure}
@@ -970,12 +973,13 @@
   
   
 \section{Upper Limit}\label{upper_limit}
-  From the dark matter flux shown in Equation~\ref{eqn:dmflux}, an upper limit on the observed gamma-ray flux can be derived:
+  From the dark matter flux 
 
-  \begin{equation}
-    \frac{ d\Phi }{ dE d \Omega } = \frac{ \left \langle \sigma v \right \rangle }{8 \pi m_\chi^2} \frac{dN_{\gamma}}{dE} \int \rho^2 dl\tag{\ref{eqn:dmflux}} \,.
+  \begin{equation}\label{eqn:dmflux2}
+    \frac{ d\Phi }{ dE d \Omega } = \frac{ \left \langle \sigma v \right \rangle }{8 \pi m_\chi^2} \frac{dN_{\gamma}}{dE} \int \rho^2 dl \,.
   \end{equation}
-  {\color{red}(why is this equation number \ref{eqn:dmflux}?? you can repeat it and give it a new number if you want to help the reader, but this is confusing?? -orel)}
+  (see Equation~\ref{eqn:dmflux} for details), an upper limit on the observed gamma-ray flux can be derived.
+  %{\color{red}(why is this equation number \ref{eqn:dmflux}?? you can repeat it and give it a new number if you want to help the reader, but this is confusing?? -orel)}
   When all other variables in Equation~\ref{eqn:dmflux} are fixed, a larger velocity-averaged cross section always results in a larger gamma-ray flux.
   This means that the flux and cross section can both be replaced by their upper limits ($x \rightarrow x \left |_{\textrm{ul}}$), as in
   
@@ -1000,6 +1004,8 @@
   In this procedure, the dark matter halo model's flux $\Phi$ is fixed at one magnitude, and then the likelihood optimization finds the best fit values for the remaining free parameters.
   This is repeated for various $\Phi$ until the the likelihood is found to be within a certain tolerance of $L_{\textrm{ul}}$.
   Once the upper limit model flux $\Phi$ is found and combined with Equation~\ref{eqn:ulim}, the cross section upper limit can be calculated.
+  {\color{red}(try to avoid referring to an older equation??)}
+  {\color{red}(rewrite this section a bit more chronoligically, so I dont have to refer back to so many things??)}
   {\color{red}(this whole explanation for how to get the ul could be improved. cant tell you how without rewriting it myself though ?? -orel)}
 
   From the 9 WIMP masses tested in Section~\ref{sec:dmlike}, the calculated upper limits are shown in Figure~\ref{fig:ulim}.
@@ -1024,6 +1030,7 @@
       The light blue dashed line is the relic cross section~\cite{updatedWIMPRelicCrossSection}.
       Data values from this work's upper limits are in Appendix Table \ref{tab:ulimvals}.
       {\color{red}(add sentence about how likely dm could fall in a gap between masses?? how wide a signal is this sensitive to??)}
+      {\color{red}(email gernot about this??)}
     }
     \label{fig:ulim}
   \end{figure}
@@ -1075,6 +1082,7 @@
   
   After these were applied to all background models, the likelihood analysis was re-run for the \SI{10}{\TeV{}} WIMP mass.
   {\color{red}(why just this mass?? does the statistics you have depend on the mass? one my worry that the effect is small for this mass, where your upper limits are not competitive anyway, but might be big for large masses where you are competitive?? -orel)}
+  {\color{red}(ask gernot about this as well?? we don't have a good feeling for what the effect of this is at higher masses?? (copy orels comment as well), or can 10TeV be a good representative of 70TeV??)}
   The resulting upper limit with the gradient was only 0.1\% different from the upper limit with radial background models.
   This indicates the upper limits are not very sensitive to the background models.
   % on warp-zeuthen.desy.de:

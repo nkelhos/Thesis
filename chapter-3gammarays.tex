@@ -455,12 +455,27 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       \label{fig:neutralino_feynman}
     \end{figure}
 
-    After the desired channel is selected, the spectrum of final radiated photons is calculated.
-    This is done by integrating over $dP$, the probability to radiate a particle:~\cite{pppc4_dm_spectra},
+    After the desired channel is selected, any bremmstrahlung radiation from the initial $b$ and $\bar{b}$ particles must be calculated.
+    Then, the $b$ and $\bar{b}$ quarks may combine into a $b\bar{b}$ meson, or may pull quarks out of the vaccum to form a hadron containing a $b$ or $\bar{b}$ quark.
+    For example, an original $b$ quark could form a $\bar{u}b$ meson (called $B^{+}$), which then has a 10\% chance to decay into a lepton and neutrino~\cite{bmesons1,bmesons2}.
+    This lepton goes on to produce bremmstralhung photons.
     
     \begin{equation}
-      dP = \frac{\alpha_{S}\left (k_{T} \right ) }{2\pi} \frac{dQ^2}{Q^2} \, P(z) \, dz \, \frac{\Delta_S \left ( Q^2_{max},Q^2 \right )}{\Delta_S \left ( Q^2,Q^2_0 \right )} \,.
-    \end{equation} % this is from PPPC4 DM ID, equation 3.2
+      
+    \end{equation}
+    
+    %any radiation isthe spectrum of final radiated photons is calculated.
+    %This is done by integrating over $dP$, the probability to radiate a particle:~\cite{pppc4_dm_spectra},
+    
+    %\begin{equation}
+    %  dP = \frac{\alpha_{S}\left (k_{T} \right ) }{2\pi} \frac{dQ^2}{Q^2} \, P(z) \, dz \, \frac{\Delta_S \left ( Q^2_{max},Q^2 \right )}{\Delta_S \left ( Q^2,Q^2_0 \right )} \,.
+    %\end{equation} % this is from PPPC4 DM ID, equation 3.2
+    %{\color{red}(this is for QCD, not photons, search PYTHIA/HERWIG for how they do photon emission??)}
+    %{\color{red}(dont show this equation, instead just talk about how photons could come from the original b-quarks' bremmstrahlung-ing, or from the decays of resulting b-hadrons ($B^0$ mesons, which then decay)??)}
+    {\color{red}(just talk about how photons could come from the original b-quarks' bremmstrahlung-ing, or from the decays of resulting b-hadrons ($B^0$ mesons, which then decay)??)}
+    {\color{red}(20\% of time B+ decays into lepton or $D^0$)}
+    % see pythia online manual http://home.thep.lu.se/~torbjorn/pythia81html/Welcome.html
+    % pythia 6 paper (physics) https://arxiv.org/pdf/hep-ph/0603175.pdf
     In this, $P(z)$ is the Dokshitzer-Gribov-Lipatov-Altarelli-Parisi splitting function~\cite{dglap1,dglap2,dglap3}.
     The variable $z$ is the radiated parton's energy fraction, $Q^2$ is the evolution variable of the shower.
     The variable $k_T$ is the transverse momentum, and $\Delta_S(Q^2_1,Q^2_2)$ is the Sudakov form factor~\cite{sudakov}, the probability of progressing from $Q^2_1$ to $Q^2_2$ without any radiation.
