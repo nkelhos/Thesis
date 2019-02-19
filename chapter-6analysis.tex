@@ -157,7 +157,7 @@
   Models are used in a likelihood analysis to predict the number of events that a particular source deposits into some bin $j$.
   In a likelihood analysis, each source of events gets its own model.
   Each model is described by a function $M$, and different sources will have different $M$ functions.
-  The function $M$ has dimensional units of $\frac{\textrm{counts}}{\textrm{energy}\times\textrm{solid angle}\times\textrm{area}\times\textrm{time}}$ {\color{red}(use math notation, letters instead of words?? -orel)}.
+  The function $M$ has dimensional units of $\frac{N}{A \; T \; E \; \Omega}$.
   This function can be integrated over the energy, sky, and time region covered by a bin $j$ to calculate the number of events predicted in that bin, as shown by 
   
   \begin{equation}\label{eqn:model_int}
@@ -247,8 +247,8 @@
   The factor $m_{k,j}$ represents the number of counts predicted by model $k$, at the position of bin $j$.
   
   In order to calculate the test statistic, the models must be grouped into two sets, called hypotheses.
-  For a basic analysis, the null hypothesis consists of all models, except the specific one being searched for, called here {\color{red} $\Mnull$ (how about H instead so not to confuse with the models before?? -orel)}.
-  The second hypothesis, called the alternate hypothesis, consists of all the models in the null hypothesis, plus the model being searched for, called here $\Malt$.
+  For a basic analysis, the null hypothesis consists of all models, except the specific one being searched for, called here $H_{\textrm{null}}$.
+  The second hypothesis, called the alternate hypothesis, consists of all the models in the null hypothesis, plus the model being searched for, called here $H_{\textrm{alt}}$.
   Each observation would get its own camera background model, and then any additional astrophysical models are added separately.
   For example, if one has three observations of the Crab Nebula, this would mean there are three camera background models, plus a point source model for the Crab Nebula.
   The null hypothesis would be just the camera background models, while the alternate hypothesis would be the camera backgrounds plus the Crab Nebula model.
@@ -258,8 +258,7 @@
   The maximum likelihood is found by iteratively changing the parameters of a hypothesis's component models in directions that increase the likelihood.
   For example, take the alternate hypothesis used in Section~\ref{subsec:hypotheses}, with three camera background models and one Crab Nebula point source.
   Each camera background model has a base template multiplied by a power law.
-  {\color{red}(the camera models only need to naively fit the normalization, but the effect of using templates from one elevation with data at another elevation was uncertain, so the spectral index was also allowed to change ??)}
-  The power law was added to allow some flexibility in the template, as the atmosphere may change rapidly during low elevation observations.
+  The camera background models naively only need to fit the normalization, but the effect of using templates from one elevation with data at another elevation was uncertain, so the spectral index was also allowed to change.
   Each power law has two parameters, a normalization and a spectral index, so the background camera models have the parameters $N_1$, $N_2$, $N_3$, $\gamma_1$, $\gamma_2$, and $\gamma_3$.
   The Crab Nebula point source power law {\color{red}(the crab nebula is described by a log parabola, not a power law?? -orel)}also has normalization and spectral index parameters $N_c$ and $\gamma_c$.
   The Crab Nebula model also has location parameters $l_c$ and $b_c$, but since these are fixed in this example (and thesis), the likelihood maximization can't vary them.
@@ -268,7 +267,7 @@
   
   When finding the maximum likelihood for each hypothesis, these free parameters are varied, and the likelihood is recalculated.
   This procedure is repeated until a maximum likelihood is reached.
-  While there are many maximization algorithms, this analysis uses the {\color{red}Levenberg-Marquardt (this shouldn't extend past line edge??)} method~\cite{marquardt1963algorithm}.
+  While there are many maximization algorithms, this analysis uses the Levenberg-Marquardt method~\cite{marquardt1963algorithm}.
   Once the maximum likelihood is calculated for both hypotheses, then the test statistic can be calculated.
   
   \subsection{Test Statistic Calculation}
@@ -781,10 +780,9 @@
   \end{table}
 
   As there are 948 camera background models in each likelihood analysis, each with a free normalization and spectral index, these are histogrammed as a sanity check in Figure~\ref{fig:param_hist}.
-  {\color{red}(mention here that since the spectral index is centered on zero, and is comparable to the statistical uncertainty on the crab spectrum fit (0.17??), this confirms that just having a free normalizatio is enough ??)}
   The spectral index distribution is centered on zero because the power law is applied to an existing (non-power-law) background shape.
   This means that on average the background models required little spectral hardening or softening.
-  {\color{red}(this exactly reflects my question of why even assume a power law and include an index?? -orel)}
+  Because the spectral index is centered on zero, and the spread of spectral indices (\nicetilde0.2) is comparable to the statistical uncertainty on the Crab Nebula spectrum fit (Section~\ref{sec:crab_analysis}, $\gamma=2.31\pm0.17$), this confirms that it is enough to only leave the normalization free.
   
   \begin{figure}[bt]
     \begin{tabular}{ll}
@@ -954,18 +952,19 @@
   The Galactic Center point source spectrum can be plotted as a check of the likelihood fitting.
   This spectrum is shown in Figure~\ref{fig:gc_pntsrc_spectrum}.
   This point source was detected with a test statistic of 224.25 (with one degree of freedom), with a normalization of $(4.764\pm0.402)\times 10^{-18} \frac{\textrm{photons}}{\textrm{cm}^2\;\textrm{s}\;\textrm{MeV}}$.
-  
+  A statistical uncertainty band is shown as a very thin red region, and a combined statistical plus systematic uncertainty is shown as a slightly thicker red band.
+  The systematic uncertainty comes from showers of different energies forming similar images in the VERITAS telescopes, leading to a \nicetilde20\% systemaic uncertainty on the flux.
+  The difference between the two spectra is likely due to the previous VERITAS being made from a combined fit with data from another telescope.
+  {\color{red}(is this paragraph a better explaination??)}
 
   \begin{figure}[ht]
     \centering
     \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_spectrum.pdf}
     \caption[Galactic Center Point Source Spectrum]
     {
-      The spectrum of the fitted galactic center point source is shown in red, with statistical and combined statistical+systematic uncertainty sheaths.
+      The spectrum of the fitted Galactic Center point source is shown in red, with statistical and combined statistical+systematic uncertainty sheaths.
       Only the normalization was free in the likelihood fit.
       The original VERITAS spectrum is shown in purple, from Ref.~\cite{VeritasGCRidge2015}.
-      {\color{red}((in plot)where are the data?? do you understand the discrepancy?? you dont comment about it in the text -orel)}
-      {\color{red}(do you mention the systematic uncertainties in the text?? -orel)}
       Note that the original VERITAS spectrum is part of a combined fit with another gamma-ray telescope.
     }
     \label{fig:gc_pntsrc_spectrum}
