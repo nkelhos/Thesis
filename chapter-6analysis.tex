@@ -403,8 +403,8 @@ Thus, with \nicetilde17\% fewer events, the likelihood test detects the Crab Neb
 % ctools       : 4    TeV to 70   TeV
 % from nkelhos@warp-zeuthen.desy.de:~/dm_halo_testing/veripy/thesis/analysis/crab_test/energy_range_event_count_difference.py
 In Figure~\ref{fig:crab_test_spectra}, the fitted Crab Nebula spectra is shown, along with literature results from earlier VERITAS, HESS, and MAGIC observations of the Crab Nebula.
-The fitted spectra from this work is shown as a red line, with a red statistical uncertainty sheath.
-A second larger red uncertainty sheath includes a \nicetilde{}20\% systematic uncertainty on the flux, due to gamma rays of different energies producing similar-looking shower images in the VERITAS telescopes.
+The fitted spectra from this work is shown as a red line, with a red statistical uncertainty band.
+A second larger red uncertainty band includes a \nicetilde{}20\% systematic uncertainty on the flux, due to gamma rays of different energies producing similar-looking shower images in the VERITAS telescopes.
 
 \begin{figure}[p]
   \centering
@@ -820,7 +820,8 @@ Figure~\ref{fig:gc_profile_energy} shows a similar profile, except it is integra
 \end{figure}
 
 To check for any poorly modeled areas of the sky, the difference between the observed counts and models can be examined.
-The observed counts and models in this Galactic Center analysis are broken up into individual sky-map bins, and each bin's significance is calculated with Equation~\ref{eqn:resmap_signif} and shown in Figure~\ref{fig:gc_resmap}.
+The observed counts and models in this Galactic Center analysis are broken up into individual sky-map bins.
+Then, each bin's significance is calculated with Equation~\ref{eqn:resmap_signif} and shown in Figure~\ref{fig:gc_resmap}.
 This highlights how the models poorly match the observations in some areas of the sky.
 In this plot, the deficiency of the radially-symmetric camera background models is apparent.
 Lighter/darker areas indicate places where there were more/less observed counts than the best-fit models predicted.
@@ -834,26 +835,18 @@ This creates a gradient in the background that is not radially symmetric, which 
   {
     Significance of each sky-map bin's residual counts.
     See Equation~\ref{eqn:resmap_signif} for details.
-    {\color{red}(make significance distribution histogram from this larger plot, move distribution studies to appendix??)}
   }
   \label{fig:gc_resmap}
 \end{figure}
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_fine.pdf}
-  \caption[Galactic Center Residual Map Fine Binning]
-  {
-    Significance of each sky-map bin's residual counts.
-    See Equation~\ref{eqn:resmap_signif} for details.
-    {\color{red}(dark and light areas barely seen here (why do we need this plot??) -orel)}
-  }
-  \label{fig:gc_resmap_fine}
-\end{figure}
-
+The distribution of the pixel significances from Figure~\ref{fig:gc_resmap} is also shown in gray in Figure~\ref{fig:gc_resmap_sighist_coarse}, along with a set of 1000 simulated distributions in red.
 If the source and background models were perfectly known, there would still be statistical fluctuations in the observed counts.
-The distribution of the pixel significances from Figure~\ref{fig:gc_resmap_fine} is also shown in gray in Figure~\ref{fig:gc_resmap_sighist}, along with a set of 150 simulated distributions in red.
-{\color{red}(same as for the crab, I dont really understand this.  why do you do it from fig \ref{fig:gc_resmap_sighist}, and not fig \ref{fig:gc_resmap}?? -orel)}
+However, the red and gray distributions in Figure~\ref{fig:gc_resmap_sighist_coarse} would still line up, and their residual (bottom plot) would be consistant with 1.
+Because the residual is not consistant with 1, this shows there are differences between the models and the data.
+Specifically, there are more negatively-significant and positively-significant data pixels than expected from the models, hinting that one or more features in the Galactic Center data are not being modeled properly.
+This is discussed further in Section~\ref{sec:elevgradient}.
+The peaked bin around $\sigma=0$ is likely due to the bins at the edge of the Galactic Center data, where the residual approaches zero, due to the negligible VERITAS sensitivity at the camera edges..
+{\color{red}(needs to match up better with the previous paragraph??)}
 
 \begin{figure}[ht]
   \centering
@@ -865,19 +858,6 @@ The distribution of the pixel significances from Figure~\ref{fig:gc_resmap_fine}
   }
   \label{fig:gc_resmap_sighist_coarse}
 \end{figure}
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_fine_pdf_json_hist.pdf}
-  \caption[Galactic Center Residual Histogram]
-  {
-    Histogram of the residual sky-map bin significances from Figure~\ref{fig:gc_resmap}, calculated with Equation~\ref{eqn:resmap_signif}.
-    Only sky-map bins within Sgr A*'s region of interest are histogrammed.
-    {\color{red}(need to talk about this whole thing, but if this stays, what is the discontinuity at zero?? -orel)}
-  }
-  \label{fig:gc_resmap_sighist}
-\end{figure}
-
 
 The Galactic Center point source spectrum can be plotted as a check of the likelihood fitting.
 This spectrum is shown in Figure~\ref{fig:gc_pntsrc_spectrum}.
@@ -892,7 +872,7 @@ The difference between the two spectra is likely due to the previous VERITAS bei
   \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_spectrum.pdf}
   \caption[Galactic Center Point Source Spectrum]
   {
-    The spectrum of the fitted Galactic Center point source is shown in red, with statistical and combined statistical+systematic uncertainty sheaths.
+    The spectrum of the fitted Galactic Center point source is shown in red, with statistical and combined statistical+systematic uncertainty bands.
     Only the normalization was free in the likelihood fit.
     The original VERITAS spectrum is shown in purple, from Ref.~\cite{VeritasGCRidge2015}.
     Note that the original VERITAS spectrum is part of a combined fit with another gamma-ray telescope.
@@ -900,6 +880,7 @@ The difference between the two spectra is likely due to the previous VERITAS bei
   \label{fig:gc_pntsrc_spectrum}
 \end{figure}
 
+\FloatBarrier
 
 \section{Upper Limit}\label{upper_limit}
 From the dark matter flux 
@@ -944,6 +925,11 @@ The red upper limit is from a combined Fermi-MAGIC likelihood analysis using obs
 Fermi and MAGIC spent a total of 6 years and 158 hours observing these galaxies, respectively.
 The light blue dashed line is the relic cross section~\cite{updatedWIMPRelicCrossSection}.
 
+It is important to note that the width of a dark matter signal is not known at this time.
+As such, the 9 upper limits provided by this work do not include a width, so only upper limits at \textit{exactly} thoses masses are valid.
+Upper limits cannot be placed between those masses until further dark matter signals are simulated.
+{\color{red}(ask orel if this paragraph is better??)}
+
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.95\textwidth]{images/ulimit/ulimit.pdf}
@@ -957,8 +943,6 @@ The light blue dashed line is the relic cross section~\cite{updatedWIMPRelicCros
     Bright green is from Planck measurements of the CMB~\cite{planck_dm_limit}.
     The light blue dashed line is the relic cross section~\cite{updatedWIMPRelicCrossSection}.
     Data values from this work's upper limits are in Appendix Table \ref{tab:ulimvals}.
-    {\color{red}(add sentence about how likely dm could fall in a gap between masses?? how wide a signal is this sensitive to??)}
-    {\color{red}(email gernot about this??)}
   }
   \label{fig:ulim}
 \end{figure}
@@ -966,7 +950,7 @@ The light blue dashed line is the relic cross section~\cite{updatedWIMPRelicCros
 These limits were calculated using a simple WIMP model, one that does not include the effect of Sommerfeld enhancement~\cite{sommerfeld}.
 If Sommerfeld enhancement were included in the dark matter halo model, stronger limits would naively be expected.
 
-Around the dark blue upper limit line from this work, a light-blue systematic uncertainty band is also shown.
+Around the dark blue upper limit line from this work, systematic uncertainty error bars are also shown.
 For VERITAS, uncertainties in the energy reconstruction contribute a \nicetilde{}20\% systematic uncertainty on the flux.
 While no dark matter was detected in this thesis, the upper limit calculation is influenced by this systematic uncertainty.
 This can be envisioned as a dark matter signal that was brighter than the upper limit in Figure~\ref{fig:ulim}, but then fluctuated downwards by 20\% of its flux.
