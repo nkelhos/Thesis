@@ -7,3 +7,9 @@ sgraoff.3.cam.pdf
 sgraoff.3.hist.energy.pdf
 sgraoff.4.cam.pdf
 sgraoff.4.hist.energy.pdf
+sgraoff.5.cam.pdf
+sgraoff.5.hist.energy.pdf
+sgraoff.6.cam.pdf
+sgraoff.6.hist.energy.pdf
+sgraoff.7.cam.pdf
+sgraoff.7.hist.energy.pdf

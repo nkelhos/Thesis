@@ -110,9 +110,13 @@
 %
 % These set up the table style to fit current guidelines
 \DeclareCaptionFormat{mtutable}{#1#2\\#3}
-\captionsetup[table]{
+%\captionsetup[table]{
+\captionsetup{
   %format=mtutable,
-  format=simple,
+  %format=simple,
+  %format=hang,
+  format=plain,
+  font=small,
   %labelsep=none,
   labelsep=colon,
   justification=raggedright,
