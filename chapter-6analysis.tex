@@ -640,7 +640,7 @@ This is assembled with a simplified version of Equation \ref{eqn:dmflux}:
 In this analysis, an Einasto density profile is used for the spatial component function $M_s$ of the dark matter halo model.
 See Section~\ref{dm_spatial} for a discussion on the $M_{s,\textrm{halo}}$ function.
 
-For the spectral component, each of the 9 dark matter masses tested has their own spectrum function $M_e$ produced with CLUMPY.
+For the spectral component, each of the nine dark matter masses tested has their own spectrum function $M_e$ produced with CLUMPY.
 These spectra are shown in Figure~\ref{fig:chichi_spectrum2}, and are discussed further in Section~\ref{dm_spectral}.
 The parameter $N$ is the magnitude of the halo, which was left free in the likelihood fit.
 
@@ -663,7 +663,7 @@ The fully assembled likelihood analysis is described in the following section.
 Each observation has a camera background model, with two free parameters, a normalization $N_o$ and a spectral index $\gamma_o$.
 In this analysis as well, the backgrounds are a template multiplied by a power law, in case the spectrum changes due to the changing elevation of the observations.
 A point source has been added at the Galactic Center with a broken power law spectrum, where only its normalization $N_o$ is a free parameter.
-The last model is then one of 9 dark matter halo models, each with a cuspy Einasto spatial profile.
+The last model is then one of nine dark matter halo models, each with a cuspy Einasto spatial profile.
 The spectrum of this halo is from two WIMPs of mass $m_{\chi}$ annihilating into a $b\bar{b}$ pair.
 The dark matter halo's only free parameter is its normalization $N_o$.
 These models are then grouped into two hypotheses, where $\Mnull$ consists of the 948 camera background models and the Galactic Center point source.
@@ -824,7 +824,7 @@ To check for any poorly modeled areas of the sky, the difference between the obs
 The observed counts and models in this Galactic Center analysis are broken up into individual sky-map bins.
 Then, each bin's significance (how significantly the models differ from the data) is calculated with Equation~\ref{eqn:resmap_signif} and shown in Figure~\ref{fig:gc_resmap}.
 In this plot, the deficiency of the radially-symmetric camera background models is apparent.
-Lighter/darker areas indicate places where there were more/less observed counts than the best-fit models predicted.
+Lighter/darker areas indicate places where there were more/fewer observed counts than the best-fit models predicted.
 The darker upper-left and lighter lower-right areas are due to the gradient in the atmospheric air mass.
 This creates a gradient in the background that is not radially symmetric, which the radially-symmetric background models cannot properly fit.
 
@@ -844,7 +844,7 @@ If the source and background models were perfectly known, the gray bars would ov
 Because only four of the residual bins are consistent with 1, this shows there are differences between the models and the data.
 Specifically, there are more negatively-significant and positively-significant data pixels than expected from the models, hinting that one or more features in the Galactic Center data are not being modeled properly.
 This is discussed further in Section~\ref{sec:elevgradient}.
-The peaked bin around $\sigma=0$ is likely due to the bins at the edge of the Galactic Center data, where the residual approaches zero, due to the negligible (and poorly sampled) VERITAS sensitivity at the edge of the camera.
+The peaked bin around $\sigma=0$ is likely due to the bins at the edge of the Galactic Center data, where the residual approaches zero due to the negligible (and poorly sampled) VERITAS sensitivity at the edge of the camera.
 {\color{red}(how does these past two paragraphs sound? is there a chi-squared value I can calculate for this?  whats the number of degrees of freedom??)}
 
 \begin{figure}[ht]
@@ -902,7 +902,7 @@ To calculate the upper limit, the likelihood fitting is run with one dark matter
 Then, $\vacs$ is increased a small amount and fixed.
 The remaining free model parameters are then iteratively optimized until a new maximum likelihood is found.
 Because no dark matter signal was found, increasing $\vacs$ increases the dark matter halo's flux, which decreases the maximum likelihood.
-This procedure of increasing $\vacs$, then rerunning the likelihood maximization is repeated until the likelihood has decreased by a fixed amount, $\Delta{}\LogLike$.
+This procedure of increasing $\vacs$, then rerunning the likelihood maximization, is repeated until the likelihood has decreased by a fixed amount, $\Delta{}\LogLike$.
 The factor $\Delta{}\LogLike$ is calculated via
 
 \begin{equation}\label{eqn:deltaloglike}
@@ -931,7 +931,7 @@ This is shown in Figure~\ref{fig:ulimitdiag}.
 
 
 
-From the 9 WIMP masses tested in Section~\ref{sec:dmlike}, the calculated upper limits are shown in Figure~\ref{fig:ulim}.
+From the nine WIMP masses tested in Section~\ref{sec:dmlike}, the calculated upper limits are shown in Figure~\ref{fig:ulim}.
 Several other upper limits from previous studies are also shown for comparison.
 The orange upper limit is from 216 hours of VERITAS observations of several dwarf spheroidal galaxies, stacked into a single likelihood analysis~\cite{verdsphul}.
 The dark green upper limit is from 254 hours of H.E.S.S. observations of the Galactic Center~\cite{hessgcul}.
@@ -940,7 +940,7 @@ Fermi and MAGIC spent a total of 6 years and 158 hours observing these galaxies,
 The light blue dashed line is the relic cross section~\cite{updatedWIMPRelicCrossSection}.
 
 It is important to note that the width of a dark matter signal is not known at this time.
-As such, the 9 upper limits provided by this work do not include a width, so only upper limits at \textit{exactly} those masses are valid.
+As such, the nine upper limits provided by this work do not include a width, so only upper limits at \textit{exactly} those masses are valid.
 Upper limits cannot be placed between those masses until further dark matter signals are simulated.
 {\color{red}(ask orel if this paragraph is better??)}
 
