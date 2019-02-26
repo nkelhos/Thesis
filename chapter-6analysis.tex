@@ -552,6 +552,7 @@ When a significance distribution is made of Figure~\ref{fig:crab_signif_skymap_c
 Simulations are shown in red using the best-fit models, and the $\frac{\textrm{Simulated Models}}{\textrm{Data}}$ residual is shown in the bottom plot.
 Since most bins in the residual overlap 1, it can be concluded that the models are not deficient in any particular area.
 {\color{red}(it doesn't overlap at $\sigma=$0, -1, -3, and +3? not sure if this is still true??)}
+{\color{red}(I am not sure anymore what the simulations are.  But the point is that it should look like a gaussian, which it does, so why not simply fita  gaussian and show the fit is OK?  Also, in your plot I think you only take into account the uncertainty on the simulation, but if you include the uncertainties in the data, the agreement would be better. ?? -orel)}
   
 \begin{figure}[h]
   \centering
@@ -762,6 +763,10 @@ The impact of this elevation effect is tested later in Section~\ref{sec:elevgrad
   \label{fig:gc_profile_gal_l}
 \end{figure}
 
+{\color{red}(do you have any cut on edge bins? what is the field of view you are considering in your analysis?? -gernot)}
+{\color{red}(how does Figure~\ref{fig:} look like without th ose edge bins? is it the expected N(0,1) normal distribution?? -gernot)}
+{\color{red}(butt there is clearly a systematic offset in the background: where do you discuss the possible reason for that?? -gernot)}
+{\color{red}(where do you discuss how all these discrepancies affect your results (ULs on DM)?? -gernot)}
 Figure~\ref{fig:gc_profile_gal_b} is similar to Figure~\ref{fig:gc_profile_gal_l}, except it slices through Sgr A* along the galactic $b$ axis.
 The feature in which the observed counts are higher on the left and lower on the right is also visible here.
 Figure~\ref{fig:gc_profile_energy} shows a similar profile, except it is integrated over a \ang{0.2}$\times$\ang{0.2} galactic ($l$,$b$) square centered on Sgr A*.
@@ -841,11 +846,10 @@ This creates a gradient in the background that is not radially symmetric, which 
 
 The distribution of the pixel significances from Figure~\ref{fig:gc_resmap} is also shown in gray in Figure~\ref{fig:gc_resmap_sighist_coarse}, along with a set of 1000 simulated distributions in red.
 If the source and background models were perfectly known, the gray bars would overlap the red simulations in most of the bins, and the residual will overlap 1.
-Because only four of the residual bins are consistent with 1, this shows there are differences between the models and the data.
+{\color{red}Because only four of the residual bins are consistent with 1, this shows there are differences between the models and the data (better to write something like "differences are observed between the models and the data" ?? -orel)}.
 Specifically, there are more negatively-significant and positively-significant data pixels than expected from the models, hinting that one or more features in the Galactic Center data are not being modeled properly.
 This is discussed further in Section~\ref{sec:elevgradient}.
-The peaked bin around $\sigma=0$ is likely due to the bins at the edge of the Galactic Center data, where the residual approaches zero due to the negligible (and poorly sampled) VERITAS sensitivity at the edge of the camera.
-{\color{red}(how does these past two paragraphs sound? is there a chi-squared value I can calculate for this?  whats the number of degrees of freedom??)}
+The peaked bin around $\sigma=0$ is likely due to the bins at the edge of the Galactic Center data, where the residual approaches zero due to the negligible (and poorly sampled) VERITAS sensitivity at the edge of the camera {\color{red}(my first instinct is to ask you to check this claim because it should be very quick.  I hope it won't be the instinct of the reviewers...   It seemst o me a little too big to come from just the edge of the camera.  Are you sure you are not plotting also the edges of the sky map where you have no entries?? -orel)}.
 
 \begin{figure}[ht]
   \centering
@@ -864,7 +868,6 @@ This point source was detected with a test statistic of 224.25 (with one degree 
 A statistical uncertainty band is shown as a very thin red region, and a combined statistical plus systematic uncertainty is shown as a slightly thicker red band.
 The systematic uncertainty comes from showers of different energies forming similar images in the VERITAS telescopes, leading to a \nicetilde20\% systematic uncertainty on the flux.
 The difference between the two spectra is likely due to the previous VERITAS being made from a combined fit with data from another telescope.
-{\color{red}(is this paragraph a better explanation??)}
 
 \begin{figure}[ht]
   \centering
@@ -888,10 +891,10 @@ This is done by calculating an upper limit on the WIMP's velocity-averaged cross
 From the dark matter flux 
 
 \begin{equation}\label{eqn:dmflux2}
-  \frac{ d\Phi }{ dE d \Omega } = \frac{ \left \langle \sigma v \right \rangle }{8 \pi m_\chi^2} \frac{dN_{\gamma}}{dE} \int \rho^2 dl \,.
+  \frac{ d\Phi }{ dE d \Omega } = \frac{ \left \langle \sigma v \right \rangle }{8 \pi m_\chi^2} \frac{dN_{\gamma}}{dE} \int \rho^2 dl \,,
 \end{equation}
 (see Equation~\ref{eqn:dmflux} for details), an upper limit on the observed gamma-ray flux can be derived.
-When all other variables in Equation~\ref{eqn:dmflux} are fixed, a larger $\vacs$ always results in a larger gamma-ray flux.
+When all other variables in Equation~\ref{eqn:dmflux2} are fixed, a larger $\vacs$ always results in a larger gamma-ray flux.
 This means that the flux and cross section can both be replaced by their upper limits ($x \rightarrow x \left |_{\textrm{ul}}$), as in
 
 \begin{equation}\label{eqn:ulim}
@@ -913,7 +916,6 @@ The $\textrm{erf}^{-1}$ is the inverse error function.
 This factor is chosen because the likelihood naively follows a Gaussian distribution as any parameter is varied.
 For that Gaussian distribution, the factor $\Delta{}\LogLike$ is how much the likelihood decreases when integrating from a one-sided limit.
 This is shown in Figure~\ref{fig:ulimitdiag}.
-{\color{red}(hows this section read down to here??)}
 % some discussion on likelihood upper limits here:
 % https://fermi.gsfc.nasa.gov/science/mtgs/summerschool/2013/week1/ML_intro.pdf
 % maybe also this rolke paper: Rolke, et al., NIM A, 551, 493 (2005)
@@ -940,9 +942,9 @@ Fermi and MAGIC spent a total of 6 years and 158 hours observing these galaxies,
 The light blue dashed line is the relic cross section~\cite{updatedWIMPRelicCrossSection}.
 
 It is important to note that the width of a dark matter signal is not known at this time.
-As such, the nine upper limits provided by this work do not include a width, so only upper limits at \textit{exactly} those masses are valid.
+As such, the nine upper limits provided by this work do not include a width, so only upper limits at \textit{exactly} those masses are valid {\color{red}(your results are valid also for particles with a different mass but wide enough to produce a signal in the masses you tested.  That is quite important because we do expect a pretty wide WIMP at those energies, so you cover a non-negligible part of the mass spectrum.  When you write 'exactly', it means your results are sort of meaningless because it means that you wont see a DM particle with a mass of 31 TeV, which is not true ?? -orel)}.
 Upper limits cannot be placed between those masses until further dark matter signals are simulated.
-{\color{red}(ask orel if this paragraph is better??)}
+{\color{red}(I would instead write something like "This study can be expanded in the future to include also narrow DM particles".  Present it as an expansion of this study rather than a technical difficulty or oversight ?? -orel )}
 
 \begin{figure}[tb]
   \centering
@@ -1009,6 +1011,7 @@ In the left, the ring is symmetric, while in the right, the ring is darker at th
 After these were applied to all background models, the likelihood analysis was re-run for the \SI{10}{\TeV{}} WIMP mass.
 This can be considered representative of the \SIrange{7}{70}{\TeV} energy range, as the background does not change strongly there (see Figure~\ref{fig:background_grid}).
 {\color{red}(why just this mass? does the statistics you have depend on the mass? one my worry that the effect is small for this mass, where your upper limits are not competitive anyway, but might be big for large masses where you are competitive? we don't have a good feeling for what the effect of this is at higher masses? , or can 10TeV be a good representative of 70TeV??)}
+{\color{red}(I think this argument is ok.  I would just rewrite the sentence a little.  The energy range you want to say it is relevant for is above 10 TeV, so write 10-70 TeV and instead of 'change strongly there', 'strongly change in that range' ?? -orel)}
 The resulting upper limit with the gradient was only 0.1\% different from the upper limit with radial background models.
 This indicates the upper limits are not very sensitive to the background models.
 % on warp-zeuthen.desy.de:
