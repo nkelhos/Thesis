@@ -1,5 +1,6 @@
 \cleartooddpage[\thispagestyle{empty}]
 
+
 \newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \lim_{#1}\;$}}}
 \renewcommand{\labelitemi}{\textbullet}
 \newcommand{\pip}[1]{$\pi^{+}$}
@@ -519,6 +520,40 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       \label{fig:neutralino_feynman}
     \end{figure}
 
+    After the desired channel is selected, the $b$ quark hadronizes into a $b$ meson or hadron, which then decay into other particles, shown in Table~\ref{tab:bpaths2}.
+    
+    \begin{table}
+      \centering
+      \begin{tabular}{ccll}
+        Source                       & Branching                       & Products       & Reference \\
+        (Quarks)                     & Ratio (\%)                      &                & Document \\ \hline
+        \APbottom                    & $\xrightarrow{ 41.2 \pm0.8 }$   & \PBp, \PBz     & \href{http://pdg.lbl.gov/2018/reviews/rpp2018-rev-b-meson-prod-decay.pdf}{\Pbottom-Hadron Production}              \\ \hline
+        \PBp     $(\Pup\APbottom)$   & $\xrightarrow{ 79   \pm4   }$   & $\APDzero + X$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-plus-minus.pdf}{Charged B Mesons}          \\
+        \PBz     $(\Pdown\APbottom)$ & $\xrightarrow{ 78   \pm8   }$   & $\PKpm + X$    & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-zero.pdf}{Neutral B Mesons}          \\
+        \PBz     $(\Pdown\APbottom)$ & $\xrightarrow{ 47.4 \pm2.8 }$   & $\APDzero + X$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-zero.pdf}{Neutral B Mesons}          \\
+        \PBz     $(\Pdown\APbottom)$ & $\xrightarrow{ 36.4 \pm3.3 }$   & $\PDminus + X$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-zero.pdf}{Neutral B Mesons}          \\ \hline
+        \APDzero $(\Pup\APcharm)$    & $\xrightarrow{ 45.7 \pm2.8 }$   & $\PKplus + X$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-charm.pdf}{Charm Mesons}          \\
+        \PDminus $(\Pdown\APcharm)$  & $\xrightarrow{ 25.7 \pm1.4 }$   & $\PKplus + X$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-charm.pdf}{Charm Mesons}          \\ \hline
+        \PKplus  $(\Pup\APstrange)$  & $\xrightarrow{ 20.67\pm0.08}$   & $\Ppiplus  + \Ppizero$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-strange.pdf}{Strange Mesons} \\
+        \PKminus $(\APup\Pstrange)$  & $\xrightarrow{ 20.67 \pm0.08 }$ & $\Ppiminus + \Ppizero$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-strange.pdf}{Strange Mesons} \\ \hline
+        \Ppizero $\left ( \frac{\Pup\APup-\Pdown\APdown}{\sqrt{2}} \right )$   & $\xrightarrow{ 98.823\pm0.034}$ & $\gamma + \gamma$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-pi-zero.pdf}{Neutral Pion} \\
+        %$$ & $\xrightarrow{ \pm }$ & $$ \\
+        %\APDzero    & $\xrightarrow{ 47  \pm4   }$ & $K^0 + \bar{K}^0 + anything $ \\
+        %\PDminus    & $\xrightarrow{ 61  \pm5   }$ & $K^0 + \bar{K}^0 + anything$ \\
+        % Numbers are from  the beginning of this subsection
+      \end{tabular}
+      \caption[$b$ Quark Production of Gamma Rays]{
+        Table of decay modes and products, indicating several ways ways a lone $b$ quark can indirectly produce photons.
+        Branching ratios and reference documents are from Ref.~\cite{tanabashi2018review}.
+        {\color{red}(ask about inclusive vs exclusive modes??)}
+        {\color{red}(in pdg docs, difference between $X$ and $anything$??)}
+        {\color{red}(remove hyperlinks??)}
+      }
+      \label{tab:bpaths2}
+    \end{table}
+        
+    
+    
     After the desired channel is selected, the amount of {\color{red}bremsstrahlung radiation (you wont get bremsstrahlung from the quarks (at least not photons) ?? -orel) (top quark may bremsstrahlung photons before it hadronizes, but the bottom quark doesn't)} from the initial $b$ and $\bar{b}$ particles {\color{red}must be calculated (what does it mean, 'must be calculated'?? -orel)}.
     Then, the $b$ quarks may hadronize into $b$-hadrons, or {\color{red}they may decay into other particles (the b quarks themselves do not decay to particles, the B hadrons do ?? -orel)}, shown in Table~\ref{tab:bpaths}.
     In the first three rows, a $\bar{b}$ quark decays into a $\bar{D}^0$ meson {\color{red}(b quark does not decay to D?? -orel) (it hadronizes and that may decay)} and some other particles in 59.8\% of all $\bar{b}$ decays.
