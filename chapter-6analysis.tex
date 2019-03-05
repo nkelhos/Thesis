@@ -772,8 +772,6 @@ The impact of this elevation effect is tested later in Section~\ref{sec:elevgrad
 
 {\color{red}(do you have any cut on edge bins? what is the field of view you are considering in your analysis?? -gernot)}
 {\color{red}(how does Figure~\ref{fig:gc_resmap_sighist_coarse} look like without those edge bins? is it the expected N(0,1) normal distribution?? -gernot)}
-{\color{red}(but there is clearly a systematic offset in the background: where do you discuss the possible reason for that?? -gernot)}
-{\color{red}(where do you discuss how all these discrepancies affect your results (ULs on DM)?? -gernot)}
 Figure~\ref{fig:gc_profile_gal_b} is similar to Figure~\ref{fig:gc_profile_gal_l}, except it slices through Sgr A* along the galactic $b$ axis.
 The feature in which the observed counts are higher on the left and lower on the right is also visible here.
 Figure~\ref{fig:gc_profile_energy} shows a similar profile, except it is integrated over a \ang{0.2}$\times$\ang{0.2} galactic ($l$,$b$) square centered on Sgr A*.
@@ -851,9 +849,9 @@ This creates a gradient in the background that is not radially symmetric, which 
   \label{fig:gc_resmap}
 \end{figure}
 
-The distribution of the pixel significances from Figure~\ref{fig:gc_resmap} is also shown in gray in Figure~\ref{fig:gc_resmap_sighist_coarse}, along with a set of 1000 simulated distributions in red.
+The distribution of the pixel significances from Figure~\ref{fig:gc_resmap} is also shown in gray in Figure~\ref{fig:gc_resmap_sighist_coarse}, along with a set of 10000 simulated distributions in red.
 If the source and background models were perfectly known, the gray bars would overlap the red simulations in most of the bins, and the residual will overlap 1.
-{\color{red}Because only four of the residual bins are consistent with 1, this shows there are differences between the models and the data (better to write something like "differences are observed between the models and the data" ?? -orel)}.
+Because only four of the residual bins are consistent with 1, differences are observed between the models and the data.
 Specifically, there are more negatively-significant and positively-significant data pixels than expected from the models, hinting that one or more features in the Galactic Center data are not being modeled properly.
 This is discussed further in Section~\ref{sec:elevgradient}.
 The peaked bin around $\sigma=0$ is likely due to the bins at the edge of the Galactic Center data, where the residual approaches zero due to the negligible (and poorly sampled) VERITAS sensitivity at the edge of the camera {\color{red}(my first instinct is to ask you to check this claim because it should be very quick.  I hope it won't be the instinct of the reviewers...   It seemst o me a little too big to come from just the edge of the camera.  Are you sure you are not plotting also the edges of the sky map where you have no entries?? -orel) (either cut the bins that have 0 counts, or check where the 0-significance bins are actually coming from to get rid of the 'likely' bit) }.
@@ -943,7 +941,7 @@ This is shown in Figure~\ref{fig:ulimitdiag}.
 
 
 
-From the nine WIMP masses tested in Section~\ref{sec:dmlike}, the calculated upper limits are shown in Figure~\ref{fig:ulim}.
+From the nine WIMP masses tested in Section~\ref{sec:dmlike}, the calculated upper limits are shown in Figure~\ref{fig:ulim} as dark blue points with error bars.
 Several other upper limits from previous studies are also shown for comparison.
 The orange upper limit is from 216 hours of VERITAS observations of several dwarf spheroidal galaxies, stacked into a single likelihood analysis~\cite{verdsphul}.
 The dark green upper limit is from 254 hours of H.E.S.S. observations of the Galactic Center~\cite{hessgcul}.
@@ -952,9 +950,9 @@ Fermi and MAGIC spent a total of 6 years and 158 hours observing these galaxies,
 The light blue dashed line is the relic cross section~\cite{updatedWIMPRelicCrossSection}.
 
 It is important to note that the width of a dark matter signal is not known at this time.
-As such, the nine upper limits provided by this work do not include a width, so only upper limits at \textit{exactly} those masses are valid {\color{red}(your results are valid also for particles with a different mass but wide enough to produce a signal in the masses you tested.  That is quite important because we do expect a pretty wide WIMP at those energies, so you cover a non-negligible part of the mass spectrum.  When you write 'exactly', it means your results are sort of meaningless because it means that you wont see a DM particle with a mass of 31 TeV, which is not true ?? -orel)}.
-Upper limits cannot be placed between those masses until further dark matter signals are simulated.
-{\color{red}(I would instead write something like "This study can be expanded in the future to include also narrow DM particles".  Present it as an expansion of this study rather than a technical difficulty or oversight ?? -orel )}
+As such, the nine upper limits provided by this work do not include a width, so only upper limits at \textit{exactly} those masses are valid.
+{\color{red}(Your results are valid also for particles with a different mass but wide enough to produce a signal in the masses you tested.  That is quite important because we do expect a pretty wide WIMP at those energies, so you cover a non-negligible part of the mass spectrum.  When you write 'exactly', it means your results are sort of meaningless because it means that you wont see a DM particle with a mass of 31 TeV, which is not true ?? -orel)}.
+This study can be expanded in the future to account for the width of a WIMP signal to provide upper limits over a larger range of dark matter masses.
 
 \begin{figure}[tb]
   \centering
@@ -976,7 +974,7 @@ Upper limits cannot be placed between those masses until further dark matter sig
 These limits were calculated using a simple WIMP model, one that does not include the effect of Sommerfeld enhancement~\cite{sommerfeld}.
 If Sommerfeld enhancement were included in the dark matter halo model, stronger limits would naively be expected.
 
-Around the dark blue upper limit line from this work, systematic uncertainty error bars are also shown.
+Around the dark blue upper limit points from this work, systematic uncertainty error bars are also shown.
 For VERITAS, uncertainties in the energy reconstruction contribute a \nicetilde{}20\% systematic uncertainty on the flux.
 While no dark matter was detected in this thesis, the upper limit calculation is influenced by this systematic uncertainty.
 This can be envisioned as a dark matter signal that was brighter than the upper limit in Figure~\ref{fig:ulim}, but then fluctuated downwards by 20\% of its flux.
@@ -1019,9 +1017,7 @@ In the left, the ring is symmetric, while in the right, the ring is darker at th
 \end{figure}
 
 After these were applied to all background models, the likelihood analysis was re-run for the \SI{10}{\TeV{}} WIMP mass.
-This can be considered representative of the \SIrange{7}{70}{\TeV} energy range, as the background does not change strongly there (see Figure~\ref{fig:background_grid}).
-{\color{red}(why just this mass? does the statistics you have depend on the mass? one my worry that the effect is small for this mass, where your upper limits are not competitive anyway, but might be big for large masses where you are competitive? we don't have a good feeling for what the effect of this is at higher masses? , or can 10TeV be a good representative of 70TeV??)}
-{\color{red}(I think this argument is ok.  I would just rewrite the sentence a little.  The energy range you want to say it is relevant for is above 10 TeV, so write 10-70 TeV and instead of 'change strongly there', 'strongly change in that range' ?? -orel)}
+This can be considered representative of WIMP masses above \SI{10}{\TeV}, as the background does not strongly change in that range (see Figure~\ref{fig:background_grid}).
 The resulting upper limit with the gradient was only 0.1\% different from the upper limit with radial background models.
 This indicates the upper limits are not very sensitive to the background models.
 % on warp-zeuthen.desy.de:
