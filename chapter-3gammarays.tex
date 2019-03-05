@@ -520,7 +520,15 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       \label{fig:neutralino_feynman}
     \end{figure}
 
-    After the desired channel is selected, the $b$ quark hadronizes into a $b$ meson or hadron, which then decay into other particles, shown in Table~\ref{tab:bpaths2}.
+    After the desired channel is selected, the spectrum of photons produced by that channel is calculated.
+    This is done by repeatedly simulating all the photons produced when the $b$ quarks decay into other particles.
+    Several of these decays are shown in Table~\ref{tab:bpaths2}.
+    In the first row, a \APbottom quark will hadronize into either a \PBplus or \PBzero meson 41.2\% of the time.
+    In the rows two through five, the \PB mesons can then decay into \PK and \PD mesons at various percentages (plus some other particles $X$), and in rows six and seven the \PD mesons also decay into \PK mesons.
+    In rows eight and nine, the \PK mesons can then decay into \Ppiplusminus and \Ppizero mesons, and then the \Ppizero decays into two photons.
+    % for pion decays, see section 3.3 in arxiv:1508.05190 (and references therein)
+    Though these pion decays are the dominant source of photons, these listed particles (as well as other unlisted ones) may produce additional photons through bremsstrahlung or annihilation mechanisms.
+    All of the photons produced from pion decays, bremsstrahlung, and annihilations then make up a gamma-ray spectrum that is used in this analysis.
     
     \begin{table}
       \centering
@@ -534,8 +542,8 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
         \PBz     $(\Pdown\APbottom)$ & $\xrightarrow{ 36.4 \pm3.3 }$   & $\PDminus + X$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-zero.pdf}{Neutral B Mesons}          \\ \hline
         \APDzero $(\Pup\APcharm)$    & $\xrightarrow{ 45.7 \pm2.8 }$   & $\PKplus + X$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-charm.pdf}{Charm Mesons}          \\
         \PDminus $(\Pdown\APcharm)$  & $\xrightarrow{ 25.7 \pm1.4 }$   & $\PKplus + X$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-charm.pdf}{Charm Mesons}          \\ \hline
-        \PKplus  $(\Pup\APstrange)$  & $\xrightarrow{ 20.67\pm0.08}$   & $\Ppiplus  + \Ppizero$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-strange.pdf}{Strange Mesons} \\
-        \PKminus $(\APup\Pstrange)$  & $\xrightarrow{ 20.67 \pm0.08 }$ & $\Ppiminus + \Ppizero$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-strange.pdf}{Strange Mesons} \\ \hline
+        \PKplus  $(\Pup\APstrange)$  & $\xrightarrow{ 20.67\pm0.08}$   & $\Ppizero + \Ppiplus$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-strange.pdf}{Strange Mesons} \\
+        \PKminus $(\APup\Pstrange)$  & $\xrightarrow{ 20.67 \pm0.08 }$ & $\Ppizero + \Ppiminus$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-strange.pdf}{Strange Mesons} \\ \hline
         \Ppizero $\left ( \frac{\Pup\APup-\Pdown\APdown}{\sqrt{2}} \right )$   & $\xrightarrow{ 98.823\pm0.034}$ & $\gamma + \gamma$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-pi-zero.pdf}{Neutral Pion} \\
         %$$ & $\xrightarrow{ \pm }$ & $$ \\
         %\APDzero    & $\xrightarrow{ 47  \pm4   }$ & $K^0 + \bar{K}^0 + anything $ \\
@@ -544,6 +552,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       \end{tabular}
       \caption[$b$ Quark Production of Gamma Rays]{
         Table of decay modes and products, indicating several ways ways a lone $b$ quark can indirectly produce photons.
+        The component $X$ indicates other particles.
         Branching ratios and reference documents are from Ref.~\cite{tanabashi2018review}.
         {\color{red}(ask about inclusive vs exclusive modes??)}
         {\color{red}(in pdg docs, difference between $X$ and $anything$??)}
@@ -551,30 +560,19 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       }
       \label{tab:bpaths2}
     \end{table}
-        
     
-    
-    After the desired channel is selected, the amount of {\color{red}bremsstrahlung radiation (you wont get bremsstrahlung from the quarks (at least not photons) ?? -orel) (top quark may bremsstrahlung photons before it hadronizes, but the bottom quark doesn't)} from the initial $b$ and $\bar{b}$ particles {\color{red}must be calculated (what does it mean, 'must be calculated'?? -orel)}.
-    Then, the $b$ quarks may hadronize into $b$-hadrons, or {\color{red}they may decay into other particles (the b quarks themselves do not decay to particles, the B hadrons do ?? -orel)}, shown in Table~\ref{tab:bpaths}.
-    In the first three rows, a $\bar{b}$ quark decays into a $\bar{D}^0$ meson {\color{red}(b quark does not decay to D?? -orel) (it hadronizes and that may decay)} and some other particles in 59.8\% of all $\bar{b}$ decays.
-    The $\bar{D}^0$ then decays 54.7\% of the time into a $K^+$ and some other particles, and then finally the $K^+$ decays into a $\mu^+ + \nu_{\mu}$ pair.
-    The $\mu^+$ can then go on to produce photons via bremsstrahlung {\color{red}(avoid talking about muons, most photons are from pi\_0s)} or through annihilation with an ambient $\mu^-$ {\color{red}(there are no ambient muons?? -orel) (lifetime is too short to matter)}.
-    {\color{red}(most photons you will get will actually come from $\pi^0$, which are the penultimate produces, no?  Please find a good reference that explains the process of $b\bar{b}$ to photons well and shortly summarise it here.  For example, see section 3.3 in arxiv:1508.05190 (and references therein) ?? -orel)}
-    Each group of rows in the table show a separate path that can produce photons.
-    These particles can decay into others as well, which can also produce bremsstrahlung or annihilation photons.
-    
-    \begin{table}
-    \centering
-    \begin{tabular}{lcll}
-      Source      & Branch Fraction                         & Products                  & Ref.     \\
-      \hline
-      $\bar{b}$   & $\xrightarrow{59.8   \% \pm 2.9    \%}$ & $\bar{D}^{0} + \textrm{other}$ &  \cite{pdg_2012} \\
-      $\bar{D}^0$ & $\xrightarrow{54.7   \% \pm 2.8    \%}$ & $K^+         + \textrm{other}$ &  \cite{pdg_2008} \\
-      $K^+$       & $\xrightarrow{63.56  \% \pm 0.11   \%}$ & $\mu^+ + \nu_{\mu}$            &  \cite{pdg_2014} \\
-      \hline
-      $\bar{b}$   & $\xrightarrow{23.3   \% \pm 1.7    \%}$ & $D^-   + \textrm{other}$       &  \cite{pdg_2012} \\
-      $D^-$       & $\xrightarrow{25.7   \% \pm 1.4    \%}$ & $K^+   + \textrm{other}$       &  \cite{pdg_2008} \\
-      $K^+$       & $\xrightarrow{63.56  \% \pm 0.11   \%}$ & $\mu^+ + \nu_{\mu}$            &  \cite{pdg_2014} \\
+    %\begin{table}
+    %\centering
+    %\begin{tabular}{lcll}
+      %Source      & Branch Fraction                         & Products                  & Ref.     \\
+      %\hline
+      %$\bar{b}$   & $\xrightarrow{59.8   \% \pm 2.9    \%}$ & $\bar{D}^{0} + \textrm{other}$ &  \cite{pdg_2012} \\
+      %$\bar{D}^0$ & $\xrightarrow{54.7   \% \pm 2.8    \%}$ & $K^+         + \textrm{other}$ &  \cite{pdg_2008} \\
+      %$K^+$       & $\xrightarrow{63.56  \% \pm 0.11   \%}$ & $\mu^+ + \nu_{\mu}$            &  \cite{pdg_2014} \\
+      %\hline
+      %$\bar{b}$   & $\xrightarrow{23.3   \% \pm 1.7    \%}$ & $D^-   + \textrm{other}$       &  \cite{pdg_2012} \\
+      %$D^-$       & $\xrightarrow{25.7   \% \pm 1.4    \%}$ & $K^+   + \textrm{other}$       &  \cite{pdg_2008} \\
+      %$K^+$       & $\xrightarrow{63.56  \% \pm 0.11   \%}$ & $\mu^+ + \nu_{\mu}$            &  \cite{pdg_2014} \\
 
       %$K^+$     & $\xrightarrow{20.67  \% \pm 0.08   \%}$ & $\pi^0 + \pi^+$                &  \\
       %$\pi^0$   & $\xrightarrow{98.798 \% \pm 0.032  \%}$ & $\gamma + \gamma$              &  \\
@@ -592,21 +590,21 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       %$D^0$     & $\xrightarrow{6.7  \% \pm 0.6 \%}$ & $\mu^{+}         + \any$ & 
       %Decay & $D^0$     & $\xrightarrow{47   \% \pm 4   \%}$ & $\bar{K}^0 + K^0 + \any$     & inclusive \\
       %Decay & $D^-$     & $\xrightarrow{61   \% \pm 5   \%}$ & $\bar{K}^0 + K^0 + \any$     & inclusive \\
-    \end{tabular}
-    \caption[$b$ Quark Production of Photons]{
-      Table of decay modes and products, indicating two ways ways a lone $b$ quark can indirectly produce photons.
-      The $\mu^+$ is then able to produce bremsstrahlung photons.
-      The charge conjugate of the source is assumed to charge conjugate the products.
-      Constituent quarks for particles are $\bar{D}^0=\bar{c}u$, $K^+=u\bar{s}$, and $D^-=\bar{c}s$.
+    %\end{tabular}
+    %\caption[$b$ Quark Production of Photons]{
+      %Table of decay modes and products, indicating two ways ways a lone $b$ quark can indirectly produce photons.
+      %The $\mu^+$ is then able to produce bremsstrahlung photons.
+      %The charge conjugate of the source is assumed to charge conjugate the products.
+      %Constituent quarks for particles are $\bar{D}^0=\bar{c}u$, $K^+=u\bar{s}$, and $D^-=\bar{c}s$.
       %$B^+=u\bar{b}$, $B^0=d\bar{b}$, $B^0_S=s\bar{b}$, $D^0=c\bar{u}$, $K^-=\bar{u}s$, $\pi^0=\frac{u\bar{u}-d\bar{d}}{\sqrt{2}}$, and $\pi^+=u\bar{d}$.
-      }
-    \label{tab:bpaths}
-    \end{table}
+      %}
+    %\label{tab:bpaths}
+    %\end{table}
     
     The software package CLUMPY~\cite{CLUMPYcode} is used in this thesis to calculate the gamma-ray spectra for each annihilation channel.
     The spectral models that CLUMPY uses are based on the annihilation spectra in the PPPC 4 DM ID~\cite{pppc4_dm_spectra,pppc4_ewcorrections}.
     These spectra are calculated using Monte Carlo simulations performed with PYTHIA~\cite{pythia} and HERWIG~\cite{herwig}.
-    For this analysis, only the $b\bar{b}$ annihilation channel is considered.
+    %For this analysis, only the $b\bar{b}$ annihilation channel is considered.
     Figure~\ref{fig:chichi_spectrum} shows the resultant spectra from the single annihilation of two WIMPs.
     Each line shows the spectrum from a different initial WIMP mass.
 
