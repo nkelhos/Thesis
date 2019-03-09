@@ -366,7 +366,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
 
 \FloatBarrier
 
-\section{Galactic Center}
+\section{Galactic Center}\label{sec:gc}
   
   The Galactic Center is a complex region of space, with many astrophysical sources of gamma rays.
   At its heart, kinematic observations of nearby stars have been used to infer the presence of a supermassive black hole, with a mass of \SI{4e6}{ M${{}_\odot}$ }~\cite{sgra_massdist}.
@@ -396,11 +396,12 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
 
   The VERITAS significance sky map of this Galactic Center region is shown in Figure~\ref{fig:veritas_gc_ridge}.
   While a dark matter interpretation of this gamma-ray emission is intriguing~\cite{gc_pnt_is_dm1,gc_pnt_is_dm2}, there are several non-dark-matter models that might explain the observed features.
-  One model that explains this TeV emission is that the supermassive black hole accelerates protons to PeV energies, which then collide with local atoms to produce $\pi^0$s, which then decay into TeV gamma rays~\cite{gc_pevatron}.
+  One model that explains this TeV emission is that the supermassive black hole accelerates protons to PeV energies, which then collide with local atoms to produce \Ppizero{}'s, which then decay into TeV gamma rays~\cite{gc_pevatron}.
   The second possibility suggests a nearby population of millisecond pulsars may be accelerating electrons, which then upscatter local photons to TeV energies~\cite{gc_pulsars,gc_pnt_is_not_dm2,gc_pnt_is_not_dm3}.
   The debate between these two models is currently ongoing~\cite{gc_pev_or_pwn}.
   Due to their limited angular resolution, the current generation of gamma-ray telescopes can only resolve the Galactic Center's gamma ray emission as a point source~\cite{VeritasGCRidge2015,gc_pointsrc_hess}.
-  The Fermi telescope has observed a similar source of GeV gamma rays around the Galactic Center~\cite{gc_fermi_dm}, though neither the dark matter or millisecond pulsar explanations are completely conclusive~\cite{fermi_gc_pulsar_vs_dm}.
+  The Fermi telescope has observed a similar source of GeV gamma rays around the Galactic Center~\cite{gc_fermi_dm}, though neither the dark matter or millisecond pulsar explanations are completely conclusive~\cite{fermi_gc_pulsar_vs_dm,hoopergc}.
+  {\color{red}(these are about the GeV emission, make sure to add citations that the TeV may also be DM/not-DM??)}
   
   In addition to this central source, there are also other sources of gamma rays in the vicinity.
   One of these sources is a disk of dust along the galactic plane, acting as an interaction medium for proton cosmic rays~\cite{diffusegamma1989}.
@@ -537,11 +538,11 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
         (Quarks)                     & Ratio (\%)                      &                & Chapter \\ \hline
         \APbottom                    & $\xrightarrow{ 41.2 \pm0.8 }$   & \PBp, \PBz     & \href{http://pdg.lbl.gov/2018/reviews/rpp2018-rev-b-meson-prod-decay.pdf}{\Pbottom-Hadron Production}              \\ \hline
         \PBp     $(\Pup\APbottom)$   & $\xrightarrow{ 79   \pm4   }$   & $\APDzero + X$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-plus-minus.pdf}{Charged B Mesons}          \\
-        \PBz     $(\Pdown\APbottom)$ & $\xrightarrow{ 78   \pm8   }$   & $\PKpm + \mathrm{anything}$    & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-zero.pdf}{Neutral B Mesons}          \\
+        \PBz     $(\Pdown\APbottom)$ & $\xrightarrow{ 78   \pm8   }$   & $\PKpm + X$    & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-zero.pdf}{Neutral B Mesons}          \\
         \PBz     $(\Pdown\APbottom)$ & $\xrightarrow{ 47.4 \pm2.8 }$   & $\APDzero + X$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-zero.pdf}{Neutral B Mesons}          \\
         \PBz     $(\Pdown\APbottom)$ & $\xrightarrow{ 36.4 \pm3.3 }$   & $\PDminus + X$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-zero.pdf}{Neutral B Mesons}          \\ \hline
-        \APDzero $(\Pup\APcharm)$    & $\xrightarrow{ 45.7 \pm2.8 }$   & $\PKplus + \mathrm{anything}$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-charm.pdf}{Charm Mesons}          \\
-        \PDminus $(\Pdown\APcharm)$  & $\xrightarrow{ 25.7 \pm1.4 }$   & $\PKplus + \mathrm{anything}$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-charm.pdf}{Charm Mesons}          \\ \hline
+        \APDzero $(\Pup\APcharm)$    & $\xrightarrow{ 45.7 \pm2.8 }$   & $\PKplus + X$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-charm.pdf}{Charm Mesons}          \\
+        \PDminus $(\Pdown\APcharm)$  & $\xrightarrow{ 25.7 \pm1.4 }$   & $\PKplus + X$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-charm.pdf}{Charm Mesons}          \\ \hline
         \PKplus  $(\Pup\APstrange)$  & $\xrightarrow{ 20.67\pm0.08}$   & $\Ppizero + \Ppiplus$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-strange.pdf}{Strange Mesons} \\
         \PKminus $(\APup\Pstrange)$  & $\xrightarrow{ 20.67 \pm0.08 }$ & $\Ppizero + \Ppiminus$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-strange.pdf}{Strange Mesons} \\ \hline
         \Ppizero $\left ( \frac{\Pup\APup-\Pdown\APdown}{\sqrt{2}} \right )$   & $\xrightarrow{ 98.823\pm0.034}$ & $\gamma + \gamma$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-pi-zero.pdf}{Neutral Pion} \\
@@ -552,9 +553,8 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       \end{tabular}
       \caption[$b$ Quark Production of Gamma Rays]{
         Table of decay modes and products, indicating several ways ways a lone $b$ quark can indirectly produce photons.
-        The component $X$ and 'anything' indicate other particles.
+        The $X$ indicates other particles.
         Branching ratios and Particle Data Group (PDG) chapters are from Ref.~\cite{tanabashi2018review}.
-        {\color{red}(post question about difference between $X$ and $anything$ in pdg docs??)}
       }
       \label{tab:bpaths2}
     \end{table}
