@@ -541,8 +541,9 @@ In Figure~\ref{fig:crab_profile_energy}, a similar plot is made, though integrat
 \begin{figure}[tb]
   \centering
   \includegraphics[width=0.50\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapresiduals_coarse.pdf}
-  \caption[Crab Residual Sky Map Coarse Binning]{
+  \caption[Crab Residual Sky Map]{
     Sky map showing how significantly the models differ from the observations in each bin.
+    {\color{red}(use odd number of bins to get a single center pixel??)}
     This plot uses \ang{0.23}-wide bins.}
   \label{fig:crab_signif_skymap_coarse}
 \end{figure}
@@ -565,7 +566,7 @@ Since most bins in the residual overlap 1, it can be concluded that the models a
   \includegraphics[width=0.55\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapresiduals_coarse_hist.pdf}
   \caption[Crab Residual Bin Distribution]{
     Data and simulated significance distributions from the fine-binned significance sky map in Figure~\ref{fig:crab_signif_skymap_coarse}.
-    In the top plot, the grey histogram bars indicate the data's significance distribution, with grey Poissonian error bars.
+    In the top plot, the gray histogram bars indicate the data's significance distribution, with gray Poissonian error bars.
     The red lines and bars indicate the range of simulated significances, centered on the mean, and extending up and down by one standard deviation.
     The bottom plot shows the $\frac{\textrm{simulated}}{\textrm{data}}$ residual.
   }
@@ -859,7 +860,7 @@ Several darker bins in a ring-like pattern around the edge of the field of view 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_coarse.pdf}
-  \caption[Galactic Center Residual Map Coarse Binning]
+  \caption[Galactic Center Residual Map]
   {
     Significance of each sky-map bin's residual counts.
     See Equation~\ref{eqn:resmap_signif} for details.
@@ -872,7 +873,8 @@ If the source and background models were perfectly known, the gray bars would ov
 Because only four of the residual bins are consistent with 1, differences are observed between the models and the data.
 Specifically, there are more negatively-significant and positively-significant data pixels than expected from the models, hinting that one or more features in the Galactic Center data are not being modeled properly.
 This is discussed further in Section~\ref{sec:elevgradient}.
-The peaked bin around $\sigma=0$ is likely due to the bins at the edge of the Galactic Center data, where the residual approaches zero due to the negligible (and poorly sampled) VERITAS sensitivity at the edge of the camera {\color{red}(my first instinct is to ask you to check this claim because it should be very quick.  I hope it won't be the instinct of the reviewers...   It seemst o me a little too big to come from just the edge of the camera.  Are you sure you are not plotting also the edges of the sky map where you have no entries?? -orel) (either cut the bins that have 0 counts, or check where the 0-significance bins are actually coming from to get rid of the 'likely' bit) }.
+The peaked bin around $\sigma=0$ is likely due to the bins at the edge of the Galactic Center data, where the residual approaches zero due to the negligible (and poorly sampled) VERITAS sensitivity at the edge of the camera {\color{red}(my first instinct is to ask you to check this claim because it should be very quick.  I hope it won't be the instinct of the reviewers...   It seems to me a little too big to come from just the edge of the camera.  Are you sure you are not plotting also the edges of the sky map where you have no entries?? -orel) (either cut the bins that have 0 counts, or check where the 0-significance bins are actually coming from to get rid of the 'likely' bit) }.
+{\color{red}(see plots, its not conclusive, soften word 'likely' to 'may' or something??)}
 
 \begin{figure}[ht]
   \centering
@@ -880,7 +882,7 @@ The peaked bin around $\sigma=0$ is likely due to the bins at the edge of the Ga
   \caption[Galactic Center Coarse Residual Histogram]
   {
     Histogram of the residual sky-map bin significances from Figure~\ref{fig:gc_resmap}, calculated with Equation~\ref{eqn:resmap_signif}.
-    In the top plot, the grey histogram bars indicate the data’s significance distribution, with grey Poissonian error bars.
+    In the top plot, the gray histogram bars indicate the data’s significance distribution, with gray Poissonian error bars.
      The red lines and bars indicate the range of simulated significances, centered on the mean, and extending up and down by one standard deviation.
     The bottom plot shows the $\frac{\textrm{simulated}}{\textrm{data}}$ residual.
     Only sky-map bins within Sgr A*'s region of interest are histogrammed.
