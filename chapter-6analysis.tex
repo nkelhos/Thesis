@@ -787,8 +787,6 @@ The impact of this elevation effect is tested later in Section~\ref{sec:elevgrad
   \label{fig:gc_profile_gal_l}
 \end{figure}
 
-{\color{red}(do you have any cut on edge bins? what is the field of view you are considering in your analysis?? -gernot)}
-{\color{red}(how does Figure~\ref{fig:gc_resmap_sighist_coarse} look like without those edge bins? is it the expected N(0,1) normal distribution?? -gernot)}
 Figure~\ref{fig:gc_profile_gal_b} is similar to Figure~\ref{fig:gc_profile_gal_l}, except it slices through Sgr A* along the galactic $b$ axis.
 The feature in which the observed counts are higher on the left and lower on the right is also visible here.
 Figure~\ref{fig:gc_profile_energy} shows a similar profile, except it is integrated over a \ang{0.2}$\times$\ang{0.2} galactic ($l$,$b$) square centered on Sgr A*.
@@ -854,6 +852,9 @@ In this plot, the deficiency of the radially-symmetric camera background models 
 Lighter/darker areas indicate places where there were more/fewer observed counts than the best-fit models predicted.
 The darker upper-left and lighter lower-right areas are due to the gradient in the atmospheric air mass.
 This creates a gradient in the background that is not radially symmetric, which the radially-symmetric background models cannot properly fit.
+Several darker bins in a ring-like pattern around the edge of the field of view may be due to how the background models behave at the edge of the camera (see Figure~\ref{fig:background_radial}), or how events near the edge of the camera may be poorly reconstructed at low telescope elevations {\color{red}(does this sentence sounds ok??)}.
+
+{\color{red}(in above paragraph, do you have any cut on edge bins (during reconstruction)? what is the field of view you are considering in your analysis? how does Figure~\ref{fig:gc_resmap_sighist_coarse} look like without those edge bins? is it the expected N(0,1) normal distribution? -gernot,  in significance skymap, add sentence about how there may be a contribution from edge bins (the dark ring gernot mentioned??))}
 
 \begin{figure}[ht]
   \centering
@@ -995,7 +996,7 @@ For VERITAS, uncertainties in the energy reconstruction contribute a \nicetilde{
 While no dark matter was detected in this thesis, the upper limit calculation is influenced by this systematic uncertainty.
 This can be envisioned as a dark matter signal that was brighter than the upper limit in Figure~\ref{fig:ulim}, but then fluctuated downwards by 20\% of its flux.
 Conversely, a dim dark matter signal below the upper limit could be enhanced by 20\% instead.
-These uncertainties are reflected by the blue band.
+These uncertainties are reflected by the blue error bars.
 
 \FloatBarrier
 
