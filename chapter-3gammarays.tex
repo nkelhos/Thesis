@@ -495,13 +495,11 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     
     % b->B mesons
     
-    In order to calculate the gamma-ray brightness of the dark matter halo, the produced spectrum from each WIMP annihilation must be known.
-    The spectrum accounts for the distribution of gamma-ray energies.
-    Different annihilation products, called channels, can produce different spectra.
+    In order to calculate the gamma-ray brightness of the dark matter halo, the produced gamma-ray energy spectrum from WIMP annihilations must be known.
+    Different annihilation channels can produce different spectra.
     For instance, the $\chi\chi \rightarrow \gamma\gamma$ channel will produce a spectrum with a single spike at the WIMP's mass, while the $\chi\chi \rightarrow b\bar{b}$ channel will produce a curved power law spectrum of photons, shown in Figure~\ref{fig:chichi_spectrum}.
-    Because they are all physically allowed, All particle-antiparticle pairs can be considered as possible annihilation channels.
-    In addition, WIMP annihilations are expected to have multiple channels, where a population of WIMPs will annihilate into different channels with different probabilities.
-    Only the $\chi\chi \rightarrow b\bar{b}$ channel is considered for this analysis.
+    WIMP annihilations are expected to have multiple channels, where a population of WIMPs will annihilate into different channels with different probabilities.
+    However, only the $\chi\chi \rightarrow b\bar{b}$ channel is considered for this analysis.
     
     Three example Feynman diagrams of WIMP annihilations that produce a $b\bar{b}$ pair are shown in Figure~\ref{fig:neutralino_feynman}, adapted from Ref.~\cite{Jungman:1995df}.
     The particle $\tilde{f}$ is a supersymmetric fermion, the $Z$ is the Z boson, and $H$ is Higgs boson.
@@ -524,8 +522,9 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     This is done by repeatedly simulating all the photons produced when the $b$ quarks decay into other particles.
     Several of these decays are shown in Table~\ref{tab:bpaths2}.
     In the first row, a \APbottom quark will hadronize into either a \PBplus or \PBzero meson 41.2\% of the time.
-    In the rows two through five, the \PB mesons can then decay into \PK and \PD mesons at various percentages (plus some other particles $X$), and in rows six and seven the \PD mesons also decay into \PK mesons.
-    In rows eight and nine, the \PK mesons can then decay into \Ppiplusminus and \Ppizero mesons, and then the \Ppizero decays into two photons.
+    The \PB mesons can then decay into \PK and \PD mesons at various percentages (plus some other particles $X$), and the \PD mesons also decay into \PK mesons.
+    The \PK mesons can then decay into \Ppiplusminus and \Ppizero mesons, and then the \Ppizero decays into two photons.
+    {\color{red}(change the sentence about hadronization, the value 41.2\% is not actually correct and it is enough tos ay something like 'The b quarks hadronize to a B meson, which in turn decay into D or K mesons.  Photons are produced through the K decays, as detailed in Table~\ref{tab:bpaths}. --orel??)}
     % for pion decays, see section 3.3 in arxiv:1508.05190 (and references therein)
     Though these pion decays are the dominant source of photons, these listed particles (as well as other unlisted ones) may produce additional photons through bremsstrahlung or annihilation mechanisms.
     All of the photons produced from pion decays, bremsstrahlung, and annihilations then make up a gamma-ray spectrum that is used in this analysis.
@@ -551,9 +550,10 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
         % Numbers are from  the beginning of this subsection
       \end{tabular}
       \caption[$b$ Quark Production of Gamma Rays]{
-        Table of decay modes and products, indicating several ways ways a lone $b$ quark can indirectly produce photons.
+        Table of decay modes and products, indicating several ways photons are produced from $b$ quarks.
         The $X$ indicates other particles.
         Branching ratios and Particle Data Group (PDG) chapters are from Ref.~\cite{tanabashi2018review}.
+        {\color{red}(remove first $b \rightarrow B^{+},B^0$ row?? -orel)}
       }
       \label{tab:bpaths2}
     \end{table}
@@ -601,8 +601,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     The software package CLUMPY~\cite{CLUMPYcode} is used in this thesis to calculate the gamma-ray spectra for each annihilation channel.
     The spectral models that CLUMPY uses are based on the annihilation spectra in the PPPC 4 DM ID~\cite{pppc4_dm_spectra,pppc4_ewcorrections}.
     These spectra are calculated using Monte Carlo simulations performed with PYTHIA~\cite{pythia} and HERWIG~\cite{herwig}.
-    %For this analysis, only the $b\bar{b}$ annihilation channel is considered.
-    Figure~\ref{fig:chichi_spectrum} shows the resultant spectra from the single annihilation of two WIMPs.
+    Figure~\ref{fig:chichi_spectrum} shows the resultant spectra from the annihilation of two WIMPs.
     Each line shows the spectrum from a different initial WIMP mass.
 
     \begin{figure}[bt]
