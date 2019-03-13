@@ -616,14 +616,16 @@ For this analysis, a point source model was added at the position of Sgr A*, at
 $$(l,b)_{\textrm{J2000}} = (\ang{359.944212}, \ang{-0.046013}) \,. $$
 This was done because previous studies had detected a gamma-ray excess at Sgr A*, and it was found to be point-like.
 This excess may be produced by WIMPs annihilating, or it may be due to some other non-dark-matter mechanism (see Section~\ref{sec:gc}).
-If the excess is due to a non-dark-matter mechanism, the excess emission must be accounted for by a point source model in the likelihood analysis, so that the excess events do not influence the the dark matter halo model's search.
-However, if the excess is due to WIMP annihilation, a point source model should not be added.
-This leads to a choice of model configurations, whether to add a point source model or not.
+In this analysis, the excess from Sgr A* is considered as not coming from dark matter and a point source is added.
+%If the excess is due to a non-dark-matter mechanism, the excess emission must be accounted for by a point source model in the likelihood analysis, so that the excess events do not influence the the dark matter halo model's search.
+%However, if the excess is due to WIMP annihilation, a point source model should not be added.
+%This leads to a choice of model configurations, whether to add a point source model or not.
 
-The analysis here adds a point source, as this produces a more conservative upper limit on the velocity-averaged cross section $\vacs$.
+Adding a point source produces a more conservative upper limit on the velocity-averaged cross section $\vacs$.
 This occurs because, assuming the non-dm scenario but without a point source model, there are more unmodeled events.
 With more unmodeled events, increasing the $\vacs$ causes the likelihood to decrease at earlier (smaller) $\vacs$, which results in smaller upper limit (see Section~\ref{upper_limit}) that eliminates more of the parameter space.
 Therefore the $\vacs$'s excluded by the conservative (with-point-source) upper limit are true for both WIMP and pulsar scenarios.
+{\color{red}(this would not really lead to a more conservative upper limit though, right? if you would have considered the excess as coming from dark matter, you would have claimed a discovery, not set an upper limit, no?? -orel)}
 
 % Hooper at TeVPa 2018: 
 %   Event:  https://indico.desy.de/indico/event/18204/session/12/contribution/132
@@ -724,7 +726,6 @@ Before these upper limits are calculated, some verification can be done to check
   \caption[DM Halo TS Values]{
     TS values for each DM Halo Model likelihood ratio maximization fit.
     % think about later, or speed up simulations
-    {\color{red}(Shouldn't I first find the TS value without the extra point source? the point source model may be stealing events from the halo model?  then after the no-point-source TS, add point source and calc upper limit??)}
   }
   \label{tab:tsvals}
 \end{table}
@@ -913,7 +914,7 @@ The difference between the two spectra is likely due to the previous VERITAS bei
 
 \section{Upper Limit}\label{upper_limit}
 
-Because no dark matter signal was detected, the next step is to calculate what parts of the parameter space have been ruled out.
+Because no dark matter signal was detected, the next step is to calculate what parts of the parameter space are ruled out.
 This is done by calculating an upper limit on the WIMP's velocity-averaged cross section $\vacs$.
 From the dark matter flux 
 
@@ -948,12 +949,28 @@ This is shown in Figure~\ref{fig:ulimitdiag}.
 % maybe also this rolke paper: Rolke, et al., NIM A, 551, 493 (2005)
 % see bookmark in Geln Cowan Statistical Data Analysis
 
+{\color{red}(
+  Honestly, this explaination is so convoluted and so different than what I am familiar with that I can't say if it's correct.
+  I just spent an hour reading various chapters in the owan book and I can't find what you do in it.
+  It seems to me like a mix of two different methods, but I am not sure.
+  I figure you are explaining the procedure as it performed in ctools? are you 100\% sure about it?
+  Technically the value of DL should depend on the number of free parameters as well, so I don't know about Equation~\ref{eqn:deltaloglike}, but if it is what is used in ctools I assume it is correct.
+  Either way you do not calculate the upper limit yourself right? ctools does it for you?
+  Without going into ctools code and see what they do I can't say much, so I suggest you ask gernot to read these paragraphs and if he gives the ok, leave it as it is.  ?? --orel
+)}
+
 \begin{figure}[tb]
   \centering
   \includegraphics[width=0.5\textwidth]{images/ulimit_diagram/ulimdiagram.pdf}
   \caption[Upper Limit Calculation]{
     Example maximum likelihood as the $\vacs$ is varied (blue line).
     The procedure starts at parameter $\vacs_{\mathrm{start}}$, and is increased until the likelihood has decreased by $\Delta{}\LogLike$.
+    {\color{red}(
+      I think you are mixing two methods in this plot.
+      One is wher eyou find the value of the parameter which decreases L by some value DL and the other is where you calculated the p value based on the observed value of your parameter.
+      Again, I am so confused at the moment (and tired) that I am not sure, but please verify before you leave this plot as it is.
+      Talk to Gernot, I am sure he can help with it. ?? --orel
+    )}
   }
   \label{fig:ulimitdiag}
 \end{figure}
