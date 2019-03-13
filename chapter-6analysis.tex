@@ -623,7 +623,7 @@ In this analysis, the excess from Sgr A* is considered as not coming from dark m
 
 Adding a point source produces a more conservative upper limit on the velocity-averaged cross section $\vacs$.
 This occurs because, assuming the non-dm scenario but without a point source model, there are more unmodeled events.
-With more unmodeled events, increasing the $\vacs$ causes the likelihood to decrease at earlier (smaller) $\vacs$, which results in smaller upper limit (see Section~\ref{upper_limit}) that eliminates more of the parameter space.
+With more unmodeled events, increasing the $\vacs$ causes the likelihood to decrease at earlier (smaller) $\vacs$'s, which results in a smaller upper limit (see Section~\ref{upper_limit}) that eliminates more of the parameter space.
 Therefore the $\vacs$'s excluded by the conservative (with-point-source) upper limit are true for both WIMP and pulsar scenarios.
 {\color{red}(this would not really lead to a more conservative upper limit though, right? if you would have considered the excess as coming from dark matter, you would have claimed a discovery, not set an upper limit, no?? -orel)}
 
@@ -724,7 +724,7 @@ Before these upper limits are calculated, some verification can be done to check
     \hline 
   \end{tabular}
   \caption[DM Halo TS Values]{
-    TS values for each DM Halo Model likelihood ratio maximization fit.
+    TS values for each dark matter halo model likelihood ratio maximization fit.
     % think about later, or speed up simulations
   }
   \label{tab:tsvals}
@@ -929,21 +929,34 @@ This means that the flux and cross section can both be replaced by their upper l
   \frac{d\phi}{dE d\Omega} \left. \right |_{\textrm{ul}} = \frac{ \left \langle \sigma v \right \rangle \left | \right _{\textrm{ul}} }{8\pi m_{\chi}^{2}} \frac{dN_{\gamma}}{dE} \int \rho^{2} \; dl \,.
 \end{equation}
 
-To calculate the upper limit, the likelihood fitting is run with one dark matter model.
-Then, $\vacs$ is increased a small amount and fixed.
-The remaining free model parameters are then iteratively optimized until a new maximum likelihood is found.
+To calculate the upper limit, the parameter $\vacs$ is fixed and the maximum likelihood is found.
+Then, $\vacs$ is fixed to a slightly larger value, and a new maximum likelihood is found.
 Because no dark matter signal was found, increasing $\vacs$ increases the dark matter halo's flux, which decreases the maximum likelihood.
-This procedure of increasing $\vacs$, then rerunning the likelihood maximization, is repeated until the likelihood has decreased by a fixed amount, $\Delta{}\LogLike$.
-The factor $\Delta{}\LogLike$ is calculated via
+
+This procedure of increasing a parameter and rerunning the likelihood forms a likelihood profile.
+Naively, this profile is shaped like a Gaussian distribution, as shown in Figure~\ref{fig:ulimitdiag}.
+This Gaussian shape can be integrated to find the one-sided limit that is above the true parameter value with a specified confidence level.
+Specifically, this integration determines how far down the likelihood must decrease to reach the upper limit.
+This likelihood decrease is called $\Delta\LogLike$, and is calculated via
 
 \begin{equation}\label{eqn:deltaloglike}
   \Delta\LogLike = \left ( \textrm{erf}^{-1} \left ( \alpha \right ) \right )^2 \,,
 \end{equation}
 where $\alpha$ is the desired confidence level as a fraction of 1 (i.e. 95\% : $\alpha=0.95$)~\cite{wilks1938,cash1979}.
-The $\textrm{erf}^{-1}$ is the inverse error function.
-This factor is chosen because the likelihood naively follows a Gaussian distribution as any parameter is varied.
-For that Gaussian distribution, the factor $\Delta{}\LogLike$ is how much the likelihood decreases when integrating from a one-sided limit.
-This is shown in Figure~\ref{fig:ulimitdiag}.
+The $\textrm{erf}^{-1}$ is the inverse error function, an integration of a Gaussian function.
+Therefore, an upper limit on $\vacs$ can then be found by increasing $\vacs$ to the point where the likelihood has decreased by $\Delta\LogLike$.
+
+
+%This procedure of increasing $\vacs$ and rerunning the likelihood maximization is 
+%repeated until the likelihood has decreased by a fixed amount.
+%Because the likelihood profile (the maximum likelihood as one parameter is varied) naively follows a Gaussian distribution as in Figure~\ref{fig:ulimitdiag}, this can be exploited.
+%
+%To find the value of $\vacs$ that is above 95\% of the outcomes, a Gaussian distribution can be integrated to find how far the likelihood decreases.
+%%This factor is chosen because the likelihood naively follows a Gaussian distribution as any parameter is varied through its best-fit value.
+%This likelihood decrease is $\Delta{}\LogLike$, and is calculated by integrating a Gaussian probability distribution, resulting in
+
+%For that Gaussian distribution, the factor $\Delta{}\LogLike$ is how much the likelihood decreases when integrating from a one-sided limit.
+%This is shown in Figure~\ref{fig:ulimitdiag}.
 % some discussion on likelihood upper limits here:
 % https://fermi.gsfc.nasa.gov/science/mtgs/summerschool/2013/week1/ML_intro.pdf
 % maybe also this rolke paper: Rolke, et al., NIM A, 551, 493 (2005)
@@ -959,9 +972,9 @@ This is shown in Figure~\ref{fig:ulimitdiag}.
   Without going into ctools code and see what they do I can't say much, so I suggest you ask gernot to read these paragraphs and if he gives the ok, leave it as it is.  ?? --orel
 )}
 
-\begin{figure}[tb]
+\begin{figure}[bt]
   \centering
-  \includegraphics[width=0.5\textwidth]{images/ulimit_diagram/ulimdiagram.pdf}
+  \includegraphics[width=0.45\textwidth]{images/ulimit_diagram/ulimdiagram.pdf}
   \caption[Upper Limit Calculation]{
     Example maximum likelihood as the $\vacs$ is varied (blue line).
     The procedure starts at parameter $\vacs_{\mathrm{start}}$, and is increased until the likelihood has decreased by $\Delta{}\LogLike$.
