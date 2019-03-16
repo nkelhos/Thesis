@@ -569,14 +569,11 @@ Since most bins in the residual overlap 1, it can be concluded that the models a
     In the top plot, the gray histogram bars indicate the data's significance distribution, with gray Poissonian error bars.
     The red lines and bars indicate the range of simulated significances, centered on the mean, and extending up and down by one standard deviation.
     The bottom plot shows the $\frac{\textrm{simulated}}{\textrm{data}}$ residual.
-    {\color{red}(hows this look??)}
+    {\color{red}(hows this plot look??)}
   }
   \label{fig:crab_signif_distribution}
 \end{figure}
   
-However, this distribution is not quite Gaussian-shaped, due to how the significance is calculated.
-Because this is tangential to the analysis, it is only discussed further in Appendix~\ref{app:sigdist}.
-
 \FloatBarrier
 
 \section{Dark Matter Likelihood Analysis}\label{sec:dmlike}
@@ -619,15 +616,6 @@ $$(l,b)_{\textrm{J2000}} = (\ang{359.944212}, \ang{-0.046013}) \,. $$
 This was done because previous studies had detected a gamma-ray excess at Sgr A*, and it was found to be point-like.
 This excess may be produced by WIMPs annihilating, or it may be due to some other non-dark-matter mechanism (see Section~\ref{sec:gc}).
 In this analysis, the excess from Sgr A* is considered as not coming from dark matter and a point source is added.
-%If the excess is due to a non-dark-matter mechanism, the excess emission must be accounted for by a point source model in the likelihood analysis, so that the excess events do not influence the the dark matter halo model's search.
-%However, if the excess is due to WIMP annihilation, a point source model should not be added.
-%This leads to a choice of model configurations, whether to add a point source model or not.
-
-Adding a point source produces a more conservative upper limit on the velocity-averaged cross section $\vacs$.
-This occurs because, assuming the non-dark-matter scenario but without a point source model, there are more unmodeled events.
-When increasing the $\vacs$, more unmodeled events cause the likelihood to decrease at an earlier (smaller) $\vacs$, which results in a smaller upper limit (see Section~\ref{upper_limit}) that eliminates more of the parameter space.
-Therefore the $\vacs$'s excluded by the conservative (with-point-source) upper limit are true for both WIMP and pulsar scenarios.
-{\color{red}(this would not really lead to a more conservative upper limit though, right? if you would have considered the excess as coming from dark matter, you would have claimed a discovery, not set an upper limit, no?? -orel)}
 
 % Hooper at TeVPa 2018: 
 %   Event:  https://indico.desy.de/indico/event/18204/session/12/contribution/132
@@ -875,9 +863,6 @@ If the source and background models were perfectly known, the gray bars would ov
 Because only 12 of the 45 residual bins are consistent with 1, differences are observed between the models and the data.
 Specifically, there are more negatively-significant and positively-significant data pixels than expected from the models, hinting that one or more features in the Galactic Center data are not being modeled properly.
 This is discussed further in Section~\ref{sec:elevgradient}.
-%The peaked bin around $\sigma=0$ is likely due to the bins at the edge of the Galactic Center data, where the residual approaches zero due to the negligible (and poorly sampled) VERITAS sensitivity at the edge of the camera 
-%{\color{red}(my first instinct is to ask you to check this claim because it should be very quick.  I hope it won't be the instinct of the reviewers...   It seems to me a little too big to come from just the edge of the camera.  Are you sure you are not plotting also the edges of the sky map where you have no entries?? -orel) (either cut the bins that have 0 counts, or check where the 0-significance bins are actually coming from to get rid of the 'likely' bit) }.
-%{\color{red}(see plots, its not conclusive, soften word 'likely' to 'may' or something??)}
 
 \begin{figure}[ht]
   \centering
@@ -889,7 +874,7 @@ This is discussed further in Section~\ref{sec:elevgradient}.
      The red lines and bars indicate the range of simulated significances, centered on the mean, and extending up and down by one standard deviation.
     The bottom plot shows the $\frac{\textrm{simulated}}{\textrm{data}}$ residual.
     Only sky-map bins within Sgr A*'s region of interest are histogrammed.
-    {\color{red}(go over with orel??)}
+    {\color{red}(hows this plot look??)}
   }
   \label{fig:gc_resmap_sighist_coarse}
 \end{figure}

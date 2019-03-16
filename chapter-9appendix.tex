@@ -296,124 +296,124 @@ This leads to the significance of a bin's residual,
   \textrm{Significance} = \textrm{sign}(D-M) \times \sqrt{ 2 \left ( D \: \textrm{ln} \left ( \frac{D}{M} \right ) + M - D \right ) } \,.
 \end{equation}
 
-\section{Residual Significance Sky Maps and Distributions}
-
-The residual significance sky map from the Crab Nebula analysis in Section~\ref{sec:crab_analysis} is shown again in Figure~\ref{fig:resmap_sigdist_crab_coarse}.
-These use a coarse binning, with \ang{0.231}-wide bins.
-Alongside it the histogram showing the significance distribution is shown, along with the simulated distribution.
-This is similar to Gaussian distribution.
-
-\begin{figure}[h]
-  \centering
-  \hfill
-  \begin{minipage}{0.4\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapresiduals_coarse.pdf}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapresiduals_coarse_hist.pdf}
-  \end{minipage}
-  \hfill
-  \hfill
-  \caption[Crab Residual Sky Map and Distribution, Coarse Binning]{
-    Left is a sky map showing how significantly the models differ from the observations in each bin.
-    This plot uses \ang{0.23}-wide bins.
-    Right is a histogram of data and simulated significance distributions from the significance sky map.
-    In the top plot, the black histogram bars indicate the data's significance distribution.
-    The red bars indicate the range of simulated significances, centered on the mean, and extending up and down by one standard deviation.
-    The bottom plot shows the $\frac{\textrm{simulated}}{\textrm{data}}$ residual.
-    Originally shown as Figures~\ref{fig:crab_signif_skymap_coarse} and \ref{fig:crab_signif_distribution}.
-  }
-  \label{fig:resmap_sigdist_crab_coarse}
-\end{figure}
-
-If one wanted to view the significance map in a higher resolution, the bin size can be decreased, as in Figure~\ref{fig:resmap_sigdist_crab_fine}.
-However, when the significance distribution of these fine pixels is calculated in the right plot, the resulting histogram is decidedly \textit{not} Gaussian shaped.
-Further examples of the odd structures can be seen in the Galactic Center residual maps and histograms in Figure~\ref{fig:resmap_sigdist_gc}.
-
-\begin{figure}[h]
-  \centering
-  \hfill
-  \begin{minipage}{0.4\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapresiduals_fine.pdf}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.45\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapresiduals_fine_hist.pdf}
-  \end{minipage}
-  \hfill
-  \hfill
-  \caption[Crab Residual Sky Map and Distribution, Fine Binning]{
-    Left is the residual significance of each sky bin.
-    Right is a histogram of data and simulated significance distributions from the significance sky map.
-    In the top histogram, the gray histogram bars indicate the data's significance distribution.
-    The red bars indicate the range of simulated significances, centered on the mean, and extending up and down by one standard deviation.
-    The bottom plot shows the $\frac{\textrm{simulated}}{\textrm{data}}$ residual.
-    These plots are the identical to Figure~\ref{fig:resmap_sigdist_crab_coarse}, except the bins are only \ang{0.029} wide.
-  }
-  \label{fig:resmap_sigdist_crab_fine}
-\end{figure}
-
-
-\begin{figure}[h]
-  \centering
-  \hfill
-  \begin{minipage}{0.43\textwidth}
-    \centering
-    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_coarse.pdf}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.48\textwidth}
-    \centering
-    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_coarse_pdf_json_hist.pdf}
-  \end{minipage}
-  \hfill \\
-  \hfill
-  \begin{minipage}{0.43\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_fine.pdf}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.48\textwidth}
-    \centering
-    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_fine_pdf_json_hist.pdf}
-  \end{minipage}
-  \hfill
-  \caption[Galactic Center Residual Sky Maps And Distributions]{
-    Left is the residual significance of each sky bin, using the Galactic Center analysis in Section~\ref{sec:dmlike}.
-    Right is a histogram of data and simulated significance distributions from the significance sky map.
-    In the top histogram, the gray histogram bars indicate the data's significance distribution.
-    The red bars indicate the range of simulated significances, centered on the mean, and extending up and down by one standard deviation.
-    The bottom plot shows the $\frac{\textrm{simulated}}{\textrm{data}}$ residual.
-    These plots are almost identical to Figures \ref{fig:resmap_sigdist_crab_coarse} and \ref{fig:resmap_sigdist_crab_fine}.
-    The top two plots are originally shown as Figures~\ref{fig:gc_resmap} and \ref{fig:gc_resmap_sighist_coarse}.
-  }
-  \label{fig:resmap_sigdist_gc}
-\end{figure}
-    
-This non-Gaussian distribution occurs because of how the significance is calculated.
-In the significance calculation, a Poissonian variable is being input into Equation~\ref{eqn:resmap_signif2}.
-A Gaussian distribution is symmetric about the mean, while the Poisson probability distribution is not symmetric about the mean at low averages.
-If the average modeled number of counts is low (i.e. $<50$), the distribution drifts away from a Gaussian shape.
-One way to lower the number of counts in a bin is by reducing the size of the bin.
-
-This is shown in Figure~\ref{fig:various_sig_dists}, where four models with different average number of events per bin are simulated.
-Each of the four models is sampled in \SI{1000000} bins, where the model in each bin is randomly varied uniformly by $\pm 75\%$.
-This shows that the significance calculation does follow a true significance distribution when the average number of events in each bin is high (the lower right plot).
-At lower average counts per bin, however, simulations must be used with a residual to see if any areas in the sky map show significant difference between data and models.
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_random_sigdists.pdf}
-  \caption[4 Simulated Significance Distributions]{
-    Simulated significance distributions for four different average models.
-    The significance here is calculated using Equation~\ref{eqn:resmap_signif2}.
-    % plot generated with $VERIPY/thesis/analysis/crab_test/replot.py
-  }
-  \label{fig:various_sig_dists}
-\end{figure}
-
+%\section{Residual Significance Sky Maps and Distributions}
+%
+%The residual significance sky map from the Crab Nebula analysis in Section~\ref{sec:crab_analysis} is shown again in Figure~\ref{fig:resmap_sigdist_crab_coarse}.
+%These use a coarse binning, with \ang{0.231}-wide bins.
+%Alongside it the histogram showing the significance distribution is shown, along with the simulated distribution.
+%This is similar to Gaussian distribution.
+%
+%\begin{figure}[h]
+%  \centering
+%  \hfill
+%  \begin{minipage}{0.4\textwidth}
+%    \centering
+%    \includegraphics[width=\linewidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapresiduals_coarse.pdf}
+%  \end{minipage}
+%  \hfill
+%  \begin{minipage}{0.45\textwidth}
+%    \centering
+%    \includegraphics[width=\linewidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapresiduals_coarse_histnozero.pdf}
+%  \end{minipage}
+%  \hfill
+%  \hfill
+%  \caption[Crab Residual Sky Map and Distribution, Coarse Binning]{
+%    Left is a sky map showing how significantly the models differ from the observations in each bin.
+%    This plot uses \ang{0.23}-wide bins.
+%    Right is a histogram of data and simulated significance distributions from the significance sky map.
+%    In the top plot, the black histogram bars indicate the data's significance distribution.
+%    The red bars indicate the range of simulated significances, centered on the mean, and extending up and down by one standard deviation.
+%    The bottom plot shows the $\frac{\textrm{simulated}}{\textrm{data}}$ residual.
+%    Originally shown as Figures~\ref{fig:crab_signif_skymap_coarse} and \ref{fig:crab_signif_distribution}.
+%  }
+%  \label{fig:resmap_sigdist_crab_coarse}
+%\end{figure}
+%
+%If one wanted to view the significance map in a higher resolution, the bin size can be decreased, as in Figure~\ref{fig:resmap_sigdist_crab_fine}.
+%However, when the significance distribution of these fine pixels is calculated in the right plot, the resulting histogram is decidedly \textit{not} Gaussian shaped.
+%Further examples of the odd structures can be seen in the Galactic Center residual maps and histograms in Figure~\ref{fig:resmap_sigdist_gc}.
+%
+%\begin{figure}[h]
+%  \centering
+%  \hfill
+%  \begin{minipage}{0.4\textwidth}
+%    \centering
+%    \includegraphics[width=\linewidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapresiduals_fine.pdf}
+%  \end{minipage}
+%  \hfill
+%  \begin{minipage}{0.45\textwidth}
+%    \centering
+%    \includegraphics[width=\linewidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapresiduals_fine_histnozero.pdf}
+%  \end{minipage}
+%  \hfill
+%  \hfill
+%  \caption[Crab Residual Sky Map and Distribution, Fine Binning]{
+%    Left is the residual significance of each sky bin.
+%    Right is a histogram of data and simulated significance distributions from the significance sky map.
+%    In the top histogram, the gray histogram bars indicate the data's significance distribution.
+%    The red bars indicate the range of simulated significances, centered on the mean, and extending up and down by one standard deviation.
+%    The bottom plot shows the $\frac{\textrm{simulated}}{\textrm{data}}$ residual.
+%    These plots are the identical to Figure~\ref{fig:resmap_sigdist_crab_coarse}, except the bins are only \ang{0.029} wide.
+%  }
+%  \label{fig:resmap_sigdist_crab_fine}
+%\end{figure}
+%
+%
+%\begin{figure}[h]
+%  \centering
+%  \hfill
+%  \begin{minipage}{0.43\textwidth}
+%    \centering
+%    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_coarse.pdf}
+%  \end{minipage}
+%  \hfill
+%  \begin{minipage}{0.48\textwidth}
+%    \centering
+%    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_coarse_pdf_json_histnozero.pdf}
+%  \end{minipage}
+%  \hfill \\
+%  \hfill
+%  \begin{minipage}{0.43\textwidth}
+%    \centering
+%    \includegraphics[width=\linewidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_fine.pdf}
+%  \end{minipage}
+%  \hfill
+%  \begin{minipage}{0.48\textwidth}
+%    \centering
+%    \includegraphics[width=0.95\textwidth]{images/likelihood_analysis/plot_brbbbar_45_00TeV_resmap_fine_pdf_json_hist.pdf}
+%  \end{minipage}
+%  \hfill
+%  \caption[Galactic Center Residual Sky Maps And Distributions]{
+%    Left is the residual significance of each sky bin, using the Galactic Center analysis in Section~\ref{sec:dmlike}.
+%    Right is a histogram of data and simulated significance distributions from the significance sky map.
+%    In the top histogram, the gray histogram bars indicate the data's significance distribution.
+%    The red bars indicate the range of simulated significances, centered on the mean, and extending up and down by one standard deviation.
+%    The bottom plot shows the $\frac{\textrm{simulated}}{\textrm{data}}$ residual.
+%    These plots are almost identical to Figures \ref{fig:resmap_sigdist_crab_coarse} and \ref{fig:resmap_sigdist_crab_fine}.
+%    The top two plots are originally shown as Figures~\ref{fig:gc_resmap} and \ref{fig:gc_resmap_sighist_coarse}.
+%  }
+%  \label{fig:resmap_sigdist_gc}
+%\end{figure}
+%    
+%This non-Gaussian distribution occurs because of how the significance is calculated.
+%In the significance calculation, a Poissonian variable is being input into Equation~\ref{eqn:resmap_signif2}.
+%A Gaussian distribution is symmetric about the mean, while the Poisson probability distribution is not symmetric about the mean at low averages.
+%If the average modeled number of counts is low (i.e. $<50$), the distribution drifts away from a Gaussian shape.
+%One way to lower the number of counts in a bin is by reducing the size of the bin.
+%
+%This is shown in Figure~\ref{fig:various_sig_dists}, where four models with different average number of events per bin are simulated.
+%Each of the four models is sampled in \SI{1000000} bins, where the model in each bin is randomly varied uniformly by $\pm 75\%$.
+%This shows that the significance calculation does follow a true significance distribution when the average number of events in each bin is high (the lower right plot).
+%At lower average counts per bin, however, simulations must be used with a residual to see if any areas in the sky map show significant difference between data and models.
+%
+%\begin{figure}[h]
+%  \centering
+%  \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_random_sigdists.pdf}
+%  \caption[4 Simulated Significance Distributions]{
+%    Simulated significance distributions for four different average models.
+%    The significance here is calculated using Equation~\ref{eqn:resmap_signif2}.
+%    % plot generated with $VERIPY/thesis/analysis/crab_test/replot.py
+%  }
+%  \label{fig:various_sig_dists}
+%\end{figure}
+%
