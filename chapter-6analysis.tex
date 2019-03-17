@@ -556,16 +556,17 @@ The significance of each sky bin is calculated with the equation
 \end{equation}
 which is derived in Appendix~\ref{app:sigdist}.
 
+{\color{red}(following paragraph??)}
+
 When a significance distribution is made of Figure~\ref{fig:crab_signif_skymap_coarse}'s pixels, and all bins with zero observed counts are cut, it is seen in Figure~\ref{fig:crab_signif_distribution} to follow a Gaussian distribution.
-{\color{red}(previous sentence??)}
 Simulations are shown in red using the best-fit models, and the $\frac{\textrm{Simulated Models}}{\textrm{Data}}$ residual is shown in the bottom plot.
-Since most bins in the residual overlap 1, it can be concluded that the models are not deficient in any particular area.
+Since most bins in the residual overlap the ${\frac{\textrm{Simulated Models}}{\textrm{Data}} = 1}$ line, it can be concluded that the models are not deficient in any particular area.
 
 \begin{figure}[tb]
   \centering
   \includegraphics[width=0.55\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_mapresiduals_coarse_histnozero.pdf}
   \caption[Crab Residual Bin Distribution]{
-    Data and simulated significance distributions from the fine-binned significance sky map in Figure~\ref{fig:crab_signif_skymap_coarse}.
+    Data and simulated significance distributions from the significance sky map in Figure~\ref{fig:crab_signif_skymap_coarse}.
     In the top plot, the gray histogram bars indicate the data's significance distribution, with gray Poissonian error bars.
     The red lines and bars indicate the range of simulated significances, centered on the mean, and extending up and down by one standard deviation.
     The bottom plot shows the $\frac{\textrm{simulated}}{\textrm{data}}$ residual.
@@ -856,10 +857,11 @@ Several darker bins in a ring-like pattern around the edge of the field of view 
   \label{fig:gc_resmap}
 \end{figure}
 
-The distribution of the pixel significances from Figure~\ref{fig:gc_resmap} is also shown in gray in Figure~\ref{fig:gc_resmap_sighist_coarse}, along with a set of 10000 simulated distributions in red.
-Before creating the histogram and simulations, all bins with zero observed counts are first cut.
-{\color{red}(previous sentence ok??)}
-If the source and background models were perfectly known, the gray bars would overlap the red simulations in most of the bins, and the residual will overlap 1.
+{\color{red}(next paragraph ok??)}
+
+The distribution of the pixel significances from Figure~\ref{fig:gc_resmap} is also shown in gray in Figure~\ref{fig:gc_resmap_sighist_coarse}, along with a set of 10,000 simulated distributions in red.
+Before creating the histogram and simulations, all bins with zero observed counts are first removed.
+If the source and background models were perfectly known, the gray bars would overlap the red simulations in most of the bins, and the residual will overlap the ${\frac{\textrm{Simulated Models}}{\textrm{Data}}=1}$ line.
 Because only 12 of the 45 residual bins are consistent with 1, differences are observed between the models and the data.
 Specifically, there are more negatively-significant and positively-significant data pixels than expected from the models, hinting that one or more features in the Galactic Center data are not being modeled properly.
 This is discussed further in Section~\ref{sec:elevgradient}.
