@@ -177,7 +177,7 @@ Nevertheless, the analysis described in Chapter~\ref{chapter:analysis} utilizes 
 \begin{figure}[b]
   \centering
   \includegraphics[width=0.95\textwidth]{images/disp_event_offset_hists/plot_offset0_50.pdf}
-  \caption[DISP Point Spread Function Comparison]{
+  \caption[Disp Point Spread Function Comparison]{
     Comparison between the disp and geometric point spread function 68\% containment radii.
     The lines represent the average ratio, with a 1 standard deviation error band.
     Green is from the Crab Nebula data, and blue is from the Galactic Center data.
@@ -279,8 +279,8 @@ See Ref.~\cite{Krause2017} for a more thorough discussion on gamma-hadron separa
 
 
 \section{FITS Conversion for GammaLib and ctools}\label{fitsconversion}
-Once gamma rays have been reconstructed with Eventdisplay, they must be exported to GammaLib and CTOOLS~\cite{gammalibctools}.
-GammaLib and CTOOLS are software that perform the likelihood calculation, which is described further in Section~\ref{sec:likeratio}.
+Once gamma rays have been reconstructed with Eventdisplay, they must be exported to GammaLib and ctools~\cite{gammalibctools}.
+GammaLib and ctools are software that perform the likelihood calculation, which is described further in Section~\ref{sec:likeratio}.
 This software possesses several useful features, including automatic model convolution with instrument response functions (IRFs) and easier comparison with results from other gamma-ray telescopes like H.E.S.S. and MAGIC.
 This software is also one of the main high-level analysis tools to be used by the Cherenkov Telescope Array (CTA), making it and easier to include VERITAS data into future CTA analyses.
 
@@ -443,7 +443,7 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     \begin{figure}[p]
       \centering
       \includegraphics[width=0.6\textwidth]{images/ctools_background/background_construction.eps}
-      \caption[CTOOLS Background Fine Energy Bins]{
+      \caption[Background Template with Fine Energy Bins]{
         The V5 background's fine energy bins.
         The top plot shows the number of events in each energy bin from all background runs.
         The bottom plot shows the background rate, the number of background events divided by the observation time, solid angle, and energy span.
@@ -455,7 +455,7 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     \begin{figure}[hb]
       \centering
       \includegraphics[width=0.5\textwidth]{images/ctools_background/radial_profiles.eps}
-      \caption[CTOOLS Radial Background Profiles]{
+      \caption[Radial Profiles of a Background Template]{
         Radial bin profiles for the V5 backgrounds for low and high energies, to show how the shape varies with energy.
         The blue points are the counts per bin area, while the purple line is a spline interpolation with a 3rd order polynomial.
         The peak and plateau at \ang{0}-\ang{1} is due to the background events not being radially symmetric in the camera, due to the changing atmospheric depth across the camera's field of view.
