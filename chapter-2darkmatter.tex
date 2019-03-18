@@ -47,18 +47,18 @@ These dwarf galaxies are strong evidence for dark matter because their luminous 
 An example of two dwarf galaxies are shown in Figures~\ref{fig:sculptor} and \ref{fig:fornax}.
 Figure~\ref{fig:sculptor} is the Sculptor dwarf galaxy, imaged in the optical frequencies by the MPG/ESO Telescope, while Figure~\ref{fig:fornax} is the Fornax dwarf galaxy, from the ESO Digitized Sky Survey II~\cite{fornax_image}.
 
-\begin{figure}[!ht]
+\begin{figure}[bt]
   \centering
-  \includegraphics[width=0.8\textwidth]{images/sculptor/sculptor.eps}
+  \includegraphics[width=0.7\textwidth]{images/sculptor/sculptor.eps}
   \caption[Sculptor Dwarf Galaxy]{
     The Sculptor dwarf galaxy~\cite{sculptor_image}, with a $\frac{\textrm{M}_\odot}{\textrm{L}_\odot}$ ratio of $15.3\pm6.9$~\cite{sculptor_ml}, imaged by the MPG/ESO telescope~\cite{sculptor_paper}.
   }
   \label{fig:sculptor}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[tb]
   \centering
-  \includegraphics[width=0.8\textwidth]{images/fornax/fornax.pdf}
+  \includegraphics[width=0.7\textwidth]{images/fornax/fornax.pdf}
   \caption[Fornax Dwarf Galaxy]{
     The Fornax dwarf galaxy, with a $\frac{\textrm{M}_\odot}{\textrm{L}_\odot}$ ratio of $8.8\pm3.8$~\cite{sculptor_ml}, from the ESO Digitized Sky Survey II~\cite{fornax_image}.
   }
@@ -76,7 +76,6 @@ This proportionality comes from the spherical Jean's equation~\cite{galactic_dyn
 \begin{equation}\label{eqn:jeans}
   \frac{d}{dr} \left ( v \sigma_r^2\right) + \frac{2 \beta}{r}v \sigma_r^2 + v \frac{d \Phi}{dr}=0 \,,
 \end{equation}
-
 where $r$ is the distance from the center of mass, $v(r)$ is a 3D distribution of stars, $\Phi(r)$ is a gravitational potential, $\sigma_r(r)$ is the distribution of radial velocities, and $\sigma_\theta(r)$ is the distribution of velocities orthogonal to the $r$ direction.
 The parameter $\beta = 1 - \frac{\sigma_{\theta}^2}{\sigma_r^2}$ characterizes how different the two velocity distributions ($\sigma_r(r)$ and $\sigma_{\theta}(r)$) are.
 A solution to this equation can be used to calculate the measurable line-of-sight velocity distribution $\sigma_{\mathrm{los}}$ as a function of the projected angle from the center-of-mass of the dwarf $R$, 
@@ -84,7 +83,6 @@ A solution to this equation can be used to calculate the measurable line-of-sigh
 \begin{equation}\label{eqn:los_velocity_dist}
   \sigma_{\mathrm{los}}^2 \left ( R \right ) = \frac{2}{I(R)} \int_R^{\infty} \left ( 1 - \beta(r) \frac{R^2}{r^2}) \right ) \frac{r}{\sqrt{r^2-R^2}} \frac{1}{f(r)} \int_r^\infty f(s) \frac{v(s)GM(s)}{s^2} \; ds\; dr \,,
 \end{equation}
-
 with
 
 \begin{equation}\label{eqn:los_velocity_dist2}
@@ -97,7 +95,7 @@ As stellar velocity measurements rely on Doppler-shifted spectral lines, and not
 These changes in brightness can be from atmospheric variations during telescope observations or changes in the amount of light-absorbing dust in the line-of-sight.
 
 The second way to measure galaxy masses is by measuring the total brightness of a galaxy, and dividing by the luminosity of the Sun $L_\odot$.
-This then indicates the number of solar masses $M_\odot$ contained in the galaxy, a measure of its baryonic (i.e. 'bright', not dark) mass.
+This then indicates the number of solar masses $M_\odot$ contained in the galaxy, a measure of its baryonic (i.e. `bright', not dark) mass.
 % from https://arxiv.org/pdf/1510.07674.pdf
 % L_\odot from page 3, table "SOLAR CONVERSION CONSTANTS" 
 % M_\odot :
@@ -107,18 +105,14 @@ This then indicates the number of solar masses $M_\odot$ contained in the galaxy
 %   M_\odot = 1.3271244e20 m^3 s^-2 / 6.67408e-11 m^3 kg^-1 s^2
 %           = 1.98847e30 kg
     
-The first way measures the `total' mass from the rotational profile, while the second only measures the mass of its 'luminous' parts.
-The ratio of the 'total' mass divided by the 'luminous' mass is called the mass-to-light ratio, which indicates the amount of dark matter present in the galaxy~\cite{faber_ml}.
+The first way measures the \textit{total} mass from the rotational profile, while the second only measures the mass of its \textit{luminous} parts.
+The ratio of the total mass divided by the luminous mass is called the mass-to-light ratio, which indicates the amount of dark matter present in the galaxy~\cite{faber_ml}.
 Dwarf galaxies have mass-to-light ratios of around 5-100 $\frac{M_\odot}{L_\odot}$, but can reach up to \nicetilde \SI{1000}{\frac{M_\odot}{L_\odot}}~\cite{Simon2007_dwarfgalaxykeck}.
 These high values are considered strong evidence for the presence of dark matter.
 A random assortment of Local Group dwarf galaxies and their $\frac{M_\odot}{L_\odot}$ is shown in Table~\ref{tab:mlratios:dwarfgals}.
     
 \begin{table}[h]
   \centering
-  \caption[Ratios of $\frac{\textrm{M}_\odot}{\textrm{L}_\odot}$ for Various Dwarf Galaxy Objects]{
-    Ratios of $\frac{M_\odot}{L_\odot}$ for various dwarf galaxy objects~\cite{localdwarfs}.
-  }
-  \label{tab:mlratios:dwarfgals}
   \begin{tabular}{l r | l r | l r | l r}
     Object      &  \mlratio{} & Object & \mlratio{} & Object & \mlratio{} & Object & \mlratio{} \\
     \hline
@@ -127,6 +121,11 @@ A random assortment of Local Group dwarf galaxies and their $\frac{M_\odot}{L_\o
     LGS 3       & 21   & IC 1613    &  1.4 & Draco       & 58 & Sculptor & 11   \\
     Carina      & 30   & Antlia     &  7.4 & Sextans     & 34 & GR 8     &  8.3 \\
   \end{tabular}
+  \caption[Ratios of $\frac{\textrm{M}_\odot}{\textrm{L}_\odot}$ for Various Dwarf Galaxy Objects]{
+    Ratios of $\frac{M_\odot}{L_\odot}$ for various dwarf galaxy objects~\cite{localdwarfs}.
+    \CaptionBlankLine
+  }
+  \label{tab:mlratios:dwarfgals}
 \end{table}
 % from reference \cite{localdwarfs}, table 4, (M/L)_{0,V}^i column
     
@@ -282,21 +281,21 @@ From this, the mass-to-light ratio can be inferred at several different radii fr
 Within \SI{28.5}{kpc}\footnote[2]{This scales inversely with the Hubble constant, assumed here to be \SI{70}{km/s/Mpc}} of the center, the ratio is \SI{12}{\frac{M_\odot}{L_\odot}}, while beyond a radius of \SI{286}{kpc}\footnotemark[2] the ratio rises above \SI{100}{\frac{M_\odot}{L_\odot}}, indicating a high amount of dark matter is present~\cite{cluster_chandra}.
 
 These previously mentioned techniques have been combined into an analysis of galaxy cluster \mbox{1E 0657-558} to provide a cardinal piece of evidence in favor of particle dark matter.
-This cluster consists of two subgroups of galaxies, a larger 'target' cluster, and a smaller Bullet cluster.
+This cluster consists of two subgroups of galaxies, a larger \textit{target} cluster, and a smaller \textit{bullet} cluster.
 Each cluster's mass is contained in two clouds; gas and stars that form the baryonic cloud, and the much more massive dark matter cloud.
 The baryonic cloud is visible through Chandra X-ray observations, which are able to image the warm ($kT\simeq\,$\SI{10}{keV}) gas and infer its density.
 The dark matter cloud is inferred through weak lensing observations, where the mass of the cluster distorts the images of background galaxies.
-In this pair of clusters, the Bullet cluster has fallen through the target cluster.
-However, the two clouds of the Bullet cluster dragged on the clouds of the target cluster, and dragged at different rates.
-This difference in drag over time resulted in a separation between the Bullet cluster's baryonic and dark matter clouds, visible in Figure~\ref{fig:bullet}.
+In this pair of clusters, the bullet cluster has fallen through the target cluster.
+However, the two clouds of the bullet cluster dragged on the clouds of the target cluster, and dragged at different rates.
+This difference in drag over time resulted in a separation between the bullet and target's baryonic and dark matter clouds, visible in Figure~\ref{fig:bullet}.
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.95\textwidth]{images/bulletcluster/bulletcluster_cropped.pdf}
   \caption[The Bullet Cluster]{
-    The Bullet Cluster~\cite{bullet_cluster_combined_image}.
+    Galaxy cluster \mbox{1E 0657-558}, also known as the Bullet Cluster~\cite{bullet_cluster_combined_image}.
     The blue clouds indicate the gravitational lensing mass~\cite{bullet_cluster}, the pink represents clouds of warm gas emitting X-rays~\cite{bullet_cluster_chandramap}.
-    The red triangle indicates the Bullet cluster's warm gas center-of-mass, and the blue oval marks the approximate center of the weak lensing (dark) mass.
+    The red triangle indicates the bullet's warm gas center-of-mass, and the blue oval marks the approximate center of the bullet's weak lensing (dark) mass.
     The remaining stars and galaxies are imaged in the optical spectrum~\cite{bullet_cluster_composite}.}
   \label{fig:bullet}
 \end{figure}
@@ -326,7 +325,7 @@ Once the average temperature had reduced enough, quarks began binding together t
 The time and temperature at which baryogenesis occurred has not been determined.
 However, there are several competing theories that may explain how an unequal ratio of baryons to antibaryons were created~\cite{baryogenesis1,baryogenesis2}.
 
-Later, when the Universe was around \nicetilde380,000 years old and had expanded enough to cool to \nicetilde\SI{3000}{K}, another phase change occurred.
+Later, when the Universe was \nicetilde380,000 years old and had expanded enough to cool to \nicetilde\SI{3000}{K}, another phase change occurred.
 Here, the Universe was a sea of free particles - photons ($\gamma$), electrons, and protons.
 Due to the numerous free electrons and protons, the mean free path of the photon was small, so the photons were in thermal equilibrium with the electrons and protons.
 Once the Universe expanded further, enough to cool below the electron-proton binding energy, protons began to capture electrons in great numbers.
@@ -463,7 +462,7 @@ One important extension that may contain a dark matter WIMP is called supersymme
 
 Early in the search for a candidate dark matter particle, Standard Model (SM) particles were first considered.
 One dark matter candidate was the neutrino, due to how many there are in the Universe and their lack of interaction with the strong and electromagnetic forces.
-This was generally referred to as Hot dark matter, as neutrinos travel at relativistic speeds.
+This was generally referred to as \textit{hot dark matter}, as neutrinos travel at relativistic speeds.
 However, it was eventually demonstrated that because of these relativistic speeds, neutrinos would diffuse out of their initial overdensities.
 This would result in large super-cluster-scale gravitational wells forming first, then cluster-scale wells, then galaxy-scale wells, called top-down structure formation.
 When observations are made of earlier times, the opposite is found: galaxy-scale gravitational wells form first, then cluster-scale wells, then super-cluster-scale wells in present times, called bottom-up formation.
@@ -490,7 +489,7 @@ Quarks become squarks, leptons become sleptons, and gluons become gluinos, etc.
 Standard model particles and fields have an R-parity of +1, while superpartners have an R-parity of -1.
 
 When this SUSY reflection is performed, the superpartners develop some interesting properties.
-The superpartners all have their spin reduced by $\frac{1}{2}$, so the fermionic electron with spin $\frac{1}{2}$ becomes a bosonic selectron with spin $0$, and the bosonic gluon with spin 1 becomes the fermionic gluino with spin $\frac{1}{2}$.
+The spin of all the superpartners is reduced by $\frac{1}{2}$, so the fermionic electron with spin $\frac{1}{2}$ becomes a bosonic selectron with spin $0$, and the bosonic gluon with spin 1 becomes the fermionic gluino with spin $\frac{1}{2}$.
 When the $W^{\pm}$  and weak hypercharge are reflected, they form the Bino and the Wino, respectively.
 When the Higgs field is reflected, two Higgsino fields result.
 The Bino, Wino, and two Higgsino fields then mix together to form 4 new particles called neutralinos.
