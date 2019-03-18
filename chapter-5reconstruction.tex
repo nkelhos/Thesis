@@ -50,8 +50,8 @@ The shower length and width are determined by the root mean square of the shower
   \includegraphics[width=0.45\textwidth]{images/shower_parameter_diagram/diagram.pdf}
   \caption[Basic Shower Diagram]{
     An example shower image in one VERITAS camera.
-    The gray circles are the locations of PMTs.
-    Red circles are PMTs that have detected Cherenkov photons.
+    The white hexagons are the locations of PMTs.
+    Red hexagons are PMTs that have detected Cherenkov photons.
   }
   \label{fig:shower_param}
 \end{figure}
@@ -86,12 +86,12 @@ At low elevations near the Galactic Center, however, the telescope array flatten
 These two closer telescopes then have very short, almost circular images, which makes them more sensitive to noisy pixels or shower fluctuations, as shown in Figure~\ref{fig:showerhighlowelev}.
 This also causes the remaining telescope images to have large intersection angles, which also reduces the accuracy of the position reconstruction.
 
-\begin{figure}[!t]
+\begin{figure}[bt]
   \centering
   \includegraphics[width=0.55\textwidth]{images/high_elevation_vs_low_shower_images_cropped.eps}
   \caption[Shower Images at High and Low Elevations]{
     In Figure (a), high elevation showers produce long images in all four telescopes.
-    In Figure (b), lower elevation showers produce shortened images in two telescopes, and the remaining images form large angle intersection.
+    In Figure (b), lower elevation showers produce shortened images in two telescopes, and the remaining images form larger intersection angles.
   }
   \label{fig:showerhighlowelev}
 \end{figure}
@@ -99,26 +99,44 @@ This also causes the remaining telescope images to have large intersection angle
 To better handle these near-parallel image axes at low elevations, the reconstructed position can be determined from more parameters than just the weighted image axes intersection points.
 From simulations, the distance between the center of the Hillas shower image and the true position can be calculated, where the angular distance between the two is the disp parameter~\cite{Senturk:2011}, shown in Figure~\ref{fig:dispdiagram}.
 Then, this disp parameter can be provided to a machine learning algorithm~\cite{Beilicke2012NIM}, along with other image parameters like:
-\begin{quote}
-  \begin{description}[noitemsep]
-    \item [width:] image angular width;
-    \item [length:] image angular length;
-    \item [wol:] $\frac{\textrm{width}}{\textrm{length}}$;
-    \item [size:] total image dc;
-    \item [ntubes:] number of pixels in the image;
-    \item [loss:] fraction of image pixels at the edge of the camera;
-    \item [asym:] distance between image center-of-dc and the pixel with the highest dc;
-    \item [tgrad:] the slope of the linear time fit to the pixel arrival times;
-    \item [cross:] angular distance between the image center and the average intersection point of the image axes.
-  \end{description}
-\end{quote}
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{lp{0.7\linewidth}}
+    \textbf{width:}  & image angular width ; \\
+    \textbf{length:} & image angular length ; \\
+    \textbf{wol:}    & $\frac{\textrm{width}}{\textrm{length}}$ ; \\
+    \textbf{size:}   & total image dc; \\
+    \textbf{ntubes:} & number of pixels in the image; \\
+    \textbf{loss:}   & fraction of image pixels at the edge of the camera; \\
+    \textbf{asym:}   & distance between image center-of-dc and the pixel with the highest dc; \\
+    \textbf{tgrad:}  & the slope of the linear time fit to the pixel arrival times; \\
+    \textbf{cross:}  & angular distance between the image center and the average intersection point of the image axes. \\
+  \end{tabular}
+\end{table}
+{\color{red}(fix this table??)}
+
+%\begin{quote}
+  %\begin{description}[noitemsep]
+    %\item [width:] image angular width;
+    %\item [length:] image angular length;
+    %\item [wol:] $\frac{\textrm{width}}{\textrm{length}}$;
+    %\item [size:] total image dc;
+    %\item [ntubes:] number of pixels in the image;
+    %\item [loss:] fraction of image pixels at the edge of the camera;
+    %\item [asym:] distance between image center-of-dc and the pixel with the highest dc;
+    %\item [tgrad:] the slope of the linear time fit to the pixel arrival times;
+    %\item [cross:] angular distance between the image center and the average intersection point of the image axes.
+  %\end{description}
+%\end{quote}
+
 % list of training parameters: grep "AddVariable" $EVNDISPSYS/src/trainTMVAforAngularReconstruction.cpp
 % how variables are calculated: grep -P "fParGeo.+\=" $EVNDISPSYS/src/VImageParameterCalculation.cpp
 % asym: http://inspirehep.net/record/1395717/files/RdelosReyes.pdf
 % Once trained on these parameters, the machine learning algorithm can construct a boosted decision tree for determining any new image's \textit{disp}, which can then be used with the image axes intersections to improve the gamma-ray reconstructed positions.
 
 
-\begin{figure}[t]
+\begin{figure}[tb]
   \centering
   \includegraphics[width=0.4\textwidth]{images/disp_parameter/disp_parameter.pdf}
   \caption[Angular Reconstruction Disp]{
@@ -282,7 +300,7 @@ See Ref.~\cite{Krause2017} for a more thorough discussion on gamma-hadron separa
 Once gamma rays have been reconstructed with Eventdisplay, they must be exported to GammaLib and ctools~\cite{gammalibctools}.
 GammaLib and ctools are software that perform the likelihood calculation, which is described further in Section~\ref{sec:likeratio}.
 This software possesses several useful features, including automatic model convolution with instrument response functions (IRFs) and easier comparison with results from other gamma-ray telescopes like H.E.S.S. and MAGIC.
-This software is also one of the main high-level analysis tools to be used by the Cherenkov Telescope Array (CTA), making it and easier to include VERITAS data into future CTA analyses.
+This software is also one of the main high-level analysis tools to be used by the Cherenkov Telescope Array (CTA), making it easier to include VERITAS data into future CTA analyses.
 
 Exporting gamma-ray data to this software involves converting the event list and IRFs to a FITS file format.
 The IRFs consist of the effective areas, the point spread functions, the background models, and the energy dispersion, defined in Sections~\ref{subsec:effarea}-\ref{subsec:edisp}.

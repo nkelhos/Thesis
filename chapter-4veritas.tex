@@ -40,7 +40,7 @@ At their fastest, the telescopes slew at a rate of \nicetilde{}\ang{1} per secon
 To track where the telescopes are pointing, the motors that drive the azimuth and elevation movement have encoders that digitize the pointing direction of the dishes.
 These encoders are attached to the axes of the motors, and thus they are capable of tracking the azimuth and elevation over its entire range of motion.
 However, as the dishes are large metal structures, they bend and flex at different elevations and azimuths.
-This flexing also experiences hysteresis, where the bending changes whether approaching a pointing target from a higher or lower elevation.
+This flexing also experiences hysteresis, in which the bending changes whether approaching a pointing target from a higher or lower elevation.
 To account for this flexing, the encoder values are then given to a structural model called T-Point, which corrects for the dish structure bending at different azimuths and elevations.
 After applying this model, the telescope pointing can be tracked with an accuracy of \nicetilde{}\ang{0.02}~\cite{holder2008status}.
 % jeff grube memo http://veritash.sao.arizona.edu:8081/AnalysisAndCalibration/111221_033051/VPM_memo_Dec2011.pdf ?
@@ -200,7 +200,7 @@ If a simple voltage-threshold trigger were used instead, the time of the trigger
 The CFD's zero threshold trigger is invoked when the signal voltage pulse reaches a predetermined fraction of its maximum value.
 For VERITAS, this fraction threshold is set at 75\% of its maximum value.
 % griffin 2016 thesis, page 47, figure 3.17 caption
-The second benefit benefit of this circuit is that when it detects a voltage pulse larger than a given maximum threshold, it can emit an extra logic trigger, called a low-gain trigger.
+The second benefit of this circuit is that when it detects a voltage pulse larger than a given maximum threshold, it can emit an extra logic trigger, called a low-gain trigger.
 This extra low-gain trigger is then used by the Flash Analog-to-Digital Circuit (FADC) to read out either the high-gain and low-gain signal.
 The low-gain signal is not amplified as much before it is digitized.
 The high-gain trigger can only detect signals with at most 120 photoelectrons, while the low-gain trigger can detect signals up to 750 photoelectrons.
@@ -264,7 +264,7 @@ These calibration techniques are further detailed in Ref.~\cite{calib_techniques
 \section{Trigger System}\label{sec:trig}
 
 The operation of VERITAS requires digitizing voltage pulses with voltage samples roughly once per two nanoseconds, per photomultiplier tube.
-This means that with 255 voltage levels, 1 second of all voltage measurements would require 1 Terabyte of hard drive space.
+This means that with 255 voltage levels, one second of all voltage measurements would require one terabyte of hard drive space.
 Since this is unfeasible with today's computing systems, only subsets of the raw pixel voltages are saved when certain trigger conditions are met.
 To complicate matters, photons from atmospheric muons and the night sky background can also cause voltage pulses similar to a gamma-ray shower's Cherenkov photons.
 Thus, VERITAS has a system of triggers that reduces the amount of raw data that is saved, while also partially filtering out non-gamma-ray events.
