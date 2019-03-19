@@ -98,23 +98,30 @@ This also causes the remaining telescope images to have large intersection angle
 
 To better handle these near-parallel image axes at low elevations, the reconstructed position can be determined from more parameters than just the weighted image axes intersection points.
 From simulations, the distance between the center of the Hillas shower image and the true position can be calculated, where the angular distance between the two is the disp parameter~\cite{Senturk:2011}, shown in Figure~\ref{fig:dispdiagram}.
-Then, this disp parameter can be provided to a machine learning algorithm~\cite{Beilicke2012NIM}, along with other image parameters like:
+Then, this disp parameter can be provided to a machine learning algorithm~\cite{Beilicke2012NIM}, along with other image parameters detailed in Table~\ref{tab:imageparams}.
+{\color{red}(check this last sentence??)}
 
-\begin{table}[H]
+\begin{table}[h]
   \centering
-  \begin{tabular}{lp{0.7\linewidth}}
-    \textbf{width:}  & image angular width ; \\
-    \textbf{length:} & image angular length ; \\
-    \textbf{wol:}    & $\frac{\textrm{width}}{\textrm{length}}$ ; \\
-    \textbf{size:}   & total image dc; \\
-    \textbf{ntubes:} & number of pixels in the image; \\
-    \textbf{loss:}   & fraction of image pixels at the edge of the camera; \\
-    \textbf{asym:}   & distance between image center-of-dc and the pixel with the highest dc; \\
-    \textbf{tgrad:}  & the slope of the linear time fit to the pixel arrival times; \\
-    \textbf{cross:}  & angular distance between the image center and the average intersection point of the image axes. \\
+  \caption[Shower Image Parameters]{
+    Various image parameters and their descriptions.
+    {\color{red}(check this table??)}
+  }
+  \label{tab:imageparams}
+  \begin{tabular}{|l|p{0.8\linewidth}|}
+    \hline
+    \textbf{Width}  & Image angular width  \\ \hline
+    \textbf{Length} & Image angular length  \\ \hline
+    \textbf{Wol}    & $\frac{\textrm{width}}{\textrm{length}}$  \\ \hline
+    \textbf{Size}   & Total image dc \\ \hline
+    \textbf{Ntubes} & Number of pixels in the image \\ \hline
+    \textbf{Loss}   & Fraction of image pixels at the edge of the camera \\ \hline
+    \textbf{Asym}   & Distance between image center-of-dc and the pixel with the highest dc \\ \hline
+    \textbf{Tgrad}  & The slope of the linear time fit to the pixel arrival times \\ \hline
+    \textbf{Cross}  & Angular distance between the image center and the average intersection point of the image axes \\ \hline
   \end{tabular}
 \end{table}
-{\color{red}(fix this table??)}
+
 
 %\begin{quote}
   %\begin{description}[noitemsep]

@@ -39,12 +39,13 @@ kwa['zorder'] = 5
 frame1.plot( vx, vy, **kwa )
 
 
-
+capw = 0.5
 kwa = {}
 kwa['color' ] = 'orange'
 kwa['zorder'] = 8
-frame1.plot( [x_deltaL,x_deltaL], [y_deltaL,ypeak], **kwa )
-frame1.plot( 
+frame1.plot( [x_deltaL     ,x_deltaL     ], [y_deltaL,ypeak   ], **kwa )
+frame1.plot( [x_deltaL-capw,x_deltaL+capw], [y_deltaL,y_deltaL], **kwa )
+frame1.plot( [x_deltaL-capw,x_deltaL+capw], [ypeak   ,ypeak   ], **kwa )
 
 midh = (y_deltaL + ypeak) / 2
 kwa = {}
