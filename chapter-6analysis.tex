@@ -923,18 +923,48 @@ To calculate the upper limit, the parameter $\vacs$ is fixed and the maximum lik
 Then, $\vacs$ is fixed to a slightly larger value, and a new maximum likelihood is found.
 Because no dark matter signal was found, increasing $\vacs$ increases the dark matter halo's flux, which decreases the maximum likelihood.
 
-This procedure of increasing a parameter and rerunning the likelihood forms a likelihood profile.
-Naively, this profile is shaped like a Gaussian distribution, as shown in Figure~\ref{fig:ulimitdiag}.
-This Gaussian shape can be integrated to find the one-sided limit that is above the true parameter value with a specified confidence level.
-Specifically, this integration determines how far down the likelihood must decrease to reach the upper limit.
-This likelihood decrease is called $\Delta\LogLike$, and is calculated via
+{\color{red}(hows this look from here down to 'From the nine WIMP masses...' paragraph??)}
 
-\begin{equation}\label{eqn:deltaloglike}
-  \Delta\LogLike = \left ( \textrm{erf}^{-1} \left ( \alpha \right ) \right )^2 \,,
+This procedure of increasing a parameter and rerunning the likelihood forms a \textit{likelihood profile}.
+Naively, this profile can be approximated by a polynomial, as shown in Figure~\ref{fig:ulimitdiag}.
+Wilk's theorem then says that a decrease in likelihood will follow a Chi-squared distribution with degrees of freedom equal to the difference in number of free parameters between the alternate and null hypotheses.
+This probability distribution can then be used to determine an upper limit with a specified confidence level.
+
+With a Chi-squared distribution with 1 degree of freedom, he significance $\sigma$ of observing a decrease in likelihood $\Delta\LogLike$ can be found by
+
+\begin{equation}\label{eqn:likeul1}
+  \sqrt{2 \: \Delta\LogLike} = \sigma \,.
+\end{equation}
+An upper limit based on this significance can be calculated by
+
+\begin{equation}\label{eqn:likeul2}
+  \sigma = \sqrt{2} \;\: \textrm{erf}^{-1} \left ( \alpha \right ) \,,
 \end{equation}
 where $\alpha$ is the desired confidence level as a fraction of 1 (i.e. 95\% : $\alpha=0.95$)~\cite{wilks1938,cash1979}.
-The $\textrm{erf}^{-1}$ is the inverse error function, an integration of a Gaussian function.
+The $\textrm{erf}^{-1}$ is the inverse error function, an integration of a Gaussian probability distribution.
+This results in a likelhood decrease of
+
+\begin{equation}\label{eqn:likeul3}
+  \Delta\LogLike = \textrm{erf}^{-1} \left ( \alpha \right )^2 \,.
+\end{equation}
 Therefore, an upper limit on $\vacs$ can then be found by increasing $\vacs$ to the point where the likelihood has decreased by $\Delta\LogLike$.
+
+
+%In this situation,  with $n$ degrees of freedom.
+%As the $\vacs$ is the only free parameter, $n=1$, and the significance of calculating
+
+
+%is shaped like a Gaussian distribution, as shown in Figure~\ref{fig:ulimitdiag}.
+%This Gaussian shape can be integrated to find the one-sided limit that is above the true parameter value with a specified confidence level.
+%Specifically, this integration determines how far down the likelihood must decrease to reach the upper limit.
+%This likelihood decrease is called $\Delta\LogLike$, and is calculated via
+
+%\begin{equation}\label{eqn:deltaloglike}
+%  \Delta\LogLike = \left ( \textrm{erf}^{-1} \left ( \alpha \right ) \right )^2 \,,
+%\end{equation}
+%where $\alpha$ is the desired confidence level as a fraction of 1 (i.e. 95\% : $\alpha=0.95$)~\cite{wilks1938,cash1979}.
+%The $\textrm{erf}^{-1}$ is the inverse error function, an integration of a Gaussian function.
+%Therefore, an upper limit on $\vacs$ can then be found by increasing $\vacs$ to the point where the likelihood has decreased by $\Delta\LogLike$.
 
 
 %This procedure of increasing $\vacs$ and rerunning the likelihood maximization is 
@@ -952,15 +982,15 @@ Therefore, an upper limit on $\vacs$ can then be found by increasing $\vacs$ to 
 % maybe also this rolke paper: Rolke, et al., NIM A, 551, 493 (2005)
 % see bookmark in Geln Cowan Statistical Data Analysis
 
-{\color{red}(
-  Honestly, this explaination is so convoluted and so different than what I am familiar with that I can't say if it's correct.
-  I just spent an hour reading various chapters in the owan book and I can't find what you do in it.
-  It seems to me like a mix of two different methods, but I am not sure.
-  I figure you are explaining the procedure as it performed in ctools? are you 100\% sure about it?
-  Technically the value of DL should depend on the number of free parameters as well, so I don't know about Equation~\ref{eqn:deltaloglike}, but if it is what is used in ctools I assume it is correct.
-  Either way you do not calculate the upper limit yourself right? ctools does it for you?
-  Without going into ctools code and see what they do I can't say much, so I suggest you ask gernot to read these paragraphs and if he gives the ok, leave it as it is.  ?? --orel
-)}
+%{\color{red}(
+  %Honestly, this explaination is so convoluted and so different than what I am familiar with that I can't say if it's correct.
+  %I just spent an hour reading various chapters in the owan book and I can't find what you do in it.
+  %It seems to me like a mix of two different methods, but I am not sure.
+  %I figure you are explaining the procedure as it performed in ctools? are you 100\% sure about it?
+  %Technically the value of DL should depend on the number of free parameters as well, so I don't know about Equation~\ref{eqn:deltaloglike}, but if it is what is used in ctools I assume it is correct.
+  %Either way you do not calculate the upper limit yourself right? ctools does it for you?
+  %Without going into ctools code and see what they do I can't say much, so I suggest you ask gernot to read these paragraphs and if he gives the ok, leave it as it is.  --orel
+%)}
 
 % Glen Cowan presentation on upper limits
 %   https://www.pp.rhul.ac.uk/~cowan/stat/nikhef/cowan_nikhef_2011_4.pdf
@@ -980,16 +1010,17 @@ Therefore, an upper limit on $\vacs$ can then be found by increasing $\vacs$ to 
 
 \begin{figure}[bt]
   \centering
-  \includegraphics[width=0.45\textwidth]{images/ulimit_diagram/ulimdiagram.pdf}
+  \includegraphics[width=0.45\textwidth]{images/ulimit_diagram/ulimdiagram2.pdf}
   \caption[Upper Limit Calculation]{
     An example likelihood profile as the $\vacs$ is varied (blue line).
     The procedure starts at parameter $\vacs_{\mathrm{start}}$, and $\vacs$ is increased until the likelihood has decreased by $\Delta{}\LogLike$.
-    {\color{red}(
-      I think you are mixing two methods in this plot.
-      One is wher eyou find the value of the parameter which decreases L by some value DL and the other is where you calculated the p value based on the observed value of your parameter.
-      Again, I am so confused at the moment (and tired) that I am not sure, but please verify before you leave this plot as it is.
-      Talk to Gernot, I am sure he can help with it. ?? --orel
-    )}
+    {\color{red}(better??)}
+    %{\color{red}(
+      %I think you are mixing two methods in this plot.
+      %One is wher eyou find the value of the parameter which decreases L by some value DL and the other is where you calculated the p value based on the observed value of your parameter.
+      %Again, I am so confused at the moment (and tired) that I am not sure, but please verify before you leave this plot as it is.
+      %Talk to Gernot, I am sure he can help with it.  --orel
+    %)}
   }
   \label{fig:ulimitdiag}
 \end{figure}
