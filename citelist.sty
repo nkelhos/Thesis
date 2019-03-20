@@ -213,6 +213,12 @@
 \def\eV{\ifmmode  {\mathrm{e\kern -0.1em V}\xspace}\else
                    \textrm{e\kern -0.1em V}\xspace\fi}%
 
+%\def\bbbar{\ifmmode { \Pbottom{}\APbottom{} } \else
+                      %\Pbottom{}\APbottom{} \fi}
+\def\bbbar{\ifmmode { b\bar{b} } \else
+                      $b\bar{b}$ \fi}
+                     
+
 %
 % Retrieve values for different variables from MichiganTech_MSPhD.tex
 \def\thesistitle#1{\gdef\@thesistitle{#1}}

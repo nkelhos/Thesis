@@ -358,7 +358,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     This spherical halo would allow for many $\chi\chi$ annihilations, producing gamma rays with
     
     $$\chi\bar{\chi} \rightarrow S\bar{S} \,,$$
-    where $S\bar{S}$ can be any particle-antiparticle pair ($t\bar{t}$, $b\bar{b}$, $u\bar{u}$, $s\bar{s}$, $e^{-}e^{+}$, $\nu_{e}\bar{\nu_{e}}$, $\gamma\gamma$, $gg$, $hh$, etc).
+    where $S\bar{S}$ can be any particle-antiparticle pair ($t\bar{t}$, $b\bar{b}$, $u\bar{u}$, $s\bar{s}$, \Pelectron{}\APelectron{}, \Pnue{}\APnue{}, \Pgg{}\Pgg{}, \Pg{}\Pg{}, \PHiggslight{}\PHiggslight{}, etc).
     The particle-antiparticle pairs then annihilate or decay into different spectra of photons ($\gamma$).
     These different annihilation channels can produce different spectra of gamma rays, which will also vary based on the WIMP mass and cross section chosen.
     This is described further in Section \ref{dm_spectral}.
@@ -496,13 +496,13 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     
     In order to calculate the gamma-ray brightness of the dark matter halo, the produced gamma-ray energy spectrum from WIMP annihilations must be known.
     Different annihilation channels can produce different spectra.
-    For instance, the $\chi\chi \rightarrow \gamma\gamma$ channel will produce a spectrum with a single spike at the WIMP's mass, while the $\chi\chi \rightarrow b\bar{b}$ channel will produce a curved power law spectrum of photons, shown in Figure~\ref{fig:chichi_spectrum}.
+    For instance, the $\chi\chi \rightarrow \gamma\gamma$ channel will produce a spectrum with a single spike at the WIMP's mass, while the $\chi\chi \rightarrow \bbbar{}$ channel will produce a curved power law spectrum of photons, shown in Figure~\ref{fig:chichi_spectrum}.
     WIMP annihilations are expected to have multiple channels, where a population of WIMPs will annihilate into different channels with different probabilities.
-    However, only the $\chi\chi \rightarrow b\bar{b}$ channel is considered for this analysis.
+    However, only the $\chi\chi \rightarrow \bbbar$ channel is considered for this analysis.
     
-    Three example Feynman diagrams of WIMP annihilations that produce a $b\bar{b}$ pair are shown in Figure~\ref{fig:neutralino_feynman}, adapted from Ref.~\cite{Jungman:1995df}.
+    Three example Feynman diagrams of WIMP annihilations that produce a \bbbar pair are shown in Figure~\ref{fig:neutralino_feynman}, adapted from Ref.~\cite{Jungman:1995df}.
     The particle $\tilde{f}$ is a supersymmetric fermion, the $Z$ is the Z boson, and $H$ is Higgs boson.
-    The analysis in this thesis searches for a general $b\bar{b}$ signal, rather than the specific signal from one of these Feynman diagrams.
+    The analysis in this thesis searches for a general \bbbar signal, rather than the specific signal from one of these Feynman diagrams.
     
     \begin{figure}[h]
       \centering
@@ -512,15 +512,15 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       \begin{minipage}{0.25\textwidth}\includegraphics[width=\linewidth]{images/feynman_neutralino/neutralino_aghost.pdf}\end{minipage}\hfill
       \hfill
       \caption[WIMP Annihilation Feynman Diagrams]{
-        Three example Feynman diagrams of neutralino annihilations that produce a $b\bar{b}$ pair.
+        Three example Feynman diagrams of neutralino annihilations that produce a \bbbar pair.
       }
       \label{fig:neutralino_feynman}
     \end{figure}
 
     After the desired channel is selected, the spectrum of photons produced by that channel is calculated.
-    This is done by repeatedly simulating all the photons produced when the \Pbottom{}\APbottom quarks hadronize and decay into other particles.
+    This is done by repeatedly simulating all the photons produced when the \bbbar quarks hadronize and decay into other particles.
     Several of these decay processes are shown in Table~\ref{tab:bpaths2}.
-    In the table, the \APbottom hadronizes into \PBplus or \PBzero, which then decay into \PK and \PD mesons (plus some other particles $X$), and the \PD mesons also decay into \PK mesons.
+    In the table, the $\bar{b}$ hadronizes into \PBplus or \PBzero, which then decay into \PK and \PD mesons (plus some other particles $X$), and the \PD mesons also decay into \PK mesons.
     The \PK mesons can then decay into \Ppipm and \Ppizero mesons, and finally the \Ppizero{}'s decay into two photons.
     % for pion decays, see section 3.3 in arxiv:1508.05190 (and references therein)
     Though these pion decays are the dominant source of photons, these listed particles (as well as other unlisted ones) may produce additional photons through bremsstrahlung or annihilation mechanisms.
@@ -531,23 +531,23 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       \begin{tabular}{ccll}
         Source                       & Branching                       & Products       & PDG \\
         (Quarks)                     & Ratio (\%)                      &                & Chapter \\ \hline
-        \APbottom                    & $\xrightarrow{ \mathrm{Hadronization} }$   & \PBp, \PBz     & \href{http://pdg.lbl.gov/2018/reviews/rpp2018-rev-b-meson-prod-decay.pdf}{\Pbottom-Hadron Production}              \\ \hline
-        \PBp     $(\Pup\APbottom)$   & $\xrightarrow{ 79   \pm4   }$   & $\APDzero + X$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-plus-minus.pdf}{Charged B Mesons}          \\
-        \PBz     $(\Pdown\APbottom)$ & $\xrightarrow{ 78   \pm8   }$   & $\PKpm + X$    & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-zero.pdf}{Neutral B Mesons}          \\
-        \PBz     $(\Pdown\APbottom)$ & $\xrightarrow{ 47.4 \pm2.8 }$   & $\APDzero + X$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-zero.pdf}{Neutral B Mesons}          \\
-        \PBz     $(\Pdown\APbottom)$ & $\xrightarrow{ 36.4 \pm3.3 }$   & $\PDminus + X$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-zero.pdf}{Neutral B Mesons}          \\ \hline
-        \APDzero $(\Pup\APcharm)$    & $\xrightarrow{ 45.7 \pm2.8 }$   & $\PKplus + X$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-charm.pdf}{Charm Mesons}          \\
-        \PDminus $(\Pdown\APcharm)$  & $\xrightarrow{ 25.7 \pm1.4 }$   & $\PKplus + X$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-charm.pdf}{Charm Mesons}          \\ \hline
-        \PKplus  $(\Pup\APstrange)$  & $\xrightarrow{ 20.67\pm0.08}$   & $\Ppizero + \Ppiplus$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-strange.pdf}{Strange Mesons} \\
-        \PKminus $(\APup\Pstrange)$  & $\xrightarrow{ 20.67 \pm0.08 }$ & $\Ppizero + \Ppiminus$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-strange.pdf}{Strange Mesons} \\ \hline
-        \Ppizero $\left ( \frac{\Pup\APup-\Pdown\APdown}{\sqrt{2}} \right )$   & $\xrightarrow{ 98.823\pm0.034}$ & $\gamma + \gamma$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-pi-zero.pdf}{Neutral Pion} \\
+        $\bar{b}$                    & $\xrightarrow{ \mathrm{Hadronization} }$   & \PBp, \PBz     & \href{http://pdg.lbl.gov/2018/reviews/rpp2018-rev-b-meson-prod-decay.pdf}{$b$-Hadron Production}              \\ \hline
+        \PBp     $(u\bar{b})$   & $\xrightarrow{ 79   \pm4   }$   & $\APDzero + X$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-plus-minus.pdf}{Charged B Mesons}          \\
+        \PBz     $(d\bar{b})$ & $\xrightarrow{ 78   \pm8   }$   & $\PKpm + X$    & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-zero.pdf}{Neutral B Mesons}          \\
+        \PBz     $(d\bar{b})$ & $\xrightarrow{ 47.4 \pm2.8 }$   & $\APDzero + X$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-zero.pdf}{Neutral B Mesons}          \\
+        \PBz     $(d\bar{b})$ & $\xrightarrow{ 36.4 \pm3.3 }$   & $\PDminus + X$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-B-zero.pdf}{Neutral B Mesons}          \\ \hline
+        \APDzero $(u\bar{c})$    & $\xrightarrow{ 45.7 \pm2.8 }$   & $\PKplus + X$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-charm.pdf}{Charm Mesons}          \\
+        \PDminus $(d\bar{c})$  & $\xrightarrow{ 25.7 \pm1.4 }$   & $\PKplus + X$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-charm.pdf}{Charm Mesons}          \\ \hline
+        \PKplus  $(u\bar{s})$  & $\xrightarrow{ 20.67\pm0.08}$   & $\Ppizero + \Ppiplus$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-strange.pdf}{Strange Mesons} \\
+        \PKminus $(\bar{u}s)$  & $\xrightarrow{ 20.67 \pm0.08 }$ & $\Ppizero + \Ppiminus$  & \href{http://pdg.lbl.gov/2018/tables/rpp2018-tab-mesons-strange.pdf}{Strange Mesons} \\ \hline
+        \Ppizero $\left ( \frac{u\bar{u} - d\bar{d} }{\sqrt{2}} \right )$   & $\xrightarrow{ 98.823\pm0.034}$ & $\gamma + \gamma$ & \href{http://pdg.lbl.gov/2018/listings/rpp2018-list-pi-zero.pdf}{Neutral Pion} \\
         %$$ & $\xrightarrow{ \pm }$ & $$ \\
         %\APDzero    & $\xrightarrow{ 47  \pm4   }$ & $K^0 + \bar{K}^0 + anything $ \\
         %\PDminus    & $\xrightarrow{ 61  \pm5   }$ & $K^0 + \bar{K}^0 + anything$ \\
         % Numbers are from  the beginning of this subsection
       \end{tabular}
       \caption[$b$ Quark Production of Gamma Rays]{
-        Table of decay modes and products, indicating several ways photons are produced from $b$ quarks.
+        Table of decay modes and products, indicating several ways photons are produced from $\bar{b}$ quarks.
         The $X$ indicates other particles.
         Branching ratios and Particle Data Group (PDG) chapters are from Ref.~\cite{tanabashi2018review}.
       }
@@ -604,7 +604,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       \centering
       \includegraphics[width=0.95\textwidth]{images/spectra/chichi_spectrum.pdf}
       \caption[Single Annihilation Spectra]{
-        Resultant photon spectra from the annihilation of two WIMP particles solely into the $b\bar{b}$ channel.
+        Resultant photon spectra from the annihilation of two WIMP particles solely into the \bbbar channel.
         Each colored line represents a different WIMP mass.
       }
       \label{fig:chichi_spectrum}
@@ -633,7 +633,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
         Field of view                            & \ang{3}              \\
         Detectable photon energy range           & \SIrange{4}{70}{\TeV{}} \\
         Observatory effective area               & \SI{287000}{m^2}     \\
-        Annihilation channel                     & $\chi\chi \rightarrow b\bar{b}$ \\
+        Annihilation channel                     & $\chi\chi \rightarrow \bbbar $ \\
         Dark matter halo shape                   & Einasto              \\
         \hline
         \textbf{Derived Values}                  & \\
