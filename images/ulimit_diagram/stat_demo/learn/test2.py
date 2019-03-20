@@ -14,8 +14,8 @@ def roll_p(m) :
 fig = plt.figure(figsize=(10,7))
 frame1 = fig.add_axes(( 0.1, 0.1, 0.8, 0.8 ))
 
-dof = 4
-nexperiments = 30000
+dof = 3
+nexperiments = 60000
 data = []
 for i in range(nexperiments) :
   v = 0
@@ -23,8 +23,8 @@ for i in range(nexperiments) :
     v += roll_n()**2
   data += [ v ]
 
-xmin, xmax = 0, 30
-nbins = 30
+xmin, xmax = 0, 25
+nbins = 100
 xbinw = (xmax-xmin)/nbins
 binlefts = [ xmin + i*xbinw for i in range(nbins) ]
 bindata  = [ 0 for i in range(nbins) ]
@@ -35,7 +35,9 @@ for d in data :
     bindata[ibin] += 1
     naccum += 1
 for i in range(nbins) :
+  #bindata[i] /= nexperiments
   bindata[i] /= naccum
+  bindata[i] /= xbinw
 
 kwa = {}
 kwa['width' ] = xbinw
