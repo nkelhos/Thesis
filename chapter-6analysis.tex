@@ -571,7 +571,6 @@ Since most bins in the residual overlap the ${\frac{\textrm{Simulated Models}}{\
     In the top plot, the gray histogram bars indicate the data's significance distribution, with gray Poissonian error bars.
     The red lines and bars indicate the range of simulated significances, centered on the mean, and extending up and down by one standard deviation.
     The bottom plot shows the $\frac{\textrm{simulated}}{\textrm{data}}$ residual.
-    {\color{red}(hows this plot look??)}
   }
   \label{fig:crab_signif_distribution}
 \end{figure}
@@ -875,7 +874,6 @@ This is discussed further in Section~\ref{sec:elevgradient}.
      The red lines and bars indicate the range of simulated significances, centered on the mean, and extending up and down by one standard deviation.
     The bottom plot shows the $\frac{\textrm{simulated}}{\textrm{data}}$ residual.
     Only sky-map bins within Sgr A*'s region of interest are histogrammed.
-    {\color{red}(hows this plot look??)}
   }
   \label{fig:gc_resmap_sighist_coarse}
 \end{figure}
@@ -923,8 +921,6 @@ To calculate the upper limit, the parameter $\vacs$ is fixed and the maximum lik
 Then, $\vacs$ is fixed to a slightly larger value, and a new maximum likelihood is found.
 Because no dark matter signal was found, increasing $\vacs$ increases the dark matter halo's flux, which decreases the maximum likelihood.
 
-{\color{red}(hows this look from here down to 'From the nine WIMP masses...' paragraph??)}
-
 This procedure of increasing a parameter and rerunning the likelihood forms a \textit{likelihood profile}.
 Naively, this profile can be approximated by a polynomial, as shown in Figure~\ref{fig:ulimitdiag}.
 Wilk's theorem then says that a decrease in likelihood will follow a Chi-squared distribution with degrees of freedom equal to the difference in number of free parameters between the alternate and null hypotheses.
@@ -949,49 +945,6 @@ This results in a likelhood decrease of
 \end{equation}
 Therefore, an upper limit on $\vacs$ can then be found by increasing $\vacs$ to the point where the likelihood has decreased by $\Delta\LogLike$.
 
-
-%In this situation,  with $n$ degrees of freedom.
-%As the $\vacs$ is the only free parameter, $n=1$, and the significance of calculating
-
-
-%is shaped like a Gaussian distribution, as shown in Figure~\ref{fig:ulimitdiag}.
-%This Gaussian shape can be integrated to find the one-sided limit that is above the true parameter value with a specified confidence level.
-%Specifically, this integration determines how far down the likelihood must decrease to reach the upper limit.
-%This likelihood decrease is called $\Delta\LogLike$, and is calculated via
-
-%\begin{equation}\label{eqn:deltaloglike}
-%  \Delta\LogLike = \left ( \textrm{erf}^{-1} \left ( \alpha \right ) \right )^2 \,,
-%\end{equation}
-%where $\alpha$ is the desired confidence level as a fraction of 1 (i.e. 95\% : $\alpha=0.95$)~\cite{wilks1938,cash1979}.
-%The $\textrm{erf}^{-1}$ is the inverse error function, an integration of a Gaussian function.
-%Therefore, an upper limit on $\vacs$ can then be found by increasing $\vacs$ to the point where the likelihood has decreased by $\Delta\LogLike$.
-
-
-%This procedure of increasing $\vacs$ and rerunning the likelihood maximization is 
-%repeated until the likelihood has decreased by a fixed amount.
-%Because the likelihood profile (the maximum likelihood as one parameter is varied) naively follows a Gaussian distribution as in Figure~\ref{fig:ulimitdiag}, this can be exploited.
-%
-%To find the value of $\vacs$ that is above 95\% of the outcomes, a Gaussian distribution can be integrated to find how far the likelihood decreases.
-%%This factor is chosen because the likelihood naively follows a Gaussian distribution as any parameter is varied through its best-fit value.
-%This likelihood decrease is $\Delta{}\LogLike$, and is calculated by integrating a Gaussian probability distribution, resulting in
-
-%For that Gaussian distribution, the factor $\Delta{}\LogLike$ is how much the likelihood decreases when integrating from a one-sided limit.
-%This is shown in Figure~\ref{fig:ulimitdiag}.
-% some discussion on likelihood upper limits here:
-% https://fermi.gsfc.nasa.gov/science/mtgs/summerschool/2013/week1/ML_intro.pdf
-% maybe also this rolke paper: Rolke, et al., NIM A, 551, 493 (2005)
-% see bookmark in Geln Cowan Statistical Data Analysis
-
-%{\color{red}(
-  %Honestly, this explaination is so convoluted and so different than what I am familiar with that I can't say if it's correct.
-  %I just spent an hour reading various chapters in the owan book and I can't find what you do in it.
-  %It seems to me like a mix of two different methods, but I am not sure.
-  %I figure you are explaining the procedure as it performed in ctools? are you 100\% sure about it?
-  %Technically the value of DL should depend on the number of free parameters as well, so I don't know about Equation~\ref{eqn:deltaloglike}, but if it is what is used in ctools I assume it is correct.
-  %Either way you do not calculate the upper limit yourself right? ctools does it for you?
-  %Without going into ctools code and see what they do I can't say much, so I suggest you ask gernot to read these paragraphs and if he gives the ok, leave it as it is.  --orel
-%)}
-
 % Glen Cowan presentation on upper limits
 %   https://www.pp.rhul.ac.uk/~cowan/stat/nikhef/cowan_nikhef_2011_4.pdf
 %
@@ -1014,18 +967,9 @@ Therefore, an upper limit on $\vacs$ can then be found by increasing $\vacs$ to 
   \caption[Upper Limit Calculation]{
     An example likelihood profile as the $\vacs$ is varied (blue line).
     The procedure starts at parameter $\vacs_{\mathrm{start}}$, and $\vacs$ is increased until the likelihood has decreased by $\Delta{}\LogLike$.
-    {\color{red}(better??)}
-    %{\color{red}(
-      %I think you are mixing two methods in this plot.
-      %One is wher eyou find the value of the parameter which decreases L by some value DL and the other is where you calculated the p value based on the observed value of your parameter.
-      %Again, I am so confused at the moment (and tired) that I am not sure, but please verify before you leave this plot as it is.
-      %Talk to Gernot, I am sure he can help with it.  --orel
-    %)}
   }
   \label{fig:ulimitdiag}
 \end{figure}
-
-
 
 From the nine WIMP masses tested in Section~\ref{sec:dmlike}, the calculated upper limits are shown in Figure~\ref{fig:ulim} as dark blue points with error bars.
 Several other upper limits from previous studies are also shown for comparison.
