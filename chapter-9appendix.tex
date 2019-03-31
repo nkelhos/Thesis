@@ -1,5 +1,6 @@
 \cleartooddpage[\thispagestyle{empty}]
 % Redefined Commands and Environments
+
 \renewcommand{\thechapter}{\thechapter}
 \renewcommand{\thesection}{\thechapter.\arabic{section}}
 \renewcommand{\thesubsection}{\thechapter.\arabic{section}.\arabic{subsection}}
@@ -33,6 +34,7 @@
   These effects imply that to study the effect of stars, one must study the effect of high-current and disabled camera pixels, and use this information to construct the effect of stars.
   In the following section, the effects of disabled camera pixels are studied.
 
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 \section{Effects of Disabled Pixels}
 
 % see calculations/disabledpixel_obstime , those 250 crab runs turned into about 13.5 observation hours
@@ -239,11 +241,11 @@ Another possibility is that, for VERITAS or future CTA observations where pixels
 Since the disabled pixel information (which pixels and the disable/enable times) is saved as part of regular observation monitoring, this can be used to apply Gaussian-shaped event-rate penalties to any background models.
 In general, when a pixel is disabled, it is expected that lower energy events and showers further away will be more vulnerable, and will show stronger differences than higher energy events or closer showers.
 
+\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
 
 
-\chapter{Residual Sky Map Significance Distributions}\label{app:sigdist}
+\chapter{Residual Sky Map Bin Significance Calculation}\label{app:sigdist}
 
-\section{Bin Significance Calculation}
 The likelihood analyses in Chapter~\ref{chapter:analysis} fit a series of models to two sets of data.
 The models in these analyses were chosen from using results from previous studies.
 However, these models may not perfectly match the sources.
@@ -417,3 +419,4 @@ This leads to the significance of a bin's residual,
 %  \label{fig:various_sig_dists}
 %\end{figure}
 %
+
