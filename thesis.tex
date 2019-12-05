@@ -16,7 +16,9 @@
 
 %%% heads and foots and spacings ... 
 \usepackage{scrpage2} 
-\pagestyle{scrheadings}
+%%\pagestyle{scrheadings}
+\pagestyle{plain}
+\pagenumbering{roman}
 \clearscrplain
 \renewcommand*{\headfont}{\normalfont\scshape}
 \usepackage{siunitx}
@@ -111,11 +113,13 @@
 \frontmatter
 \maketitle
 
-\mainmatter
-\selectlanguage{english}
-
 \include{acknowledgements}
 \include{tableofcontents}
+
+\mainmatter
+\selectlanguage{english}
+\setcounter{page}{1}
+\pagenumbering{arabic}
 \include{abstract}
 \include{abstractde}
 
