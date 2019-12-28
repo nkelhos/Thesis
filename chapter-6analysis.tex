@@ -369,6 +369,7 @@ After fitting all model parameters to the events from \SIrange{4}{70}{\TeV{}}, t
 
 
 \begin{figure}[!t]
+%\begin{figure}[!hp]
   \centering
   \includegraphics[width=0.95\textwidth]{images/test_crab_analysis/plot_elev27_5_32_5deg_4_70TeV_nfits165_spectra.pdf}
   \caption[Crab Nebula Spectra]
@@ -409,9 +410,11 @@ However, the energy range of this Eventdisplay analysis was from \SIrange{3.16}{
 The likelihood analysis was from \SIrange{4}{70}{\TeV{}}, containing only 9319 events, \nicetilde17\% fewer events.
 This ratio persisted when the events were limited to within \ang{0.18} of the Crab Nebula, the approximate radius of the PSF at \SI{10}{\TeV{}} (145 vs 120 events).
 Thus, with \nicetilde17\% fewer events, the likelihood test detects the Crab Nebula at a similar significance level, implying this likelihood method is more sensitive than the standard analysis alone.
+However, this could be due to the energy range being restricted to where VERITAS is more sensitive.
 % event display: 3.16 TeV to 79.4 TeV
 % ctools       : 4    TeV to 70   TeV
 % from nkelhos@warp-zeuthen.desy.de:~/dm_halo_testing/veripy/thesis/analysis/crab_test/energy_range_event_count_difference.py
+
 In Figure~\ref{fig:crab_test_spectra}, the fitted Crab Nebula spectra is shown, along with literature results from earlier VERITAS, HESS, and MAGIC observations of the Crab Nebula.
 The fitted spectra from this work is shown as a red line, with a red statistical uncertainty band.
 A second larger red uncertainty band includes a \nicetilde{}20\% systematic uncertainty on the flux, due to gamma rays of different energies producing similar-looking shower images in the VERITAS telescopes.
