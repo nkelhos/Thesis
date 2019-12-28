@@ -342,9 +342,10 @@ The Crab Nebula is modeled by a point source with the simple power law spectrum,
   M(\xtrue) = M_{s,\textrm{powerlaw}}(\xtrue) * M_{e,\textrm{point}}(\xtrue) = N_o \left ( \frac{\Etrue}{E_o} \right )^{-\gamma} * \lim_{a\to\infty} \frac{1}{ \abs{a} \sqrt{\pi} } e^{ - \left ( \sqrt{ (\ltrue-l_c)^2 + (\btrue-b_c)^2 }/a \right )^2 } \,.
 \end{equation}
 These spatial and spectral shapes are both discussed in Section~\ref{subsec:likemax}.
-The sky position of the point source is fixed to the Crab Nebula, at
+The sky position of the point source is set to the Crab Nebula, at
 
 $$(l_c,b_c)_{\textrm{J2000}} = (\ang{184.557600},\ang{-5.784180}) \;\;.$$
+This position is fixed, in order to reduce the complexity of the analysis.
 The pivot energy $E_o$ of its spectrum is fixed at \SI{16.73}{\TeV{}}, while the normalization $N_o$ and the spectral index $\gamma$ are free to vary during the likelihood optimization.
 
 Only events between \SIrange{4}{70}{\TeV{}} are used in this test analysis.

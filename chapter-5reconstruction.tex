@@ -273,12 +273,13 @@ These stored lengths and widths can then be used to create new parameters \texti
   \end{split}
 \end{equation}
 
-In this equation, $l_{\textrm{image}}$ and $w_{\textrm{image}}$ are each observed image's length and width.
+%In this equation, $l_{\textrm{i}}$ and $w_{\textrm{image}}$ are each observed image's length and width.
+In this equation, $l_{i}$ and $w_{i}$ are each observed image's length and width.
 Multiple images of the same shower can be combined to calculate the $MRSL_{\textrm{shower}}$ and $MRSW_{\textrm{shower}}$ for each shower.
 The parameters $l_{\textrm{median}}$ and $w_{\textrm{median}}$ are the median length and width from the lookup table.
 The parameters $l_{\textrm{spread}}$ and $w_{\textrm{spread}}$ are the spread in length and width distributions, also from the lookup table.
 The parameter $N_{\textrm{images}}$ is the number of triggered telescope images.
-Gamma-ray showers and proton showers have different distributions of MRSL and MRSW (proton showers tend to be wider at a given length), so cuts can be applied based these two parameters to partially filter out the proton showers.
+Gamma-ray showers and proton showers have different distributions of MRSL and MRSW (proton showers tend to be wider at a given length), so in this analysis cuts are applied based on these two parameters to partially filter out the proton showers.
 
 These two distributions can be seen in Figure~\ref{fig:mscw_crab}.
 In it, the MRSWs of events near the Crab Nebula are shown as a green histogram.
