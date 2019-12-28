@@ -453,8 +453,9 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
   
     A background model is a three-dimensional function in camera $x$ (a horizontal angle, parallel to azimuth), camera $y$ (a vertical angle, parallel to elevation), and energy.
     Each background model is constructed from one of two templates, and the templates are built from dark run observations (see Figure~\ref{fig:gcfieldsofview}).
-    These background models calculate the number of expected events in the camera, per unit solid angle, unit time, and unit energy.
-    This is used to quantify how many counts are expected in different parts of the camera when observing any target.
+    These background models calculate the number of expected background events in the camera, per unit solid angle, unit time, and unit energy.
+    These background events are primarily proton-induced showers that are similar enough to gamma-ray showers that they pass all quality cuts.
+    The background models are used to quantify how many counts are expected in different parts of the camera when observing any target.
     Understanding the background shape of the camera is crucial for properly studying extended sources, like dark matter halos, which may extend several degrees from the Galactic Center.
     Improperly estimating background models can result in fake structures appearing around an astrophysical target.
     
