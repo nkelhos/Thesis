@@ -541,19 +541,22 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     At the lowest \ETrue{} energies some showers fluctuate upwards to produce more Cherenkov light, and consequently get reconstructed to higher \EReco{} energies.
     At the highest \ETrue{} energies, showers may be so large that they fill the entire camera, leading to lost photons past the edge of the camera, which cause the shower's energy to be reconstructed lower than it actually is.
 
-    \begin{figure}[!th]
-      \centering
-      \includegraphics[width=0.85\textwidth]{images/edisp_plots/edisp.pdf}
-      \caption[Energy Migration Matrix]{
-        An energy migration matrix used with Sgr A* run 82288.
-        The reconstructed energy is on the x-axis, and the true energy is on the y-axis.
-        The z (color) axis denotes the interpolated number of simulated events that passed all cuts (see text for details).
-        The dark-blue region from \SIrange{4}{70}{TeV} \EReco{} is the range of energies used in this analysis.
-      }
-      \label{fig:migmatrix}
-    \end{figure}
+\begin{figure}[!th]
+  \centering
+  \includegraphics[width=0.85\textwidth]{images/edisp_plots/edisp.pdf}
+  \caption[Energy Migration Matrix]{
+    An energy migration matrix used with Sgr A* run 82288.
+    The reconstructed energy is on the x-axis, and the true energy is on the y-axis.
+    The z (color) axis denotes the interpolated number of simulated events that passed all cuts (see text for details).
+    The dark-blue region from \SIrange{4}{70}{TeV} \EReco{} is the range of energies used in this analysis.
+  }
+  \label{fig:migmatrix}
+\end{figure}
+
+Figure~\ref{fig:migmatrix} shows one migration matrix, representative of all migration matrices used in this analysis.
+For all matrices in this analysis, the bias between \SIrange{4}{70}{TeV} is similar.
   
-  \FloatBarrier
+\FloatBarrier
 
 \section{Camera Studies}
 The objective of this thesis is to search for dark matter via the existence of a gamma-ray halo that is both extended and faint.
