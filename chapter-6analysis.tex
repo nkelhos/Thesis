@@ -249,6 +249,7 @@ The factor $m_{k,j}$ represents the number of counts predicted by model $k$, at 
 
 In order to calculate the test statistic, the models must be grouped into two sets, called hypotheses.
 For a basic analysis, the null hypothesis consists of all models, except the specific one being searched for, called here $H_{\textrm{null}}$.
+Conceptually, the specific model being searched for should have its parameters set such that it contributes zero events, but this is mathematically the same as removing the model.
 The second hypothesis, called the alternate hypothesis, consists of all the models in the null hypothesis, plus the model being searched for, called here $H_{\textrm{alt}}$.
 Each observation would get its own camera background model, and then any additional astrophysical models are added separately.
 For example, if one has three observations of the Crab Nebula, this would mean there are three camera background models, plus a point source model for the Crab Nebula.
