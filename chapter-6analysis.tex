@@ -162,9 +162,9 @@ The function $M$ has dimensional units of $\frac{N}{A \; T \; E \; \Omega}$.
 This function can be integrated over the energy, sky, and time region covered by a bin $j$ to calculate the number of events predicted in that bin, as shown by 
 
 \begin{equation}\label{eqn:model_int}
-  m_{j} = \int_{t\,\textrm{bin}} \int_{E\,\textrm{bin}} \int_{b\,\textrm{bin}} \int_{l\,\textrm{bin}} M(l,b,E,t)\; dl \; db \; dE \; dt \,.
+  m_{j} = \int_{t\,\textrm{bin}} \int_{E\,\textrm{bin}} \int_{b\,\textrm{bin}} \int_{l\,\textrm{bin}} A * M(l,b,E,t)\; dl \; db \; dE \; dt \,.
 \end{equation}
-Here, $l$ and $b$ are sky coordinates, $E$ is energy, and $t$ is time.
+Here, $l$ and $b$ are sky coordinates, $E$ is energy, $t$ is time, and $A$ is the effective detector area.
 The basic models used in this analysis can be broken apart into their spatial, spectral, and temporal components, as in
 
 \begin{equation}\label{eqn:modelparts}
