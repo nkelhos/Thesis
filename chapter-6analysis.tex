@@ -280,12 +280,15 @@ Once the maximum likelihood $\LogLike_{\textrm{max}}$ is found for these two hyp
   \textrm{TS} = - 2 \; \textrm{log} \left (  \frac{ \LogLikeMax( \Mnull ) }{ \LogLikeMax( \Malt ) } \right ) \,.
 \end{equation}
 
-To convert this TS into a p-value, events can be repeatedly simulated using the null hypothesis probability density function.
+To convert this TS into a p-value, one has the option to simulate events using the null hypothesis probability density function multiple times.
+%To convert this TS into a p-value, events can be repeatedly simulated using the null hypothesis probability density function.
 Then for each simulation, the TS is calculated.
-After many simulations, Wilk's theorem~\cite{wilks1938} says the resulting TS's will form a $\chi^2$ distribution with $n$ degrees of freedom, where $n$ is the difference in number of free parameters between the two hypotheses.
+After many simulations, the resulting TS's will form a $\chi^2$ distribution with $n$ degrees of freedom, where $n$ is the difference in number of free parameters between the two hypotheses.
+% After many simulations, Wilk's theorem~\cite{wilks1938} says the resulting TS's will form a $\chi^2$ distribution with $n$ degrees of freedom, where $n$ is the difference in number of free parameters between the two hypotheses.
 From this simulated TS distribution, an actual TS can be converted into a p-value.
-In situations where there is only one or two degrees of freedom, the significance of a specific model can be calculated as $\sqrt{\textrm{TS}}$.
-Due to time constraints, the p-value of this test statistic was not calculated.
+In simple situations where there is only one or two degrees of freedom, the significance of a specific model can be calculated as $\sqrt{\textrm{TS}}$ according to Wilk's theorem~\cite{wilks1938}, assuming the signal model has enough events.
+%In situations where there is only one or two degrees of freedom, the significance of a specific model can be calculated as $\sqrt{\textrm{TS}}$.
+Due to time constraints, the p-value of this test statistic was not calculated with simulations, and only Wilk's theorem was used in the Crab Nebula analysis.
 % http://pulsar.sternwarte.uni-erlangen.de/black-hole/2ndschool/talks/likelihood_1.pdf
 
 
