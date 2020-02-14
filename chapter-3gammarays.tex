@@ -624,21 +624,24 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     The flux of gamma rays from a dark matter halo can be estimated with Equation~\ref{eqn:dmflux} to understand how just how few gamma rays can be observed from a dark matter halo.
     For this estimate, the dark matter mass is chosen to be \SI{10}{\TeV{}}, and the velocity-averaged cross section $\left < \sigma v \right >$ is set at the relic cross section.
     Other chosen parameters are specified in Table~\ref{tab:halo_nphotons}, to align with the VERITAS telescope performance, or the parameters of the dark matter analysis performed in later chapters.
-    For the table parameters, the dark matter halo would only produce a VERITAS-detectable gamma ray between \SIrange{4}{70}{\TeV{}} every 39 hours.
+    For the table parameters, the dark matter halo would only produce a VERITAS-observable gamma ray between \SIrange{4}{10}{\TeV{}} every 39 hours.
     This flux $\Phi$ is proportional to the $\sv$, so a factor of $n$ larger particle cross section would produce a factor of $n$ larger photon flux.
     Another way to increase the observed photon flux is by expanding the observable gamma-ray energy range.
-    If the entire VERITAS energy range of \SIrange{1.5}{70}{\TeV{}} is used, the integrated photon spectrum between \SIrange{1.5}{10}{\TeV{}} increases, and the observed halo photon flux also increases by a factor of 26.
+    If the entire VERITAS energy range of \SIrange{1.5}{70}{\TeV{}} is used, the observable halo photon energy range expands to \SIrange{1.5}{10}{\TeV{}}, so the integrated photon spectrum increases, and the observed halo photon flux increases by a factor of 26.
     
     \begin{table}[]
       \centering
       \begin{tabular}{r|l}
         \hline
         \textbf{Estimated Parameters}            & \\
-        $m_{\chi}$                               & \SI{10}{\TeV{}}         \\
+        $m_{\chi}$                               & \SI{10}{\TeV{}}           \\
         Relic velocity-averaged cross section $\vacs$ & \SI{3e-26}{cm^3/s}   \\
-        Field of view                            & \ang{3}              \\
-        Detectable photon energy range           & \SIrange{4}{70}{\TeV{}} \\
-        Observatory effective area               & \SI{287000}{m^2}     \\
+        Field of view                            & \ang{3}                   \\
+        %VERITAS detectable photon energy range   & \SIrange{1.5}{70}{\TeV{}} \\
+        %Analysis photon energy range             & \SIrange{4}{70}{\TeV{}}   \\
+        %Maximum dark matter halo photon energy   & \SI{10}{\TeV{}}           \\
+        Observable halo photon energy range      & \SIrange{4}{10}{\TeV{}}   \\
+        Observatory effective area               & \SI{287000}{m^2}          \\
         Annihilation channel                     & $\chi\chi \rightarrow \bbbar $ \\
         Dark matter halo shape                   & Einasto              \\
         \hline
