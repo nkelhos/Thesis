@@ -460,9 +460,12 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     Improperly estimating background models can result in fake structures appearing around an astrophysical target.
     
     The background models used in this analysis are made from two background templates, one for each of the V5/V6 epochs (see Section~\ref{sec:epochs}).
+    Once the templates are built, each chunk of data (a fraction of an observation run) is given an independent copy of its epoch-specific background template.
     The templates are constructed from dark observations, detailed later in Section~\ref{veritasdata}.
-    Each template is made by binning all background events radially by camera position and a separate second time by their energy.
-    Then an interpolating function is applied to each to produce smooth spatial and spectral components of the template.
+    %Each template is made by binning all background events radially by camera position and then a separate second time by their energy.
+    Each template is made by combining two independent binnings of the background events.
+    The events are first binned radially to model the spatial behavior, then separately the same events are binned in energy to model the spectral behavior.
+    Then an interpolating function is applied to each binning to produce smooth spatial and spectral components of the template.
     The spectral bins and interpolated function can be seen in Figure~\ref{fig:background_profile}.
     The radial bins and interpolated function at two different energies is shown in Figure~\ref{fig:background_radial}.
 
