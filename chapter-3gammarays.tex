@@ -616,9 +616,9 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
       \label{fig:chichi_spectrum}
     \end{figure}
 
-    These spectra can be combined with the J factor (Equation~\ref{eqn:jfactor}) to calculate the gamma-ray flux produced by the halo (Equation~\ref{eqn:dmflux}).
-    It is important to note that mass-to-light ratios, and their derived J factors are usually inferred from measuring star spectra.
-    These measured J factors can therefore suffer from large errors, as it can be difficult to determine which stars are within a target gravitational well, and which ones are foreground or background stars~\cite{segue_jfactor_errors}.
+    These spectra can be combined with the J-factor (Equation~\ref{eqn:jfactor}) to calculate the gamma-ray flux produced by the halo (Equation~\ref{eqn:dmflux}).
+    It is important to note that mass-to-light ratios, and their derived J-factors are usually inferred from measuring star spectra.
+    These measured J-factors can therefore suffer from large errors, as it can be difficult to determine which stars are within a target gravitational well, and which ones are foreground or background stars~\cite{segue_jfactor_errors}.
     
     By using estimated parameters with Equation~\ref{eqn:dmflux}, the flux of gamma rays from a dark matter halo can be estimated in order to understand how few events a dark matter halo produces.
     The flux of gamma rays from a dark matter halo can be estimated with Equation~\ref{eqn:dmflux} to understand how just how few gamma rays can be observed from a dark matter halo.
@@ -651,7 +651,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
         \hline
         \textbf{Derived Values}                  & \\
         Integrated photon spectrum : $\int \frac{dN_{\gamma}}{dE} dE$        & 0.00536 photons per $\chi\chi$ annihilation \\
-        J factor :$\int \int \rho^2 dl\,d\Omega$ & \SI{3.88e22}{\GeV{}^2/cm^5}      \\
+        J-factor :$\int \int \rho^2 dl\,d\Omega$ & \SI{3.88e22}{\GeV{}^2/cm^5}      \\
         Halo flux $\Phi$                         & \SI{2.5e-11}{photons/(s*m^2)} \\
         One halo photon detected every           & \SI{39}{hours} \\
         \hline
@@ -726,18 +726,19 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
     The velocity-averaged cross section of the dark matter candidate is $\left \langle \sigma v \right \rangle$.
     Velocity-averaging is used because the cross section is velocity dependent, and the WIMPs that pass through a volume of space will have a distribution of velocities~\cite{wimp_veldist}.
     The average spectrum of photons produced by a single $\chi\chi$ annihilation is $\frac{dN_{\gamma}}{dE}$.
-    The density integral in Equation~\ref{eqn:dmflux} with the solid angle $d\Omega$ differential is often calculated separately, and is referred to as the $J$ factor,
+    The density integral in Equation~\ref{eqn:dmflux} with the solid angle $d\Omega$ differential is often calculated separately, and is referred to as the J-factor,
 
     \begin{equation}\label{eqn:jfactor}
       J = \int \rho^2 dl\,d\Omega \;\; .
     \end{equation}
 
-    The $J$ factor is used to compare the relative gamma-ray brightness of different dark matter halos, which is a function of both dark matter density and observing distance.
-    The Einasto density in Equation~\ref{eqn:einasto} can be integrated to calculate the $J$ factor at various radii, which is shown in Figure~\ref{fig:gchalo_jfactor}.
+    The J-factor is used to compare the relative gamma-ray brightness of different dark matter halos, which is a function of both dark matter density and observing distance.
+    The Einasto density in Equation~\ref{eqn:einasto} can be integrated to calculate the J-factor at various radii, which is shown in Figure~\ref{fig:gchalo_jfactor}.
     In Figure~\ref{fig:gchalo_jfactor}, the profile shown is calculated with Equation~\ref{eqn:jfactor}, where the $d\Omega$ integration limits span an angle of \ang{0.06}.
     % integration angle of 0.06 deg
-    % low-res halo template used NSIDE=1024, then healpy.max_pixrad(1024) = 0.00104 radians = 0.0598 deg ~= 0.06 deg
-    
+    % low-res halo template used NSIDE=1024, 
+    % and ALPHA_INT (angle of integration) was calculated from NSIDE, via
+    % healpy.max_pixrad(1024) = 0.00104 radians = 0.0598 deg ~= 0.06 deg
     This J-factor profile then forms the spatial component of the dark matter halo, $M_{s,\textrm{halo}}$, used in Chapter~\ref{chapter:analysis}.
     This profile is shown in a two-dimensional plot in Figure~\ref{fig:halojfactor}.
     
@@ -771,7 +772,7 @@ The third topic is how gamma rays induce air showers in the Earth's atmosphere.
   \end{figure}
 
   The halo structure in Figure~\ref{fig:halojfactor} is a simple first step halo, one that does not account for more complex dark matter models.
-  For example, a search for decaying dark matter would instead change the J-factor calculation to $\int \rho \, dl$, spreading out the gamma-ray emission.
+  For example, a search for decaying dark matter would instead change the J-factor calculation to $\int \rho \, dl \, d\Omega \,$, spreading out the gamma-ray emission.
   More exotic WIMP models may slightly alter the gamma-ray brightness of the dark matter halo, compared to the previously mentioned WIMP model.
   For example, if dark matter WIMPs have an attractive force between them, their effective annihilation cross section is enhanced, increasing the gamma-ray emission from the halo.
   This effect is called Sommerfeld enhancement~\cite{sommerfeld}.
