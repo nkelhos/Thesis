@@ -275,11 +275,12 @@ These stored lengths and widths can then be used to create new parameters \texti
 
 %In this equation, $l_{\textrm{i}}$ and $w_{\textrm{image}}$ are each observed image's length and width.
 In this equation, $l_{i}$ and $w_{i}$ are each observed image's length and width.
-Multiple images of the same shower can be combined to calculate the $MRSL_{\textrm{shower}}$ and $MRSW_{\textrm{shower}}$ for each shower.
+Multiple images of the same shower can be combined to calculate the $\textrm{MRSL}_{\textrm{shower}}$ and $\textrm{MRSW}_{\textrm{shower}}$ for each shower.
 The parameters $l_{\textrm{median}}$ and $w_{\textrm{median}}$ are the median length and width from the lookup table.
 The parameters $l_{\textrm{spread}}$ and $w_{\textrm{spread}}$ are the spread in length and width distributions, also from the lookup table.
 The parameter $N_{\textrm{images}}$ is the number of triggered telescope images.
-Gamma-ray showers and proton showers have different distributions of MRSL and MRSW (proton showers tend to be wider at a given length), so in this analysis cuts are applied based on these two parameters to partially filter out the proton showers.
+Gamma-ray showers and proton showers have different distributions of MRSL and MRSW (proton showers tend to be wider at a given length), so cuts are applied based on these two parameters to partially filter out the proton showers.
+In this analysis, only events that have a $\textrm{MRSL} < 0.7\sigma$ and $\textrm{MRSW} < 0.5\sigma$ are used.
 
 These two distributions can be seen in Figure~\ref{fig:mscw_crab}.
 In it, the MRSWs of events near the Crab Nebula are shown as a green histogram.
@@ -501,7 +502,7 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
     \end{equation} 
     
     The function $f(e,x,a)$ has units of $\frac{\textrm{Number of Counts}}{ \textrm{MeV} \times \textrm{s} \times \textrm{sr} }$.
-    The function $M_{e}(e)$ is a spectral function power law, primarily used to account for variations in the energy spectrum of the background at different elevations.
+    The function $M_{e}(e)$ is a spectral function power law, primarily used to account for variations in the folded-energy spectrum of the background models at different elevations.
     The function $M_{s}(x,y,e)$ is a spatial template that varies with camera $x$, camera $y$, and energy $e$, built from Sgr A* Off data described in Section~\ref{veritasdata}.
     The multiplied functions are then scaled with a constant $A$ such that the total integral of the template (integrating across camera $x$, camera $y$, and energy) is equal to the original number of counts in the Sgr A* Off runs, as in
     
