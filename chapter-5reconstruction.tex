@@ -280,7 +280,7 @@ The parameters $l_{\textrm{median}}$ and $w_{\textrm{median}}$ are the median le
 The parameters $l_{\textrm{spread}}$ and $w_{\textrm{spread}}$ are the spread in length and width distributions, also from the lookup table.
 The parameter $N_{\textrm{images}}$ is the number of triggered telescope images.
 Gamma-ray showers and proton showers have different distributions of MRSL and MRSW (proton showers tend to be wider at a given length), so cuts are applied based on these two parameters to partially filter out the proton showers.
-In this analysis, only events that have a $\textrm{MRSL} < 0.7\sigma$ and $\textrm{MRSW} < 0.5\sigma$ are used.
+In this analysis, only events that have a $\textrm{MRSL} < 0.7$ and $\textrm{MRSW} < 0.5$ are used.
 
 These two distributions can be seen in Figure~\ref{fig:mscw_crab}.
 In it, the MRSWs of events near the Crab Nebula are shown as a green histogram.
@@ -501,8 +501,9 @@ The Crab Nebula acts as a known \textit{standard candle} source to test out the 
       f(e,x,y) = A \, \times \, M_{e} \left ( e \right ) \, \times \, M_{s} \left ( x, y, e \right ) \,.
     \end{equation} 
     
-    The function $f(e,x,a)$ has units of $\frac{\textrm{Number of Counts}}{ \textrm{MeV} \times \textrm{s} \times \textrm{sr} }$.
-    The function $M_{e}(e)$ is a spectral function power law, primarily used to account for variations in the folded-energy spectrum of the background models at different elevations.
+    The function $f(e,x,y)$ has units of $\frac{\textrm{Number of Counts}}{ \textrm{MeV} \times \textrm{s} \times \textrm{sr} }$.
+    %The function $M_{e}(e)$ is a spectral function power law, primarily used to account for variations in the measured energy spectrum of the background models at different elevations.
+    The function $M_{e}(e)$ is an energy-dependent power law correction function, primarily used to account for variations in the acceptance of the background models at different elevations.
     The function $M_{s}(x,y,e)$ is a spatial template that varies with camera $x$, camera $y$, and energy $e$, built from Sgr A* Off data described in Section~\ref{veritasdata}.
     The multiplied functions are then scaled with a constant $A$ such that the total integral of the template (integrating across camera $x$, camera $y$, and energy) is equal to the original number of counts in the Sgr A* Off runs, as in
     
