@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import os
 import matplotlib.pyplot as plt
 from matplotlib import rc
 rc('text', usetex=True)
@@ -35,7 +36,8 @@ plt.xlabel( r'$\beta$ : Fractional Energy Increase per Crossing Cycle', fontsize
 plt.ylabel(r'Return Probability $P$', fontsize=fs-2)
 plt.tick_params(axis='both', which='major', labelsize=fs-5 )
 legend = ax.legend( loc='lower left', shadow=True, prop={'size':fs-5})
-fig.savefig( 'spectral_index_contours.pdf', bbox_inches='tight', dpi=300 )
+f1 = 'spectral_index_contours.pdf'
+fig.savefig( f1, bbox_inches='tight', dpi=300 )
 plt.close(fig)
 
 
@@ -74,7 +76,13 @@ ax.set_xticklabels( [ str(x) for x in xt ] )
 yt = [ 0.003, 0.01, 0.03, 0.1, 0.3, 1, 3 ]
 ax.set_yticks( yt )
 ax.set_yticklabels( [ str(y) for y in yt ] )
-fig.savefig( 'differential_spectra.pdf', bbox_inches='tight', dpi=300 )
+f2 = 'differential_spectra.pdf'
+fig.savefig( f2, bbox_inches='tight', dpi=300 )
 plt.close(fig)
 
 
+outf = 'merged_spectra.pdf'
+cmd = 'montage -mode concatenate -gravity center -tile 1x2 %s %s %s' % (f1,f2,outf)
+os.system(cmd)
+#cmd = 'pdfcrop %s merged_spectra.pdf' % outf
+#os.system(cmd)
